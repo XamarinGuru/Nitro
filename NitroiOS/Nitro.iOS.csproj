@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>location2</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <AssemblyName>location2</AssemblyName>
+    <MtouchLink>None</MtouchLink>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchFastDev>false</MtouchFastDev>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <AssemblyName>Nitro</AssemblyName>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchFloat32>true</MtouchFloat32>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <AssemblyName>location2</AssemblyName>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <IpaPackageName>
+    </IpaPackageName>
+    <AssemblyName>Nitro</AssemblyName>
+    <MtouchFloat32>true</MtouchFloat32>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="MonoTouch.NUnitLite" />
+    <Reference Include="Mono.CSharp" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.19.2\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="MBProgressHUD">
+      <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\Components\btprogresshud-1.20\lib\ios-unified\BTProgressHUD.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\watch.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="InitViewController.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+    <None Include="Web References\trackSvc\Service1.wsdl" />
+    <None Include="Web References\trackSvc\Service1.xsd" />
+    <None Include="Web References\trackSvc\Service10.xsd" />
+    <None Include="Web References\trackSvc\Service11.xsd" />
+    <None Include="Web References\trackSvc\Service12.xsd" />
+    <None Include="Web References\trackSvc\Service13.xsd" />
+    <None Include="Web References\trackSvc\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocationManager.cs" />
+    <Compile Include="vcListing.cs" />
+    <Compile Include="vcListing.designer.cs">
+      <DependentUpon>vcListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="calculate.cs" />
+    <Compile Include="MessageBox.cs" />
+    <Compile Include="reachbility.cs" />
+    <Compile Include="userData.cs" />
+    <Compile Include="userData.designer.cs">
+      <DependentUpon>userData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIcalendar.cs" />
+    <Compile Include="UIcalendar.designer.cs">
+      <DependentUpon>UIcalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="MainPageViewController.cs" />
+    <Compile Include="MainPageViewController.designer.cs">
+      <DependentUpon>MainPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PageContentViewController.cs" />
+    <Compile Include="icon.cs" />
+    <Compile Include="icon.designer.cs">
+      <DependentUpon>icon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InitViewController.cs" />
+    <Compile Include="InitViewController.designer.cs">
+      <DependentUpon>InitViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <BundleResource Include="Resources\.DS_Store" />
+    <BundleResource Include="Resources\speed.png" />
+    <BundleResource Include="Resources\dist.png" />
+    <BundleResource Include="Resources\mont.png" />
+    <BundleResource Include="Resources\watt.png" />
+    <BundleResource Include="Resources\heart.png" />
+    <BundleResource Include="Resources\btn_go.png" />
+    <BundleResource Include="Resources\pauseBtn.png" />
+    <BundleResource Include="Resources\resume.png" />
+    <BundleResource Include="Resources\stop.png" />
+    <BundleResource Include="Resources\min.png" />
+    <BundleResource Include="Resources\ninja.png" />
+    <BundleResource Include="Resources\plu.png" />
+    <BundleResource Include="Resources\watch.png" />
+    <BundleResource Include="Resources\calen.png" />
+    <BundleResource Include="Resources\runRound.png" />
+    <BundleResource Include="Resources\bikeRound.png" />
+    <BundleResource Include="Resources\edit.png" />
+    <BundleResource Include="Resources\ninja3.png" />
+    <BundleResource Include="Resources\ninja5.png" />
+    <BundleResource Include="Resources\pen.png" />
+    <BundleResource Include="Resources\roundNin.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\go-heja100.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\nitrosplash1.png" />
+    <BundleResource Include="Resources\BG_new.png" />
+    <BundleResource Include="Resources\edit_icon.png" />
+    <BundleResource Include="Resources\text_icon.png" />
+    <BundleResource Include="Resources\button.png" />
+    <BundleResource Include="Resources\cell_icon.png" />
+    <BundleResource Include="Resources\email_icon.png" />
+    <BundleResource Include="Resources\key_icon.png" />
+    <BundleResource Include="Resources\user_icon.png" />
+    <BundleResource Include="Resources\icon_01.png" />
+    <BundleResource Include="Resources\icon_02.png" />
+    <BundleResource Include="Resources\icon_03.png" />
+    <BundleResource Include="Resources\icon_04.png" />
+    <BundleResource Include="Resources\icon_05.png" />
+    <BundleResource Include="Resources\icon_06.png" />
+    <BundleResource Include="Resources\icon_07.png" />
+    <BundleResource Include="Resources\heja_icon.png" />
+    <BundleResource Include="Resources\watch_icon.png" />
+    <BundleResource Include="Resources\menu_icon_01.png" />
+    <BundleResource Include="Resources\calen_icon_active.png" />
+    <BundleResource Include="Resources\transparent.png" />
+    <BundleResource Include="Resources\resume_active.png" />
+    <BundleResource Include="Resources\resume_inactive.png" />
+    <BundleResource Include="Resources\stop_active.png" />
+    <BundleResource Include="Resources\go_button.png" />
+    <BundleResource Include="Resources\timer_new.png" />
+    <BundleResource Include="Resources\watt_new.png" />
+    <BundleResource Include="Resources\speed_new.png" />
+    <BundleResource Include="Resources\runRound_new.png" />
+    <BundleResource Include="Resources\mont_new.png" />
+    <BundleResource Include="Resources\heart_new.png" />
+    <BundleResource Include="Resources\bikeRound_new.png" />
+    <BundleResource Include="Resources\dist_new.png" />
+    <BundleResource Include="Resources\pop_up_bg.png" />
+    <BundleResource Include="Resources\menu_icon.png" />
+    <BundleResource Include="Resources\side_menu_bg.png" />
+    <BundleResource Include="Resources\active_tab.png" />
+    <BundleResource Include="Resources\arrow_icon.png" />
+    <BundleResource Include="Resources\icon_07_inactive.png" />
+    <BundleResource Include="Resources\icon_3_inactive.png" />
+    <BundleResource Include="Resources\icon_06_inactive.png" />
+    <BundleResource Include="Resources\icon_05_inactive.png" />
+    <BundleResource Include="Resources\icon_04_inactive.png" />
+    <BundleResource Include="Resources\icon_04_inactive_200.png" />
+    <BundleResource Include="Resources\icon_05_inactive_150.png" />
+    <BundleResource Include="Resources\user_icon_30.png" />
+    <BundleResource Include="Resources\icon_home_act.png" />
+    <BundleResource Include="Resources\icon_home_disable.png" />
+    <BundleResource Include="Resources\icon_bycle_act.png" />
+    <BundleResource Include="Resources\icon_bycle_disable.png" />
+    <BundleResource Include="Resources\icon_calendar_act.png" />
+    <BundleResource Include="Resources\icon_calendar_disable.png" />
+    <BundleResource Include="Resources\user_icon_act.png" />
+    <BundleResource Include="Resources\Screen Shot 2016-09-06 at 10.17.03 AM.png" />
+    <BundleResource Include="Resources\icon_watch.png" />
+    <BundleResource Include="Resources\icon_back.png" />
+    <BundleResource Include="Resources\512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\trackSvc" />
+    <WCFMetadataStorage Include="Service References\go_heja.com" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="Resources\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://go-heja.com:9002/Service1.svc?wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\trackSvc</RelPath>
+      <UpdateFromURL>http://go-heja.com:9002/Service1.svc?wsdl</UpdateFromURL>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="btprogresshud">
+      <Version>1.20</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+</Project>
