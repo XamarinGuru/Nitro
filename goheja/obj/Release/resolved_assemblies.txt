@@ -1,0 +1,12 @@
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/goheja.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/Java.Interop.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/Mono.Android.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/mscorlib.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.Web.Services.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.Xml.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.ServiceModel.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.Runtime.Serialization.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.Core.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/Xamarin.Android.Support.v4.dll
+/Users/sagivdaniel/Desktop/NITRO/nitroAndrod5004/goheja/obj/Release/android/assets/System.ServiceModel.Internals.dll
