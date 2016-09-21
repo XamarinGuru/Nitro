@@ -1,0 +1,68 @@
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:background="#303030" xmlns:android="http://schemas.android.com/apk/res/android"><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="#000000" android:id="@+id/ActionBar" android:visibility="gone"><TextView android:text="Searching for GPS..." android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#ffffff" android:textSize="20dp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/TitleBarText" android:layout_centerVertical="true" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" /></LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#303030" android:layout_below="@+id/ActionBar"><FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"><LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"><!--<LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="right">
+                    <ImageView
+                        android:id="@+id/drawerHandle"
+                        android:src="@drawable/menu_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:padding="7dp"
+                        android:scaleType="fitCenter" />
+                </LinearLayout>--><TextView android:text="WHAT'S IT GONNA BE?" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/whatItLabel" android:textColor="#f5e604" android:textSize="27dp" android:textStyle="bold" android:gravity="center" android:layout_marginBottom="30dp" android:layout_marginTop="10dp" android:textAllCaps="true" /><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="3" android:layout_marginRight="20dp" android:layout_marginLeft="20dp" android:layout_marginTop="20dp" android:gravity="center_horizontal"><ImageView android:id="@+id/icon01" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_01" android:layout_marginRight="20dp" /><ImageView android:id="@+id/icon02" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_02" /><ImageView android:id="@+id/icon03" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_03" android:layout_marginLeft="20dp" /></LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="3" android:layout_marginRight="20dp" android:layout_marginLeft="20dp" android:layout_marginTop="20dp" android:gravity="center_horizontal"><ImageView android:id="@+id/icon04" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_04" android:layout_marginRight="20dp" /><ImageView android:id="@+id/icon05" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_05" /><ImageView android:id="@+id/icon06" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_06" android:layout_marginLeft="20dp" /></LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="3" android:layout_marginRight="20dp" android:layout_marginLeft="20dp" android:layout_marginTop="20dp" android:gravity="center_horizontal"><ImageView android:id="@+id/icon07" android:layout_weight="1" android:layout_width="0dp" android:layout_height="100dp" android:src="@drawable/icon_07" /></LinearLayout></LinearLayout><!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="right"
+                android:id="@+id/drawerContent"
+                android:layout_marginTop="50dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/arrow_icon" />
+                <LinearLayout
+                    android:id="@+id/aaa"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="right"
+                    android:background="#6F6F6F"
+                    android:gravity="bottom">
+                    <ImageView
+                        android:id="@+id/hejaIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/heja_icon"
+                        android:padding="15dp" />
+                    <ImageView
+                        android:src="@drawable/border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitEnd" />
+                    <ImageView
+                        android:id="@+id/watchIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/watch_icon"
+                        android:padding="15dp" />
+                    <ImageView
+                        android:id="@+id/watchDevider"
+                        android:src="@drawable/border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitEnd" />
+                    <ImageView
+                        android:id="@+id/calenderIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/calender_icon"
+                        android:padding="15dp"
+                        android:background="@drawable/active_tab" />
+                </LinearLayout>
+            </LinearLayout>--></FrameLayout></LinearLayout></RelativeLayout>

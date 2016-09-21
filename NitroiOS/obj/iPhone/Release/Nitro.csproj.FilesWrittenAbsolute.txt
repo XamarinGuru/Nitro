@@ -1,0 +1,184 @@
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/LaunchScreen.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/106-view-107.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/1370-view-1371.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/1678-view-1679.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/Info.plist
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/UINavigationController-122.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/UIcalendar.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/ViewController.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/userData.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/Main.storyboardc/vcListing.nib
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/ibtool/_BundleResourceWithLogicalName.items
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/actool/asset-manifest.plist
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/actool/_PartialAppManifest.items
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/actool/_BundleResourceWithLogicalName.items
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/speed.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/dist.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/mont.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/watt.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/heart.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/btn_go.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/pauseBtn.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/resume.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/stop.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/min.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/ninja.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/plu.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/watch.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/calen.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/runRound.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/bikeRound.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/edit.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/ninja3.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/ninja5.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/pen.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/roundNin.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/icon.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/button.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-72.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-76.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-76@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-72@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/512.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/go-heja100.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-60@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-Small.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-Small@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Icon-Small-40@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Default.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Default@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/Default-568h@2x.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/nitrosplash1.png
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/optimized/
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/bin/iPhone/Release/Nitro.exe
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/obj/iPhone/Release/Nitro.exe
+/Users/sagivdaniel/Desktop/NITRO/nitroIos copy 2/location2/bin/iPhone/Release/Calabash.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/LaunchScreen.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/106-view-107.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/1370-view-1371.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/1678-view-1679.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/1830-view-1831.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/Info.plist
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/MainPageViewController.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/PageViewController.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/UIcalendar.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/ViewController.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/userData.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/Main.storyboardc/vcListing.nib
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/ibtool/_BundleResourceWithLogicalName.items
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/actool/asset-manifest.plist
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/actool/_PartialAppManifest.items
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/actool/_BundleResourceWithLogicalName.items
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/speed.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/dist.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/mont.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/watt.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/heart.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/btn_go.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/pauseBtn.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/resume.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/stop.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/min.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/ninja.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/plu.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/watch.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/calen.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/runRound.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/bikeRound.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/edit.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/ninja3.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/ninja5.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/pen.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/roundNin.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-72.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-76.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-76@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-72@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/512.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/go-heja100.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-60@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-Small.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-Small@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Icon-Small-40@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Default.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Default@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Default-568h@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/nitrosplash1.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/BG_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/edit_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/text_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/button.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/cell_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/email_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/key_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/user_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_01.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_02.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_03.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_04.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_05.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_06.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_07.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/heja_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/watch_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/menu_icon_01.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/calen_icon_active.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/transparent.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/resume_active.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/resume_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/stop_active.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/go_button.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/timer_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/watt_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/speed_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/runRound_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/mont_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/heart_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/bikeRound_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/dist_new.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/pop_up_bg.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/menu_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/side_menu_bg.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/active_tab.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/arrow_icon.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_07_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_3_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_06_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_05_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_04_inactive.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_04_inactive_200.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_05_inactive_150.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/user_icon_30.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_home_act.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_home_disable.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_bycle_act.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_bycle_disable.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_calendar_act.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_calendar_disable.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/user_icon_act.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/Screen Shot 2016-09-06 at 10.17.03 AM.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_watch.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/success@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/error.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/error@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/success.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/error_7.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/error_7@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/success_7.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/success_7@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/xamarin@2x.png
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/xamarin.png
+/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release/Nitro.exe
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/Nitro.exe
+/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release/Calabash.dll
+/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release/MBProgressHUD.dll
+/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release/BTProgressHUD.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/optimized/icon_back.png
