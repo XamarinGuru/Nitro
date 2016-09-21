@@ -1,0 +1,7 @@
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/Xamarin.iOS.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/System.Web.Services.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/System.Xml.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/System.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/mscorlib.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/System.Core.dll
+/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/32/Link/Nitro.exe
