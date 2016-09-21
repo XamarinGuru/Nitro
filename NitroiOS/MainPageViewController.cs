@@ -43,7 +43,7 @@ namespace location2
 
 			btnWatch.TouchUpInside += WatchButtonClicked;
 			btnWatch.Hidden = true;
-
+			//var convvv = this.Storyboard.InstantiateViewController("PageViewController");
 			mPageViewController = this.Storyboard.InstantiateViewController("PageViewController") as UIPageViewController;
 			mPageViewController.DataSource = new PageDataSource(this, subControllers);
 

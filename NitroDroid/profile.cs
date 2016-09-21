@@ -30,13 +30,8 @@ namespace goheja
 
 			SetContentView (Resource.Layout.profile);
 			showPage ();
-
-
-
-
-
-		
 		}
+
 		protected override void OnStop()
 		{
 			base.OnStop();
@@ -67,7 +62,6 @@ namespace goheja
 			string nickName = contextPref.GetString ("storedUserName", "");
 			string id = contextPref.GetString ("storedAthId", "");
 			wv1.LoadUrl ("http://go-heja.com/nitro/profile.php?txt=" + nickName+"&userId="+id);
-			
 		}
 	}
 }

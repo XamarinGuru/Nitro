@@ -31,6 +31,8 @@ namespace goheja
         TextView tvLastName;
         TextView tvEmail;
         TextView tvPhone;
+		TextView lblUsername;
+		TextView tvPassword;
         Button btnSave;
         Bitmap serverImg;
         Button seriousBtn;
@@ -47,18 +49,22 @@ namespace goheja
             view.FindViewById<LinearLayout>(Resource.Id.ActionBar).Visibility = ViewStates.Gone;
             view.FindViewById<Button>(Resource.Id.perImage).Click += setImage_OnClick;
             view.FindViewById<Button>(Resource.Id.btnSave).Click += saveData_OnClick;
+			lblUsername = view.FindViewById<TextView>(Resource.Id.lblUsername);
             tvFirstName = view.FindViewById<TextView>(Resource.Id.etFirstName);
             tvLastName = view.FindViewById<TextView>(Resource.Id.etlastName);
             tvEmail = view.FindViewById<TextView>(Resource.Id.etMail);
             tvPhone = view.FindViewById<TextView>(Resource.Id.etPhone);
+			tvPassword = view.FindViewById<TextView>(Resource.Id.etPassword);
             seriousBtn = view.FindViewById<Button>(Resource.Id.seriousBtn);
             view.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
 
-
-            //imageBtn = FindViewById<Button> (Resource.Id.imageBtn);
             meImage = view.FindViewById<ImageView>(Resource.Id.ivTest);
             setBitmapImg();
             setPersonalData();
+
+
+			//test
+			view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1).Visibility = ViewStates.Gone;
         }
 
 
@@ -69,8 +75,6 @@ namespace goheja
             contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 
             sv.updateAthPersonalData(contextPref.GetString("storedAthId", "0").ToString(), tvFirstName.Text, tvLastName.Text, tvPhone.Text, tvEmail.Text, bitmapByteData);
-            //var activity2 = new Intent(Activity, typeof(MainActivity));
-            //StartActivity(activity2);
         }
 
         private void setImage_OnClick(object sender, EventArgs e)
@@ -87,13 +91,6 @@ namespace goheja
             var activity2go = new Intent(Activity, typeof(profile));
             activity2go.PutExtra("MyData", "Data from Activity1");
             StartActivity(activity2go);
-
-
-            /*var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-			string nickName = contextPref.GetString("storedUserName", "");
-			var uri = Android.Net.Uri.Parse ("http://go-heja.com/gh/profile.php"+"?txt="+nickName+"&source=mobile");
-			var intent = new Intent (Intent.ActionView, uri);
-			StartActivity (intent);*/
         }
 
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
@@ -101,11 +98,7 @@ namespace goheja
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == (int)Result.Ok)
             {
-
                 Bitmap mewbm = NGetBitmap(data.Data);
-
-
-                //Drawable d = new BitmapDrawable (mewbm);
 
                 string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
                 Bitmap newBitmap = scaleDown(mewbm, 200, true);
@@ -116,12 +109,6 @@ namespace goheja
                 }
                 serverImg = newBitmap;
                 ExportBitmapAsPNG(GetRoundedCornerBitmap(newBitmap, 400));
-
-
-                //meImage.se//   SetImageURI(data.Data);
-
-
-
             }
         }
 
@@ -137,7 +124,6 @@ namespace goheja
                 stream.Close();
                 var s2 = new FileStream(filePath, FileMode.Open);
 
-                //byte[] imageBytes = DBFunctions.getRecipeBlobImage(idOfRecipe);
                 Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
                 meImage.SetImageBitmap(bitmap2);
                 serverImg = bitmap2;
@@ -181,8 +167,6 @@ namespace goheja
             }
             catch (Exception err)
             {
-
-                //System.Console.WriteLine ("GetRoundedCornerBitmap Error - " + err.Message);
             }
 
             return output;
@@ -202,9 +186,6 @@ namespace goheja
         }
         void setBitmapImg()
         {
-
-
-
             try
             {
                 var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
@@ -213,35 +194,27 @@ namespace goheja
                 Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
                 meImage.SetImageBitmap(bitmap2);
                 s2.Close();
-
             }
             catch (Exception err)
             {
-
             }
             finally
             {
                 GC.Collect();
-                //s2.Close();
-
             }
-
-
-
         }
         private void setPersonalData()
         {
             trackSvc.Service1 sv = new trackSvc.Service1();
-            string _dId = Android.Provider.Settings.Secure.GetString(Activity.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
-            string[] athData = sv.getAthDataByDeviceId(_dId);
-            tvFirstName.Text = athData[0].ToString();
-            tvLastName.Text = athData[1].ToString();
-            tvEmail.Text = athData[6].ToString();
-            tvPhone.Text = athData[7].ToString();
-
-
+			string _dId = Android.Provider.Settings.Secure.GetString(Activity.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+			string[] athData = sv.getAthDataByDeviceId(_dId);
+			lblUsername.Text = athData[4].ToString();
+			tvFirstName.Text = athData[0].ToString();
+			tvLastName.Text = athData[1].ToString();
+			tvPassword.Text = athData[5].ToString();
+			tvEmail.Text = athData[6].ToString();
+			tvPhone.Text = athData[7].ToString();
         }
-
     }
 }
 

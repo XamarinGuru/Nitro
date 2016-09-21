@@ -28,10 +28,12 @@ namespace goheja
 	{
 		Button imageBtn;
 		ImageView meImage;
+		TextView lblUsername;
 		TextView tvFirstName;
 		TextView tvLastName;
 		TextView tvEmail;
 		TextView tvPhone;
+		TextView tvPassword;
 		Button btnSave;
 		Bitmap serverImg;	
 		Button seriousBtn;
@@ -44,10 +46,12 @@ namespace goheja
 			SetContentView(Resource.Layout.personalDetails);
 			FindViewById<Button> (Resource.Id.perImage).Click+=setImage_OnClick;
 			FindViewById<Button> (Resource.Id.btnSave).Click+=saveData_OnClick;
+			lblUsername = FindViewById<TextView>(Resource.Id.lblUsername);
 			tvFirstName = FindViewById<TextView> (Resource.Id.etFirstName);
 			tvLastName = FindViewById<TextView> (Resource.Id.etlastName);
 			tvEmail = FindViewById<TextView> (Resource.Id.etMail);
 			tvPhone = FindViewById<TextView> (Resource.Id.etPhone);
+			tvPassword = FindViewById<TextView>(Resource.Id.etPassword);
 			seriousBtn=FindViewById<Button> (Resource.Id.seriousBtn);
 			FindViewById<Button> (Resource.Id.seriousBtn).Click+=seriousBtn__OnClick;
 
@@ -55,11 +59,17 @@ namespace goheja
 			//imageBtn = FindViewById<Button> (Resource.Id.imageBtn);
 			meImage=FindViewById<ImageView> (Resource.Id.ivTest);
 			setBitmapImg ();
-			setPersonalData ();
+
 			//bitmapByteData [0];
 
 
 			// Create your application here
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			setPersonalData();
 		}
 
 		private void saveData_OnClick(object sender, EventArgs e)
@@ -234,12 +244,12 @@ namespace goheja
 			trackSvc.Service1 sv = new trackSvc.Service1();
 			string _dId=Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 			string[] athData = sv.getAthDataByDeviceId(_dId);
+			lblUsername.Text = athData[4].ToString();
 			tvFirstName.Text =athData [0].ToString ();
 			tvLastName.Text =athData [1].ToString ();
+			tvPassword.Text = athData[5].ToString();
 			tvEmail.Text =athData [6].ToString ();
 			tvPhone.Text =athData [7].ToString ();
-
-
 		}
 
 	}

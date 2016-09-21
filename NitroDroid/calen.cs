@@ -30,10 +30,6 @@ namespace goheja
 			contextEdit.PutString("storedCountry", athData[3].ToString());
 			contextEdit.PutString("storedUserName", athData[4].ToString());
 			contextEdit.PutString("storedPsw", athData[5].ToString());
-			///////
-			/// 
-			/// 
-			/// 
 
 			string deviceId = "0";
 			try
@@ -51,7 +47,6 @@ namespace goheja
 			    return;
 			}
 
-
 			if (deviceId == "0")
 			{
 			    var activity2 = new Intent(this, typeof(listingActivity));
@@ -60,25 +55,14 @@ namespace goheja
 			}
 			else
 			{
-
 			}
 
-			///
-			///
-			/////////////
 			contextEdit.PutFloat("lastAlt", 0f);
 			contextEdit.PutFloat("gainAlt", 0f);
 			contextEdit.PutFloat("distance", 0f);
 			contextEdit.PutString("prevLoc", "");
-			///////
 			SetContentView (Resource.Layout.calen);
 			showPage ();
-
-
-
-
-
-		
 		}
 		protected override void OnStop()
 		{
@@ -88,7 +72,6 @@ namespace goheja
 		protected override void OnResume()
 		{
 			base.OnResume();
-
 		}
 		protected override void OnPause()
 		{
@@ -97,7 +80,6 @@ namespace goheja
 
 		protected override void OnDestroy()
 		{
-
 			base.OnDestroy();
 		}
 
@@ -116,7 +98,6 @@ namespace goheja
 			string nickName = contextPref.GetString ("storedUserName", "");
 			string id = contextPref.GetString ("storedAthId", "");
 			wv1.LoadUrl ("http://go-heja.com/nitro/mobda.php?userNickName=" + nickName+"&userId="+id);
-			
 		}
 	}
 }

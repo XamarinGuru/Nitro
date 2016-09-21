@@ -476,7 +476,15 @@
                     android:textSize="15dp"
                     android:layout_alignParentBottom="true"
                     android:shadowColor="#ffffff"
-                    android:background="@drawable/transparent" />
+                    android:background="@drawable/transparent"
+                    android:layout_marginLeft="70dp" />
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/btnBack"
+                    android:background="@drawable/icon_back"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="bottom" />
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout

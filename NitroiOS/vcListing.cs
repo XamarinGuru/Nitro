@@ -15,6 +15,7 @@ namespace location2
 {
 	partial class vcListing : PageContentViewController
 	{
+		public string deviceID = "";
 		private float scroll_amount = 0.0f;    // amount to scroll 
 		private bool moveViewUp = false;
 
@@ -47,53 +48,6 @@ namespace location2
 
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
-
-			//GetUDID();
-		}
-
-		private void GetUDID()
-		{
-			ThreadPool.QueueUserWorkItem(delegate
-			{
-				BeginInvokeOnMainThread(delegate
-				{
-					var rec = new SecRecord(SecKind.GenericPassword)
-					{
-						Generic = NSData.FromString("foo")
-					};
-
-					SecStatusCode res;
-					var match = SecKeyChain.QueryAsRecord(rec, out res);
-					if (res == SecStatusCode.Success)
-					{
-						var id = match.ValueData.ToString();
-						NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
-						GoToMainPage();
-					}
-					else
-					{
-						var s = new SecRecord(SecKind.GenericPassword)
-						{
-							Label = "Item Label",
-							Description = "Item description",
-							Account = "Account",
-							Service = "Service",
-							Comment = "Your comment here",
-							ValueData = NSData.FromString(UIDevice.CurrentDevice.IdentifierForVendor.AsString()),
-							Generic = NSData.FromString("foo")
-						};
-
-
-						var err = SecKeyChain.Add(s);
-
-						if (err != SecStatusCode.Success && err != SecStatusCode.DuplicateItem)
-							new UIAlertView(null, string.Format("Error adding record: {0}", err), null, "OK", null).Show();
-
-						var id = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
-						NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
-					}
-				});
-			});
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -108,49 +62,6 @@ namespace location2
 				return;
 			}
 		}
-
-		//private void CheckGoToMainPage(string deviceUDID)
-		//{
-		//	UIApplication.SharedApplication.IdleTimerDisabled = true;
-		//	///check if device exists in service
-		//	/// if not - list the user using vcListing
-		//	//check the device id
-		//	meServ = new location2.trackSvc.Service1();
-		//	try
-		//	{
-		//		deviceId = meServ.getListedDeviceId(deviceUDID);
-		//	}
-		//	catch
-		//	{
-		//		new UIAlertView(null, "You are not connected to Nitro services...", null, "OK", null).Show();
-		//		deviceId = "tempDeviceId";
-		//	}
-
-		//	if (deviceId == "0")
-		//	{
-		//		//vcListing controller = this.Storyboard.InstantiateViewController("vcListing") as vcListing;
-		//		//this.NavigationController.PushViewController(controller, true);
-		//	}
-		//	else {
-		//		athData = meServ.getAthDataByDeviceId(NSUserDefaults.StandardUserDefaults.StringForKey("deviceId"));
-		//		if (athData == null) athData = meServ.getAthDataByDeviceId(deviceUDID);
-		//		NSUserDefaults.StandardUserDefaults.SetString(deviceUDID, "deviceId");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[0].ToString(), "firstName");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[1].ToString(), "lastName");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[2].ToString(), "id");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[3].ToString(), "country");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[4].ToString(), "userName");
-		//		NSUserDefaults.StandardUserDefaults.SetString(athData[5].ToString(), "password");
-
-		//		InvokeOnMainThread(() =>
-		//		{
-		//			MainPageViewController controller = this.Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-		//			this.PresentViewController(controller, true, null);
-		//		});
-
-
-		//	}
-		//}
 
 		partial void ListBtn_TouchUpInside (UIButton sender)
 		{
@@ -169,10 +80,10 @@ namespace location2
 			{
 				try
 				{
-					var id = NSUserDefaults.StandardUserDefaults.StringForKey("deviceId");
+					//var id = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
 					int tempage = 30;
 					int.TryParse(this.ageTxt.Text,out tempage);
-					meServ.insertNewDevice(this.firstNameTexInput.Text, this.lastNameTextInput.Text, id, this.nickeNameTextInput.Text, this.passwordTextInput.Text, true, true,emailText.Text, 40,true);
+					meServ.insertNewDevice(this.firstNameTexInput.Text, this.lastNameTextInput.Text, deviceID, this.nickeNameTextInput.Text, this.passwordTextInput.Text, true, true,emailText.Text, 40,true);
 
 					GoToMainPage();
 				}
@@ -185,11 +96,57 @@ namespace location2
 
 		private void GoToMainPage()
 		{
-			InvokeOnMainThread(() =>
+			ThreadPool.QueueUserWorkItem(delegate
 			{
-				MainPageViewController controller = this.Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-				this.PresentViewController(controller, false, null);
+				BeginInvokeOnMainThread(delegate
+				{
+					//var rec = new SecRecord(SecKind.GenericPassword)
+					//{
+					//	Generic = NSData.FromString("foo")
+					//};
+
+					//SecStatusCode res;
+					//var match = SecKeyChain.QueryAsRecord(rec, out res);
+					//if (res == SecStatusCode.Success)
+					//{
+					//	var id = match.ValueData.ToString();
+					//	NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
+
+					//	MainPageViewController controller = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+					//	this.PresentViewController(controller, false, null);
+					//}
+					//else
+					//{
+						var s = new SecRecord(SecKind.GenericPassword)
+						{
+							Label = "Item Label",
+							Description = "Item description",
+							Account = "Account",
+							Service = "Service",
+							Comment = "Your comment here",
+							ValueData = deviceID,
+							Generic = NSData.FromString("foo")
+						};
+
+
+						var err = SecKeyChain.Add(s);
+
+						if (err != SecStatusCode.Success && err != SecStatusCode.DuplicateItem)
+							new UIAlertView(null, string.Format("Error adding record: {0}", err), null, "OK", null).Show();
+
+						//var id = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
+						NSUserDefaults.StandardUserDefaults.SetString(deviceID, "deviceId");
+
+						MainPageViewController controller = this.Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+						this.PresentViewController(controller, false, null);
+					//}
+				});
 			});
+			//InvokeOnMainThread(() =>
+			//{
+			//	MainPageViewController controller = this.Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+			//	this.PresentViewController(controller, false, null);
+			//});
 		}
 		private void validate()
 		{

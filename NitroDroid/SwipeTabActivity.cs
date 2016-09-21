@@ -23,10 +23,9 @@ namespace goheja
         ConnectivityManager connectivityManager;
         NetworkInfo activeConnection;
         bool isOnline;
-        private NotificationManager _notificationManager;
+        //private NotificationManager _notificationManager;
         private GenericFragmentPagerAdaptor _adaptor;
 
-        //private ImageView hejaIcon;
         private ImageView _tab1Icon,
             _tab2Icon,
             _tab3Icon,
@@ -42,12 +41,14 @@ namespace goheja
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-			string _deviceId = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
             RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
+
             SetContentView(Resource.Layout.SwipeTabActivity);
+
 			var contextEdit = contextPref.Edit();
 			contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+			string _deviceId = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 			try
 			{
 				trackSvc.Service1 test = new trackSvc.Service1();
@@ -62,17 +63,11 @@ namespace goheja
 				contextEdit.PutString("storedUserName", athData[4].ToString());
 				contextEdit.PutString("storedPsw", athData[5].ToString());
 				contextEdit.Commit();
-
-
 			}
 			catch (Exception err)
 			{
-				string x = err.ToString();
-
+				//string x = err.ToString();
 			}
-
-
-
 
             InitilizeComponant();
            
@@ -82,7 +77,7 @@ namespace goheja
 
         private void InitilizeComponant()
         {
-            _notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
+            //_notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
             _titleBarText = FindViewById<TextView>(Resource.Id.TitleBarTextMain);
             _tab1Icon = FindViewById<ImageView>(Resource.Id.Tab1Icon);
             _tab2Icon = FindViewById<ImageView>(Resource.Id.Tab2Icon);
@@ -97,22 +92,11 @@ namespace goheja
             _pager.Adapter = _adaptor;
             _pager.PageSelected += PagerOnPageSelected;
             _actionBarRight.Click += ActionBarRightOnClick;
-            _tab1Icon.Click += (sender, args) =>
-            {
-                SetPage(0);
-            };
 
-            _tab2Icon.Click += (sender, args) =>
-            {
-                SetPage(1);
+            _tab1Icon.Click += (sender, args) => { SetPage(0); };
+            _tab2Icon.Click += (sender, args) => { SetPage(1); };
+            _tab3Icon.Click += (sender, args) => { SetPage(2); };
 
-            };
-
-            _tab3Icon.Click += (sender, args) =>
-            {
-                SetPage(2);
-
-            };
             Tab1Click();
         }
 
@@ -123,11 +107,7 @@ namespace goheja
             }
             else if (_pager.CurrentItem == 2)
             {
-                var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-                string nickName = contextPref.GetString("storedUserName", "");
-                var uri =
-                    Android.Net.Uri.Parse("http://go-heja.com/gh/mob/sync.php?userId=" +
-                                          contextPref.GetString("storedAthId", "0").ToString() + "&mog=nitro&url=uurrll");
+                var uri = Android.Net.Uri.Parse("http://go-heja.com/gh/mob/sync.php?userId=" + contextPref.GetString("storedAthId", "0").ToString() + "&mog=nitro&url=uurrll");
                 var intent = new Intent(Intent.ActionView, uri);
                 StartActivity(intent);
             }
@@ -147,7 +127,6 @@ namespace goheja
         {
             _tab1Icon.SetImageResource(position == 0 ? Resource.Drawable.calender_icon_active_new : Resource.Drawable.calender_icon_inactive_new);
             _tabStrip1.Visibility = position == 0 ? ViewStates.Visible : ViewStates.Gone;
-            //_tab2Icon.SetImageResource(position == 0 ? Resource.Drawable.calender_icon_active_new : Resource.Drawable.calender_icon_inactive_new);
             _tabStrip2.Visibility = position == 1 ? ViewStates.Visible : ViewStates.Gone;
             _tab3Icon.SetImageResource(position == 2 ? Resource.Drawable.user_active_new : Resource.Drawable.user_inactive_new);
             _tabStrip3.Visibility = position == 2 ? ViewStates.Visible : ViewStates.Gone;
@@ -168,7 +147,6 @@ namespace goheja
                     Tab3Click();
                     break;
             }
-
         }
 
         private void Tab1Click()
@@ -194,42 +172,12 @@ namespace goheja
         {
             base.OnDestroy();
             DateTime destroytTime = DateTime.Now;
-            // _locationManager.RemoveUpdates(this);
         }
-
-        //protected override void OnResume()
-        //{
-        //    base.OnResume();
-        //    setBitmapImg();
-        //}
-
-        //private void setBitmapImg()
-        //{
-        //    try
-        //    {
-        //        var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
-        //        var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
-        //        var s2 = new FileStream(filePath, FileMode.Open);
-        //        Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
-        //        _tab2Icon.SetImageBitmap(bitmap2);
-        //        s2.Close();
-        //    }
-        //    catch (Exception err)
-        //    {
-        //    }
-        //    finally
-        //    {
-        //        //s2.Close();
-        //    }
-        //}
 
         private void startLocationService()
         {
-            //this.Title = "Searching for GPS...";
             SetMiddleTabTitle("Searching for GPS...");
-            // This event fires when the ServiceConnection lets the client (our App class) know that
-            // the Service is connected. We use this event to start updating the UI with location
-            // updates from the Service
+            
             if (App.Current.locationServiceConnection?.Binder == null)
             {
                 App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
@@ -241,18 +189,13 @@ namespace goheja
             {
                 SubscribeLocationServie();
             }
-
         }
 
         private void SubscribeLocationServie()
         {
-            //Log.Debug (logTag, "ServiceConnected Event Raised");
-            // notifies us of location changes from the system
             App.Current.LocationService.LocationChanged += HandleLocationChanged;
-            //notifies us of user changes to the location provider (ie the user disables or enables GPS)
             App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
             App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
-            // notifies us of the changing status of a provider (ie GPS no longer available)
             App.Current.LocationService.StatusChanged += HandleStatusChanged;
         }
 
@@ -263,19 +206,16 @@ namespace goheja
 
         public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
         {
-            //this.Title=  "GPS disabled";
             SetMiddleTabTitle("GPS disabled");
         }
 
         public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
         {
-            //this.Title= "GPS enabled";
             SetMiddleTabTitle("GPS enabled");
         }
 
         public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
         {
-            //this.Title ="GPS low signal";
             SetMiddleTabTitle("GPS low signal");
         }
 
@@ -296,7 +236,6 @@ namespace goheja
 
             if (!isOnline)
             {
-                //Toast.MakeText(this, "No internet connection!", ToastLength.Long).Show();
                 var builder = new AlertDialog.Builder(this);
                 builder.SetTitle("No internet connection");
                 builder.SetMessage("Oops!No internet connection... Pls try again later");
@@ -322,7 +261,6 @@ namespace goheja
                 return;
             }
 
-
             if (deviceId == "0")
             {
                 var activity2 = new Intent(this, typeof(listingActivity));
@@ -335,7 +273,6 @@ namespace goheja
             {
 
             }
-
         }
     }
 }

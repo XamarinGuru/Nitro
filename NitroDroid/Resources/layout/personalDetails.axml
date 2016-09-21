@@ -38,26 +38,51 @@
         android:paddingRight="20dp"
         android:layout_below="@+id/ActionBar"
         android:paddingTop="10dp">
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout1">
-            <ImageView
-                android:src="@drawable/ninja"
-                android:layout_width="100.0dp"
-                android:layout_height="100.5dp"
-                android:id="@+id/ivTest"
-                android:background="@drawable/img_bg" />
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/perImage"
-                android:background="@drawable/edit_icon"
-                android:layout_alignBottom="@+id/ivTest"
-                android:layout_toEndOf="@+id/ivTest" />
-        </RelativeLayout>
+            android:id="@+id/linearLayout1">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:gravity="bottom">
+                <ImageView
+                    android:src="@drawable/ninja"
+                    android:id="@+id/ivTest"
+                    android:background="@drawable/img_bg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+                <Button
+                    android:id="@+id/perImage"
+                    android:background="@drawable/edit_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="bottom" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3">
+                <TextView
+                    android:text="user name"
+                    android:id="@+id/lblUsername"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="#ffe4ff00"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,6 +165,31 @@
                 android:text="Phone"
                 android:phoneNumber="true"
                 style="@style/BlackEditBox" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout1"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:visibility="gone">
+            <ImageView
+                android:src="@drawable/key_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ImageView1"
+                android:layout_centerVertical="true"
+                style="@style/EditBoxIcon" />
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etPassword"
+                android:text="Phone"
+                android:phoneNumber="true"
+                style="@style/BlackEditBox"
+                android:password="true" />
         </RelativeLayout>
         <Button
             android:text="Save"

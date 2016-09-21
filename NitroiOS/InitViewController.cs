@@ -5,6 +5,8 @@ using UIKit;
 using System.Threading;
 using Security;
 
+using BigTed;
+
 namespace location2
 {
 	public partial class InitViewController : UIViewController
@@ -20,6 +22,8 @@ namespace location2
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
+			BTProgressHUD.Show("Verifying Your Device...");
+
 			SetFirstViewController();
 		}
 
@@ -45,36 +49,54 @@ namespace location2
 					if (res == SecStatusCode.Success)
 					{
 						var id = match.ValueData.ToString();
-						NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
 
-						MainPageViewController controller = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-						this.PresentViewController(controller, false, null);
+						trackSvc.Service1 serv = new trackSvc.Service1();
+						string deviceId = "0";
+
+						try
+						{
+							deviceId = serv.getListedDeviceId(id);
+						}
+						catch (Exception err)
+						{
+							//var builder = new AlertDialog.Builder(this);
+							//builder.SetTitle("Nitro service is not available");
+							//builder.SetMessage("Oops!Service not available... Pls try again later");
+							//builder.SetCancelable(false);
+							//builder.SetPositiveButton("OK", delegate { Finish(); });
+							//builder.Show();
+							//return;
+						}
+
+						if (deviceId == "0")
+						{
+							vcListing controller1 = Storyboard.InstantiateViewController("vcListing") as vcListing;
+							controller1.deviceID = id;
+							this.PresentViewController(controller1, false, null);
+						}
+						else
+						{
+							NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
+
+							MainPageViewController controller = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+							this.PresentViewController(controller, false, null);
+						}
+
+						//var id = match.ValueData.ToString();
+						//NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
+
+						//MainPageViewController controller = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+						//this.PresentViewController(controller, false, null);
 					}
 					else
 					{
-						var s = new SecRecord(SecKind.GenericPassword)
-						{
-							Label = "Item Label",
-							Description = "Item description",
-							Account = "Account",
-							Service = "Service",
-							Comment = "Your comment here",
-							ValueData = NSData.FromString(UIDevice.CurrentDevice.IdentifierForVendor.AsString()),
-							Generic = NSData.FromString("foo")
-						};
-
-
-						var err = SecKeyChain.Add(s);
-
-						if (err != SecStatusCode.Success && err != SecStatusCode.DuplicateItem)
-							new UIAlertView(null, string.Format("Error adding record: {0}", err), null, "OK", null).Show();
-
-						var id = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
-						NSUserDefaults.StandardUserDefaults.SetString(id, "deviceId");
+						
 
 						vcListing controller = Storyboard.InstantiateViewController("vcListing") as vcListing;
+						controller.deviceID = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
 						this.PresentViewController(controller, false, null);
 					}
+					BTProgressHUD.Dismiss();
 				});
 			});
 		}

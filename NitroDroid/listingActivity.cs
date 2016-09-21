@@ -31,14 +31,8 @@ namespace goheja
 			FindViewById<Button>(Resource.Id.termsBtn).Click += termsBtn_OnClick;
 			FindViewById<Button>(Resource.Id.btnTermsAccepted).Click += btnTermsAccepted_OnClick;
 			termsread = false;
-
-		
-
-
-
-
-
         }
+
         private void btnGo_OnClick(object sender, EventArgs eventArgs)
         {
             try
@@ -58,7 +52,6 @@ namespace goheja
 				_psw=psw.Text;
 				_emil=email.Text;
 
-			
                 string device = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 				string validateMessage= validate(_firstName,_lastName, _age,_userName, _psw,_emil);
 
@@ -74,24 +67,17 @@ namespace goheja
 				}
 			     
 				sc.insertNewDevice(firstName.Text, lastName.Text, device, userName.Text, psw.Text,termsread,true,_emil,int.Parse(_age),true);   //Please add parameter for age into this function
-                //  var activity1 = new Intent(this, typeof(MainActivity));
                 _userName = userName.Text;
                 _psw = psw.Text;
 
-                //by Afroz date 2/9/2016
                 var activity2 = new Intent(this, typeof(SwipeTabActivity));
                 StartActivity(activity2);
-                //end by Afroz date 2/9/2016
                 OnDestroy();
-
-              
-                //   StartActivity(activity1);
             }
             catch (Exception err)
             {
                 string test = err.ToString();
             }
-
         }
 		private void termsBtn_OnClick(object sender, EventArgs eventArgs)
 		{
@@ -112,13 +98,7 @@ namespace goheja
 		}
         protected override void OnDestroy()
         {
-            
-         
             base.OnDestroy();
-            //by Afroz date 1/9/2016
-            //var activity2 = new Intent(this, typeof(NewMainActivity));
-            //StartActivity(activity2);
-            //end by Afroz date 1/9/2016
             Finish();
         }
 		private string validate (string fName,string lName, string ag,string uName,string pw,string em)
@@ -146,6 +126,5 @@ namespace goheja
 
             return message;
 		}
-
     }
 }

@@ -35,10 +35,7 @@ namespace goheja.Services
 				this.binder = serviceBinder;
 				this.binder.IsBound = true;
 				Log.Debug ( "ServiceConnection", "OnServiceConnected Called" );
-				// raise the service connected event
 				this.ServiceConnected(this, new ServiceConnectedEventArgs () { Binder = service } );
-
-				// now that the Service is bound, we can start gathering some location data
 				serviceBinder.Service.StartLocationUpdates();
 			}
 		}

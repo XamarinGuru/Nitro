@@ -15,8 +15,6 @@ namespace goheja.Services
 		public event EventHandler<ProviderEnabledEventArgs> ProviderEnabled = delegate { };
 		public event EventHandler<StatusChangedEventArgs> StatusChanged = delegate { };
 
-
-
 		public LocationService() 
 		{
 		}
@@ -30,15 +28,11 @@ namespace goheja.Services
 		public override void OnCreate ()
 		{
 			base.OnCreate ();
-		//	Log.Debug (logTag, "OnCreate called in the Location Service");
-		
 		}
 
 		// This gets called when StartService is called in our App class
 		public override StartCommandResult OnStartCommand (Intent intent, StartCommandFlags flags, int startId)
 		{
-			//Log.Debug (logTag, "LocationService started");
-
 			return StartCommandResult.Sticky;
 		}
 
@@ -47,64 +41,37 @@ namespace goheja.Services
 		// reuse the same instance of the binder
 		public override IBinder OnBind (Intent intent)
 		{
-			//Log.Debug (logTag, "Client now bound to service");
-
 			binder = new LocationServiceBinder (this);
-		
 			return binder;
 		}
 
 		// Handle location updates from the location manager
 		public void StartLocationUpdates () 
 		{
-			//we can set different location criteria based on requirements for our app -
-			//for example, we might want to preserve power, or get extreme accuracy
 			var locationCriteria = new Criteria();
 
 			locationCriteria.VerticalAccuracy = Accuracy.High;
 			locationCriteria.SpeedAccuracy = Accuracy.High;
 			locationCriteria.HorizontalAccuracy = Accuracy.High;
 			locationCriteria.AltitudeRequired = true;
-			//locationCriteria.Accuracy = Accuracy.High;
 			locationCriteria.PowerRequirement = Power.High;
 			locationCriteria.SpeedRequired = true;
 
-
-			// get provider: GPS, Network, etc.
 			var locationProvider = LocMgr.GetBestProvider(locationCriteria, true);
-			//Log.Debug (logTag, string.Format ("You are about to get location updates via {0}", locationProvider));
-
-			// Get an initial fix on location
 			LocMgr.RequestLocationUpdates(locationProvider, 1000,1, this);
-
-
-
-			//Log.Debug (logTag, "Now sending location updates");
 		}
 
 		public override void OnDestroy ()
 		{
 			base.OnDestroy ();
-			//Log.Debug (logTag, "Service has been terminated");
 		}
 
-
 		#region ILocationListener implementation
-		// ILocationListener is a way for the Service to subscribe for updates
-		// from the System location Service
 
 		public void OnLocationChanged (Android.Locations.Location location)
 		{
-
-
 			this.LocationChanged (this, new LocationChangedEventArgs (location));
-
-			// This should be updating every time we request new location updates
-			// both when teh app is in the background, and in the foreground
-
-
 		}
-			
 
 		public void OnProviderDisabled (string provider)
 		{
@@ -122,7 +89,6 @@ namespace goheja.Services
 		} 
 
 		#endregion
-
 	}
 }
 

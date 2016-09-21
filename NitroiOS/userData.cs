@@ -56,8 +56,6 @@ namespace location2
 		{
 		}
 
-
-
 		partial void MeImgBtn_TouchUpInside (UIButton sender)
 		{
 			    this.PresentViewController(imagePicker, true, null);
@@ -167,8 +165,6 @@ namespace location2
 			{
 				return false;
 			}
-
-
 		}
 		private bool savedata()
 		{

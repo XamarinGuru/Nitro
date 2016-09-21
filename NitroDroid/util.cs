@@ -1,18 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.Net;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using System.IO;
 using Android.Graphics;
-using Android.Graphics.Drawables;
-using Java.IO;
 
 
 namespace goheja
@@ -25,69 +14,56 @@ namespace goheja
             string direction = "";
             if (0 < degree && degree < 22)
             {
-
                 return "N";
             }
             if (22 < degree && degree < 47)
             {
-
                 return "NE";
             }
             if (47 < degree && degree < 112)
             {
-
                 return "E";
             }
             if (112 < degree && degree < 157)
             {
-
                 return "SE";
             }
             if (157 < degree && degree < 202)
             {
-
                 return "S";
             }
             if (202 < degree && degree < 247)
             {
-
                 return "SW";
             }
             if (247 < degree && degree < 292)
             {
-
                 return "W";
             }
             if (292 < degree && degree < 337)
             {
-
                 return "NW";
             }
             if (337 < degree && degree < 359)
             {
-
                 return "N";
             }
 
             return direction;
-
         }
     }
 	public static class imageMan
 	{
-		
 		public static Android.Graphics.Bitmap getPersonalImage()
 		{
 			var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
 			var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
 			var s2 = new FileStream(filePath, FileMode.Open);
 
-
 			try
 			{
 				Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
 				return  bitmap2;
-
 			}
 			catch (Exception err)
 			{
@@ -96,14 +72,11 @@ namespace goheja
 			finally 
 			{
 				s2.Close();
-
 			}
 		}
 	}
 	public class record
 	{
-		//(, android_id, 0f, true, athId, athCountry, prefs.GetFloat ("dist", 0f), true, gainAlt, true, _currentLocation.Bearing, true, 2, true,type);
-
 		public string fullName="";
 		public double lati = 0;
 		public double longti = 0;
@@ -120,7 +93,6 @@ namespace goheja
 
 		public  record (string fitslast,double latid,double longtid,DateTime recordTimeStamp,string devId,string athletId,string country,float distance,float speed,float cumAlt,float bearing,int recodType,string sportType)
 		{
-			
 			this.fullName = fitslast;
 			this.lati = latid;
 			this.longti = longtid;
@@ -134,14 +106,7 @@ namespace goheja
 			this.bearinng = bearing;
 			this.recordType = recodType;
 			this.sportType = sportType;
-			
-
-			//return this;
 		}
-	
-
-
-
 	}
 	public class handleRecord
 	{
@@ -160,9 +125,7 @@ namespace goheja
 				}
 				   
 				try{
-				svc.updateMomgoData (theRecord.fullName, String.Format ("{0},{1}",theRecord.lati,theRecord.longti), theRecord.date, true,theRecord.deviceId, theRecord.speed, true,theRecord.athid, theRecord.country, theRecord.distance, true,theRecord.gainedAlt,true, theRecord.bearinng, true, theRecord.recordType, true,theRecord.sportType);
-
-
+					svc.updateMomgoData (theRecord.fullName, String.Format ("{0},{1}",theRecord.lati,theRecord.longti), theRecord.date, true,theRecord.deviceId, theRecord.speed, true,theRecord.athid, theRecord.country, theRecord.distance, true,theRecord.gainedAlt,true, theRecord.bearinng, true, theRecord.recordType, true,theRecord.sportType);
 				}
 				catch (Exception err)
 				{
@@ -174,23 +137,15 @@ namespace goheja
 			else //if (!isConnected) 
 			{
 				offlineRecords.Add (theRecord);
-
 				return "offline";
-
 			}
-			
-
-			
 		}
 		private async void  dumpOffLineRecords()
 		{
-			
-			
-				foreach (record r in offlineRecords) 
-				{
+			foreach (record r in offlineRecords) 
+			{
 					
-				try
-					{
+				try {
 					 svc.updateMomgoData (r.fullName, String.Format ("{0},{1}",r.lati,r.longti), r.date, true,r.deviceId, r.speed, true,r.athid, r.country, r.distance, true,r.gainedAlt,true, r.bearinng, true, r.recordType, true,r.sportType);
 					}
 				catch
@@ -198,10 +153,6 @@ namespace goheja
 					}
 			}
 			 offlineRecords.Clear ();
-
 		}
-
 	}
-
-
 }

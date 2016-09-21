@@ -30,10 +30,10 @@ namespace goheja
 					return "Database created";
 				}
 			}
-				catch (SQLiteException ex)
-				{
-					return ex.Message;
-				}
+			catch (SQLiteException ex)
+			{
+				return ex.Message;
+			}
 		}
 
 		public string insertUpdateData(Person data, string path)
@@ -55,12 +55,7 @@ namespace goheja
 			try
 			{
 				var db = new SQLiteAsyncConnection(path);
-				// this counts all records in the database, it can be slow depending on the size of the database
 				var count = db.ExecuteScalarAsync<int>("SELECT Count(*) FROM Person");
-
-				// for a non-parameterless query
-				// var count = db.ExecuteScalar<int>("SELECT Count(*) FROM Person WHERE FirstName="Amy");
-
 				return count;
 			}
 			catch (SQLiteException ex)
@@ -68,11 +63,6 @@ namespace goheja
 				return Task.FromResult( -1);
 			}
 		}
-
-
-
 	}
-
-
 }
 
