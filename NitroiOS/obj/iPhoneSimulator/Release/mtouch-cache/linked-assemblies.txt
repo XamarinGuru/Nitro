@@ -1,7 +1,0 @@
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/Xamarin.iOS.dll
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/System.Xml.dll
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/System.Web.Services.dll
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/location2.exe
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/System.dll
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/mscorlib.dll
-/Users/Prabhu/Desktop/nitroIosCurr/location2/obj/iPhoneSimulator/Release/mtouch-cache/Link/System.Core.dll

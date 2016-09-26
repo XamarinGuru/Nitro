@@ -2,11 +2,12 @@
 # [first argument, ignore] # /Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.0.6/lib/mtouch/mtouch.exe
 /Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.0.6/lib/mtouch/mtouch.exe \
 	--cache \
-	/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache \
+	/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache \
 	--dev \
-	/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release/Nitro.app \
+	/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/bin/iPhone/Release/Nitro.app \
 	--executable \
 	Nitro \
+	--linksdkonly \
 	--sdkroot \
 	/Applications/Xcode.app/Contents/Developer \
 	--sdk \
@@ -18,7 +19,7 @@
 	--tls-provider=default \
 	"--abi=armv7,armv7s,arm64" \
 	--symbollist \
-	/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-symbols.list \
+	/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-symbols.list \
 	--dsym=no \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
@@ -37,19 +38,19 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Web.Services.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/packages/Xamarin.TestCloud.Agent.0.19.2/lib/Xamarin.iOS10/Calabash.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/packages/mbprogresshud.0.9.2.0/lib/Xamarin.iOS/MBProgressHUD.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/packages/mbprogresshud.0.9.2.0/lib/Xamarin.iOS/MBProgressHUD.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/Components/btprogresshud-1.20/lib/ios-unified/BTProgressHUD.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/Components/btprogresshud-1.20/lib/ios-unified/BTProgressHUD.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/packages/Xamarin.TestCloud.Agent.0.20.1/lib/Xamarin.iOS10/Calabash.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/packages/Xamarin.TestCloud.Agent.0.19.2/lib/Xamarin.iOS10/Calabash.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/packages/mbprogresshud.0.9.2.0/lib/Xamarin.iOS/MBProgressHUD.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/packages/mbprogresshud.0.9.2.0/lib/Xamarin.iOS/MBProgressHUD.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/Components/btprogresshud-1.20/lib/ios-unified/BTProgressHUD.dll \
 	-r \
-	/Users/mobileexport/Desktop/Nitro/Components/btprogresshud-1.20/lib/ios-unified/BTProgressHUD.dll \
+	/Users/mobileexport/Desktop/nitroAndrod5004/packages/Xamarin.TestCloud.Agent.0.20.1/lib/Xamarin.iOS10/Calabash.dll \
 	--target-framework \
 	"Xamarin.iOS,v1.0" \
-	/Users/mobileexport/Desktop/Nitro/location2/bin/iPhone/Release//Nitro.exe \
+	/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/bin/iPhone/Release//Nitro.exe \

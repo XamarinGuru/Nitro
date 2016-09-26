@@ -1,7 +1,8 @@
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/Xamarin.iOS.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/System.Web.Services.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/System.Xml.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/System.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/mscorlib.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/System.Core.dll
-/Users/mobileexport/Desktop/Nitro/location2/obj/iPhone/Release/mtouch-cache/64/Link/Nitro.exe
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/Xamarin.iOS.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/BTProgressHUD.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/System.Web.Services.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/System.Xml.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/System.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/mscorlib.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/System.Core.dll
+/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache/64/Link/Nitro.exe

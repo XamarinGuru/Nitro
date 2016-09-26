@@ -7,6 +7,7 @@ extern void *mono_aot_module_System_info;
 extern void *mono_aot_module_System_Xml_info;
 extern void *mono_aot_module_System_Core_info;
 extern void *mono_aot_module_System_Web_Services_info;
+extern void *mono_aot_module_BTProgressHUD_info;
 
 void xamarin_register_modules_impl ()
 {
@@ -17,6 +18,7 @@ void xamarin_register_modules_impl ()
 	mono_aot_register_module (mono_aot_module_System_Xml_info);
 	mono_aot_register_module (mono_aot_module_System_Core_info);
 	mono_aot_register_module (mono_aot_module_System_Web_Services_info);
+	mono_aot_register_module (mono_aot_module_BTProgressHUD_info);
 
 }
 

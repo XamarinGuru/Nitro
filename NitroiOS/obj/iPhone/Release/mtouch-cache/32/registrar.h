@@ -12,11 +12,13 @@
 #import <QuartzCore/CAEmitterBehavior.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CloudKit/CloudKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 @protocol CALayerDelegate;
 @class Foundation_InternalNSNotificationHandler;
 @class UIKit_UIControlEventProxy;
 @class __MonoMac_NSActionDispatcher;
+@class __Xamarin_NSTimerActionDispatcher;
 @class __MonoMac_NSAsyncActionDispatcher;
 @class AppDelegate;
 @class location2_PageContentViewController;
@@ -29,6 +31,7 @@
 @class ViewController;
 @class PageViewController;
 @class CoreLocation_CLLocationManager__CLLocationManagerDelegate;
+@class UIKit_UIAlertView__UIAlertViewDelegate;
 @class __UIGestureRecognizerToken;
 @class __UIGestureRecognizerParameterlessToken;
 @class __UIGestureRecognizerParametrizedToken;
@@ -37,4 +40,5 @@
 @class UIKit_UIPageViewController__UIPageViewControllerDelegate;
 @class UIKit_UIPageViewController__UIPageViewControllerDataSource;
 @class __NSObject_Disposer;
+@class BigTed_ProgressHUD;
 
