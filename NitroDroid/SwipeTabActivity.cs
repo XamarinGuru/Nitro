@@ -16,7 +16,7 @@ using goheja.Services;
 //by Afroz date 31/8/2016
 namespace goheja
 {
-    [Activity(Label = "Nitro" , MainLauncher = true,Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
+    [Activity(Label = "Nitro" , Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
     public class SwipeTabActivity : FragmentActivity
     {
 		ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
