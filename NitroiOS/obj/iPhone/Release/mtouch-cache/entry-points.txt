@@ -1,11 +1,11 @@
-UIApplicationMain
-xamarin_get_block_descriptor
 CreateZStream
 CloseZStream
 Flush
 ReadZStream
 WriteZStream
 xamarin_start_wwan
+UIApplicationMain
+xamarin_get_block_descriptor
 xamarin_timezone_get_data
 xamarin_GetFolderPath
 xamarin_log

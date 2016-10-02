@@ -31,8 +31,7 @@ namespace location2
 
 			btnDone.TouchUpInside += DoneButtonClicked;
 
-			meimg.Layer.CornerRadius = meimg.Frame.Width/2;
-			meimg.Layer.MasksToBounds = true;
+
 
 			calendarContent.Hidden = true;
 			calendarWebView.Hidden = true;
@@ -51,7 +50,14 @@ namespace location2
 			catch {
 			}
 		}
-		
+
+		public override void ViewWillLayoutSubviews()
+		{
+			base.ViewWillLayoutSubviews();
+			meimg.Layer.CornerRadius = meimg.Frame.Width / 2;
+			meimg.Layer.MasksToBounds = true;
+		}
+
 		public userData (IntPtr handle) : base (handle)
 		{
 		}
