@@ -13,6 +13,8 @@
 	<uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
 	<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.READ_CALENDAR" />
+	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
 	<application android:icon="@drawable/Icon" android:label="Nitro"></application>
 	<activity android:name="MainActivity" android:screenOrientation="landscape" android:launchMode="singleInstance" android:noHistory="true"></activity>
 </manifest>

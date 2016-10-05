@@ -1,36 +1,24 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
+      <File FileName="NitroiOS/UIcalendar.cs" Line="235" Column="5" />
+      <File FileName="NitroiOS/AppDelegate.cs" Line="217" Column="40" />
       <File FileName="NitroiOS/Info.plist" />
-      <File FileName="NitroiOS/vcListing.cs" Line="1" Column="1" />
-      <File FileName="NitroiOS/UIcalendar.cs" Line="154" Column="49" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="162" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="NitroSolution" expanded="True">
-            <Node name="Nitro.iOS" expanded="True">
-              <Node name="Info.plist" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="71" column="1" />
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="45" column="1" />
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="48" column="1" />
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="52" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/calen.cs" line="19" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/Fragment/FragmentCalendar.cs" line="110" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/AppDelegate.cs" line="149" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e3a63e27895990e050d9caa50e096205978b93e7" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
 </Properties>

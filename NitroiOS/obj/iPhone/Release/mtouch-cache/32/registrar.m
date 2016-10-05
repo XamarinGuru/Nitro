@@ -5035,6 +5035,7 @@ exception_handling:;
 		{"UINavigationController", "UIKit.UINavigationController, Xamarin.iOS", NULL },
 		{"UINavigationItem", "UIKit.UINavigationItem, Xamarin.iOS", NULL },
 		{"EKObject", "EventKit.EKObject, Xamarin.iOS", NULL },
+		{"EKAlarm", "EventKit.EKAlarm, Xamarin.iOS", NULL },
 		{"EKCalendar", "EventKit.EKCalendar, Xamarin.iOS", NULL },
 		{"EKCalendarItem", "EventKit.EKCalendarItem, Xamarin.iOS", NULL },
 		{"EKEvent", "EventKit.EKEvent, Xamarin.iOS", NULL },
@@ -5123,7 +5124,7 @@ exception_handling:;
 		__xamarin_registration_assemblies,
 		__xamarin_class_map,
 		14,
-		108,
+		109,
 		21
 	};
 
@@ -5173,69 +5174,70 @@ void xamarin_create_classes () {
 	__xamarin_class_map [42].handle = objc_getClass ("UINavigationController");
 	__xamarin_class_map [43].handle = objc_getClass ("UINavigationItem");
 	__xamarin_class_map [44].handle = objc_getClass ("EKObject");
-	__xamarin_class_map [45].handle = objc_getClass ("EKCalendar");
-	__xamarin_class_map [46].handle = objc_getClass ("EKCalendarItem");
-	__xamarin_class_map [47].handle = objc_getClass ("EKEvent");
-	__xamarin_class_map [48].handle = objc_getClass ("EKEventStore");
-	__xamarin_class_map [49].handle = objc_getClass ("CALayer");
-	__xamarin_class_map [50].handle = objc_getClass ("EKSource");
-	__xamarin_class_map [51].handle = objc_getClass ("CKShareMetadata");
-	__xamarin_class_map [52].handle = objc_getClass ("UIScreen");
-	__xamarin_class_map [53].handle = objc_getClass ("UIScrollView");
-	__xamarin_class_map [54].handle = objc_getClass ("UIDevice");
-	__xamarin_class_map [55].handle = objc_getClass ("UIApplication");
-	__xamarin_class_map [56].handle = objc_getClass ("UIBezierPath");
-	__xamarin_class_map [57].handle = objc_getClass ("UIButton");
-	__xamarin_class_map [58].handle = objc_getClass ("UIColor");
-	__xamarin_class_map [59].handle = objc_getClass ("UIKit_UIControlEventProxy");
-	__xamarin_class_map [60].handle = objc_getClass ("NSException");
-	__xamarin_class_map [61].handle = objc_getClass ("UISpringTimingParameters");
-	__xamarin_class_map [62].handle = objc_getClass ("CAShapeLayer");
-	__xamarin_class_map [63].handle = objc_getClass ("UIStoryboard");
-	__xamarin_class_map [64].handle = objc_getClass ("CATransaction");
-	__xamarin_class_map [65].handle = objc_getClass ("NSNotification");
-	__xamarin_class_map [66].handle = objc_getClass ("NSNull");
-	__xamarin_class_map [67].handle = objc_getClass ("UITextPosition");
-	__xamarin_class_map [68].handle = objc_getClass ("UITextRange");
-	__xamarin_class_map [69].handle = objc_getClass ("UITextSelectionRect");
-	__xamarin_class_map [70].handle = objc_getClass ("UIUserNotificationSettings");
-	__xamarin_class_map [71].handle = objc_getClass ("NSStringDrawingContext");
-	__xamarin_class_map [72].handle = objc_getClass ("UIActivityIndicatorView");
-	__xamarin_class_map [73].handle = objc_getClass ("UICubicTimingParameters");
-	__xamarin_class_map [74].handle = objc_getClass ("UIApplicationShortcutItem");
-	__xamarin_class_map [75].handle = objc_getClass ("UIWebView");
-	__xamarin_class_map [76].handle = objc_getClass ("UIWindow");
-	__xamarin_class_map [77].handle = objc_getClass ("UIGestureRecognizer");
-	__xamarin_class_map [78].handle = objc_getClass ("UIImagePickerController");
-	__xamarin_class_map [79].handle = objc_getClass ("NSData");
-	__xamarin_class_map [80].handle = objc_getClass ("NSDictionary");
-	__xamarin_class_map [81].handle = objc_getClass ("CLLocationManager");
-	__xamarin_class_map [82].handle = objc_getClass ("NSMutableDictionary");
-	__xamarin_class_map [83].handle = objc_getClass ("NSNotificationCenter");
-	__xamarin_class_map [84].handle = objc_getClass ("UIPageViewController");
-	__xamarin_class_map [85].handle = objc_getClass ("UIAlertView");
-	__xamarin_class_map [86].handle = objc_getClass ("UITapGestureRecognizer");
-	__xamarin_class_map [87].handle = [location2_PageContentViewController class];
-	__xamarin_class_map [88].handle = [vcListing class];
-	__xamarin_class_map [89].handle = [userData class];
-	__xamarin_class_map [90].handle = [location2_PageDataSource class];
-	__xamarin_class_map [91].handle = [icon class];
-	__xamarin_class_map [92].handle = [InitViewController class];
-	__xamarin_class_map [93].handle = [AppDelegate class];
-	__xamarin_class_map [94].handle = [ViewController class];
-	__xamarin_class_map [95].handle = [UIcalendar class];
-	__xamarin_class_map [96].handle = [PageViewController class];
-	__xamarin_class_map [97].handle = objc_getClass ("__UIGestureRecognizerToken");
-	__xamarin_class_map [98].handle = objc_getClass ("__UIGestureRecognizerParameterlessToken");
-	__xamarin_class_map [99].handle = objc_getClass ("__UIGestureRecognizerParametrizedToken");
-	__xamarin_class_map [100].handle = objc_getClass ("UIKit_UIImagePickerController__UIImagePickerControllerDelegate");
-	__xamarin_class_map [101].handle = objc_getClass ("CoreLocation_CLLocationManager__CLLocationManagerDelegate");
-	__xamarin_class_map [102].handle = objc_getClass ("__NSObject_Disposer");
-	__xamarin_class_map [103].handle = objc_getClass ("UIKit_UIPageViewController__UIPageViewControllerDelegate");
-	__xamarin_class_map [104].handle = objc_getClass ("UIKit_UIPageViewController__UIPageViewControllerDataSource");
-	__xamarin_class_map [105].handle = objc_getClass ("UIKit_UIAlertView__UIAlertViewDelegate");
-	__xamarin_class_map [106].handle = objc_getClass ("__UITapGestureRecognizer");
-	__xamarin_class_map [107].handle = [BigTed_ProgressHUD class];
+	__xamarin_class_map [45].handle = objc_getClass ("EKAlarm");
+	__xamarin_class_map [46].handle = objc_getClass ("EKCalendar");
+	__xamarin_class_map [47].handle = objc_getClass ("EKCalendarItem");
+	__xamarin_class_map [48].handle = objc_getClass ("EKEvent");
+	__xamarin_class_map [49].handle = objc_getClass ("EKEventStore");
+	__xamarin_class_map [50].handle = objc_getClass ("CALayer");
+	__xamarin_class_map [51].handle = objc_getClass ("EKSource");
+	__xamarin_class_map [52].handle = objc_getClass ("CKShareMetadata");
+	__xamarin_class_map [53].handle = objc_getClass ("UIScreen");
+	__xamarin_class_map [54].handle = objc_getClass ("UIScrollView");
+	__xamarin_class_map [55].handle = objc_getClass ("UIDevice");
+	__xamarin_class_map [56].handle = objc_getClass ("UIApplication");
+	__xamarin_class_map [57].handle = objc_getClass ("UIBezierPath");
+	__xamarin_class_map [58].handle = objc_getClass ("UIButton");
+	__xamarin_class_map [59].handle = objc_getClass ("UIColor");
+	__xamarin_class_map [60].handle = objc_getClass ("UIKit_UIControlEventProxy");
+	__xamarin_class_map [61].handle = objc_getClass ("NSException");
+	__xamarin_class_map [62].handle = objc_getClass ("UISpringTimingParameters");
+	__xamarin_class_map [63].handle = objc_getClass ("CAShapeLayer");
+	__xamarin_class_map [64].handle = objc_getClass ("UIStoryboard");
+	__xamarin_class_map [65].handle = objc_getClass ("CATransaction");
+	__xamarin_class_map [66].handle = objc_getClass ("NSNotification");
+	__xamarin_class_map [67].handle = objc_getClass ("NSNull");
+	__xamarin_class_map [68].handle = objc_getClass ("UITextPosition");
+	__xamarin_class_map [69].handle = objc_getClass ("UITextRange");
+	__xamarin_class_map [70].handle = objc_getClass ("UITextSelectionRect");
+	__xamarin_class_map [71].handle = objc_getClass ("UIUserNotificationSettings");
+	__xamarin_class_map [72].handle = objc_getClass ("NSStringDrawingContext");
+	__xamarin_class_map [73].handle = objc_getClass ("UIActivityIndicatorView");
+	__xamarin_class_map [74].handle = objc_getClass ("UICubicTimingParameters");
+	__xamarin_class_map [75].handle = objc_getClass ("UIApplicationShortcutItem");
+	__xamarin_class_map [76].handle = objc_getClass ("UIWebView");
+	__xamarin_class_map [77].handle = objc_getClass ("UIWindow");
+	__xamarin_class_map [78].handle = objc_getClass ("UIGestureRecognizer");
+	__xamarin_class_map [79].handle = objc_getClass ("UIImagePickerController");
+	__xamarin_class_map [80].handle = objc_getClass ("NSData");
+	__xamarin_class_map [81].handle = objc_getClass ("NSDictionary");
+	__xamarin_class_map [82].handle = objc_getClass ("CLLocationManager");
+	__xamarin_class_map [83].handle = objc_getClass ("NSMutableDictionary");
+	__xamarin_class_map [84].handle = objc_getClass ("NSNotificationCenter");
+	__xamarin_class_map [85].handle = objc_getClass ("UIPageViewController");
+	__xamarin_class_map [86].handle = objc_getClass ("UIAlertView");
+	__xamarin_class_map [87].handle = objc_getClass ("UITapGestureRecognizer");
+	__xamarin_class_map [88].handle = [location2_PageContentViewController class];
+	__xamarin_class_map [89].handle = [vcListing class];
+	__xamarin_class_map [90].handle = [userData class];
+	__xamarin_class_map [91].handle = [location2_PageDataSource class];
+	__xamarin_class_map [92].handle = [icon class];
+	__xamarin_class_map [93].handle = [InitViewController class];
+	__xamarin_class_map [94].handle = [AppDelegate class];
+	__xamarin_class_map [95].handle = [ViewController class];
+	__xamarin_class_map [96].handle = [UIcalendar class];
+	__xamarin_class_map [97].handle = [PageViewController class];
+	__xamarin_class_map [98].handle = objc_getClass ("__UIGestureRecognizerToken");
+	__xamarin_class_map [99].handle = objc_getClass ("__UIGestureRecognizerParameterlessToken");
+	__xamarin_class_map [100].handle = objc_getClass ("__UIGestureRecognizerParametrizedToken");
+	__xamarin_class_map [101].handle = objc_getClass ("UIKit_UIImagePickerController__UIImagePickerControllerDelegate");
+	__xamarin_class_map [102].handle = objc_getClass ("CoreLocation_CLLocationManager__CLLocationManagerDelegate");
+	__xamarin_class_map [103].handle = objc_getClass ("__NSObject_Disposer");
+	__xamarin_class_map [104].handle = objc_getClass ("UIKit_UIPageViewController__UIPageViewControllerDelegate");
+	__xamarin_class_map [105].handle = objc_getClass ("UIKit_UIPageViewController__UIPageViewControllerDataSource");
+	__xamarin_class_map [106].handle = objc_getClass ("UIKit_UIAlertView__UIAlertViewDelegate");
+	__xamarin_class_map [107].handle = objc_getClass ("__UITapGestureRecognizer");
+	__xamarin_class_map [108].handle = [BigTed_ProgressHUD class];
 	xamarin_add_registration_map (&__xamarin_registration_map);
 }
 

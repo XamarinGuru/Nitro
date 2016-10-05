@@ -6,6 +6,7 @@ using EventKit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace location2
 {
 	partial class UIcalendar : PageContentViewController
@@ -58,155 +59,191 @@ namespace location2
 				deviceId = "tempDeviceId";
 			}
 
-			if (deviceId == "0")
+
+			try
 			{
-				//vcListing controller = this.Storyboard.InstantiateViewController("vcListing") as vcListing;
-				//this.NavigationController.PushViewController(controller, true);
-			}
-			else {
-				string[] athData = meServ.getAthDataByDeviceId(NSUserDefaults.StandardUserDefaults.StringForKey("deviceId"));
-				if (athData == null) athData = meServ.getAthDataByDeviceId(deviceUDID);
-				NSUserDefaults.StandardUserDefaults.SetString(deviceUDID, "deviceId");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[0].ToString(), "firstName");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[1].ToString(), "lastName");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[2].ToString(), "id");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[3].ToString(), "country");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[4].ToString(), "userName");
-				NSUserDefaults.StandardUserDefaults.SetString(athData[5].ToString(), "password");
-
-				userName = athData[4].ToString();
-				var eventsData = meServ.getUserCalendarFuture(userName);
-
-				RequestCalendarAccess(EKEntityType.Event, eventsData);
-			}
-		}
-		protected void RequestCalendarAccess(EKEntityType type, string eventsData)
-		{
-			App.Current.EventStore.RequestAccess(type,
-				(bool granted, NSError e) =>
+				if (deviceId == "0")
 				{
-					InvokeOnMainThread(() =>
-					{
-						if (granted)
-							AddEvents(eventsData);
-						else
-							new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
-					});
-				});
-		}
-		private void AddEvents(string eventsJson)
-		{
-			if (eventsJson == null || eventsJson == "")
-				return;
+					//vcListing controller = this.Storyboard.InstantiateViewController("vcListing") as vcListing;
+					//this.NavigationController.PushViewController(controller, true);
+				}
+				else {
+					string[] athData = meServ.getAthDataByDeviceId(NSUserDefaults.StandardUserDefaults.StringForKey("deviceId"));
+					if (athData == null) athData = meServ.getAthDataByDeviceId(deviceUDID);
+					NSUserDefaults.StandardUserDefaults.SetString(deviceUDID, "deviceId");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[0].ToString(), "firstName");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[1].ToString(), "lastName");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[2].ToString(), "id");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[3].ToString(), "country");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[4].ToString(), "userName");
+					NSUserDefaults.StandardUserDefaults.SetString(athData[5].ToString(), "password");
 
-			NSError error;
+					userName = athData[4].ToString();
 
-			////remove existing events
-			var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
-			foreach (var calendar in calendars)
-			{
-				if (calendar.Title.Equals("Nitro Calendar"))
-					App.Current.EventStore.RemoveCalendar(calendar, true, out error);
-			}
+					var pastEvents = meServ.getUserCalendarPast(userName);
+					var todayEvents = meServ.getUserCalendarToday(userName);
+					var futureEvents = meServ.getUserCalendarFuture(userName);
 
-			// build out an MT.D list of all the calendars, we show the calendar title
-			// as well as the source (where the calendar is pulled from, like iCloud, local
-			// exchange, etc.)
-
-
-			var nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
-			EKSource nitroSource = null;
-
-
-
-
-			foreach (EKSource source in App.Current.EventStore.Sources)
-			{
-				if (source.SourceType == EKSourceType.CalDav && source.Title =="iCloud")
-				{
-					nitroSource = source;
-					break;
+					App.Current.EventStore.RequestAccess(EKEntityType.Event,
+						(bool granted, NSError e) =>
+						{
+							InvokeOnMainThread(() =>
+							{
+								if (granted)
+									AddEvents(pastEvents, todayEvents, futureEvents);
+								else
+									new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
+							});
+						});
 				}
 			}
-
-			if (nitroSource == null)
+			catch(Exception e)
 			{
+				new UIAlertView(null, e.Message, null, "OK", null).Show();
+			}
+		}
+
+		private void AddEvents(string pastEvents, string todayEvents, string futureEvents)
+		{
+			try
+			{
+				NSError error;
+
+				////remove existing events
+				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
+				foreach (var calendar in calendars)
+				{
+					if (calendar.Title.Equals("Nitro Calendar"))
+					{
+						App.Current.EventStore.RemoveCalendar(calendar, true, out error);
+					}
+				}
+
+				var nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
+				EKSource nitroSource = null;
+
 				foreach (EKSource source in App.Current.EventStore.Sources)
 				{
-					if (source.SourceType == EKSourceType.Local)
+					if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 					{
 						nitroSource = source;
 						break;
 					}
 				}
+
+				if (nitroSource == null)
+				{
+					foreach (EKSource source in App.Current.EventStore.Sources)
+					{
+						if (source.SourceType == EKSourceType.Local)
+						{
+							nitroSource = source;
+							break;
+						}
+					}
+				}
+
+				if (nitroSource == null)
+					return;
+
+				nitroCalendar.Title = "Nitro Calendar";
+				nitroCalendar.Source = nitroSource;
+
+				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
+
+				AddEventsToNitroCalendar(nitroCalendar, pastEvents);
+				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
+				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
+			}
+			catch (Exception e)
+			{
+				new UIAlertView("add events process", e.Message, null, "ok", null).Show();
 			}
 
-			if (nitroSource == null)
+		}
+
+		private void AddEventsToNitroCalendar(EKCalendar nitroCalendar, string eventsJson)
+		{
+			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
 				return;
-
-			nitroCalendar.Title = "Nitro Calendar";
-			nitroCalendar.Source = nitroSource;
-
-			App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
 
 			eventsJson = eventsJson.Replace("ObjectId(\"", "\"");
 			eventsJson = eventsJson.Replace(" ISODate(\"", "\"");
 			eventsJson = eventsJson.Replace("\")", "\"");
 			var eventsData = JArray.Parse(eventsJson);
 
-			//test event
-			EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
-			newEvent.Title = "xxx";
-			newEvent.Calendar = nitroCalendar;
-			newEvent.StartDate = ConvertDateTimeToNSDate(DateTime.Now);
-			newEvent.EndDate = ConvertDateTimeToNSDate(DateTime.Now.AddHours(2));
+			foreach (var eventJson in eventsData)
+			{
+				var eventData = JObject.FromObject(eventJson);
 
-			// save the event
-			NSError e;
-			App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
+				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-			//foreach (var eventJson in eventsData)
-			//{
-			//	var eventData = JObject.FromObject(eventJson);
+				var startDate = DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
+				var endDate = Convert.ToDateTime(eventData["end"].ToString());
 
-			//	EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
+				newEvent.AddAlarm(EKAlarm.FromDate(ConvertDateTimeToNSDate(startDate.AddMinutes(5))));
+				newEvent.StartDate = ConvertDateTimeToNSDate(startDate);
+				newEvent.EndDate = ConvertDateTimeToNSDate(endDate);
+				newEvent.Title = eventData["title"].ToString();
 
-			//	var startDate = DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
-			//	var endDate = Convert.ToDateTime(eventData["end"].ToString());
+				string eventDescription = eventData["eventData"].ToString();
+				eventDescription = eventDescription.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
+				eventDescription = eventDescription.Replace("</textarea><br/>", "");
 
-			//	//newEvent.EventIdentifier = eventData["_id"].ToString();
-			//	newEvent.AddAlarm(EKAlarm.FromDate(ConvertDateTimeToNSDate(startDate.AddMinutes(5))));
-			//	newEvent.StartDate = ConvertDateTimeToNSDate(startDate);
-			//	newEvent.EndDate = ConvertDateTimeToNSDate(endDate);
-			//	newEvent.Title = eventData["title"].ToString();
-			//	newEvent.Notes = "distance : " + eventData["distance"].ToString() + Environment.NewLine +
-			//					"type : " + eventData["type"].ToString() + Environment.NewLine +
-			//					"notes : " + eventData["notes"].ToString() + Environment.NewLine +
-			//					"programName : " + eventData["programName"].ToString() + Environment.NewLine +
-			//					"programStart : " + eventData["programStart"].ToString() + Environment.NewLine +
-			//					"programEnd : " + eventData["programEnd"].ToString() + Environment.NewLine +
-			//					"durHrs : " + eventData["durHrs"].ToString() + Environment.NewLine +
-			//					"durMin : " + eventData["durMin"].ToString() + Environment.NewLine +
-			//					"tss : " + eventData["tss"].ToString() + Environment.NewLine +
-			//					"hb : " + eventData["hb"].ToString() + Environment.NewLine;
+				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
 
-			//	//var structuredLocation = new EKStructuredLocation();
-			//	//structuredLocation.Title = "my location";
-			//	//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
+				for (var i = 0; i < arryEventDes.Length; i++)
+				{
+					newEvent.Notes += arryEventDes[i].ToString() + Environment.NewLine;
+				}
 
-			//	//newEvent.StructuredLocation = structuredLocation;
-			//	var eventName = eventData["title"].ToString().Replace(" ", "%20");
-			//	var strEventURL = "http://go-heja.com/nitro/existEventByName.php?eventSelectedName=" + eventName;
-			//	//var encordedURL = System.Web.HttpUtility.UrlPathEncode(strEventURL);
-			//	var uri = new Uri(strEventURL);
-			//	newEvent.Url = new NSUrl(strEventURL);
+				var strDistance = eventData["distance"].ToString();
+				var floatDistance = float.Parse(strDistance);
+				nfloat a = 45.71629f;
+				var b = Math.Truncate(floatDistance * 100);
+				var c = b / 100;
+				var formattedDistance = c.ToString("F2");
 
-			//	newEvent.Calendar = nitroCalendar;
+				var durMin = eventData["durMin"].ToString() == "" ? 0 : int.Parse(eventData["durMin"].ToString());
+				var durHrs = eventData["durHrs"].ToString() == "" ? 0 : int.Parse(eventData["durHrs"].ToString());
+				var pHrs = durMin / 60;
+				durHrs = durHrs + pHrs;
+				durMin = durMin % 60;
 
-			//	// save the event
-			//	NSError e;
-			//	App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
-			//}
+				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+				newEvent.Notes += Environment.NewLine + "Planned HB : " + eventData["hb"].ToString() + Environment.NewLine +
+								"Planned TSS : " + eventData["tss"].ToString() + Environment.NewLine +
+								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
+								"Duration : " + strDuration + Environment.NewLine;
+
+				//var structuredLocation = new EKStructuredLocation();
+				//structuredLocation.Title = "my location";
+				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
+
+				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				var strDate = String.Format("{0:dd-mm-yyyy hh:mm:ss}", startDate);
+				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
+				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate;
+				//new UIAlertView("encoded url", startDate.ToString(), null, "ok", null).Show();
+				var uri = new Uri(encodedEventURL);
+
+				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				//var encodedEventURL = "http://go-heja.com/nitro/existEventByName.php?eventSelectedName=" + encodedTitle;
+				//new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
+
+				newEvent.Url = uri;
+
+				EKAlarm[] alarmsArray = new EKAlarm[2];
+				alarmsArray[0] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 45)));
+				alarmsArray[1] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 60 * 12)));
+				newEvent.Alarms = alarmsArray;
+
+				newEvent.Calendar = nitroCalendar;
+
+				NSError e;
+				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
+			}
 		}
 
 		public NSDate ConvertDateTimeToNSDate(DateTime date)
