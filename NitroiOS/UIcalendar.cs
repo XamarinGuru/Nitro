@@ -109,48 +109,59 @@ namespace location2
 			{
 				NSError error;
 
+				EKCalendar nitroCalendar = null;
 				////remove existing events
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
-					if (calendar.Title.Equals("Nitro Calendar"))
+					if (calendar.Title == "Nitro Events")
 					{
+						EKCalendar[] calendarArray = new EKCalendar[1];
+						calendarArray[0] = calendar;
+						NSPredicate pEvents = App.Current.EventStore.PredicateForEvents(NSDate.Now.AddSeconds(-(3600 * 10000)), NSDate.Now.AddSeconds(3600 * 10000), calendarArray);
+						EKEvent[] allEvents = App.Current.EventStore.EventsMatching(pEvents);
+						foreach (var pEvent in allEvents)
+						{
+							NSError pE;
+							App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
+						}
 						App.Current.EventStore.RemoveCalendar(calendar, true, out error);
 					}
 				}
 
-				var nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
-				EKSource nitroSource = null;
-
-				foreach (EKSource source in App.Current.EventStore.Sources)
+				if (nitroCalendar == null)
 				{
-					if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
-					{
-						nitroSource = source;
-						break;
-					}
-				}
+					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
+					EKSource nitroSource = null;
 
-				if (nitroSource == null)
-				{
 					foreach (EKSource source in App.Current.EventStore.Sources)
 					{
-						if (source.SourceType == EKSourceType.Local)
+						if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 						{
 							nitroSource = source;
 							break;
 						}
 					}
+					if (nitroSource == null)
+					{
+						foreach (EKSource source in App.Current.EventStore.Sources)
+						{
+							if (source.SourceType == EKSourceType.Local)
+							{
+								nitroSource = source;
+								break;
+							}
+						}
+					}
+					if (nitroSource == null)
+						return;
+
+					nitroCalendar.Title = "Nitro Events";
+					nitroCalendar.Source = nitroSource;
 				}
 
-				if (nitroSource == null)
-					return;
-
-				nitroCalendar.Title = "Nitro Calendar";
-				nitroCalendar.Source = nitroSource;
 
 				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
-
 				AddEventsToNitroCalendar(nitroCalendar, pastEvents);
 				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
 				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
@@ -181,9 +192,9 @@ namespace location2
 				var startDate = DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
 				var endDate = Convert.ToDateTime(eventData["end"].ToString());
 
-				newEvent.AddAlarm(EKAlarm.FromDate(ConvertDateTimeToNSDate(startDate.AddMinutes(5))));
-				newEvent.StartDate = ConvertDateTimeToNSDate(startDate);
-				newEvent.EndDate = ConvertDateTimeToNSDate(endDate);
+				//newEvent.AddAlarm(EKAlarm.FromDate(ConvertDateTimeToNSDate(startDate.AddMinutes(5))));
+				newEvent.StartDate = ConvertDateTimeToNSDate(startDate.AddMinutes(-60));
+				newEvent.EndDate = ConvertDateTimeToNSDate(endDate.AddMinutes(-60));
 				newEvent.Title = eventData["title"].ToString();
 
 				string eventDescription = eventData["eventData"].ToString();
@@ -199,7 +210,6 @@ namespace location2
 
 				var strDistance = eventData["distance"].ToString();
 				var floatDistance = float.Parse(strDistance);
-				nfloat a = 45.71629f;
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
@@ -225,12 +235,8 @@ namespace location2
 				var strDate = String.Format("{0:dd-mm-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
 				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate;
-				//new UIAlertView("encoded url", startDate.ToString(), null, "ok", null).Show();
-				var uri = new Uri(encodedEventURL);
-
-				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
-				//var encodedEventURL = "http://go-heja.com/nitro/existEventByName.php?eventSelectedName=" + encodedTitle;
 				//new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
+				var uri = new Uri(encodedEventURL);
 
 				newEvent.Url = uri;
 
@@ -245,6 +251,7 @@ namespace location2
 				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
 			}
 		}
+
 
 		public NSDate ConvertDateTimeToNSDate(DateTime date)
 		{

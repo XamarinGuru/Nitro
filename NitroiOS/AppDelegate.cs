@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace location2
 {
@@ -64,10 +65,10 @@ namespace location2
 		private void ttimerCallback(object state)
 		{
 
-			InvokeOnMainThread(async () => { await GetReservationVehicleLocations(); });
+			InvokeOnMainThread(async () => { await UpdateCalendar(); });
 		}
 
-		private async Task GetReservationVehicleLocations()
+		private async Task UpdateCalendar()
 		{
 			var username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
 
@@ -98,48 +99,59 @@ namespace location2
 			{
 				NSError error;
 
+				EKCalendar nitroCalendar = null;
 				////remove existing events
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
-					if (calendar.Title.Equals("Nitro Calendar"))
+					if (calendar.Title == "Nitro Events")
 					{
+						EKCalendar[] calendarArray = new EKCalendar[1];
+						calendarArray[0] = calendar;
+						NSPredicate pEvents = App.Current.EventStore.PredicateForEvents(NSDate.Now.AddSeconds(-(3600 * 10000)), NSDate.Now.AddSeconds(3600 * 10000), calendarArray);
+						EKEvent[] allEvents = App.Current.EventStore.EventsMatching(pEvents);
+						foreach (var pEvent in allEvents)
+						{
+							NSError pE;
+							App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
+						}
 						App.Current.EventStore.RemoveCalendar(calendar, true, out error);
 					}
 				}
 
-				var nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
-				EKSource nitroSource = null;
-
-				foreach (EKSource source in App.Current.EventStore.Sources)
+				if (nitroCalendar == null)
 				{
-					if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
-					{
-						nitroSource = source;
-						break;
-					}
-				}
+					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
+					EKSource nitroSource = null;
 
-				if (nitroSource == null)
-				{
 					foreach (EKSource source in App.Current.EventStore.Sources)
 					{
-						if (source.SourceType == EKSourceType.Local)
+						if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 						{
 							nitroSource = source;
 							break;
 						}
 					}
+					if (nitroSource == null)
+					{
+						foreach (EKSource source in App.Current.EventStore.Sources)
+						{
+							if (source.SourceType == EKSourceType.Local)
+							{
+								nitroSource = source;
+								break;
+							}
+						}
+					}
+					if (nitroSource == null)
+						return;
+
+					nitroCalendar.Title = "Nitro Events";
+					nitroCalendar.Source = nitroSource;
 				}
 
-				if (nitroSource == null)
-					return;
-
-				nitroCalendar.Title = "Nitro Calendar";
-				nitroCalendar.Source = nitroSource;
 
 				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
-
 				AddEventsToNitroCalendar(nitroCalendar, pastEvents);
 				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
 				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
@@ -227,6 +239,8 @@ namespace location2
 
 				NSError e;
 				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
+
+
 			}
 		}
 

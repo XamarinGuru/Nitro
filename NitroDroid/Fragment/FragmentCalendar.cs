@@ -14,19 +14,10 @@ using Android.Widget;
 
 using Android.Provider;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.Provider;
 using Java.Util;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 //by Afroz date 31/8/2016
 namespace goheja
@@ -45,7 +36,6 @@ namespace goheja
             var webView = view.FindViewById<WebView>(Resource.Id.webViewCalen);
            
             webView.Settings.JavaScriptEnabled = true;
-            webView.Settings.JavaScriptEnabled = true;
             webView.Settings.AllowContentAccess = true;
             webView.Settings.EnableSmoothTransition();
             webView.Settings.LoadsImagesAutomatically = true;
@@ -54,13 +44,32 @@ namespace goheja
 
             var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
             string nickName = contextPref.GetString("storedUserName", "");
+			webView.ClearCache(true);
+			webView.ClearHistory();
             webView.LoadUrl("http://go-heja.com/nitro/mobda.php?userNickName=" + nickName + "&userId=" + contextPref.GetString("storedAthId", ""));
 
-			RegisterEvents();
+			try
+			{
+				trackSvc.Service1 meServ = new trackSvc.Service1();
+				meServ = new trackSvc.Service1();
+
+				nickName = "efrendsen";
+				var pastEvents = meServ.getUserCalendarPast(nickName);
+				var todayEvents = meServ.getUserCalendarToday(nickName);
+				var futureEvents = meServ.getUserCalendarFuture(nickName);
+
+				AddEvents(pastEvents, todayEvents, futureEvents);
+
+				//RegisterEvents();
+			}
+			catch(Exception e)
+			{
+				Toast.MakeText(this.Activity, e.Message, ToastLength.Short);
+			}
             return view;
         }
 
-		private void RegisterEvents()
+		private void AddEvents(string pastEvents, string todayEvents, string futureEvents)
 		{
 			var calendarsUri = CalendarContract.Calendars.ContentUri;
 
@@ -72,137 +81,167 @@ namespace goheja
 
 			var cursor = this.Activity.ManagedQuery(calendarsUri, calendarsProjection, null, null, null);
 
-			string[] sourceColumns = {CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-				CalendarContract.Calendars.InterfaceConsts.AccountName};
-
-			long calID = -1;
+			#region remove existing Nitro calendar
 			if (cursor.MoveToFirst())
 			{
 				do
 				{
 					long id = cursor.GetLong(0);
 					String displayName = cursor.GetString(1);
-					if (displayName == "GrokkingAndroid Calendar")
-						calID = id;
+					if (displayName == "Nitro Calendar")
+						RemoveCalendar(id);
 				} while (cursor.MoveToNext());
 			}
+			#endregion
 
-			if (calID != -1)
-			{
-				Android.Net.Uri.Builder builder1 =
-				   CalendarContract.Calendars.ContentUri.BuildUpon();
-				builder1.AppendQueryParameter(
-					CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-					  "GrokkingAndroid Calendar");
-				//builder1.AppendQueryParameter(
-				//	  CalendarContract.Calendars.InterfaceConsts.AccountType,
-				//	CalendarContract.AccountTypeLocal);
-				//builder1.AppendQueryParameter(
-				//	CalendarContract.CallerIsSyncadapter,
-				//	  "true");
+			#region create Nitro Calendar
+			var uri = CalendarContract.Calendars.ContentUri;
+			ContentValues val = new ContentValues();
+			val.Put(CalendarContract.Calendars.InterfaceConsts.AccountName, "Nitro Calendar");
+			val.Put(CalendarContract.Calendars.InterfaceConsts.AccountType, CalendarContract.AccountTypeLocal);
+			val.Put(CalendarContract.Calendars.Name, "Nitro Calendar");
+			val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, "Nitro Calendar");
+			val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarColor, Android.Graphics.Color.Black);
+			val.Put(CalendarContract.Calendars.InterfaceConsts.OwnerAccount, "Nitro Calendar");
+			val.Put(CalendarContract.Calendars.InterfaceConsts.Visible, true);
+			val.Put(CalendarContract.Calendars.InterfaceConsts.SyncEvents, true);
+			uri = uri.BuildUpon()
+				.AppendQueryParameter(CalendarContract.CallerIsSyncadapter, "true")
+				.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountName, "Nitro Calendar")
+				.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountType, CalendarContract.AccountTypeLocal)
+				.Build();
+			var calresult = this.Activity.ContentResolver.Insert(uri, val);
+			var calID = long.Parse(calresult.LastPathSegment);
+			#endregion
 
-				String[] selArgs = new String[] { "GrokkingAndroid Calendar" };
-				int deleted = this.Activity.ContentResolver.Delete(CalendarContract.Calendars.ContentUri,
-				                                                   CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName + " =? ",
-										   selArgs);
-				//var uri1 = this.Activity.ContentResolver.Delete((builder1.Build(), values);
-			}
-			ContentValues values = new ContentValues();
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.AccountName,
-				  "Nitro Events");
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.AccountType,
-				CalendarContract.AccountTypeLocal);
-			//values.Put(
-			//	CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-			//	  "GrokkingAndroid Calendar");
-			values.Put(
-				  CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-				  "Nitro Calendar");
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.CalendarColor,
-				  0xffff0000);
-			//values.Put(
-			//	CalendarContract.Calendars.InterfaceConsts.CalendarAccessLevel,
-			//	Android.Provider.CalendarAccess.AccessOwner);
-			//CalendarContract.Calendars.InterfaceConsts.CalAccessOwner);
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.OwnerAccount,
-				  "erlend0720@hotmail.com");
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.CalendarTimeZone,
-				  "Europe/Berlin");
-			values.Put(
-				CalendarContract.Calendars.InterfaceConsts.SyncEvents,
-				  1);
-			Android.Net.Uri.Builder builder =
-				   CalendarContract.Calendars.ContentUri.BuildUpon();
-			builder.AppendQueryParameter(
-				CalendarContract.Calendars.InterfaceConsts.AccountName,
-				  "com.grokkingandroid");
-			builder.AppendQueryParameter(
-				  CalendarContract.Calendars.InterfaceConsts.AccountType,
-				CalendarContract.AccountTypeLocal);
-			builder.AppendQueryParameter(
-				CalendarContract.CallerIsSyncadapter,
-				  "true");
-			var uri = this.Activity.ContentResolver.Insert(builder.Build(), values);
-			//for (var i = 0; i < cursor.Count; i++)
-			//{
-			//	cursor.MoveToPosition(i);
-			//	var calName = cursor.GetString(cursor.GetColumnIndex(calendarsProjection[1]));
-
-			//}
-			//int[] targetResources = { Resource.Id.calDisplayName, Resource.Id.calAccountName };
-
-			//SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, Resource.Layout.CalListItem,
-			//	cursor, sourceColumns, targetResources);
-
-			//ListAdapter = adapter;
-
-			//ListView.ItemClick += (sender, e) =>
-			//{
-			//	int i = (e as Android.Widget.AdapterView.ItemClickEventArgs).Position;
-
-			//	cursor.MoveToPosition(i);
-			//	int calId = cursor.GetInt(cursor.GetColumnIndex(calendarsProjection[0]));
-
-			//	var showEvents = new Intent(this, typeof(EventListActivity));
-			//	showEvents.PutExtra("calId", calId);
-			//	StartActivity(showEvents);
-			//};
-
-			ContentValues eventValues = new ContentValues();
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarDisplayName, "Nitro Events");
-			
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarId, "1");
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.Title, "Test Event from M4A");
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.Description, "This is an event created from Mono for Android");
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtstart, GetDateTimeMS(2016, 10, 2, 10, 0));
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtend, GetDateTimeMS(2016, 10, 2, 11, 0));
-
-			// GitHub issue #9 : Event start and end times need timezone support.
-			// https://github.com/xamarin/monodroid-samples/issues/9
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.EventTimezone, "UTC");
-			eventValues.Put(CalendarContract.Events.InterfaceConsts.EventEndTimezone, "UTC");
-
-			var uri2 = this.Activity.ContentResolver.Insert(CalendarContract.Events.ContentUri, eventValues);
-			Console.WriteLine("Uri for new event: {0}", uri);
+			AddEventsToNitroCalendar(calID, pastEvents);
+			AddEventsToNitroCalendar(calID, todayEvents);
+			AddEventsToNitroCalendar(calID, futureEvents);
 		}
 
-		long GetDateTimeMS(int yr, int month, int day, int hr, int min)
+		private void AddEventsToNitroCalendar(long calID, string eventsJson)
+		{
+			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
+				return;
+
+			eventsJson = eventsJson.Replace("ObjectId(\"", "\"");
+			eventsJson = eventsJson.Replace(" ISODate(\"", "\"");
+			eventsJson = eventsJson.Replace("\")", "\"");
+			var eventsData = JArray.Parse(eventsJson);
+
+			foreach (var eventJson in eventsData)
+			{
+				var eventData = JObject.FromObject(eventJson);
+
+				var startDate = DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
+				var endDate = Convert.ToDateTime(eventData["end"].ToString());
+
+				var title = eventData["title"].ToString();
+
+				string eventDescription = eventData["eventData"].ToString();
+				eventDescription = eventDescription.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
+				eventDescription = eventDescription.Replace("</textarea><br/>", "");
+
+				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
+
+				string note = "";
+				for (var i = 0; i < arryEventDes.Length; i++)
+				{
+					note += arryEventDes[i].ToString() + System.Environment.NewLine;
+				}
+
+				var strDistance = eventData["distance"].ToString();
+				var floatDistance = float.Parse(strDistance);
+				var b = Math.Truncate(floatDistance * 100);
+				var c = b / 100;
+				var formattedDistance = c.ToString("F2");
+
+				var durMin = eventData["durMin"].ToString() == "" ? 0 : int.Parse(eventData["durMin"].ToString());
+				var durHrs = eventData["durHrs"].ToString() == "" ? 0 : int.Parse(eventData["durHrs"].ToString());
+				var pHrs = durMin / 60;
+				durHrs = durHrs + pHrs;
+				durMin = durMin % 60;
+
+				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+				note += System.Environment.NewLine + "Planned HB : " + eventData["hb"].ToString() + System.Environment.NewLine +
+								"Planned TSS : " + eventData["tss"].ToString() + System.Environment.NewLine +
+								"Planned distance : " + formattedDistance + "KM" + System.Environment.NewLine +
+								"Duration : " + strDuration + System.Environment.NewLine;
+
+				//var structuredLocation = new EKStructuredLocation();
+				//structuredLocation.Title = "my location";
+				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
+
+				#region create event
+				ContentValues eventValues = new ContentValues();
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calID);
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.Title, title);
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.Description, note);
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtstart, GetDateTimeMS(startDate));
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtend, GetDateTimeMS(endDate));
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.EventTimezone, "UTC");
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.EventEndTimezone, "UTC");
+
+				var eventURI = this.Activity.ContentResolver.Insert(CalendarContract.Events.ContentUri, eventValues);
+				var eventID = long.Parse(eventURI.LastPathSegment);
+
+				ContentValues reminderValues = new ContentValues();
+				reminderValues.Clear();
+				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
+				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 45);
+				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60*12);
+				this.Activity.ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues);
+				#endregion
+			}
+
+
+		}
+		private void RegisterEvents()
+		{
+			
+			//long calID = 1;
+			//if (cursor.MoveToFirst())
+			//{
+			//	do
+			//	{
+			//		long id = cursor.GetLong(0);
+			//		String displayName = cursor.GetString(1);
+			//		if (displayName == "Nitro Calendar")
+			//			calID = id;
+			//	} while (cursor.MoveToNext());
+			//}
+
+		}
+
+		private void RemoveCalendar(long calID)
+		{
+			Android.Net.Uri.Builder builder1 = CalendarContract.Calendars.ContentUri.BuildUpon();
+			builder1.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, "Nitro Calendar");
+
+			String[] selArgs = new String[] { "Nitro Calendar" };
+			int deleted = this.Activity.ContentResolver.Delete(CalendarContract.Calendars.ContentUri, CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName + " =? ", selArgs);
+		}
+
+		long GetDateTimeMS(DateTime date)
 		{
 			Calendar c = Calendar.GetInstance(Java.Util.TimeZone.Default);
-
-			c.Set(Java.Util.CalendarField.DayOfMonth, day);
-			c.Set(Java.Util.CalendarField.HourOfDay, hr);
-			c.Set(Java.Util.CalendarField.Minute, min);
-			c.Set(Java.Util.CalendarField.Month, month);
-			c.Set(Java.Util.CalendarField.Year, yr);
+			c.Set(Java.Util.CalendarField.DayOfMonth, date.Day);
+			c.Set(Java.Util.CalendarField.HourOfDay, date.Hour);
+			c.Set(Java.Util.CalendarField.Minute, date.Minute);
+			c.Set(Java.Util.CalendarField.Month, (date.Month-1));
+			c.Set(Java.Util.CalendarField.Year, date.Year);
 
 			return c.TimeInMillis;
 		}
+
+		//public NSDate ConvertDateTimeToNSDate(DateTime date)
+		//{
+		//	DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
+		//		new DateTime(2001, 1, 1, 0, 0, 0));
+		//	return NSDate.FromTimeIntervalSinceReferenceDate(
+		//		(date - newDate).TotalSeconds);
+		//}
     }
 }
 //end by Afroz date 31/8/2016
