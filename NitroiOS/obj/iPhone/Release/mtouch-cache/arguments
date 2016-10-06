@@ -1,6 +1,6 @@
-# Version: 10.0.1.8 (cycle8-sr0-xi: 3983064)
-# [first argument, ignore] # /Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.1.8/lib/mtouch/mtouch.exe
-/Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.1.8/lib/mtouch/mtouch.exe \
+# Version: 10.0.1.10 (cycle8-sr0-xi: ad1cd42)
+# [first argument, ignore] # /Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.1.10/lib/mtouch/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/10.0.1.10/lib/mtouch/mtouch.exe \
 	--cache \
 	/Users/mobileexport/Desktop/nitroAndrod5004/NitroiOS/obj/iPhone/Release/mtouch-cache \
 	--dev \

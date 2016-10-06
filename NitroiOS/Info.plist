@@ -56,8 +56,14 @@
 	<key>CFBundleShortVersionString</key>
 	<string>3.3</string>
 	<key>CFBundleVersion</key>
-	<string>3.3.25</string>
+	<string>3.3.27</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Go-heja application will access your calendar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a Profile Photo and Workout Images</string>
+	<key>Custom Property</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Take a Profile Photo and Workout Images from Camera Roll</string>
 </dict>
 </plist>

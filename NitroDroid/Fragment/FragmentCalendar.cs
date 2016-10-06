@@ -24,6 +24,8 @@ namespace goheja
 {
     public class FragmentCalendar : Android.Support.V4.App.Fragment
     {
+		private static Intent serviceIntent = null;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,6 +36,12 @@ namespace goheja
         {
             var view = inflater.Inflate(Resource.Layout.calendar, container, false);
             var webView = view.FindViewById<WebView>(Resource.Id.webViewCalen);
+
+			if (serviceIntent == null)
+			{
+				serviceIntent = new Intent(this.Activity, typeof(BackgroundService));
+				this.Activity.StartService(serviceIntent);
+			}
            
             webView.Settings.JavaScriptEnabled = true;
             webView.Settings.AllowContentAccess = true;
@@ -53,7 +61,7 @@ namespace goheja
 				trackSvc.Service1 meServ = new trackSvc.Service1();
 				meServ = new trackSvc.Service1();
 
-				nickName = "efrendsen";
+				//nickName = "efrendsen";
 				var pastEvents = meServ.getUserCalendarPast(nickName);
 				var todayEvents = meServ.getUserCalendarToday(nickName);
 				var futureEvents = meServ.getUserCalendarFuture(nickName);

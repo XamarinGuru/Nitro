@@ -20,6 +20,7 @@ namespace goheja
     [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : Activity
     {
+		
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
         ConnectivityManager connectivityManager;
         private NotificationManager notificationManager;

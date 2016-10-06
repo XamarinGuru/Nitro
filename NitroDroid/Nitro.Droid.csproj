@@ -98,6 +98,7 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="BackgroundService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />

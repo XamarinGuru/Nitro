@@ -21,6 +21,8 @@ namespace location2
 
 		private nint bgThread = -1;
 
+		private string username;
+
 		public override UIWindow Window {
 			get;
 			set;
@@ -70,11 +72,12 @@ namespace location2
 
 		private async Task UpdateCalendar()
 		{
-			var username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
+			username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
 
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
+			//username = "efrendsen";
 			var pastEvents = meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
@@ -106,16 +109,19 @@ namespace location2
 				{
 					if (calendar.Title == "Nitro Events")
 					{
+						nitroCalendar = calendar;
+
 						EKCalendar[] calendarArray = new EKCalendar[1];
 						calendarArray[0] = calendar;
 						NSPredicate pEvents = App.Current.EventStore.PredicateForEvents(NSDate.Now.AddSeconds(-(3600 * 10000)), NSDate.Now.AddSeconds(3600 * 10000), calendarArray);
 						EKEvent[] allEvents = App.Current.EventStore.EventsMatching(pEvents);
+						if (allEvents == null)
+							continue;
 						foreach (var pEvent in allEvents)
 						{
 							NSError pE;
 							App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
-						App.Current.EventStore.RemoveCalendar(calendar, true, out error);
 					}
 				}
 
@@ -222,9 +228,9 @@ namespace location2
 				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
 
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
-				var strDate = String.Format("{0:dd-mm-yyyy hh:mm:ss}", startDate);
+				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate;
+				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
 				//new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
 				var uri = new Uri(encodedEventURL);
 
