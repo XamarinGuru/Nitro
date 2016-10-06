@@ -1884,7 +1884,7 @@ location2_AppDelegate__DidEnterBackgroundm__1:
 .word 0xf9400ba0
 .word 0xeb1f001f
 .word 0x10000011
-.word 0x54000700
+.word 0x540006e0
 
 adrp x16, mono_aot_Nitro_got@PAGE+0
 add x16, x16, mono_aot_Nitro_got@PAGEOFF
@@ -1926,8 +1926,7 @@ bl _p_79
 .word 0x910063a0
 .word 0xf90017a0
 .word 0xd280001e
-.word 0xf2c4001e
-.word 0xf2e8159e
+.word 0xf2e809de
 .word 0x9e6703c0
 bl _p_79
 .word 0xf94017be
@@ -82625,7 +82624,7 @@ runtime_version:
 .section __TEXT, __const
 	.align 2
 assembly_guid:
-	.asciz "20492565-3D2B-40AF-B6BF-79FD484AEAEF"
+	.asciz "900756E1-38CE-493F-8139-459102C6244B"
 .section __TEXT, __const
 	.align 2
 assembly_name:
@@ -82708,7 +82707,7 @@ _mono_aot_file_info:
 	.long 2344,0,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0
-	.byte 183,107,245,213,51,88,79,72,232,211,51,110,252,60,97,140
+	.byte 187,203,147,141,118,115,220,174,75,124,110,218,95,196,221,137
 	.globl _mono_aot_module_Nitro_info
 	.align 3
 _mono_aot_module_Nitro_info:

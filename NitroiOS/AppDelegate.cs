@@ -60,7 +60,7 @@ namespace location2
 				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
 				new Task(() =>
 				{
-					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(3600));
+					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60));
 				}).Start();
 			}
 		}

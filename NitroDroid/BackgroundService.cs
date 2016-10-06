@@ -36,6 +36,7 @@ namespace goheja
 	[Service]
 	public class BackgroundService : Service
 	{
+		private string userName;
 		System.Threading.Timer _timer;
 
 		[Android.Runtime.Register("onStart", "(Landroid/content/Intent;I)V", "GetOnStart_Landroid_content_Intent_IHandler")]
@@ -76,10 +77,13 @@ namespace goheja
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new trackSvc.Service1();
 
-			//var nickName = "efrendsen";
-			var pastEvents = meServ.getUserCalendarPast(nickName);
-			var todayEvents = meServ.getUserCalendarToday(nickName);
-			var futureEvents = meServ.getUserCalendarFuture(nickName);
+			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+			userName = contextPref.GetString("storedUserName", "");
+			//userName = "efrendsen";
+
+			var pastEvents = meServ.getUserCalendarPast(userName);
+			var todayEvents = meServ.getUserCalendarToday(userName);
+			var futureEvents = meServ.getUserCalendarFuture(userName);
 
 			AddEvents(pastEvents, todayEvents, futureEvents);
 
@@ -184,9 +188,14 @@ namespace goheja
 								"Planned distance : " + formattedDistance + "KM" + System.Environment.NewLine +
 								"Duration : " + strDuration + System.Environment.NewLine;
 
-				//var structuredLocation = new EKStructuredLocation();
-				//structuredLocation.Title = "my location";
-				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
+				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+
+				//var urlDate = newEvent.StartDate;
+				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
+				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
+				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + userName;
+
+				note += System.Environment.NewLine + encodedEventURL;
 
 				#region create event
 				ContentValues eventValues = new ContentValues();
