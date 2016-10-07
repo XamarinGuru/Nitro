@@ -227,14 +227,32 @@ namespace location2
 				//structuredLocation.Title = "my location";
 				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
 
+				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				//var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
+				//var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
+				//var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
+				////new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
+				//var uri = new Uri(encodedEventURL);
+
+				//newEvent.Url = uri;
+
+
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+
+				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
 				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
-				//new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
-				var uri = new Uri(encodedEventURL);
 
-				newEvent.Url = uri;
+				//var escapedBundlePath = Uri.EscapeUriString(NSBundle.MainBundle.BundlePath);
+				var xxx = System.Web.HttpUtility.UrlEncode(encodedEventURL);
+				//var myUrl = "Path/To/File/Test.html?var1=hello&var2=world";
+				//var nsUrl = new NSUrl(Path.Combine(escapedBundlePath, encodedEventURL));
+
+				//new UIAlertView("encoded date", encodedEventURL, null, "ok", null).Show();
+				//var uri = new Uri(encodedEventURL);
+
+				newEvent.Url = new NSUrl(xxx); ;
 
 				EKAlarm[] alarmsArray = new EKAlarm[2];
 				alarmsArray[0] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 45)));

@@ -1,5 +1,6 @@
 using Foundation;
 using System;
+using System.IO;
 using UIKit;
 using EventKit;
 
@@ -242,11 +243,17 @@ namespace location2
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + userName;
-				//new UIAlertView("encoded date", startDate + "===" + strDate + "===" + encodedDate, null, "ok", null).Show();
-				var uri = new Uri(encodedEventURL);
+				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + "test event" + "&startdate=" + encodedDate + "&user=" + userName;
 
-				newEvent.Url = uri;
+				//var escapedBundlePath = Uri.EscapeUriString(NSBundle.MainBundle.BundlePath);
+				var xxx = System.Web.HttpUtility.UrlEncode(encodedEventURL);
+				//var myUrl = "Path/To/File/Test.html?var1=hello&var2=world";
+				//var nsUrl = new NSUrl(Path.Combine(escapedBundlePath, encodedEventURL));
+
+				//new UIAlertView("encoded date", encodedEventURL, null, "ok", null).Show();
+				//var uri = new Uri(encodedEventURL);
+
+				newEvent.Url = new NSUrl(xxx);
 
 				EKAlarm[] alarmsArray = new EKAlarm[2];
 				alarmsArray[0] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 45)));

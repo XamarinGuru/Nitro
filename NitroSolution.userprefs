@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/UIcalendar.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="NitroDroid/BackgroundService.cs" Line="82" Column="6" />
-      <File FileName="NitroiOS/UIcalendar.cs" Line="245" Column="141" />
+      <File FileName="NitroiOS/UIcalendar.cs" Line="256" Column="35" />
       <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="54" Column="75" />
       <File FileName="NitroiOS/Info.plist" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="63" Column="100" />
+      <File FileName="NitroiOS/AppDelegate.cs" Line="245" Column="88" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="71" column="1" />
