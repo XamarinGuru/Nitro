@@ -79,7 +79,7 @@ namespace goheja
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			//userName = "efrendsen";
+			userName = "efrendsen";
 
 			var pastEvents = meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);
@@ -169,8 +169,9 @@ namespace goheja
 					note += arryEventDes[i].ToString() + System.Environment.NewLine;
 				}
 
+
 				var strDistance = eventData["distance"].ToString();
-				var floatDistance = float.Parse(strDistance);
+				float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
@@ -210,12 +211,17 @@ namespace goheja
 				var eventURI = ContentResolver.Insert(CalendarContract.Events.ContentUri, eventValues);
 				var eventID = long.Parse(eventURI.LastPathSegment);
 
-				ContentValues reminderValues = new ContentValues();
-				reminderValues.Clear();
-				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
-				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 45);
-				reminderValues.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 12);
-				ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues);
+				ContentValues reminderValues1 = new ContentValues();
+				reminderValues1.Clear();
+				reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
+				reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 45);
+				ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues1);
+
+				ContentValues reminderValues2 = new ContentValues();
+				reminderValues2.Clear();
+				reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
+				reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 12);
+				ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues2);
 				#endregion
 			}
 
