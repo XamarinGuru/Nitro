@@ -120,7 +120,8 @@ namespace location2
 						foreach (var pEvent in allEvents)
 						{
 							NSError pE;
-							App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
+							if (pEvent.StartDate.Compare(NSDate.Now) > NSComparisonResult.Ascending)
+								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
 					}
 				}
@@ -158,7 +159,7 @@ namespace location2
 
 
 				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
-				AddEventsToNitroCalendar(nitroCalendar, pastEvents);
+				//AddEventsToNitroCalendar(nitroCalendar, pastEvents);
 				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
 				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
 			}
