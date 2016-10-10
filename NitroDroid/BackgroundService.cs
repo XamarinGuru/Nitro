@@ -10,19 +10,13 @@ using Android.Content.Res;
 using Android.Preferences;
 using System.IO;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Webkit;
-using Android.Widget;
 
 using Android.Provider;
 
@@ -79,7 +73,7 @@ namespace goheja
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			userName = "efrendsen";
+			//userName = "efrendsen";
 
 			var pastEvents = meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);
@@ -191,7 +185,6 @@ namespace goheja
 
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
-				//var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
 				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + userName;
@@ -207,21 +200,33 @@ namespace goheja
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtend, GetDateTimeMS(endDate));
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.EventTimezone, "UTC");
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.EventEndTimezone, "UTC");
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.HasAlarm, 1);
 
 				var eventURI = ContentResolver.Insert(CalendarContract.Events.ContentUri, eventValues);
 				var eventID = long.Parse(eventURI.LastPathSegment);
 
-				ContentValues reminderValues1 = new ContentValues();
-				reminderValues1.Clear();
-				reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
-				reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 45);
-				ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues1);
+				var deltaMin = (startDate - DateTime.Now).TotalMinutes;
 
-				ContentValues reminderValues2 = new ContentValues();
-				reminderValues2.Clear();
-				reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
-				reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 12);
-				ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues2);
+				if (deltaMin > 45)
+				{
+					ContentValues reminderValues1 = new ContentValues();
+					reminderValues1.Clear();
+					reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
+					reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 45);
+					reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.Method, 1);
+					ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues1);
+
+					if (deltaMin > (12 * 60))
+					{
+						ContentValues reminderValues2 = new ContentValues();
+						reminderValues2.Clear();
+						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
+						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 12);
+						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Method, 1);
+						ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues2);
+					}
+				}
+
 				#endregion
 			}
 

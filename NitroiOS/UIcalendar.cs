@@ -82,7 +82,7 @@ namespace location2
 
 					userName = athData[4].ToString();
 
-					//userName = "efrendsen";
+					//userName = "Arilon";
 					var pastEvents = meServ.getUserCalendarPast(userName);
 					var todayEvents = meServ.getUserCalendarToday(userName);
 					var futureEvents = meServ.getUserCalendarFuture(userName);
@@ -216,7 +216,7 @@ namespace location2
 				}
 
 				var strDistance = eventData["distance"].ToString();
-				var floatDistance = float.Parse(strDistance);
+				var floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");

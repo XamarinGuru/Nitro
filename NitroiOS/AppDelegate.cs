@@ -60,7 +60,7 @@ namespace location2
 				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
 				new Task(() =>
 				{
-					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60));
+					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*30));
 				}).Start();
 			}
 		}
@@ -77,7 +77,7 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "efrendsen";
+			//username = "Arilon";
 			var pastEvents = meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
@@ -205,7 +205,7 @@ namespace location2
 				}
 
 				var strDistance = eventData["distance"].ToString();
-				var floatDistance = float.Parse(strDistance);
+				var floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
