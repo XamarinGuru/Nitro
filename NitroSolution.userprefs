@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/BackgroundService.cs">
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/AppDelegate.cs">
     <Files>
-      <File FileName="NitroDroid/BackgroundService.cs" Line="294" Column="37" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="116" Column="145" />
+      <File FileName="NitroDroid/BackgroundService.cs" Line="76" Column="6" />
+      <File FileName="NitroiOS/AppDelegate.cs" Line="125" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -17,6 +17,6 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e3a63e27895990e050d9caa50e096205978b93e7" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.046BA3A2-4119-4DF3-AA3F-E47805813690" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
 </Properties>

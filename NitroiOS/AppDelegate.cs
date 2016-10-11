@@ -120,7 +120,7 @@ namespace location2
 						foreach (var pEvent in allEvents)
 						{
 							NSError pE;
-							if (pEvent.StartDate.Compare(NSDate.Now) > NSComparisonResult.Ascending)
+							if (pEvent.StartDate.Compare(NSDate.Now) == NSComparisonResult.Descending)
 								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
 					}
