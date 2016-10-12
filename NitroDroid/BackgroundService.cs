@@ -58,7 +58,7 @@ namespace goheja
 			{
 				Log.Debug("Notifications", "hello from simple service");
 				FireNotification();
-			}, null, 0, 1000 * 60 * 30);
+			}, null, 0, 1000 * 60 * 60 * 10);
 		}
 
 		public override Android.OS.IBinder OnBind(Android.Content.Intent intent)

@@ -54,9 +54,9 @@
 	<key>CFBundleName</key>
 	<string>Nitro</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.4</string>
+	<string>3.5</string>
 	<key>CFBundleVersion</key>
-	<string>3.41</string>
+	<string>3.5</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Go-heja application will access your calendar</string>
 	<key>NSCameraUsageDescription</key>
