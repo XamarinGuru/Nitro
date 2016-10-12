@@ -58,7 +58,7 @@ namespace goheja
 			{
 				Log.Debug("Notifications", "hello from simple service");
 				FireNotification();
-			}, null, 0, 1000 * 60 * 60 * 10);
+			}, null, 0, 1000 * 60 * 30);
 		}
 
 		public override Android.OS.IBinder OnBind(Android.Content.Intent intent)
@@ -257,11 +257,11 @@ namespace goheja
 					reminderValues1.Put(CalendarContract.Reminders.InterfaceConsts.Method, 1);
 					ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues1);
 
-					if (deltaMin > (12 * 60))
+					if (deltaMin > (10 * 60))
 					{
 						ContentValues reminderValues2 = new ContentValues();
 						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.EventId, eventID);
-						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 12);
+						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Minutes, 60 * 10);
 						reminderValues2.Put(CalendarContract.Reminders.InterfaceConsts.Method, 1);
 						ContentResolver.Insert(CalendarContract.Reminders.ContentUri, reminderValues2);
 					}
