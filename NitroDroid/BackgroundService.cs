@@ -73,9 +73,9 @@ namespace goheja
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			//userName = "LimorRA";
+			userName = "Inna";
 
-			var pastEvents = meServ.getUserCalendarPast(userName);
+			var pastEvents = "";// meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);
 			var futureEvents = meServ.getUserCalendarFuture(userName);
 
@@ -103,6 +103,7 @@ namespace goheja
 					long id = cursor.GetLong(0);
 					String displayName = cursor.GetString(1);
 					if (displayName == "Nitro Calendar")
+						//RemoveCalendar(id);
 						calID = id;
 				} while (cursor.MoveToNext());
 			}
@@ -151,8 +152,9 @@ namespace goheja
 			   , CalendarContract.Events.InterfaceConsts.Dtstart
 			   , CalendarContract.Events.InterfaceConsts.Dtend
 			};
-
-			var startString = GetDateTimeMS(DateTime.Now).ToString();
+			DateTime now = DateTime.Now;
+			DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
+			var startString = GetDateTimeMS(startNow).ToString();
 			var endString = GetDateTimeMS(DateTime.Now.AddYears(5)).ToString();
 			var selection = "((dtstart >= ?) AND (dtend <= ?) AND (calendar_id = ?))";
 			var selectionArgs = new string[] { startString, endString, calID.ToString() };
@@ -189,13 +191,15 @@ namespace goheja
 				var startDate = Convert.ToDateTime(eventData["start"].ToString());//DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
 				var endDate = Convert.ToDateTime(eventData["end"].ToString());
 
+				//var deltaSec = (startDate - DateTime.Now).TotalSeconds;
+				//if (deltaSec < 0)
+				//	continue;
+
 				var title = eventData["title"].ToString();
 
 				string eventDescription = eventData["eventData"].ToString();
 
 				var filteredDescription = RemoveHTMLTag(eventDescription);
-				//eventDescription = eventDescription.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
-				//eventDescription = eventDescription.Replace("</textarea><br/>", "");
 
 				string[] arryEventDes = filteredDescription.Split(new char[] { '~' });
 
@@ -247,8 +251,8 @@ namespace goheja
 				var eventURI = ContentResolver.Insert(CalendarContract.Events.ContentUri, eventValues);
 				var eventID = long.Parse(eventURI.LastPathSegment);
 
-				var deltaMin = (startDate - DateTime.Now).TotalMinutes;
 
+				var deltaMin = (startDate - DateTime.Now).TotalMinutes;
 				if (deltaMin > 45)
 				{
 					ContentValues reminderValues1 = new ContentValues();

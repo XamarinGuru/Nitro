@@ -1,8 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
@@ -12,12 +9,8 @@ using Android.Views;
 using Android.Widget;
 using System.IO;
 using Android.Graphics;
-using Android.Graphics.Drawables;
-using Java.IO;
 
-
-
-
+using Android.Provider;
 
 
 //by Afroz date 31/8/2016
@@ -57,6 +50,7 @@ namespace goheja
 			tvPassword = view.FindViewById<TextView>(Resource.Id.etPassword);
             seriousBtn = view.FindViewById<Button>(Resource.Id.seriousBtn);
             view.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
+			view.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
 
             meImage = view.FindViewById<ImageView>(Resource.Id.ivTest);
             setBitmapImg();
@@ -92,6 +86,44 @@ namespace goheja
             activity2go.PutExtra("MyData", "Data from Activity1");
             StartActivity(activity2go);
         }
+
+		#region remove existing Nitro calendar
+		private void resetCalBtn__OnClick(object sender, EventArgs e)
+		{
+
+			var calendarsUri = CalendarContract.Calendars.ContentUri;
+
+			string[] calendarsProjection = {
+			   CalendarContract.Calendars.InterfaceConsts.Id,
+			   CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
+			   CalendarContract.Calendars.InterfaceConsts.AccountName
+			};
+
+			var cursor = this.Activity.ApplicationContext.ContentResolver.Query(calendarsUri, calendarsProjection, null, null, null);
+
+
+			if (cursor.MoveToFirst())
+			{
+				do
+				{
+					long id = cursor.GetLong(0);
+					String displayName = cursor.GetString(1);
+					if (displayName == "Nitro Calendar")
+						RemoveCalendar(id);
+				} while (cursor.MoveToNext());
+			}
+
+		}
+
+		private void RemoveCalendar(long calID)
+		{
+			Android.Net.Uri.Builder builder1 = CalendarContract.Calendars.ContentUri.BuildUpon();
+			builder1.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, "Nitro Calendar");
+
+			String[] selArgs = new String[] { "Nitro Calendar" };
+			int deleted = this.Activity.ContentResolver.Delete(CalendarContract.Calendars.ContentUri, CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName + " =? ", selArgs);
+		}
+		#endregion
 
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {

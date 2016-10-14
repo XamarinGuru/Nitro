@@ -1,8 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
@@ -12,14 +9,6 @@ using Android.Views;
 using Android.Widget;
 using System.IO;
 using Android.Graphics;
-using Android.Graphics.Drawables;
-using Java.IO;
-
-
-
-
-
-
 
 namespace goheja
 {
@@ -37,6 +26,7 @@ namespace goheja
 		Button btnSave;
 		Bitmap serverImg;	
 		Button seriousBtn;
+
 		byte[] bitmapByteData = { 0 };
 
 		protected override void OnCreate (Bundle savedInstanceState)
@@ -53,7 +43,8 @@ namespace goheja
 			tvPhone = FindViewById<TextView> (Resource.Id.etPhone);
 			tvPassword = FindViewById<TextView>(Resource.Id.etPassword);
 			seriousBtn=FindViewById<Button> (Resource.Id.seriousBtn);
-			FindViewById<Button> (Resource.Id.seriousBtn).Click+=seriousBtn__OnClick;
+			FindViewById<Button>(Resource.Id.seriousBtn).Click+=seriousBtn__OnClick;
+
 
 
 			//imageBtn = FindViewById<Button> (Resource.Id.imageBtn);
@@ -105,6 +96,8 @@ namespace goheja
 			var intent = new Intent (Intent.ActionView, uri);
 			StartActivity (intent);*/
 		}
+
+
 
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{

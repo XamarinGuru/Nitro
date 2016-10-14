@@ -234,14 +234,14 @@ namespace goheja
 			// aapt resource value: 0x7f060003
 			public const int ActionBar = 2131099651;
 			
+			// aapt resource value: 0x7f06004f
+			public const int ActionBarLeft = 2131099727;
+			
 			// aapt resource value: 0x7f06004e
-			public const int ActionBarLeft = 2131099726;
+			public const int ActionBarMain = 2131099726;
 			
-			// aapt resource value: 0x7f06004d
-			public const int ActionBarMain = 2131099725;
-			
-			// aapt resource value: 0x7f060050
-			public const int ActionBarRight = 2131099728;
+			// aapt resource value: 0x7f060051
+			public const int ActionBarRight = 2131099729;
 			
 			// aapt resource value: 0x7f060006
 			public const int ImageView1 = 2131099654;
@@ -258,29 +258,29 @@ namespace goheja
 			// aapt resource value: 0x7f060029
 			public const int StartPractice = 2131099689;
 			
-			// aapt resource value: 0x7f060051
-			public const int Tab1Icon = 2131099729;
+			// aapt resource value: 0x7f060052
+			public const int Tab1Icon = 2131099730;
 			
-			// aapt resource value: 0x7f060054
-			public const int Tab2Icon = 2131099732;
-			
-			// aapt resource value: 0x7f060057
-			public const int Tab3Icon = 2131099735;
-			
-			// aapt resource value: 0x7f060053
-			public const int TabStrip1 = 2131099731;
-			
-			// aapt resource value: 0x7f060056
-			public const int TabStrip2 = 2131099734;
+			// aapt resource value: 0x7f060055
+			public const int Tab2Icon = 2131099733;
 			
 			// aapt resource value: 0x7f060058
-			public const int TabStrip3 = 2131099736;
+			public const int Tab3Icon = 2131099736;
+			
+			// aapt resource value: 0x7f060054
+			public const int TabStrip1 = 2131099732;
+			
+			// aapt resource value: 0x7f060057
+			public const int TabStrip2 = 2131099735;
+			
+			// aapt resource value: 0x7f060059
+			public const int TabStrip3 = 2131099737;
 			
 			// aapt resource value: 0x7f060005
 			public const int TitleBarText = 2131099653;
 			
-			// aapt resource value: 0x7f06004f
-			public const int TitleBarTextMain = 2131099727;
+			// aapt resource value: 0x7f060050
+			public const int TitleBarTextMain = 2131099728;
 			
 			// aapt resource value: 0x7f060009
 			public const int age = 2131099657;
@@ -420,8 +420,8 @@ namespace goheja
 			// aapt resource value: 0x7f06000b
 			public const int note = 2131099659;
 			
-			// aapt resource value: 0x7f060059
-			public const int pager = 2131099737;
+			// aapt resource value: 0x7f06005a
+			public const int pager = 2131099738;
 			
 			// aapt resource value: 0x7f060044
 			public const int perImage = 2131099716;
@@ -431,6 +431,9 @@ namespace goheja
 			
 			// aapt resource value: 0x7f060048
 			public const int relativeLayout1 = 2131099720;
+			
+			// aapt resource value: 0x7f06004c
+			public const int resetCalBtn = 2131099724;
 			
 			// aapt resource value: 0x7f06004b
 			public const int seriousBtn = 2131099723;
@@ -480,11 +483,11 @@ namespace goheja
 			// aapt resource value: 0x7f060025
 			public const int tvWatt = 2131099685;
 			
-			// aapt resource value: 0x7f060052
-			public const int vertical1 = 2131099730;
+			// aapt resource value: 0x7f060053
+			public const int vertical1 = 2131099731;
 			
-			// aapt resource value: 0x7f060055
-			public const int vertical2 = 2131099733;
+			// aapt resource value: 0x7f060056
+			public const int vertical2 = 2131099734;
 			
 			// aapt resource value: 0x7f060032
 			public const int watchDevider = 2131099698;
@@ -492,8 +495,8 @@ namespace goheja
 			// aapt resource value: 0x7f060000
 			public const int webViewCalen = 2131099648;
 			
-			// aapt resource value: 0x7f06004c
-			public const int webViewProfile = 2131099724;
+			// aapt resource value: 0x7f06004d
+			public const int webViewProfile = 2131099725;
 			
 			// aapt resource value: 0x7f060034
 			public const int whatItLabel = 2131099700;
