@@ -1,13 +1,7 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/personalData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/BackgroundService.cs">
     <Files>
-      <File FileName="NitroDroid/BackgroundService.cs" Line="289" Column="4" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="58" Column="2" />
-      <File FileName="NitroiOS/Info.plist" />
-      <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/MainActivity.cs" Line="129" Column="1" />
-      <File FileName="NitroDroid/personalData.cs" Line="126" Column="1" />
-      <File FileName="NitroDroid/Fragment/FragmentPersonalData.cs" Line="1" Column="1" />
+      <File FileName="NitroDroid/BackgroundService.cs" Line="113" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +12,7 @@
               <Node name="Resources" expanded="True">
                 <Node name="layout" expanded="True" />
               </Node>
-              <Node name="personalData.cs" selected="True" />
+              <Node name="BackgroundService.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -31,14 +25,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="85" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="58" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="61" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="65" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="62" column="1" />
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/calen.cs" line="19" column="1" />
       <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/Fragment/FragmentCalendar.cs" line="66" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="127" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="111" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="88" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/Fragment/FragmentPersonalData.cs" line="94" column="1" />
+      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/Fragment/FragmentPersonalData.cs" line="112" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
