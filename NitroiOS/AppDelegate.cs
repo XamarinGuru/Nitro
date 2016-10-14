@@ -77,8 +77,8 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "Arilon";
-			var pastEvents = meServ.getUserCalendarPast(username);
+			//username = "Inna";
+			var pastEvents = "";//meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
 
@@ -120,7 +120,10 @@ namespace location2
 						foreach (var pEvent in allEvents)
 						{
 							NSError pE;
-							if (pEvent.StartDate.Compare(NSDate.Now) == NSComparisonResult.Descending)
+							DateTime now = DateTime.Now;
+							DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
+							var startString = ConvertDateTimeToNSDate(startNow);
+							if (pEvent.StartDate.Compare(startString) == NSComparisonResult.Descending)
 								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
 					}

@@ -83,7 +83,7 @@ namespace location2
 					userName = athData[4].ToString();
 
 					//userName = "Arilon";
-					var pastEvents = meServ.getUserCalendarPast(userName);
+					var pastEvents = "";//meServ.getUserCalendarPast(userName);
 					var todayEvents = meServ.getUserCalendarToday(userName);
 					var futureEvents = meServ.getUserCalendarFuture(userName);
 
@@ -130,9 +130,12 @@ namespace location2
 						foreach (var pEvent in allEvents)
 						{
 							NSError pE;
-							App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
+							DateTime now = DateTime.Now;
+							DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
+							var startString = ConvertDateTimeToNSDate(startNow);
+							if (pEvent.StartDate.Compare(startString) == NSComparisonResult.Descending)
+								App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
-
 					}
 				}
 

@@ -74,6 +74,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void MeImgBtn_TouchUpInside (UIKit.UIButton sender);
 
+        [Action ("removeNitroEvents:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void removeNitroEvents (UIKit.UIButton sender);
+
         [Action ("SeriuosBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void SeriuosBtn_TouchUpInside (UIKit.UIButton sender);

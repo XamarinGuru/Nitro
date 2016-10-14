@@ -5,7 +5,7 @@ using UIKit;
 using System.Drawing;
 using System.IO;
 
-
+using EventKit;
 
 namespace location2	
 {
@@ -266,6 +266,19 @@ namespace location2
 			catch 
 			{
 				return null;
+			}
+		}
+
+		partial void removeNitroEvents(UIButton sender)
+		{
+			var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
+			foreach (var calendar in calendars)
+			{
+				if (calendar.Title == "Nitro Events")
+				{
+					NSError pE;
+					App.Current.EventStore.RemoveCalendar(calendar, true, out pE);
+				}
 			}
 		}
 
