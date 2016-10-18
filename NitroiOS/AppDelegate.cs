@@ -60,7 +60,7 @@ namespace location2
 				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
 				new Task(() =>
 				{
-					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*30));
+					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*1));
 				}).Start();
 			}
 		}
@@ -77,7 +77,7 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			username = "droidusername";
+			//username = "droidusername";
 			var pastEvents = "";//meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
@@ -123,6 +123,7 @@ namespace location2
 							DateTime now = DateTime.Now;
 							DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
 							var startString = ConvertDateTimeToNSDate(startNow);
+							var tmp = pEvent.StartDate.Compare(startString);
 							if (pEvent.StartDate.Compare(startString) == NSComparisonResult.Descending)
 								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
@@ -189,10 +190,8 @@ namespace location2
 
 				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-				var startDate1 = Convert.ToDateTime(eventData["start"].ToString());
-				var startDate = startDate1.AddMinutes(-60);
-				var endDate1 = Convert.ToDateTime(eventData["end"].ToString());
-				var endDate = endDate1.AddMinutes(-60);
+				var startDate = Convert.ToDateTime(eventData["start"].ToString());
+				var endDate = Convert.ToDateTime(eventData["end"].ToString());
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -201,9 +200,10 @@ namespace location2
 				if (deltaSec < 0)
 					continue;
 
-
-				newEvent.StartDate = ConvertDateTimeToNSDate(startDate);
-				newEvent.EndDate = ConvertDateTimeToNSDate(endDate);
+				var tmpStart = startDate.AddHours(-1);
+				newEvent.StartDate = ConvertDateTimeToNSDate(tmpStart);
+				var tmpEnd = endDate.AddHours(-1);
+				newEvent.EndDate = ConvertDateTimeToNSDate(tmpEnd);
 				newEvent.Title = eventData["title"].ToString();
 
 				string eventDescription = eventData["eventData"].ToString();
@@ -236,6 +236,20 @@ namespace location2
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
+				//var structuredLocation = new EKStructuredLocation();
+				//structuredLocation.Title = "my location";
+				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
+
+				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				//var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
+				//var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
+				//var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
+				////new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
+				//var uri = new Uri(encodedEventURL);
+
+				//newEvent.Url = uri;
+
+
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
 				var urlDate = newEvent.StartDate;
@@ -245,6 +259,11 @@ namespace location2
 
 				//var escapedBundlePath = Uri.EscapeUriString(NSBundle.MainBundle.BundlePath);
 				var xxx = System.Web.HttpUtility.UrlEncode(encodedEventURL);
+				//var myUrl = "Path/To/File/Test.html?var1=hello&var2=world";
+				//var nsUrl = new NSUrl(Path.Combine(escapedBundlePath, encodedEventURL));
+
+				//new UIAlertView("encoded date", encodedEventURL, null, "ok", null).Show();
+				//var uri = new Uri(encodedEventURL);
 
 				newEvent.Url = new NSUrl(xxx); ;
 
@@ -268,7 +287,7 @@ namespace location2
 				new DateTime(2001, 1, 1, 0, 0, 0));
 
 			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - newDate).TotalSeconds);
+				(date - newDate).TotalSeconds + 3600);
 		}
 
 		public override void WillEnterForeground (UIApplication application)
