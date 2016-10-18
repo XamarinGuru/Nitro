@@ -77,7 +77,7 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "Inna";
+			//username = "five";
 			var pastEvents = "";//meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
@@ -189,12 +189,21 @@ namespace location2
 
 				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-				var startDate = DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
-				var endDate = Convert.ToDateTime(eventData["end"].ToString());
+				var startDate1 = Convert.ToDateTime(eventData["start"].ToString());
+				var startDate = startDate1.AddMinutes(-60);
+				var endDate1 = Convert.ToDateTime(eventData["end"].ToString());
+				var endDate = endDate1.AddMinutes(-60);
 
-				//newEvent.AddAlarm(EKAlarm.FromDate(ConvertDateTimeToNSDate(startDate.AddMinutes(5))));
-				newEvent.StartDate = ConvertDateTimeToNSDate(startDate.AddMinutes(-60));
-				newEvent.EndDate = ConvertDateTimeToNSDate(endDate.AddMinutes(-60));
+				DateTime now = DateTime.Now;
+				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
+				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day);
+				var deltaSec = (startDay - startNow).TotalSeconds;
+				if (deltaSec < 0)
+					continue;
+
+
+				newEvent.StartDate = ConvertDateTimeToNSDate(startDate);
+				newEvent.EndDate = ConvertDateTimeToNSDate(endDate);
 				newEvent.Title = eventData["title"].ToString();
 
 				string eventDescription = eventData["eventData"].ToString();
@@ -227,20 +236,6 @@ namespace location2
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				//var structuredLocation = new EKStructuredLocation();
-				//structuredLocation.Title = "my location";
-				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
-
-				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
-				//var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
-				//var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				//var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
-				////new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
-				//var uri = new Uri(encodedEventURL);
-
-				//newEvent.Url = uri;
-
-
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
 				var urlDate = newEvent.StartDate;
@@ -250,11 +245,6 @@ namespace location2
 
 				//var escapedBundlePath = Uri.EscapeUriString(NSBundle.MainBundle.BundlePath);
 				var xxx = System.Web.HttpUtility.UrlEncode(encodedEventURL);
-				//var myUrl = "Path/To/File/Test.html?var1=hello&var2=world";
-				//var nsUrl = new NSUrl(Path.Combine(escapedBundlePath, encodedEventURL));
-
-				//new UIAlertView("encoded date", encodedEventURL, null, "ok", null).Show();
-				//var uri = new Uri(encodedEventURL);
 
 				newEvent.Url = new NSUrl(xxx); ;
 

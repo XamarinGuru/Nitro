@@ -58,7 +58,7 @@ namespace goheja
 			{
 				Log.Debug("Notifications", "hello from simple service");
 				FireNotification();
-			}, null, 0, 1000 * 60 * 30);
+			}, null, 0, 1000 * 60 * 1);
 		}
 
 		public override Android.OS.IBinder OnBind(Android.Content.Intent intent)
@@ -188,12 +188,17 @@ namespace goheja
 			{
 				var eventData = JObject.FromObject(eventJson);
 
-				var startDate = Convert.ToDateTime(eventData["start"].ToString());//DateTime.Parse(eventData["start"].ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);//Convert.ToDateTime(eventData["start"].ToString());
-				var endDate = Convert.ToDateTime(eventData["end"].ToString());
+				var startDate1 = Convert.ToDateTime(eventData["start"].ToString());
+				var startDate = startDate1.AddMinutes(-60);
+				var endDate1 = Convert.ToDateTime(eventData["end"].ToString());
+				var endDate = endDate1.AddMinutes(-60);
 
-				//var deltaSec = (startDate - DateTime.Now).TotalSeconds;
-				//if (deltaSec < 0)
-				//	continue;
+				DateTime now = DateTime.Now;
+				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
+				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day);
+				var deltaSec = (startDay - startNow).TotalSeconds;
+				if (deltaSec < 0)
+					continue;
 
 				var title = eventData["title"].ToString();
 
