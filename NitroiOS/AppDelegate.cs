@@ -77,7 +77,7 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "five";
+			username = "droidusername";
 			var pastEvents = "";//meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
