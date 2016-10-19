@@ -195,14 +195,14 @@ namespace location2
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
-				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day);
+				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day, (startDate.Hour - 1), startDate.Minute, startDate.Second);
 				var deltaSec = (startDay - startNow).TotalSeconds;
 				if (deltaSec < 0)
 					continue;
 
-				var tmpStart = startDate.AddHours(-1);
+				var tmpStart = startDate.AddHours(-2);
 				newEvent.StartDate = ConvertDateTimeToNSDate(tmpStart);
-				var tmpEnd = endDate.AddHours(-1);
+				var tmpEnd = endDate.AddHours(-2);
 				newEvent.EndDate = ConvertDateTimeToNSDate(tmpEnd);
 				newEvent.Title = eventData["title"].ToString();
 

@@ -73,7 +73,7 @@ namespace goheja
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			//userName = "Inna";
+			//userName = "five";
 
 			var pastEvents = "";// meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);
@@ -188,10 +188,8 @@ namespace goheja
 			{
 				var eventData = JObject.FromObject(eventJson);
 
-				var startDate1 = Convert.ToDateTime(eventData["start"].ToString());
-				var startDate = startDate1.AddMinutes(-60);
-				var endDate1 = Convert.ToDateTime(eventData["end"].ToString());
-				var endDate = endDate1.AddMinutes(-60);
+				var startDate = Convert.ToDateTime(eventData["start"].ToString());
+				var endDate = Convert.ToDateTime(eventData["end"].ToString());
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
