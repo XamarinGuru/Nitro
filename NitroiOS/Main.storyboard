@@ -879,7 +879,7 @@
                                     <action selector="SeriuosBtn_TouchUpInside:" destination="1370" eventType="touchUpInside" id="1630"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spR-3b-ycH">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spR-3b-ycH" hidden="YES">
                                 <rect key="frame" x="58" y="617" width="258" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Remove nitro events in calendar">
@@ -1230,6 +1230,60 @@
         <image name="user_icon.png" width="40" height="35"/>
         <image name="user_icon_act.png" width="40" height="35"/>
         <image name="watt_new.png" width="29" height="62"/>
+        <image name="speed.png" width="313" height="313"/>
+        <image name="dist.png" width="313" height="313"/>
+        <image name="mont.png" width="313" height="313"/>
+        <image name="watt.png" width="313" height="313"/>
+        <image name="heart.png" width="313" height="313"/>
+        <image name="btn_go.png" width="313" height="313"/>
+        <image name="pauseBtn.png" width="313" height="313"/>
+        <image name="resume.png" width="313" height="313"/>
+        <image name="stop.png" width="313" height="313"/>
+        <image name="min.png" width="311" height="305"/>
+        <image name="plu.png" width="311" height="305"/>
+        <image name="watch.png" width="313" height="313"/>
+        <image name="calen.png" width="313" height="313"/>
+        <image name="bikeRound.png" width="271" height="274"/>
+        <image name="edit.png" width="15" height="15"/>
+        <image name="ninja3.png" width="350" height="305"/>
+        <image name="ninja5.png" width="373" height="322"/>
+        <image name="pen.png" width="200" height="200"/>
+        <image name="roundNin.png" width="300" height="300"/>
+        <image name="icon.png" width="512" height="512"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="Icon-72.png" width="72" height="72"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="go-heja100.png" width="100" height="100"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="nitrosplash1.png" width="258" height="79"/>
+        <image name="icon_03.png" width="254" height="254"/>
+        <image name="icon_04.png" width="254" height="254"/>
+        <image name="icon_05.png" width="254" height="254"/>
+        <image name="icon_06.png" width="254" height="254"/>
+        <image name="icon_07.png" width="254" height="254"/>
+        <image name="watch_icon.png" width="44" height="65"/>
+        <image name="menu_icon_01.png" width="72" height="90"/>
+        <image name="calen_icon_active.png" width="70" height="67"/>
+        <image name="transparent.png" width="200" height="40"/>
+        <image name="resume_active.png" width="170" height="170"/>
+        <image name="resume_inactive.png" width="170" height="170"/>
+        <image name="runRound_new.png" width="260" height="260"/>
+        <image name="bikeRound_new.png" width="260" height="260"/>
+        <image name="menu_icon.png" width="90" height="72"/>
+        <image name="side_menu_bg.png" width="155" height="505"/>
+        <image name="active_tab.png" width="68" height="62"/>
+        <image name="arrow_icon.png" width="29" height="25"/>
+        <image name="icon_04_inactive_200.png" width="200" height="200"/>
+        <image name="icon_05_inactive_150.png" width="150" height="150"/>
+        <image name="user_icon_30.png" width="30" height="30"/>
+        <image name="icon_bycle_act.png" width="68" height="62"/>
+        <image name="icon_bycle_disable.png" width="68" height="62"/>
+        <image name="Screen Shot 2016-09-06 at 10.17.03 AM.png" width="20" height="28"/>
+        <image name="512.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -206,13 +206,5 @@
             android:textColor="#ffffff00"
             android:background="@null"
             android:textSize="20dp" />
-        <Button
-            android:text="REMOVE NITRO EVENTS IN CALENDAR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/resetCalBtn"
-            android:textColor="#ffffff00"
-            android:background="@null"
-            android:textSize="15dp" />
     </LinearLayout>
 </RelativeLayout>

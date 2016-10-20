@@ -56,7 +56,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>3.6</string>
 	<key>CFBundleVersion</key>
-	<string>3.6.3</string>
+	<string>3.6.5</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Go-heja application will access your calendar</string>
 	<key>NSCameraUsageDescription</key>

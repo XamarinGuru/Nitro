@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/BackgroundService.cs">
     <Files>
-      <File FileName="NitroDroid/BackgroundService.cs" Line="1" Column="1" />
+      <File FileName="NitroDroid/BackgroundService.cs" Line="74" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
