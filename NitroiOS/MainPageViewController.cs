@@ -35,6 +35,7 @@ namespace location2
 			pvc1.pageIndex = 0;
 			var pvc2 = (PageContentViewController)this.Storyboard.InstantiateViewController("ViewController");
 			pvc2.pageIndex = 1;
+			pvc2.lblTitle = lblTitle;
 			var pvc3 = (PageContentViewController)this.Storyboard.InstantiateViewController("userData");
 			pvc3.pageIndex = 2;
 			subControllers.Add(pvc1);
@@ -118,7 +119,7 @@ namespace location2
 					break;
 				case 1:
 					btnHome.Selected = true;
-					lblTitle.Text = "Searching for GPS...";
+					//lblTitle.Text = "Searching for GPS...";
 					xPos = btnHome.Frame.X;
 					break;
 				case 2:

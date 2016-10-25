@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Foundation;
 using UIKit;
 
 namespace location2
@@ -9,6 +9,8 @@ namespace location2
 		public int pageIndex = 0;
 		public string titleText;
 		public string imageFile;
+
+		public UILabel lblTitle;
 
 		public PageContentViewController(IntPtr handle) : base(handle)
 		{

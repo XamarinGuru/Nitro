@@ -4,7 +4,6 @@ using UIKit;
 using CoreLocation;
 using System.Threading.Tasks;
 using System.Net;
-using UIKit;
 using System.Drawing;
 
 
@@ -13,7 +12,7 @@ namespace location2
 	
 	public partial class ViewController : PageContentViewController
 	{
-		trackSvc.Service1 meServ;
+		trackSvc.Service1 meServ = new trackSvc.Service1();
 		bool  isWatchSynced = false;//
 		string deviceId;
 		string[] athData;
@@ -38,7 +37,7 @@ namespace location2
 				stopBtn.Enabled = false;
 				startStop = false;
 				paused = false;
-				this.Title = "Nitro live";
+				this.lblTitle.Text = "Nitro live";
 
 				btnBack.TouchUpInside += DoneButtonClicked;
 
@@ -144,8 +143,8 @@ namespace location2
 
 			}
 			if (startStop) {
-				if (this.Title.Contains ("GPS")) {
-					this.Title = "On the go";
+				if (this.lblTitle.Text.Contains ("GPS")) {
+					this.lblTitle.Text = "On the go";
 				}
 				// Handle foreground updates
 				CLLocation location = e.Location;
@@ -186,7 +185,15 @@ namespace location2
 				try {
 					if (!paused)
 					{
-						meServ.updateMomgoData (NSUserDefaults.StandardUserDefaults.StringForKey ("firstName").ToString () + " " + NSUserDefaults.StandardUserDefaults.StringForKey ("lastName").ToString (), location.Coordinate.Latitude.ToString () + "," + location.Coordinate.Longitude.ToString (), _dt, true, NSUserDefaults.StandardUserDefaults.StringForKey ("deviceId").ToString (), currspeed, true,(NSUserDefaults.StandardUserDefaults.StringForKey ("id").ToString ()), NSUserDefaults.StandardUserDefaults.StringForKey ("country").ToString (), currdistance, true, currAlt, true, course, true, 0, true,selected);
+						
+
+						var name = NSUserDefaults.StandardUserDefaults.StringForKey("firstName").ToString() + " " + NSUserDefaults.StandardUserDefaults.StringForKey("lastName").ToString();
+						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
+						var deviceID = NSUserDefaults.StandardUserDefaults.StringForKey("deviceId").ToString();
+						var id = (NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString());
+						var country = NSUserDefaults.StandardUserDefaults.StringForKey("country").ToString();
+
+						meServ.updateMomgoData (name, loc, _dt, true, deviceID, currspeed, true,id, country, currdistance, true, currAlt, true, course, true, 0, true,selected);
 
 						if (currspeed < 0)
 							currspeed = 0;
@@ -238,7 +245,7 @@ namespace location2
 				paused=false;
 				stopBtn.SetBackgroundImage(UIImage.FromFile (""), UIControlState.Normal);
 				stopBtn.Enabled=false;
-				this.Title="On the go...";
+				this.lblTitle.Text="On the go...";
 			}
 			else
 			{
@@ -258,7 +265,7 @@ namespace location2
 					if (!connection.IsHostReachable("www.google.com")) 
 					{
 						new UIAlertView(null, "No internet connection!", null, "OK", null).Show();
-						this.Title="No intenet connecion..."	;
+						this.lblTitle.Text="No intenet connecion..."	;
 						return;
 					}
 					else
@@ -271,7 +278,7 @@ namespace location2
 						} 
 						else 
 						{
-							this.Title="Searching for GPS...";
+							this.lblTitle.Text="Searching for GPS...";
 							Manager.LocationUpdated += HandleLocationChanged;
 
 							//startBtn.Enabled=false;
@@ -290,7 +297,7 @@ namespace location2
 					//btnBack.Hidden = false;
 					startStopBtn.SetBackgroundImage(UIImage.FromFile ("resume_active.png"), UIControlState.Normal);
 					stopBtn.SetBackgroundImage(UIImage.FromFile ("stop_active.png"), UIControlState.Normal);
-					this.Title="Paused...";
+					this.lblTitle.Text="Paused...";
 					stopBtn.Enabled=true;
 					stopBtn.Hidden=false;
 					paused=true;
@@ -486,7 +493,7 @@ namespace location2
 
 			//Manager.LocationUpdated += HandleLocationChanged;
 			Manager.LocationUpdated -= HandleLocationChanged;
-			this.Title = "Nitro ready...";
+			this.lblTitle.Text = "Nitro ready...";
 
 			try
 			{
@@ -499,7 +506,7 @@ namespace location2
 			//lblDir.Text=" Direction";
 			lblDist.Text = "0.00";
 			lblSpeed.Text = "0.00";
-			this.Title = "Nitro ready..";
+			this.lblTitle.Text = "Nitro ready..";
 			_lastLocation = null;
 			_currentDistance = 0;
 			_lastAltitude = 0;

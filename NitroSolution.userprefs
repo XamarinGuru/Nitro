@@ -1,19 +1,29 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/BackgroundService.cs">
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="NitroDroid/BackgroundService.cs" Line="74" Column="16" />
+      <File FileName="NitroiOS/Info.plist" />
+      <File FileName="NitroiOS/MainPageViewController.cs" Line="125" Column="12" />
+      <File FileName="NitroiOS/PageContentViewController.cs" Line="13" Column="26" />
+      <File FileName="NitroiOS/ViewController.cs" Line="505" Column="24" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NitroSolution" expanded="True">
+            <Node name="Nitro.iOS" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="62" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/calen.cs" line="19" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/Fragment/FragmentCalendar.cs" line="66" column="1" />
-      <Breakpoint file="/Users/mobileexport/Desktop/nitroAndrod5004/NitroDroid/personalData.cs" line="88" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e3a63e27895990e050d9caa50e096205978b93e7" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>

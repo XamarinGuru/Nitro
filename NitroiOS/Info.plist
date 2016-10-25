@@ -53,10 +53,6 @@
 	<true/>
 	<key>CFBundleName</key>
 	<string>Nitro</string>
-	<key>CFBundleShortVersionString</key>
-	<string>3.6</string>
-	<key>CFBundleVersion</key>
-	<string>3.6.5</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Go-heja application will access your calendar</string>
 	<key>NSCameraUsageDescription</key>
@@ -65,5 +61,15 @@
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Take a Profile Photo and Workout Images from Camera Roll</string>
+	<key>NSLocationUsageDescription</key>
+	<string>You are about to use location!</string>
+	<key>NSLocationAlwasyUsageDescription</key>
+	<string>Go-heja application will continue reporting your location in the background until you press ‘Stop’ to end your workout . This is for your safety and for your coach to monitor you.</string>
+	<key>Custom Property1</key>
+	<string></string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.7</string>
+	<key>CFBundleVersion</key>
+	<string>3.7.1</string>
 </dict>
 </plist>

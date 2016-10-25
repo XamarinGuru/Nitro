@@ -27,14 +27,7 @@ namespace location2
 			string id=NSUserDefaults.StandardUserDefaults.StringForKey ( "id");
 			userName=NSUserDefaults.StandardUserDefaults.StringForKey ("userName");
 			url = "http://go-heja.com/nitro/mobda.php?userNickName=" + userName + "&userId=" + id; // NOTE: https secure request
-			//if (NSUserDefaults.StandardUserDefaults.StringForKey ( "source")=="calen")
-			//{
-			//	url = "http://go-heja.com/nitro/mobda.php?userNickName=" + userName + "&userId=" + id; // NOTE: https secure request
-			//}
-			//else
-			//{
-			//	url = "http://go-heja.com/nitro/profile.php?txt=" + userName+ "&userId=" + id; // NOTE: https secure request
-			//}
+			//url = "http://go-heja.com/nitro/mobda.php?userNickName=Goheja%20user&userId=57a19ffd16528a08e0d3f199#pageC";
 
 		   calendarWebView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 
