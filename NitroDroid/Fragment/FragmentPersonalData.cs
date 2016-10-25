@@ -50,7 +50,7 @@ namespace goheja
 			tvPassword = view.FindViewById<TextView>(Resource.Id.etPassword);
             seriousBtn = view.FindViewById<Button>(Resource.Id.seriousBtn);
             view.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
-			//view.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
+			view.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
 
             meImage = view.FindViewById<ImageView>(Resource.Id.ivTest);
             setBitmapImg();

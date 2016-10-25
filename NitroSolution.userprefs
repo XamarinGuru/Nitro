@@ -5,25 +5,16 @@
       <File FileName="NitroiOS/MainPageViewController.cs" Line="125" Column="12" />
       <File FileName="NitroiOS/PageContentViewController.cs" Line="13" Column="26" />
       <File FileName="NitroiOS/ViewController.cs" Line="505" Column="24" />
+      <File FileName="NitroDroid/personalData.cs" Line="1" Column="1" />
+      <File FileName="NitroDroid/profile.cs" Line="1" Column="1" />
+      <File FileName="NitroDroid/Fragment/FragmentPersonalData.cs" Line="53" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="NitroSolution" expanded="True">
-            <Node name="Nitro.iOS" expanded="True" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.e3a63e27895990e050d9caa50e096205978b93e7" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.046BA3A2-4119-4DF3-AA3F-E47805813690" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>
