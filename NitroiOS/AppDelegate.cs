@@ -10,6 +10,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
+
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
+using FireSharp;
+using FireSharp.Extensions;
+
+
+
+
 namespace location2
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -23,6 +33,19 @@ namespace location2
 
 		private string username;
 
+
+		private static FirebaseClient _client;
+
+		public class Todo
+		{
+			public string actionName { get; set; }
+			public string status { get; set; }
+		}
+
+
+
+
+
 		public override UIWindow Window {
 			get;
 			set;
@@ -34,6 +57,9 @@ namespace location2
 			// If not required for your application you can safely delete this method
 
 			// Code to start the Xamarin Test Cloud Agent
+
+
+
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 			#endif
@@ -49,11 +75,30 @@ namespace location2
 			// Games should use this method to pause the game.
 		}
 
-		public override void DidEnterBackground(UIApplication application)
+		public override async void DidEnterBackground(UIApplication application)
 		{
-			var username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
+			username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
 			if (username == null)
 				return;
+
+			#region config firebase
+			IFirebaseConfig config = new FirebaseConfig
+			{
+				AuthSecret = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF",
+				BasePath = "https://nitro-8cbda.firebaseio.com/"
+			};
+			_client = new FirebaseClient(config);
+
+			var todo1 = new Todo
+			{
+				actionName = "entered background mode",
+				status = "y"
+			};
+			PushResponse response1 = await _client.PushAsync("users/"+username, todo1);
+			#endregion
+
+
+
 			
 			if (bgThread == -1)
 			{
@@ -77,10 +122,12 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "droidusername";
-			var pastEvents = "";//meServ.getUserCalendarPast(username);
+			//username = "Gili";
+			var pastEvents = meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
+
+
 
 			App.Current.EventStore.RequestAccess(EKEntityType.Event,
 				(bool granted, NSError e) =>
@@ -88,7 +135,10 @@ namespace location2
 					InvokeOnMainThread(() =>
 					{
 						if (granted)
+						{
+						
 							AddEvents(pastEvents, todayEvents, futureEvents);
+						}
 						else
 							new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
 					});
@@ -96,7 +146,7 @@ namespace location2
 
 		}
 
-		private void AddEvents(string pastEvents, string todayEvents, string futureEvents)
+		private async void AddEvents(string pastEvents, string todayEvents, string futureEvents)
 		{
 			try
 			{
@@ -109,6 +159,13 @@ namespace location2
 				{
 					if (calendar.Title == "Nitro Events")
 					{
+						var todo1 = new Todo
+						{
+							actionName = "nitro calendar already exist?",
+							status = "y"
+						};
+						PushResponse response1 = await _client.PushAsync("users/" + username, todo1);
+
 						nitroCalendar = calendar;
 
 						EKCalendar[] calendarArray = new EKCalendar[1];
@@ -132,6 +189,13 @@ namespace location2
 
 				if (nitroCalendar == null)
 				{
+					var todo1 = new Todo
+					{
+						actionName = "nitro calendar already exist?",
+						status = "n"
+					};
+					PushResponse response1 = await _client.PushAsync("users/" + username, todo1);
+
 					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
 					EKSource nitroSource = null;
 
@@ -139,6 +203,13 @@ namespace location2
 					{
 						if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 						{
+							var todo2 = new Todo
+							{
+								actionName = "event store source",
+								status = "iCloud"
+							};
+							PushResponse response2 = await _client.PushAsync("users/" + username, todo2);
+
 							nitroSource = source;
 							break;
 						}
@@ -149,20 +220,43 @@ namespace location2
 						{
 							if (source.SourceType == EKSourceType.Local)
 							{
+								var todo3 = new Todo
+								{
+									actionName = "event store source",
+									status = "Local"
+								};
+								PushResponse response3 = await _client.PushAsync("users/" + username, todo3);
+
 								nitroSource = source;
 								break;
 							}
 						}
 					}
 					if (nitroSource == null)
-						return;
+					{
+						var todo4 = new Todo
+						{
+							actionName = "event store source",
+							status = "null"
+						};
+						PushResponse response4 = await _client.PushAsync("users/" + username, todo4);
 
+						return;
+					}
 					nitroCalendar.Title = "Nitro Events";
 					nitroCalendar.Source = nitroSource;
 				}
 
 
 				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
+
+				var todo5 = new Todo
+				{
+					actionName = "save calendar",
+					status = error==null?"null":"error"
+				};
+				PushResponse response5 = await _client.PushAsync("users/" + username, todo5);
+
 				//AddEventsToNitroCalendar(nitroCalendar, pastEvents);
 				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
 				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
@@ -174,7 +268,7 @@ namespace location2
 
 		}
 
-		private void AddEventsToNitroCalendar(EKCalendar nitroCalendar, string eventsJson)
+		private async void AddEventsToNitroCalendar(EKCalendar nitroCalendar, string eventsJson)
 		{
 			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
 				return;
@@ -208,6 +302,7 @@ namespace location2
 
 				string eventDescription = eventData["eventData"].ToString();
 				eventDescription = eventDescription.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
+				eventDescription = eventDescription.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
 				eventDescription = eventDescription.Replace("</textarea><br/>", "");
 
 				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
@@ -276,6 +371,13 @@ namespace location2
 
 				NSError e;
 				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
+
+				var todo5 = new Todo
+				{
+					actionName = "save event",
+					status = e == null ? "null" : "error"
+				};
+				PushResponse response5 = await _client.PushAsync("users/" + username, todo5);
 
 
 			}

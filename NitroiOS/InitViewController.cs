@@ -7,10 +7,36 @@ using Security;
 
 using BigTed;
 
+
+
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
+using FireSharp;
+using FireSharp.Extensions;
+
+
+
+
+
 namespace location2
 {
 	public partial class InitViewController : UIViewController
 	{
+
+
+
+		//private static FirebaseClient _client;
+
+		//public class Todo
+		//{
+		//	public string name { get; set; }
+		//	public int priority { get; set; }
+		//}
+
+
+
+
 		public InitViewController(IntPtr handle) : base(handle)
 		{
 		}
@@ -18,9 +44,37 @@ namespace location2
 		{
 		}
 
-		public override void ViewDidLoad()
+		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+
+
+			//IFirebaseConfig config = new FirebaseConfig
+			//{
+			//	AuthSecret = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF",
+			//	BasePath = "https://nitro-8cbda.firebaseio.com/"
+			//};
+			//_client = new FirebaseClient(config);
+			//var todo = new Todo
+			//{
+			//	name = "Execute SET",
+			//	priority = 2
+			//};
+			//SetResponse response = await _client.SetAsync("todos/set", todo);
+			//Todo result = response.ResultAs<Todo>();
+
+			//var todo1 = new Todo
+			//{
+			//	name = "Execute PUSH",
+			//	priority = 2
+			//};
+			//PushResponse response1 = await _client.PushAsync("todos/push", todo1);
+			//var strName = response1.Result.name;
+
+
+
+
 			// Perform any additional setup after loading the view, typically from a nib.
 			BTProgressHUD.Show("Verifying Your Device...");
 

@@ -73,7 +73,7 @@ namespace goheja
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			//userName = "five";
+			//userName = "Gili";
 
 			var pastEvents = "";// meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);

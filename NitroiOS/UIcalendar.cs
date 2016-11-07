@@ -8,18 +8,36 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 
+
 namespace location2
 {
 	partial class UIcalendar : PageContentViewController
 	{
 		private string userName;
 
+
+
 		public UIcalendar(IntPtr handle) : base(handle)
 		{
 		}
-		public override void ViewDidLoad ()
+		public override async void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			App.Current.EventStore.RequestAccess(EKEntityType.Event,
+				(bool granted, NSError e) =>
+				{
+					InvokeOnMainThread(() =>
+					{
+						if (granted)
+						{ }
+
+						else
+							new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
+					});
+				});
+
+
 
 			GetUserData();
 
