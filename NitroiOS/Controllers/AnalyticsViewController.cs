@@ -20,7 +20,7 @@ namespace location2
 		public static LocationManager Manager { get; set; }
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
-		Reachability.Reachability connection;
+		Reachability.Reachability connection = new Reachability.Reachability();
 
 		RIDE_TYPE selected;
 
@@ -202,7 +202,7 @@ namespace location2
 					}
 					isTimerStarted = true;
 
-					connection = new Reachability.Reachability();
+					//connection = new Reachability.Reachability();
 				}
 				else
 				{
