@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net;
-using SystemConfiguration;
-
-using location2;
+﻿using SystemConfiguration;
 
 namespace Reachability {
 	public enum NetworkStatus {

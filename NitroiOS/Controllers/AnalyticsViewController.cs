@@ -3,9 +3,6 @@ using Foundation;
 using UIKit;
 using CoreLocation;
 using System.Threading.Tasks;
-using System.Net;
-using System.Drawing;
-
 
 namespace location2
 {

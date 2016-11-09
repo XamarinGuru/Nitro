@@ -187,29 +187,14 @@
     <BundleResource Include="Resources\mont.png" />
     <BundleResource Include="Resources\watt.png" />
     <BundleResource Include="Resources\heart.png" />
-    <BundleResource Include="Resources\btn_go.png" />
-    <BundleResource Include="Resources\pauseBtn.png" />
-    <BundleResource Include="Resources\resume.png" />
-    <BundleResource Include="Resources\stop.png" />
-    <BundleResource Include="Resources\min.png" />
     <BundleResource Include="Resources\ninja.png" />
-    <BundleResource Include="Resources\plu.png" />
-    <BundleResource Include="Resources\watch.png" />
-    <BundleResource Include="Resources\calen.png" />
-    <BundleResource Include="Resources\runRound.png" />
-    <BundleResource Include="Resources\bikeRound.png" />
-    <BundleResource Include="Resources\edit.png" />
-    <BundleResource Include="Resources\ninja3.png" />
-    <BundleResource Include="Resources\ninja5.png" />
     <BundleResource Include="Resources\pen.png" />
-    <BundleResource Include="Resources\roundNin.png" />
     <BundleResource Include="Resources\icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
-    <BundleResource Include="Resources\go-heja100.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
@@ -217,7 +202,6 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\nitrosplash1.png" />
     <BundleResource Include="Resources\BG_new.png" />
     <BundleResource Include="Resources\edit_icon.png" />
     <BundleResource Include="Resources\text_icon.png" />
@@ -234,8 +218,6 @@
     <BundleResource Include="Resources\icon_06.png" />
     <BundleResource Include="Resources\icon_07.png" />
     <BundleResource Include="Resources\heja_icon.png" />
-    <BundleResource Include="Resources\watch_icon.png" />
-    <BundleResource Include="Resources\menu_icon_01.png" />
     <BundleResource Include="Resources\calen_icon_active.png" />
     <BundleResource Include="Resources\transparent.png" />
     <BundleResource Include="Resources\resume_active.png" />
@@ -250,11 +232,7 @@
     <BundleResource Include="Resources\heart_new.png" />
     <BundleResource Include="Resources\bikeRound_new.png" />
     <BundleResource Include="Resources\dist_new.png" />
-    <BundleResource Include="Resources\pop_up_bg.png" />
-    <BundleResource Include="Resources\menu_icon.png" />
-    <BundleResource Include="Resources\side_menu_bg.png" />
     <BundleResource Include="Resources\active_tab.png" />
-    <BundleResource Include="Resources\arrow_icon.png" />
     <BundleResource Include="Resources\icon_07_inactive.png" />
     <BundleResource Include="Resources\icon_3_inactive.png" />
     <BundleResource Include="Resources\icon_06_inactive.png" />
@@ -262,7 +240,6 @@
     <BundleResource Include="Resources\icon_04_inactive.png" />
     <BundleResource Include="Resources\icon_04_inactive_200.png" />
     <BundleResource Include="Resources\icon_05_inactive_150.png" />
-    <BundleResource Include="Resources\user_icon_30.png" />
     <BundleResource Include="Resources\icon_home_act.png" />
     <BundleResource Include="Resources\icon_home_disable.png" />
     <BundleResource Include="Resources\icon_bycle_act.png" />
@@ -270,10 +247,8 @@
     <BundleResource Include="Resources\icon_calendar_act.png" />
     <BundleResource Include="Resources\icon_calendar_disable.png" />
     <BundleResource Include="Resources\user_icon_act.png" />
-    <BundleResource Include="Resources\Screen Shot 2016-09-06 at 10.17.03 AM.png" />
     <BundleResource Include="Resources\icon_watch.png" />
     <BundleResource Include="Resources\icon_back.png" />
-    <BundleResource Include="Resources\512.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
@@ -283,7 +258,6 @@
     <WCFMetadataStorage Include="Service References\go_heja.com" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Resources\" />
     <Folder Include="Controllers\" />
     <Folder Include="Helper\" />
   </ItemGroup>

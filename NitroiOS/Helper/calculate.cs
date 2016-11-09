@@ -1,6 +1,4 @@
 ﻿using System;
-using CoreLocation;
-
 
 namespace location2
 {

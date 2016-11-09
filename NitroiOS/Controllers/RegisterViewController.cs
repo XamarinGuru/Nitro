@@ -1,14 +1,8 @@
 using Foundation;
 using System;
 using UIKit;
-using BigTed;
-
 using CoreGraphics;
 using Security;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 using System.Threading;
 
 namespace location2

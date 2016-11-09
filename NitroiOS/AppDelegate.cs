@@ -1,24 +1,13 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using EventKit;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-
-
+using EventKit;
+using Newtonsoft.Json.Linq;
 using FireSharp.Config;
-using FireSharp.Response;
 using FireSharp.Interfaces;
 using FireSharp;
-using FireSharp.Extensions;
-
-
-
 
 namespace location2
 {

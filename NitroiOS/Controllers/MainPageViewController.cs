@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UIKit;
 using Foundation;
-using System.CodeDom.Compiler;
-using System.Drawing;
-using System.IO;
-
-
-using CoreGraphics;
-
 
 namespace location2
 {

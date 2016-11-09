@@ -5,8 +5,6 @@ using UIKit;
 using System.Threading;
 using Security;
 
-using BigTed;
-
 namespace location2
 {
 	public partial class InitViewController : BaseViewController

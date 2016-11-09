@@ -1,21 +1,15 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/AnalyticsViewController.cs">
     <Files>
-      <File FileName="NitroiOS/Controllers/AnalyticsViewController.cs" Line="131" Column="1" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="112" Column="40" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="33" Column="59" />
-      <File FileName="NitroiOS/Controllers/CalendarViewController.cs" Line="1" Column="1" />
-      <File FileName="NitroiOS/Main.cs" Line="12" Column="1" />
+      <File FileName="NitroiOS/Info.plist" />
+      <File FileName="NitroiOS/Controllers/AnalyticsViewController.cs" Line="206" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="170" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="209" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.046BA3A2-4119-4DF3-AA3F-E47805813690" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>

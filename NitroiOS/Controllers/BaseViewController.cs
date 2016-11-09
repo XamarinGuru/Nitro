@@ -1,9 +1,7 @@
 ﻿using System;
 using UIKit;
 using BigTed;
-using System.Threading.Tasks;
 using Foundation;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace location2

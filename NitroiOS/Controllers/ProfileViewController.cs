@@ -1,10 +1,6 @@
 using Foundation;
 using System;
-using System.CodeDom.Compiler;
 using UIKit;
-using System.Drawing;
-using System.IO;
-
 using EventKit;
 
 namespace location2

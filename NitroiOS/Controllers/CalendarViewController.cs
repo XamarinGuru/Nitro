@@ -1,11 +1,7 @@
 using Foundation;
 using System;
-using System.IO;
 using UIKit;
 using EventKit;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace location2
 {
