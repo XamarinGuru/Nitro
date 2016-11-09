@@ -143,43 +143,41 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LocationManager.cs" />
-    <Compile Include="vcListing.cs" />
-    <Compile Include="vcListing.designer.cs">
-      <DependentUpon>vcListing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="calculate.cs" />
-    <Compile Include="MessageBox.cs" />
-    <Compile Include="reachbility.cs" />
-    <Compile Include="userData.cs" />
-    <Compile Include="userData.designer.cs">
-      <DependentUpon>userData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UIcalendar.cs" />
-    <Compile Include="UIcalendar.designer.cs">
-      <DependentUpon>UIcalendar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="MainPageViewController.cs" />
-    <Compile Include="MainPageViewController.designer.cs">
-      <DependentUpon>MainPageViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PageContentViewController.cs" />
-    <Compile Include="icon.cs" />
-    <Compile Include="icon.designer.cs">
-      <DependentUpon>icon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InitViewController.cs" />
-    <Compile Include="InitViewController.designer.cs">
+    <Compile Include="App.cs" />
+    <Compile Include="Controllers\InitViewController.cs" />
+    <Compile Include="Controllers\InitViewController.designer.cs">
       <DependentUpon>InitViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="App.cs" />
+    <Compile Include="Controllers\RegisterViewController.cs" />
+    <Compile Include="Controllers\RegisterViewController.designer.cs">
+      <DependentUpon>RegisterViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CalendarViewController.cs" />
+    <Compile Include="Controllers\CalendarViewController.designer.cs">
+      <DependentUpon>CalendarViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AnalyticsViewController.cs" />
+    <Compile Include="Controllers\AnalyticsViewController.designer.cs">
+      <DependentUpon>AnalyticsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ProfileViewController.cs" />
+    <Compile Include="Helper\calculate.cs" />
+    <Compile Include="Helper\reachbility.cs" />
+    <Compile Include="Helper\LocationManager.cs" />
+    <Compile Include="Controllers\MainPageViewController.cs" />
+    <Compile Include="Controllers\MainPageViewController.designer.cs">
+      <DependentUpon>MainPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BaseViewController.cs" />
+    <Compile Include="Controllers\BaseViewController.designer.cs">
+      <DependentUpon>BaseViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ProfileViewController.designer.cs">
+      <DependentUpon>..\ProfileViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -286,6 +284,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Resources\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\Icon.png" />

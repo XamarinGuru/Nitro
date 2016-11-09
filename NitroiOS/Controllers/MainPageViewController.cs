@@ -12,14 +12,13 @@ using CoreGraphics;
 
 namespace location2
 {
-	public partial class MainPageViewController : UIViewController
+	public partial class MainPageViewController : BaseViewController
 	{
 		private UIPageViewController mPageViewController;
-		List<PageContentViewController> subControllers = new List<PageContentViewController>();
+		List<BaseViewController> subControllers = new List<BaseViewController>();
 
 		public MainPageViewController() : base()
 		{
-
 		}
 		public MainPageViewController(IntPtr handle) : base(handle)
 		{
@@ -29,26 +28,26 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
+			var calendarVC = (BaseViewController)this.Storyboard.InstantiateViewController("CalendarViewController");
+			var analyticsVC = (BaseViewController)this.Storyboard.InstantiateViewController("AnalyticsViewController");
+			var profileVC = (BaseViewController)this.Storyboard.InstantiateViewController("ProfileViewController");
+			calendarVC.pageIndex = 0;
+			analyticsVC.pageIndex = 1;
+			profileVC.pageIndex = 2;
 
+			analyticsVC.lblTitle = lblTitle;
 
-			var pvc1 = (PageContentViewController)this.Storyboard.InstantiateViewController("UIcalendar");
-			pvc1.pageIndex = 0;
-			var pvc2 = (PageContentViewController)this.Storyboard.InstantiateViewController("ViewController");
-			pvc2.pageIndex = 1;
-			pvc2.lblTitle = lblTitle;
-			var pvc3 = (PageContentViewController)this.Storyboard.InstantiateViewController("userData");
-			pvc3.pageIndex = 2;
-			subControllers.Add(pvc1);
-			subControllers.Add(pvc2);
-			subControllers.Add(pvc3);
+			subControllers.Add(calendarVC);
+			subControllers.Add(analyticsVC);
+			subControllers.Add(profileVC);
 
 			btnWatch.TouchUpInside += WatchButtonClicked;
 			btnWatch.Hidden = true;
-			//var convvv = this.Storyboard.InstantiateViewController("PageViewController");
+
 			mPageViewController = this.Storyboard.InstantiateViewController("PageViewController") as UIPageViewController;
 			mPageViewController.DataSource = new PageDataSource(this, subControllers);
 
-			var startVC = this.ViewControllerAtIndex(0) as PageContentViewController;
+			var startVC = this.ViewControllerAtIndex(0) as BaseViewController;
 			var viewControllers = new UIViewController[] { startVC };
 
 			mPageViewController.SetViewControllers(viewControllers, UIPageViewControllerNavigationDirection.Forward, false, null);
@@ -62,7 +61,7 @@ namespace location2
 			mPageViewController.DidFinishAnimating += delegate (object sender, UIPageViewFinishedAnimationEventArgs e)
 			{
 				var con = (UIPageViewController)sender;
-				var con1 = (PageContentViewController) con.ViewControllers[con.ViewControllers.Length-1];
+				var con1 = (BaseViewController) con.ViewControllers[con.ViewControllers.Length-1];
 				var index = con1.pageIndex;
 				TabBarAnimation(index);
 				var dir = con1.ModalTransitionStyle;
@@ -82,10 +81,10 @@ namespace location2
 
 		private void SetCurrentPage(int pIndex)
 		{
-			var startVC = this.ViewControllerAtIndex(pIndex) as PageContentViewController;
+			var startVC = this.ViewControllerAtIndex(pIndex) as BaseViewController;
 			var viewControllers = new UIViewController[] { startVC };
 
-			var con1 = (PageContentViewController)mPageViewController.ViewControllers[0];
+			var con1 = (BaseViewController)mPageViewController.ViewControllers[0];
 			var cIndex = con1.pageIndex;
 
 			if (cIndex == pIndex) return;
@@ -96,7 +95,7 @@ namespace location2
 			TabBarAnimation(pIndex);
 		}
 
-		public PageContentViewController ViewControllerAtIndex(int index)
+		public BaseViewController ViewControllerAtIndex(int index)
 		{
 			return subControllers[index];
 		}
@@ -119,7 +118,7 @@ namespace location2
 					break;
 				case 1:
 					btnHome.Selected = true;
-					//lblTitle.Text = "Searching for GPS...";
+					lblTitle.Text = "Nitro ready...";
 					xPos = btnHome.Frame.X;
 					break;
 				case 2:
@@ -143,9 +142,9 @@ namespace location2
 	public class PageDataSource : UIPageViewControllerDataSource
 	{
 		private MainPageViewController _parentViewController;
-		List<PageContentViewController> subPages;
+		List<BaseViewController> subPages;
 
-		public PageDataSource(UIViewController parentViewController, List<PageContentViewController> pages)
+		public PageDataSource(UIViewController parentViewController, List<BaseViewController> pages)
 		{
 			_parentViewController = parentViewController as MainPageViewController;
 			subPages = pages;
@@ -153,7 +152,7 @@ namespace location2
 
 		public override UIViewController GetPreviousViewController(UIPageViewController pageViewController, UIViewController referenceViewController)
 		{
-			var vc = referenceViewController as PageContentViewController;
+			var vc = referenceViewController as BaseViewController;
 			var index = vc.pageIndex;
 			if (index == 0)
 			{
@@ -167,7 +166,7 @@ namespace location2
 
 		public override UIViewController GetNextViewController(UIPageViewController pageViewController, UIViewController referenceViewController)
 		{
-			var vc = referenceViewController as PageContentViewController;
+			var vc = referenceViewController as BaseViewController;
 			var index = vc.pageIndex;
 
 			index++;

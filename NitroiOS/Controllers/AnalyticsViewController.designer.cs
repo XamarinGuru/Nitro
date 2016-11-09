@@ -11,167 +11,128 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("AnalyticsViewController")]
+    partial class AnalyticsViewController
     {
         [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView altimg { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel altTypeLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UIImageView bpmImg { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel bpmLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel bpmValueLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton CalenBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIImageView distImg { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel distTypLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UIView dropDownView { get; set; }
-
-
-        [Outlet]
-        UIKit.UIView firstScreenView { get; set; }
-
-
-        [Outlet]
-        UIKit.UIImageView imgArrow { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel lblAlt { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel lblDist { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel lblSpeed { get; set; }
-
-
-        [Outlet]
-        UIKit.UIView mainframe { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton meBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton selectBikeBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton selectedBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton selectRunBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIImageView speedImg { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel speedTypeLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton startStopBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton stopBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel timerLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UINavigationItem titleView { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton toolBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIView viewLine { get; set; }
-
-
-        [Outlet]
-        UIKit.UIButton watchBtn { get; set; }
-
-
-        [Outlet]
-        UIKit.UIImageView wattImg { get; set; }
-
-
-        [Outlet]
-        UIKit.UILabel wattLbl { get; set; }
-
-
-        [Outlet]
-        UIKit.UIWebView wvOngoing { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnBack { get; set; }
+        UIKit.UILabel altTypeLbl { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton backBtn { get; set; }
 
-        [Action ("CalenBtn_TouchUpInside:")]
-        partial void CalenBtn_TouchUpInside (UIKit.UIButton sender);
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView bpmImg { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel bpmLbl { get; set; }
 
-        [Action ("MeBtn_TouchUpInside:")]
-        partial void MeBtn_TouchUpInside (UIKit.UIButton sender);
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView distImg { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel distTypLbl { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgTypeIcon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblAlt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblBpm { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblDist { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblSpeed { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTimer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblWatt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView mainframe { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton selectBikeBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton selectRunBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView speedImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel speedTypeLbl { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton startStopBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton stopBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationItem titleView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewSelectType { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView wattImg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIWebView wvOngoing { get; set; }
+
+        [Action ("BackBtn_TouchupInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BackBtn_TouchupInside (UIKit.UIButton sender);
 
         [Action ("SelectBikeBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         partial void SelectBikeBtn_TouchUpInside (UIKit.UIButton sender);
 
-
         [Action ("SelectRunBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         partial void SelectRunBtn_TouchUpInside (UIKit.UIButton sender);
 
-
         [Action ("StartStopBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         partial void StartStopBtn_TouchUpInside (UIKit.UIButton sender);
 
-
         [Action ("StopBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
         partial void StopBtn_TouchUpInside (UIKit.UIButton sender);
-
-
-        [Action ("ToolBtn_TouchUpInside:")]
-        partial void ToolBtn_TouchUpInside (UIKit.UIButton sender);
-
-
-        [Action ("WatchBtn_TouchUpInside:")]
-        partial void WatchBtn_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -185,6 +146,11 @@ namespace location2
                 altTypeLbl = null;
             }
 
+            if (backBtn != null) {
+                backBtn.Dispose ();
+                backBtn = null;
+            }
+
             if (bpmImg != null) {
                 bpmImg.Dispose ();
                 bpmImg = null;
@@ -193,16 +159,6 @@ namespace location2
             if (bpmLbl != null) {
                 bpmLbl.Dispose ();
                 bpmLbl = null;
-            }
-
-            if (bpmValueLbl != null) {
-                bpmValueLbl.Dispose ();
-                bpmValueLbl = null;
-            }
-
-            if (btnBack != null) {
-                btnBack.Dispose ();
-                btnBack = null;
             }
 
             if (distImg != null) {
@@ -215,14 +171,19 @@ namespace location2
                 distTypLbl = null;
             }
 
-            if (firstScreenView != null) {
-                firstScreenView.Dispose ();
-                firstScreenView = null;
+            if (imgTypeIcon != null) {
+                imgTypeIcon.Dispose ();
+                imgTypeIcon = null;
             }
 
             if (lblAlt != null) {
                 lblAlt.Dispose ();
                 lblAlt = null;
+            }
+
+            if (lblBpm != null) {
+                lblBpm.Dispose ();
+                lblBpm = null;
             }
 
             if (lblDist != null) {
@@ -235,6 +196,16 @@ namespace location2
                 lblSpeed = null;
             }
 
+            if (lblTimer != null) {
+                lblTimer.Dispose ();
+                lblTimer = null;
+            }
+
+            if (lblWatt != null) {
+                lblWatt.Dispose ();
+                lblWatt = null;
+            }
+
             if (mainframe != null) {
                 mainframe.Dispose ();
                 mainframe = null;
@@ -243,11 +214,6 @@ namespace location2
             if (selectBikeBtn != null) {
                 selectBikeBtn.Dispose ();
                 selectBikeBtn = null;
-            }
-
-            if (selectedBtn != null) {
-                selectedBtn.Dispose ();
-                selectedBtn = null;
             }
 
             if (selectRunBtn != null) {
@@ -275,24 +241,19 @@ namespace location2
                 stopBtn = null;
             }
 
-            if (timerLbl != null) {
-                timerLbl.Dispose ();
-                timerLbl = null;
-            }
-
             if (titleView != null) {
                 titleView.Dispose ();
                 titleView = null;
             }
 
+            if (viewSelectType != null) {
+                viewSelectType.Dispose ();
+                viewSelectType = null;
+            }
+
             if (wattImg != null) {
                 wattImg.Dispose ();
                 wattImg = null;
-            }
-
-            if (wattLbl != null) {
-                wattLbl.Dispose ();
-                wattLbl = null;
             }
 
             if (wvOngoing != null) {

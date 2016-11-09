@@ -41,7 +41,5 @@ namespace Reachability {
 			}
 			return false;
 		}
-
-	
 	}
 }

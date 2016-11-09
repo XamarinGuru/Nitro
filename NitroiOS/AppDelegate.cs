@@ -42,10 +42,6 @@ namespace location2
 			public string status { get; set; }
 		}
 
-
-
-
-
 		public override UIWindow Window {
 			get;
 			set;
@@ -53,13 +49,6 @@ namespace location2
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-
-			// Code to start the Xamarin Test Cloud Agent
-
-
-
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 			#endif
@@ -94,24 +83,17 @@ namespace location2
 				actionName = "entered background mode",
 				status = "y"
 			};
-			PushResponse response1 = await _client.PushAsync("users/"+username, todo1);
+			await _client.PushAsync("users/"+username, todo1);
 			#endregion
 
-
-
-			
 			if (bgThread == -1)
 			{
 				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
-				new Task(() =>
-				{
-					Timer timer = new Timer(ttimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*30));
-				}).Start();
+				new Task(() => { new Timer(UpdateCalendarTimer, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*30)); }).Start();
 			}
 		}
-		private void ttimerCallback(object state)
+		private void UpdateCalendarTimer(object state)
 		{
-
 			InvokeOnMainThread(async () => { await UpdateCalendar(); });
 		}
 
@@ -122,12 +104,10 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			//username = "Gili";
-			var pastEvents = meServ.getUserCalendarPast(username);
+			username = "Gili";
+			var pastEvents = "";//meServ.getUserCalendarPast(username);
 			var todayEvents = meServ.getUserCalendarToday(username);
 			var futureEvents = meServ.getUserCalendarFuture(username);
-
-
 
 			App.Current.EventStore.RequestAccess(EKEntityType.Event,
 				(bool granted, NSError e) =>
@@ -135,12 +115,7 @@ namespace location2
 					InvokeOnMainThread(() =>
 					{
 						if (granted)
-						{
-						
 							AddEvents(pastEvents, todayEvents, futureEvents);
-						}
-						else
-							new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
 					});
 				});
 
@@ -153,7 +128,7 @@ namespace location2
 				NSError error;
 
 				EKCalendar nitroCalendar = null;
-				////remove existing events
+				////remove existing descending events from now in "Nitro Events" calendar of device.
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
@@ -164,7 +139,8 @@ namespace location2
 							actionName = "nitro calendar already exist?",
 							status = "y"
 						};
-						PushResponse response1 = await _client.PushAsync("users/" + username, todo1);
+						//track existence of "Nitro Calendar" to firebase
+						await _client.PushAsync("users/" + username, todo1);
 
 						nitroCalendar = calendar;
 
@@ -180,7 +156,6 @@ namespace location2
 							DateTime now = DateTime.Now;
 							DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
 							var startString = ConvertDateTimeToNSDate(startNow);
-							var tmp = pEvent.StartDate.Compare(startString);
 							if (pEvent.StartDate.Compare(startString) == NSComparisonResult.Descending)
 								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
@@ -194,7 +169,8 @@ namespace location2
 						actionName = "nitro calendar already exist?",
 						status = "n"
 					};
-					PushResponse response1 = await _client.PushAsync("users/" + username, todo1);
+					//track existence of "Nitro Calendar" to firebase
+					await _client.PushAsync("users/" + username, todo1);
 
 					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
 					EKSource nitroSource = null;
@@ -208,7 +184,8 @@ namespace location2
 								actionName = "event store source",
 								status = "iCloud"
 							};
-							PushResponse response2 = await _client.PushAsync("users/" + username, todo2);
+							//track source type of "Nitro Calendar" to firebase
+							await _client.PushAsync("users/" + username, todo2);
 
 							nitroSource = source;
 							break;
@@ -225,7 +202,8 @@ namespace location2
 									actionName = "event store source",
 									status = "Local"
 								};
-								PushResponse response3 = await _client.PushAsync("users/" + username, todo3);
+								//track source type of "Nitro Calendar" to firebase
+								await _client.PushAsync("users/" + username, todo3);
 
 								nitroSource = source;
 								break;
@@ -239,7 +217,8 @@ namespace location2
 							actionName = "event store source",
 							status = "null"
 						};
-						PushResponse response4 = await _client.PushAsync("users/" + username, todo4);
+						//track source type of "Nitro Calendar" to firebase
+						await _client.PushAsync("users/" + username, todo4);
 
 						return;
 					}
@@ -255,7 +234,8 @@ namespace location2
 					actionName = "save calendar",
 					status = error==null?"null":"error"
 				};
-				PushResponse response5 = await _client.PushAsync("users/" + username, todo5);
+				//track source saving status of "Nitro Calendar" to firebase
+				await _client.PushAsync("users/" + username, todo5);
 
 				//AddEventsToNitroCalendar(nitroCalendar, pastEvents);
 				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
@@ -265,7 +245,6 @@ namespace location2
 			{
 				new UIAlertView("add events process", e.Message, null, "ok", null).Show();
 			}
-
 		}
 
 		private async void AddEventsToNitroCalendar(EKCalendar nitroCalendar, string eventsJson)
@@ -273,10 +252,8 @@ namespace location2
 			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
 				return;
 
-			eventsJson = eventsJson.Replace("ObjectId(\"", "\"");
-			eventsJson = eventsJson.Replace(" ISODate(\"", "\"");
-			eventsJson = eventsJson.Replace("\")", "\"");
-			var eventsData = JArray.Parse(eventsJson);
+			//eventsJson = FinterHTMLTag(eventsJson);
+			var eventsData = JArray.Parse(FormatArrayType(eventsJson));
 
 			foreach (var eventJson in eventsData)
 			{
@@ -300,10 +277,7 @@ namespace location2
 				newEvent.EndDate = ConvertDateTimeToNSDate(tmpEnd);
 				newEvent.Title = eventData["title"].ToString();
 
-				string eventDescription = eventData["eventData"].ToString();
-				eventDescription = eventDescription.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
-				eventDescription = eventDescription.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
-				eventDescription = eventDescription.Replace("</textarea><br/>", "");
+				string eventDescription = FilterHTMLTag(eventData["eventData"].ToString());
 
 				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
 
@@ -331,20 +305,6 @@ namespace location2
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				//var structuredLocation = new EKStructuredLocation();
-				//structuredLocation.Title = "my location";
-				//structuredLocation.GeoLocation = new CoreLocation.CLLocation(100, 100);
-
-				//var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
-				//var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
-				//var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				//var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
-				////new UIAlertView("encoded url", encodedEventURL, null, "ok", null).Show();
-				//var uri = new Uri(encodedEventURL);
-
-				//newEvent.Url = uri;
-
-
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
 				var urlDate = newEvent.StartDate;
@@ -352,16 +312,9 @@ namespace location2
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
 				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
 
-				//var escapedBundlePath = Uri.EscapeUriString(NSBundle.MainBundle.BundlePath);
-				var xxx = System.Web.HttpUtility.UrlEncode(encodedEventURL);
-				//var myUrl = "Path/To/File/Test.html?var1=hello&var2=world";
-				//var nsUrl = new NSUrl(Path.Combine(escapedBundlePath, encodedEventURL));
+				newEvent.Url = new NSUrl(System.Web.HttpUtility.UrlEncode(encodedEventURL)); ;
 
-				//new UIAlertView("encoded date", encodedEventURL, null, "ok", null).Show();
-				//var uri = new Uri(encodedEventURL);
-
-				newEvent.Url = new NSUrl(xxx); ;
-
+				//add alarm to event
 				EKAlarm[] alarmsArray = new EKAlarm[2];
 				alarmsArray[0] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 45)));
 				alarmsArray[1] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 60 * 12)));
@@ -377,9 +330,8 @@ namespace location2
 					actionName = "save event",
 					status = e == null ? "null" : "error"
 				};
-				PushResponse response5 = await _client.PushAsync("users/" + username, todo5);
-
-
+				//track source saving status of "Nitro event" to firebase
+				await _client.PushAsync("users/" + username, todo5);
 			}
 		}
 
@@ -391,7 +343,23 @@ namespace location2
 			return NSDate.FromTimeIntervalSinceReferenceDate(
 				(date - newDate).TotalSeconds + 3600);
 		}
+		private string FormatArrayType(string eventsJson)
+		{
+			var returnString = eventsJson.Replace("ObjectId(\"", "\"");
+			returnString = returnString.Replace(" ISODate(\"", "\"");
+			returnString = returnString.Replace("\")", "\"");
 
+			return returnString;
+		}
+		private string FilterHTMLTag(string eventJson)
+		{
+			var returnString = eventJson.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
+			returnString = returnString.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
+			returnString = returnString.Replace("</textarea><br/>", "");
+
+			return returnString;
+		}
+		
 		public override void WillEnterForeground (UIApplication application)
 		{
 			// Called as part of the transiton from background to active state.

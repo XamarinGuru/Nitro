@@ -11,8 +11,8 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("userData")]
-    partial class userData
+    [Register ("ProfileViewController")]
+    partial class ProfileViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,15 +32,11 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField emailTB { get; set; }
+        UIKit.UIButton changePictureBtn { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField firstNameTB { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField lastNameTB { get; set; }
+        UIKit.UIImageView imgPicture { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,27 +44,39 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView meimg { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton meImgBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField passTB { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField phoneTB { get; set; }
+        UIKit.UIButton removeNitroEventsBtn { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton seriuosBtn { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtEmail { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtFirstName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtLastName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtPhone { get; set; }
+
         [Action ("BtnGo_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnGo_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("DoneBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void DoneBtn_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("MeImgBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -104,19 +112,14 @@ namespace location2
                 calendarWebView = null;
             }
 
-            if (emailTB != null) {
-                emailTB.Dispose ();
-                emailTB = null;
+            if (changePictureBtn != null) {
+                changePictureBtn.Dispose ();
+                changePictureBtn = null;
             }
 
-            if (firstNameTB != null) {
-                firstNameTB.Dispose ();
-                firstNameTB = null;
-            }
-
-            if (lastNameTB != null) {
-                lastNameTB.Dispose ();
-                lastNameTB = null;
+            if (imgPicture != null) {
+                imgPicture.Dispose ();
+                imgPicture = null;
             }
 
             if (lblUserName != null) {
@@ -124,29 +127,39 @@ namespace location2
                 lblUserName = null;
             }
 
-            if (meimg != null) {
-                meimg.Dispose ();
-                meimg = null;
-            }
-
-            if (meImgBtn != null) {
-                meImgBtn.Dispose ();
-                meImgBtn = null;
-            }
-
             if (passTB != null) {
                 passTB.Dispose ();
                 passTB = null;
             }
 
-            if (phoneTB != null) {
-                phoneTB.Dispose ();
-                phoneTB = null;
+            if (removeNitroEventsBtn != null) {
+                removeNitroEventsBtn.Dispose ();
+                removeNitroEventsBtn = null;
             }
 
             if (seriuosBtn != null) {
                 seriuosBtn.Dispose ();
                 seriuosBtn = null;
+            }
+
+            if (txtEmail != null) {
+                txtEmail.Dispose ();
+                txtEmail = null;
+            }
+
+            if (txtFirstName != null) {
+                txtFirstName.Dispose ();
+                txtFirstName = null;
+            }
+
+            if (txtLastName != null) {
+                txtLastName.Dispose ();
+                txtLastName = null;
+            }
+
+            if (txtPhone != null) {
+                txtPhone.Dispose ();
+                txtPhone = null;
             }
         }
     }

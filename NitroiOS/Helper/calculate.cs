@@ -4,7 +4,7 @@ using CoreLocation;
 
 namespace location2
 {
-	public static class calculate
+	public static class Calculate
 	{
 		
 		public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
@@ -40,13 +40,9 @@ namespace location2
 			try
 			{
 				if ((curr - prev) > 0)
-				{
 					return curr - prev;
-				}
 				else
-				{
 					return 0;
-				}
 			}
 			catch
 			{
@@ -57,56 +53,18 @@ namespace location2
 		public static string getDirection(Double degree)
 		{
 			string direction = "";
-			if (0 < degree && degree < 22)
-			{
-
-				return "N";
-			}
-			if (22 < degree && degree < 47)
-			{
-
-				return "NE";
-			}
-			if (47 < degree && degree < 112)
-			{
-
-				return "E";
-			}
-			if (112 < degree && degree < 157)
-			{
-
-				return "SE";
-			}
-			if (157 < degree && degree < 202)
-			{
-
-				return "S";
-			}
-			if (202 < degree && degree < 247)
-			{
-
-				return "SW";
-			}
-			if (247 < degree && degree < 292)
-			{
-
-				return "W";
-			}
-			if (292 < degree && degree < 337)
-			{
-
-				return "NW";
-			}
-			if (337 < degree && degree < 359)
-			{
-
-				return "N";
-			}
+			if (0 < degree && degree < 22) return "N";
+			if (22 < degree && degree < 47) return "NE";
+			if (47 < degree && degree < 112) return "E";
+			if (112 < degree && degree < 157) return "SE";
+			if (157 < degree && degree < 202) return "S";
+			if (202 < degree && degree < 247) return "SW";
+			if (247 < degree && degree < 292) return "W";
+			if (292 < degree && degree < 337) return "NW";
+			if (337 < degree && degree < 359) return "N";
 
 			return direction;
-
 		}
 	}
-
 }
 
