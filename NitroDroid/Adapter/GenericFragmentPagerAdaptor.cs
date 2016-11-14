@@ -3,17 +3,12 @@ using System;
 
 namespace goheja
 {
-    //by Afroz date 1/9/2016
     public class GenericFragmentPagerAdaptor : FragmentPagerAdapter
     {
-        private FragmentActivity _activity;
-
         public event EventHandler TabChanged;
 
-        public GenericFragmentPagerAdaptor(FragmentManager fm, FragmentActivity activity)
-            : base(fm)
+        public GenericFragmentPagerAdaptor(FragmentManager fm, FragmentActivity activity) : base(fm)
         {
-            _activity = activity;
         }
 
         public override int Count
@@ -26,9 +21,9 @@ namespace goheja
             if (position == 0)
                 return new FragmentCalendar();
             if (position == 1)
-                return new NewMainActivity();
+				return new FragmentEvents();
             if (position == 2)
-                return new FragmentPersonalData();
+				return new FragmentProfile();
 
             TabChanged?.Invoke(position, null);
 
@@ -37,4 +32,3 @@ namespace goheja
     }
 }
 
-//end by Afroz date 1/9/2016

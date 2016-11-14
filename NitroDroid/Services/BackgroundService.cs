@@ -1,28 +1,10 @@
 ﻿using System;
 using Android.App;
 using Android.Util;
-using System.Threading;
 using Android.Content;
-using Android.OS;
-using Android.Widget;
-using System.Text.RegularExpressions;
-using Android.Content.Res;
-using Android.Preferences;
-using System.IO;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.Runtime;
-using Android.Views;
-using Android.Webkit;
-
 using Android.Provider;
-
+using System.Text;
 using Java.Util;
-
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace goheja
@@ -36,11 +18,11 @@ namespace goheja
 		[Android.Runtime.Register("onStart", "(Landroid/content/Intent;I)V", "GetOnStart_Landroid_content_Intent_IHandler")]
 		[System.Obsolete("deprecated")]
 
-		public override void OnStart(Android.Content.Intent intent, int startId)
+		public override void OnStart(Intent intent, int startId)
 		{
 			base.OnStart(intent, startId);
 
-			DoStuff();
+			StartUpdateTimer();
 		}
 
 		public override void OnDestroy()
@@ -48,33 +30,30 @@ namespace goheja
 			base.OnDestroy();
 
 			_timer.Dispose();
-
-			Log.Debug("SimpleService", "SimpleService stopped");
 		}
 
-		public void DoStuff()
+		public void StartUpdateTimer()
 		{
 			_timer = new System.Threading.Timer((o) =>
 			{
-				Log.Debug("Notifications", "hello from simple service");
-				FireNotification();
+				UpdateNitroEvents();
 			}, null, 0, 1000 * 60 * 30);
 		}
 
-		public override Android.OS.IBinder OnBind(Android.Content.Intent intent)
+		public override Android.OS.IBinder OnBind(Intent intent)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void FireNotification()
+		public void UpdateNitroEvents()
 		{
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new trackSvc.Service1();
 
 			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			userName = contextPref.GetString("storedUserName", "");
-			//userName = "Gili";
 
+			userName = "Gili";
 			var pastEvents = "";// meServ.getUserCalendarPast(userName);
 			var todayEvents = meServ.getUserCalendarToday(userName);
 			var futureEvents = meServ.getUserCalendarFuture(userName);
@@ -144,9 +123,6 @@ namespace goheja
 			var eventURI = CalendarContract.Events.ContentUri;
 
 			string[] eventsProjection = {
-				//CalendarContract.Calendars.InterfaceConsts.Id,
-				//CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-				//CalendarContract.Calendars.InterfaceConsts.AccountName
 				"_id",
 			    CalendarContract.Events.InterfaceConsts.Title
 			   , CalendarContract.Events.InterfaceConsts.Dtstart
@@ -159,7 +135,6 @@ namespace goheja
 			var selection = "((dtstart >= ?) AND (dtend <= ?) AND (calendar_id = ?))";
 			var selectionArgs = new string[] { startString, endString, calID.ToString() };
 			var calCursor = ApplicationContext.ContentResolver.Query(eventURI, eventsProjection, selection, selectionArgs, null);
-			//var calCursor = ApplicationContext.ContentResolver.Query(eventURI, eventsProjection, null, null, null);
 			var cou = calCursor.Count;
 			if (calCursor.MoveToFirst())
 			{
@@ -169,7 +144,6 @@ namespace goheja
 					String displayName = calCursor.GetString(1);
 					long eventId = calCursor.GetLong(calCursor.GetColumnIndex("_id"));
 					RemoveEvent(eventId);
-					// …
 				} while (calCursor.MoveToNext());
 			}
 		}
@@ -209,7 +183,7 @@ namespace goheja
 				string note = "";
 				for (var i = 0; i < arryEventDes.Length; i++)
 				{
-					note += arryEventDes[i].ToString() + System.Environment.NewLine;
+					note += arryEventDes[i] + Environment.NewLine;
 				}
 
 
@@ -227,10 +201,10 @@ namespace goheja
 
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-				note += System.Environment.NewLine + "Planned HB : " + eventData["hb"].ToString() + System.Environment.NewLine +
-								"Planned TSS : " + eventData["tss"].ToString() + System.Environment.NewLine +
-								"Planned distance : " + formattedDistance + "KM" + System.Environment.NewLine +
-								"Duration : " + strDuration + System.Environment.NewLine;
+				note += System.Environment.NewLine + "Planned HB : " + eventData["hb"] + Environment.NewLine +
+								"Planned TSS : " + eventData["tss"] + Environment.NewLine +
+								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
+								"Duration : " + strDuration + Environment.NewLine;
 
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
@@ -238,7 +212,7 @@ namespace goheja
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
 				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + userName;
 
-				note += System.Environment.NewLine + encodedEventURL;
+				note += Environment.NewLine + encodedEventURL;
 
 				#region create event
 				ContentValues eventValues = new ContentValues();
@@ -276,8 +250,6 @@ namespace goheja
 
 				#endregion
 			}
-
-
 		}
 
 		private void RemoveCalendar(long calID)
@@ -296,11 +268,11 @@ namespace goheja
 		long GetDateTimeMS(DateTime date)
 		{
 			Calendar c = Calendar.GetInstance(Java.Util.TimeZone.Default);
-			c.Set(Java.Util.CalendarField.DayOfMonth, date.Day);
-			c.Set(Java.Util.CalendarField.HourOfDay, date.Hour);
-			c.Set(Java.Util.CalendarField.Minute, date.Minute);
-			c.Set(Java.Util.CalendarField.Month, (date.Month - 1));
-			c.Set(Java.Util.CalendarField.Year, date.Year);
+			c.Set(CalendarField.DayOfMonth, date.Day);
+			c.Set(CalendarField.HourOfDay, date.Hour);
+			c.Set(CalendarField.Minute, date.Minute);
+			c.Set(CalendarField.Month, (date.Month - 1));
+			c.Set(CalendarField.Year, date.Year);
 
 			return c.TimeInMillis;
 		}

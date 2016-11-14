@@ -1,32 +1,17 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using System.Threading.Tasks;
 using Android.Net;
 using Android.Support.V4.App;
 using Android.Text;
+using System.Threading.Tasks;
 
 namespace goheja
 {
     [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
-    public class SplashActivity : Activity
-    {
-		
-        static readonly string TAG = "X:" + typeof(SplashActivity).Name;
-        ConnectivityManager connectivityManager;
-        private NotificationManager notificationManager;
-        NetworkInfo activeConnection;
-        bool isOnline;
 
+    public class SplashActivity : BaseActivity
+    {
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
@@ -51,46 +36,38 @@ namespace goheja
 
         public void initiatAth()
         {
-            connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
-            notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
+            ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+            NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
             notificationManager.Notify(1, CreateNotification());
-            activeConnection = connectivityManager.ActiveNetworkInfo;
-            isOnline = (activeConnection != null) && activeConnection.IsConnected;
+
+            NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+            bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
 
             if (!isOnline)
             {
-                var builder = new AlertDialog.Builder(this);
-                builder.SetTitle("No internet connection");
-                builder.SetMessage("Oops!No internet connection... Pls try again later");
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
-                builder.Show();
+				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
                 return;
             }
+
             trackSvc.Service1 test = new trackSvc.Service1();
             string deviceId = "0";
             try
             {
                 deviceId = test.getListedDeviceId(Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId));
             }
-            catch (Exception err)
+            catch
             {
-                var builder = new AlertDialog.Builder(this);
-                builder.SetTitle("Nitro service is not available");
-                builder.SetMessage("Oops!Service not available... Pls try again later");
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
-                builder.Show();
+				ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
                 return;
             }
 
-            if (deviceId == "0")
+            if (deviceId == "0")//not registered yet
             {
-                var activity2 = new Intent(this, typeof(listingActivity));
+                var activity2 = new Intent(this, typeof(RegisterActivity));
                 activity2.PutExtra("MyData", "Data from Activity1");
                 StartActivity(activity2);
             }
-            else
+            else//already registered
             {
                 StartActivity(new Intent(this, typeof(SwipeTabActivity)));
             }
@@ -109,7 +86,7 @@ namespace goheja
           		.BigText(Html.FromHtml("Nitro is now tarcking practice<br> Running. Tap to Open")))
                	.SetContentText(Html.FromHtml("Nitro is now tarcking practice \n Running. Tap to Open"));
 			
-            var clossIntent = new Intent(this, typeof(CloseApplication));
+            var clossIntent = new Intent(this, typeof(CloseApplicationActivity));
             clossIntent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask | ActivityFlags.ClearTop);
             var dismissIntent = PendingIntent.GetActivity(this, 0, clossIntent, PendingIntentFlags.CancelCurrent);
             var action = new NotificationCompat.Action(Resource.Drawable.switch_off, "Switch off", dismissIntent);

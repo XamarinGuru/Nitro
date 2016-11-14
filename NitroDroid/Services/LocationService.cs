@@ -22,7 +22,6 @@ namespace goheja.Services
 		// Set our location manager as the system location service
 		protected LocationManager LocMgr = Android.App.Application.Context.GetSystemService ("location") as LocationManager;
 
-		readonly string logTag = "LocationService";
 		IBinder binder;
 
 		public override void OnCreate ()

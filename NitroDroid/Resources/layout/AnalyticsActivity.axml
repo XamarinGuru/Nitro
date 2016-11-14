@@ -44,16 +44,6 @@
                     android:visibility="gone" />
             </LinearLayout>
         </RelativeLayout>
-    <!--<ImageView
-            android:src="@drawable/Search_bottom_line"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            android:scaleType="fitStart"
-            
-            android:layout_below="@+id/TitleBarText" />-->
     </LinearLayout>
     <FrameLayout
         android:layout_width="fill_parent"
@@ -63,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/BG_new">
+            android:background="@drawable/bg_new">
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -252,16 +242,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/btnTotalTime" />
-                        <!--<Button
-                            android:text="00:00:00"
-                            android:layout_width="66.5dp"
-                            android:layout_height="25.0dp"
-                            android:id="@+id/btnTotalTime"
-                            android:textColor="#000000"
-                            android:background="@null"
-                            android:layout_x="5dp"
-                            android:layout_y="285dp"
-                            android:textSize="15dp" />-->
                         </LinearLayout>
                         <ImageView
                             android:src="@drawable/timer_new"
@@ -388,18 +368,6 @@
                     android:layout_height="match_parent"
                     android:id="@+id/wvCurrentEvent"
                     android:layerType="software" />
-            <!--<Button
-                android:text="What's it gonna be?"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnq"
-                android:textColor="#ffffffff"
-                android:background="@null"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:paddingRight="15dp" />-->
                 <Button
                     android:id="@+id/StartPractice"
                     android:layout_width="60dp"
@@ -422,26 +390,6 @@
                     android:layout_above="@+id/StartPractice"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="5dp" />
-            <!--<Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:id="@+id/btnSlectBike"
-                android:layout_x="145dp"
-                android:layout_y="70dp"
-                android:background="@drawable/bikeRound_new"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/btnq"
-                android:layout_marginTop="30dp" />
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:id="@+id/btnSelectRun"
-                android:layout_x="145dp"
-                android:layout_y="170dp"
-                android:background="@drawable/runRound_active"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/btnSlectBike"
-                android:layout_marginTop="20dp" />-->
                 <Button
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -450,20 +398,6 @@
                     android:layout_y="5dp"
                     android:background="@drawable/bikeRound_new"
                     android:layout_centerHorizontal="true" />
-                <Button
-                    android:text="last lap : 00:00:00"
-                    android:layout_width="2.5dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnLL"
-                    android:textSize="15dp"
-                    android:layout_x="6dp"
-                    android:layout_y="230dp"
-                    android:textColor="#ff0f0808"
-                    android:shadowRadius="0"
-                    android:requiresFadingEdge="none"
-                    android:fadingEdge="none"
-                    android:layout_above="@+id/btnLD"
-                    android:background="#ffffff" />
                 <Button
                     android:text="Lap distnace : 0:00"
                     android:layout_width="146.0dp"
@@ -487,110 +421,5 @@
                     android:gravity="bottom" />
             </RelativeLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="right"
-            android:id="@+id/drawerContent"
-            android:visibility="gone">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="8dp"
-                android:layout_gravity="right"
-                android:src="@drawable/arrow_icon" />
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="right"
-                android:background="#6F6F6F"
-                android:gravity="bottom">
-                <ImageView
-                    android:id="@+id/profileIv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:src="@drawable/heja_icon"
-                    android:padding="15dp" />
-                <ImageView
-                    android:src="@drawable/border"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:scaleType="fitEnd" />
-                <ImageView
-                    android:id="@+id/deviceBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:src="@drawable/watch_icon"
-                    android:padding="15dp" />
-                <ImageView
-                    android:id="@+id/watchDevider"
-                    android:src="@drawable/border"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:scaleType="fitEnd" />
-                <ImageView
-                    android:id="@+id/meCalendar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:src="@drawable/calender_icon"
-                    android:padding="15dp"
-                    android:background="@drawable/active_tab" />
-            </LinearLayout>
-        </LinearLayout>
     </FrameLayout>
-<!--<LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
-        android:weightSum="3">
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/buttomFL"
-            android:background="@drawable/tab_active"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_height="wrap_content"
-                android:id="@+id/meCalendar"
-                android:layout_width="wrap_content"
-                android:src="@drawable/calen_icon_active"
-                android:layout_gravity="center"
-                android:padding="10dp" />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/frameLayout2"
-            android:background="#FFFFFF"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/deviceBtn"
-                android:src="@drawable/watch_new"
-                android:layout_gravity="center"
-                android:padding="10dp" />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/frameLayout3"
-            android:background="#FFFFFF"
-            android:layout_weight="1">
-            <ImageView
-                android:src="@drawable/ninja_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/profileIv"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:longClickable="false"
-                android:padding="10dp" />
-        </FrameLayout>
-    </LinearLayout>-->
 </RelativeLayout>

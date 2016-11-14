@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/AnalyticsViewController.cs">
+﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Services/BackgroundService.cs">
     <Files>
-      <File FileName="NitroiOS/Info.plist" />
-      <File FileName="NitroiOS/Controllers/AnalyticsViewController.cs" Line="206" Column="1" />
+      <File FileName="NitroDroid/Services/BackgroundService.cs" Line="56" Column="4" />
+      <File FileName="NitroiOS/AppDelegate.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

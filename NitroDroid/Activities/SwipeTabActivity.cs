@@ -1,39 +1,31 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using System;
-using System.IO;
 using Android.Locations;
 using Android.Net;
 using goheja.Services;
 
-//by Afroz date 31/8/2016
 namespace goheja
 {
     [Activity(Label = "Nitro" , Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
-    public class SwipeTabActivity : FragmentActivity
+	public class SwipeTabActivity : BaseActivity
     {
 		ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-        ConnectivityManager connectivityManager;
-        NetworkInfo activeConnection;
-        bool isOnline;
-        //private NotificationManager _notificationManager;
-        private GenericFragmentPagerAdaptor _adaptor;
 
-        private ImageView _tab1Icon,
-            _tab2Icon,
-            _tab3Icon,
-            _tabStrip1,
-            _tabStrip2,
-            _tabStrip3,
-            _actionBarRight,
-            _actionBarLeft;
+        private ImageView 	_tab1Icon,
+				            _tab2Icon,
+				            _tab3Icon,
+				            _tabStrip1,
+				            _tabStrip2,
+				            _tabStrip3,
+				            _actionBarRight,
+				            _actionBarLeft;
 
         private ViewPager _pager;
         private TextView _titleBarText;
@@ -41,7 +33,6 @@ namespace goheja
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.SwipeTabActivity);
@@ -56,17 +47,18 @@ namespace goheja
 				contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 				contextEdit = contextPref.Edit();
 
-				contextEdit.PutString("storedFirstName", athData[0].ToString());
-				contextEdit.PutString("storedAthId", athData[2].ToString());
-				contextEdit.PutString("storedLastName", athData[1].ToString());
-				contextEdit.PutString("storedCountry", athData[3].ToString());
-				contextEdit.PutString("storedUserName", athData[4].ToString());
-				contextEdit.PutString("storedPsw", athData[5].ToString());
+				contextEdit.PutString("storedFirstName", athData[0]);
+				contextEdit.PutString("storedAthId", athData[2]);
+				contextEdit.PutString("storedLastName", athData[1]);
+				contextEdit.PutString("storedCountry", athData[3]);
+				contextEdit.PutString("storedUserName", athData[4]);
+				contextEdit.PutString("storedPsw", athData[5]);
 				contextEdit.Commit();
 			}
-			catch (Exception err)
+			catch
 			{
-				//string x = err.ToString();
+				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
+				return;
 			}
 
             InitilizeComponant();
@@ -77,7 +69,6 @@ namespace goheja
 
         private void InitilizeComponant()
         {
-            //_notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
             _titleBarText = FindViewById<TextView>(Resource.Id.TitleBarTextMain);
             _tab1Icon = FindViewById<ImageView>(Resource.Id.Tab1Icon);
             _tab2Icon = FindViewById<ImageView>(Resource.Id.Tab2Icon);
@@ -85,32 +76,29 @@ namespace goheja
             _tabStrip1 = FindViewById<ImageView>(Resource.Id.TabStrip1);
             _tabStrip2 = FindViewById<ImageView>(Resource.Id.TabStrip2);
             _tabStrip3 = FindViewById<ImageView>(Resource.Id.TabStrip3);
-            _actionBarRight = FindViewById<ImageView>(Resource.Id.ActionBarRight);
+
             _actionBarLeft = FindViewById<ImageView>(Resource.Id.ActionBarLeft);
-            _pager = FindViewById<ViewPager>(Resource.Id.pager);
-            _adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager, this);
+			_actionBarRight = FindViewById<ImageView>(Resource.Id.ActionBarRight);
+			_actionBarRight.Click += ActionBarRightOnClick;
+
+            GenericFragmentPagerAdaptor _adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager, this);
+			_pager = FindViewById<ViewPager>(Resource.Id.pager);
             _pager.Adapter = _adaptor;
             _pager.PageSelected += PagerOnPageSelected;
-            _actionBarRight.Click += ActionBarRightOnClick;
 
             _tab1Icon.Click += (sender, args) => { SetPage(0); };
             _tab2Icon.Click += (sender, args) => { SetPage(1); };
             _tab3Icon.Click += (sender, args) => { SetPage(2); };
 
-            Tab1Click();
+            _titleBarText.Text = "Calendar";
         }
 
         private void ActionBarRightOnClick(object sender, EventArgs eventArgs)
         {
-            if (_pager.CurrentItem == 0)
-            {
-            }
-            else if (_pager.CurrentItem == 2)
-            {
-                var uri = Android.Net.Uri.Parse("http://go-heja.com/gh/mob/sync.php?userId=" + contextPref.GetString("storedAthId", "0").ToString() + "&mog=nitro&url=uurrll");
-                var intent = new Intent(Intent.ActionView, uri);
-                StartActivity(intent);
-            }
+			var athId = contextPref.GetString("storedAthId", "0").ToString();
+            var uri = Android.Net.Uri.Parse("http://go-heja.com/gh/mob/sync.php?userId=" + athId + "&mog=nitro&url=uurrll");
+            var intent = new Intent(Intent.ActionView, uri);
+            StartActivity(intent);
         }
 
         private void SetPage(int position)
@@ -138,40 +126,15 @@ namespace goheja
             switch (position)
             {
                 case 0:
-                    Tab1Click();
+                    _titleBarText.Text = "Calendar";
                     break;
                 case 1:
-                    Tab2Click();
+                    _titleBarText.Text = _middleTabTitle;
                     break;
                 case 2:
-                    Tab3Click();
+                    _titleBarText.Text = "Personal data";
                     break;
             }
-        }
-
-        private void Tab1Click()
-        {
-            _titleBarText.Text = "Calendar";
-        }
-
-        private void Tab2Click()
-        {
-            _titleBarText.Text = _middleTabTitle;
-        }
-
-        private void Tab3Click()
-        {
-            _titleBarText.Text = "Personal data";
-        }
-        public override void OnBackPressed()
-        {
-            MoveTaskToBack(true);
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            DateTime destroytTime = DateTime.Now;
         }
 
         private void startLocationService()
@@ -230,18 +193,13 @@ namespace goheja
 
         public void initiatAth()
         {
-            connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
-            activeConnection = connectivityManager.ActiveNetworkInfo;
-            isOnline = (activeConnection != null) && activeConnection.IsConnected;
+            ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+            NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+            bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
 
             if (!isOnline)
             {
-                var builder = new AlertDialog.Builder(this);
-                builder.SetTitle("No internet connection");
-                builder.SetMessage("Oops!No internet connection... Pls try again later");
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
-                builder.Show();
+				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
                 return;
             }
             trackSvc.Service1 test = new trackSvc.Service1();
@@ -250,31 +208,20 @@ namespace goheja
             {
                 deviceId = test.getListedDeviceId(Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId));
             }
-            catch (Exception err)
+            catch
             {
-                var builder = new AlertDialog.Builder(this);
-                builder.SetTitle("Nitro service is not available");
-                builder.SetMessage("Oops!Service not available... Pls try again later");
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
-                builder.Show();
+				ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
                 return;
             }
 
             if (deviceId == "0")
             {
-                var activity2 = new Intent(this, typeof(listingActivity));
+                var activity2 = new Intent(this, typeof(RegisterActivity));
                 activity2.SetFlags(ActivityFlags.ClearTask | ActivityFlags.ClearTop | ActivityFlags.NewTask);
                 activity2.PutExtra("MyData", "Data from Activity1");
                 StartActivity(activity2);
                 Finish();
             }
-            else
-            {
-
-            }
         }
     }
 }
-
-//end by Afroz date 31/8/2016
