@@ -8,6 +8,7 @@ namespace location2
 {
 	public partial class BaseViewController : UIViewController
 	{
+		public MainPageViewController rootVC;
 		public int pageIndex = 0;
 		public string titleText;
 		public string imageFile;

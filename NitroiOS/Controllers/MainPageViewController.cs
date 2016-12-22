@@ -24,15 +24,19 @@ namespace location2
 			var calendarVC = (BaseViewController)this.Storyboard.InstantiateViewController("CalendarViewController");
 			var analyticsVC = (BaseViewController)this.Storyboard.InstantiateViewController("AnalyticsViewController");
 			var profileVC = (BaseViewController)this.Storyboard.InstantiateViewController("ProfileViewController");
+			var seriousVC = (BaseViewController)this.Storyboard.InstantiateViewController("SeriousViewController");
 			calendarVC.pageIndex = 0;
 			analyticsVC.pageIndex = 1;
 			profileVC.pageIndex = 2;
+			profileVC.rootVC = this;
+			seriousVC.pageIndex = 3;
 
 			analyticsVC.lblTitle = lblTitle;
 
 			subControllers.Add(calendarVC);
 			subControllers.Add(analyticsVC);
 			subControllers.Add(profileVC);
+			subControllers.Add(seriousVC);
 
 			btnWatch.TouchUpInside += WatchButtonClicked;
 			btnWatch.Hidden = true;
@@ -72,7 +76,7 @@ namespace location2
 
 
 
-		private void SetCurrentPage(int pIndex)
+		public void SetCurrentPage(int pIndex)
 		{
 			var startVC = this.ViewControllerAtIndex(pIndex) as BaseViewController;
 			var viewControllers = new UIViewController[] { startVC };
@@ -95,6 +99,8 @@ namespace location2
 
 		public void TabBarAnimation(int pageNumber)
 		{
+			if (pageNumber == 3) return;
+
 			btnCalendar.Selected = false;
 			btnHome.Selected = false;
 			btnProfile.Selected = false;

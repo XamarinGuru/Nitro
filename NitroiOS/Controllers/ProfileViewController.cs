@@ -104,14 +104,18 @@ namespace location2
 		}
 		partial void SeriuosBtn_TouchUpInside(UIButton sender)
 		{
-			calendarWebView.Hidden = false;
-			calendarContent.Hidden = false;
-			btnDone.Hidden = false;
+			//calendarWebView.Hidden = false;
+			//calendarContent.Hidden = false;
+			//btnDone.Hidden = false;
 
-			string id = NSUserDefaults.StandardUserDefaults.StringForKey("id");
-			string userName = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
-			var url = "http://go-heja.com/nitro/profile.php?txt=" + userName + "&userId=" + id;
-			calendarWebView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
+			//string id = NSUserDefaults.StandardUserDefaults.StringForKey("id");
+			//string userName = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
+			//var url = "http://go-heja.com/nitro/profile.php?txt=" + userName + "&userId=" + id;
+			//calendarWebView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
+
+			//SeriousViewController registerVC = Storyboard.InstantiateViewController("vcSerious") as SeriousViewController;
+			//MainPageViewController rootVC = this.ParentViewController as MainPageViewController;
+			rootVC.SetCurrentPage(3);
 		}
 		partial void DoneBtn_TouchUpInside(UIButton sender)
 		{

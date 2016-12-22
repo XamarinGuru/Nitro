@@ -178,6 +178,10 @@
     <Compile Include="Controllers\ProfileViewController.designer.cs">
       <DependentUpon>..\ProfileViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SeriousViewController.cs" />
+    <Compile Include="Controllers\SeriousViewController.designer.cs">
+      <DependentUpon>SeriousViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

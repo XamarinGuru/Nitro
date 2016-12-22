@@ -1,9 +1,29 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Services/BackgroundService.cs">
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/ProfileViewController.cs">
     <Files>
-      <File FileName="NitroDroid/Services/BackgroundService.cs" Line="56" Column="4" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="NitroiOS/Controllers/RegisterViewController.cs" Line="142" Column="18" />
+      <File FileName="NitroiOS/Controllers/ProfileViewController.cs" Line="118" Column="1" />
+      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="15" Column="1" />
+      <File FileName="NitroiOS/Controllers/MainPageViewController.cs" Line="110" Column="20" />
+      <File FileName="NitroiOS/Controllers/CalendarViewController.cs" Line="1" Column="1" />
+      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="11" Column="40" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NitroSolution" expanded="True">
+            <Node name="Nitro.iOS" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="ProfileViewController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
