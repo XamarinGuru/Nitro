@@ -3,6 +3,7 @@ using UIKit;
 using BigTed;
 using Foundation;
 using System.Drawing;
+using CoreGraphics;
 
 namespace location2
 {
@@ -116,6 +117,213 @@ namespace location2
 				ShowMessageBox(null, "Save error");
 			}
 		}
+
+		//protected void SetupRankingPicker(UITextField field)
+		//{
+
+		//}
+		protected void SetupPicker(UITextField field, string type)
+		{
+			// Setup the toolbar
+			UIToolbar toolbar = new UIToolbar();
+			toolbar.BarStyle = UIBarStyle.Black;
+			toolbar.Translucent = true;
+			toolbar.SizeToFit();
+
+			// Create a 'done' button for the toolbar and add it to the toolbar
+			UIBarButtonItem doneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
+			{
+				field.ResignFirstResponder();
+			});
+
+			toolbar.SetItems(new UIBarButtonItem[] { doneButton }, true);
+
+			UIPickerViewModel picker_model = new UIPickerViewModel();
+			if (type == "time")
+				picker_model = new TimePickerViewModel(field);
+			else if (type == "ranking")
+				picker_model = new RankingPickerViewModel(field);
+			else if (type == "HR")
+				picker_model = new HRPickerViewModel(field);
+			else if (type == "pace")
+				picker_model = new PacePickerViewModel(field);
+			
+			UIPickerView picker = new UIPickerView();
+			picker.BackgroundColor = UIColor.White;
+			picker.Model = picker_model;
+			picker.ShowSelectionIndicator = true;
+
+			field.InputView = picker;
+			field.InputAccessoryView = toolbar;
+
+			field.ShouldChangeCharacters = new UITextFieldChange(delegate (UITextField textField, NSRange range, string replacementString)
+			{
+				return false;
+			});
+		}
+
+		#region CLASS RANKING_PICKER
+		public class RankingPickerViewModel : UIPickerViewModel
+		{
+			UITextField textField;
+
+			public RankingPickerViewModel(UITextField textField)
+			{
+				this.textField = textField;
+			}
+
+			public override nint GetComponentCount(UIPickerView pickerView)
+			{
+				return 1;
+			}
+
+			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+			{
+				return 5;
+			}
+
+			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+			{
+				return ((int)row + 1).ToString() ;
+			}
+
+			public override void Selected(UIPickerView pickerView, nint row, nint component)
+			{
+				textField.Text = (pickerView.SelectedRowInComponent(0) + 1).ToString();
+			}
+		}
+		#endregion
+
+		#region CLASS RANKING_PICKER
+		public class HRPickerViewModel : UIPickerViewModel
+		{
+			UITextField textField;
+			string[] list = new string[5];
+
+			public HRPickerViewModel(UITextField textField)
+			{
+				this.textField = textField;
+				list[0] = "80-101";
+				list[1] = "102-118";
+				list[2] = "119-132";
+				list[3] = "133-150";
+				list[4] = "151-170";
+			}
+
+			public override nint GetComponentCount(UIPickerView pickerView)
+			{
+				return 1;
+			}
+
+			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+			{
+				return list.Length;
+			}
+
+			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+			{
+				return list[row];
+			}
+
+			public override void Selected(UIPickerView pickerView, nint row, nint component)
+			{
+				textField.Text = list[row];
+			}
+		}
+		#endregion
+
+		#region CLASS PACE_PICKER HH:MM:SS
+		public class PacePickerViewModel : UIPickerViewModel
+		{
+			UITextField textField;
+
+			public PacePickerViewModel(UITextField textField)
+			{
+				this.textField = textField;
+			}
+
+			public override nint GetComponentCount(UIPickerView pickerView)
+			{
+				return 2;
+			}
+
+			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+			{
+				switch (component)
+				{
+					case 0:
+						return 100;
+					case 1:
+						return 60;
+					default:
+						break;
+				}
+				return 0;
+			}
+
+			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+			{
+				string title = string.Format("{0:00}", (int)row);
+				return title;
+			}
+
+			public override void Selected(UIPickerView pickerView, nint row, nint component)
+			{
+				var mm = string.Format("{0:00}", pickerView.SelectedRowInComponent(0));
+				var ss = string.Format("{0:00}", pickerView.SelectedRowInComponent(1));
+
+				textField.Text = mm + ":" + ss;
+			}
+		}
+		#endregion
+
+		#region CLASS TIME_PICKER HH:MM:SS
+		public class TimePickerViewModel : UIPickerViewModel
+		{
+			UITextField textField;
+
+			public TimePickerViewModel(UITextField textField)
+			{
+				this.textField = textField;
+			}
+
+			public override nint GetComponentCount(UIPickerView pickerView)
+			{
+				return 3;
+			}
+
+			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+			{
+				switch (component)
+				{
+					case 0:
+						return 100;
+					case 1:
+						return 60;
+					case 2:
+						return 60;
+					default:
+						break;
+				}
+				return 0;
+			}
+
+			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+			{
+				string title = string.Format("{0:00}", (int)row);
+				return title;
+			}
+
+			public override void Selected(UIPickerView pickerView, nint row, nint component)
+			{
+				var hh = string.Format("{0:00}", pickerView.SelectedRowInComponent(0));
+				var mm = string.Format("{0:00}", pickerView.SelectedRowInComponent(1));
+				var ss = string.Format("{0:00}", pickerView.SelectedRowInComponent(2));
+
+				textField.Text = hh + ":" + mm + ":" + ss;
+			}
+		}
+		#endregion
 	}
 }
 
