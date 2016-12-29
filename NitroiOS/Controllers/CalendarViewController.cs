@@ -44,43 +44,43 @@ namespace location2
 			trackSvc.Service1 meServ = new trackSvc.Service1();
 			meServ = new location2.trackSvc.Service1();
 
-			string deviceId;
-			try
-			{
-				deviceId = meServ.getListedDeviceId(deviceUDID);
-			}
-			catch
-			{
-				ShowMessageBox(null, "You are not connected to Nitro services...");
-				deviceId = "tempDeviceId";
-			}
+			//string deviceId;
+			//try
+			//{
+			//	deviceId = meServ.getListedDeviceId(deviceUDID);
+			//}
+			//catch
+			//{
+			//	ShowMessageBox(null, "You are not connected to Nitro services...");
+			//	deviceId = "tempDeviceId";
+			//}
 
 
-			try
-			{
-				if (deviceId == "0")
-				{
-					ShowMessageBox(null, "You are not registered to Nitro services...");
-				}
-				else {
-					string[] athData = meServ.getAthDataByDeviceId(deviceUDID);
+			//try
+			//{
+			//	if (deviceId == "0")
+			//	{
+			//		ShowMessageBox(null, "You are not registered to Nitro services...");
+			//	}
+			//	else {
+			//		string[] athData = meServ.getAthDataByDeviceId(deviceUDID);
 
-					if (athData == null) 
-						athData = meServ.getAthDataByDeviceId(deviceUDID);
+			//		if (athData == null) 
+			//			athData = meServ.getAthDataByDeviceId(deviceUDID);
 
-					NSUserDefaults.StandardUserDefaults.SetString(deviceUDID, "deviceId");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[0].ToString(), "firstName");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[1].ToString(), "lastName");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[2].ToString(), "id");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[3].ToString(), "country");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[4].ToString(), "userName");
-					NSUserDefaults.StandardUserDefaults.SetString(athData[5].ToString(), "password");
-				}
-			}
-			catch (Exception e)
-			{
-				ShowMessageBox(null, e.Message);
-			}
+			//		NSUserDefaults.StandardUserDefaults.SetString(deviceUDID, "deviceId");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[0].ToString(), "firstName");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[1].ToString(), "lastName");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[2].ToString(), "id");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[3].ToString(), "country");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[4].ToString(), "userName");
+			//		NSUserDefaults.StandardUserDefaults.SetString(athData[5].ToString(), "password");
+			//	}
+			//}
+			//catch (Exception e)
+			//{
+			//	ShowMessageBox(null, e.Message);
+			//}
 		}
 	}
 }

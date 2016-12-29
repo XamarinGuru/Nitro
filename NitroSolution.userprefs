@@ -1,18 +1,51 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/SeriousViewController.cs">
     <Files>
-      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="65" Column="39" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="148" Column="26" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="83" Column="4" />
-      <File FileName="NitroiOS/Entitlements.plist" />
-      <File FileName="NitroiOS/Info.plist" />
+      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="215" Column="1" />
+      <File FileName="NitroiOS/Helper/Member.cs" Line="600" Column="23" />
+      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="116" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NitroSolution" expanded="True">
+            <Node name="Nitro.Droid" expanded="True">
+              <Node name="WebReferences" expanded="True">
+                <Node name="WebReferenceItem" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Nitro.iOS" expanded="True">
+              <Node name="WebReferences" expanded="True">
+                <Node name="WebReferenceItem" expanded="True">
+                  <Node name="Reference.map" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="SeriousViewController.cs" selected="True" />
+              </Node>
+              <Node name="Helper" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>error</Value>
+          <Value>ex</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/SeriousViewController.cs" line="407" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="138" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/BaseViewController.cs" line="116" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/SeriousViewController.cs" line="215" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>

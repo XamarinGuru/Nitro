@@ -16,6 +16,30 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditBestResults { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditBike { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditGoals { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditPhysical { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditRanking { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditRun { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightBestResults { get; set; }
 
         [Outlet]
@@ -32,6 +56,46 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblAddress { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblAge { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblBib { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblBirth { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblCountry { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblEmail { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblFirstname { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblGender { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblLastname { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPhone { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txt10KRun { get; set; }
 
         [Outlet]
@@ -41,6 +105,10 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtBFTPHB { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtBMI { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -84,7 +152,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtCountry { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtFatPercentage { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -92,7 +168,19 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtHeight { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtHMarathon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtID { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtLastname { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -133,6 +221,10 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtRZone1PACE { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtRZone1Power { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -236,6 +328,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtWeight { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewBestResults { get; set; }
 
         [Outlet]
@@ -254,8 +350,46 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionCollect (UIKit.UIButton sender);
 
+        [Action ("ActionEdit:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionEdit (UIKit.UIButton sender);
+
+        [Action ("ActionUpdate:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionUpdate (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnEditBestResults != null) {
+                btnEditBestResults.Dispose ();
+                btnEditBestResults = null;
+            }
+
+            if (btnEditBike != null) {
+                btnEditBike.Dispose ();
+                btnEditBike = null;
+            }
+
+            if (btnEditGoals != null) {
+                btnEditGoals.Dispose ();
+                btnEditGoals = null;
+            }
+
+            if (btnEditPhysical != null) {
+                btnEditPhysical.Dispose ();
+                btnEditPhysical = null;
+            }
+
+            if (btnEditRanking != null) {
+                btnEditRanking.Dispose ();
+                btnEditRanking = null;
+            }
+
+            if (btnEditRun != null) {
+                btnEditRun.Dispose ();
+                btnEditRun = null;
+            }
+
             if (heightBestResults != null) {
                 heightBestResults.Dispose ();
                 heightBestResults = null;
@@ -276,6 +410,56 @@ namespace location2
                 heightSelfRanking = null;
             }
 
+            if (lblAddress != null) {
+                lblAddress.Dispose ();
+                lblAddress = null;
+            }
+
+            if (lblAge != null) {
+                lblAge.Dispose ();
+                lblAge = null;
+            }
+
+            if (lblBib != null) {
+                lblBib.Dispose ();
+                lblBib = null;
+            }
+
+            if (lblBirth != null) {
+                lblBirth.Dispose ();
+                lblBirth = null;
+            }
+
+            if (lblCountry != null) {
+                lblCountry.Dispose ();
+                lblCountry = null;
+            }
+
+            if (lblEmail != null) {
+                lblEmail.Dispose ();
+                lblEmail = null;
+            }
+
+            if (lblFirstname != null) {
+                lblFirstname.Dispose ();
+                lblFirstname = null;
+            }
+
+            if (lblGender != null) {
+                lblGender.Dispose ();
+                lblGender = null;
+            }
+
+            if (lblLastname != null) {
+                lblLastname.Dispose ();
+                lblLastname = null;
+            }
+
+            if (lblPhone != null) {
+                lblPhone.Dispose ();
+                lblPhone = null;
+            }
+
             if (txt10KRun != null) {
                 txt10KRun.Dispose ();
                 txt10KRun = null;
@@ -289,6 +473,11 @@ namespace location2
             if (txtBFTPHB != null) {
                 txtBFTPHB.Dispose ();
                 txtBFTPHB = null;
+            }
+
+            if (txtBMI != null) {
+                txtBMI.Dispose ();
+                txtBMI = null;
             }
 
             if (txtBZone1HR != null) {
@@ -341,9 +530,19 @@ namespace location2
                 txtBZone5POWER = null;
             }
 
+            if (txtCountry != null) {
+                txtCountry.Dispose ();
+                txtCountry = null;
+            }
+
             if (txtDistance != null) {
                 txtDistance.Dispose ();
                 txtDistance = null;
+            }
+
+            if (txtFatPercentage != null) {
+                txtFatPercentage.Dispose ();
+                txtFatPercentage = null;
             }
 
             if (txtHDistance != null) {
@@ -351,9 +550,24 @@ namespace location2
                 txtHDistance = null;
             }
 
+            if (txtHeight != null) {
+                txtHeight.Dispose ();
+                txtHeight = null;
+            }
+
             if (txtHMarathon != null) {
                 txtHMarathon.Dispose ();
                 txtHMarathon = null;
+            }
+
+            if (txtID != null) {
+                txtID.Dispose ();
+                txtID = null;
+            }
+
+            if (txtLastname != null) {
+                txtLastname.Dispose ();
+                txtLastname = null;
             }
 
             if (txtMarathon != null) {
@@ -404,6 +618,11 @@ namespace location2
             if (txtRZone1PACE != null) {
                 txtRZone1PACE.Dispose ();
                 txtRZone1PACE = null;
+            }
+
+            if (txtRZone1Power != null) {
+                txtRZone1Power.Dispose ();
+                txtRZone1Power = null;
             }
 
             if (txtRZone2HR != null) {
@@ -529,6 +748,11 @@ namespace location2
             if (txtSZone5PACE != null) {
                 txtSZone5PACE.Dispose ();
                 txtSZone5PACE = null;
+            }
+
+            if (txtWeight != null) {
+                txtWeight.Dispose ();
+                txtWeight = null;
             }
 
             if (viewBestResults != null) {

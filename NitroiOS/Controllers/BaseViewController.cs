@@ -4,6 +4,7 @@ using BigTed;
 using Foundation;
 using System.Drawing;
 using CoreGraphics;
+using Newtonsoft.Json;
 
 namespace location2
 {
@@ -15,6 +16,9 @@ namespace location2
 		public string imageFile;
 
 		public UILabel lblTitle;
+
+		trackSvc.Service1 mTrackSvc = new trackSvc.Service1();
+		Reachability.Reachability mConnection = new Reachability.Reachability();
 
 		public BaseViewController() : base()
 		{
@@ -63,6 +67,76 @@ namespace location2
 			textField.ResignFirstResponder();
 			return true;
 		}
+
+		public bool IsNetEnable()
+		{
+			return mConnection.IsHostReachable("www.google.com") ? true : false;
+		}
+
+		#region integrate with web reference
+		public string RegisterUser(string fName, string lName, string deviceId, string userName, string psw, string email, int age, bool ageSpecified = true, bool acceptedTerms = true, bool acceptedTermsSpecified = true)
+		{
+			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified);
+			return result;
+		}
+		public string GetUserID()
+		{
+			var userID = NSUserDefaults.StandardUserDefaults.StringForKey("userID");
+			if (userID != null && userID != "0")
+				return userID;
+			
+			try
+			{
+				string strEmail = NSUserDefaults.StandardUserDefaults.StringForKey("email");
+				string strPassword = NSUserDefaults.StandardUserDefaults.StringForKey("password");
+
+				userID = mTrackSvc.getListedDeviceId(strEmail, strPassword);
+
+				if (userID != "0")
+					NSUserDefaults.StandardUserDefaults.SetString(userID, "userID");
+				
+				return userID;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return "0";
+			}
+		}
+
+		public RootMember GetUserObject()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var jsonUser = mTrackSvc.getUsrObject(userID).ToString();
+				//var jsonUser = "{ \"profile\" : { \"idData\" : [], \"userSystemData\" : [], \"injuries\" : [{ \"_id\" : \"17\", \"name\" : \"in name\", \"value\" : \"\", \"isCurrent\" : false, \"date\" : \"1 / 1 / 0001 12:00:00 AM\" }], \"history\" : [{ \"_id\" : \"0\", \"date\" : \"1 / 1 / 0001 12:00:00 AM\", \"text\" : \"\" }], \"performance\" : [{ \"_id\" : \"0\", \"name\" : \"ACL\", \"value\" : \"\" }, { \"_id\" : \"1\", \"name\" : \"ATL\", \"value\" : \"\" }, { \"_id\" : \"2\", \"name\" : \"TSB\", \"value\" : \"\" }, { \"_id\" : \"3\", \"name\" : \"TSS\", \"value\" : \"\" }], \"physical\" : [{ \"_id\" : \"0\", \"name\" : \"Weight\", \"value\" : \"55\", \"unit\" : \"55\" }, { \"_id\" : \"1\", \"name\" : \"Height\", \"value\" : \"44\", \"unit\" : \"44\" }, { \"_id\" : \"2\", \"name\" : \"BMI\", \"value\" : \"33\", \"unit\" : \"33\" }, { \"_id\" : \"3\", \"name\" : \"Fat percentage\", \"value\" : \"11\", \"unit\" : \"11\" }], \"goals\" : [{ \"_id\" : \"0\", \"year\" : \"2016\", \"text\" : \"\" }], \"bestResults\" : [], \"experience\" : [{ \"_id\" : \"0\", \"name\" : \"Swim\", \"value\" : \"\" }, { \"_id\" : \"2\", \"name\" : \"Run\", \"value\" : \"\" }, { \"_id\" : \"1\", \"name\" : \"Bike\", \"value\" : \"\" }, { \"_id\" : \"3\", \"name\" : \"Endurance\", \"value\" : \"\" }], \"selfRanking\" : [{ \"fieldId\" : \"0\", \"fieldName\" : \"Swim\", \"rank\" : \"1\" }, { \"fieldId\" : \"1\", \"fieldName\" : \"Bike\", \"rank\" : \"1\" }, { \"fieldId\" : \"2\", \"fieldName\" : \"Run\", \"rank\" : \"1\" }], \"events\" : [], \"fields\" : [] }, \"updatedBy\" : \"12 / 12 / 2017 12:00:00 AM\", \"lastUpdateDate\" : \"1 / 1 / 2017 12:00:00 AM\", \"createdDate\" : \"1 / 1 / 2016 12:00:00 AM\", \"auth\" : \"\", \"userName\" : \"test user\", \"password\" : \"test password\", \"sportComp\" : 0, \"sportCompKey\" : \"\" }";
+				RootMember rootMember = JsonConvert.DeserializeObject<RootMember>(jsonUser);
+				return rootMember;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
+		public bool ValidateUserNickName(string nickName)
+		{
+			var validate = mTrackSvc.validateNickName(nickName);
+			if (validate != "1")
+			{
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
+		#endregion
+
 
 		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
 		{
@@ -118,10 +192,17 @@ namespace location2
 			}
 		}
 
-		//protected void SetupRankingPicker(UITextField field)
-		//{
+		public void MarkAsInvalide(UITextField textField)
+		{
+			InvokeOnMainThread(() =>
+			{
+				textField.Layer.BorderColor = UIColor.Red.CGColor;
+				textField.Layer.BorderWidth = 3;
+				textField.Layer.CornerRadius = 5;
+			});
+		}
 
-		//}
+
 		protected void SetupPicker(UITextField field, string type)
 		{
 			// Setup the toolbar
@@ -190,6 +271,7 @@ namespace location2
 			public override void Selected(UIPickerView pickerView, nint row, nint component)
 			{
 				textField.Text = (pickerView.SelectedRowInComponent(0) + 1).ToString();
+				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}
 		#endregion
@@ -228,6 +310,7 @@ namespace location2
 			public override void Selected(UIPickerView pickerView, nint row, nint component)
 			{
 				textField.Text = list[row];
+				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}
 		#endregion
@@ -273,6 +356,7 @@ namespace location2
 				var ss = string.Format("{0:00}", pickerView.SelectedRowInComponent(1));
 
 				textField.Text = mm + ":" + ss;
+				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}
 		#endregion
@@ -321,6 +405,7 @@ namespace location2
 				var ss = string.Format("{0:00}", pickerView.SelectedRowInComponent(2));
 
 				textField.Text = hh + ":" + mm + ":" + ss;
+				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}
 		#endregion
