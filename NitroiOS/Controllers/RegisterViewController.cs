@@ -141,7 +141,7 @@ namespace location2
 					int tempage = 30;
 					int.TryParse(txtAge.Text, out tempage);
 
-					var result = RegisterUser(txtFirstName.Text, txtLastName.Text, deviceID, txtLastName.Text, txtPassword.Text, txtEmail.Text, 40);
+					var result = RegisterUser(txtFirstName.Text, txtLastName.Text, deviceID, txtLastName.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
 
 					//var result = mtra.insertNewDevice(txtFirstName.Text, txtLastName.Text, deviceID, txtLastName.Text, txtPassword.Text, true, true, txtEmail.Text, 40, true);
 					//var result = meServ.insertNewDevice("gsgs1gsgs", "gs123gsgs", "a1d2ds3cc432cdcsdd555355dd2142421dd311451r", "tescc1sdc32dsd1ddt", "tedc21c13dddst", true, true, "sag132@dan.com", 40, true);

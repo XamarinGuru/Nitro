@@ -89,6 +89,7 @@ namespace location2
 			#region physical
 			this.SetBinding(() => MemberModel.name, () => lblFirstname.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.lastname, () => lblLastname.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.country, () => lblCountry.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.address, () => lblAddress.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.bib, () => lblBib.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.age, () => lblAge.Text, BindingMode.OneWay);
@@ -172,7 +173,7 @@ namespace location2
 			this.SetBinding(() => MemberModel.rZone2HR, () => txtRZone2HR.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rZone3HR, () => txtRZone3HR.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone5HR.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.rZone5HR, () => txtRZone5HR.Text, BindingMode.TwoWay);
 
 			this.SetBinding(() => MemberModel.rZone1PACE,() => txtRZone1PACE.Text,BindingMode.OneWay);
 			this.SetBinding(() => txtRZone1PACE.Text,() => MemberModel.rZone1PACE,BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
@@ -209,8 +210,8 @@ namespace location2
 			this.SetBinding(() => MemberModel.bZone4POWER, () => txtBZone4POWER.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.bZone5POWER, () => txtBZone5POWER.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.bFTPace, () => txtBFTPace.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.bFTPHB, () => txtBFTPHB.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.bFTPower, () => txtBFTPower.Text, BindingMode.TwoWay);
 			#endregion
 		}
 
@@ -376,7 +377,7 @@ namespace location2
 					txtBZone3POWER.Enabled = sender.Selected;
 					txtBZone4POWER.Enabled = sender.Selected;
 					txtBZone5POWER.Enabled = sender.Selected;
-					txtBFTPace.Enabled = sender.Selected;
+					txtBFTPower.Enabled = sender.Selected;
 					txtBFTPHB.Enabled = sender.Selected;
 					txtBZone1HR.BackgroundColor = backgroundColor;
 					txtBZone2HR.BackgroundColor = backgroundColor;
@@ -388,7 +389,7 @@ namespace location2
 					txtBZone3POWER.BackgroundColor = backgroundColor;
 					txtBZone4POWER.BackgroundColor = backgroundColor;
 					txtBZone5POWER.BackgroundColor = backgroundColor;
-					txtBFTPace.BackgroundColor = backgroundColor;
+					txtBFTPower.BackgroundColor = backgroundColor;
 					txtBFTPHB.BackgroundColor = backgroundColor;
 					break;
 				default:
@@ -402,8 +403,7 @@ namespace location2
 		#region update actions
 		partial void ActionUpdate(UIButton sender)
 		{
-			var aaa = MemberModel;
-			Console.WriteLine(MemberModel.ToString());
+			var result = UpdateUserDataJson(MemberModel.rootMember);
 		}
 		#endregion
 	}

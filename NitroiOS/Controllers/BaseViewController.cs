@@ -123,6 +123,16 @@ namespace location2
 			return null;
 		}
 
+		public string UpdateUserDataJson(RootMember updatedUserObject, string updatedById = null, string specGroup = "1")
+		{
+			var userID = GetUserID();
+			var jsonUser = JsonConvert.SerializeObject(updatedUserObject);
+			Console.WriteLine(jsonUser);
+			updatedById = userID;
+			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, specGroup);
+			return result;
+		}
+
 		public bool ValidateUserNickName(string nickName)
 		{
 			var validate = mTrackSvc.validateNickName(nickName);

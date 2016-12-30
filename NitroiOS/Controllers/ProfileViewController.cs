@@ -25,10 +25,10 @@ namespace location2
 			imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
 			imagePicker.Canceled += Handle_Canceled;
 
-			if (!setPersonalData())
-			{
-				ShowMessageBox(null, "Error getting user data!");
-			}
+			//if (!setPersonalData())
+			//{
+			//	ShowMessageBox(null, "Error getting user data!");
+			//}
 
 			calendarContent.Hidden = true;
 			calendarWebView.Hidden = true;

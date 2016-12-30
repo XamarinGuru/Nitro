@@ -40,26 +40,26 @@ namespace goheja
 			var contextEdit = contextPref.Edit();
 			contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 			string _deviceId = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
-			try
-			{
-				trackSvc.Service1 test = new trackSvc.Service1();
-				string[] athData = test.getAthDataByDeviceId(_deviceId);
-				contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-				contextEdit = contextPref.Edit();
+			//try
+			//{
+			//	trackSvc.Service1 test = new trackSvc.Service1();
+			//	string[] athData = test.getAthDataByDeviceId(_deviceId);
+			//	contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+			//	contextEdit = contextPref.Edit();
 
-				contextEdit.PutString("storedFirstName", athData[0]);
-				contextEdit.PutString("storedAthId", athData[2]);
-				contextEdit.PutString("storedLastName", athData[1]);
-				contextEdit.PutString("storedCountry", athData[3]);
-				contextEdit.PutString("storedUserName", athData[4]);
-				contextEdit.PutString("storedPsw", athData[5]);
-				contextEdit.Commit();
-			}
-			catch
-			{
-				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
-				return;
-			}
+			//	contextEdit.PutString("storedFirstName", athData[0]);
+			//	contextEdit.PutString("storedAthId", athData[2]);
+			//	contextEdit.PutString("storedLastName", athData[1]);
+			//	contextEdit.PutString("storedCountry", athData[3]);
+			//	contextEdit.PutString("storedUserName", athData[4]);
+			//	contextEdit.PutString("storedPsw", athData[5]);
+			//	contextEdit.Commit();
+			//}
+			//catch
+			//{
+			//	ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
+			//	return;
+			//}
 
             InitilizeComponant();
            
@@ -197,31 +197,31 @@ namespace goheja
             NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
             bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
 
-            if (!isOnline)
-            {
-				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
-                return;
-            }
-            trackSvc.Service1 test = new trackSvc.Service1();
-            string deviceId = "0";
-            try
-            {
-                deviceId = test.getListedDeviceId(Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId));
-            }
-            catch
-            {
-				ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
-                return;
-            }
+    //        if (!isOnline)
+    //        {
+				//ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
+    //            return;
+    //        }
+    //        trackSvc.Service1 test = new trackSvc.Service1();
+    //        string deviceId = "0";
+    //        try
+    //        {
+    //            deviceId = test.getListedDeviceId(Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId));
+    //        }
+    //        catch
+    //        {
+				//ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
+    //            return;
+    //        }
 
-            if (deviceId == "0")
-            {
-                var activity2 = new Intent(this, typeof(RegisterActivity));
-                activity2.SetFlags(ActivityFlags.ClearTask | ActivityFlags.ClearTop | ActivityFlags.NewTask);
-                activity2.PutExtra("MyData", "Data from Activity1");
-                StartActivity(activity2);
-                Finish();
-            }
+    //        if (deviceId == "0")
+    //        {
+    //            var activity2 = new Intent(this, typeof(RegisterActivity));
+    //            activity2.SetFlags(ActivityFlags.ClearTask | ActivityFlags.ClearTop | ActivityFlags.NewTask);
+    //            activity2.PutExtra("MyData", "Data from Activity1");
+    //            StartActivity(activity2);
+    //            Finish();
+    //        }
         }
     }
 }

@@ -100,11 +100,11 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtBFTPace { get; set; }
+        UIKit.UITextField txtBFTPHB { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtBFTPHB { get; set; }
+        UIKit.UITextField txtBFTPower { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -465,14 +465,14 @@ namespace location2
                 txt10KRun = null;
             }
 
-            if (txtBFTPace != null) {
-                txtBFTPace.Dispose ();
-                txtBFTPace = null;
-            }
-
             if (txtBFTPHB != null) {
                 txtBFTPHB.Dispose ();
                 txtBFTPHB = null;
+            }
+
+            if (txtBFTPower != null) {
+                txtBFTPower.Dispose ();
+                txtBFTPower = null;
             }
 
             if (txtBMI != null) {

@@ -49,19 +49,9 @@ namespace goheja
                 return;
             }
 
-            trackSvc.Service1 test = new trackSvc.Service1();
-            string deviceId = "0";
-            try
-            {
-                deviceId = test.getListedDeviceId(Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId));
-            }
-            catch
-            {
-				ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
-                return;
-            }
+			string userID = GetUserID();
 
-            if (deviceId == "0")//not registered yet
+            if (userID == "0")//not registered yet
             {
                 var activity2 = new Intent(this, typeof(RegisterActivity));
                 activity2.PutExtra("MyData", "Data from Activity1");

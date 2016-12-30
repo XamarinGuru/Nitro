@@ -18,8 +18,9 @@ namespace goheja
 
         public override Fragment GetItem(int position)
         {
-            if (position == 0)
-                return new FragmentCalendar();
+			if (position == 0)
+				return new FragmentSerious();
+                //return new FragmentCalendar();
             if (position == 1)
 				return new FragmentEvents();
             if (position == 2)

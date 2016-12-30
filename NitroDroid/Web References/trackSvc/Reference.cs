@@ -26,11 +26,33 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback updateMomgoDataOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getMobTotalsGraphOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addPracticeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback setEventInCalendarOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getPracticeTotalsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getGroupsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getCoachWeekTotalsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback athGeneralListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertMultiToGroupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getEventReportOperationCompleted;
+        
         private System.Threading.SendOrPostCallback updateMomgoDataFromFoxiOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getFutureEventOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateMomgoCalendarOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateGarminDataOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getGraphDataOperationCompleted;
         
         private System.Threading.SendOrPostCallback athCurrDataMongoOperationCompleted;
         
@@ -70,13 +92,17 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback getProgramsJsonStringIdOperationCompleted;
         
-        private System.Threading.SendOrPostCallback insertNewProgramsJsonOperationCompleted;
+        private System.Threading.SendOrPostCallback updatePracticeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertNewProgramOperationCompleted;
         
         private System.Threading.SendOrPostCallback populateProgramOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateProgramsJsonOperationCompleted;
         
         private System.Threading.SendOrPostCallback athCurrDataByDeviceIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getGaugeOperationCompleted;
         
         private System.Threading.SendOrPostCallback getProgramsCompleteJsonOperationCompleted;
         
@@ -122,13 +148,37 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback getUserCalendarPastOperationCompleted;
         
+        private System.Threading.SendOrPostCallback setCommentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getUsrObjectOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getGaugesForMonthOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertCompUserKeyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback syncSuuntoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getAthJsonByNickNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getPrcticeListOperationCompleted;
         
         private System.Threading.SendOrPostCallback getUserCalendarTodayOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getUsrLoginDataOperationCompleted;
+        
         private System.Threading.SendOrPostCallback resetCalendarEventOperationCompleted;
         
+        private System.Threading.SendOrPostCallback athDataOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback removeMultiFromGroupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getCommentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback fieldAthletsAndEvenetsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback updateMomgoGroupsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback removeAthFromGroupOperationCompleted;
         
         private System.Threading.SendOrPostCallback removeFromGroupOperationCompleted;
         
@@ -188,7 +238,7 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         public Service1() {
-            this.Url = "http://go-heja.com:9002/Service1.svc";
+            this.Url = "http://go-heja.com:9006/Service1.svc";
         }
         
         public Service1(string url) {
@@ -199,13 +249,46 @@ namespace goheja.trackSvc {
         public event updateMomgoDataCompletedEventHandler updateMomgoDataCompleted;
         
         /// CodeRemarks
+        public event getMobTotalsGraphCompletedEventHandler getMobTotalsGraphCompleted;
+        
+        /// CodeRemarks
+        public event addPracticeCompletedEventHandler addPracticeCompleted;
+        
+        /// CodeRemarks
+        public event setEventInCalendarCompletedEventHandler setEventInCalendarCompleted;
+        
+        /// CodeRemarks
+        public event getPracticeTotalsCompletedEventHandler getPracticeTotalsCompleted;
+        
+        /// CodeRemarks
+        public event getGroupsCompletedEventHandler getGroupsCompleted;
+        
+        /// CodeRemarks
+        public event getCoachWeekTotalsCompletedEventHandler getCoachWeekTotalsCompleted;
+        
+        /// CodeRemarks
+        public event athGeneralListCompletedEventHandler athGeneralListCompleted;
+        
+        /// CodeRemarks
+        public event insertMultiToGroupCompletedEventHandler insertMultiToGroupCompleted;
+        
+        /// CodeRemarks
+        public event getEventReportCompletedEventHandler getEventReportCompleted;
+        
+        /// CodeRemarks
         public event updateMomgoDataFromFoxiCompletedEventHandler updateMomgoDataFromFoxiCompleted;
+        
+        /// CodeRemarks
+        public event getFutureEventCompletedEventHandler getFutureEventCompleted;
         
         /// CodeRemarks
         public event updateMomgoCalendarCompletedEventHandler updateMomgoCalendarCompleted;
         
         /// CodeRemarks
         public event updateGarminDataCompletedEventHandler updateGarminDataCompleted;
+        
+        /// CodeRemarks
+        public event getGraphDataCompletedEventHandler getGraphDataCompleted;
         
         /// CodeRemarks
         public event athCurrDataMongoCompletedEventHandler athCurrDataMongoCompleted;
@@ -265,7 +348,10 @@ namespace goheja.trackSvc {
         public event getProgramsJsonStringIdCompletedEventHandler getProgramsJsonStringIdCompleted;
         
         /// CodeRemarks
-        public event insertNewProgramsJsonCompletedEventHandler insertNewProgramsJsonCompleted;
+        public event updatePracticeCompletedEventHandler updatePracticeCompleted;
+        
+        /// CodeRemarks
+        public event insertNewProgramCompletedEventHandler insertNewProgramCompleted;
         
         /// CodeRemarks
         public event populateProgramCompletedEventHandler populateProgramCompleted;
@@ -275,6 +361,9 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         public event athCurrDataByDeviceIdCompletedEventHandler athCurrDataByDeviceIdCompleted;
+        
+        /// CodeRemarks
+        public event getGaugeCompletedEventHandler getGaugeCompleted;
         
         /// CodeRemarks
         public event getProgramsCompleteJsonCompletedEventHandler getProgramsCompleteJsonCompleted;
@@ -343,16 +432,52 @@ namespace goheja.trackSvc {
         public event getUserCalendarPastCompletedEventHandler getUserCalendarPastCompleted;
         
         /// CodeRemarks
+        public event setCommentsCompletedEventHandler setCommentsCompleted;
+        
+        /// CodeRemarks
+        public event getUsrObjectCompletedEventHandler getUsrObjectCompleted;
+        
+        /// CodeRemarks
+        public event getGaugesForMonthCompletedEventHandler getGaugesForMonthCompleted;
+        
+        /// CodeRemarks
+        public event insertCompUserKeyCompletedEventHandler insertCompUserKeyCompleted;
+        
+        /// CodeRemarks
+        public event syncSuuntoCompletedEventHandler syncSuuntoCompleted;
+        
+        /// CodeRemarks
         public event getAthJsonByNickNameCompletedEventHandler getAthJsonByNickNameCompleted;
+        
+        /// CodeRemarks
+        public event getPrcticeListCompletedEventHandler getPrcticeListCompleted;
         
         /// CodeRemarks
         public event getUserCalendarTodayCompletedEventHandler getUserCalendarTodayCompleted;
         
         /// CodeRemarks
+        public event getUsrLoginDataCompletedEventHandler getUsrLoginDataCompleted;
+        
+        /// CodeRemarks
         public event resetCalendarEventCompletedEventHandler resetCalendarEventCompleted;
         
         /// CodeRemarks
+        public event athDataCompletedEventHandler athDataCompleted;
+        
+        /// CodeRemarks
+        public event removeMultiFromGroupCompletedEventHandler removeMultiFromGroupCompleted;
+        
+        /// CodeRemarks
+        public event getCommentsCompletedEventHandler getCommentsCompleted;
+        
+        /// CodeRemarks
+        public event fieldAthletsAndEvenetsCompletedEventHandler fieldAthletsAndEvenetsCompleted;
+        
+        /// CodeRemarks
         public event updateMomgoGroupsCompletedEventHandler updateMomgoGroupsCompleted;
+        
+        /// CodeRemarks
+        public event removeAthFromGroupCompletedEventHandler removeAthFromGroupCompleted;
         
         /// CodeRemarks
         public event removeFromGroupCompletedEventHandler removeFromGroupCompleted;
@@ -556,6 +681,316 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getMobTotalsGraph", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string getMobTotalsGraph([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId) {
+            object[] results = this.Invoke("getMobTotalsGraph", new object[] {
+                        athId});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getMobTotalsGraphAsync(string athId) {
+            this.getMobTotalsGraphAsync(athId, null);
+        }
+        
+        /// CodeRemarks
+        public void getMobTotalsGraphAsync(string athId, object userState) {
+            if ((this.getMobTotalsGraphOperationCompleted == null)) {
+                this.getMobTotalsGraphOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetMobTotalsGraphOperationCompleted);
+            }
+            this.InvokeAsync("getMobTotalsGraph", new object[] {
+                        athId}, this.getMobTotalsGraphOperationCompleted, userState);
+        }
+        
+        private void OngetMobTotalsGraphOperationCompleted(object arg) {
+            if ((this.getMobTotalsGraphCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getMobTotalsGraphCompleted(this, new getMobTotalsGraphCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/addPractice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string addPractice([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventType, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string generaldata, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string dist, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durHrs, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durMin, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string tss, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string hb, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string pace, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token) {
+            object[] results = this.Invoke("addPractice", new object[] {
+                        name,
+                        eventType,
+                        generaldata,
+                        dist,
+                        durHrs,
+                        durMin,
+                        tss,
+                        hb,
+                        pace,
+                        token});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void addPracticeAsync(string name, string eventType, string generaldata, string dist, string durHrs, string durMin, string tss, string hb, string pace, string token) {
+            this.addPracticeAsync(name, eventType, generaldata, dist, durHrs, durMin, tss, hb, pace, token, null);
+        }
+        
+        /// CodeRemarks
+        public void addPracticeAsync(string name, string eventType, string generaldata, string dist, string durHrs, string durMin, string tss, string hb, string pace, string token, object userState) {
+            if ((this.addPracticeOperationCompleted == null)) {
+                this.addPracticeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddPracticeOperationCompleted);
+            }
+            this.InvokeAsync("addPractice", new object[] {
+                        name,
+                        eventType,
+                        generaldata,
+                        dist,
+                        durHrs,
+                        durMin,
+                        tss,
+                        hb,
+                        pace,
+                        token}, this.addPracticeOperationCompleted, userState);
+        }
+        
+        private void OnaddPracticeOperationCompleted(object arg) {
+            if ((this.addPracticeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addPracticeCompleted(this, new addPracticeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/setEventInCalendar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object setEventInCalendar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string practiceId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("setEventInCalendar", new object[] {
+                        subGroupId,
+                        startTime,
+                        userId,
+                        practiceId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void setEventInCalendarAsync(string subGroupId, string startTime, string userId, string practiceId, string specGroup) {
+            this.setEventInCalendarAsync(subGroupId, startTime, userId, practiceId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void setEventInCalendarAsync(string subGroupId, string startTime, string userId, string practiceId, string specGroup, object userState) {
+            if ((this.setEventInCalendarOperationCompleted == null)) {
+                this.setEventInCalendarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetEventInCalendarOperationCompleted);
+            }
+            this.InvokeAsync("setEventInCalendar", new object[] {
+                        subGroupId,
+                        startTime,
+                        userId,
+                        practiceId,
+                        specGroup}, this.setEventInCalendarOperationCompleted, userState);
+        }
+        
+        private void OnsetEventInCalendarOperationCompleted(object arg) {
+            if ((this.setEventInCalendarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.setEventInCalendarCompleted(this, new setEventInCalendarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getPracticeTotals", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getPracticeTotals([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventDateTime) {
+            object[] results = this.Invoke("getPracticeTotals", new object[] {
+                        athId,
+                        eventDateTime});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getPracticeTotalsAsync(string athId, string eventDateTime) {
+            this.getPracticeTotalsAsync(athId, eventDateTime, null);
+        }
+        
+        /// CodeRemarks
+        public void getPracticeTotalsAsync(string athId, string eventDateTime, object userState) {
+            if ((this.getPracticeTotalsOperationCompleted == null)) {
+                this.getPracticeTotalsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPracticeTotalsOperationCompleted);
+            }
+            this.InvokeAsync("getPracticeTotals", new object[] {
+                        athId,
+                        eventDateTime}, this.getPracticeTotalsOperationCompleted, userState);
+        }
+        
+        private void OngetPracticeTotalsOperationCompleted(object arg) {
+            if ((this.getPracticeTotalsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPracticeTotalsCompleted(this, new getPracticeTotalsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getGroups", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getGroups([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getGroups", new object[] {
+                        token,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getGroupsAsync(string token, string specGroup) {
+            this.getGroupsAsync(token, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getGroupsAsync(string token, string specGroup, object userState) {
+            if ((this.getGroupsOperationCompleted == null)) {
+                this.getGroupsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetGroupsOperationCompleted);
+            }
+            this.InvokeAsync("getGroups", new object[] {
+                        token,
+                        specGroup}, this.getGroupsOperationCompleted, userState);
+        }
+        
+        private void OngetGroupsOperationCompleted(object arg) {
+            if ((this.getGroupsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getGroupsCompleted(this, new getGroupsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getCoachWeekTotals", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string getCoachWeekTotals([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId) {
+            object[] results = this.Invoke("getCoachWeekTotals", new object[] {
+                        athId});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getCoachWeekTotalsAsync(string athId) {
+            this.getCoachWeekTotalsAsync(athId, null);
+        }
+        
+        /// CodeRemarks
+        public void getCoachWeekTotalsAsync(string athId, object userState) {
+            if ((this.getCoachWeekTotalsOperationCompleted == null)) {
+                this.getCoachWeekTotalsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCoachWeekTotalsOperationCompleted);
+            }
+            this.InvokeAsync("getCoachWeekTotals", new object[] {
+                        athId}, this.getCoachWeekTotalsOperationCompleted, userState);
+        }
+        
+        private void OngetCoachWeekTotalsOperationCompleted(object arg) {
+            if ((this.getCoachWeekTotalsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getCoachWeekTotalsCompleted(this, new getCoachWeekTotalsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/athGeneralList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object athGeneralList([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("athGeneralList", new object[] {
+                        token,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void athGeneralListAsync(string token, string specGroup) {
+            this.athGeneralListAsync(token, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void athGeneralListAsync(string token, string specGroup, object userState) {
+            if ((this.athGeneralListOperationCompleted == null)) {
+                this.athGeneralListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnathGeneralListOperationCompleted);
+            }
+            this.InvokeAsync("athGeneralList", new object[] {
+                        token,
+                        specGroup}, this.athGeneralListOperationCompleted, userState);
+        }
+        
+        private void OnathGeneralListOperationCompleted(object arg) {
+            if ((this.athGeneralListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.athGeneralListCompleted(this, new athGeneralListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insertMultiToGroup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void insertMultiToGroup([System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")] string[] athList, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, out bool insertMultiToGroupResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool insertMultiToGroupResultSpecified) {
+            object[] results = this.Invoke("insertMultiToGroup", new object[] {
+                        athList,
+                        groupId,
+                        groupName,
+                        subGroupId,
+                        specGroup});
+            insertMultiToGroupResult = ((bool)(results[0]));
+            insertMultiToGroupResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void insertMultiToGroupAsync(string[] athList, string groupId, string groupName, string subGroupId, string specGroup) {
+            this.insertMultiToGroupAsync(athList, groupId, groupName, subGroupId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void insertMultiToGroupAsync(string[] athList, string groupId, string groupName, string subGroupId, string specGroup, object userState) {
+            if ((this.insertMultiToGroupOperationCompleted == null)) {
+                this.insertMultiToGroupOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertMultiToGroupOperationCompleted);
+            }
+            this.InvokeAsync("insertMultiToGroup", new object[] {
+                        athList,
+                        groupId,
+                        groupName,
+                        subGroupId,
+                        specGroup}, this.insertMultiToGroupOperationCompleted, userState);
+        }
+        
+        private void OninsertMultiToGroupOperationCompleted(object arg) {
+            if ((this.insertMultiToGroupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertMultiToGroupCompleted(this, new insertMultiToGroupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getEventReport", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getEventReport([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId) {
+            object[] results = this.Invoke("getEventReport", new object[] {
+                        eventId});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getEventReportAsync(string eventId) {
+            this.getEventReportAsync(eventId, null);
+        }
+        
+        /// CodeRemarks
+        public void getEventReportAsync(string eventId, object userState) {
+            if ((this.getEventReportOperationCompleted == null)) {
+                this.getEventReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEventReportOperationCompleted);
+            }
+            this.InvokeAsync("getEventReport", new object[] {
+                        eventId}, this.getEventReportOperationCompleted, userState);
+        }
+        
+        private void OngetEventReportOperationCompleted(object arg) {
+            if ((this.getEventReportCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getEventReportCompleted(this, new getEventReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updateMomgoDataFromFoxi", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void updateMomgoDataFromFoxi([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lng, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lat, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string updateDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string deviceID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string speed, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string recordType) {
             this.Invoke("updateMomgoDataFromFoxi", new object[] {
@@ -594,10 +1029,44 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getFutureEvent", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getFutureEvent([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getFutureEvent", new object[] {
+                        eventId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getFutureEventAsync(string eventId, string specGroup) {
+            this.getFutureEventAsync(eventId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getFutureEventAsync(string eventId, string specGroup, object userState) {
+            if ((this.getFutureEventOperationCompleted == null)) {
+                this.getFutureEventOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetFutureEventOperationCompleted);
+            }
+            this.InvokeAsync("getFutureEvent", new object[] {
+                        eventId,
+                        specGroup}, this.getFutureEventOperationCompleted, userState);
+        }
+        
+        private void OngetFutureEventOperationCompleted(object arg) {
+            if ((this.getFutureEventCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getFutureEventCompleted(this, new getFutureEventCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updateMomgoCalendar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void updateMomgoCalendar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string endTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventData, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventTotal, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programStart, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programEnd, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string tss, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string hb, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durHrs, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durMin) {
-            this.Invoke("updateMomgoCalendar", new object[] {
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string updateMomgoCalendar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string endTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventData, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventTotal, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programStart, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programEnd, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string tss, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string hb, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durHrs, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string durMin) {
+            object[] results = this.Invoke("updateMomgoCalendar", new object[] {
                         eventName,
+                        subGroupId,
                         startTime,
                         endTime,
                         userId,
@@ -611,20 +1080,38 @@ namespace goheja.trackSvc {
                         hb,
                         durHrs,
                         durMin});
+            return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void updateMomgoCalendarAsync(string eventName, string startTime, string endTime, string userId, string eventData, string eventTotal, string type, string programName, string programStart, string programEnd, string tss, string hb, string durHrs, string durMin) {
-            this.updateMomgoCalendarAsync(eventName, startTime, endTime, userId, eventData, eventTotal, type, programName, programStart, programEnd, tss, hb, durHrs, durMin, null);
+        public void updateMomgoCalendarAsync(string eventName, string subGroupId, string startTime, string endTime, string userId, string eventData, string eventTotal, string type, string programName, string programStart, string programEnd, string tss, string hb, string durHrs, string durMin) {
+            this.updateMomgoCalendarAsync(eventName, subGroupId, startTime, endTime, userId, eventData, eventTotal, type, programName, programStart, programEnd, tss, hb, durHrs, durMin, null);
         }
         
         /// CodeRemarks
-        public void updateMomgoCalendarAsync(string eventName, string startTime, string endTime, string userId, string eventData, string eventTotal, string type, string programName, string programStart, string programEnd, string tss, string hb, string durHrs, string durMin, object userState) {
+        public void updateMomgoCalendarAsync(
+                    string eventName, 
+                    string subGroupId, 
+                    string startTime, 
+                    string endTime, 
+                    string userId, 
+                    string eventData, 
+                    string eventTotal, 
+                    string type, 
+                    string programName, 
+                    string programStart, 
+                    string programEnd, 
+                    string tss, 
+                    string hb, 
+                    string durHrs, 
+                    string durMin, 
+                    object userState) {
             if ((this.updateMomgoCalendarOperationCompleted == null)) {
                 this.updateMomgoCalendarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateMomgoCalendarOperationCompleted);
             }
             this.InvokeAsync("updateMomgoCalendar", new object[] {
                         eventName,
+                        subGroupId,
                         startTime,
                         endTime,
                         userId,
@@ -643,7 +1130,7 @@ namespace goheja.trackSvc {
         private void OnupdateMomgoCalendarOperationCompleted(object arg) {
             if ((this.updateMomgoCalendarCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.updateMomgoCalendarCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.updateMomgoCalendarCompleted(this, new updateMomgoCalendarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -682,6 +1169,40 @@ namespace goheja.trackSvc {
             if ((this.updateGarminDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.updateGarminDataCompleted(this, new updateGarminDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getGraphData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getGraphData([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventStartDate) {
+            object[] results = this.Invoke("getGraphData", new object[] {
+                        athId,
+                        eventId,
+                        eventStartDate});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getGraphDataAsync(string athId, string eventId, string eventStartDate) {
+            this.getGraphDataAsync(athId, eventId, eventStartDate, null);
+        }
+        
+        /// CodeRemarks
+        public void getGraphDataAsync(string athId, string eventId, string eventStartDate, object userState) {
+            if ((this.getGraphDataOperationCompleted == null)) {
+                this.getGraphDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetGraphDataOperationCompleted);
+            }
+            this.InvokeAsync("getGraphData", new object[] {
+                        athId,
+                        eventId,
+                        eventStartDate}, this.getGraphDataOperationCompleted, userState);
+        }
+        
+        private void OngetGraphDataOperationCompleted(object arg) {
+            if ((this.getGraphDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getGraphDataCompleted(this, new getGraphDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -779,26 +1300,24 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/deleteMarker", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string deleteMarker([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLat, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLng) {
+        public string deleteMarker([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string markerId) {
             object[] results = this.Invoke("deleteMarker", new object[] {
-                        mLat,
-                        mLng});
+                        markerId});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void deleteMarkerAsync(string mLat, string mLng) {
-            this.deleteMarkerAsync(mLat, mLng, null);
+        public void deleteMarkerAsync(string markerId) {
+            this.deleteMarkerAsync(markerId, null);
         }
         
         /// CodeRemarks
-        public void deleteMarkerAsync(string mLat, string mLng, object userState) {
+        public void deleteMarkerAsync(string markerId, object userState) {
             if ((this.deleteMarkerOperationCompleted == null)) {
                 this.deleteMarkerOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteMarkerOperationCompleted);
             }
             this.InvokeAsync("deleteMarker", new object[] {
-                        mLat,
-                        mLng}, this.deleteMarkerOperationCompleted, userState);
+                        markerId}, this.deleteMarkerOperationCompleted, userState);
         }
         
         private void OndeleteMarkerOperationCompleted(object arg) {
@@ -811,7 +1330,7 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/addMarker", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string addMarker([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string description, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLat, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLng, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventid, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string imagePath, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string interval) {
+        public string addMarker([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string description, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLat, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mLng, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventid, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string interval) {
             object[] results = this.Invoke("addMarker", new object[] {
                         name,
                         description,
@@ -819,18 +1338,17 @@ namespace goheja.trackSvc {
                         mLng,
                         type,
                         eventid,
-                        imagePath,
                         interval});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void addMarkerAsync(string name, string description, string mLat, string mLng, string type, string eventid, string imagePath, string interval) {
-            this.addMarkerAsync(name, description, mLat, mLng, type, eventid, imagePath, interval, null);
+        public void addMarkerAsync(string name, string description, string mLat, string mLng, string type, string eventid, string interval) {
+            this.addMarkerAsync(name, description, mLat, mLng, type, eventid, interval, null);
         }
         
         /// CodeRemarks
-        public void addMarkerAsync(string name, string description, string mLat, string mLng, string type, string eventid, string imagePath, string interval, object userState) {
+        public void addMarkerAsync(string name, string description, string mLat, string mLng, string type, string eventid, string interval, object userState) {
             if ((this.addMarkerOperationCompleted == null)) {
                 this.addMarkerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddMarkerOperationCompleted);
             }
@@ -841,7 +1359,6 @@ namespace goheja.trackSvc {
                         mLng,
                         type,
                         eventid,
-                        imagePath,
                         interval}, this.addMarkerOperationCompleted, userState);
         }
         
@@ -884,13 +1401,11 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getAllMarkersById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [return: System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
-        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", NestingLevel=1)]
-        public string[][] getAllMarkersById([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Id) {
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getAllMarkersById([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Id) {
             object[] results = this.Invoke("getAllMarkersById", new object[] {
                         Id});
-            return ((string[][])(results[0]));
+            return ((object)(results[0]));
         }
         
         /// CodeRemarks
@@ -1307,60 +1822,102 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insertNewProgramsJson", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void insertNewProgramsJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string program, out bool insertNewProgramsJsonResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool insertNewProgramsJsonResultSpecified) {
-            object[] results = this.Invoke("insertNewProgramsJson", new object[] {
-                        program});
-            insertNewProgramsJsonResult = ((bool)(results[0]));
-            insertNewProgramsJsonResultSpecified = ((bool)(results[1]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updatePractice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void updatePractice([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string practiceJson, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, out bool updatePracticeResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool updatePracticeResultSpecified) {
+            object[] results = this.Invoke("updatePractice", new object[] {
+                        practiceJson,
+                        id});
+            updatePracticeResult = ((bool)(results[0]));
+            updatePracticeResultSpecified = ((bool)(results[1]));
         }
         
         /// CodeRemarks
-        public void insertNewProgramsJsonAsync(string program) {
-            this.insertNewProgramsJsonAsync(program, null);
+        public void updatePracticeAsync(string practiceJson, string id) {
+            this.updatePracticeAsync(practiceJson, id, null);
         }
         
         /// CodeRemarks
-        public void insertNewProgramsJsonAsync(string program, object userState) {
-            if ((this.insertNewProgramsJsonOperationCompleted == null)) {
-                this.insertNewProgramsJsonOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertNewProgramsJsonOperationCompleted);
+        public void updatePracticeAsync(string practiceJson, string id, object userState) {
+            if ((this.updatePracticeOperationCompleted == null)) {
+                this.updatePracticeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdatePracticeOperationCompleted);
             }
-            this.InvokeAsync("insertNewProgramsJson", new object[] {
-                        program}, this.insertNewProgramsJsonOperationCompleted, userState);
+            this.InvokeAsync("updatePractice", new object[] {
+                        practiceJson,
+                        id}, this.updatePracticeOperationCompleted, userState);
         }
         
-        private void OninsertNewProgramsJsonOperationCompleted(object arg) {
-            if ((this.insertNewProgramsJsonCompleted != null)) {
+        private void OnupdatePracticeOperationCompleted(object arg) {
+            if ((this.updatePracticeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.insertNewProgramsJsonCompleted(this, new insertNewProgramsJsonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.updatePracticeCompleted(this, new updatePracticeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insertNewProgram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string insertNewProgram([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programJson, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token) {
+            object[] results = this.Invoke("insertNewProgram", new object[] {
+                        programJson,
+                        programName,
+                        specGroup,
+                        token});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void insertNewProgramAsync(string programJson, string programName, string specGroup, string token) {
+            this.insertNewProgramAsync(programJson, programName, specGroup, token, null);
+        }
+        
+        /// CodeRemarks
+        public void insertNewProgramAsync(string programJson, string programName, string specGroup, string token, object userState) {
+            if ((this.insertNewProgramOperationCompleted == null)) {
+                this.insertNewProgramOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertNewProgramOperationCompleted);
+            }
+            this.InvokeAsync("insertNewProgram", new object[] {
+                        programJson,
+                        programName,
+                        specGroup,
+                        token}, this.insertNewProgramOperationCompleted, userState);
+        }
+        
+        private void OninsertNewProgramOperationCompleted(object arg) {
+            if ((this.insertNewProgramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertNewProgramCompleted(this, new insertNewProgramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/populateProgram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void populateProgram([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, out bool populateProgramResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool populateProgramResultSpecified) {
+        public void populateProgram([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token, out bool populateProgramResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool populateProgramResultSpecified) {
             object[] results = this.Invoke("populateProgram", new object[] {
                         programId,
                         programDate,
-                        userId});
+                        userId,
+                        specGroup,
+                        token});
             populateProgramResult = ((bool)(results[0]));
             populateProgramResultSpecified = ((bool)(results[1]));
         }
         
         /// CodeRemarks
-        public void populateProgramAsync(string programId, string programDate, string userId) {
-            this.populateProgramAsync(programId, programDate, userId, null);
+        public void populateProgramAsync(string programId, string programDate, string userId, string specGroup, string token) {
+            this.populateProgramAsync(programId, programDate, userId, specGroup, token, null);
         }
         
         /// CodeRemarks
-        public void populateProgramAsync(string programId, string programDate, string userId, object userState) {
+        public void populateProgramAsync(string programId, string programDate, string userId, string specGroup, string token, object userState) {
             if ((this.populateProgramOperationCompleted == null)) {
                 this.populateProgramOperationCompleted = new System.Threading.SendOrPostCallback(this.OnpopulateProgramOperationCompleted);
             }
             this.InvokeAsync("populateProgram", new object[] {
                         programId,
                         programDate,
-                        userId}, this.populateProgramOperationCompleted, userState);
+                        userId,
+                        specGroup,
+                        token}, this.populateProgramOperationCompleted, userState);
         }
         
         private void OnpopulateProgramOperationCompleted(object arg) {
@@ -1372,26 +1929,26 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updateProgramsJson", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void updateProgramsJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string program, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, out bool updateProgramsJsonResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool updateProgramsJsonResultSpecified) {
+        public void updateProgramsJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programJson, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, out bool updateProgramsJsonResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool updateProgramsJsonResultSpecified) {
             object[] results = this.Invoke("updateProgramsJson", new object[] {
-                        program,
+                        programJson,
                         id});
             updateProgramsJsonResult = ((bool)(results[0]));
             updateProgramsJsonResultSpecified = ((bool)(results[1]));
         }
         
         /// CodeRemarks
-        public void updateProgramsJsonAsync(string program, string id) {
-            this.updateProgramsJsonAsync(program, id, null);
+        public void updateProgramsJsonAsync(string programJson, string id) {
+            this.updateProgramsJsonAsync(programJson, id, null);
         }
         
         /// CodeRemarks
-        public void updateProgramsJsonAsync(string program, string id, object userState) {
+        public void updateProgramsJsonAsync(string programJson, string id, object userState) {
             if ((this.updateProgramsJsonOperationCompleted == null)) {
                 this.updateProgramsJsonOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateProgramsJsonOperationCompleted);
             }
             this.InvokeAsync("updateProgramsJson", new object[] {
-                        program,
+                        programJson,
                         id}, this.updateProgramsJsonOperationCompleted, userState);
         }
         
@@ -1429,6 +1986,49 @@ namespace goheja.trackSvc {
             if ((this.athCurrDataByDeviceIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.athCurrDataByDeviceIdCompleted(this, new athCurrDataByDeviceIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getGauge", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson", IsNullable=false)]
+        public BsonElement[] getGauge(System.DateTime currTime, [System.Xml.Serialization.XmlIgnoreAttribute()] bool currTimeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string textSize, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string isGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type) {
+            object[] results = this.Invoke("getGauge", new object[] {
+                        currTime,
+                        currTimeSpecified,
+                        athId,
+                        textSize,
+                        specGroup,
+                        isGroup,
+                        type});
+            return ((BsonElement[])(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getGaugeAsync(System.DateTime currTime, bool currTimeSpecified, string athId, string textSize, string specGroup, string isGroup, string type) {
+            this.getGaugeAsync(currTime, currTimeSpecified, athId, textSize, specGroup, isGroup, type, null);
+        }
+        
+        /// CodeRemarks
+        public void getGaugeAsync(System.DateTime currTime, bool currTimeSpecified, string athId, string textSize, string specGroup, string isGroup, string type, object userState) {
+            if ((this.getGaugeOperationCompleted == null)) {
+                this.getGaugeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetGaugeOperationCompleted);
+            }
+            this.InvokeAsync("getGauge", new object[] {
+                        currTime,
+                        currTimeSpecified,
+                        athId,
+                        textSize,
+                        specGroup,
+                        isGroup,
+                        type}, this.getGaugeOperationCompleted, userState);
+        }
+        
+        private void OngetGaugeOperationCompleted(object arg) {
+            if ((this.getGaugeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getGaugeCompleted(this, new getGaugeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1556,24 +2156,26 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getListedDeviceId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string getListedDeviceId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string deviceId) {
+        public string getListedDeviceId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mail, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw) {
             object[] results = this.Invoke("getListedDeviceId", new object[] {
-                        deviceId});
+                        mail,
+                        psw});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void getListedDeviceIdAsync(string deviceId) {
-            this.getListedDeviceIdAsync(deviceId, null);
+        public void getListedDeviceIdAsync(string mail, string psw) {
+            this.getListedDeviceIdAsync(mail, psw, null);
         }
         
         /// CodeRemarks
-        public void getListedDeviceIdAsync(string deviceId, object userState) {
+        public void getListedDeviceIdAsync(string mail, string psw, object userState) {
             if ((this.getListedDeviceIdOperationCompleted == null)) {
                 this.getListedDeviceIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetListedDeviceIdOperationCompleted);
             }
             this.InvokeAsync("getListedDeviceId", new object[] {
-                        deviceId}, this.getListedDeviceIdOperationCompleted, userState);
+                        mail,
+                        psw}, this.getListedDeviceIdOperationCompleted, userState);
         }
         
         private void OngetListedDeviceIdOperationCompleted(object arg) {
@@ -1617,8 +2219,9 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insertNewDevice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void insertNewDevice([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string fName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Lname, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string deviceId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw, bool acceptedTerms, [System.Xml.Serialization.XmlIgnoreAttribute()] bool acceptedTermsSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, int age, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ageSpecified) {
-            this.Invoke("insertNewDevice", new object[] {
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string insertNewDevice([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string fName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Lname, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string deviceId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw, bool acceptedTerms, [System.Xml.Serialization.XmlIgnoreAttribute()] bool acceptedTermsSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, int age, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ageSpecified) {
+            object[] results = this.Invoke("insertNewDevice", new object[] {
                         fName,
                         Lname,
                         deviceId,
@@ -1629,6 +2232,7 @@ namespace goheja.trackSvc {
                         email,
                         age,
                         ageSpecified});
+            return ((string)(results[0]));
         }
         
         /// CodeRemarks
@@ -1657,7 +2261,7 @@ namespace goheja.trackSvc {
         private void OninsertNewDeviceOperationCompleted(object arg) {
             if ((this.insertNewDeviceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.insertNewDeviceCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.insertNewDeviceCompleted(this, new insertNewDeviceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2020,24 +2624,26 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getUserCalendar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string getUserCalendar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId) {
+        public string getUserCalendar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId) {
             object[] results = this.Invoke("getUserCalendar", new object[] {
-                        athId});
+                        athId,
+                        subGroupId});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void getUserCalendarAsync(string athId) {
-            this.getUserCalendarAsync(athId, null);
+        public void getUserCalendarAsync(string athId, string subGroupId) {
+            this.getUserCalendarAsync(athId, subGroupId, null);
         }
         
         /// CodeRemarks
-        public void getUserCalendarAsync(string athId, object userState) {
+        public void getUserCalendarAsync(string athId, string subGroupId, object userState) {
             if ((this.getUserCalendarOperationCompleted == null)) {
                 this.getUserCalendarOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUserCalendarOperationCompleted);
             }
             this.InvokeAsync("getUserCalendar", new object[] {
-                        athId}, this.getUserCalendarOperationCompleted, userState);
+                        athId,
+                        subGroupId}, this.getUserCalendarOperationCompleted, userState);
         }
         
         private void OngetUserCalendarOperationCompleted(object arg) {
@@ -2050,28 +2656,30 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updateUserDataJson", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string updateUserDataJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string json, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string updatedById) {
+        public string updateUserDataJson([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string json, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string updatedById, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
             object[] results = this.Invoke("updateUserDataJson", new object[] {
-                        userName,
+                        userId,
                         json,
-                        updatedById});
+                        updatedById,
+                        specGroup});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void updateUserDataJsonAsync(string userName, string json, string updatedById) {
-            this.updateUserDataJsonAsync(userName, json, updatedById, null);
+        public void updateUserDataJsonAsync(string userId, string json, string updatedById, string specGroup) {
+            this.updateUserDataJsonAsync(userId, json, updatedById, specGroup, null);
         }
         
         /// CodeRemarks
-        public void updateUserDataJsonAsync(string userName, string json, string updatedById, object userState) {
+        public void updateUserDataJsonAsync(string userId, string json, string updatedById, string specGroup, object userState) {
             if ((this.updateUserDataJsonOperationCompleted == null)) {
                 this.updateUserDataJsonOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateUserDataJsonOperationCompleted);
             }
             this.InvokeAsync("updateUserDataJson", new object[] {
-                        userName,
+                        userId,
                         json,
-                        updatedById}, this.updateUserDataJsonOperationCompleted, userState);
+                        updatedById,
+                        specGroup}, this.updateUserDataJsonOperationCompleted, userState);
         }
         
         private void OnupdateUserDataJsonOperationCompleted(object arg) {
@@ -2142,6 +2750,174 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/setComments", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object setComments([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athour, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string authorId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string commentText, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId) {
+            object[] results = this.Invoke("setComments", new object[] {
+                        athour,
+                        authorId,
+                        commentText,
+                        eventId});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void setCommentsAsync(string athour, string authorId, string commentText, string eventId) {
+            this.setCommentsAsync(athour, authorId, commentText, eventId, null);
+        }
+        
+        /// CodeRemarks
+        public void setCommentsAsync(string athour, string authorId, string commentText, string eventId, object userState) {
+            if ((this.setCommentsOperationCompleted == null)) {
+                this.setCommentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetCommentsOperationCompleted);
+            }
+            this.InvokeAsync("setComments", new object[] {
+                        athour,
+                        authorId,
+                        commentText,
+                        eventId}, this.setCommentsOperationCompleted, userState);
+        }
+        
+        private void OnsetCommentsOperationCompleted(object arg) {
+            if ((this.setCommentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.setCommentsCompleted(this, new setCommentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getUsrObject", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getUsrObject([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId) {
+            object[] results = this.Invoke("getUsrObject", new object[] {
+                        userId});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getUsrObjectAsync(string userId) {
+            this.getUsrObjectAsync(userId, null);
+        }
+        
+        /// CodeRemarks
+        public void getUsrObjectAsync(string userId, object userState) {
+            if ((this.getUsrObjectOperationCompleted == null)) {
+                this.getUsrObjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUsrObjectOperationCompleted);
+            }
+            this.InvokeAsync("getUsrObject", new object[] {
+                        userId}, this.getUsrObjectOperationCompleted, userState);
+        }
+        
+        private void OngetUsrObjectOperationCompleted(object arg) {
+            if ((this.getUsrObjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUsrObjectCompleted(this, new getUsrObjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getGaugesForMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getGaugesForMonth([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startDate) {
+            object[] results = this.Invoke("getGaugesForMonth", new object[] {
+                        athId,
+                        startDate});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getGaugesForMonthAsync(string athId, string startDate) {
+            this.getGaugesForMonthAsync(athId, startDate, null);
+        }
+        
+        /// CodeRemarks
+        public void getGaugesForMonthAsync(string athId, string startDate, object userState) {
+            if ((this.getGaugesForMonthOperationCompleted == null)) {
+                this.getGaugesForMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetGaugesForMonthOperationCompleted);
+            }
+            this.InvokeAsync("getGaugesForMonth", new object[] {
+                        athId,
+                        startDate}, this.getGaugesForMonthOperationCompleted, userState);
+        }
+        
+        private void OngetGaugesForMonthOperationCompleted(object arg) {
+            if ((this.getGaugesForMonthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getGaugesForMonthCompleted(this, new getGaugesForMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insertCompUserKey", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string insertCompUserKey([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userKey, int comp, [System.Xml.Serialization.XmlIgnoreAttribute()] bool compSpecified) {
+            object[] results = this.Invoke("insertCompUserKey", new object[] {
+                        userId,
+                        userKey,
+                        comp,
+                        compSpecified});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void insertCompUserKeyAsync(string userId, string userKey, int comp, bool compSpecified) {
+            this.insertCompUserKeyAsync(userId, userKey, comp, compSpecified, null);
+        }
+        
+        /// CodeRemarks
+        public void insertCompUserKeyAsync(string userId, string userKey, int comp, bool compSpecified, object userState) {
+            if ((this.insertCompUserKeyOperationCompleted == null)) {
+                this.insertCompUserKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertCompUserKeyOperationCompleted);
+            }
+            this.InvokeAsync("insertCompUserKey", new object[] {
+                        userId,
+                        userKey,
+                        comp,
+                        compSpecified}, this.insertCompUserKeyOperationCompleted, userState);
+        }
+        
+        private void OninsertCompUserKeyOperationCompleted(object arg) {
+            if ((this.insertCompUserKeyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertCompUserKeyCompleted(this, new insertCompUserKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/syncSuunto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void syncSuunto([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userid, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string endDate, out bool syncSuuntoResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool syncSuuntoResultSpecified) {
+            object[] results = this.Invoke("syncSuunto", new object[] {
+                        userid,
+                        startDate,
+                        endDate});
+            syncSuuntoResult = ((bool)(results[0]));
+            syncSuuntoResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void syncSuuntoAsync(string userid, string startDate, string endDate) {
+            this.syncSuuntoAsync(userid, startDate, endDate, null);
+        }
+        
+        /// CodeRemarks
+        public void syncSuuntoAsync(string userid, string startDate, string endDate, object userState) {
+            if ((this.syncSuuntoOperationCompleted == null)) {
+                this.syncSuuntoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncSuuntoOperationCompleted);
+            }
+            this.InvokeAsync("syncSuunto", new object[] {
+                        userid,
+                        startDate,
+                        endDate}, this.syncSuuntoOperationCompleted, userState);
+        }
+        
+        private void OnsyncSuuntoOperationCompleted(object arg) {
+            if ((this.syncSuuntoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncSuuntoCompleted(this, new syncSuuntoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getAthJsonByNickName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string getAthJsonByNickName([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string nickName) {
@@ -2168,6 +2944,38 @@ namespace goheja.trackSvc {
             if ((this.getAthJsonByNickNameCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAthJsonByNickNameCompleted(this, new getAthJsonByNickNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getPrcticeList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getPrcticeList([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getPrcticeList", new object[] {
+                        token,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getPrcticeListAsync(string token, string specGroup) {
+            this.getPrcticeListAsync(token, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getPrcticeListAsync(string token, string specGroup, object userState) {
+            if ((this.getPrcticeListOperationCompleted == null)) {
+                this.getPrcticeListOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPrcticeListOperationCompleted);
+            }
+            this.InvokeAsync("getPrcticeList", new object[] {
+                        token,
+                        specGroup}, this.getPrcticeListOperationCompleted, userState);
+        }
+        
+        private void OngetPrcticeListOperationCompleted(object arg) {
+            if ((this.getPrcticeListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPrcticeListCompleted(this, new getPrcticeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2202,14 +3010,48 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getUsrLoginData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getUsrLoginData([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usr, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw) {
+            object[] results = this.Invoke("getUsrLoginData", new object[] {
+                        usr,
+                        psw});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getUsrLoginDataAsync(string usr, string psw) {
+            this.getUsrLoginDataAsync(usr, psw, null);
+        }
+        
+        /// CodeRemarks
+        public void getUsrLoginDataAsync(string usr, string psw, object userState) {
+            if ((this.getUsrLoginDataOperationCompleted == null)) {
+                this.getUsrLoginDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUsrLoginDataOperationCompleted);
+            }
+            this.InvokeAsync("getUsrLoginData", new object[] {
+                        usr,
+                        psw}, this.getUsrLoginDataOperationCompleted, userState);
+        }
+        
+        private void OngetUsrLoginDataOperationCompleted(object arg) {
+            if ((this.getUsrLoginDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUsrLoginDataCompleted(this, new getUsrLoginDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/resetCalendarEvent", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void resetCalendarEvent([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string endDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string opType) {
-            this.Invoke("resetCalendarEvent", new object[] {
+        public void resetCalendarEvent([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string startDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string endDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string opType, out bool resetCalendarEventResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool resetCalendarEventResultSpecified) {
+            object[] results = this.Invoke("resetCalendarEvent", new object[] {
                         startDate,
                         endDate,
                         eventId,
                         userId,
                         opType});
+            resetCalendarEventResult = ((bool)(results[0]));
+            resetCalendarEventResultSpecified = ((bool)(results[1]));
         }
         
         /// CodeRemarks
@@ -2233,31 +3075,165 @@ namespace goheja.trackSvc {
         private void OnresetCalendarEventOperationCompleted(object arg) {
             if ((this.resetCalendarEventCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.resetCalendarEventCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.resetCalendarEventCompleted(this, new resetCalendarEventCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/athData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object athData([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("athData", new object[] {
+                        athId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void athDataAsync(string athId, string specGroup) {
+            this.athDataAsync(athId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void athDataAsync(string athId, string specGroup, object userState) {
+            if ((this.athDataOperationCompleted == null)) {
+                this.athDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnathDataOperationCompleted);
+            }
+            this.InvokeAsync("athData", new object[] {
+                        athId,
+                        specGroup}, this.athDataOperationCompleted, userState);
+        }
+        
+        private void OnathDataOperationCompleted(object arg) {
+            if ((this.athDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.athDataCompleted(this, new athDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/removeMultiFromGroup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void removeMultiFromGroup([System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")] string[] athList, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, out bool removeMultiFromGroupResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool removeMultiFromGroupResultSpecified) {
+            object[] results = this.Invoke("removeMultiFromGroup", new object[] {
+                        athList,
+                        groupId,
+                        specGroup});
+            removeMultiFromGroupResult = ((bool)(results[0]));
+            removeMultiFromGroupResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void removeMultiFromGroupAsync(string[] athList, string groupId, string specGroup) {
+            this.removeMultiFromGroupAsync(athList, groupId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void removeMultiFromGroupAsync(string[] athList, string groupId, string specGroup, object userState) {
+            if ((this.removeMultiFromGroupOperationCompleted == null)) {
+                this.removeMultiFromGroupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnremoveMultiFromGroupOperationCompleted);
+            }
+            this.InvokeAsync("removeMultiFromGroup", new object[] {
+                        athList,
+                        groupId,
+                        specGroup}, this.removeMultiFromGroupOperationCompleted, userState);
+        }
+        
+        private void OnremoveMultiFromGroupOperationCompleted(object arg) {
+            if ((this.removeMultiFromGroupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.removeMultiFromGroupCompleted(this, new removeMultiFromGroupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getComments", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getComments([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type) {
+            object[] results = this.Invoke("getComments", new object[] {
+                        id,
+                        type});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getCommentsAsync(string id, string type) {
+            this.getCommentsAsync(id, type, null);
+        }
+        
+        /// CodeRemarks
+        public void getCommentsAsync(string id, string type, object userState) {
+            if ((this.getCommentsOperationCompleted == null)) {
+                this.getCommentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCommentsOperationCompleted);
+            }
+            this.InvokeAsync("getComments", new object[] {
+                        id,
+                        type}, this.getCommentsOperationCompleted, userState);
+        }
+        
+        private void OngetCommentsOperationCompleted(object arg) {
+            if ((this.getCommentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getCommentsCompleted(this, new getCommentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/fieldAthletsAndEvenets", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object fieldAthletsAndEvenets([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string token, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string fieldId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("fieldAthletsAndEvenets", new object[] {
+                        token,
+                        fieldId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void fieldAthletsAndEvenetsAsync(string token, string fieldId, string specGroup) {
+            this.fieldAthletsAndEvenetsAsync(token, fieldId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void fieldAthletsAndEvenetsAsync(string token, string fieldId, string specGroup, object userState) {
+            if ((this.fieldAthletsAndEvenetsOperationCompleted == null)) {
+                this.fieldAthletsAndEvenetsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnfieldAthletsAndEvenetsOperationCompleted);
+            }
+            this.InvokeAsync("fieldAthletsAndEvenets", new object[] {
+                        token,
+                        fieldId,
+                        specGroup}, this.fieldAthletsAndEvenetsOperationCompleted, userState);
+        }
+        
+        private void OnfieldAthletsAndEvenetsOperationCompleted(object arg) {
+            if ((this.fieldAthletsAndEvenetsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.fieldAthletsAndEvenetsCompleted(this, new fieldAthletsAndEvenetsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/updateMomgoGroups", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string updateMomgoGroups([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupName, int groupid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool groupidSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userNickName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userUrl, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userImg) {
+        public string updateMomgoGroups([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupName, int groupid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool groupidSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userNickName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userUrl, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userImg, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
             object[] results = this.Invoke("updateMomgoGroups", new object[] {
                         groupName,
                         groupid,
                         groupidSpecified,
+                        subGroupId,
                         userNickName,
                         userUrl,
-                        userImg});
+                        userImg,
+                        specGroup});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void updateMomgoGroupsAsync(string groupName, int groupid, bool groupidSpecified, string userNickName, string userUrl, string userImg) {
-            this.updateMomgoGroupsAsync(groupName, groupid, groupidSpecified, userNickName, userUrl, userImg, null);
+        public void updateMomgoGroupsAsync(string groupName, int groupid, bool groupidSpecified, string subGroupId, string userNickName, string userUrl, string userImg, string specGroup) {
+            this.updateMomgoGroupsAsync(groupName, groupid, groupidSpecified, subGroupId, userNickName, userUrl, userImg, specGroup, null);
         }
         
         /// CodeRemarks
-        public void updateMomgoGroupsAsync(string groupName, int groupid, bool groupidSpecified, string userNickName, string userUrl, string userImg, object userState) {
+        public void updateMomgoGroupsAsync(string groupName, int groupid, bool groupidSpecified, string subGroupId, string userNickName, string userUrl, string userImg, string specGroup, object userState) {
             if ((this.updateMomgoGroupsOperationCompleted == null)) {
                 this.updateMomgoGroupsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateMomgoGroupsOperationCompleted);
             }
@@ -2265,15 +3241,51 @@ namespace goheja.trackSvc {
                         groupName,
                         groupid,
                         groupidSpecified,
+                        subGroupId,
                         userNickName,
                         userUrl,
-                        userImg}, this.updateMomgoGroupsOperationCompleted, userState);
+                        userImg,
+                        specGroup}, this.updateMomgoGroupsOperationCompleted, userState);
         }
         
         private void OnupdateMomgoGroupsOperationCompleted(object arg) {
             if ((this.updateMomgoGroupsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.updateMomgoGroupsCompleted(this, new updateMomgoGroupsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/removeAthFromGroup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void removeAthFromGroup([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string groupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, out bool removeAthFromGroupResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool removeAthFromGroupResultSpecified) {
+            object[] results = this.Invoke("removeAthFromGroup", new object[] {
+                        groupId,
+                        userId,
+                        specGroup});
+            removeAthFromGroupResult = ((bool)(results[0]));
+            removeAthFromGroupResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void removeAthFromGroupAsync(string groupId, string userId, string specGroup) {
+            this.removeAthFromGroupAsync(groupId, userId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void removeAthFromGroupAsync(string groupId, string userId, string specGroup, object userState) {
+            if ((this.removeAthFromGroupOperationCompleted == null)) {
+                this.removeAthFromGroupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnremoveAthFromGroupOperationCompleted);
+            }
+            this.InvokeAsync("removeAthFromGroup", new object[] {
+                        groupId,
+                        userId,
+                        specGroup}, this.removeAthFromGroupOperationCompleted, userState);
+        }
+        
+        private void OnremoveAthFromGroupOperationCompleted(object arg) {
+            if ((this.removeAthFromGroupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.removeAthFromGroupCompleted(this, new removeAthFromGroupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2682,28 +3694,38 @@ namespace goheja.trackSvc {
         [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfBsonElement", Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
         [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson", IsNullable=false, NestingLevel=1)]
-        public BsonElement[][] updateMeberNotes([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string notes, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usernn) {
+        public BsonElement[][] updateMeberNotes([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string notes, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usernn, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string attended, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string duration, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string distance, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string trainScore, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type) {
             object[] results = this.Invoke("updateMeberNotes", new object[] {
                         notes,
                         id,
-                        usernn});
+                        usernn,
+                        attended,
+                        duration,
+                        distance,
+                        trainScore,
+                        type});
             return ((BsonElement[][])(results[0]));
         }
         
         /// CodeRemarks
-        public void updateMeberNotesAsync(string notes, string id, string usernn) {
-            this.updateMeberNotesAsync(notes, id, usernn, null);
+        public void updateMeberNotesAsync(string notes, string id, string usernn, string attended, string duration, string distance, string trainScore, string type) {
+            this.updateMeberNotesAsync(notes, id, usernn, attended, duration, distance, trainScore, type, null);
         }
         
         /// CodeRemarks
-        public void updateMeberNotesAsync(string notes, string id, string usernn, object userState) {
+        public void updateMeberNotesAsync(string notes, string id, string usernn, string attended, string duration, string distance, string trainScore, string type, object userState) {
             if ((this.updateMeberNotesOperationCompleted == null)) {
                 this.updateMeberNotesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateMeberNotesOperationCompleted);
             }
             this.InvokeAsync("updateMeberNotes", new object[] {
                         notes,
                         id,
-                        usernn}, this.updateMeberNotesOperationCompleted, userState);
+                        usernn,
+                        attended,
+                        duration,
+                        distance,
+                        trainScore,
+                        type}, this.updateMeberNotesOperationCompleted, userState);
         }
         
         private void OnupdateMeberNotesOperationCompleted(object arg) {
@@ -3254,11 +4276,301 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getMobTotalsGraphCompletedEventHandler(object sender, getMobTotalsGraphCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getMobTotalsGraphCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getMobTotalsGraphCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void addPracticeCompletedEventHandler(object sender, addPracticeCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class addPracticeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal addPracticeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void setEventInCalendarCompletedEventHandler(object sender, setEventInCalendarCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class setEventInCalendarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal setEventInCalendarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getPracticeTotalsCompletedEventHandler(object sender, getPracticeTotalsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPracticeTotalsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPracticeTotalsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getGroupsCompletedEventHandler(object sender, getGroupsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getGroupsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getGroupsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getCoachWeekTotalsCompletedEventHandler(object sender, getCoachWeekTotalsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getCoachWeekTotalsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getCoachWeekTotalsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void athGeneralListCompletedEventHandler(object sender, athGeneralListCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class athGeneralListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal athGeneralListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void insertMultiToGroupCompletedEventHandler(object sender, insertMultiToGroupCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertMultiToGroupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertMultiToGroupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool insertMultiToGroupResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool insertMultiToGroupResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getEventReportCompletedEventHandler(object sender, getEventReportCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getEventReportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getEventReportCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void updateMomgoDataFromFoxiCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void updateMomgoCalendarCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getFutureEventCompletedEventHandler(object sender, getFutureEventCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getFutureEventCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getFutureEventCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void updateMomgoCalendarCompletedEventHandler(object sender, updateMomgoCalendarCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateMomgoCalendarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateMomgoCalendarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
@@ -3290,6 +4602,32 @@ namespace goheja.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getGraphDataCompletedEventHandler(object sender, getGraphDataCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getGraphDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getGraphDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
             }
         }
     }
@@ -3468,10 +4806,10 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
-        public string[][] Result {
+        public object Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string[][])(this.results[0]));
+                return ((object)(this.results[0]));
             }
         }
     }
@@ -3798,23 +5136,23 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void insertNewProgramsJsonCompletedEventHandler(object sender, insertNewProgramsJsonCompletedEventArgs e);
+    public delegate void updatePracticeCompletedEventHandler(object sender, updatePracticeCompletedEventArgs e);
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class insertNewProgramsJsonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class updatePracticeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal insertNewProgramsJsonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal updatePracticeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// CodeRemarks
-        public bool insertNewProgramsJsonResult {
+        public bool updatePracticeResult {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
@@ -3822,10 +5160,36 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
-        public bool insertNewProgramsJsonResultSpecified {
+        public bool updatePracticeResultSpecified {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void insertNewProgramCompletedEventHandler(object sender, insertNewProgramCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertNewProgramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertNewProgramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -3920,6 +5284,32 @@ namespace goheja.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getGaugeCompletedEventHandler(object sender, getGaugeCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getGaugeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getGaugeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public BsonElement[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((BsonElement[])(this.results[0]));
             }
         }
     }
@@ -4082,7 +5472,29 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void insertNewDeviceCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void insertNewDeviceCompletedEventHandler(object sender, insertNewDeviceCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertNewDeviceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertNewDeviceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
@@ -4476,6 +5888,144 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void setCommentsCompletedEventHandler(object sender, setCommentsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class setCommentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal setCommentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getUsrObjectCompletedEventHandler(object sender, getUsrObjectCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUsrObjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUsrObjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getGaugesForMonthCompletedEventHandler(object sender, getGaugesForMonthCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getGaugesForMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getGaugesForMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void insertCompUserKeyCompletedEventHandler(object sender, insertCompUserKeyCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertCompUserKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertCompUserKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void syncSuuntoCompletedEventHandler(object sender, syncSuuntoCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncSuuntoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncSuuntoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool syncSuuntoResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool syncSuuntoResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void getAthJsonByNickNameCompletedEventHandler(object sender, getAthJsonByNickNameCompletedEventArgs e);
     
     /// CodeRemarks
@@ -4496,6 +6046,32 @@ namespace goheja.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getPrcticeListCompletedEventHandler(object sender, getPrcticeListCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPrcticeListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPrcticeListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
             }
         }
     }
@@ -4528,7 +6104,175 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void resetCalendarEventCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getUsrLoginDataCompletedEventHandler(object sender, getUsrLoginDataCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUsrLoginDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUsrLoginDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void resetCalendarEventCompletedEventHandler(object sender, resetCalendarEventCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class resetCalendarEventCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal resetCalendarEventCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool resetCalendarEventResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool resetCalendarEventResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void athDataCompletedEventHandler(object sender, athDataCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class athDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal athDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void removeMultiFromGroupCompletedEventHandler(object sender, removeMultiFromGroupCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class removeMultiFromGroupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal removeMultiFromGroupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool removeMultiFromGroupResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool removeMultiFromGroupResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getCommentsCompletedEventHandler(object sender, getCommentsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getCommentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getCommentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void fieldAthletsAndEvenetsCompletedEventHandler(object sender, fieldAthletsAndEvenetsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class fieldAthletsAndEvenetsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal fieldAthletsAndEvenetsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
@@ -4552,6 +6296,40 @@ namespace goheja.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void removeAthFromGroupCompletedEventHandler(object sender, removeAthFromGroupCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class removeAthFromGroupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal removeAthFromGroupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool removeAthFromGroupResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool removeAthFromGroupResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
             }
         }
     }

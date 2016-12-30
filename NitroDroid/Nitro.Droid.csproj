@@ -70,6 +70,21 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -80,9 +95,6 @@
     <Compile Include="Services\LocationServiceConnection.cs" />
     <Compile Include="Services\ServiceConnectedEventArgs.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
@@ -95,6 +107,14 @@
     <Compile Include="Activities\CloseApplicationActivity.cs" />
     <Compile Include="Activities\AnalyticsActivity.cs" />
     <Compile Include="Adapter\GenericFragmentPagerAdaptor.cs" />
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\AppSettings.cs" />
+    <Compile Include="Utility\Member.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="Fragment\FragmentSerious.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -180,18 +200,20 @@
     <AndroidResource Include="Resources\layout\fCalendar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <None Include="Web References\trackSvc\Service1.wsdl" />
+    <AndroidResource Include="Resources\drawable\icon_back.png" />
+    <AndroidResource Include="Resources\drawable\bg_new.png" />
     <None Include="Web References\trackSvc\Service1.xsd" />
+    <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
     <None Include="Web References\trackSvc\Service11.xsd" />
     <None Include="Web References\trackSvc\Service12.xsd" />
     <None Include="Web References\trackSvc\Service13.xsd" />
+    <None Include="Web References\trackSvc\Service1.wsdl" />
     <None Include="Web References\trackSvc\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <AndroidResource Include="Resources\drawable\icon_back.png" />
-    <AndroidResource Include="Resources\drawable\bg_new.png" />
+    <AndroidResource Include="Resources\layout\fSerious.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -215,18 +237,18 @@
     <WCFMetadataStorage Include="Service References\go_heja.com" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferences Include="Web References" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://go-heja.com:9002/Service1.svc?wsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\trackSvc</RelPath>
-      <UpdateFromURL>http://go-heja.com:9002/Service1.svc?wsdl</UpdateFromURL>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Activities\" />
     <Folder Include="Utility\" />
     <Folder Include="Adapter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://go-heja.com:9006/Service1.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\trackSvc</RelPath>
+      <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
+    </WebReferenceUrl>
   </ItemGroup>
 </Project>

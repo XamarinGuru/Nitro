@@ -46,12 +46,13 @@ namespace goheja
 					return;
 				}
 
-			    trackSvc.Service1 sc = new trackSvc.Service1();
-				sc.insertNewDevice(firstName, lastName, device, userName, psw, true, true, email, int.Parse(age), true);
+				var result = RegisterUser(firstName, lastName, device, userName, psw, email, int.Parse(age));
 
-                var activity2 = new Intent(this, typeof(SwipeTabActivity));
-                StartActivity(activity2);
-                OnDestroy();
+				if (result == "user added")
+					GoToMainPage(email, psw);
+				else
+					ShowMessageBox(null, result);
+                
             }
             catch
             {
@@ -59,6 +60,25 @@ namespace goheja
 				return;
             }
         }
+
+		private void GoToMainPage(string email, string password)
+		{
+			AppSettings.Email = email;
+			AppSettings.Password = password;
+
+			string userID = GetUserID();
+
+			if (userID == "0")//if the user not registered yet, go to register screen
+			{
+				ShowMessageBox(null, "You are not registered to Nitro services...");
+			}
+			else//if the user already registered, go to main screen
+			{
+				var activity2 = new Intent(this, typeof(SwipeTabActivity));
+				StartActivity(activity2);
+				OnDestroy();
+			}
+		}
 		private void termsBtn_OnClick(object sender, EventArgs eventArgs)
 		{
 			var uri = Android.Net.Uri.Parse ("http://go-heja.com/nitro/terms.php");
@@ -82,13 +102,9 @@ namespace goheja
         }
 		private string validate (string fName,string lName, string ag,string uName,string pw,string em)
 		{
-			trackSvc.Service1 sc = new trackSvc.Service1();
-
-			string valiUseNameUni = sc.validateNickName(uName);
-
 			if (fName == "") 							return "Please enter first name";
 			if (ag == "") 								return "Please enter age";
-			if (valiUseNameUni == "1") 					return "Nick name is taken, please try another";
+			if (!ValidateUserNickName(uName)) 			return "Nick name is taken, please try another";
 			if (em == "") 								return "Please enter email";
 			if (!em.Contains("@")||!em.Contains(".")) 	return "Email is not valid";
 			if (pw == "") 								return "Please enter password";
