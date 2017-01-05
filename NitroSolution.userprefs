@@ -1,13 +1,5 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/SeriousViewController.cs">
-    <Files>
-      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="83" Column="1" />
-      <File FileName="NitroDroid/Fragment/FragmentSerious.cs" Line="384" Column="32" />
-      <File FileName="NitroDroid/Activities/RegisterActivity.cs" Line="71" Column="1" />
-      <File FileName="NitroDroid/Utility/Member.cs" Line="605" Column="15" />
-      <File FileName="NitroDroid/Fragment/TimeFormatDialog.cs" Line="63" Column="38" />
-      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -38,8 +30,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="138" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/BaseActivity.cs" line="88" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Fragment/FragmentSerious.cs" line="315" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/BaseActivity.cs" line="100" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

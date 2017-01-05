@@ -311,7 +311,9 @@ namespace goheja
 		#region update actions
 		void ActionUpdate(object sender, EventArgs e)
 		{
+			SwipeTabActivity rootVC = (SwipeTabActivity)this.Activity;
 			var result = rootActivity.UpdateUserDataJson(MemberModel.rootMember);
+			rootVC.ShowMessageBox(null, "updated successfully.");
 		}
 		#endregion
 

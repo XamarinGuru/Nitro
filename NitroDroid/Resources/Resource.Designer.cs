@@ -26,10 +26,83 @@ namespace goheja
 		
 		public static void UpdateIdValues()
 		{
+			global::AndroidHUD.Resource.Attribute.ahBarColor = global::goheja.Resource.Attribute.ahBarColor;
+			global::AndroidHUD.Resource.Attribute.ahBarLength = global::goheja.Resource.Attribute.ahBarLength;
+			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::goheja.Resource.Attribute.ahBarWidth;
+			global::AndroidHUD.Resource.Attribute.ahCircleColor = global::goheja.Resource.Attribute.ahCircleColor;
+			global::AndroidHUD.Resource.Attribute.ahDelayMillis = global::goheja.Resource.Attribute.ahDelayMillis;
+			global::AndroidHUD.Resource.Attribute.ahRadius = global::goheja.Resource.Attribute.ahRadius;
+			global::AndroidHUD.Resource.Attribute.ahRimColor = global::goheja.Resource.Attribute.ahRimColor;
+			global::AndroidHUD.Resource.Attribute.ahRimWidth = global::goheja.Resource.Attribute.ahRimWidth;
+			global::AndroidHUD.Resource.Attribute.ahSpinSpeed = global::goheja.Resource.Attribute.ahSpinSpeed;
+			global::AndroidHUD.Resource.Attribute.ahText = global::goheja.Resource.Attribute.ahText;
+			global::AndroidHUD.Resource.Attribute.ahTextColor = global::goheja.Resource.Attribute.ahTextColor;
+			global::AndroidHUD.Resource.Attribute.ahTextSize = global::goheja.Resource.Attribute.ahTextSize;
+			global::AndroidHUD.Resource.Drawable.ic_errorstatus = global::goheja.Resource.Drawable.ic_errorstatus;
+			global::AndroidHUD.Resource.Drawable.ic_successstatus = global::goheja.Resource.Drawable.ic_successstatus;
+			global::AndroidHUD.Resource.Drawable.roundedbg = global::goheja.Resource.Drawable.roundedbg;
+			global::AndroidHUD.Resource.Drawable.roundedbgdark = global::goheja.Resource.Drawable.roundedbgdark;
+			global::AndroidHUD.Resource.Id.loadingImage = global::goheja.Resource.Id.loadingImage;
+			global::AndroidHUD.Resource.Id.loadingProgressBar = global::goheja.Resource.Id.loadingProgressBar;
+			global::AndroidHUD.Resource.Id.loadingProgressWheel = global::goheja.Resource.Id.loadingProgressWheel;
+			global::AndroidHUD.Resource.Id.textViewStatus = global::goheja.Resource.Id.textViewStatus;
+			global::AndroidHUD.Resource.Layout.loading = global::goheja.Resource.Layout.loading;
+			global::AndroidHUD.Resource.Layout.loadingimage = global::goheja.Resource.Layout.loadingimage;
+			global::AndroidHUD.Resource.Layout.loadingprogress = global::goheja.Resource.Layout.loadingprogress;
+			global::AndroidHUD.Resource.String.library_name = global::goheja.Resource.String.library_name;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel = global::goheja.Resource.Styleable.ProgressWheel;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarColor = global::goheja.Resource.Styleable.ProgressWheel_ahBarColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarLength = global::goheja.Resource.Styleable.ProgressWheel_ahBarLength;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarWidth = global::goheja.Resource.Styleable.ProgressWheel_ahBarWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahCircleColor = global::goheja.Resource.Styleable.ProgressWheel_ahCircleColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahDelayMillis = global::goheja.Resource.Styleable.ProgressWheel_ahDelayMillis;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRadius = global::goheja.Resource.Styleable.ProgressWheel_ahRadius;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimColor = global::goheja.Resource.Styleable.ProgressWheel_ahRimColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimWidth = global::goheja.Resource.Styleable.ProgressWheel_ahRimWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahSpinSpeed = global::goheja.Resource.Styleable.ProgressWheel_ahSpinSpeed;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::goheja.Resource.Styleable.ProgressWheel_ahText;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::goheja.Resource.Styleable.ProgressWheel_ahTextColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::goheja.Resource.Styleable.ProgressWheel_ahTextSize;
 		}
 		
 		public partial class Attribute
 		{
+			
+			// aapt resource value: 0x7f010003
+			public const int ahBarColor = 2130771971;
+			
+			// aapt resource value: 0x7f01000b
+			public const int ahBarLength = 2130771979;
+			
+			// aapt resource value: 0x7f01000a
+			public const int ahBarWidth = 2130771978;
+			
+			// aapt resource value: 0x7f010008
+			public const int ahCircleColor = 2130771976;
+			
+			// aapt resource value: 0x7f010007
+			public const int ahDelayMillis = 2130771975;
+			
+			// aapt resource value: 0x7f010009
+			public const int ahRadius = 2130771977;
+			
+			// aapt resource value: 0x7f010004
+			public const int ahRimColor = 2130771972;
+			
+			// aapt resource value: 0x7f010005
+			public const int ahRimWidth = 2130771973;
+			
+			// aapt resource value: 0x7f010006
+			public const int ahSpinSpeed = 2130771974;
+			
+			// aapt resource value: 0x7f010000
+			public const int ahText = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int ahTextColor = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int ahTextSize = 2130771970;
 			
 			static Attribute()
 			{
@@ -117,106 +190,118 @@ namespace goheja
 			public const int horizontal_line = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int icon = 2130837528;
+			public const int ic_errorstatus = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int icon_01 = 2130837529;
+			public const int ic_successstatus = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int icon_02 = 2130837530;
+			public const int icon = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int icon_03 = 2130837531;
+			public const int icon_01 = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int icon_04 = 2130837532;
+			public const int icon_02 = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int icon_05 = 2130837533;
+			public const int icon_03 = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int icon_06 = 2130837534;
+			public const int icon_04 = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int icon_07 = 2130837535;
+			public const int icon_05 = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int icon_back = 2130837536;
+			public const int icon_06 = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int img_bg = 2130837537;
+			public const int icon_07 = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int key_icon = 2130837538;
+			public const int icon_back = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int line_new = 2130837539;
+			public const int img_bg = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int menu_icon = 2130837540;
+			public const int key_icon = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int menu_icon_01 = 2130837541;
+			public const int line_new = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int mont_new = 2130837542;
+			public const int menu_icon = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int ninja = 2130837543;
+			public const int menu_icon_01 = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int pop_up_bg = 2130837544;
+			public const int mont_new = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int resume_active = 2130837545;
+			public const int ninja = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int resume_inactive = 2130837546;
+			public const int pop_up_bg = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int runRound_new = 2130837547;
+			public const int resume_active = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int speed_new = 2130837548;
+			public const int resume_inactive = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int splash = 2130837549;
+			public const int roundedbg = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int stop_active = 2130837550;
+			public const int roundedbgdark = 2130837550;
 			
 			// aapt resource value: 0x7f02002f
-			public const int switch_off = 2130837551;
+			public const int runRound_new = 2130837551;
 			
 			// aapt resource value: 0x7f020030
-			public const int text_icon = 2130837552;
+			public const int speed_new = 2130837552;
 			
 			// aapt resource value: 0x7f020031
-			public const int timer_new = 2130837553;
+			public const int splash = 2130837553;
 			
 			// aapt resource value: 0x7f020032
-			public const int transparent = 2130837554;
+			public const int stop_active = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int user_active_new = 2130837555;
+			public const int switch_off = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int user_icon = 2130837556;
+			public const int text_icon = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int user_inactive_new = 2130837557;
+			public const int timer_new = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int watch_icon = 2130837558;
+			public const int transparent = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int watch_new = 2130837559;
+			public const int user_active_new = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int watch_new2 = 2130837560;
+			public const int user_icon = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int watt_new = 2130837561;
+			public const int user_inactive_new = 2130837561;
+			
+			// aapt resource value: 0x7f02003a
+			public const int watch_icon = 2130837562;
+			
+			// aapt resource value: 0x7f02003b
+			public const int watch_new = 2130837563;
+			
+			// aapt resource value: 0x7f02003c
+			public const int watch_new2 = 2130837564;
+			
+			// aapt resource value: 0x7f02003d
+			public const int watt_new = 2130837565;
 			
 			static Drawable()
 			{
@@ -237,14 +322,14 @@ namespace goheja
 			// aapt resource value: 0x7f060000
 			public const int ActionBar = 2131099648;
 			
-			// aapt resource value: 0x7f0600ab
-			public const int ActionBarLeft = 2131099819;
+			// aapt resource value: 0x7f0600af
+			public const int ActionBarLeft = 2131099823;
 			
-			// aapt resource value: 0x7f0600aa
-			public const int ActionBarMain = 2131099818;
+			// aapt resource value: 0x7f0600ae
+			public const int ActionBarMain = 2131099822;
 			
-			// aapt resource value: 0x7f0600ad
-			public const int ActionBarRight = 2131099821;
+			// aapt resource value: 0x7f0600b1
+			public const int ActionBarRight = 2131099825;
 			
 			// aapt resource value: 0x7f06002f
 			public const int ImageView1 = 2131099695;
@@ -261,32 +346,32 @@ namespace goheja
 			// aapt resource value: 0x7f06001b
 			public const int StartPractice = 2131099675;
 			
-			// aapt resource value: 0x7f0600ae
-			public const int Tab1Icon = 2131099822;
-			
-			// aapt resource value: 0x7f0600b1
-			public const int Tab2Icon = 2131099825;
-			
-			// aapt resource value: 0x7f0600b4
-			public const int Tab3Icon = 2131099828;
-			
-			// aapt resource value: 0x7f0600b0
-			public const int TabStrip1 = 2131099824;
-			
-			// aapt resource value: 0x7f0600b3
-			public const int TabStrip2 = 2131099827;
+			// aapt resource value: 0x7f0600b2
+			public const int Tab1Icon = 2131099826;
 			
 			// aapt resource value: 0x7f0600b5
-			public const int TabStrip3 = 2131099829;
+			public const int Tab2Icon = 2131099829;
+			
+			// aapt resource value: 0x7f0600b8
+			public const int Tab3Icon = 2131099832;
+			
+			// aapt resource value: 0x7f0600b4
+			public const int TabStrip1 = 2131099828;
+			
+			// aapt resource value: 0x7f0600b7
+			public const int TabStrip2 = 2131099831;
+			
+			// aapt resource value: 0x7f0600b9
+			public const int TabStrip3 = 2131099833;
 			
 			// aapt resource value: 0x7f060001
 			public const int TitleBarText = 2131099649;
 			
-			// aapt resource value: 0x7f0600ac
-			public const int TitleBarTextMain = 2131099820;
+			// aapt resource value: 0x7f0600b0
+			public const int TitleBarTextMain = 2131099824;
 			
-			// aapt resource value: 0x7f0600a3
-			public const int age = 2131099811;
+			// aapt resource value: 0x7f0600a7
+			public const int age = 2131099815;
 			
 			// aapt resource value: 0x7f060057
 			public const int bestresults = 2131099735;
@@ -294,8 +379,8 @@ namespace goheja
 			// aapt resource value: 0x7f06001f
 			public const int btnBack = 2131099679;
 			
-			// aapt resource value: 0x7f0600a9
-			public const int btnGo = 2131099817;
+			// aapt resource value: 0x7f0600ad
+			public const int btnGo = 2131099821;
 			
 			// aapt resource value: 0x7f06001e
 			public const int btnLD = 2131099678;
@@ -303,8 +388,8 @@ namespace goheja
 			// aapt resource value: 0x7f060034
 			public const int btnSave = 2131099700;
 			
-			// aapt resource value: 0x7f0600a8
-			public const int btnTermsAccepted = 2131099816;
+			// aapt resource value: 0x7f0600ac
+			public const int btnTermsAccepted = 2131099820;
 			
 			// aapt resource value: 0x7f060013
 			public const int btnTotalTime = 2131099667;
@@ -366,11 +451,11 @@ namespace goheja
 			// aapt resource value: 0x7f060033
 			public const int etPhone = 2131099699;
 			
-			// aapt resource value: 0x7f0600a6
-			public const int etPsw = 2131099814;
+			// aapt resource value: 0x7f0600aa
+			public const int etPsw = 2131099818;
 			
-			// aapt resource value: 0x7f0600a4
-			public const int etUserName = 2131099812;
+			// aapt resource value: 0x7f0600a8
+			public const int etUserName = 2131099816;
 			
 			// aapt resource value: 0x7f060031
 			public const int etlastName = 2131099697;
@@ -504,11 +589,20 @@ namespace goheja
 			// aapt resource value: 0x7f060071
 			public const int linearLayout9 = 2131099761;
 			
-			// aapt resource value: 0x7f0600a5
-			public const int note = 2131099813;
+			// aapt resource value: 0x7f0600a3
+			public const int loadingImage = 2131099811;
 			
-			// aapt resource value: 0x7f0600b6
-			public const int pager = 2131099830;
+			// aapt resource value: 0x7f0600a1
+			public const int loadingProgressBar = 2131099809;
+			
+			// aapt resource value: 0x7f0600a4
+			public const int loadingProgressWheel = 2131099812;
+			
+			// aapt resource value: 0x7f0600a9
+			public const int note = 2131099817;
+			
+			// aapt resource value: 0x7f0600ba
+			public const int pager = 2131099834;
 			
 			// aapt resource value: 0x7f06002c
 			public const int perImage = 2131099692;
@@ -546,17 +640,20 @@ namespace goheja
 			// aapt resource value: 0x7f06001c
 			public const int stopPractice = 2131099676;
 			
-			// aapt resource value: 0x7f0600a7
-			public const int termsBtn = 2131099815;
+			// aapt resource value: 0x7f0600ab
+			public const int termsBtn = 2131099819;
 			
 			// aapt resource value: 0x7f06000e
 			public const int textView1 = 2131099662;
 			
+			// aapt resource value: 0x7f0600a2
+			public const int textViewStatus = 2131099810;
+			
 			// aapt resource value: 0x7f060051
 			public const int textview111 = 2131099729;
 			
-			// aapt resource value: 0x7f0600a2
-			public const int toolBar = 2131099810;
+			// aapt resource value: 0x7f0600a6
+			public const int toolBar = 2131099814;
 			
 			// aapt resource value: 0x7f060018
 			public const int tvAltitude = 2131099672;
@@ -750,11 +847,11 @@ namespace goheja
 			// aapt resource value: 0x7f06004b
 			public const int txtWeight = 2131099723;
 			
-			// aapt resource value: 0x7f0600af
-			public const int vertical1 = 2131099823;
+			// aapt resource value: 0x7f0600b3
+			public const int vertical1 = 2131099827;
 			
-			// aapt resource value: 0x7f0600b2
-			public const int vertical2 = 2131099826;
+			// aapt resource value: 0x7f0600b6
+			public const int vertical2 = 2131099830;
 			
 			// aapt resource value: 0x7f06005c
 			public const int viewBestResults = 2131099740;
@@ -771,8 +868,8 @@ namespace goheja
 			// aapt resource value: 0x7f060020
 			public const int webViewCalen = 2131099680;
 			
-			// aapt resource value: 0x7f0600a1
-			public const int webViewProfile = 2131099809;
+			// aapt resource value: 0x7f0600a5
+			public const int webViewProfile = 2131099813;
 			
 			// aapt resource value: 0x7f060021
 			public const int whatItLabel = 2131099681;
@@ -809,13 +906,22 @@ namespace goheja
 			public const int fSerious = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int ProfileWebViewActivity = 2130903045;
+			public const int loading = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int RegisterActivity = 2130903046;
+			public const int loadingimage = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int SwipeTabActivity = 2130903047;
+			public const int loadingprogress = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int ProfileWebViewActivity = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int RegisterActivity = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int SwipeTabActivity = 2130903050;
 			
 			static Layout()
 			{
@@ -830,11 +936,14 @@ namespace goheja
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int ApplicationName = 2130968578;
+			
 			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			public const int Hello = 2130968577;
 			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int library_name = 2130968576;
 			
 			static String()
 			{
@@ -864,6 +973,70 @@ namespace goheja
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] ProgressWheel = new int[]
+			{
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978,
+					2130771979};
+			
+			// aapt resource value: 3
+			public const int ProgressWheel_ahBarColor = 3;
+			
+			// aapt resource value: 11
+			public const int ProgressWheel_ahBarLength = 11;
+			
+			// aapt resource value: 10
+			public const int ProgressWheel_ahBarWidth = 10;
+			
+			// aapt resource value: 8
+			public const int ProgressWheel_ahCircleColor = 8;
+			
+			// aapt resource value: 7
+			public const int ProgressWheel_ahDelayMillis = 7;
+			
+			// aapt resource value: 9
+			public const int ProgressWheel_ahRadius = 9;
+			
+			// aapt resource value: 4
+			public const int ProgressWheel_ahRimColor = 4;
+			
+			// aapt resource value: 5
+			public const int ProgressWheel_ahRimWidth = 5;
+			
+			// aapt resource value: 6
+			public const int ProgressWheel_ahSpinSpeed = 6;
+			
+			// aapt resource value: 0
+			public const int ProgressWheel_ahText = 0;
+			
+			// aapt resource value: 1
+			public const int ProgressWheel_ahTextColor = 1;
+			
+			// aapt resource value: 2
+			public const int ProgressWheel_ahTextSize = 2;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

@@ -404,6 +404,7 @@ namespace location2
 		partial void ActionUpdate(UIButton sender)
 		{
 			var result = UpdateUserDataJson(MemberModel.rootMember);
+			ShowMessageBox(null, "updated successfully");
 		}
 		#endregion
 	}
