@@ -55,7 +55,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="Sagiv"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblFirstname"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="Daniel"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblLastname"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="Isurael"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblCountry"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="Here"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblAddress"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="12dp" />
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblBib"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="80"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblAge"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="woman"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblGender"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="2016/12/30"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblBirth"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -239,7 +239,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="sagiv@mail.com"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblEmail"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -263,7 +263,7 @@
                             android:textSize="12dp" />
                         <TextView
                             android:text="123456789"
-                            android:id="@+id/textView2"
+                            android:id="@+id/lblPhone"
                             android:gravity="end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -288,30 +288,39 @@
                     android:id="@+id/physical"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/collapsePhysical"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:tag="101">
-                        <TextView
-                            android:text="PHYSICAL"
-                            android:id="@+id/textView1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#ffffffff" />
+                        android:id="@+id/linearLayout13">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/collapsePhysical"
+                            android:tag="101"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8">
+                            <TextView
+                                android:text="PHYSICAL"
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ffffffff" />
+                        </RelativeLayout>
                         <TextView
                             android:text="Edit"
-                            android:id="@+id/textView2"
-                            android:gravity="end"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:id="@+id/edtPhysical"
                             android:textSize="10dp"
-                            android:textColor="#fffb8c00" />
-                    </RelativeLayout>
+                            android:textColor="#fffb8c00"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:tag="1001" />
+                    </LinearLayout>
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -333,15 +342,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="55"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtWeight"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff"
-                                android:layout_alignParentEnd="true" />
+                                android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -356,15 +367,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="66"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtHeight"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:textColor="#ff000000"
-                                android:background="#ffffffff" />
+                                android:background="#ffffffff"
+                                android:singleLine="true"
+                                android:textSize="15dp" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -379,15 +392,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtBMI"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:textColor="#ff000000"
-                                android:background="#ffffffff" />
+                                android:background="#ffffffff"
+                                android:singleLine="true"
+                                android:textSize="15dp" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -403,15 +418,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
-                                android:id="@+id/textView2"
+                            <EditText
+                                android:id="@+id/txtFatPercentage"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:text="88"
                                 android:background="#ffffffff"
-                                android:textColor="#ff000000" />
+                                android:textColor="#ff000000"
+                                android:singleLine="true"
+                                android:textSize="15dp" />
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -431,30 +448,39 @@
                     android:id="@+id/goals"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/collapseGoals"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:tag="102">
-                        <TextView
-                            android:text="GOALS"
-                            android:id="@+id/textview111"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#ffffffff" />
+                        android:id="@+id/linearLayout14">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/collapseGoals"
+                            android:tag="102"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8">
+                            <TextView
+                                android:text="GOALS"
+                                android:id="@+id/textview111"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ffffffff" />
+                        </RelativeLayout>
                         <TextView
                             android:text="Edit"
-                            android:id="@+id/textView2"
-                            android:gravity="end"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:id="@+id/edtGoals"
+                            android:gravity="center"
                             android:textSize="10dp"
-                            android:textColor="#fffb8c00" />
-                    </RelativeLayout>
+                            android:textColor="#fffb8c00"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:tag="1002" />
+                    </LinearLayout>
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -475,13 +501,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="55"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtID"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -498,13 +526,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="66"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtLastname"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -522,13 +552,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtCountry"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -550,30 +582,39 @@
                     android:id="@+id/bestresults"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/collapseBestResults"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:tag="103">
-                        <TextView
-                            android:text="BEST RESULTS"
-                            android:id="@+id/AAAA"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#ffffffff" />
+                        android:id="@+id/linearLayout15">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/collapseBestResults"
+                            android:tag="103"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8">
+                            <TextView
+                                android:text="BEST RESULTS"
+                                android:id="@+id/AAAA"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ffffffff" />
+                        </RelativeLayout>
                         <TextView
                             android:text="Edit"
-                            android:id="@+id/textView2"
-                            android:gravity="end"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:id="@+id/edtBestResults"
+                            android:gravity="center"
                             android:textSize="10dp"
-                            android:textColor="#fffb8c00" />
-                    </RelativeLayout>
+                            android:textColor="#fffb8c00"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:tag="1003" />
+                    </LinearLayout>
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -594,15 +635,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="55"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtSprint"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
-                                android:background="#ffffffff" />
+                                android:background="#ffffffff"
+                                android:inputType="time" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -617,13 +661,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="66"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtOlympic"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -640,13 +686,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtHDistance"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -663,13 +711,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtDistance"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -686,13 +736,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txt10KRun"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -709,13 +761,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtHMarathon"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -733,13 +787,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12dp" />
-                            <TextView
+                            <EditText
                                 android:text="77"
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtMarathon"
                                 android:gravity="center"
-                                android:layout_width="60dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:textSize="15dp"
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff" />
                         </RelativeLayout>
@@ -761,30 +817,39 @@
                     android:id="@+id/selfrankings"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/collapseSelfRanking"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:tag="104">
-                        <TextView
-                            android:text="SELF RANKING"
-                            android:id="@+id/textView1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#ffffffff" />
+                        android:id="@+id/linearLayout16">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/collapseSelfRanking"
+                            android:tag="104"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8">
+                            <TextView
+                                android:text="SELF RANKING"
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ffffffff" />
+                        </RelativeLayout>
                         <TextView
                             android:text="Edit"
-                            android:id="@+id/textView2"
-                            android:gravity="end"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:id="@+id/edtSeflRanking"
+                            android:gravity="center"
                             android:textSize="10dp"
-                            android:textColor="#fffb8c00" />
-                    </RelativeLayout>
+                            android:textColor="#fffb8c00"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:tag="1004" />
+                    </LinearLayout>
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -835,14 +900,16 @@
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitStart"
                                         android:src="@drawable/icon_01" />
-                                    <TextView
+                                    <EditText
                                         android:text="66"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/txtRankSwim"
                                         android:gravity="center"
                                         android:textColor="#ff000000"
                                         android:background="#ffffffff"
                                         android:layout_width="30dp"
                                         android:layout_height="wrap_content"
+                                        android:singleLine="true"
+                                        android:textSize="15dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp" />
                                 </LinearLayout>
@@ -861,14 +928,16 @@
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitCenter"
                                         android:src="@drawable/icon_01" />
-                                    <TextView
+                                    <EditText
                                         android:text="66"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/txtRankRun"
                                         android:gravity="center"
                                         android:textColor="#ff000000"
                                         android:background="#ffffffff"
                                         android:layout_width="30dp"
                                         android:layout_height="wrap_content"
+                                        android:singleLine="true"
+                                        android:textSize="15dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp" />
                                 </LinearLayout>
@@ -888,14 +957,16 @@
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitCenter"
                                         android:src="@drawable/icon_01" />
-                                    <TextView
+                                    <EditText
                                         android:text="66"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/txtRankBike"
                                         android:gravity="center"
                                         android:textColor="#ff000000"
                                         android:background="#ffffffff"
                                         android:layout_width="30dp"
                                         android:layout_height="wrap_content"
+                                        android:singleLine="true"
+                                        android:textSize="15dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp" />
                                 </LinearLayout>
@@ -941,14 +1012,15 @@
                                         android:layout_centerVertical="true" />
                                     <TextView
                                         android:text="Edit"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/edtSwim"
                                         android:gravity="end"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentEnd="true"
                                         android:textSize="10dp"
                                         android:layout_centerVertical="true"
-                                        android:textColor="#fffb8c00" />
+                                        android:textColor="#fffb8c00"
+                                        android:tag="1005" />
                                 </RelativeLayout>
                                 <LinearLayout
                                     android:orientation="horizontal"
@@ -1053,14 +1125,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone1HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1073,14 +1147,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone1PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1130,14 +1206,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone2HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1150,14 +1228,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone2PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1207,14 +1287,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone3HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1227,14 +1309,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone3PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1284,14 +1368,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone4HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1304,14 +1390,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone4PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1361,14 +1449,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone5HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1381,14 +1471,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSZone5PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1447,14 +1539,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSFTPace"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1513,14 +1607,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtSFTPHB"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1575,14 +1671,15 @@
                                         android:layout_centerVertical="true" />
                                     <TextView
                                         android:text="Edit"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/edtRun"
                                         android:gravity="end"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentEnd="true"
                                         android:textSize="10dp"
                                         android:layout_centerVertical="true"
-                                        android:textColor="#fffb8c00" />
+                                        android:textColor="#fffb8c00"
+                                        android:tag="1006" />
                                 </RelativeLayout>
                                 <LinearLayout
                                     android:orientation="horizontal"
@@ -1699,14 +1796,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone1HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1719,14 +1818,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone1PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1738,14 +1839,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone1Power"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1787,14 +1890,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone2HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1807,14 +1912,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone2PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1826,14 +1933,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone2Power"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1875,14 +1984,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone3HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1895,14 +2006,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone3PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1914,14 +2027,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone3Power"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1963,14 +2078,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone4HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -1983,14 +2100,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone4PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2002,14 +2121,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone4Power"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2051,14 +2172,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone5HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2071,14 +2194,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone5PACE"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2090,14 +2215,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRZone5Power"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2156,14 +2283,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRFTPace"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2222,14 +2351,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRFTPHB"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2288,14 +2419,16 @@
                                         android:layout_weight="1"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtRFTPower"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2342,14 +2475,15 @@
                                         android:layout_centerVertical="true" />
                                     <TextView
                                         android:text="Edit"
-                                        android:id="@+id/textView2"
+                                        android:id="@+id/edtBike"
                                         android:gravity="end"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentEnd="true"
                                         android:textSize="10dp"
                                         android:layout_centerVertical="true"
-                                        android:textColor="#fffb8c00" />
+                                        android:textColor="#fffb8c00"
+                                        android:tag="1007" />
                                 </RelativeLayout>
                                 <LinearLayout
                                     android:orientation="horizontal"
@@ -2454,14 +2588,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone1HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2474,14 +2610,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone1POWER"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2531,14 +2669,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone2HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2551,14 +2691,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone2POWER"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2608,14 +2750,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone3HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2628,14 +2772,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone3POWER"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2685,14 +2831,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone4HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2705,14 +2853,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone4POWER"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2762,14 +2912,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone5HR"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2782,14 +2934,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBZone5POWER"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2848,14 +3002,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBFTPHB"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2914,14 +3070,16 @@
                                         android:gravity="center"
                                         android:minHeight="25px"
                                         android:minWidth="25px">
-                                        <TextView
+                                        <EditText
                                             android:text="77"
-                                            android:id="@+id/textView2"
+                                            android:id="@+id/txtBFTPower"
                                             android:gravity="center"
                                             android:textColor="#ff000000"
                                             android:background="#ffffffff"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:singleLine="true"
+                                            android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp" />
                                     </LinearLayout>
@@ -2942,7 +3100,7 @@
                     android:text="Update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button1"
+                    android:id="@+id/btnUpdate"
                     android:gravity="center"
                     android:textColor="#fffb8c00"
                     android:layout_marginTop="20dp"

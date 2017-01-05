@@ -115,6 +115,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Fragment\FragmentSerious.cs" />
+    <Compile Include="Fragment\TimeFormatDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />

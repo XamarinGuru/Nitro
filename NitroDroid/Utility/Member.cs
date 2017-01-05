@@ -24,11 +24,11 @@ namespace goheja
 	{
 		public IdData()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -38,11 +38,11 @@ namespace goheja
 	{
 		public userSystemData()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -53,11 +53,11 @@ namespace goheja
 	{
 		public athHistory()
 		{
-			id = "";
+			_id = "";
 			date = new DateTime().ToString();
 			text = "";
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string date { get; set; }
 		public string text { get; set; }
 
@@ -67,13 +67,13 @@ namespace goheja
 	{
 		public Performance()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "0";
 
 
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -83,7 +83,7 @@ namespace goheja
 	{
 		public Physical()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 			unit = "";
@@ -91,7 +91,7 @@ namespace goheja
 
 
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public string unit { get; set; }
@@ -103,12 +103,12 @@ namespace goheja
 	{
 		public BestResults()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -120,12 +120,12 @@ namespace goheja
 	{
 		public Experience()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -162,11 +162,11 @@ namespace goheja
 	{
 		public eventProp()
 		{
-			id = 0;
+			_id = 0;
 			name = "";
 			value = "";
 		}
-		public int id { get; set; }
+		public int _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 
@@ -208,13 +208,13 @@ namespace goheja
 	{
 		public ZoneLevel()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			hr = "70";
 			pace = "";
 			power = "";
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string hr { get; set; }
 		public string pace { get; set; }
@@ -226,7 +226,7 @@ namespace goheja
 	{
 		public Injuries()
 		{
-			id = "";
+			_id = "";
 			name = "";
 			value = "";
 			isCurrent = false;
@@ -234,7 +234,7 @@ namespace goheja
 
 
 		}
-		public string id { get; set; }
+		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public bool isCurrent { get; set; }
@@ -328,7 +328,7 @@ namespace goheja
 		private Injuries inj()
 		{
 			Injuries inj = new Injuries();
-			inj.id = "0";
+			inj._id = "0";
 			inj.name = "";
 			inj.value = "";
 			return inj;
@@ -338,7 +338,7 @@ namespace goheja
 		private Performance acl()
 		{
 			Performance p = new Performance();
-			p.id = "0";
+			p._id = "0";
 			p.name = "ACL";
 			p.value = "";
 			return p;
@@ -347,7 +347,7 @@ namespace goheja
 		private Performance atl()
 		{
 			Performance p = new Performance();
-			p.id = "1";
+			p._id = "1";
 			p.name = "ATL";
 			p.value = "";
 			return p;
@@ -355,7 +355,7 @@ namespace goheja
 		private Performance tsb()
 		{
 			Performance p = new Performance();
-			p.id = "2";
+			p._id = "2";
 			p.name = "TSB";
 			p.value = "";
 			return p;
@@ -363,7 +363,7 @@ namespace goheja
 		private Performance tss()
 		{
 			Performance p = new Performance();
-			p.id = "3";
+			p._id = "3";
 			p.name = "TSS";
 			p.value = "";
 			return p;
@@ -372,7 +372,7 @@ namespace goheja
 		private Physical weight()
 		{
 			Physical p = new Physical();
-			p.id = "0";
+			p._id = "0";
 			p.name = "Weight";
 			p.value = "600";
 			return p;
@@ -380,7 +380,7 @@ namespace goheja
 		private Physical height()
 		{
 			Physical p = new Physical();
-			p.id = "1";
+			p._id = "1";
 			p.name = "Height";
 			p.value = "175";
 			return p;
@@ -388,7 +388,7 @@ namespace goheja
 		private Physical bmi()
 		{
 			Physical p = new Physical();
-			p.id = "2";
+			p._id = "2";
 			p.name = "BMI";
 			p.value = "23";
 			return p;
@@ -396,7 +396,7 @@ namespace goheja
 		private Physical fper()
 		{
 			Physical p = new Physical();
-			p.id = "3";
+			p._id = "3";
 			p.name = "Fat percentage";
 			p.value = "33";
 			return p;
@@ -405,7 +405,7 @@ namespace goheja
 		private Physical fp()
 		{
 			Physical p = new Physical();
-			p.id = "3";
+			p._id = "3";
 			p.name = "Fat percentage";
 			p.value = "";
 			return p;
@@ -423,7 +423,7 @@ namespace goheja
 		private athHistory historyEvent()
 		{
 			athHistory p = new athHistory();
-			p.id = "0";
+			p._id = "0";
 			p.date = new DateTime().ToString();
 			p.text = "";
 			return p;
@@ -432,7 +432,7 @@ namespace goheja
 		private Experience expSwim()
 		{
 			Experience p = new Experience();
-			p.id = "0";
+			p._id = "0";
 			p.name = "Swim";
 			p.value = "";
 			return p;
@@ -441,7 +441,7 @@ namespace goheja
 		private Experience expBike()
 		{
 			Experience p = new Experience();
-			p.id = "1";
+			p._id = "1";
 			p.name = "Bike";
 			p.value = "";
 			return p;
@@ -449,7 +449,7 @@ namespace goheja
 		private Experience expRun()
 		{
 			Experience p = new Experience();
-			p.id = "2";
+			p._id = "2";
 			p.name = "Run";
 			p.value = "";
 			return p;
@@ -457,7 +457,7 @@ namespace goheja
 		private Experience expEndu()
 		{
 			Experience p = new Experience();
-			p.id = "3";
+			p._id = "3";
 			p.name = "Endurance";
 			p.value = "";
 			return p;
@@ -466,7 +466,7 @@ namespace goheja
 		private Experience expEndur()
 		{
 			Experience p = new Experience();
-			p.id = "3";
+			p._id = "3";
 			p.name = "Endurance";
 			p.value = "";
 			return p;
