@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp;
+using PortableLibrary;
 
 namespace location2
 {
@@ -16,20 +17,11 @@ namespace location2
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		// class-level declarations
-
 		private nint bgThread = -1;
 
-		private string username;
+		public BaseViewController baseVC;
 
-
-		private static FirebaseClient _client;
-
-		public class Todo
-		{
-			public string actionName { get; set; }
-			public string status { get; set; }
-		}
+		EKCalendar nitroCalendar = null;
 
 		public override UIWindow Window {
 			get;
@@ -53,50 +45,10 @@ namespace location2
 			// Games should use this method to pause the game.
 		}
 
-		public override async void DidEnterBackground(UIApplication application)
+		public override void DidEnterBackground(UIApplication application)
 		{
-			username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
-			if (username == null)
+			if (AppSettings.Username == null || baseVC == null)
 				return;
-
-			#region config firebase
-			IFirebaseConfig config = new FirebaseConfig
-			{
-				AuthSecret = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF",
-				BasePath = "https://nitro-8cbda.firebaseio.com/"
-			};
-			_client = new FirebaseClient(config);
-
-			var todo1 = new Todo
-			{
-				actionName = "entered background mode",
-				status = "y"
-			};
-			await _client.PushAsync("users/"+username, todo1);
-			#endregion
-
-			if (bgThread == -1)
-			{
-				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
-				new Task(() => { new Timer(UpdateCalendarTimer, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60*30)); }).Start();
-			}
-		}
-		private void UpdateCalendarTimer(object state)
-		{
-			InvokeOnMainThread(async () => { await UpdateCalendar(); });
-		}
-
-		private async Task UpdateCalendar()
-		{
-			username = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
-
-			trackSvc.Service1 meServ = new trackSvc.Service1();
-			meServ = new location2.trackSvc.Service1();
-
-			username = "Gili";
-			var pastEvents = "";//meServ.getUserCalendarPast(username);
-			var todayEvents = meServ.getUserCalendarToday(username);
-			var futureEvents = meServ.getUserCalendarFuture(username);
 
 			App.Current.EventStore.RequestAccess(EKEntityType.Event,
 				(bool granted, NSError e) =>
@@ -104,33 +56,37 @@ namespace location2
 					InvokeOnMainThread(() =>
 					{
 						if (granted)
-							AddEvents(pastEvents, todayEvents, futureEvents);
+							UpdateCalendarTimer();
 					});
 				});
-
 		}
 
-		private async void AddEvents(string pastEvents, string todayEvents, string futureEvents)
+		private void UpdateCalendarTimer()
+		{
+			if (bgThread == -1)
+			{
+				bgThread = UIApplication.SharedApplication.BeginBackgroundTask(() => { });
+				new Task(() => { new Timer(UpdateCalendar, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60 * 30)); }).Start();
+			}
+		}
+
+		private void UpdateCalendar(object state)
+		{
+			InvokeOnMainThread(() => { AddNitroCalendarToDevice(); });
+		}
+
+		private void AddNitroCalendarToDevice()
 		{
 			try
 			{
 				NSError error;
 
-				EKCalendar nitroCalendar = null;
 				////remove existing descending events from now in "Nitro Events" calendar of device.
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
-					if (calendar.Title == "Nitro Events")
+					if (calendar.Title == Constants.CALENDAR_TITLE)
 					{
-						var todo1 = new Todo
-						{
-							actionName = "nitro calendar already exist?",
-							status = "y"
-						};
-						//track existence of "Nitro Calendar" to firebase
-						await _client.PushAsync("users/" + username, todo1);
-
 						nitroCalendar = calendar;
 
 						EKCalendar[] calendarArray = new EKCalendar[1];
@@ -144,23 +100,15 @@ namespace location2
 							NSError pE;
 							DateTime now = DateTime.Now;
 							DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
-							var startString = ConvertDateTimeToNSDate(startNow);
+							var startString = baseVC.ConvertDateTimeToNSDate(startNow);
 							if (pEvent.StartDate.Compare(startString) == NSComparisonResult.Descending)
-								 App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
+								App.Current.EventStore.RemoveEvent(pEvent, EKSpan.ThisEvent, true, out pE);
 						}
 					}
 				}
 
 				if (nitroCalendar == null)
 				{
-					var todo1 = new Todo
-					{
-						actionName = "nitro calendar already exist?",
-						status = "n"
-					};
-					//track existence of "Nitro Calendar" to firebase
-					await _client.PushAsync("users/" + username, todo1);
-
 					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
 					EKSource nitroSource = null;
 
@@ -168,14 +116,6 @@ namespace location2
 					{
 						if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 						{
-							var todo2 = new Todo
-							{
-								actionName = "event store source",
-								status = "iCloud"
-							};
-							//track source type of "Nitro Calendar" to firebase
-							await _client.PushAsync("users/" + username, todo2);
-
 							nitroSource = source;
 							break;
 						}
@@ -186,14 +126,6 @@ namespace location2
 						{
 							if (source.SourceType == EKSourceType.Local)
 							{
-								var todo3 = new Todo
-								{
-									actionName = "event store source",
-									status = "Local"
-								};
-								//track source type of "Nitro Calendar" to firebase
-								await _client.PushAsync("users/" + username, todo3);
-
 								nitroSource = source;
 								break;
 							}
@@ -201,34 +133,16 @@ namespace location2
 					}
 					if (nitroSource == null)
 					{
-						var todo4 = new Todo
-						{
-							actionName = "event store source",
-							status = "null"
-						};
-						//track source type of "Nitro Calendar" to firebase
-						await _client.PushAsync("users/" + username, todo4);
-
 						return;
 					}
-					nitroCalendar.Title = "Nitro Events";
+					nitroCalendar.Title = Constants.CALENDAR_TITLE;
 					nitroCalendar.Source = nitroSource;
 				}
 
-
 				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
 
-				var todo5 = new Todo
-				{
-					actionName = "save calendar",
-					status = error==null?"null":"error"
-				};
-				//track source saving status of "Nitro Calendar" to firebase
-				await _client.PushAsync("users/" + username, todo5);
-
-				//AddEventsToNitroCalendar(nitroCalendar, pastEvents);
-				AddEventsToNitroCalendar(nitroCalendar, todayEvents);
-				AddEventsToNitroCalendar(nitroCalendar, futureEvents);
+				if (error == null)
+					AddEvents();
 			}
 			catch (Exception e)
 			{
@@ -236,13 +150,21 @@ namespace location2
 			}
 		}
 
-		private async void AddEventsToNitroCalendar(EKCalendar nitroCalendar, string eventsJson)
+		private void AddEvents()
 		{
-			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
-				return;
+			//var pastEvents = baseVC.GetPastEvents();
+			var todayEvents = baseVC.GetTodayEvents();
+			var futureEvents = baseVC.GetFutureEvents();
 
-			//eventsJson = FinterHTMLTag(eventsJson);
-			var eventsData = JArray.Parse(FormatArrayType(eventsJson));
+			//AddEventsToNitroCalendar(pastEvents);
+			AddEventsToNitroCalendar(todayEvents);
+			AddEventsToNitroCalendar(futureEvents);
+		}
+
+		private void AddEventsToNitroCalendar(JArray eventsData)
+		{
+			if (nitroCalendar == null || eventsData == null)
+				return;
 
 			foreach (var eventJson in eventsData)
 			{
@@ -261,12 +183,12 @@ namespace location2
 					continue;
 
 				var tmpStart = startDate.AddHours(-2);
-				newEvent.StartDate = ConvertDateTimeToNSDate(tmpStart);
+				newEvent.StartDate = baseVC.ConvertDateTimeToNSDate(tmpStart);
 				var tmpEnd = endDate.AddHours(-2);
-				newEvent.EndDate = ConvertDateTimeToNSDate(tmpEnd);
+				newEvent.EndDate = baseVC.ConvertDateTimeToNSDate(tmpEnd);
 				newEvent.Title = eventData["title"].ToString();
 
-				string eventDescription = FilterHTMLTag(eventData["eventData"].ToString());
+				string eventDescription = baseVC.FormatEventDescription(eventData["eventData"].ToString());
 
 				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
 
@@ -299,7 +221,7 @@ namespace location2
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + username;
+				var encodedEventURL = String.Format(Constants.EVENT_MAP_URL, encodedTitle, encodedDate, AppSettings.Username);
 
 				newEvent.Url = new NSUrl(System.Web.HttpUtility.UrlEncode(encodedEventURL)); ;
 
@@ -313,41 +235,10 @@ namespace location2
 
 				NSError e;
 				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);
-
-				var todo5 = new Todo
-				{
-					actionName = "save event",
-					status = e == null ? "null" : "error"
-				};
-				//track source saving status of "Nitro event" to firebase
-				await _client.PushAsync("users/" + username, todo5);
 			}
 		}
 
-		public NSDate ConvertDateTimeToNSDate(DateTime date)
-		{
-			DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
 
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - newDate).TotalSeconds + 3600);
-		}
-		private string FormatArrayType(string eventsJson)
-		{
-			var returnString = eventsJson.Replace("ObjectId(\"", "\"");
-			returnString = returnString.Replace(" ISODate(\"", "\"");
-			returnString = returnString.Replace("\")", "\"");
-
-			return returnString;
-		}
-		private string FilterHTMLTag(string eventJson)
-		{
-			var returnString = eventJson.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
-			returnString = returnString.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
-			returnString = returnString.Replace("</textarea><br/>", "");
-
-			return returnString;
-		}
 		
 		public override void WillEnterForeground (UIApplication application)
 		{

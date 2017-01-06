@@ -16,6 +16,8 @@ namespace goheja
     [Activity(Label = "Nitro" , Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
 	public class SwipeTabActivity : BaseActivity
     {
+		private static Intent serviceIntent = null;
+
 		ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 
         private ImageView 	_tab1Icon,
@@ -37,9 +39,9 @@ namespace goheja
 
             SetContentView(Resource.Layout.SwipeTabActivity);
 
-			var contextEdit = contextPref.Edit();
-			contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-			string _deviceId = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+			//var contextEdit = contextPref.Edit();
+			//contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+			//string _deviceId = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 			//try
 			//{
 			//	trackSvc.Service1 test = new trackSvc.Service1();
@@ -60,6 +62,14 @@ namespace goheja
 			//	ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
 			//	return;
 			//}
+
+			if (serviceIntent == null)
+			{
+				AppSettings.baseVC = this;
+				serviceIntent = new Intent(this, typeof(BackgroundService));
+				this.StartService(serviceIntent);
+			}
+
 
             InitilizeComponant();
            
@@ -101,7 +111,7 @@ namespace goheja
             StartActivity(intent);
         }
 
-        private void SetPage(int position)
+		public void SetPage(int position)
         {
             _pager.SetCurrentItem(position, true);
         }
@@ -134,6 +144,9 @@ namespace goheja
                 case 2:
                     _titleBarText.Text = "Personal data";
                     break;
+				case 3:
+					_titleBarText.Text = "Personal data";
+					break;
             }
         }
 
@@ -193,9 +206,9 @@ namespace goheja
 
         public void initiatAth()
         {
-            ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
-            NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
-            bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
+    //        ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+    //        NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+    //        bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
 
     //        if (!isOnline)
     //        {

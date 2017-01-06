@@ -195,12 +195,12 @@
     <Compile Include="Controllers\SeriousViewController.designer.cs">
       <DependentUpon>SeriousViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\Member.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AppSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -306,6 +306,12 @@
       <RelPath>Web References\trackSvc</RelPath>
       <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
+      <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
+      <Name>PortableLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

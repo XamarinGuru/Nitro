@@ -49,7 +49,7 @@ namespace goheja
 				var result = RegisterUser(firstName, lastName, device, userName, psw, email, int.Parse(age));
 
 				if (result == "user added")
-					GoToMainPage(email, psw);
+					GoToMainPage(email, psw, userName, device);
 				else
 					ShowMessageBox(null, result);
                 
@@ -61,10 +61,12 @@ namespace goheja
             }
         }
 
-		private void GoToMainPage(string email, string password)
+		private void GoToMainPage(string email, string password, string username, string deviceUDID)
 		{
 			AppSettings.Email = email;
 			AppSettings.Password = password;
+			AppSettings.Username = username;
+			AppSettings.DeviceUDID = deviceUDID;
 
 			string userID = GetUserID();
 
@@ -76,7 +78,7 @@ namespace goheja
 			{
 				var activity2 = new Intent(this, typeof(SwipeTabActivity));
 				StartActivity(activity2);
-				OnDestroy();
+				Finish();
 			}
 		}
 		private void termsBtn_OnClick(object sender, EventArgs eventArgs)

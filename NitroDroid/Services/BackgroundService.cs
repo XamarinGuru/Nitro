@@ -1,19 +1,21 @@
 ﻿using System;
 using Android.App;
-using Android.Util;
 using Android.Content;
 using Android.Provider;
-using System.Text;
 using Java.Util;
 using Newtonsoft.Json.Linq;
+using PortableLibrary;
 
 namespace goheja
 {
 	[Service]
 	public class BackgroundService : Service
 	{
-		private string userName;
 		System.Threading.Timer _timer;
+
+		private long calendarID = -1;
+
+		public BaseActivity baseVC;
 
 		[Android.Runtime.Register("onStart", "(Landroid/content/Intent;I)V", "GetOnStart_Landroid_content_Intent_IHandler")]
 		[System.Obsolete("deprecated")]
@@ -21,6 +23,11 @@ namespace goheja
 		public override void OnStart(Intent intent, int startId)
 		{
 			base.OnStart(intent, startId);
+
+			if (AppSettings.Username == null || AppSettings.baseVC == null)
+				return;
+
+			baseVC = AppSettings.baseVC;
 
 			StartUpdateTimer();
 		}
@@ -32,36 +39,20 @@ namespace goheja
 			_timer.Dispose();
 		}
 
-		public void StartUpdateTimer()
-		{
-			_timer = new System.Threading.Timer((o) =>
-			{
-				UpdateNitroEvents();
-			}, null, 0, 1000 * 60 * 30);
-		}
-
 		public override Android.OS.IBinder OnBind(Intent intent)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void UpdateNitroEvents()
+		public void StartUpdateTimer()
 		{
-			trackSvc.Service1 meServ = new trackSvc.Service1();
-			meServ = new trackSvc.Service1();
-
-			var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-			userName = contextPref.GetString("storedUserName", "");
-
-			userName = "Gili";
-			var pastEvents = "";// meServ.getUserCalendarPast(userName);
-			var todayEvents = meServ.getUserCalendarToday(userName);
-			var futureEvents = meServ.getUserCalendarFuture(userName);
-
-			AddEvents(pastEvents, todayEvents, futureEvents);
-
+			_timer = new System.Threading.Timer((o) =>
+			{
+				AddNitroCalendarToDevice();
+			} , null, 0, 1000 * 60 * 30);
 		}
-		private void AddEvents(string pastEvents, string todayEvents, string futureEvents)
+
+		private void AddNitroCalendarToDevice()
 		{
 			var calendarsUri = CalendarContract.Calendars.ContentUri;
 
@@ -69,11 +60,10 @@ namespace goheja
 			   CalendarContract.Calendars.InterfaceConsts.Id,
 			   CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
 			   CalendarContract.Calendars.InterfaceConsts.AccountName
-			};
+			} ;
 
 			var cursor = ApplicationContext.ContentResolver.Query(calendarsUri, calendarsProjection, null, null, null);
 
-			long calID = -1;
 			#region remove existing Nitro calendar
 			if (cursor.MoveToFirst())
 			{
@@ -83,13 +73,13 @@ namespace goheja
 					String displayName = cursor.GetString(1);
 					if (displayName == "Nitro Calendar")
 						//RemoveCalendar(id);
-						calID = id;
-				} while (cursor.MoveToNext());
+						calendarID = id;
+				}  while (cursor.MoveToNext());
 			}
 			#endregion
 
 			#region create Nitro Calendar
-			if (calID == -1)
+			if (calendarID == -1)
 			{
 				var uri = CalendarContract.Calendars.ContentUri;
 				ContentValues val = new ContentValues();
@@ -107,19 +97,30 @@ namespace goheja
 					.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountType, CalendarContract.AccountTypeLocal)
 					.Build();
 				var calresult = ContentResolver.Insert(uri, val);
-				calID = long.Parse(calresult.LastPathSegment);
+				calendarID = long.Parse(calresult.LastPathSegment);
 			}
 
 			#endregion
-			RemoveNitroTodayAndFutureEvents(calID);
+			RemoveNitroTodayAndFutureEvents();
 
-			//AddEventsToNitroCalendar(calID, pastEvents);
-			AddEventsToNitroCalendar(calID, todayEvents);
-			AddEventsToNitroCalendar(calID, futureEvents);
+			UpdateNitroEvents();
 		}
 
-		private void RemoveNitroTodayAndFutureEvents(long calID)
+		public void UpdateNitroEvents()
 		{
+			var pastEvents = baseVC.GetPastEvents();
+			var todayEvents = baseVC.GetTodayEvents();
+			var futureEvents = baseVC.GetFutureEvents();
+
+			AddEventsToNitroCalendar(pastEvents);
+			AddEventsToNitroCalendar(todayEvents);
+			AddEventsToNitroCalendar(futureEvents);
+		}
+
+		private void RemoveNitroTodayAndFutureEvents()
+		{
+			if (calendarID == -1) return;
+
 			var eventURI = CalendarContract.Events.ContentUri;
 
 			string[] eventsProjection = {
@@ -127,13 +128,13 @@ namespace goheja
 			    CalendarContract.Events.InterfaceConsts.Title
 			   , CalendarContract.Events.InterfaceConsts.Dtstart
 			   , CalendarContract.Events.InterfaceConsts.Dtend
-			};
+			} ;
 			DateTime now = DateTime.Now;
 			DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
 			var startString = GetDateTimeMS(startNow).ToString();
 			var endString = GetDateTimeMS(DateTime.Now.AddYears(5)).ToString();
 			var selection = "((dtstart >= ?) AND (dtend <= ?) AND (calendar_id = ?))";
-			var selectionArgs = new string[] { startString, endString, calID.ToString() };
+			var selectionArgs = new string[] { startString, endString, calendarID.ToString() };
 			var calCursor = ApplicationContext.ContentResolver.Query(eventURI, eventsProjection, selection, selectionArgs, null);
 			var cou = calCursor.Count;
 			if (calCursor.MoveToFirst())
@@ -144,19 +145,13 @@ namespace goheja
 					String displayName = calCursor.GetString(1);
 					long eventId = calCursor.GetLong(calCursor.GetColumnIndex("_id"));
 					RemoveEvent(eventId);
-				} while (calCursor.MoveToNext());
+				}  while (calCursor.MoveToNext());
 			}
 		}
 
-		private void AddEventsToNitroCalendar(long calID, string eventsJson)
+		private void AddEventsToNitroCalendar(JArray eventsData)
 		{
-			if (eventsJson == null || eventsJson == "" || eventsJson == "[]")
-				return;
-
-			eventsJson = eventsJson.Replace("ObjectId(\"", "\"");
-			eventsJson = eventsJson.Replace(" ISODate(\"", "\"");
-			eventsJson = eventsJson.Replace("\")", "\"");
-			var eventsData = JArray.Parse(eventsJson);
+			if (calendarID == -1 || eventsData == null) return;
 
 			foreach (var eventJson in eventsData)
 			{
@@ -176,7 +171,7 @@ namespace goheja
 
 				string eventDescription = eventData["eventData"].ToString();
 
-				var filteredDescription = RemoveHTMLTag(eventDescription);
+				var filteredDescription = baseVC.FormatEventDescription(eventDescription);
 
 				string[] arryEventDes = filteredDescription.Split(new char[] { '~' });
 
@@ -208,15 +203,15 @@ namespace goheja
 
 				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
 
-				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
+				var strDate = startDate.ToString();//String.Format("{ 0:MM/dd/yyyy hh:mm:ss a}", startDate.ToString());
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = "http://go-heja.com/nitro/calenPage.php?name=" + encodedTitle + "&startdate=" + encodedDate + "&user=" + userName;
+				var encodedEventURL = String.Format(Constants.EVENT_MAP_URL, encodedTitle, encodedDate, AppSettings.Username);
 
 				note += Environment.NewLine + encodedEventURL;
 
 				#region create event
 				ContentValues eventValues = new ContentValues();
-				eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calID);
+				eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calendarID);
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.Title, title);
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.Description, note);
 				eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtstart, GetDateTimeMS(startDate));
@@ -277,20 +272,6 @@ namespace goheja
 			return c.TimeInMillis;
 		}
 
-		private string RemoveHTMLTag(string rawString)
-		{
-			if (rawString == "") return rawString;
 
-			int startIndex = rawString.IndexOf("<textarea");
-			int endIndex = rawString.IndexOf(">");
-			int count = endIndex - startIndex;
-
-			var theString = new StringBuilder(rawString);
-			theString.Remove(startIndex, count);
-
-			var returnString = theString.ToString();
-			returnString = returnString.Replace("</textarea><br/>", "");
-			return returnString;
-		}
 	}
 }

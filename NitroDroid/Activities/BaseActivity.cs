@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -6,6 +7,8 @@ using Android.Support.V4.App;
 using Android.Views;
 using AndroidHUD;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -113,6 +116,53 @@ namespace goheja
 			return result;
 		}
 
+		public JArray GetPastEvents()
+		{
+			try
+			{
+				//username = "Gili";
+				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);//586f44b616528a3a18a75aa2
+				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
+		public JArray GetTodayEvents()
+		{
+			try
+			{
+				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
+				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
+		public JArray GetFutureEvents()
+		{
+			try
+			{
+				//var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
+				var strFutureEvents = mTrackSvc.getUserCalendarFuture("586f44b616528a3a18a75aa2");
+				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
 		public bool ValidateUserNickName(string nickName)
 		{
 			var validate = mTrackSvc.validateNickName(nickName);
@@ -125,11 +175,31 @@ namespace goheja
 			}
 		}
 
-		private string FormatJsonType(string jsonUser)
+		private string FormatJsonType(string jsonData)
 		{
-			var returnString = jsonUser.Replace("ISODate(\"", "\"");
+			var returnString = jsonData.Replace("ObjectId(\"", "\"");
+			returnString = returnString.Replace(" ISODate(\"", "\"");
 			returnString = returnString.Replace("\")", "\"");
 
+			return returnString;
+		}
+
+		public string FormatEventDescription(string rawString)
+		{
+			if (rawString == "") return rawString;
+
+			int startIndex = rawString.IndexOf("<textarea");
+			int endIndex = rawString.IndexOf(">");
+
+			if (startIndex < 0 || endIndex < 0) return rawString;
+
+			int count = endIndex - startIndex;
+
+			var theString = new StringBuilder(rawString);
+			theString.Remove(startIndex, count);
+
+			var returnString = theString.ToString();
+			returnString = returnString.Replace("</textarea><br/>", "");
 			return returnString;
 		}
 

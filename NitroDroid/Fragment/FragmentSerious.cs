@@ -12,6 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -208,7 +209,7 @@ namespace goheja
 		private void SetInputBinding()
 		{
 			#region physical
-			this.SetBinding(() => MemberModel.name, () => lblFirstname.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.firstname, () => lblFirstname.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.lastname, () => lblLastname.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.country, () => lblCountry.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.address, () => lblAddress.Text, BindingMode.OneWay);
@@ -314,6 +315,7 @@ namespace goheja
 			SwipeTabActivity rootVC = (SwipeTabActivity)this.Activity;
 			var result = rootActivity.UpdateUserDataJson(MemberModel.rootMember);
 			rootVC.ShowMessageBox(null, "updated successfully.");
+			rootVC.SetPage(2);
 		}
 		#endregion
 

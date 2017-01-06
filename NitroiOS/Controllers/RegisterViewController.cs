@@ -4,6 +4,7 @@ using UIKit;
 using CoreGraphics;
 using Security;
 using System.Threading;
+using PortableLibrary;
 
 namespace location2
 {
@@ -137,18 +138,12 @@ namespace location2
 			{
 				try
 				{
-					string deviceID  = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
-					int tempage = 30;
-					int.TryParse(txtAge.Text, out tempage);
+					string deviceUDID  = UIDevice.CurrentDevice.IdentifierForVendor.AsString();
 
-					var result = RegisterUser(txtFirstName.Text, txtLastName.Text, deviceID, txtLastName.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
-
-					//var result = mtra.insertNewDevice(txtFirstName.Text, txtLastName.Text, deviceID, txtLastName.Text, txtPassword.Text, true, true, txtEmail.Text, 40, true);
-					//var result = meServ.insertNewDevice("gsgs1gsgs", "gs123gsgs", "a1d2ds3cc432cdcsdd555355dd2142421dd311451r", "tescc1sdc32dsd1ddt", "tedc21c13dddst", true, true, "sag132@dan.com", 40, true);
-					//var result = meServ.insertNewDevice("gsgs1gsgs", "gs1gsgs", "a1d2ds3cc432cdcsdd55555dd142421dd311451r", "tescc1sdcdsd1ddt", "tedc1c1dddst", true, "sag1@dan.com", 40);
+					var result = RegisterUser(txtFirstName.Text, txtLastName.Text, deviceUDID, txtNickName.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
 
 					if (result == "user added")
-						GoToMainPage();
+						GoToMainPage(deviceUDID);
 					else
 						ShowMessageBox(null, result);
 						
@@ -173,14 +168,16 @@ namespace location2
 
 		partial void TermsBtn_TouchUpInside(UIButton sender)
 		{
-			UIApplication.SharedApplication.OpenUrl(new NSUrl("http://go-heja.com/nitro/terms.php/"));
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(Constants.TERMS_URL));
 		}
 		#endregion
 
-		private void GoToMainPage()
+		private void GoToMainPage(string deviceUDID)
 		{
-			NSUserDefaults.StandardUserDefaults.SetString(txtEmail.Text, "email");
-			NSUserDefaults.StandardUserDefaults.SetString(txtPassword.Text, "password");
+			AppSettings.Email = txtEmail.Text;
+			AppSettings.Password = txtPassword.Text;
+			AppSettings.Username = txtNickName.Text;
+			AppSettings.DeviceUDID = deviceUDID;
 
 			string userID = GetUserID();
 

@@ -13,6 +13,7 @@ using goheja.Services;
 using System.Timers;
 using System.IO;
 using Android.Graphics;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -50,7 +51,6 @@ namespace goheja
         string athLastName;
 		string athNickName;
         string athCountry;
-		string android_id;
 
         float lastAlt;
         float dist;
@@ -72,12 +72,16 @@ namespace goheja
         
         WebView wv;
 
+		private RootMemberModel MemberModel { get; set; }
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 			SetContentView(Resource.Layout.AnalyticsActivity);
             
+			MemberModel = new RootMemberModel();
+			MemberModel.rootMember = GetUserObject();
+
 			svc = new trackSvc.Service1();
 
 			_isINET = ((ConnectivityManager)GetSystemService(ConnectivityService)).ActiveNetworkInfo;
@@ -92,26 +96,24 @@ namespace goheja
             contextPrefEdit.PutFloat("lastAlt", 0f).Commit();
             contextPrefEdit.PutFloat("dist", 0f).Commit();
 
-			android_id = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
-			string[] athData = svc.getAthDataByDeviceId(android_id);
 
-			filePrefEdit.PutString("storedFirstName", athData[0].ToString());
-			filePrefEdit.PutString("storedAthId", athData[2].ToString());
-			filePrefEdit.PutString("storedLastName", athData[1].ToString());
-			filePrefEdit.PutString("storedCountry", athData[3].ToString());
-			filePrefEdit.PutString("storedUserName", athData[4].ToString());
-			filePrefEdit.PutString("storedPsw", athData[5].ToString());
+			//filePrefEdit.PutString("storedFirstName", athData[0].ToString());
+			//filePrefEdit.PutString("storedLastName", athData[1].ToString());
+			//filePrefEdit.PutString("storedAthId", athData[2].ToString());
+			//filePrefEdit.PutString("storedCountry", athData[3].ToString());
+			//filePrefEdit.PutString("storedUserName", athData[4].ToString());
+			//filePrefEdit.PutString("storedPsw", athData[5].ToString());
 			filePrefEdit.PutFloat("lastAlt", 0f);
 			filePrefEdit.PutFloat("gainAlt", 0f);
 			filePrefEdit.PutFloat("distance", 0f);
 			filePrefEdit.PutString("prevLoc", "");
 			filePrefEdit.Commit();
 
-			athId = (contextPref.GetString("storedAthId", "0").ToString());
-			athFirstName = contextPref.GetString("storedFirstName", "");
-			athLastName = contextPref.GetString("storedLastName", "");
-			athNickName = contextPref.GetString("storedUserName", "");
-			athCountry = contextPref.GetString("storedCountry", "");
+			athId = GetUserID();
+			athFirstName = MemberModel.firstname;
+			athLastName = MemberModel.lastname;
+			athNickName = MemberModel.username;
+			athCountry = MemberModel.country;
 
 			_title = FindViewById<TextView>(Resource.Id.TitleBarText);
             _speedText = FindViewById<TextView>(Resource.Id.tvSpeed);
@@ -193,7 +195,8 @@ namespace goheja
             btnLapDist.Enabled = true;
 			btnBack.Visibility = ViewStates.Gone;
 
-            wv.LoadUrl("http://go-heja.com/nitro/mobongoing.php?txt=" + athNickName);
+			var url = String.Format(Constants.ANALYTICS_MAP_URL, athNickName);
+            wv.LoadUrl(url);
 
 			if (isPaused)
             {
@@ -215,14 +218,14 @@ namespace goheja
                     {
 						var name = athFirstName + " " + athLastName;
 						var loc = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
-						svc.updateMomgoData(name, loc, dt, true, android_id, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, mType.ToString());
+						svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, mType.ToString());
                     }
 					catch (Exception err)
                     {
-						//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+						Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
                     }
 
-                    wv.LoadUrl("http://go-heja.com/nitro/mobongoing.php?txt=" + athNickName);
+					wv.LoadUrl(url);
                 }
                 else
                 {
@@ -285,11 +288,11 @@ namespace goheja
 				var loc = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
 				DateTime dt = DateTime.Now;
 				dist = contextPref.GetFloat("dist", 0f);
-				svc.updateMomgoData(name, loc, dt, true, android_id, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, mType.ToString());
+				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, mType.ToString());
 			}
 			catch (Exception err)
 			{
-				//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
 			}
 			lastAlt = 0;
 			dist = 0;
@@ -471,7 +474,7 @@ namespace goheja
 							var name = athFirstName + " " + athLastName;
 							DateTime dt = DateTime.Now;
 							float speed = float.Parse(_currentLocation.Speed.ToString()) * 3.6f;
-							record merecord = new record(name, _currentLocation.Latitude, _currentLocation.Longitude, dt, android_id, athId, athCountry, dist, speed, gainAlt, _currentLocation.Bearing, 0, mType.ToString());
+							record merecord = new record(name, _currentLocation.Latitude, _currentLocation.Longitude, dt, AppSettings.DeviceUDID, athId, athCountry, dist, speed, gainAlt, _currentLocation.Bearing, 0, mType.ToString());
 							handleRecord updateRecord = new handleRecord();
                             status = updateRecord.updaterecord(merecord, (_isINET != null) && _isINET.IsConnected);//the record and is there internet connection
                         }
@@ -481,7 +484,8 @@ namespace goheja
                         contextPrefEdit.PutFloat("dist", dist).Commit();
                         if (fFlag == 1 || status == "backFromOffline")
                         {
-							wv.LoadUrl("http://go-heja.com/nitro/mobongoing.php?txt=" + athNickName);
+							var url = String.Format(Constants.ANALYTICS_MAP_URL, athNickName);
+							wv.LoadUrl(url);
                             status = "online";
                         }
                         fFlag = 0;
@@ -490,7 +494,7 @@ namespace goheja
             }
             catch (Exception err)
             {
-				//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
             }
         }
         #endregion

@@ -16,19 +16,7 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnDone { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnGo { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView calendarContent { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIWebView calendarWebView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -70,46 +58,27 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtPhone { get; set; }
 
-        [Action ("BtnGo_TouchUpInside:")]
+        [Action ("ActionChangePhoto:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnGo_TouchUpInside (UIKit.UIButton sender);
+        partial void ActionChangePhoto (UIKit.UIButton sender);
 
-        [Action ("DoneBtn_TouchUpInside:")]
+        [Action ("ActionSerious:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void DoneBtn_TouchUpInside (UIKit.UIButton sender);
+        partial void ActionSerious (UIKit.UIButton sender);
 
-        [Action ("MeImgBtn_TouchUpInside:")]
+        [Action ("ActionUpdate:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void MeImgBtn_TouchUpInside (UIKit.UIButton sender);
+        partial void ActionUpdate (UIKit.UIButton sender);
 
         [Action ("removeNitroEvents:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void removeNitroEvents (UIKit.UIButton sender);
 
-        [Action ("SeriuosBtn_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SeriuosBtn_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
-            if (btnDone != null) {
-                btnDone.Dispose ();
-                btnDone = null;
-            }
-
             if (btnGo != null) {
                 btnGo.Dispose ();
                 btnGo = null;
-            }
-
-            if (calendarContent != null) {
-                calendarContent.Dispose ();
-                calendarContent = null;
-            }
-
-            if (calendarWebView != null) {
-                calendarWebView.Dispose ();
-                calendarWebView = null;
             }
 
             if (changePictureBtn != null) {

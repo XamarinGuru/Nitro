@@ -4,6 +4,7 @@ using UIKit;
 using EventKit;
 using GalaSoft.MvvmLight.Helpers;
 using System.Collections.Generic;
+using PortableLibrary;
 
 namespace location2
 {
@@ -22,20 +23,25 @@ namespace location2
 		const int TAG_EDIT_RUN = 1006;
 		const int TAG_EDIT_BIKE = 1007;
 
+		private RootMemberModel MemberModel { get; set; }
 		public SeriousViewController(IntPtr handle) : base(handle)
         {
 			MemberModel = new RootMemberModel();
 		}
-		private RootMemberModel MemberModel { get; set; }
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-			MemberModel.rootMember = GetUserObject();
-
 			var tap = new UITapGestureRecognizer(() => { View.EndEditing(true); });
 			View.AddGestureRecognizer(tap);
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			MemberModel.rootMember = GetUserObject();
 
 			SetInputEditingChanged(this.View);
 			SetInputValidation();
@@ -87,7 +93,7 @@ namespace location2
 		private void SetInputBinding()
 		{
 			#region physical
-			this.SetBinding(() => MemberModel.name, () => lblFirstname.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.firstname, () => lblFirstname.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.lastname, () => lblLastname.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.country, () => lblCountry.Text, BindingMode.OneWay);
 			this.SetBinding(() => MemberModel.address, () => lblAddress.Text, BindingMode.OneWay);
@@ -405,6 +411,7 @@ namespace location2
 		{
 			var result = UpdateUserDataJson(MemberModel.rootMember);
 			ShowMessageBox(null, "updated successfully");
+			rootVC.SetCurrentPage(2);
 		}
 		#endregion
 	}

@@ -8,6 +8,8 @@ using Android.Widget;
 using System.IO;
 using Android.Graphics;
 using Android.Provider;
+using PortableLibrary;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace goheja
 {
@@ -21,8 +23,16 @@ namespace goheja
 		TextView lblUsername;
         byte[] bitmapByteData = { 0 };
 
+		private RootMemberModel MemberModel { get; set; }
+		SwipeTabActivity rootActivity;
+
+		View mView;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+			MemberModel = new RootMemberModel();
+			rootActivity = this.Activity as SwipeTabActivity;
+
 			return inflater.Inflate(Resource.Layout.fProfile, container, false);
         }
 
@@ -30,21 +40,39 @@ namespace goheja
         {
             base.OnViewCreated(view, savedInstanceState);
 
-			meImage = view.FindViewById<ImageView>(Resource.Id.ivTest);
-			lblUsername = view.FindViewById<TextView>(Resource.Id.lblUsername);
-            tvFirstName = view.FindViewById<TextView>(Resource.Id.etFirstName);
-            tvLastName = view.FindViewById<TextView>(Resource.Id.etlastName);
-            tvEmail = view.FindViewById<TextView>(Resource.Id.etMail);
-            tvPhone = view.FindViewById<TextView>(Resource.Id.etPhone);
+			MemberModel.rootMember = rootActivity.GetUserObject();
 
-			view.FindViewById<Button>(Resource.Id.perImage).Click += setImage_OnClick;
-			view.FindViewById<Button>(Resource.Id.btnSave).Click += saveData_OnClick;
-            view.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
-			view.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
+			mView = view;
 
-            setBitmapImg();
-            setPersonalData();
+			SetUIVariablesAndActions();
+			SetInputBinding();
         }
+
+		private void SetUIVariablesAndActions()
+		{
+			meImage = mView.FindViewById<ImageView>(Resource.Id.ivTest);
+			lblUsername = mView.FindViewById<TextView>(Resource.Id.lblUsername);
+			tvFirstName = mView.FindViewById<TextView>(Resource.Id.etFirstName);
+			tvLastName = mView.FindViewById<TextView>(Resource.Id.etlastName);
+			tvEmail = mView.FindViewById<TextView>(Resource.Id.etMail);
+			tvPhone = mView.FindViewById<TextView>(Resource.Id.etPhone);
+
+			mView.FindViewById<Button>(Resource.Id.perImage).Click += setImage_OnClick;
+			mView.FindViewById<Button>(Resource.Id.btnSave).Click += ActionUpdate;
+			mView.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
+			mView.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
+		}
+
+		private void SetInputBinding()
+		{
+			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.firstname, () => tvFirstName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.lastname, () => tvLastName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.email, () => tvEmail.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.phone, () => tvPhone.Text, BindingMode.TwoWay);
+
+			setBitmapImg();
+		}
 
 		private void setImage_OnClick(object sender, EventArgs e)
 		{
@@ -53,29 +81,18 @@ namespace goheja
 			imageIntent.SetAction(Intent.ActionGetContent);
 			StartActivityForResult(Intent.CreateChooser(imageIntent, "Select photo"), 0);
 		}
-        private void saveData_OnClick(object sender, EventArgs e)
-        {
-			try
-			{
-				var contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
-				trackSvc.Service1 sv = new trackSvc.Service1();
-				contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 
-				sv.updateAthPersonalData(contextPref.GetString("storedAthId", "0").ToString(), tvFirstName.Text, tvLastName.Text, tvPhone.Text, tvEmail.Text, bitmapByteData);
-
-				Toast.MakeText(Activity, "Data Saved! We hope you got serious...", ToastLength.Long).Show();
-			}
-			catch
-			{
-				Toast.MakeText(Activity, "Error saving data!", ToastLength.Long).Show();
-			}
-        }
+		void ActionUpdate(object sender, EventArgs e)
+		{
+			SwipeTabActivity rootVC = (SwipeTabActivity)this.Activity;
+			var result = rootActivity.UpdateUserDataJson(MemberModel.rootMember);
+			rootVC.ShowMessageBox(null, "updated successfully.");
+		}
 
         private void seriousBtn__OnClick(object sender, EventArgs e)
         {
-            var activity2go = new Intent(Activity, typeof(ProfileWebViewActivity));
-            activity2go.PutExtra("MyData", "Data from Activity1");
-            StartActivity(activity2go);
+			SwipeTabActivity rootVC = this.Activity as SwipeTabActivity;
+			rootVC.SetPage(3);
         }
 
 		#region remove existing Nitro calendar
@@ -234,24 +251,6 @@ namespace goheja
             {
                 GC.Collect();
             }
-        }
-        private void setPersonalData()
-        {
-			try
-			{
-				trackSvc.Service1 sv = new trackSvc.Service1();
-				string _dId = Settings.Secure.GetString(Activity.ContentResolver, Settings.Secure.AndroidId);
-				string[] athData = sv.getAthDataByDeviceId(_dId);
-				lblUsername.Text = athData[4];
-				tvFirstName.Text = athData[0];
-				tvLastName.Text = athData[1];
-				tvEmail.Text = athData[6];
-				tvPhone.Text = athData[7];
-			}
-			catch
-			{
-				Toast.MakeText(Activity, "Error getting user data!", ToastLength.Long).Show();
-			}
         }
     }
 }

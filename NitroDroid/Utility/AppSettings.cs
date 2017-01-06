@@ -8,6 +8,8 @@ namespace goheja
 	{
 		private static ISharedPreferences _appSettings = Application.Context.GetSharedPreferences("App_settings", FileCreationMode.Private);
 
+		public static BaseActivity baseVC;
+
 		private const string userIDKey = "userID";
 		public static string UserID
 		{
@@ -19,6 +21,36 @@ namespace goheja
 			{
 				ISharedPreferencesEditor editor = _appSettings.Edit();
 				editor.PutString(userIDKey, value);
+				editor.Apply();
+			}
+		}
+
+		private const string deviceIDKey = "deviceID";
+		public static string DeviceID
+		{
+			get
+			{
+				return _appSettings.GetString(deviceIDKey, null);
+			}
+			set
+			{
+				ISharedPreferencesEditor editor = _appSettings.Edit();
+				editor.PutString(deviceIDKey, value);
+				editor.Apply();
+			}
+		}
+
+		private const string deviceUDIDKey = "deviceUDID";
+		public static string DeviceUDID
+		{
+			get
+			{
+				return _appSettings.GetString(deviceUDIDKey, null);
+			}
+			set
+			{
+				ISharedPreferencesEditor editor = _appSettings.Edit();
+				editor.PutString(deviceUDIDKey, value);
 				editor.Apply();
 			}
 		}
@@ -53,5 +85,19 @@ namespace goheja
 			}
 		}
 
+		private const string usernameKey = "usernameKey";
+		public static string Username
+		{
+			get
+			{
+				return _appSettings.GetString(usernameKey, null);
+			}
+			set
+			{
+				ISharedPreferencesEditor editor = _appSettings.Edit();
+				editor.PutString(usernameKey, value);
+				editor.Apply();
+			}
+		}
 	}
 }

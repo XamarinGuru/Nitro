@@ -5,6 +5,8 @@ using Foundation;
 using System.Drawing;
 using CoreGraphics;
 using Newtonsoft.Json;
+using PortableLibrary;
+using Newtonsoft.Json.Linq;
 
 namespace location2
 {
@@ -77,23 +79,21 @@ namespace location2
 		public string RegisterUser(string fName, string lName, string deviceId, string userName, string psw, string email, int age, bool ageSpecified = true, bool acceptedTerms = true, bool acceptedTermsSpecified = true)
 		{
 			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified);
+
 			return result;
 		}
 		public string GetUserID()
 		{
-			var userID = NSUserDefaults.StandardUserDefaults.StringForKey("userID");
+			var userID = AppSettings.UserID;
 			if (userID != null && userID != "0")
 				return userID;
 			
 			try
 			{
-				string strEmail = NSUserDefaults.StandardUserDefaults.StringForKey("email");
-				string strPassword = NSUserDefaults.StandardUserDefaults.StringForKey("password");
-
-				userID = mTrackSvc.getListedDeviceId(strEmail, strPassword);
+				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password);
 
 				if (userID != "0")
-					NSUserDefaults.StandardUserDefaults.SetString(userID, "userID");
+					AppSettings.UserID = userID;
 				
 				return userID;
 			}
@@ -134,6 +134,52 @@ namespace location2
 			return result;
 		}
 
+		public JArray GetPastEvents()
+		{
+			try
+			{
+				//username = "Gili";
+				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);
+				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
+		public JArray GetTodayEvents()
+		{
+			try
+			{
+				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
+				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
+		public JArray GetFutureEvents()
+		{
+			try
+			{
+				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
+				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
+				return eventsData;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
 		public bool ValidateUserNickName(string nickName)
 		{
 			var validate = mTrackSvc.validateNickName(nickName);
@@ -146,16 +192,33 @@ namespace location2
 			}
 		}
 
-		private string FormatJsonType(string jsonUser)
+		private string FormatJsonType(string jsonData)
 		{
-			var returnString = jsonUser.Replace("ISODate(\"", "\"");
+			var returnString = jsonData.Replace("ObjectId(\"", "\"");
+			returnString = returnString.Replace(" ISODate(\"", "\"");
 			returnString = returnString.Replace("\")", "\"");
 
 			return returnString;
 		}
 
+		public string FormatEventDescription(string eventJson)
+		{
+			var returnString = eventJson.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
+			returnString = returnString.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
+			returnString = returnString.Replace("</textarea><br/>", "");
+
+			return returnString;
+		}
 		#endregion
 
+		public NSDate ConvertDateTimeToNSDate(DateTime date)
+		{
+			DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+
+			return NSDate.FromTimeIntervalSinceReferenceDate(
+				(date - newDate).TotalSeconds + 3600);
+		}
 
 		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
 		{

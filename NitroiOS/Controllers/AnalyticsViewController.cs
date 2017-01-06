@@ -3,6 +3,7 @@ using Foundation;
 using UIKit;
 using CoreLocation;
 using System.Threading.Tasks;
+using PortableLibrary;
 
 namespace location2
 {
@@ -16,6 +17,7 @@ namespace location2
 
 		public static LocationManager Manager { get; set; }
 
+
 		trackSvc.Service1 meServ = new trackSvc.Service1();
 		Reachability.Reachability connection = new Reachability.Reachability();
 
@@ -26,12 +28,12 @@ namespace location2
 
 		bool isTimerStarted = false;
 
-		string userName;
-
+		private RootMemberModel MemberModel { get; set; }
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
 			Manager = new LocationManager();
 			Manager.StartLocationUpdates();
+			MemberModel = new RootMemberModel();
 		}
 
 		public override void ViewDidLoad()
@@ -61,7 +63,7 @@ namespace location2
 			distTypLbl.Layer.ZPosition = 1;
 			altTypeLbl.Layer.ZPosition = 1;
 
-			userName = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
+			MemberModel.rootMember = GetUserObject();
 
 			wvOngoing.ScalesPageToFit = true;
 		}
@@ -84,7 +86,7 @@ namespace location2
 		{
 			if (flag == 2)
 			{
-				var url = "http://go-heja.com/nitro/mobongoingApl.php?txt=" + userName;
+				var url = String.Format(Constants.ANALYTICS_MAP_URL, AppSettings.Username);
 				wvOngoing.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 			}
 
@@ -135,13 +137,11 @@ namespace location2
 				{
 					if (!paused)
 					{
-						var name = NSUserDefaults.StandardUserDefaults.StringForKey("firstName").ToString() + " " + NSUserDefaults.StandardUserDefaults.StringForKey("lastName").ToString();
+						var name = MemberModel.firstname + " " + MemberModel.lastname;
 						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
-						var deviceID = NSUserDefaults.StandardUserDefaults.StringForKey("deviceId").ToString();
-						var id = (NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString());
-						var country = NSUserDefaults.StandardUserDefaults.StringForKey("country").ToString();
+						var country = MemberModel.country;
 
-						meServ.updateMomgoData(name, loc, _dt, true, deviceID, currspeed, true, id, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString());
+						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString());
 
 						if (currspeed < 0)
 							currspeed = 0;
@@ -238,16 +238,13 @@ namespace location2
 
 			try
 			{
-				var name = NSUserDefaults.StandardUserDefaults.StringForKey("firstName") + " " + NSUserDefaults.StandardUserDefaults.StringForKey("lastName");
+				var name = MemberModel.firstname + " " + MemberModel.lastname;
 				var location = _lastLocation.Coordinate.Latitude.ToString() + "," + _lastLocation.Coordinate.Longitude.ToString();
-				var deviceId = NSUserDefaults.StandardUserDefaults.StringForKey("deviceId");
 				var speed = float.Parse(_lastLocation.Speed.ToString());
-				var id = NSUserDefaults.StandardUserDefaults.StringForKey("id");
-				var country = NSUserDefaults.StandardUserDefaults.StringForKey("country");
 				var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 				var bearing = float.Parse(_lastLocation.Course.ToString());
 
-				meServ.updateMomgoData(name, location, _dt, true, deviceId, speed, true, id, country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString());
+				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString());
 			}
 			catch
 			{

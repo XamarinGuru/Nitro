@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using FluentValidation;
 
-namespace goheja
+namespace PortableLibrary
 {
 	public class RootObject : AbstractValidator<RootMember>, INotifyPropertyChanged
 	{
@@ -31,8 +31,9 @@ namespace goheja
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-	}
 
+
+	}
 	public class userSystemData
 	{
 		public userSystemData()
@@ -44,6 +45,8 @@ namespace goheja
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
+
+
 	}
 
 	public class athHistory
@@ -57,6 +60,7 @@ namespace goheja
 		public string _id { get; set; }
 		public string date { get; set; }
 		public string text { get; set; }
+
 	}
 
 	public class Performance
@@ -66,10 +70,13 @@ namespace goheja
 			_id = "";
 			name = "";
 			value = "0";
+
+
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
+
 	}
 
 	public class Physical
@@ -81,11 +88,15 @@ namespace goheja
 			value = "";
 			unit = "";
 			unit = "";
+
+
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public string unit { get; set; }
+
+
 	}
 
 	public class BestResults
@@ -100,7 +111,10 @@ namespace goheja
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
+
+
 	}
+
 
 	public class Experience
 	{
@@ -114,6 +128,7 @@ namespace goheja
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
+
 	}
 
 	public class SelfRanking
@@ -140,6 +155,7 @@ namespace goheja
 		public string _id { get; set; }
 		public string year { get; set; }
 		public string text { get; set; }
+
 	}
 
 	public class eventProp
@@ -153,6 +169,7 @@ namespace goheja
 		public int _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
+
 	}
 
 	public class Event
@@ -184,6 +201,7 @@ namespace goheja
 		public int hb { get; set; }
 		public string type { get; set; }
 		public string duration { get; set; }
+
 	}
 
 	public class ZoneLevel
@@ -203,6 +221,7 @@ namespace goheja
 		public string power { get; set; }
 	}
 
+
 	public class Injuries
 	{
 		public Injuries()
@@ -212,13 +231,19 @@ namespace goheja
 			value = "";
 			isCurrent = false;
 			date = new DateTime().ToString();
+
+
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public bool isCurrent { get; set; }
 		public string date { get; set; }
+
 	}
+
+
+
 
 	public class discipZones
 	{
@@ -376,6 +401,7 @@ namespace goheja
 			p.value = "33";
 			return p;
 		}
+
 		private Physical fp()
 		{
 			Physical p = new Physical();
@@ -384,6 +410,7 @@ namespace goheja
 			p.value = "";
 			return p;
 		}
+
 		private athGoals goal()
 		{
 			athGoals p = new athGoals();
@@ -392,6 +419,7 @@ namespace goheja
 			p.text = "";
 			return p;
 		}
+
 		private athHistory historyEvent()
 		{
 			athHistory p = new athHistory();
@@ -400,6 +428,7 @@ namespace goheja
 			p.text = "";
 			return p;
 		}
+
 		private Experience expSwim()
 		{
 			Experience p = new Experience();
@@ -408,6 +437,7 @@ namespace goheja
 			p.value = "";
 			return p;
 		}
+
 		private Experience expBike()
 		{
 			Experience p = new Experience();
@@ -466,6 +496,7 @@ namespace goheja
 			p.rank = "1";
 			return p;
 		}
+
 	}
 
 	public class RootMemberModel : RootObject
@@ -477,8 +508,11 @@ namespace goheja
 		public RootMember rootMember { get; set; }
 
 		//user info
-		public string name { get { return rootMember.profile.idData[0].value; } set { rootMember.profile.idData[0].value = value; } }
+		public string firstname { get { return rootMember.profile.idData[0].value; } set { rootMember.profile.idData[0].value = value; } }
 		public string lastname { get { return rootMember.profile.idData[1].value; } set { rootMember.profile.idData[1].value = value; } }
+		public string username { get { return rootMember.userName; } set { rootMember.userName = value; } }
+		public string password { get { return rootMember.password; } set { rootMember.password = value; } }
+
 		public string country { get { return rootMember.profile.idData[2].value; } set { rootMember.profile.idData[2].value = value; } }
 		public string address { get { return rootMember.profile.idData[3].value; } set { rootMember.profile.idData[3].value = value; } }
 		public string bib { get { return rootMember.profile.idData[4].value; } set { rootMember.profile.idData[4].value = value; } }
@@ -567,6 +601,8 @@ namespace goheja
 
 		public string bFTPHB { get { return rootMember.profile.fields[1].FTPHB; } set { rootMember.profile.fields[1].FTPHB = value; } }
 		public string bFTPower { get { return rootMember.profile.fields[1].FTPWATT; } set { rootMember.profile.fields[1].FTPWATT = value; } }
+
+
 	}
 
 	public class RootMember
@@ -592,6 +628,8 @@ namespace goheja
 		public string password { get; set; }
 		public int sportComp { get; set; }
 		public string sportCompKey { get; set; }
+
+
 	}
 }
 

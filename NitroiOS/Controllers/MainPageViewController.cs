@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UIKit;
 using Foundation;
+using PortableLibrary;
 
 namespace location2
 {
@@ -21,6 +22,9 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
+			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+			myDelegate.baseVC = this;
+
 			var calendarVC = (BaseViewController)this.Storyboard.InstantiateViewController("CalendarViewController");
 			var analyticsVC = (BaseViewController)this.Storyboard.InstantiateViewController("AnalyticsViewController");
 			var profileVC = (BaseViewController)this.Storyboard.InstantiateViewController("ProfileViewController");
@@ -28,8 +32,9 @@ namespace location2
 			calendarVC.pageIndex = 0;
 			analyticsVC.pageIndex = 1;
 			profileVC.pageIndex = 2;
-			profileVC.rootVC = this;
 			seriousVC.pageIndex = 3;
+			profileVC.rootVC = this;
+			seriousVC.rootVC = this;
 
 			analyticsVC.lblTitle = lblTitle;
 
@@ -131,8 +136,7 @@ namespace location2
 		}
 		private void WatchButtonClicked(object sender, EventArgs e)
 		{
-			string id = NSUserDefaults.StandardUserDefaults.StringForKey("id");
-			var url = "http://go-heja.com/gh/mob/sync.php?userId=" + id + "&mog=nitro&url=uurrll";
+			var url = String.Format(Constants.WATCH_URL, AppSettings.UserID);
 			UIApplication.SharedApplication.OpenUrl(new NSUrl(url));
 		}
 	}

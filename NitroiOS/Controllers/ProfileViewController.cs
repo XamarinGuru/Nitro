@@ -2,6 +2,8 @@ using Foundation;
 using System;
 using UIKit;
 using EventKit;
+using GalaSoft.MvvmLight.Helpers;
+using PortableLibrary;
 
 namespace location2
 {
@@ -11,8 +13,10 @@ namespace location2
 
 		UIImagePickerController imagePicker = new UIImagePickerController();
 
+		private RootMemberModel MemberModel { get; set; }
 		public ProfileViewController(IntPtr handle) : base(handle)
 		{
+			MemberModel = new RootMemberModel();
 		}
 
 		public override void ViewDidLoad()
@@ -24,15 +28,33 @@ namespace location2
 			imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
 			imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
 			imagePicker.Canceled += Handle_Canceled;
+		}
 
-			//if (!setPersonalData())
-			//{
-			//	ShowMessageBox(null, "Error getting user data!");
-			//}
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
 
-			calendarContent.Hidden = true;
-			calendarWebView.Hidden = true;
-			btnDone.Hidden = true;
+			MemberModel.rootMember = GetUserObject();
+
+			SetInputBinding();
+		}
+
+		private void SetInputBinding()
+		{
+			#region physical
+			this.SetBinding(() => MemberModel.username, () => lblUserName.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.firstname, () => txtFirstName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.lastname, () => txtLastName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.password, () => passTB.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.email, () => txtEmail.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.phone, () => txtPhone.Text, BindingMode.TwoWay);
+			#endregion
+
+			if (getPictureFromLocal() != null)
+			{
+				imgPicture.Image = getPictureFromLocal();
+				temMeImg = getPictureFromLocal();
+			}
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -42,99 +64,55 @@ namespace location2
 			imgPicture.Layer.MasksToBounds = true;
 		}
 
-		private bool setPersonalData()
-		{
-			try
-			{
-				trackSvc.Service1 sv = new trackSvc.Service1();
-				string _dId = NSUserDefaults.StandardUserDefaults.StringForKey("deviceId");
-				string[] athData = sv.getAthDataByDeviceId(_dId);
-				txtFirstName.Text = athData[0].ToString();
-				txtLastName.Text = athData[1].ToString();
-				lblUserName.Text = athData[4].ToString();
-				passTB.Text = athData[5].ToString();
-				txtEmail.Text = athData[6].ToString();
-				txtPhone.Text = athData[7].ToString();
-
-				if (getPictureFromLocal() != null)
-				{
-					imgPicture.Image = getPictureFromLocal();
-					temMeImg = getPictureFromLocal();
-				}
-
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-
 		#region event handler
-		partial void BtnGo_TouchUpInside(UIButton sender)
-		{
-			trackSvc.Service1 sv = new trackSvc.Service1();
-			try
-			{
-				Byte[] myByteArray;
-
-				if (temMeImg == null)
-				{
-					ShowMessageBox(null, "Please choose profile image!");
-					return;
-				}
-				using (NSData imageData = MaxResizeImage(temMeImg, 90f, 90f).AsPNG())
-				{
-					myByteArray = new Byte[imageData.Length];
-					System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myByteArray, 0, Convert.ToInt32(imageData.Length));
-				}
-
-				var athId = NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString();
-				sv.updateAthPersonalData(athId, txtFirstName.Text, txtLastName.Text, txtPhone.Text, txtEmail.Text, myByteArray);
-				ShowMessageBox(null, "Data Saved! We hope you got serious...");
-			}
-			catch (Exception err)
-			{
-				bool out1 = false;
-				bool out2 = false;
-
-				sv.getErrprFromMobile(err.ToString(), NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString(), out out1, out out2);
-				ShowMessageBox(null, "Error saving data!");
-			}
-		}
-		partial void SeriuosBtn_TouchUpInside(UIButton sender)
-		{
-			//calendarWebView.Hidden = false;
-			//calendarContent.Hidden = false;
-			//btnDone.Hidden = false;
-
-			//string id = NSUserDefaults.StandardUserDefaults.StringForKey("id");
-			//string userName = NSUserDefaults.StandardUserDefaults.StringForKey("userName");
-			//var url = "http://go-heja.com/nitro/profile.php?txt=" + userName + "&userId=" + id;
-			//calendarWebView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
-
-			//SeriousViewController registerVC = Storyboard.InstantiateViewController("vcSerious") as SeriousViewController;
-			//MainPageViewController rootVC = this.ParentViewController as MainPageViewController;
-			rootVC.SetCurrentPage(3);
-		}
-		partial void DoneBtn_TouchUpInside(UIButton sender)
-		{
-			calendarWebView.Hidden = true;
-			calendarContent.Hidden = true;
-			btnDone.Hidden = true;
-
-			if (!setPersonalData())
-			{
-				ShowMessageBox(null, "Error getting user data!");
-			}
-		}
-		#endregion
-
-		#region photo library
-		partial void MeImgBtn_TouchUpInside(UIButton sender)
+		partial void ActionChangePhoto(UIButton sender)
 		{
 			this.PresentViewController(imagePicker, true, null);
 		}
+
+		partial void ActionUpdate(UIButton sender)
+		{
+			var result = UpdateUserDataJson(MemberModel.rootMember);
+			ShowMessageBox(null, "updated successfully");
+			//trackSvc.Service1 sv = new trackSvc.Service1();
+			//try
+			//{
+			//	Byte[] myByteArray;
+
+			//	if (temMeImg == null)
+			//	{
+			//		ShowMessageBox(null, "Please choose profile image!");
+			//		return;
+			//	}
+			//	using (NSData imageData = MaxResizeImage(temMeImg, 90f, 90f).AsPNG())
+			//	{
+			//		myByteArray = new Byte[imageData.Length];
+			//		System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myByteArray, 0, Convert.ToInt32(imageData.Length));
+			//	}
+
+			//	var athId = NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString();
+			//	sv.updateAthPersonalData(athId, txtFirstName.Text, txtLastName.Text, txtPhone.Text, txtEmail.Text, myByteArray);
+			//	ShowMessageBox(null, "Data Saved! We hope you got serious...");
+			//}
+			//catch (Exception err)
+			//{
+			//	bool out1 = false;
+			//	bool out2 = false;
+
+			//	sv.getErrprFromMobile(err.ToString(), NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString(), out out1, out out2);
+			//	ShowMessageBox(null, "Error saving data!");
+			//}
+		}
+
+		partial void ActionSerious(UIButton sender)
+		{
+			rootVC.SetCurrentPage(3);
+		}
+
+		#endregion
+
+		#region photo library
+
 		protected void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
 		{
 			NSUrl referenceURL = e.Info[new NSString("UIImagePickerControllerReferenceUrl")] as NSUrl;
@@ -164,7 +142,7 @@ namespace location2
 			var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 			foreach (var calendar in calendars)
 			{
-				if (calendar.Title == "Nitro Events")
+				if (calendar.Title == Constants.CALENDAR_TITLE)
 				{
 					NSError pE;
 					App.Current.EventStore.RemoveCalendar(calendar, true, out pE);
