@@ -272,6 +272,7 @@
     <BundleResource Include="Resources\user_icon_act.png" />
     <BundleResource Include="Resources\icon_watch.png" />
     <BundleResource Include="Resources\icon_back.png" />
+    <BundleResource Include="Resources\pop_up_bg.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
