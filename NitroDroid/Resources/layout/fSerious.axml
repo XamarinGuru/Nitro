@@ -15,7 +15,7 @@
             android:minHeight="25px"
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout2"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:layout_width="0dp" />
         <ScrollView
             android:minWidth="25px"
@@ -52,7 +52,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="Sagiv"
                             android:id="@+id/lblFirstname"
@@ -60,7 +60,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="14dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -75,7 +75,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="Daniel"
                             android:id="@+id/lblLastname"
@@ -83,7 +83,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -98,7 +98,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="Isurael"
                             android:id="@+id/lblCountry"
@@ -106,7 +106,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -121,7 +121,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="Here"
                             android:id="@+id/lblAddress"
@@ -129,7 +129,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -144,7 +144,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:id="@+id/lblBib"
                             android:gravity="end"
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="23"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -167,7 +167,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="80"
                             android:id="@+id/lblAge"
@@ -175,7 +175,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -190,7 +190,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="woman"
                             android:id="@+id/lblGender"
@@ -198,7 +198,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -213,7 +213,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="2016/12/30"
                             android:id="@+id/lblBirth"
@@ -221,7 +221,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -236,7 +236,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="sagiv@mail.com"
                             android:id="@+id/lblEmail"
@@ -244,7 +244,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                     <RelativeLayout
@@ -260,7 +260,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp" />
+                            android:textSize="15dp" />
                         <TextView
                             android:text="123456789"
                             android:id="@+id/lblPhone"
@@ -268,7 +268,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -293,7 +293,7 @@
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/linearLayout13">
                         <RelativeLayout
                             android:minWidth="25px"
@@ -307,8 +307,10 @@
                                 android:text="PHYSICAL"
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ffffffff" />
+                                android:layout_height="match_parent"
+                                android:textColor="#ffffffff"
+                                android:textSize="17dp"
+                                android:gravity="center" />
                         </RelativeLayout>
                         <TextView
                             android:text="Edit"
@@ -341,7 +343,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="55"
                                 android:id="@+id/txtWeight"
@@ -352,7 +354,8 @@
                                 android:background="#ffffffff"
                                 android:layout_alignParentEnd="true"
                                 android:singleLine="true"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:inputType="number" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -366,7 +369,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="66"
                                 android:id="@+id/txtHeight"
@@ -377,7 +380,8 @@
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff"
                                 android:singleLine="true"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:inputType="number" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -391,7 +395,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtBMI"
@@ -402,7 +406,8 @@
                                 android:textColor="#ff000000"
                                 android:background="#ffffffff"
                                 android:singleLine="true"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:inputType="number" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:minWidth="25px"
@@ -417,7 +422,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:id="@+id/txtFatPercentage"
                                 android:gravity="center"
@@ -428,7 +433,8 @@
                                 android:background="#ffffffff"
                                 android:textColor="#ff000000"
                                 android:singleLine="true"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:inputType="number" />
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -453,7 +459,7 @@
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/linearLayout14">
                         <RelativeLayout
                             android:minWidth="25px"
@@ -467,8 +473,10 @@
                                 android:text="GOALS"
                                 android:id="@+id/textview111"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ffffffff" />
+                                android:layout_height="match_parent"
+                                android:textColor="#ffffffff"
+                                android:textSize="17dp"
+                                android:gravity="center" />
                         </RelativeLayout>
                         <TextView
                             android:text="Edit"
@@ -500,7 +508,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="55"
                                 android:id="@+id/txtID"
@@ -525,7 +533,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="66"
                                 android:id="@+id/txtLastname"
@@ -551,7 +559,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtCountry"
@@ -587,7 +595,7 @@
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/linearLayout15">
                         <RelativeLayout
                             android:minWidth="25px"
@@ -601,8 +609,10 @@
                                 android:text="BEST RESULTS"
                                 android:id="@+id/AAAA"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ffffffff" />
+                                android:layout_height="match_parent"
+                                android:textColor="#ffffffff"
+                                android:textSize="17dp"
+                                android:gravity="center" />
                         </RelativeLayout>
                         <TextView
                             android:text="Edit"
@@ -634,7 +644,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="55"
                                 android:id="@+id/txtSprint"
@@ -660,7 +670,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="66"
                                 android:id="@+id/txtOlympic"
@@ -685,7 +695,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtHDistance"
@@ -710,7 +720,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtDistance"
@@ -735,7 +745,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txt10KRun"
@@ -760,7 +770,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtHMarathon"
@@ -786,7 +796,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp" />
+                                android:textSize="15dp" />
                             <EditText
                                 android:text="77"
                                 android:id="@+id/txtMarathon"
@@ -822,7 +832,7 @@
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/linearLayout16">
                         <RelativeLayout
                             android:minWidth="25px"
@@ -836,8 +846,10 @@
                                 android:text="SELF RANKING"
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ffffffff" />
+                                android:layout_height="match_parent"
+                                android:textColor="#ffffffff"
+                                android:textSize="17dp"
+                                android:gravity="center" />
                         </RelativeLayout>
                         <TextView
                             android:text="Edit"
@@ -869,7 +881,7 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="10dp"
+                                android:textSize="12dp"
                                 android:textColor="#ffffffff" />
                         </RelativeLayout>
                         <RelativeLayout
@@ -1002,7 +1014,7 @@
                                     <TextView
                                         android:text="SWIM"
                                         android:id="@+id/textView1"
-                                        android:textSize="12dp"
+                                        android:textSize="15dp"
                                         android:gravity="center"
                                         android:textColor="#ffffffff"
                                         android:textStyle="bold"
@@ -1051,7 +1063,7 @@
                                         <TextView
                                             android:text="HR"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1071,7 +1083,7 @@
                                         <TextView
                                             android:text="PACE"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1108,7 +1120,7 @@
                                         <TextView
                                             android:text="ZONE1"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1136,7 +1148,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1189,7 +1202,7 @@
                                         <TextView
                                             android:text="ZONE2"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1217,7 +1230,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1270,7 +1284,7 @@
                                         <TextView
                                             android:text="ZONE3"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1298,7 +1312,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1351,7 +1366,7 @@
                                         <TextView
                                             android:text="ZONE4"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1379,7 +1394,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1432,7 +1448,7 @@
                                         <TextView
                                             android:text="ZONE5"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1460,7 +1476,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1513,7 +1530,7 @@
                                         <TextView
                                             android:text="FTPace"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1581,7 +1598,7 @@
                                         <TextView
                                             android:text="FTPHB"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1661,7 +1678,7 @@
                                     <TextView
                                         android:text="RUN"
                                         android:id="@+id/textView1"
-                                        android:textSize="12dp"
+                                        android:textSize="15dp"
                                         android:gravity="center"
                                         android:textColor="#ffffffff"
                                         android:textStyle="bold"
@@ -1710,7 +1727,7 @@
                                         <TextView
                                             android:text="HR"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1730,7 +1747,7 @@
                                         <TextView
                                             android:text="PACE"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1750,7 +1767,7 @@
                                         <TextView
                                             android:text="POWER"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1779,7 +1796,7 @@
                                         <TextView
                                             android:text="ZONE1"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1807,7 +1824,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1850,7 +1868,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -1873,7 +1892,7 @@
                                         <TextView
                                             android:text="ZONE2"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1901,7 +1920,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -1944,7 +1964,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -1967,7 +1988,7 @@
                                         <TextView
                                             android:text="ZONE3"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -1995,7 +2016,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2038,7 +2060,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -2061,7 +2084,7 @@
                                         <TextView
                                             android:text="ZONE4"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2089,7 +2112,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2132,7 +2156,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -2155,7 +2180,7 @@
                                         <TextView
                                             android:text="ZONE5"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2183,7 +2208,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2226,7 +2252,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -2249,7 +2276,7 @@
                                         <TextView
                                             android:text="FTPace"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2294,7 +2321,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -2317,7 +2345,7 @@
                                         <TextView
                                             android:text="FTPHB"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2362,7 +2390,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                                 <LinearLayout
@@ -2385,7 +2414,7 @@
                                         <TextView
                                             android:text="FTPower"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2430,7 +2459,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -2465,7 +2495,7 @@
                                     <TextView
                                         android:text="BIKE"
                                         android:id="@+id/textView1"
-                                        android:textSize="12dp"
+                                        android:textSize="15dp"
                                         android:gravity="center"
                                         android:textColor="#ffffffff"
                                         android:textStyle="bold"
@@ -2514,7 +2544,7 @@
                                         <TextView
                                             android:text="HR"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2534,7 +2564,7 @@
                                         <TextView
                                             android:text="POWER"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2571,7 +2601,7 @@
                                         <TextView
                                             android:text="ZONE1"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2599,7 +2629,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2621,7 +2652,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2652,7 +2684,7 @@
                                         <TextView
                                             android:text="ZONE2"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2680,7 +2712,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2702,7 +2735,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2733,7 +2767,7 @@
                                         <TextView
                                             android:text="ZONE3"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2761,7 +2795,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2783,7 +2818,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2814,7 +2850,7 @@
                                         <TextView
                                             android:text="ZONE4"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2842,7 +2878,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2864,7 +2901,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2895,7 +2933,7 @@
                                         <TextView
                                             android:text="ZONE5"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -2923,7 +2961,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2945,7 +2984,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -2976,7 +3016,7 @@
                                         <TextView
                                             android:text="FTPHB"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -3013,7 +3053,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -3044,7 +3085,7 @@
                                         <TextView
                                             android:text="FTPower"
                                             android:id="@+id/textView1"
-                                            android:textSize="10dp"
+                                            android:textSize="13dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
@@ -3081,7 +3122,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -3104,7 +3146,7 @@
                     android:gravity="center"
                     android:textColor="#fffb8c00"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
         </ScrollView>
         <LinearLayout
@@ -3113,7 +3155,7 @@
             android:minHeight="25px"
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout1"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:layout_width="0dp" />
     </LinearLayout>
 </RelativeLayout>
