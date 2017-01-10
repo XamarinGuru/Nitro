@@ -194,6 +194,24 @@ namespace goheja
 			SetupPicker(txtRankRun, "ranking");
 			SetupPicker(txtRankBike, "ranking");
 
+			SetupPicker(txtSZone1HR, "hr");
+			SetupPicker(txtSZone2HR, "hr");
+			SetupPicker(txtSZone3HR, "hr");
+			SetupPicker(txtSZone4HR, "hr");
+			SetupPicker(txtSZone5HR, "hr");
+
+			SetupPicker(txtRZone1HR, "hr");
+			SetupPicker(txtRZone2HR, "hr");
+			SetupPicker(txtRZone3HR, "hr");
+			SetupPicker(txtRZone4HR, "hr");
+			SetupPicker(txtRZone5HR, "hr");
+
+			SetupPicker(txtBZone1HR, "hr");
+			SetupPicker(txtBZone2HR, "hr");
+			SetupPicker(txtBZone3HR, "hr");
+			SetupPicker(txtBZone4HR, "hr");
+			SetupPicker(txtBZone5HR, "hr");
+
 			SetupPicker(txtSZone1PACE, "pace");
 			SetupPicker(txtSZone2PACE, "pace");
 			SetupPicker(txtSZone3PACE, "pace");
@@ -529,7 +547,7 @@ namespace goheja
 			int dcount = 0;
 			if (format == "time")
 				dcount = 3;
-			else if (format == "pace")
+			else if (format == "pace" || format == "hr")
 				dcount = 2;
 			else
 				dcount = 1;
@@ -538,7 +556,7 @@ namespace goheja
 			{
 				if (e.Event.Action == MotionEventActions.Down)
 				{
-					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, dcount);
+					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, dcount, format);
 					myDiag.Show(this.Activity.FragmentManager, "Diag");
 				}
 			};

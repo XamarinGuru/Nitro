@@ -14,18 +14,16 @@ namespace location2
     [Register ("CalendarViewController")]
     partial class CalendarViewController
     {
-		[Outlet]
-		[GeneratedCode("iOS Designer", "1.0")]
-		UIKit.UIWebView calendarWebView { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIWebView calendarWebView { get; set; }
 
-		void ReleaseDesignerOutlets()
-		{
-			if (calendarWebView != null)
-			{
-				calendarWebView.Dispose();
-				calendarWebView = null;
-			}
-		}
-
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (calendarWebView != null) {
+                calendarWebView.Dispose ();
+                calendarWebView = null;
+            }
+        }
+    }
 }

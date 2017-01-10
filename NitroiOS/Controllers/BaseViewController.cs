@@ -306,7 +306,7 @@ namespace location2
 				picker_model = new TimePickerViewModel(field);
 			else if (type == "ranking")
 				picker_model = new RankingPickerViewModel(field);
-			else if (type == "HR")
+			else if (type == "hr")
 				picker_model = new HRPickerViewModel(field);
 			else if (type == "pace")
 				picker_model = new PacePickerViewModel(field);
@@ -362,36 +362,33 @@ namespace location2
 		public class HRPickerViewModel : UIPickerViewModel
 		{
 			UITextField textField;
-			string[] list = new string[5];
 
 			public HRPickerViewModel(UITextField textField)
 			{
 				this.textField = textField;
-				list[0] = "80-101";
-				list[1] = "102-118";
-				list[2] = "119-132";
-				list[3] = "133-150";
-				list[4] = "151-170";
 			}
 
 			public override nint GetComponentCount(UIPickerView pickerView)
 			{
-				return 1;
+				return 2;
 			}
 
 			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
 			{
-				return list.Length;
+				return 20;
 			}
 
 			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
 			{
-				return list[row];
+				return (60 + row * 10).ToString();
 			}
 
 			public override void Selected(UIPickerView pickerView, nint row, nint component)
 			{
-				textField.Text = list[row];
+				var mm = 60 + pickerView.SelectedRowInComponent(0) * 10;
+				var ss = 60 + pickerView.SelectedRowInComponent(1) * 10;
+
+				textField.Text = mm + "-" + ss;
 				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}

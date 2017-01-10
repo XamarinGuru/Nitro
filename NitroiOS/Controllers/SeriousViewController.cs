@@ -78,6 +78,24 @@ namespace location2
 			SetupPicker(txtRankRun, "ranking");
 			SetupPicker(txtRankBike, "ranking");
 
+			SetupPicker(txtSZone1HR, "hr");
+			SetupPicker(txtSZone2HR, "hr");
+			SetupPicker(txtSZone3HR, "hr");
+			SetupPicker(txtSZone4HR, "hr");
+			SetupPicker(txtSZone5HR, "hr");
+
+			SetupPicker(txtRZone1HR, "hr");
+			SetupPicker(txtRZone2HR, "hr");
+			SetupPicker(txtRZone3HR, "hr");
+			SetupPicker(txtRZone4HR, "hr");
+			SetupPicker(txtRZone5HR, "hr");
+
+			SetupPicker(txtBZone1HR, "hr");
+			SetupPicker(txtBZone2HR, "hr");
+			SetupPicker(txtBZone3HR, "hr");
+			SetupPicker(txtBZone4HR, "hr");
+			SetupPicker(txtBZone5HR, "hr");
+
 			SetupPicker(txtSZone1PACE, "pace");
 			SetupPicker(txtSZone2PACE, "pace");
 			SetupPicker(txtSZone3PACE, "pace");
@@ -153,11 +171,16 @@ namespace location2
 			#endregion
 
 			#region swim experience
-			this.SetBinding(() => MemberModel.sZone1HR, () => txtSZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone2HR, () => txtSZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone3HR, () => txtSZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone4HR, () => txtSZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone5HR, () => txtSZone5HR.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.sZone1HR, () => txtSZone1HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSZone1HR.Text, () => MemberModel.sZone1HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.sZone2HR, () => txtSZone2HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSZone2HR.Text, () => MemberModel.sZone2HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.sZone3HR, () => txtSZone3HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSZone3HR.Text, () => MemberModel.sZone3HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.sZone4HR, () => txtSZone4HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSZone4HR.Text, () => MemberModel.sZone4HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.sZone5HR, () => txtSZone5HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSZone5HR.Text, () => MemberModel.sZone5HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
 			this.SetBinding(() => MemberModel.sZone1PACE,() => txtSZone1PACE.Text,BindingMode.OneWay);
 			this.SetBinding(() => txtSZone1PACE.Text,() => MemberModel.sZone1PACE,BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
@@ -175,11 +198,16 @@ namespace location2
 			#endregion
 
 			#region run experience
-			this.SetBinding(() => MemberModel.rZone1HR, () => txtRZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone2HR, () => txtRZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone3HR, () => txtRZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone5HR, () => txtRZone5HR.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.rZone1HR, () => txtRZone1HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRZone1HR.Text, () => MemberModel.rZone1HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.rZone2HR, () => txtRZone2HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRZone2HR.Text, () => MemberModel.rZone2HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.rZone3HR, () => txtRZone3HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRZone3HR.Text, () => MemberModel.rZone3HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone4HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRZone4HR.Text, () => MemberModel.rZone4HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.rZone5HR, () => txtRZone5HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRZone5HR.Text, () => MemberModel.rZone5HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
 			this.SetBinding(() => MemberModel.rZone1PACE,() => txtRZone1PACE.Text,BindingMode.OneWay);
 			this.SetBinding(() => txtRZone1PACE.Text,() => MemberModel.rZone1PACE,BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
@@ -204,11 +232,16 @@ namespace location2
 			#endregion
 
 			#region bike experience
-			this.SetBinding(() => MemberModel.bZone1HR, () => txtBZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone2HR, () => txtBZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone3HR, () => txtBZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone4HR, () => txtBZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone5HR, () => txtBZone5HR.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.bZone1HR, () => txtBZone1HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtBZone1HR.Text, () => MemberModel.bZone1HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.bZone2HR, () => txtBZone2HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtBZone2HR.Text, () => MemberModel.bZone2HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.bZone3HR, () => txtBZone3HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtBZone3HR.Text, () => MemberModel.bZone3HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.bZone4HR, () => txtBZone4HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtBZone4HR.Text, () => MemberModel.bZone4HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+			this.SetBinding(() => MemberModel.bZone5HR, () => txtBZone5HR.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtBZone5HR.Text, () => MemberModel.bZone5HR, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
 			this.SetBinding(() => MemberModel.bZone1POWER, () => txtBZone1POWER.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.bZone2POWER, () => txtBZone2POWER.Text, BindingMode.TwoWay);

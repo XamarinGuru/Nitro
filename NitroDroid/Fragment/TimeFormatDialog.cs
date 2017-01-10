@@ -14,15 +14,18 @@ namespace goheja
 		private int numDials;
 		private int currentValue;
 
+		private string type;
+
 		private static string ARG_numDials = "numDials";
 		private static string ARG_initValue = "initValue";
 
 		private EditText textView;
 
-		public static TimeFormatDialog newInstance(EditText textView, int numDials)
+		public static TimeFormatDialog newInstance(EditText textView, int numDials, string type)
 		{
 			TimeFormatDialog numdialog = new TimeFormatDialog();
 			numdialog.textView = textView;
+			numdialog.type = type;
 			Bundle args = new Bundle();
 			args.PutInt(ARG_numDials, numDials);
 			numdialog.Arguments = args;
@@ -58,15 +61,37 @@ namespace goheja
 			LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
 			linLayoutH.LayoutParameters = params1;
 
-			var maxValue = numDials == 1 ? 5 : 59;
-			var minValue = numDials == 1 ? 1 : 0;
-			for (int i = 0; i < numDials; i++)
+			if (type == "hr")
 			{
-				numPickers[numDials - i - 1] = new NumberPicker(this.Activity);
-				numPickers[numDials - i - 1].MaxValue = maxValue;
-				numPickers[numDials - i - 1].MinValue = minValue;
-				numPickers[numDials - i - 1].Value = 0;//getDigit(currentValue, numDials - i - 1);
-				linLayoutH.AddView(numPickers[numDials - i - 1]);
+				var minValue = 60;
+				var maxValue = 250;
+				for (int i = 0; i < numDials; i++)
+				{
+					numPickers[numDials - i - 1] = new NumberPicker(this.Activity);
+					numPickers[numDials - i - 1].MaxValue = 19;
+					numPickers[numDials - i - 1].MinValue = 0;
+					numPickers[numDials - i - 1].Value = 0;//getDigit(currentValue, numDials - i - 1);
+
+					string[] valSet = new string[20];
+					for (int val = minValue; val <= maxValue; val += 10)
+					{
+						valSet[(val - 60) / 10] = val.ToString();
+					}
+					numPickers[numDials - i - 1].SetDisplayedValues(valSet);
+					linLayoutH.AddView(numPickers[numDials - i - 1]);
+				}
+			}
+			else {
+				var maxValue = numDials == 1 ? 5 : 59;
+				var minValue = numDials == 1 ? 1 : 0;
+				for (int i = 0; i < numDials; i++)
+				{
+					numPickers[numDials - i - 1] = new NumberPicker(this.Activity);
+					numPickers[numDials - i - 1].MaxValue = maxValue;
+					numPickers[numDials - i - 1].MinValue = minValue;
+					numPickers[numDials - i - 1].Value = 0;//getDigit(currentValue, numDials - i - 1);
+					linLayoutH.AddView(numPickers[numDials - i - 1]);
+				}
 			}
 
 			LinearLayout linLayoutV = new LinearLayout(this.Activity);
@@ -76,7 +101,10 @@ namespace goheja
 			Button okButton = new Button(this.Activity);
 			okButton.Click += (sender, e) => {
 				string strText = "";
-				if (numDials == 1)
+				if (type == "hr")
+				{
+					strText = (60 + numPickers[1].Value * 10) + "-" + (60 + numPickers[0].Value * 10);
+				}else if (numDials == 1)
 				{
 					strText = numPickers[0].Value.ToString();
 				}
