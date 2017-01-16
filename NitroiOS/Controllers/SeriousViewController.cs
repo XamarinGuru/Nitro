@@ -23,10 +23,10 @@ namespace location2
 		const int TAG_EDIT_RUN = 1006;
 		const int TAG_EDIT_BIKE = 1007;
 
-		private RootMemberModel MemberModel { get; set; }
+		//private RootMemberModel MemberModel { get; set; }
 		public SeriousViewController(IntPtr handle) : base(handle)
         {
-			MemberModel = new RootMemberModel();
+			//MemberModel = new RootMemberModel();
 		}
 
 		public override void ViewDidLoad()
@@ -41,7 +41,7 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
-			MemberModel.rootMember = GetUserObject();
+			//MemberModel.rootMember = GetUserObject();
 
 			SetInputEditingChanged(this.View);
 			SetInputValidation();
@@ -447,6 +447,30 @@ namespace location2
 			rootVC.SetCurrentPage(2);
 		}
 		#endregion
+	}
+
+	[Preserve]
+	static class PreserveEventsAndSettersHack
+	{
+		[Preserve]
+		static void Hack()
+		{
+			var l = new UILabel();
+			l.Text = l.Text + "";
+
+			var tf = new UITextField();
+			tf.Text = tf.Text + "";
+			tf.EditingChanged += delegate { };
+			tf.ValueChanged += delegate { };
+
+			var tv = new UITextView();
+			tv.Text = tv.Text + "";
+			tv.Changed += delegate { };
+
+			var vc = new UIViewController();
+			vc.Title = vc.Title + "";
+			vc.Editing = !vc.Editing;
+		}
 	}
 }
 

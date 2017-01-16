@@ -4,6 +4,7 @@ using UIKit;
 using EventKit;
 using GalaSoft.MvvmLight.Helpers;
 using PortableLibrary;
+using System.Threading.Tasks;
 
 namespace location2
 {
@@ -13,7 +14,7 @@ namespace location2
 
 		UIImagePickerController imagePicker = new UIImagePickerController();
 
-		private RootMemberModel MemberModel { get; set; }
+		//private RootMemberModel MemberModel { get; set; }
 		public ProfileViewController(IntPtr handle) : base(handle)
 		{
 			MemberModel = new RootMemberModel();
@@ -30,11 +31,18 @@ namespace location2
 			imagePicker.Canceled += Handle_Canceled;
 		}
 
-		public override void ViewWillAppear(bool animated)
+		async public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 
-			MemberModel.rootMember = GetUserObject();
+			ShowLoadingView("Getting User Data...");
+
+			await Task.Run(() =>
+			{
+				MemberModel.rootMember = GetUserObject();
+				HideLoadingView();
+			});
+			//MemberModel.rootMember = GetUserObject();
 
 			SetInputBinding();
 		}
@@ -43,11 +51,8 @@ namespace location2
 		{
 			#region physical
 			this.SetBinding(() => MemberModel.username, () => lblUserName.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.firstname, () => txtFirstName.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.lastname, () => txtLastName.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.password, () => passTB.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.email, () => txtEmail.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.phone, () => txtPhone.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
 			#endregion
 
 			if (getPictureFromLocal() != null)
@@ -64,49 +69,24 @@ namespace location2
 			imgPicture.Layer.MasksToBounds = true;
 		}
 
+
 		#region event handler
 		partial void ActionChangePhoto(UIButton sender)
 		{
 			this.PresentViewController(imagePicker, true, null);
 		}
 
-		partial void ActionUpdate(UIButton sender)
-		{
-			var result = UpdateUserDataJson(MemberModel.rootMember);
-			ShowMessageBox(null, "updated successfully");
-			//trackSvc.Service1 sv = new trackSvc.Service1();
-			//try
-			//{
-			//	Byte[] myByteArray;
-
-			//	if (temMeImg == null)
-			//	{
-			//		ShowMessageBox(null, "Please choose profile image!");
-			//		return;
-			//	}
-			//	using (NSData imageData = MaxResizeImage(temMeImg, 90f, 90f).AsPNG())
-			//	{
-			//		myByteArray = new Byte[imageData.Length];
-			//		System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myByteArray, 0, Convert.ToInt32(imageData.Length));
-			//	}
-
-			//	var athId = NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString();
-			//	sv.updateAthPersonalData(athId, txtFirstName.Text, txtLastName.Text, txtPhone.Text, txtEmail.Text, myByteArray);
-			//	ShowMessageBox(null, "Data Saved! We hope you got serious...");
-			//}
-			//catch (Exception err)
-			//{
-			//	bool out1 = false;
-			//	bool out2 = false;
-
-			//	sv.getErrprFromMobile(err.ToString(), NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString(), out out1, out out2);
-			//	ShowMessageBox(null, "Error saving data!");
-			//}
-		}
-
-		partial void ActionSerious(UIButton sender)
+		partial void ActionEditProfile(UIButton sender)
 		{
 			rootVC.SetCurrentPage(3);
+		}
+
+		partial void ActionSignOut(UIButton sender)
+		{
+			SignOutUser();
+
+			LoginViewController loginVC = Storyboard.InstantiateViewController("LoginViewController") as LoginViewController;
+			this.PresentViewController(loginVC, false, null);
 		}
 
 		#endregion

@@ -36,15 +36,10 @@ namespace location2
 			profileVC.rootVC = this;
 			seriousVC.rootVC = this;
 
-			analyticsVC.lblTitle = lblTitle;
-
 			subControllers.Add(calendarVC);
 			subControllers.Add(analyticsVC);
 			subControllers.Add(profileVC);
 			subControllers.Add(seriousVC);
-
-			btnWatch.TouchUpInside += WatchButtonClicked;
-			btnWatch.Hidden = true;
 
 			mPageViewController = this.Storyboard.InstantiateViewController("PageViewController") as UIPageViewController;
 			mPageViewController.DataSource = new PageDataSource(this, subControllers);
@@ -58,7 +53,11 @@ namespace location2
 			pageContent.AddSubview(this.mPageViewController.View);
 			mPageViewController.DidMoveToParentViewController(this);
 
-			var swipe = mPageViewController.GestureRecognizers;
+			foreach (UIScrollView view in mPageViewController.View.Subviews)
+			{
+				if (view is UIScrollView)
+					view.ScrollEnabled = false;
+			}
 
 			mPageViewController.DidFinishAnimating += delegate (object sender, UIPageViewFinishedAnimationEventArgs e)
 			{
@@ -110,29 +109,18 @@ namespace location2
 			btnHome.Selected = false;
 			btnProfile.Selected = false;
 
-			btnWatch.Hidden = true;
-
-			nfloat xPos = 0;
 			switch (pageNumber)
 			{
 				case 0:
 					btnCalendar.Selected = true;
-					lblTitle.Text = "Calendar";
-					xPos = btnCalendar.Frame.X;
 					break;
 				case 1:
 					btnHome.Selected = true;
-					lblTitle.Text = "Nitro ready...";
-					xPos = btnHome.Frame.X;
 					break;
 				case 2:
 					btnProfile.Selected = true;
-					lblTitle.Text = "Personal Data";
-					xPos = btnProfile.Frame.X;
-					btnWatch.Hidden = false;
 					break;
 			}
-			UIView.Animate(2, () => { conIndicatorX.Constant = xPos; });
 		}
 		private void WatchButtonClicked(object sender, EventArgs e)
 		{

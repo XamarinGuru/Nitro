@@ -88,6 +88,9 @@
     <Reference Include="AndHUD">
       <HintPath>..\Components\AndHUD-1.3.1\lib\android\AndHUD.dll</HintPath>
     </Reference>
+    <Reference Include="com.alliance.calendar">
+      <HintPath>..\Components\alliance-calendar-component-1.0\lib\android\com.alliance.calendar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Fragment\FragmentSerious.cs" />
     <Compile Include="Fragment\TimeFormatDialog.cs" />
+    <Compile Include="Activities\InitActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -217,6 +221,24 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <AndroidResource Include="Resources\layout\fSerious.axml" />
+    <AndroidResource Include="Resources\layout\InitActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_logo.png" />
+    <AndroidResource Include="Resources\drawable\icon_email.png" />
+    <AndroidResource Include="Resources\drawable\icon_lock.png" />
+    <AndroidResource Include="Resources\drawable\icon_user.png" />
+    <AndroidResource Include="Resources\drawable\icon_error.png" />
+    <AndroidResource Include="Resources\drawable\icon_check.png" />
+    <AndroidResource Include="Resources\drawable\icon_cross.png" />
+    <AndroidResource Include="Resources\drawable\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable\icon_user_white.png" />
+    <AndroidResource Include="Resources\drawable\icon_bike.png" />
+    <AndroidResource Include="Resources\drawable\icon_run.png" />
+    <AndroidResource Include="Resources\drawable\icon_swim.png" />
+    <AndroidResource Include="Resources\drawable\icon_triathlon.png" />
+    <AndroidResource Include="Resources\drawable\icon_phone.png" />
+    <AndroidResource Include="Resources\drawable\icon_exit.png" />
+    <AndroidResource Include="Resources\drawable\icon_pencil.png" />
+    <AndroidResource Include="Resources\drawable\icon_sync.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -257,6 +279,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="AndHUD">
       <Version>1.3.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="alliance-calendar-component">
+      <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

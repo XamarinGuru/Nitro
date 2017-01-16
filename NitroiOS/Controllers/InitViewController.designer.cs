@@ -14,6 +14,14 @@ namespace location2
     [Register ("InitViewController")]
     partial class InitViewController
     {
+        [Action ("ActionSignIn:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionSignIn (UIKit.UIButton sender);
+
+        [Action ("ActionSignUp:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionSignUp (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
         }

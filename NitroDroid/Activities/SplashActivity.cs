@@ -53,7 +53,8 @@ namespace goheja
 
             if (userID == "0")//not registered yet
             {
-                var activity2 = new Intent(this, typeof(RegisterActivity));
+                //var activity2 = new Intent(this, typeof(RegisterActivity));
+				var activity2 = new Intent(this, typeof(InitActivity));
                 activity2.PutExtra("MyData", "Data from Activity1");
                 StartActivity(activity2);
             }

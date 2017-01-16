@@ -40,8 +40,6 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
-			this.lblTitle.Text = "Nitro live";
-
 			startStop = false;
 			paused = false;
 
@@ -94,8 +92,8 @@ namespace location2
 
 			if (startStop)
 			{
-				if (this.lblTitle.Text.Contains("GPS"))
-					this.lblTitle.Text = "On the go";
+				//if (this.lblTitle.Text.Contains("GPS"))
+				//	this.lblTitle.Text = "On the go";
 
 				// Handle foreground updates
 				CLLocation location = e.Location;
@@ -166,7 +164,7 @@ namespace location2
 		{
 			if (paused)
 			{
-				this.lblTitle.Text = "On the go...";
+				//this.lblTitle.Text = "On the go...";
 				startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_inactive.png"), UIControlState.Normal);
 				stopBtn.Hidden = true;
 				paused = false;
@@ -179,12 +177,12 @@ namespace location2
 					if (!connection.IsHostReachable("www.google.com"))
 					{
 						ShowMessageBox(null, "No internet connection!");
-						this.lblTitle.Text = "No intenet connecion...";
+						//this.lblTitle.Text = "No intenet connecion...";
 						return;
 					}
 					else
 					{
-						this.lblTitle.Text = "Searching for GPS...";
+						//this.lblTitle.Text = "Searching for GPS...";
 						Manager.LocationUpdated += HandleLocationChanged;
 					}
 					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
@@ -203,7 +201,7 @@ namespace location2
 				}
 				else
 				{
-					this.lblTitle.Text = "Paused...";
+					//this.lblTitle.Text = "Paused...";
 					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
 					stopBtn.Hidden = false;
 					paused = true;
@@ -233,7 +231,7 @@ namespace location2
 
 		private void BackProcess()
 		{
-			this.lblTitle.Text = "Nitro ready...";
+			//this.lblTitle.Text = "Nitro ready...";
 			viewSelectType.Hidden = false;
 
 			try
@@ -254,7 +252,7 @@ namespace location2
 			lblSpeed.Text = "0.00";
 			lblDist.Text = "0.00";
 			lblAlt.Text = "0.0";
-			this.lblTitle.Text = "Nitro ready..";
+			//this.lblTitle.Text = "Nitro ready..";
 			_duration = 0;
 			_lastLocation = null;
 			_currentDistance = 0;

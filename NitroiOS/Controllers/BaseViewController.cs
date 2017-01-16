@@ -17,10 +17,10 @@ namespace location2
 		public string titleText;
 		public string imageFile;
 
-		public UILabel lblTitle;
-
 		trackSvc.Service1 mTrackSvc = new trackSvc.Service1();
 		Reachability.Reachability mConnection = new Reachability.Reachability();
+
+		protected RootMemberModel MemberModel { get; set; }
 
 		public BaseViewController() : base()
 		{
@@ -82,11 +82,40 @@ namespace location2
 
 			return result;
 		}
+		public bool LoginUser(string email, string password)
+		{
+			try
+			{
+				var userID = mTrackSvc.getListedDeviceId(email, password);
+
+				if (userID == "0")
+					return false;
+				
+				AppSettings.UserID = userID;
+				return true;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return false;
+			}
+		}
+		public void SignOutUser()
+		{
+			AppSettings.UserID = string.Empty;
+			AppSettings.Email = string.Empty;
+			AppSettings.Password = string.Empty;
+			AppSettings.DeviceID = string.Empty;
+			AppSettings.DeviceUDID = string.Empty;
+		}
 		public string GetUserID()
 		{
 			var userID = AppSettings.UserID;
-			if (userID != null && userID != "0")
+			if (userID != null && userID != "0" && userID != string.Empty)
 				return userID;
+
+			if (AppSettings.Email == string.Empty || AppSettings.Password == string.Empty)
+				return "0";
 			
 			try
 			{
@@ -274,13 +303,15 @@ namespace location2
 			}
 		}
 
-		public void MarkAsInvalide(UITextField textField)
+		public void MarkAsInvalide(UIButton validEmail, UIView errorEmail, bool isInvalid)
 		{
 			InvokeOnMainThread(() =>
 			{
-				textField.Layer.BorderColor = UIColor.Red.CGColor;
-				textField.Layer.BorderWidth = 3;
-				textField.Layer.CornerRadius = 5;
+				if (validEmail != null)
+					validEmail.Selected = isInvalid;
+
+				if (errorEmail != null)
+					errorEmail.Hidden = !isInvalid;
 			});
 		}
 

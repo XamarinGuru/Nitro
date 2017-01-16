@@ -15,12 +15,9 @@ namespace goheja
 {
     public class FragmentProfile : Android.Support.V4.App.Fragment
     {
-        ImageView meImage;
-        TextView tvFirstName;
-        TextView tvLastName;
-        TextView tvEmail;
-        TextView tvPhone;
-		TextView lblUsername;
+        ImageView imgProfile;
+		TextView lblUsername, lblEmail, lblPhone;
+
         byte[] bitmapByteData = { 0 };
 
 		private RootMemberModel MemberModel { get; set; }
@@ -50,31 +47,26 @@ namespace goheja
 
 		private void SetUIVariablesAndActions()
 		{
-			meImage = mView.FindViewById<ImageView>(Resource.Id.ivTest);
+			imgProfile = mView.FindViewById<ImageView>(Resource.Id.imgProfile);
 			lblUsername = mView.FindViewById<TextView>(Resource.Id.lblUsername);
-			tvFirstName = mView.FindViewById<TextView>(Resource.Id.etFirstName);
-			tvLastName = mView.FindViewById<TextView>(Resource.Id.etlastName);
-			tvEmail = mView.FindViewById<TextView>(Resource.Id.etMail);
-			tvPhone = mView.FindViewById<TextView>(Resource.Id.etPhone);
+			lblEmail = mView.FindViewById<TextView>(Resource.Id.lblEmail);
+			lblPhone = mView.FindViewById<TextView>(Resource.Id.lblPhone);
 
-			mView.FindViewById<Button>(Resource.Id.perImage).Click += setImage_OnClick;
-			mView.FindViewById<Button>(Resource.Id.btnSave).Click += ActionUpdate;
-			mView.FindViewById<Button>(Resource.Id.seriousBtn).Click += seriousBtn__OnClick;
-			mView.FindViewById<Button>(Resource.Id.resetCalBtn).Click += resetCalBtn__OnClick;
+			imgProfile.Click += ActionChangePicture;
+			mView.FindViewById<LinearLayout>(Resource.Id.ActionEditProfile).Click += ActionEditProfile;
+			mView.FindViewById<LinearLayout>(Resource.Id.ActionSignOut).Click += ActionSignOut;
 		}
 
 		private void SetInputBinding()
 		{
 			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.firstname, () => tvFirstName.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.lastname, () => tvLastName.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.email, () => tvEmail.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.phone, () => tvPhone.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
 
-			setBitmapImg();
+			SetBitmapImg();
 		}
 
-		private void setImage_OnClick(object sender, EventArgs e)
+		private void ActionChangePicture(object sender, EventArgs e)
 		{
 			var imageIntent = new Intent();
 			imageIntent.SetType("image/*");
@@ -82,18 +74,17 @@ namespace goheja
 			StartActivityForResult(Intent.CreateChooser(imageIntent, "Select photo"), 0);
 		}
 
-		void ActionUpdate(object sender, EventArgs e)
-		{
-			SwipeTabActivity rootVC = (SwipeTabActivity)this.Activity;
-			var result = rootActivity.UpdateUserDataJson(MemberModel.rootMember);
-			rootVC.ShowMessageBox(null, "updated successfully.");
-		}
-
-        private void seriousBtn__OnClick(object sender, EventArgs e)
+        private void ActionEditProfile(object sender, EventArgs e)
         {
 			SwipeTabActivity rootVC = this.Activity as SwipeTabActivity;
 			rootVC.SetPage(3);
         }
+
+		private void ActionSignOut(object sender, EventArgs e)
+		{
+			//SwipeTabActivity rootVC = this.Activity as SwipeTabActivity;
+			//rootVC.SetPage(3);
+		}
 
 		#region remove existing Nitro calendar
 		private void resetCalBtn__OnClick(object sender, EventArgs e)
@@ -178,7 +169,7 @@ namespace goheja
                 var s2 = new FileStream(filePath, FileMode.Open);
 
                 Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
-                meImage.SetImageBitmap(bitmap2);
+                imgProfile.SetImageBitmap(bitmap2);
                 s2.Close();
                 GC.Collect();
             }
@@ -233,7 +224,7 @@ namespace goheja
             Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
             return newBitmap;
         }
-        void setBitmapImg()
+        void SetBitmapImg()
         {
             try
             {
@@ -241,7 +232,7 @@ namespace goheja
                 var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
                 var s2 = new FileStream(filePath, FileMode.Open);
                 Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
-                meImage.SetImageBitmap(bitmap2);
+				imgProfile.SetImageBitmap(bitmap2);
                 s2.Close();
             }
             catch

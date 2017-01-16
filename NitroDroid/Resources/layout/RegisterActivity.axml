@@ -4,200 +4,529 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="vertical"
-        android:background="@drawable/header_bg"
-        android:id="@+id/ActionBar">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_above="@+id/toolBar"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:text="Listing"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:visibility="visible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/TitleBarText"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp" />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_new"
-        android:paddingLeft="15dp"
-        android:paddingRight="20dp"
         android:layout_below="@+id/ActionBar">
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
             <ImageView
-                android:src="@drawable/user_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
+                android:src="@drawable/icon_logo"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView1" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/linearLayout8"
+            android:layout_weight="5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etFirstName"
-                android:hint="First name"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/user_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout1"
+                android:gravity="bottom"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout18"
+                    android:gravity="bottom">
+                    <EditText
+                        android:id="@+id/txtFirstname"
+                        android:hint="FIRST NAME"
+                        android:textSize="12dp"
+                        style="@style/BlackEditBox"
+                        android:background="@android:color/transparent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:src="@drawable/icon_cross"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/invalidFirstname"
+                        android:padding="5dp"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout9"
+                    android:background="#40403e"
+                    android:gravity="bottom" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/errorFirstname"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:visibility="invisible">
+                    <ImageView
+                        android:src="@drawable/icon_error"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:id="@+id/imageView2"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:text="You must enter your first name."
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:textSize="10dp"
+                        android:textColor="#ffff0000"
+                        android:gravity="bottom" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etlastName"
-                android:hint="Last name"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/user_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout2"
+                android:layout_weight="1"
+                android:gravity="bottom">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout18"
+                    android:gravity="bottom">
+                    <EditText
+                        android:id="@+id/txtLastname"
+                        android:hint="LAST NAME"
+                        android:textSize="12dp"
+                        style="@style/BlackEditBox"
+                        android:background="@android:color/transparent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:src="@drawable/icon_cross"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/invalidLastname"
+                        android:padding="5dp"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout9"
+                    android:background="#40403e"
+                    android:gravity="bottom" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/errorLastname"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:visibility="invisible">
+                    <ImageView
+                        android:src="@drawable/icon_error"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:id="@+id/imageView2"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:text="You must enter your last name."
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:textSize="10dp"
+                        android:textColor="#ffff0000"
+                        android:gravity="bottom" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/age"
-                android:hint="Age"
-                android:inputType="number"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/user_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout4"
+                android:layout_weight="1"
+                android:gravity="bottom">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout15"
+                    android:gravity="bottom">
+                    <ImageView
+                        android:src="@drawable/icon_user"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/ImageView1"
+                        android:layout_centerVertical="true"
+                        style="@style/EditBoxIcon" />
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtUsername"
+                        android:hint="PICK A USER NAME"
+                        style="@style/BlackEditBoxWithImage"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:src="@drawable/icon_cross"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/invalidUsername"
+                        android:padding="5dp"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout9"
+                    android:background="#40403e"
+                    android:gravity="bottom" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/errorUsername"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:visibility="invisible">
+                    <ImageView
+                        android:src="@drawable/icon_error"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:id="@+id/imageView2"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:text="You must enter a valid user name."
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:textSize="10dp"
+                        android:textColor="#ffff0000"
+                        android:gravity="bottom" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:text="Note, Your username and password will be valid on the PC made. Also, your username will help your coach identify you."
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etUserName"
-                android:hint="Pick user name"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <TextView
-            android:text="NOTE, the user name and psw will be valid on the pc mode. Furthermore, your user name will be helping your coach to identify you."
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/note"
-            android:textColor="#ffffff"
-            android:textSize="13dp"
-            android:textAlignment="textStart"
-            android:layout_marginLeft="5dp" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/key_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
-                android:inputType="textPassword"
+                android:layout_height="0dp"
+                android:id="@+id/note"
+                android:textColor="#ffffff"
+                android:textSize="11dp"
+                android:textAlignment="textStart"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etPsw"
-                android:hint="Password"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/email_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
-            <EditText
-                android:inputType="text"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout5"
+                android:layout_weight="1"
+                android:gravity="bottom">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout16">
+                    <ImageView
+                        android:src="@drawable/icon_lock"
+                        android:id="@+id/ImageView1"
+                        style="@style/EditBoxIcon"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp" />
+                    <EditText
+                        android:inputType="textPassword"
+                        android:id="@+id/txtPassword"
+                        android:hint="CREATE PASSWORD"
+                        style="@style/BlackEditBoxWithImage"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:src="@drawable/icon_cross"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/invalidPassword"
+                        android:padding="5dp"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout9"
+                    android:background="#40403e"
+                    android:gravity="bottom" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/errorPassword"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:visibility="invisible">
+                    <ImageView
+                        android:src="@drawable/icon_error"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:id="@+id/imageView2"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:text="You must enter a valid password."
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:textSize="10dp"
+                        android:textColor="#ffff0000"
+                        android:gravity="bottom" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etMail"
-                android:hint="Email"
-                style="@style/BlackEditBox" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout6"
+                android:layout_weight="1"
+                android:gravity="bottom">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout17">
+                    <ImageView
+                        android:src="@drawable/icon_email"
+                        android:id="@+id/ImageView1"
+                        style="@style/EditBoxIcon"
+                        android:layout_width="15dp"
+                        android:layout_height="20dp" />
+                    <EditText
+                        android:inputType="text"
+                        android:id="@+id/txtEmail"
+                        android:hint="EMAIL ADDRESS"
+                        style="@style/BlackEditBoxWithImage"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                    <ImageView
+                        android:src="@drawable/icon_cross"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/invalidEmail"
+                        android:padding="5dp"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout9"
+                    android:background="#40403e"
+                    android:gravity="bottom" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/errorEmail"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:visibility="invisible">
+                    <ImageView
+                        android:src="@drawable/icon_error"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:id="@+id/imageView2"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:text="You must enter a valid email address."
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:textSize="10dp"
+                        android:textColor="#ffff0000"
+                        android:gravity="bottom" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:id="@+id/relativeLayout7"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout10">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_height="match_parent"
+                        android:id="@+id/linearLayout11"
+                        android:layout_width="wrap_content"
+                        android:gravity="bottom">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/linearLayout18"
+                            android:gravity="bottom">
+                            <EditText
+                                android:id="@+id/txtAge"
+                                android:hint="AGE"
+                                android:textSize="12dp"
+                                style="@style/BlackEditBox"
+                                android:background="@android:color/transparent"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <ImageView
+                                android:src="@drawable/icon_cross"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:id="@+id/invalidAge"
+                                android:padding="5dp"
+                                android:layout_marginBottom="2dp"
+                                xmlns:tools="http://schemas.android.com/tools"
+                                tools:visibility="invisible" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/linearLayout9"
+                            android:background="#40403e"
+                            android:gravity="bottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginRight="20dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/linearLayout12"
+                        android:layout_weight="0.7"
+                        android:layout_marginLeft="30dp"
+                        android:gravity="bottom">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/checkTerms" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/linearLayout13"
+                            android:gravity="bottom"
+                            android:layout_marginLeft="5dp">
+                            <Button
+                                android:text="ACCEPT TERMS &amp; CONDITIONS"
+                                android:id="@+id/ActionTerms"
+                                android:textColor="#ffffff"
+                                android:background="@android:color/transparent"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:textSize="12dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="5dp" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:id="@+id/linearLayout9"
+                                android:background="#40403e"
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp" />
+                        </LinearLayout>
+                        <ImageView
+                            android:src="@drawable/icon_cross"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:id="@+id/invalidTerms"
+                            android:padding="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            tools:visibility="invisible" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/linearLayout14"
+                android:layout_weight="0.2" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:src="@drawable/text_icon"
-                android:layout_marginLeft="10dp"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/ImageView1"
-                android:layout_centerVertical="true"
-                style="@style/EditBoxIcon" />
+            android:layout_height="60dp"
+            android:id="@+id/linearLayout7">
             <Button
-                android:text="Terms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="34dp"
-                android:id="@+id/termsBtn"
-                android:textColor="#FFEB00"
-                android:background="@null" />
-        </RelativeLayout>
-        <Button
-            android:text="Click here to accept terms"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/btnTermsAccepted"
-            android:textColor="#ffffff"
-            android:background="@drawable/button" />
-        <Button
-            android:text="Go"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/btnGo"
-            android:textColor="#ffffff"
-            android:background="@drawable/button"
-            android:layout_marginTop="15dp" />
+                android:text="GO HEJA"
+                android:id="@+id/ActionSignUp"
+                android:textColor="#ffffff"
+                android:background="#ffe5a109"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

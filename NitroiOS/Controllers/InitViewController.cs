@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using UIKit;
 
 namespace location2
 {
@@ -14,9 +16,7 @@ namespace location2
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			// Perform any additional setup after loading the view, typically from a nib.
-			//SetFirstViewController();
-			SetFirstViewController1();
+			GotoMainIfAlreadyLoggedin();
 		}
 
 		public override void DidReceiveMemoryWarning()
@@ -25,22 +25,43 @@ namespace location2
 			// Release any cached data, images, etc that aren't in use.
 		}
 
-		private void SetFirstViewController1()
+		async private void GotoMainIfAlreadyLoggedin()
 		{
-			string userID = GetUserID();
-			BeginInvokeOnMainThread(delegate
+			ShowLoadingView("Sign In...");
+			string userID = "0";
+
+			await Task.Run(() =>
 			{
-				if (userID == "0")//if the user not registered yet, go to register screen
-				{
-					RegisterViewController registerVC = Storyboard.InstantiateViewController("vcListing") as RegisterViewController;
-					this.PresentViewController(registerVC, false, null);
-				}
-				else//if the user already registered, go to main screen
-				{
-					MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-					this.PresentViewController(mainVC, false, null);
-				}
+				InvokeOnMainThread(() => { userID = GetUserID(); });
+				HideLoadingView();
 			});
+
+
+			//BeginInvokeOnMainThread(delegate
+			//{
+			//	if (userID != "0")
+			//	{
+			//		MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+			//		this.PresentViewController(mainVC, false, null);
+			//	}
+			//});
+			if (userID != "0")
+			{
+				MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+				this.PresentViewController(mainVC, false, null);
+			}
+		}
+
+		partial void ActionSignIn(UIButton sender)
+		{
+			LoginViewController mainVC = Storyboard.InstantiateViewController("LoginViewController") as LoginViewController;
+			this.PresentViewController(mainVC, true, null);
+		}
+
+		partial void ActionSignUp(UIButton sender)
+		{
+			SignUpViewController mainVC = Storyboard.InstantiateViewController("SignUpViewController") as SignUpViewController;
+			this.PresentViewController(mainVC, true, null);
 		}
 		//private void SetFirstViewController()
 		//{

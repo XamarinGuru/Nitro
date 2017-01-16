@@ -201,6 +201,14 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Helper\AppSettings.cs" />
+    <Compile Include="Controllers\LoginViewController.cs" />
+    <Compile Include="Controllers\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SignUpViewController.cs" />
+    <Compile Include="Controllers\SignUpViewController.designer.cs">
+      <DependentUpon>SignUpViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -273,6 +281,35 @@
     <BundleResource Include="Resources\icon_watch.png" />
     <BundleResource Include="Resources\icon_back.png" />
     <BundleResource Include="Resources\pop_up_bg.png" />
+    <BundleResource Include="Resources\icon_.png" />
+    <BundleResource Include="Resources\icon_calendar.png" />
+    <BundleResource Include="Resources\icon_check.png" />
+    <BundleResource Include="Resources\icon_check1.png" />
+    <BundleResource Include="Resources\icon_check2.png" />
+    <BundleResource Include="Resources\icon_cross.png" />
+    <BundleResource Include="Resources\icon_error.png" />
+    <BundleResource Include="Resources\icon_lock.png" />
+    <BundleResource Include="Resources\icon_phone.png" />
+    <BundleResource Include="Resources\icon_right.png" />
+    <BundleResource Include="Resources\icon_user_white.png" />
+    <BundleResource Include="Resources\icon_user.png" />
+    <BundleResource Include="Resources\icon_email.png" />
+    <BundleResource Include="Resources\icon_athlete.png" />
+    <BundleResource Include="Resources\icon_bike.png" />
+    <BundleResource Include="Resources\icon_clock.png" />
+    <BundleResource Include="Resources\icon_exit.png" />
+    <BundleResource Include="Resources\icon_long.png" />
+    <BundleResource Include="Resources\icon_pencil.png" />
+    <BundleResource Include="Resources\icon_run.png" />
+    <BundleResource Include="Resources\icon_swim.png" />
+    <BundleResource Include="Resources\icon_sync.png" />
+    <BundleResource Include="Resources\icon_triathlon.png" />
+    <BundleResource Include="Resources\tab_calendar.png" />
+    <BundleResource Include="Resources\tab_disable.png" />
+    <BundleResource Include="Resources\tab_enable.png" />
+    <BundleResource Include="Resources\tab_user.png" />
+    <BundleResource Include="Resources\icon_logo.png" />
+    <BundleResource Include="Resources\icon_left.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

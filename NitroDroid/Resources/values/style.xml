@@ -5,14 +5,24 @@
     </style>
 
   <style name="BlackEditBox" parent="android:Theme">
-    <item name="android:paddingLeft">36dp</item>
-    <item name="android:paddingTop">15dp</item>
-    <item name="android:paddingBottom">15dp</item>
+    <item name="android:paddingBottom">5dp</item>
     <item name="android:textColor">#ffffff</item>
     <item name="android:textColorHint">#ffffff</item>
-    <item name="android:textSize">16dp</item>
+	<item name="android:background">@android:color/transparent</item>
+    <item name="android:textSize">12dp</item>
   </style>
+	
+  <style name="BlackEditBoxWithImage" parent="android:Theme">
+    <item name="android:paddingLeft">5dp</item>
+    <item name="android:paddingBottom">5dp</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:textColorHint">#ffffff</item>
+	<item name="android:background">@android:color/transparent</item>
+    <item name="android:textSize">12dp</item>
+  </style>
+	
   <style name="EditBoxIcon" parent="android:Theme">
     <item name="android:scaleType">fitCenter</item>
+	<item name="android:paddingBottom">5dp</item>
   </style>
 </resources>

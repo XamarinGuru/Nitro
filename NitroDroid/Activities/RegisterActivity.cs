@@ -9,66 +9,198 @@ namespace goheja
     [Activity(Label = "listing")]
 	public class RegisterActivity : BaseActivity
     {
-		bool termsAccepted=false;
+		EditText txtFirstname, txtLastname, txtUsername, txtEmail, txtPassword, txtAge;
 
-        protected override void OnCreate(Bundle bundle)
+		ImageView invalidFirstname, invalidLastname, invalidUsername, invalidEmail, invalidPassword, invalidAge, invalidTerms;
+
+		LinearLayout errorFirstname, errorLastname, errorUsername, errorEmail, errorPassword;
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.RegisterActivity);
 
-            FindViewById<Button>(Resource.Id.btnGo).Click += btnGo_OnClick;
-			FindViewById<Button>(Resource.Id.termsBtn).Click += termsBtn_OnClick;
-			FindViewById<Button>(Resource.Id.btnTermsAccepted).Click += btnTermsAccepted_OnClick;
+			InitUI();
         }
 
-        private void btnGo_OnClick(object sender, EventArgs eventArgs)
+		void InitUI()
+		{
+			FindViewById<Button>(Resource.Id.ActionSignUp).Click += ActionSignUp;
+			FindViewById<Button>(Resource.Id.ActionTerms).Click += ActionTerms;
+
+			txtFirstname = FindViewById<EditText>(Resource.Id.txtFirstname);
+			txtLastname = FindViewById<EditText>(Resource.Id.txtLastname);
+			txtUsername = FindViewById<EditText>(Resource.Id.txtUsername);
+			txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
+			txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
+			txtAge = FindViewById<EditText>(Resource.Id.txtAge);
+
+			invalidFirstname = FindViewById<ImageView>(Resource.Id.invalidFirstname);
+			invalidLastname = FindViewById<ImageView>(Resource.Id.invalidLastname);
+			invalidUsername = FindViewById<ImageView>(Resource.Id.invalidUsername);
+			invalidEmail = FindViewById<ImageView>(Resource.Id.invalidEmail);
+			invalidPassword = FindViewById<ImageView>(Resource.Id.invalidPassword);
+			invalidAge = FindViewById<ImageView>(Resource.Id.invalidAge);
+			invalidTerms = FindViewById<ImageView>(Resource.Id.invalidTerms);
+			errorFirstname = FindViewById<LinearLayout>(Resource.Id.errorFirstname);
+			errorLastname = FindViewById<LinearLayout>(Resource.Id.errorLastname);
+			errorUsername = FindViewById<LinearLayout>(Resource.Id.errorUsername);
+			errorEmail = FindViewById<LinearLayout>(Resource.Id.errorEmail);
+			errorPassword = FindViewById<LinearLayout>(Resource.Id.errorPassword);
+
+			invalidFirstname.Visibility = Android.Views.ViewStates.Invisible;
+			invalidLastname.Visibility = Android.Views.ViewStates.Invisible;
+			invalidUsername.Visibility = Android.Views.ViewStates.Invisible;
+			invalidEmail.Visibility = Android.Views.ViewStates.Invisible;
+			invalidPassword.Visibility = Android.Views.ViewStates.Invisible;
+			invalidAge.Visibility = Android.Views.ViewStates.Invisible;
+			invalidTerms.Visibility = Android.Views.ViewStates.Invisible;
+			errorFirstname.Visibility = Android.Views.ViewStates.Invisible;
+			errorLastname.Visibility = Android.Views.ViewStates.Invisible;
+			errorUsername.Visibility = Android.Views.ViewStates.Invisible;
+			errorEmail.Visibility = Android.Views.ViewStates.Invisible;
+			errorPassword.Visibility = Android.Views.ViewStates.Invisible;
+		}
+
+		private bool Validate()
+		{
+			var checkTerms = FindViewById<CheckBox>(Resource.Id.checkTerms);
+
+			invalidFirstname.Visibility = Android.Views.ViewStates.Visible;
+			invalidLastname.Visibility = Android.Views.ViewStates.Visible;
+			invalidUsername.Visibility = Android.Views.ViewStates.Visible;
+			invalidEmail.Visibility = Android.Views.ViewStates.Visible;
+			invalidPassword.Visibility = Android.Views.ViewStates.Visible;
+			invalidAge.Visibility = Android.Views.ViewStates.Visible;
+			invalidTerms.Visibility = Android.Views.ViewStates.Visible;
+
+			bool isValid = true;
+
+			if (!(txtEmail.Text.Contains("@")) || !(txtEmail.Text.Contains(".")))
+			{
+				MarkAsInvalide(invalidEmail, errorEmail, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidEmail, errorEmail, false);
+			}
+
+			if (txtFirstname.Text.Length <= 0)
+			{
+				MarkAsInvalide(invalidFirstname, errorFirstname, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidFirstname, errorFirstname, false);
+			}
+
+			if (txtLastname.Text.Length <= 0)
+			{
+				MarkAsInvalide(invalidLastname, errorLastname, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidLastname, errorLastname, false);
+			}
+
+			if (txtUsername.Text.Length <= 0 || txtUsername.Text.Length >= 8)
+			{
+				MarkAsInvalide(invalidUsername, errorUsername, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidUsername, errorUsername, false);
+			}
+
+			int testage = 0;
+			int.TryParse(txtAge.Text, out testage);
+			if (txtAge.Text.Length < 1 || txtAge.Text.Length > 2 || testage < 8 || testage > 90)
+			{
+				MarkAsInvalide(invalidAge, null, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidAge, null, false);
+			}
+
+			if (txtPassword.Text.Length <= 0)
+			{
+				MarkAsInvalide(invalidPassword, errorPassword, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidPassword, errorPassword, false);
+			}
+
+			if (!checkTerms.Checked)
+			{
+				MarkAsInvalide(invalidTerms, null, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(invalidTerms, null, false);
+			}
+
+			return isValid;
+		}
+
+        private void ActionSignUp(object sender, EventArgs eventArgs)
         {
             try
             {
-				var firstName = FindViewById<EditText>(Resource.Id.etFirstName).Text;
-                var lastName = FindViewById<EditText>(Resource.Id.etlastName).Text;
-                var age = FindViewById<EditText>(Resource.Id.age).Text;    //added by Afroz on 27/07/2016
-                var userName = FindViewById<EditText>(Resource.Id.etUserName).Text;
-                var psw = FindViewById<EditText>(Resource.Id.etPsw).Text;
-				var email = FindViewById<EditText>(Resource.Id.etMail).Text;
-
-                string device = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
-				string validateMessage= validate(firstName,lastName, age, userName, psw, email);
-
-				if (validateMessage != "")
+				if (Validate())
 				{
-					Toast.MakeText(this, validateMessage, ToastLength.Long).Show();
-					return;
-				}
-				if (termsAccepted != true)
-				{
-					Toast.MakeText(this, "Terms Were not accepted", ToastLength.Long).Show();
-					return;
-				}
 
-				var result = RegisterUser(firstName, lastName, device, userName, psw, email, int.Parse(age));
+					string deviceUDID = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 
-				if (result == "user added")
-					GoToMainPage(email, psw, userName, device);
-				else
-					ShowMessageBox(null, result);
+					var result = "";
+
+					ShowLoadingView("Sign Up...");
+
+					result = RegisterUser(txtFirstname.Text, txtLastname.Text, deviceUDID, txtUsername.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
+
+					if (result == "user added")
+						GoToMainPage(deviceUDID);
+					else
+					{
+						HideLoadingView();
+
+						ShowMessageBox(null, result);
+					}
+				}
                 
             }
-            catch
+            catch (Exception err)
             {
-                ShowMessageBox("Nitro service is not available", "Oops!Service not available... Pls try again later", true);
+				HideLoadingView();
+				ShowMessageBox(null, err.Message.ToString());
 				return;
             }
         }
-
-		private void GoToMainPage(string email, string password, string username, string deviceUDID)
+		private void ActionTerms(object sender, EventArgs eventArgs)
 		{
-			AppSettings.Email = email;
-			AppSettings.Password = password;
-			AppSettings.Username = username;
+			var uri = Android.Net.Uri.Parse("http://go-heja.com/nitro/terms.php");
+			var intent = new Intent(Intent.ActionView, uri);
+			StartActivity(intent);
+		}
+
+		private void GoToMainPage(string deviceUDID)
+		{
+			AppSettings.Email = txtEmail.Text;
+			AppSettings.Password = txtPassword.Text;
+			AppSettings.Username = txtUsername.Text;
 			AppSettings.DeviceUDID = deviceUDID;
 
 			string userID = GetUserID();
+
+			HideLoadingView();
 
 			if (userID == "0")//if the user not registered yet, go to register screen
 			{
@@ -81,39 +213,11 @@ namespace goheja
 				Finish();
 			}
 		}
-		private void termsBtn_OnClick(object sender, EventArgs eventArgs)
-		{
-			var uri = Android.Net.Uri.Parse ("http://go-heja.com/nitro/terms.php");
-			var intent = new Intent (Intent.ActionView, uri);
-			StartActivity (intent);
-			termsAccepted = true;
-		}
-		private void btnTermsAccepted_OnClick(object sender, EventArgs eventArgs)
-		{
-			if (termsAccepted == false) {
-				Toast.MakeText(this, "Oh,oh , you didnt read the terms!", ToastLength.Long).Show();
-			} else {
-				Button b = sender as Button;
-				b.Text = "terms accepted, thanks";
-			}
-		}
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
             Finish();
         }
-		private string validate (string fName,string lName, string ag,string uName,string pw,string em)
-		{
-			if (fName == "") 							return "Please enter first name";
-			if (ag == "") 								return "Please enter age";
-			if (!ValidateUserNickName(uName)) 			return "Nick name is taken, please try another";
-			if (em == "") 								return "Please enter email";
-			if (!em.Contains("@")||!em.Contains(".")) 	return "Email is not valid";
-			if (pw == "") 								return "Please enter password";
-			if (uName=="") 								return "Please enter user name";
-			if (uName.Contains (" ")) 					return "Please do not use space in nick name";
-
-            return "";
-		}
     }
 }

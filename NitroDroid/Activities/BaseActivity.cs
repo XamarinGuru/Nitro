@@ -5,6 +5,7 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Widget;
 using AndroidHUD;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -201,6 +202,24 @@ namespace goheja
 			var returnString = theString.ToString();
 			returnString = returnString.Replace("</textarea><br/>", "");
 			return returnString;
+		}
+
+		public void MarkAsInvalide(ImageView validEmail, LinearLayout errorEmail, bool isInvalid)
+		{
+			if (validEmail != null)
+				validEmail.SetImageResource(isInvalid ? Resource.Drawable.icon_cross : Resource.Drawable.icon_check);
+
+			if (errorEmail != null)
+				errorEmail.Visibility = isInvalid ? ViewStates.Visible : ViewStates.Invisible;
+			
+			//InvokeOnMainThread(() =>
+			//{
+			//	if (validEmail != null)
+			//		validEmail.Selected = isInvalid;
+
+			//	if (errorEmail != null)
+			//		errorEmail.Hidden = !isInvalid;
+			//});
 		}
 
 		#endregion
