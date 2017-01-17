@@ -39,12 +39,18 @@ namespace goheja
 
 		public void ShowLoadingView(string title)
 		{
-			AndHUD.Shared.Show(this, title, -1, MaskType.Black);
+			RunOnUiThread(() =>
+			{
+				AndHUD.Shared.Show(this, title, -1, MaskType.Black);
+			});
 		}
 
 		public void HideLoadingView()
 		{
-			AndHUD.Shared.Dismiss(this);
+			RunOnUiThread(() =>
+			{
+				AndHUD.Shared.Dismiss(this);
+			});
 		}
 
 		public void ShowMessageBox(string title, string message, bool isFinish = false)
@@ -66,14 +72,47 @@ namespace goheja
 			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified);
 			return result;
 		}
+
+		public bool LoginUser(string email, string password)
+		{
+			try
+			{
+				var userID = mTrackSvc.getListedDeviceId(email, password);
+
+				if (userID == "0")
+					return false;
+
+				AppSettings.UserID = userID;
+				return true;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return false;
+			}
+		}
+
+		public void SignOutUser()
+		{
+			AppSettings.UserID = string.Empty;
+			AppSettings.Email = string.Empty;
+			AppSettings.Password = string.Empty;
+			AppSettings.DeviceID = string.Empty;
+			AppSettings.DeviceUDID = string.Empty;
+		}
+
 		public string GetUserID()
 		{
-			if (AppSettings.UserID != null && AppSettings.UserID != "0")
-				return AppSettings.UserID;
+			var userID = AppSettings.UserID;
+			if (userID != null && userID != "0" && userID != string.Empty)
+				return userID;
+
+			if (AppSettings.Email == string.Empty || AppSettings.Password == string.Empty)
+				return "0";
 
 			try
 			{
-				var userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password);
+				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password);
 
 				if (userID != "0")
 					AppSettings.UserID = userID;

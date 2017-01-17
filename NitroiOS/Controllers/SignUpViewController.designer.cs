@@ -102,9 +102,9 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionSignUp (UIKit.UIButton sender);
 
-        [Action ("TermsBtn_TouchUpInside:")]
+        [Action ("ActionTerms:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void TermsBtn_TouchUpInside (UIKit.UIButton sender);
+        partial void ActionTerms (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {

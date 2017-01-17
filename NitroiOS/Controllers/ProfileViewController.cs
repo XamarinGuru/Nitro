@@ -81,6 +81,12 @@ namespace location2
 			rootVC.SetCurrentPage(3);
 		}
 
+		partial void ActionSyncDevice(UIButton sender)
+		{
+			var userID = GetUserID();
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.WATCH_URL, userID)));
+		}
+
 		partial void ActionSignOut(UIButton sender)
 		{
 			SignOutUser();

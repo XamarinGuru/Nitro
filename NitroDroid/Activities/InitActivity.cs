@@ -28,7 +28,8 @@ namespace goheja
 
 		void ActionSignIn(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			var activity = new Intent(this, typeof(LoginActivity));
+			StartActivity(activity);
 		}
 
 		void ActionSignUp(object sender, EventArgs e)

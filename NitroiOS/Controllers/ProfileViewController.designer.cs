@@ -50,6 +50,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionSignOut (UIKit.UIButton sender);
 
+        [Action ("ActionSyncDevice:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionSyncDevice (UIKit.UIButton sender);
+
         [Action ("removeNitroEvents:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void removeNitroEvents (UIKit.UIButton sender);

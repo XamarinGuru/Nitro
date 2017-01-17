@@ -230,6 +230,12 @@ namespace location2
 			termsAccepted = true;
 			acceprtBtn.SetTitle("Terms accepted!  ", UIControlState.Normal);
 		}
+
+		partial void ActionTerms(UIButton sender)
+		{
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(Constants.TERMS_URL));
+		}
+
 		#endregion
 
 		async private void GoToMainPage(string deviceUDID)

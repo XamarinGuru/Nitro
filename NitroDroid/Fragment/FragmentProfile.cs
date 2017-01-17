@@ -54,6 +54,7 @@ namespace goheja
 
 			imgProfile.Click += ActionChangePicture;
 			mView.FindViewById<LinearLayout>(Resource.Id.ActionEditProfile).Click += ActionEditProfile;
+			mView.FindViewById<LinearLayout>(Resource.Id.ActionSyncDevice).Click += ActionSyncDevice;
 			mView.FindViewById<LinearLayout>(Resource.Id.ActionSignOut).Click += ActionSignOut;
 		}
 
@@ -76,14 +77,24 @@ namespace goheja
 
         private void ActionEditProfile(object sender, EventArgs e)
         {
-			SwipeTabActivity rootVC = this.Activity as SwipeTabActivity;
-			rootVC.SetPage(3);
+			rootActivity.SetPage(3);
         }
+
+		private void ActionSyncDevice(object sender, EventArgs e)
+		{
+			var userID = rootActivity.GetUserID();
+			var uri = Android.Net.Uri.Parse(string.Format(Constants.WATCH_URL, userID));
+			var intent = new Intent(Intent.ActionView, uri);
+			StartActivity(intent);
+		}
 
 		private void ActionSignOut(object sender, EventArgs e)
 		{
-			//SwipeTabActivity rootVC = this.Activity as SwipeTabActivity;
-			//rootVC.SetPage(3);
+			rootActivity.SignOutUser();
+
+			var activity = new Intent(this.Activity, typeof(LoginActivity));
+			StartActivity(activity);
+			rootActivity.Finish();
 		}
 
 		#region remove existing Nitro calendar

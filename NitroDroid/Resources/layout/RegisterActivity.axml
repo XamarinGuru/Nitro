@@ -58,13 +58,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
-                    <ImageView
+                    <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/invalidFirstname"
                         android:padding="5dp"
-                        xmlns:tools="http://schemas.android.com/tools"
                         tools:visibility="invisible" />
                 </LinearLayout>
                 <LinearLayout
@@ -76,13 +75,12 @@
                     android:id="@+id/linearLayout9"
                     android:background="#40403e"
                     android:gravity="bottom" />
-                <LinearLayout
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                     android:orientation="horizontal"
                     android:id="@+id/errorFirstname"
                     android:gravity="bottom"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
-                    xmlns:tools="http://schemas.android.com/tools"
                     tools:visibility="invisible">
                     <ImageView
                         android:src="@drawable/icon_error"
@@ -124,13 +122,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
-                    <ImageView
+                    <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/invalidLastname"
                         android:padding="5dp"
-                        xmlns:tools="http://schemas.android.com/tools"
                         tools:visibility="invisible" />
                 </LinearLayout>
                 <LinearLayout
@@ -142,13 +139,12 @@
                     android:id="@+id/linearLayout9"
                     android:background="#40403e"
                     android:gravity="bottom" />
-                <LinearLayout
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                     android:orientation="horizontal"
                     android:id="@+id/errorLastname"
                     android:gravity="bottom"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
-                    xmlns:tools="http://schemas.android.com/tools"
                     tools:visibility="invisible">
                     <ImageView
                         android:src="@drawable/icon_error"
@@ -195,13 +191,12 @@
                         android:hint="PICK A USER NAME"
                         style="@style/BlackEditBoxWithImage"
                         android:layout_weight="1" />
-                    <ImageView
+                    <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/invalidUsername"
                         android:padding="5dp"
-                        xmlns:tools="http://schemas.android.com/tools"
                         tools:visibility="invisible" />
                 </LinearLayout>
                 <LinearLayout
@@ -213,13 +208,12 @@
                     android:id="@+id/linearLayout9"
                     android:background="#40403e"
                     android:gravity="bottom" />
-                <LinearLayout
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                     android:orientation="horizontal"
                     android:id="@+id/errorUsername"
                     android:gravity="bottom"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
-                    xmlns:tools="http://schemas.android.com/tools"
                     tools:visibility="invisible">
                     <ImageView
                         android:src="@drawable/icon_error"
@@ -277,13 +271,12 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
-                    <ImageView
+                    <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/invalidPassword"
                         android:padding="5dp"
-                        xmlns:tools="http://schemas.android.com/tools"
                         tools:visibility="invisible" />
                 </LinearLayout>
                 <LinearLayout
@@ -295,13 +288,12 @@
                     android:id="@+id/linearLayout9"
                     android:background="#40403e"
                     android:gravity="bottom" />
-                <LinearLayout
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                     android:orientation="horizontal"
                     android:id="@+id/errorPassword"
                     android:gravity="bottom"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
-                    xmlns:tools="http://schemas.android.com/tools"
                     tools:visibility="invisible">
                     <ImageView
                         android:src="@drawable/icon_error"
@@ -347,13 +339,12 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
-                    <ImageView
+                    <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:id="@+id/invalidEmail"
                         android:padding="5dp"
-                        xmlns:tools="http://schemas.android.com/tools"
                         tools:visibility="invisible" />
                 </LinearLayout>
                 <LinearLayout
@@ -365,13 +356,12 @@
                     android:id="@+id/linearLayout9"
                     android:background="#40403e"
                     android:gravity="bottom" />
-                <LinearLayout
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                     android:orientation="horizontal"
                     android:id="@+id/errorEmail"
                     android:gravity="bottom"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
-                    xmlns:tools="http://schemas.android.com/tools"
                     tools:visibility="invisible">
                     <ImageView
                         android:src="@drawable/icon_error"
@@ -427,14 +417,13 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1" />
-                            <ImageView
+                            <ImageView xmlns:tools="http://schemas.android.com/tools"
                                 android:src="@drawable/icon_cross"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:id="@+id/invalidAge"
                                 android:padding="5dp"
                                 android:layout_marginBottom="2dp"
-                                xmlns:tools="http://schemas.android.com/tools"
                                 tools:visibility="invisible" />
                         </LinearLayout>
                         <LinearLayout
@@ -491,7 +480,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp" />
                         </LinearLayout>
-                        <ImageView
+                        <ImageView xmlns:tools="http://schemas.android.com/tools"
                             android:src="@drawable/icon_cross"
                             android:layout_width="0dp"
                             android:layout_height="20dp"
@@ -499,7 +488,6 @@
                             android:padding="5dp"
                             android:layout_marginBottom="5dp"
                             android:layout_weight="1"
-                            xmlns:tools="http://schemas.android.com/tools"
                             tools:visibility="invisible" />
                     </LinearLayout>
                 </LinearLayout>
