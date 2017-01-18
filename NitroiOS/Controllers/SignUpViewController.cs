@@ -204,7 +204,6 @@ namespace location2
 
 						ShowMessageBox(null, result);
 					}
-
 				}
 				catch (Exception err)
 				{
@@ -233,7 +232,7 @@ namespace location2
 
 		partial void ActionTerms(UIButton sender)
 		{
-			UIApplication.SharedApplication.OpenUrl(new NSUrl(Constants.TERMS_URL));
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(Constants.URL_TERMS));
 		}
 
 		#endregion
@@ -292,7 +291,5 @@ namespace location2
 			//	});
 			//});
 		}
-
-
 	}
 }

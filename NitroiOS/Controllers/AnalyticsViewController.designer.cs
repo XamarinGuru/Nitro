@@ -100,10 +100,6 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UINavigationItem titleView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewSelectType { get; set; }
 
         [Outlet]
@@ -239,11 +235,6 @@ namespace location2
             if (stopBtn != null) {
                 stopBtn.Dispose ();
                 stopBtn = null;
-            }
-
-            if (titleView != null) {
-                titleView.Dispose ();
-                titleView = null;
             }
 
             if (viewSelectType != null) {

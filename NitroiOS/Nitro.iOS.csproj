@@ -130,6 +130,9 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="XCalendar">
+      <HintPath>..\Components\XCalendar-1.1\lib\ios-unified\XCalendar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -139,7 +142,6 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="Controllers\BaseNavigationController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -164,10 +166,6 @@
     <Compile Include="Controllers\InitViewController.cs" />
     <Compile Include="Controllers\InitViewController.designer.cs">
       <DependentUpon>InitViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\CalendarViewController.cs" />
-    <Compile Include="Controllers\CalendarViewController.designer.cs">
-      <DependentUpon>CalendarViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AnalyticsViewController.cs" />
     <Compile Include="Controllers\AnalyticsViewController.designer.cs">
@@ -194,9 +192,6 @@
     </Compile>
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Helper\AppSettings.cs" />
     <Compile Include="Controllers\LoginViewController.cs" />
     <Compile Include="Controllers\LoginViewController.designer.cs">
@@ -206,13 +201,20 @@
     <Compile Include="Controllers\SignUpViewController.designer.cs">
       <DependentUpon>SignUpViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\BaseNavigationController.cs" />
-    <Compile Include="Controllers\BaseNavigationController.designer.cs">
-      <DependentUpon>BaseNavigationController.cs</DependentUpon>
+    <Compile Include="Controllers\EventCalendarViewController.cs" />
+    <Compile Include="Controllers\EventCalendarViewController.designer.cs">
+      <DependentUpon>EventCalendarViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CalendarNavigationController.cs" />
-    <Compile Include="Controllers\CalendarNavigationController.designer.cs">
-      <DependentUpon>CalendarNavigationController.cs</DependentUpon>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CalendarHomeViewController.cs" />
+    <Compile Include="Controllers\CalendarHomeViewController.designer.cs">
+      <DependentUpon>CalendarHomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\NitroEventCell.cs" />
+    <Compile Include="ViewModel\NitroEventCell.designer.cs">
+      <DependentUpon>NitroEventCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -315,6 +317,7 @@
     <BundleResource Include="Resources\icon_logo.png" />
     <BundleResource Include="Resources\icon_left.png" />
     <BundleResource Include="Resources\icon_user_whit.png" />
+    <BundleResource Include="Resources\icon_down.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
@@ -339,6 +342,16 @@
       <Version>3.2.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="XCalendar">
+      <Version>1.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
+      <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
+      <Name>PortableLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References" />
@@ -349,12 +362,6 @@
       <RelPath>Web References\trackSvc</RelPath>
       <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
-      <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
-      <Name>PortableLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

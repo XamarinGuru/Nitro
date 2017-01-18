@@ -25,31 +25,26 @@ namespace location2
 			// Release any cached data, images, etc that aren't in use.
 		}
 
-		async private void GotoMainIfAlreadyLoggedin()
+		private void GotoMainIfAlreadyLoggedin()
 		{
-			ShowLoadingView("Sign In...");
 			string userID = "0";
-
-			await Task.Run(() =>
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				InvokeOnMainThread(() => { userID = GetUserID(); });
+				ShowLoadingView("Sign In...");
+
+				userID = GetUserID();
+
 				HideLoadingView();
+
+				if (userID != "0")
+				{
+					this.InvokeOnMainThread(delegate
+					{
+						MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+						this.PresentViewController(mainVC, false, null);
+					});
+				}
 			});
-
-
-			//BeginInvokeOnMainThread(delegate
-			//{
-			//	if (userID != "0")
-			//	{
-			//		MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-			//		this.PresentViewController(mainVC, false, null);
-			//	}
-			//});
-			if (userID != "0")
-			{
-				MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-				this.PresentViewController(mainVC, false, null);
-			}
 		}
 
 		partial void ActionSignIn(UIButton sender)

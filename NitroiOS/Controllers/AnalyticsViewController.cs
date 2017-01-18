@@ -84,7 +84,7 @@ namespace location2
 		{
 			if (flag == 2)
 			{
-				var url = String.Format(Constants.ANALYTICS_MAP_URL, AppSettings.Username);
+				var url = String.Format(Constants.URL_ANALYTICS_MAP, AppSettings.Username);
 				wvOngoing.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 			}
 

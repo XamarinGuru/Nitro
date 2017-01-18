@@ -7,6 +7,7 @@ using CoreGraphics;
 using Newtonsoft.Json;
 using PortableLibrary;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace location2
 {
@@ -133,6 +134,24 @@ namespace location2
 			}
 		}
 
+		public Gauge GetGauge()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, null, null, "5");
+				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
+				return gaugeObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
 		public RootMember GetUserObject()
 		{
 			var userID = GetUserID();
@@ -163,14 +182,13 @@ namespace location2
 			return result;
 		}
 
-		public JArray GetPastEvents()
+		public List<NitroEvent> GetPastEvents()
 		{
 			try
 			{
-				//username = "Gili";
 				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -179,13 +197,13 @@ namespace location2
 			}
 		}
 
-		public JArray GetTodayEvents()
+		public List<NitroEvent> GetTodayEvents()
 		{
 			try
 			{
 				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -194,19 +212,34 @@ namespace location2
 			}
 		}
 
-		public JArray GetFutureEvents()
+		public List<NitroEvent> GetFutureEvents()
 		{
 			try
 			{
 				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
 				ShowMessageBox(null, err.Message);
 				return null;
 			}
+		}
+
+		public List<NitroEvent> CastNitroEvent(JArray events)
+		{
+			
+			var returnEvents = new List<NitroEvent>();
+
+			if (events == null) return returnEvents;
+
+			foreach (var eventJson in events)
+			{
+				NitroEvent nitroEvent = JsonConvert.DeserializeObject<NitroEvent>(eventJson.ToString());
+				returnEvents.Add(nitroEvent);
+			}
+			return returnEvents;
 		}
 
 		public bool ValidateUserNickName(string nickName)

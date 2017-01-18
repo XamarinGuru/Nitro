@@ -157,8 +157,8 @@ namespace location2
 			var futureEvents = baseVC.GetFutureEvents();
 
 			//AddEventsToNitroCalendar(pastEvents);
-			AddEventsToNitroCalendar(todayEvents);
-			AddEventsToNitroCalendar(futureEvents);
+			//AddEventsToNitroCalendar(todayEvents);
+			//AddEventsToNitroCalendar(futureEvents);
 		}
 
 		private void AddEventsToNitroCalendar(JArray eventsData)
@@ -221,7 +221,7 @@ namespace location2
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = String.Format(Constants.EVENT_MAP_URL, encodedTitle, encodedDate, AppSettings.Username);
+				var encodedEventURL = String.Format(Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
 
 				newEvent.Url = new NSUrl(System.Web.HttpUtility.UrlEncode(encodedEventURL)); ;
 

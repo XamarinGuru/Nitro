@@ -28,23 +28,11 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnWatch { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.NSLayoutConstraint conIndicatorX { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTitle { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView pageContent { get; set; }
 
-        [Outlet]
+        [Action ("ActionTab:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView pageIndicator { get; set; }
+        partial void ActionTab (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -63,29 +51,9 @@ namespace location2
                 btnProfile = null;
             }
 
-            if (btnWatch != null) {
-                btnWatch.Dispose ();
-                btnWatch = null;
-            }
-
-            if (conIndicatorX != null) {
-                conIndicatorX.Dispose ();
-                conIndicatorX = null;
-            }
-
-            if (lblTitle != null) {
-                lblTitle.Dispose ();
-                lblTitle = null;
-            }
-
             if (pageContent != null) {
                 pageContent.Dispose ();
                 pageContent = null;
-            }
-
-            if (pageIndicator != null) {
-                pageIndicator.Dispose ();
-                pageIndicator = null;
             }
         }
     }

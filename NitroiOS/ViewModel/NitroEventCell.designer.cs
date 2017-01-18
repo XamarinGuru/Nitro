@@ -11,11 +11,19 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("BaseNavigationController")]
-    partial class BaseNavigationController
+    [Register ("NitroEventCell")]
+    partial class NitroEventCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTitle { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (lblTitle != null) {
+                lblTitle.Dispose ();
+                lblTitle = null;
+            }
         }
     }
 }

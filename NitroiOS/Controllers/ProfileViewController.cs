@@ -35,16 +35,15 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
-			ShowLoadingView("Getting User Data...");
+			//ShowLoadingView("Getting User Data...");
 
-			await Task.Run(() =>
-			{
-				MemberModel.rootMember = GetUserObject();
-				HideLoadingView();
-			});
-			//MemberModel.rootMember = GetUserObject();
+			//await Task.Run(() =>
+			//{
+			//	MemberModel.rootMember = GetUserObject();
+			//	HideLoadingView();
+			//});
 
-			SetInputBinding();
+			//SetInputBinding();
 		}
 
 		private void SetInputBinding()
@@ -84,7 +83,7 @@ namespace location2
 		partial void ActionSyncDevice(UIButton sender)
 		{
 			var userID = GetUserID();
-			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.WATCH_URL, userID)));
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.URL_WATCH, userID)));
 		}
 
 		partial void ActionSignOut(UIButton sender)
