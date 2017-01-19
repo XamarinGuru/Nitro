@@ -83,7 +83,7 @@ namespace goheja
 		private void ActionSyncDevice(object sender, EventArgs e)
 		{
 			var userID = rootActivity.GetUserID();
-			var uri = Android.Net.Uri.Parse(string.Format(Constants.WATCH_URL, userID));
+			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID));
 			var intent = new Intent(Intent.ActionView, uri);
 			StartActivity(intent);
 		}

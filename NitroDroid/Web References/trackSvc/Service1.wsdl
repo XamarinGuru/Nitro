@@ -39,6 +39,18 @@
   <wsdl:message name="IService1_getPracticeTotals_OutputMessage">
     <wsdl:part name="parameters" element="tns:getPracticeTotalsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_testPmc_InputMessage">
+    <wsdl:part name="parameters" element="tns:testPmc" />
+  </wsdl:message>
+  <wsdl:message name="IService1_testPmc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testPmcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getTrackPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:getTrackPoints" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getTrackPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getTrackPointsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:getGroups" />
   </wsdl:message>
@@ -74,6 +86,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_updateMomgoDataFromFoxi_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateMomgoDataFromFoxiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_athGauges_InputMessage">
+    <wsdl:part name="parameters" element="tns:athGauges" />
+  </wsdl:message>
+  <wsdl:message name="IService1_athGauges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:athGaugesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getFutureEvent_InputMessage">
     <wsdl:part name="parameters" element="tns:getFutureEvent" />
@@ -249,6 +267,12 @@
   <wsdl:message name="IService1_getGauge_OutputMessage">
     <wsdl:part name="parameters" element="tns:getGaugeResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getGaugeMob_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGaugeMob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGaugeMob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGaugeMobResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getProgramsCompleteJson_InputMessage">
     <wsdl:part name="parameters" element="tns:getProgramsCompleteJson" />
   </wsdl:message>
@@ -393,6 +417,12 @@
   <wsdl:message name="IService1_getUsrObject_OutputMessage">
     <wsdl:part name="parameters" element="tns:getUsrObjectResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getUserPmc_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserPmc" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserPmc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserPmcResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getGaugesForMonth_InputMessage">
     <wsdl:part name="parameters" element="tns:getGaugesForMonth" />
   </wsdl:message>
@@ -429,6 +459,12 @@
   <wsdl:message name="IService1_getUserCalendarToday_OutputMessage">
     <wsdl:part name="parameters" element="tns:getUserCalendarTodayResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_updateSubGroupName_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateSubGroupName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateSubGroupName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateSubGroupNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getUsrLoginData_InputMessage">
     <wsdl:part name="parameters" element="tns:getUsrLoginData" />
   </wsdl:message>
@@ -440,6 +476,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_resetCalendarEvent_OutputMessage">
     <wsdl:part name="parameters" element="tns:resetCalendarEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEventGraph_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEventGraph" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEventGraph_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEventGraphResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_athData_InputMessage">
     <wsdl:part name="parameters" element="tns:athData" />
@@ -666,6 +708,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPracticeTotals" message="tns:IService1_getPracticeTotals_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPracticeTotalsResponse" message="tns:IService1_getPracticeTotals_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="testPmc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/testPmc" message="tns:IService1_testPmc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/testPmcResponse" message="tns:IService1_testPmc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getTrackPoints">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getTrackPoints" message="tns:IService1_getTrackPoints_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getTrackPointsResponse" message="tns:IService1_getTrackPoints_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getGroups">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGroups" message="tns:IService1_getGroups_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGroupsResponse" message="tns:IService1_getGroups_OutputMessage" />
@@ -689,6 +739,10 @@
     <wsdl:operation name="updateMomgoDataFromFoxi">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateMomgoDataFromFoxi" message="tns:IService1_updateMomgoDataFromFoxi_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateMomgoDataFromFoxiResponse" message="tns:IService1_updateMomgoDataFromFoxi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="athGauges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/athGauges" message="tns:IService1_athGauges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/athGaugesResponse" message="tns:IService1_athGauges_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getFutureEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getFutureEvent" message="tns:IService1_getFutureEvent_InputMessage" />
@@ -806,6 +860,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGauge" message="tns:IService1_getGauge_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGaugeResponse" message="tns:IService1_getGauge_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getGaugeMob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGaugeMob" message="tns:IService1_getGaugeMob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGaugeMobResponse" message="tns:IService1_getGaugeMob_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getProgramsCompleteJson">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProgramsCompleteJson" message="tns:IService1_getProgramsCompleteJson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProgramsCompleteJsonResponse" message="tns:IService1_getProgramsCompleteJson_OutputMessage" />
@@ -902,6 +960,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUsrObject" message="tns:IService1_getUsrObject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUsrObjectResponse" message="tns:IService1_getUsrObject_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getUserPmc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserPmc" message="tns:IService1_getUserPmc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserPmcResponse" message="tns:IService1_getUserPmc_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getGaugesForMonth">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGaugesForMonth" message="tns:IService1_getGaugesForMonth_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGaugesForMonthResponse" message="tns:IService1_getGaugesForMonth_OutputMessage" />
@@ -926,6 +988,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserCalendarToday" message="tns:IService1_getUserCalendarToday_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserCalendarTodayResponse" message="tns:IService1_getUserCalendarToday_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="updateSubGroupName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateSubGroupName" message="tns:IService1_updateSubGroupName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateSubGroupNameResponse" message="tns:IService1_updateSubGroupName_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getUsrLoginData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUsrLoginData" message="tns:IService1_getUsrLoginData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUsrLoginDataResponse" message="tns:IService1_getUsrLoginData_OutputMessage" />
@@ -933,6 +999,10 @@
     <wsdl:operation name="resetCalendarEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/resetCalendarEvent" message="tns:IService1_resetCalendarEvent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/resetCalendarEventResponse" message="tns:IService1_resetCalendarEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventGraph">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventGraph" message="tns:IService1_getEventGraph_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventGraphResponse" message="tns:IService1_getEventGraph_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="athData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/athData" message="tns:IService1_athData_InputMessage" />
@@ -1118,6 +1188,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="testPmc">
+      <soap:operation soapAction="http://tempuri.org/IService1/testPmc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTrackPoints">
+      <soap:operation soapAction="http://tempuri.org/IService1/getTrackPoints" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getGroups">
       <soap:operation soapAction="http://tempuri.org/IService1/getGroups" style="document" />
       <wsdl:input>
@@ -1165,6 +1253,15 @@
     </wsdl:operation>
     <wsdl:operation name="updateMomgoDataFromFoxi">
       <soap:operation soapAction="http://tempuri.org/IService1/updateMomgoDataFromFoxi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="athGauges">
+      <soap:operation soapAction="http://tempuri.org/IService1/athGauges" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1433,6 +1530,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getGaugeMob">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGaugeMob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getProgramsCompleteJson">
       <soap:operation soapAction="http://tempuri.org/IService1/getProgramsCompleteJson" style="document" />
       <wsdl:input>
@@ -1649,6 +1755,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getUserPmc">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserPmc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getGaugesForMonth">
       <soap:operation soapAction="http://tempuri.org/IService1/getGaugesForMonth" style="document" />
       <wsdl:input>
@@ -1703,6 +1818,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateSubGroupName">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateSubGroupName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getUsrLoginData">
       <soap:operation soapAction="http://tempuri.org/IService1/getUsrLoginData" style="document" />
       <wsdl:input>
@@ -1714,6 +1838,15 @@
     </wsdl:operation>
     <wsdl:operation name="resetCalendarEvent">
       <soap:operation soapAction="http://tempuri.org/IService1/resetCalendarEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventGraph">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEventGraph" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

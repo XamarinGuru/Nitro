@@ -52,8 +52,6 @@ namespace goheja
 
 		private bool Validate()
 		{
-			var checkTerms = FindViewById<CheckBox>(Resource.Id.checkTerms);
-
 			invalidEmail.Visibility = Android.Views.ViewStates.Visible;
 			invalidPassword.Visibility = Android.Views.ViewStates.Visible;
 
@@ -86,20 +84,26 @@ namespace goheja
 		{
 			if (Validate())
 			{
-				ShowLoadingView("Log In...");
-
-				bool isSuccess = LoginUser(txtEmail.Text, txtPassword.Text);
-
-				if (isSuccess)
+				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					var activity = new Intent(this, typeof(SwipeTabActivity));
-					StartActivity(activity);
-					Finish();
-				}
-				else
-				{
-					ShowMessageBox(null, "Login Failed.");
-				}
+					ShowLoadingView("Log In...");
+
+					bool isSuccess = LoginUser(txtEmail.Text, txtPassword.Text);
+
+					HideLoadingView();
+
+					if (isSuccess)
+					{
+						var activity = new Intent(this, typeof(SwipeTabActivity));
+						StartActivity(activity);
+						Finish();
+					}
+					else
+					{
+						ShowMessageBox(null, "Login Failed.");
+					}
+				});
+
 			}
 		}
 

@@ -18,7 +18,7 @@ namespace goheja
     {
 		private static Intent serviceIntent = null;
 
-		ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+		//ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
 
 		RelativeLayout tabCalendar, tabAnalytics, tabProfile;
 

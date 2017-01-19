@@ -74,9 +74,9 @@ namespace goheja
 
 		private RootMemberModel MemberModel { get; set; }
 
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.AnalyticsActivity);
             
 			MemberModel = new RootMemberModel();
@@ -195,7 +195,7 @@ namespace goheja
             btnLapDist.Enabled = true;
 			btnBack.Visibility = ViewStates.Gone;
 
-			var url = String.Format(Constants.ANALYTICS_MAP_URL, athNickName);
+			var url = String.Format(Constants.URL_ANALYTICS_MAP, athNickName);
             wv.LoadUrl(url);
 
 			if (isPaused)
@@ -484,7 +484,7 @@ namespace goheja
                         contextPrefEdit.PutFloat("dist", dist).Commit();
                         if (fFlag == 1 || status == "backFromOffline")
                         {
-							var url = String.Format(Constants.ANALYTICS_MAP_URL, athNickName);
+							var url = String.Format(Constants.URL_ANALYTICS_MAP, athNickName);
 							wv.LoadUrl(url);
                             status = "online";
                         }

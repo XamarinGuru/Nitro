@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Android.App;
 using Android.Content;
@@ -126,6 +127,24 @@ namespace goheja
 			}
 		}
 
+		public Gauge GetGauge()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, null, null, "5");
+				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
+				return gaugeObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
 		public RootMember GetUserObject()
 		{
 			var userID = GetUserID();
@@ -156,14 +175,60 @@ namespace goheja
 			return result;
 		}
 
-		public JArray GetPastEvents()
+		//public JArray GetPastEvents()
+		//{
+		//	try
+		//	{
+		//		//username = "Gili";
+		//		var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);//586f44b616528a3a18a75aa2
+		//		var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
+		//		return eventsData;
+		//	}
+		//	catch (Exception err)
+		//	{
+		//		ShowMessageBox(null, err.Message);
+		//		return null;
+		//	}
+		//}
+
+		//public JArray GetTodayEvents()
+		//{
+		//	try
+		//	{
+		//		var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
+		//		var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
+		//		return eventsData;
+		//	}
+		//	catch (Exception err)
+		//	{
+		//		ShowMessageBox(null, err.Message);
+		//		return null;
+		//	}
+		//}
+
+		//public JArray GetFutureEvents()
+		//{
+		//	try
+		//	{
+		//		var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
+		//		//var strFutureEvents = mTrackSvc.getUserCalendarFuture("586f44b616528a3a18a75aa2");
+		//		var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
+		//		return eventsData;
+		//	}
+		//	catch (Exception err)
+		//	{
+		//		ShowMessageBox(null, err.Message);
+		//		return null;
+		//	}
+		//}
+
+		public List<NitroEvent> GetPastEvents()
 		{
 			try
 			{
-				//username = "Gili";
-				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);//586f44b616528a3a18a75aa2
+				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -172,13 +237,13 @@ namespace goheja
 			}
 		}
 
-		public JArray GetTodayEvents()
+		public List<NitroEvent> GetTodayEvents()
 		{
 			try
 			{
 				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -187,20 +252,34 @@ namespace goheja
 			}
 		}
 
-		public JArray GetFutureEvents()
+		public List<NitroEvent> GetFutureEvents()
 		{
 			try
 			{
 				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
-				//var strFutureEvents = mTrackSvc.getUserCalendarFuture("586f44b616528a3a18a75aa2");
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
-				return eventsData;
+				return CastNitroEvent(eventsData);
 			}
 			catch (Exception err)
 			{
 				ShowMessageBox(null, err.Message);
 				return null;
 			}
+		}
+
+		public List<NitroEvent> CastNitroEvent(JArray events)
+		{
+
+			var returnEvents = new List<NitroEvent>();
+
+			if (events == null) return returnEvents;
+
+			foreach (var eventJson in events)
+			{
+				NitroEvent nitroEvent = JsonConvert.DeserializeObject<NitroEvent>(eventJson.ToString());
+				returnEvents.Add(nitroEvent);
+			}
+			return returnEvents;
 		}
 
 		public bool ValidateUserNickName(string nickName)

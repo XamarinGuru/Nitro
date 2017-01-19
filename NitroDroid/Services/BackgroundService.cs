@@ -112,9 +112,9 @@ namespace goheja
 			var todayEvents = baseVC.GetTodayEvents();
 			var futureEvents = baseVC.GetFutureEvents();
 
-			AddEventsToNitroCalendar(pastEvents);
-			AddEventsToNitroCalendar(todayEvents);
-			AddEventsToNitroCalendar(futureEvents);
+			//AddEventsToNitroCalendar(pastEvents);
+			//AddEventsToNitroCalendar(todayEvents);
+			//AddEventsToNitroCalendar(futureEvents);
 		}
 
 		private void RemoveNitroTodayAndFutureEvents()
@@ -205,7 +205,7 @@ namespace goheja
 
 				var strDate = startDate.ToString();//String.Format("{ 0:MM/dd/yyyy hh:mm:ss a}", startDate.ToString());
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = String.Format(Constants.EVENT_MAP_URL, encodedTitle, encodedDate, AppSettings.Username);
+				var encodedEventURL = String.Format(Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
 
 				note += Environment.NewLine + encodedEventURL;
 

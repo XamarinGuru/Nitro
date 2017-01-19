@@ -1,14 +1,7 @@
-﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/EventCalendarViewController.cs">
+﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventCalendarActivity.cs">
     <Files>
-      <File FileName="PortableLibrary/Constants.cs" Line="15" Column="27" />
-      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="32" Column="31" />
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="54" Column="38" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="185" Column="27" />
-      <File FileName="NitroiOS/ViewModel/NitroEventCell.cs" Line="26" Column="36" />
-      <File FileName="NitroiOS/AppDelegate.cs" Line="185" Column="42" />
-      <File FileName="NitroiOS/Controllers/LoginViewController.cs" Line="1" Column="1" />
-      <File FileName="NitroiOS/Controllers/InitViewController.cs" Line="48" Column="1" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -19,6 +12,7 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
 </Properties>

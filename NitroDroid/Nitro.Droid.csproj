@@ -108,14 +108,10 @@
     <Compile Include="Activities\SwipeTabActivity.cs" />
     <Compile Include="Fragment\FragmentEvents.cs" />
     <Compile Include="Utility\util.cs" />
-    <Compile Include="Activities\ProfileWebViewActivity.cs" />
     <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Activities\CloseApplicationActivity.cs" />
     <Compile Include="Activities\AnalyticsActivity.cs" />
     <Compile Include="Adapter\GenericFragmentPagerAdaptor.cs" />
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Utility\AppSettings.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -123,6 +119,13 @@
     <Compile Include="Fragment\TimeFormatDialog.cs" />
     <Compile Include="Activities\InitActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\EventCalendarActivity.cs" />
+    <Compile Include="Adapter\ItemViewPagerCalendarFragment.cs" />
+    <Compile Include="Adapter\CalendarAdapter.cs" />
+    <Compile Include="Adapter\NitroEventAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -197,7 +200,6 @@
     <AndroidResource Include="Resources\layout\fProfile.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\ProfileWebViewActivity.axml" />
     <AndroidResource Include="Resources\values\style.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -210,17 +212,6 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_back.png" />
     <AndroidResource Include="Resources\drawable\bg_new.png" />
-    <None Include="Web References\trackSvc\Service1.xsd" />
-    <None Include="Web References\trackSvc\Service1.disco" />
-    <None Include="Web References\trackSvc\Service10.xsd" />
-    <None Include="Web References\trackSvc\Service11.xsd" />
-    <None Include="Web References\trackSvc\Service12.xsd" />
-    <None Include="Web References\trackSvc\Service13.xsd" />
-    <None Include="Web References\trackSvc\Service1.wsdl" />
-    <None Include="Web References\trackSvc\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <AndroidResource Include="Resources\layout\fSerious.axml" />
     <AndroidResource Include="Resources\layout\InitActivity.axml" />
     <AndroidResource Include="Resources\drawable\icon_logo.png" />
@@ -242,6 +233,22 @@
     <AndroidResource Include="Resources\drawable\icon_sync.png" />
     <AndroidResource Include="Resources\layout\LoginActivity.axml" />
     <AndroidResource Include="Resources\drawable\icon_left.png" />
+    <AndroidResource Include="Resources\drawable\icon_down.png" />
+    <AndroidResource Include="Resources\drawable\icon_right.png" />
+    <None Include="Web References\trackSvc\Service1.xsd" />
+    <None Include="Web References\trackSvc\Service1.disco" />
+    <None Include="Web References\trackSvc\Service10.xsd" />
+    <None Include="Web References\trackSvc\Service11.xsd" />
+    <None Include="Web References\trackSvc\Service12.xsd" />
+    <None Include="Web References\trackSvc\Service13.xsd" />
+    <None Include="Web References\trackSvc\Service1.wsdl" />
+    <None Include="Web References\trackSvc\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <AndroidResource Include="Resources\layout\EventCalendarActivity.axml" />
+    <AndroidResource Include="Resources\layout\ItemViewPagerCalendar.axml" />
+    <AndroidResource Include="Resources\layout\item_NitroEvent.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -270,16 +277,6 @@
     <Folder Include="Adapter\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferences Include="Web References" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://go-heja.com:9006/Service1.svc">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\trackSvc</RelPath>
-      <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="AndHUD">
       <Version>1.3.1</Version>
       <Visible>False</Visible>
@@ -294,5 +291,19 @@
       <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
       <Name>PortableLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MonoDroid.TimesSquare\MonoDroid.TimesSquare.csproj">
+      <Project>{984A2991-85C5-441C-ABA4-611AFF713CEB}</Project>
+      <Name>MonoDroid.TimesSquare</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://go-heja.com:9006/Service1.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\trackSvc</RelPath>
+      <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
+    </WebReferenceUrl>
   </ItemGroup>
 </Project>
