@@ -33,11 +33,23 @@
   <wsdl:message name="IService1_setEventInCalendar_OutputMessage">
     <wsdl:part name="parameters" element="tns:setEventInCalendarResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getEventTotalsMob_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEventTotalsMob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEventTotalsMob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEventTotalsMobResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getPracticeTotals_InputMessage">
     <wsdl:part name="parameters" element="tns:getPracticeTotals" />
   </wsdl:message>
   <wsdl:message name="IService1_getPracticeTotals_OutputMessage">
     <wsdl:part name="parameters" element="tns:getPracticeTotalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateMarker_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateMarker" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateMarker_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateMarkerResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_testPmc_InputMessage">
     <wsdl:part name="parameters" element="tns:testPmc" />
@@ -704,9 +716,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/setEventInCalendar" message="tns:IService1_setEventInCalendar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/setEventInCalendarResponse" message="tns:IService1_setEventInCalendar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getEventTotalsMob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventTotalsMob" message="tns:IService1_getEventTotalsMob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventTotalsMobResponse" message="tns:IService1_getEventTotalsMob_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getPracticeTotals">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPracticeTotals" message="tns:IService1_getPracticeTotals_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPracticeTotalsResponse" message="tns:IService1_getPracticeTotals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateMarker">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateMarker" message="tns:IService1_updateMarker_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateMarkerResponse" message="tns:IService1_updateMarker_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="testPmc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/testPmc" message="tns:IService1_testPmc_InputMessage" />
@@ -1179,8 +1199,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getEventTotalsMob">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEventTotalsMob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getPracticeTotals">
       <soap:operation soapAction="http://tempuri.org/IService1/getPracticeTotals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMarker">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateMarker" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

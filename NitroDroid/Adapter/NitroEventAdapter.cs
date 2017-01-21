@@ -32,8 +32,6 @@ namespace goheja
 			return null;
 		}
 
-
-
 		override public long GetItemId(int position)
 		{
 			return position;
@@ -46,14 +44,38 @@ namespace goheja
 				convertView = LayoutInflater.From(mSuperActivity).Inflate(Resource.Layout.item_NitroEvent, null);
 			}
 			convertView.FindViewById(Resource.Id.ActionEventDetail).Click += ActionEventDetail;
+			convertView.FindViewById(Resource.Id.ActionEventDetail).Tag = position;
 			((TextView)convertView.FindViewById(Resource.Id.txtTitle)).Text = _events[position].title;
+
+			var imgType = convertView.FindViewById<ImageView>(Resource.Id.imgType);
+			switch (_events[position].type)
+			{
+				case "0":
+					imgType.SetImageResource(Resource.Drawable.icon_triathlon);
+					break;
+				case "1":
+					imgType.SetImageResource(Resource.Drawable.icon_bike);
+					break;
+				case "2":
+					imgType.SetImageResource(Resource.Drawable.icon_run);
+					break;
+				case "3":
+					imgType.SetImageResource(Resource.Drawable.icon_swim);
+					break;
+			}
 
 			return convertView;
 		}
 
 		void ActionEventDetail(object sender, EventArgs e)
 		{
-			//throw new NotImplementedException();
+			var index = ((LinearLayout)sender).Tag;
+			var selectedEvent = _events[(int)index];
+
+			AppSettings.selectedEvent = selectedEvent;
+
+			mSuperActivity.StartActivity(new Intent(mSuperActivity, typeof(EventInstructionActivity)));
+			mSuperActivity.OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
 		}
 	}
 }

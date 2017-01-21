@@ -33,6 +33,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Model\Gauge.cs" />
     <Compile Include="Model\NitroEvent.cs" />
+    <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\EventTotal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FluentValidation">

@@ -10,9 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/ActionEventDetail"
-        android:background="#ff1e1e1e"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:background="#ff1e1e1e">
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
@@ -22,7 +20,7 @@
             android:id="@+id/linearLayout2"
             android:layout_weight="1" />
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="0dp"
@@ -32,10 +30,17 @@
             android:gravity="center_vertical">
             <TextView
                 android:text="Text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTitle"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                android:layout_weight="1" />
+            <ImageView
+                android:src="@drawable/icon_run"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/imgType"
+                android:layout_marginRight="20dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

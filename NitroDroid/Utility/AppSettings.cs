@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -9,6 +10,8 @@ namespace goheja
 		private static ISharedPreferences _appSettings = Application.Context.GetSharedPreferences("App_settings", FileCreationMode.Private);
 
 		public static BaseActivity baseVC;
+
+		public static NitroEvent selectedEvent;
 
 		private const string userIDKey = "userID";
 		public static string UserID

@@ -29,8 +29,6 @@ namespace goheja
 			SetContentView(Resource.Layout.EventCalendarActivity);
 
 			var viewPager = FindViewById<ViewPager>(Resource.Id.viewPager);
-			//viewPager.Adapter = new CalendarAdapter(SupportFragmentManager);
-			
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

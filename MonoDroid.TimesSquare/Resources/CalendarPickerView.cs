@@ -271,6 +271,7 @@ namespace MonoDroid.TimesSquare
                 {
                     SetSelection(selectedIndex);
                 }
+				MyAdapter.NotifyDataSetChanged();
             });
         }
 

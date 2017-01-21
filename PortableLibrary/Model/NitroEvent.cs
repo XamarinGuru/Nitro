@@ -19,7 +19,7 @@ namespace PortableLibrary
 		public string start { get; set; }
 		public string end { get; set; }
 		public string eventColor { get; set; }
-		public string eventDate { get; set; }
+		public string eventData { get; set; }
 		public string distance { get; set; }
 		public string type { get; set; }
 		public string notes { get; set; }
@@ -28,5 +28,9 @@ namespace PortableLibrary
 		public string programStart { get; set; }
 		public string programEnd { get; set; }
 		public string durHrs { get; set; }
+		public string durMin { get; set; }
+		public string tss { get; set; }
+		public string hb { get; set; }
+		public string pace { get; set; }
 	}
 }

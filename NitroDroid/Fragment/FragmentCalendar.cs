@@ -73,7 +73,7 @@ namespace goheja
 			webView.ClearCache(true);
 			webView.ClearHistory();
 
-			var url = string.Format(Constants.URL_CALENDAR, AppSettings.Username, AppSettings.UserID);
+			var url = string.Format(Constants.URL_GAUGE, AppSettings.UserID);
 			webView.LoadUrl(url);
 
 			#endregion

@@ -91,6 +91,9 @@
     <Reference Include="com.alliance.calendar">
       <HintPath>..\Components\alliance-calendar-component-1.0\lib\android\com.alliance.calendar.dll</HintPath>
     </Reference>
+    <Reference Include="AutoFitTextView">
+      <HintPath>..\packages\AutoFitTextView.0.2.1.0\lib\MonoAndroid403\AutoFitTextView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -119,13 +122,16 @@
     <Compile Include="Fragment\TimeFormatDialog.cs" />
     <Compile Include="Activities\InitActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Activities\EventCalendarActivity.cs" />
     <Compile Include="Adapter\ItemViewPagerCalendarFragment.cs" />
     <Compile Include="Adapter\CalendarAdapter.cs" />
     <Compile Include="Adapter\NitroEventAdapter.cs" />
+    <Compile Include="Activities\EventInstructionActivity.cs" />
+    <Compile Include="Activities\AddCommentActivity.cs" />
+    <Compile Include="Activities\AdjustTrainningActivity.cs" />
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -235,6 +241,17 @@
     <AndroidResource Include="Resources\drawable\icon_left.png" />
     <AndroidResource Include="Resources\drawable\icon_down.png" />
     <AndroidResource Include="Resources\drawable\icon_right.png" />
+    <AndroidResource Include="Resources\layout\EventCalendarActivity.axml" />
+    <AndroidResource Include="Resources\layout\ItemViewPagerCalendar.axml" />
+    <AndroidResource Include="Resources\layout\item_NitroEvent.axml" />
+    <AndroidResource Include="Resources\Anim\fromLeft.axml" />
+    <AndroidResource Include="Resources\Anim\toRight.axml" />
+    <AndroidResource Include="Resources\layout\EventInstructionActivity.axml" />
+    <AndroidResource Include="Resources\Anim\fromRight.axml" />
+    <AndroidResource Include="Resources\Anim\toLeft.axml" />
+    <AndroidResource Include="Resources\layout\item_Comment.axml" />
+    <AndroidResource Include="Resources\layout\AddCommentActivity.axml" />
+    <AndroidResource Include="Resources\layout\AdjustTrainningActivity.axml" />
     <None Include="Web References\trackSvc\Service1.xsd" />
     <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
@@ -246,9 +263,8 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <AndroidResource Include="Resources\layout\EventCalendarActivity.axml" />
-    <AndroidResource Include="Resources\layout\ItemViewPagerCalendar.axml" />
-    <AndroidResource Include="Resources\layout\item_NitroEvent.axml" />
+    <AndroidResource Include="Resources\drawable\icon_whistle.png" />
+    <AndroidResource Include="Resources\drawable\icon_delete.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -275,6 +291,7 @@
     <Folder Include="Activities\" />
     <Folder Include="Utility\" />
     <Folder Include="Adapter\" />
+    <Folder Include="Resources\Anim\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="AndHUD">

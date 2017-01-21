@@ -30,7 +30,6 @@ namespace goheja
 			_events = events;
 		}
 
-
 		#region Overrides
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -45,73 +44,36 @@ namespace goheja
 				for (int i = 0; i < _events.Count; i++)
 				{
 					var startDate = DateTime.Parse(_events[i].start);
-					//if (startDate.Month == DateTime.UtcNow.AddMonths(month).Month && startDate.Year == DateTime.UtcNow.AddMonths(month).Year)
+					if (ListDateEvent.Count != 0)
 					{
-						if (ListDateEvent.Count != 0)
+						var IsExits = false;
+						for (int j = 0; j < ListDateEvent.Count; j++)
 						{
-							var IsExits = false;
-							for (int j = 0; j < ListDateEvent.Count; j++)
-							{
-								if (ListDateEvent[j].Day == startDate.Day)
-								{
-									IsExits = true;
-								}
-
-							}
-							if (!IsExits)
-							{
-								ListDateEvent.Add(startDate);
-							}
+							if (ListDateEvent[j].Day == startDate.Day)
+								IsExits = true;
 						}
-						else
-						{
+						if (!IsExits)
 							ListDateEvent.Add(startDate);
-						}
 					}
-
+					else
+					{
+						ListDateEvent.Add(startDate);
+					}
 				}
-
 			}
 			else
 			{
 				if (ListDateEvent.Count != 0)
-				{
 					ListDateEvent.Clear();
-				}
-
 			}
 
-			//if (AddSpotCalendarViewModelVM.DateSelected != null)
-			//{
-			//	calendar.Init(DateTime.UtcNow.AddMonths(month).AddDays(-(DateTime.UtcNow.Day - 1)), DateTime.UtcNow.AddMonths(month + 1).AddDays(-(DateTime.UtcNow.Day + 1)))
-			//	.InMode(CalendarPickerView.SelectionMode.Single)
-			//	.WithSelectedDate(AddSpotCalendarViewModelVM.DateSelected)
-			//	.WithHighlightedDates(ListDateEvent);
+			FluentInitializer fInitializer = calendar.Init(DateTime.UtcNow.AddYears(-1), DateTime.UtcNow.AddYears(1))
+			.InMode(CalendarPickerView.SelectionMode.Single)
+			.WithHighlightedDates(ListDateEvent);
 
-			//	if (ListDateEvent.Count != 0)
-			//	{
-			//		foreach (var dateTime in ListDateEvent)
-			//		{
-			//			Console.WriteLine(dateTime.ToString() + "\n");
-			//		}
-			//	}
+			fInitializer.WithSelectedDate(DateTime.Now);
 
-			//}
-			//else
-			{
-				calendar.Init(DateTime.UtcNow.AddYears(-1), DateTime.UtcNow.AddYears(1))
-				.InMode(CalendarPickerView.SelectionMode.Single)
-				        .WithSelectedDate(DateTime.Now)
-				.WithHighlightedDates(ListDateEvent);
-			}
-
-
-
-			calendar.OnDateSelected +=
-				(s, e) =>
-				{
-					UpdateEventFilterByDay(e.SelectedDate);
-				};
+			calendar.OnDateSelected += (s, e) => { UpdateEventFilterByDay(e.SelectedDate); };
 
 			UpdateEventFilterByDay(DateTime.Now);
 

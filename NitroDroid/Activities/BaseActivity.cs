@@ -67,7 +67,15 @@ namespace goheja
 			});
 		}
 
+		protected void OnBack()
+		{
+			base.OnBackPressed();
+			OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
+		}
+
 		#region integrate with web reference
+
+		#region USER_MANAGEMENT
 		public string RegisterUser(string fName, string lName, string deviceId, string userName, string psw, string email, int age, bool ageSpecified = true, bool acceptedTerms = true, bool acceptedTermsSpecified = true)
 		{
 			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified);
@@ -127,24 +135,6 @@ namespace goheja
 			}
 		}
 
-		public Gauge GetGauge()
-		{
-			var userID = GetUserID();
-
-			try
-			{
-				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, null, null, "5");
-				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
-				return gaugeObject;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-				ShowMessageBox(null, ex.Message);
-			}
-			return null;
-		}
-
 		public RootMember GetUserObject()
 		{
 			var userID = GetUserID();
@@ -174,6 +164,28 @@ namespace goheja
 			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, specGroup);
 			return result;
 		}
+		#endregion
+
+		#region USER_GAUGE
+		public Gauge GetGauge()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, null, null, "5");
+				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
+				return gaugeObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+		#endregion
+
 
 		//public JArray GetPastEvents()
 		//{
@@ -222,6 +234,7 @@ namespace goheja
 		//	}
 		//}
 
+		#region EVENT_MANAGEMENT
 		public List<NitroEvent> GetPastEvents()
 		{
 			try
@@ -281,6 +294,67 @@ namespace goheja
 			}
 			return returnEvents;
 		}
+
+		public EventTotal GetEventTotals(string eventID)
+		{
+			var eventTotal = new EventTotal();
+			try
+			{
+				var totalObject = mTrackSvc.getEventTotalsMob(eventID);
+				eventTotal = JsonConvert.DeserializeObject<EventTotal>(totalObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return eventTotal;
+		}
+
+		public Comment GetComments(string eventID, string type = "1")
+		{
+			var comment = new Comment();
+			try
+			{
+				var commentObject = mTrackSvc.getComments(eventID, "1");
+				comment = JsonConvert.DeserializeObject<Comment>(commentObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return comment;
+		}
+
+		public object SetComment(string author, string authorId, string commentText, string eventId)
+		{
+			try
+			{
+				var response = mTrackSvc.setComments(author, authorId, commentText, eventId);
+				return response;
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+		}
+
+		public void UpdateMemberNotes(string notes, string userID, string eventId, string username, string attended, string duration, string distance, string trainScore, string type)
+		{
+			try
+			{
+				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type);
+				//return response;
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return;
+			}
+		}
+		#endregion
 
 		public bool ValidateUserNickName(string nickName)
 		{
