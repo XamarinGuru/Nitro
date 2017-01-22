@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Provider;
@@ -24,7 +25,7 @@ namespace goheja
 		{
 			base.OnStart(intent, startId);
 
-			if (AppSettings.Username == null || AppSettings.baseVC == null)
+			if (AppSettings.UserID == null || AppSettings.baseVC == null)
 				return;
 
 			baseVC = AppSettings.baseVC;
@@ -112,9 +113,9 @@ namespace goheja
 			var todayEvents = baseVC.GetTodayEvents();
 			var futureEvents = baseVC.GetFutureEvents();
 
-			//AddEventsToNitroCalendar(pastEvents);
-			//AddEventsToNitroCalendar(todayEvents);
-			//AddEventsToNitroCalendar(futureEvents);
+			AddEventsToNitroCalendar(pastEvents);
+			AddEventsToNitroCalendar(todayEvents);
+			AddEventsToNitroCalendar(futureEvents);
 		}
 
 		private void RemoveNitroTodayAndFutureEvents()
@@ -149,16 +150,14 @@ namespace goheja
 			}
 		}
 
-		private void AddEventsToNitroCalendar(JArray eventsData)
+		private void AddEventsToNitroCalendar(List<NitroEvent> events)
 		{
-			if (calendarID == -1 || eventsData == null) return;
+			if (calendarID == -1 || events == null || events.Count == 0) return;
 
-			foreach (var eventJson in eventsData)
+			foreach (var nitroEvent in events)
 			{
-				var eventData = JObject.FromObject(eventJson);
-
-				var startDate = Convert.ToDateTime(eventData["start"].ToString());
-				var endDate = Convert.ToDateTime(eventData["end"].ToString());
+				var startDate = Convert.ToDateTime(nitroEvent.start);
+				var endDate = Convert.ToDateTime(nitroEvent.end);
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -167,9 +166,9 @@ namespace goheja
 				if (deltaSec < 0)
 					continue;
 
-				var title = eventData["title"].ToString();
+				var title = nitroEvent.title;
 
-				string eventDescription = eventData["eventData"].ToString();
+				string eventDescription = nitroEvent.eventData;
 
 				var filteredDescription = baseVC.FormatEventDescription(eventDescription);
 
@@ -182,26 +181,26 @@ namespace goheja
 				}
 
 
-				var strDistance = eventData["distance"].ToString();
+				var strDistance = nitroEvent.distance;
 				float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
 
-				var durMin = eventData["durMin"].ToString() == "" ? 0 : int.Parse(eventData["durMin"].ToString());
-				var durHrs = eventData["durHrs"].ToString() == "" ? 0 : int.Parse(eventData["durHrs"].ToString());
+				var durMin = nitroEvent.durMin == "" ? 0 : int.Parse(nitroEvent.durMin);
+				var durHrs = nitroEvent.durHrs == "" ? 0 : int.Parse(nitroEvent.durHrs);
 				var pHrs = durMin / 60;
 				durHrs = durHrs + pHrs;
 				durMin = durMin % 60;
 
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-				note += System.Environment.NewLine + "Planned HB : " + eventData["hb"] + Environment.NewLine +
-								"Planned TSS : " + eventData["tss"] + Environment.NewLine +
+				note += System.Environment.NewLine + "Planned HB : " + nitroEvent.hb + Environment.NewLine +
+				              "Planned TSS : " + nitroEvent.tss + Environment.NewLine +
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				var encodedTitle = System.Web.HttpUtility.UrlEncode(nitroEvent.title);
 
 				var strDate = startDate.ToString();//String.Format("{ 0:MM/dd/yyyy hh:mm:ss a}", startDate.ToString());
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);

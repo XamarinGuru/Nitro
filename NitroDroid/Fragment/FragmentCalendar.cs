@@ -69,6 +69,7 @@ namespace goheja
 			webView.Settings.LoadsImagesAutomatically = true;
 			webView.Settings.SetGeolocationEnabled(true);
 			webView.SetWebViewClient(new WebViewClient());
+			webView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 
 			webView.ClearCache(true);
 			webView.ClearHistory();

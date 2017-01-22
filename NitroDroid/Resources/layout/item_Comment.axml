@@ -45,11 +45,6 @@
                     android:gravity="right"
                     android:textSize="11dp"
                     android:layout_marginRight="10dp" />
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:id="@+id/imgDeleteComment"
-                    android:background="@drawable/icon_delete" />
             </LinearLayout>
             <TextView
                 android:text="this is commentthis is commentthis is commentthis is commentthis is commentthis is commentthis is commentthis is commentthis is commentthis is commentthis is comment"

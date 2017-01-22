@@ -65,13 +65,28 @@ namespace goheja
 		{
 			base.OnViewCreated(view, savedInstanceState);
 
-			MemberModel.rootMember = rootActivity.GetUserObject();
+			//MemberModel.rootMember = rootActivity.GetUserObject();
 
 			mView = view;
 
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				rootActivity.ShowLoadingView("Loading data...");
+
+				MemberModel.rootMember = rootActivity.GetUserObject();
+
+				rootActivity.HideLoadingView();
+
+				rootActivity.RunOnUiThread(() =>
+				{
+					//SetUIVariablesAndActions();
+					SetInputBinding();
+				});
+			});
+
 			SetUIVariablesAndActions();
 			SetInputValidation();
-			SetInputBinding();
+			//SetInputBinding();
 		}
 
 		private void SetUIVariablesAndActions()
