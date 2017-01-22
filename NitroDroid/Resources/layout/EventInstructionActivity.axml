@@ -149,19 +149,20 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
+            <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:id="@+id/linearLayout25"
+                android:id="@+id/totalContent"
                 android:background="#1E1E1E"
                 android:layout_marginTop="1dp"
                 android:paddingTop="25dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="25dp"
-                android:paddingLeft="20dp">
+                android:paddingLeft="20dp"
+                tools:visibility="visible">
                 <LinearLayout
                     android:orientation="vertical"
                     android:minWidth="25px"
@@ -206,7 +207,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblAvgSpeed"
@@ -251,7 +252,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblTotalDistance"
@@ -296,7 +297,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblElapsedTime"
@@ -341,7 +342,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblTotalAcent"
@@ -386,7 +387,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblAvgHR"
@@ -441,7 +442,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblTotalCalories"
@@ -486,7 +487,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblAvgPower"
@@ -531,7 +532,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblLoad"
@@ -576,7 +577,7 @@
                             android:layout_weight="2"
                             android:gravity="center_vertical">
                             <TextView
-                                android:text="tmp"
+                                android:text="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/lblLeveledPower"
@@ -636,10 +637,9 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:id="@+id/linearLayout10"
-                        android:layout_marginLeft="10dp"
-                        android:background="#ffe5a109">
+                        android:layout_marginLeft="10dp">
                         <ImageView
-                            android:src="@drawable/icon_bike"
+                            android:src="@drawable/icon_workout_report"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:id="@+id/imageView1"
@@ -647,14 +647,23 @@
                     </LinearLayout>
                     <TextView
                         android:text="WORKOUT REPORT"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
                         android:textStyle="bold"
                         android:textSize="12dp"
-                        android:layout_weight="1"
                         android:layout_marginLeft="10dp"
                         android:textColor="#ffffffff" />
+                    <TextView
+                        android:text="(coming soon)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        android:textStyle="normal"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#ffffffff"
+                        android:layout_weight="1" />
                     <ImageView
                         android:src="@drawable/icon_right"
                         android:layout_width="10dp"
@@ -685,10 +694,9 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:id="@+id/linearLayout10"
-                        android:layout_marginLeft="10dp"
-                        android:background="#ffe5a109">
+                        android:layout_marginLeft="10dp">
                         <ImageView
-                            android:src="@drawable/icon_run"
+                            android:src="@drawable/icon_group_report"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:id="@+id/imageView1"
@@ -696,14 +704,23 @@
                     </LinearLayout>
                     <TextView
                         android:text="GROUP REPORT"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
                         android:textStyle="bold"
                         android:textSize="12dp"
-                        android:layout_weight="1"
                         android:layout_marginLeft="10dp"
                         android:textColor="#ffffffff" />
+                    <TextView
+                        android:text="(coming soon)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        android:textStyle="normal"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#ffffffff"
+                        android:layout_weight="1" />
                     <ImageView
                         android:src="@drawable/icon_right"
                         android:layout_width="10dp"

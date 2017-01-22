@@ -82,7 +82,7 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical">
                 <TextView
-                    android:text="14"
+                    android:text="0"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:id="@+id/lblTime"
@@ -97,8 +97,8 @@
                     android:id="@+id/ActionTimeChanged"
                     android:layout_weight="5"
                     android:thumbTint="#ffe5a109"
-                    android:progress="12"
-                    android:max="100"
+                    android:progress="0"
+                    android:max="360"
                     android:progressTint="#ffe5a109" />
             </LinearLayout>
             <LinearLayout
@@ -128,7 +128,7 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical">
                 <TextView
-                    android:text="14"
+                    android:text="0"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:id="@+id/lblDistance"
@@ -143,8 +143,8 @@
                     android:id="@+id/ActionDistanceChanged"
                     android:layout_weight="5"
                     android:thumbTint="#ffe5a109"
-                    android:progress="12"
-                    android:max="100"
+                    android:progress="0"
+                    android:max="250"
                     android:progressTint="#ffe5a109" />
             </LinearLayout>
             <LinearLayout
@@ -156,7 +156,7 @@
                 android:id="@+id/linearLayout15"
                 android:layout_weight="1">
                 <TextView
-                    android:text="TSS"
+                    android:text="Load"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/textView4"
@@ -174,7 +174,7 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical">
                 <TextView
-                    android:text="14"
+                    android:text="0"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:id="@+id/lblTSS"
@@ -189,8 +189,8 @@
                     android:id="@+id/ActionTSSChanged"
                     android:layout_weight="5"
                     android:thumbTint="#ffe5a109"
-                    android:progress="12"
-                    android:max="100"
+                    android:progress="0"
+                    android:max="400"
                     android:progressTint="#ffe5a109" />
             </LinearLayout>
             <LinearLayout

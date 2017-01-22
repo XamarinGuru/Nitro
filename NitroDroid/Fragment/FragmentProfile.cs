@@ -41,8 +41,20 @@ namespace goheja
 
 			mView = view;
 
-			SetUIVariablesAndActions();
-			SetInputBinding();
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				rootActivity.ShowLoadingView("Loading data...");
+
+				MemberModel.rootMember = rootActivity.GetUserObject();
+
+				rootActivity.HideLoadingView();
+
+				rootActivity.RunOnUiThread(() =>
+				{
+					SetUIVariablesAndActions();
+					SetInputBinding();
+				});
+			});
         }
 
 		private void SetUIVariablesAndActions()

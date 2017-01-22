@@ -73,7 +73,7 @@
                     <EditText
                         android:inputType="textPassword"
                         android:id="@+id/txtPassword"
-                        android:hint="CREATE PASSWORD"
+                        android:hint="ENTER YOUR PASSWORD"
                         style="@style/BlackEditBoxWithImage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

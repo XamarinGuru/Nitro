@@ -261,9 +261,10 @@ namespace MonoDroid.TimesSquare
 
         internal void ScrollToSelectedMonth(int selectedIndex, bool smoothScroll)
         {
+			ClearFocus();
             Task.Factory.StartNew(() =>
             {
-                if (smoothScroll)
+                if (!smoothScroll)
                 {
                     SmoothScrollToPosition(selectedIndex);
                 }

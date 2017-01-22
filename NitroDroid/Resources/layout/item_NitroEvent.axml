@@ -35,6 +35,14 @@
                 android:id="@+id/txtTitle"
                 android:textColor="#ffffffff"
                 android:layout_weight="1" />
+            <TextView
+                android:text="Text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/txtTime"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center" />
             <ImageView
                 android:src="@drawable/icon_run"
                 android:layout_width="25dp"

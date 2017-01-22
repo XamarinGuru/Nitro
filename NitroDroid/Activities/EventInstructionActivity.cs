@@ -20,21 +20,10 @@ namespace goheja
 
 			var selectedEvent = AppSettings.selectedEvent;
 
-			//System.Threading.ThreadPool.QueueUserWorkItem(delegate
-			//{
-			//	ShowLoadingView("Retreving Event Details...");
-
-			//	var eventTotal = GetEventTotals(selectedEvent._id);
-			//	var eventComment = GetComments(selectedEvent._id);
-
-			//	RunOnUiThread(() =>
-			//	{
-			//		InitBindingEventTotal(eventTotal);
-			//		InitBindingEventComments(eventComment);
-			//	});
-
-			//	HideLoadingView();
-			//});
+			if (selectedEvent.attended == "1")
+				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
+			else
+				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
 
 			InitUISettings();
 			InitBindingEventData(selectedEvent);

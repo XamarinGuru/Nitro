@@ -19,6 +19,7 @@ namespace goheja
 	[Activity(Label = "EventCalendarActivity")]
 	public class EventCalendarActivity : BaseActivity
 	{
+		ViewPager calendarPager;
 		ListView eventsList;
 		List<NitroEvent> _events = new List<NitroEvent>();
 
@@ -28,8 +29,16 @@ namespace goheja
 
 			SetContentView(Resource.Layout.EventCalendarActivity);
 
-			var viewPager = FindViewById<ViewPager>(Resource.Id.viewPager);
+			ReloadEvents();
 
+			FindViewById(Resource.Id.ActionReload).Click += (sender, e) => ReloadEvents();
+			FindViewById(Resource.Id.ActionToday).Click += (sender, e) => GotoToday();
+		}
+
+		void ReloadEvents()
+		{
+			_events = new List<NitroEvent>();
+			calendarPager = FindViewById<ViewPager>(Resource.Id.viewPager);
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Retreving Nitro Events...");
@@ -44,11 +53,17 @@ namespace goheja
 
 				RunOnUiThread(() =>
 				{
-					viewPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
+					calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 				});
 
 				HideLoadingView();
 			});
+		}
+
+		void GotoToday()
+		{
+			//AppSettings.fInitializer.WithSelectedDate(DateTime.Now);
+			calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 		}
 
 		void FilteredEventsByDate(List<NitroEvent> events)

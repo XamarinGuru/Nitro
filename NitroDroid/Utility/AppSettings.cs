@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using MonoDroid.TimesSquare;
 using PortableLibrary;
 
 namespace goheja
@@ -12,6 +13,8 @@ namespace goheja
 		public static BaseActivity baseVC;
 
 		public static NitroEvent selectedEvent;
+
+		public static FluentInitializer fInitializer;
 
 		private const string userIDKey = "userID";
 		public static string UserID

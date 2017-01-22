@@ -71,6 +71,8 @@ namespace goheja
 			.InMode(CalendarPickerView.SelectionMode.Single)
 			.WithHighlightedDates(ListDateEvent);
 
+			AppSettings.fInitializer = fInitializer;
+
 			fInitializer.WithSelectedDate(DateTime.Now);
 
 			calendar.OnDateSelected += (s, e) => { UpdateEventFilterByDay(e.SelectedDate); };

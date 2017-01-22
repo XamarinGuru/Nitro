@@ -30,5 +30,10 @@ namespace goheja
 			Fragment fragment = new ItemViewPagerCalendarFragment(_callback, _events);
 			return fragment;
 		}
+
+		public void GotoToday()
+		{
+
+		}
 	}
 }
