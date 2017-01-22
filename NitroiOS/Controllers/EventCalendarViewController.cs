@@ -111,7 +111,7 @@ namespace location2
 			foreach (var nitroEvent in _events)
 			{
 				var eventDate = DateTime.Parse(nitroEvent.start);
-				if ((int)(filterDate - eventDate).TotalDays == 0)
+				if (filterDate.DayOfYear == eventDate.DayOfYear)
 				{
 					eventsByDate.Add(nitroEvent);
 				}
@@ -176,7 +176,10 @@ namespace location2
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
 				var selectedEvent = nitroEvents[indexPath.Row];
-				eventCalendarVC.NavigationController.PushViewController(null, true);
+				UIStoryboard sb = UIStoryboard.FromName("Main", null);
+				EventInstructionController eventInstructionVC = sb.InstantiateViewController("EventInstructionController") as EventInstructionController;
+				eventInstructionVC.selectedEvent = selectedEvent;
+				eventCalendarVC.NavigationController.PushViewController(eventInstructionVC, true);
 			}
 		}
 		#endregion

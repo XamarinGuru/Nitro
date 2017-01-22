@@ -24,6 +24,22 @@ namespace location2
 		public void SetCell(NitroEvent nitroEvent)
 		{
 			lblTitle.Text = nitroEvent.title;
+
+			switch (nitroEvent.type)
+			{
+				case "0":
+					imgType.Image = UIImage.FromFile("icon_triathlon.png");
+					break;
+				case "1":
+					imgType.Image = UIImage.FromFile("icon_bike.png");
+					break;
+				case "2":
+					imgType.Image = UIImage.FromFile("icon_run.png");
+					break;
+				case "3":
+					imgType.Image = UIImage.FromFile("icon_swim.png");
+					break;
+			}
 		}
 	}
 }

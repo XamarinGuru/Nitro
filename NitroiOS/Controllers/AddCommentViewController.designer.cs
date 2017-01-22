@@ -11,27 +11,22 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("NitroEventCell")]
-    partial class NitroEventCell
+    [Register ("AddCommentViewController")]
+    partial class AddCommentViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imgType { get; set; }
+        UIKit.UITextView txtComment { get; set; }
 
-        [Outlet]
+        [Action ("ActionAddComment:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTitle { get; set; }
+        partial void ActionAddComment (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (imgType != null) {
-                imgType.Dispose ();
-                imgType = null;
-            }
-
-            if (lblTitle != null) {
-                lblTitle.Dispose ();
-                lblTitle = null;
+            if (txtComment != null) {
+                txtComment.Dispose ();
+                txtComment = null;
             }
         }
     }

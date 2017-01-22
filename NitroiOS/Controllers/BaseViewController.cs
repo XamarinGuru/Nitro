@@ -21,7 +21,7 @@ namespace location2
 		trackSvc.Service1 mTrackSvc = new trackSvc.Service1();
 		Reachability.Reachability mConnection = new Reachability.Reachability();
 
-		protected RootMemberModel MemberModel { get; set; }
+		protected RootMemberModel MemberModel = new RootMemberModel();
 
 		public BaseViewController() : base()
 		{
@@ -240,6 +240,66 @@ namespace location2
 				returnEvents.Add(nitroEvent);
 			}
 			return returnEvents;
+		}
+
+		public EventTotal GetEventTotals(string eventID)
+		{
+			var eventTotal = new EventTotal();
+			try
+			{
+				var totalObject = mTrackSvc.getEventTotalsMob(eventID);
+				eventTotal = JsonConvert.DeserializeObject<EventTotal>(totalObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return eventTotal;
+		}
+
+		public Comment GetComments(string eventID, string type = "1")
+		{
+			var comment = new Comment();
+			try
+			{
+				var commentObject = mTrackSvc.getComments(eventID, "1");
+				comment = JsonConvert.DeserializeObject<Comment>(commentObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return comment;
+		}
+
+		public object SetComment(string author, string authorId, string commentText, string eventId)
+		{
+			try
+			{
+				var response = mTrackSvc.setComments(author, authorId, commentText, eventId);
+				return response;
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+		}
+
+		public void UpdateMemberNotes(string notes, string userID, string eventId, string username, string attended, string duration, string distance, string trainScore, string type)
+		{
+			try
+			{
+				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type);
+				//return response;
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return;
+			}
 		}
 
 		public bool ValidateUserNickName(string nickName)

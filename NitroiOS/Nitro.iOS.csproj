@@ -142,6 +142,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="ViewModel\CommentView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -205,9 +206,6 @@
     <Compile Include="Controllers\EventCalendarViewController.designer.cs">
       <DependentUpon>EventCalendarViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\CalendarHomeViewController.cs" />
     <Compile Include="Controllers\CalendarHomeViewController.designer.cs">
       <DependentUpon>CalendarHomeViewController.cs</DependentUpon>
@@ -215,6 +213,25 @@
     <Compile Include="ViewModel\NitroEventCell.cs" />
     <Compile Include="ViewModel\NitroEventCell.designer.cs">
       <DependentUpon>NitroEventCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EventInstructionController.cs" />
+    <Compile Include="Controllers\EventInstructionController.designer.cs">
+      <DependentUpon>EventInstructionController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AdjustTrainningController.cs" />
+    <Compile Include="Controllers\AdjustTrainningController.designer.cs">
+      <DependentUpon>AdjustTrainningController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AddCommentViewController.cs" />
+    <Compile Include="Controllers\AddCommentViewController.designer.cs">
+      <DependentUpon>AddCommentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CommentView.cs" />
+    <Compile Include="ViewModel\CommentView.designer.cs">
+      <DependentUpon>CommentView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -318,6 +335,8 @@
     <BundleResource Include="Resources\icon_left.png" />
     <BundleResource Include="Resources\icon_user_whit.png" />
     <BundleResource Include="Resources\icon_down.png" />
+    <BundleResource Include="Resources\icon_delete.png" />
+    <BundleResource Include="Resources\icon_whistle.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
