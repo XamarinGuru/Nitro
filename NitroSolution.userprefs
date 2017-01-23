@@ -1,15 +1,11 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDroid.TimesSquare/Resources/MonthAdapter.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="NitroDroid/Adapter/CalendarAdapter.cs" Line="35" Column="30" />
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="54" Column="45" />
-      <File FileName="NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" Line="41" Column="1" />
-      <File FileName="MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" Line="546" Column="1" />
-      <File FileName="MonoDroid.TimesSquare/Resources/MonthAdapter.cs" Line="7" Column="18" />
-      <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="14" Column="68" />
-      <File FileName="NitroDroid/Utility/AppSettings.cs" Line="16" Column="51" />
-      <File FileName="NitroDroid/Services/BackgroundService.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/SplashActivity.cs" Line="78" Column="48" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="58" Column="23" />
+      <File FileName="NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" Line="77" Column="25" />
+      <File FileName="NitroDroid/Adapter/CalendarAdapter.cs" Line="18" Column="1" />
+      <File FileName="MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" Line="274" Column="1" />
+      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="28" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,18 +14,24 @@
             <Node name="MonoDroid.TimesSquare" expanded="True">
               <Node name="Resources" expanded="True">
                 <Node name="Values" expanded="True" />
-                <Node name="MonthAdapter.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Nitro.Droid" expanded="True">
               <Node name="Activities" expanded="True" />
               <Node name="Adapter" expanded="True" />
               <Node name="Fragment" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True">
+                  <Node name="EventInstructionActivity.axml" selected="True" />
+                </Node>
+              </Node>
               <Node name="Services" expanded="True" />
               <Node name="Utility" expanded="True" />
               <Node name="ViewModel" expanded="True" />
             </Node>
-            <Node name="PortableLibrary" expanded="True" />
+            <Node name="PortableLibrary" expanded="True">
+              <Node name="Model" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -45,8 +47,6 @@
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Adapter/CalendarAdapter.cs" line="18" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" line="41" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

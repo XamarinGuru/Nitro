@@ -17,7 +17,7 @@ namespace goheja
 
 		public static NitroEvent selectedEvent;
 
-		public static FluentInitializer fInitializer;
+		//public static FluentInitializer fInitializer;
 
 		private const string userIDKey = "userID";
 		public static string UserID

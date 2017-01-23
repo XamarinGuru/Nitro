@@ -55,6 +55,7 @@ namespace goheja
 
 				RunOnUiThread(() =>
 				{
+					calendarPager.Adapter = null;
 					calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 				});
 
@@ -64,7 +65,7 @@ namespace goheja
 
 		void GotoToday()
 		{
-			//AppSettings.fInitializer.WithSelectedDate(DateTime.Now);
+			calendarPager.Adapter = null;
 			calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 		}
 

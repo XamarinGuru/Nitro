@@ -72,7 +72,7 @@ namespace goheja
 			.InMode(CalendarPickerView.SelectionMode.Single)
 			.WithHighlightedDates(ListDateEvent);
 
-			AppSettings.fInitializer = fInitializer;
+			//AppSettings.fInitializer = fInitializer;
 
 			fInitializer.WithSelectedDate(DateTime.Now);
 

@@ -25,7 +25,7 @@ namespace goheja
 			else
 				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
 
-			InitUISettings();
+			InitUISettings(selectedEvent);
 			InitBindingEventData(selectedEvent);
 		}
 
@@ -52,7 +52,7 @@ namespace goheja
 			});
 		}
 
-		void InitUISettings()
+		void InitUISettings(NitroEvent selectedEvent)
 		{
 			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) { OnBack(); };
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
@@ -64,6 +64,11 @@ namespace goheja
 				var activity = new Intent(this, typeof(AddCommentActivity));
 				StartActivity(activity);
 			};
+
+			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
+				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Gone;
+			else
+				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Visible;
 		}
 
 		void InitBindingEventData(NitroEvent selectedEvent)

@@ -10,267 +10,274 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+using System.Threading;
 
 namespace MonoDroid.TimesSquare
 {
-    public class CalendarPickerView : ListView
-    {
-        public int Language = 0;
-        public enum SelectionMode
-        {
-            Single,
-            Multi,
-            Range
-        };
+	public class CalendarPickerView : ListView
+	{
+		public int Language = 0;
+		public enum SelectionMode
+		{
+			Single,
+			Multi,
+			Range
+		};
 
-        private readonly Context _context;
-        internal readonly MonthAdapter MyAdapter;
-        internal readonly List<MonthDescriptor> Months = new List<MonthDescriptor>();
+		private readonly Context _context;
+		internal readonly MonthAdapter MyAdapter;
+		internal readonly List<MonthDescriptor> Months = new List<MonthDescriptor>();
 
-        internal readonly List<List<List<MonthCellDescriptor>>> Cells =
-            new List<List<List<MonthCellDescriptor>>>();
+		internal readonly List<List<List<MonthCellDescriptor>>> Cells =
+			new List<List<List<MonthCellDescriptor>>>();
 
-        internal List<MonthCellDescriptor> SelectedCells = new List<MonthCellDescriptor>();
-        private readonly List<MonthCellDescriptor> _highlightedCells = new List<MonthCellDescriptor>();
-        internal List<DateTime> SelectedCals = new List<DateTime>();
-        private readonly List<DateTime> _highlightedCals = new List<DateTime>();
-        internal readonly DateTime Today = DateTime.Now;
-        internal DateTime MinDate;
-        internal DateTime MaxDate;
-        private DateTime _monthCounter;
-        internal int DividerColor;
-        internal int DayBackgroundResID;
-        internal int DayTextColorResID;
-        internal int TitleTextColor;
-        internal int HeaderTextColor;
+		internal List<MonthCellDescriptor> SelectedCells = new List<MonthCellDescriptor>();
+		private readonly List<MonthCellDescriptor> _highlightedCells = new List<MonthCellDescriptor>();
+		internal List<DateTime> SelectedCals = new List<DateTime>();
+		private readonly List<DateTime> _highlightedCals = new List<DateTime>();
+		internal readonly DateTime Today = DateTime.Now;
+		internal DateTime MinDate;
+		internal DateTime MaxDate;
+		private DateTime _monthCounter;
+		internal int DividerColor;
+		internal int DayBackgroundResID;
+		internal int DayTextColorResID;
+		internal int TitleTextColor;
+		internal int HeaderTextColor;
 
-        internal readonly string MonthNameFormat;
-        internal readonly string WeekdayNameFormat;
-        internal readonly string FullDateFormat;
+		internal readonly string MonthNameFormat;
+		internal readonly string WeekdayNameFormat;
+		internal readonly string FullDateFormat;
 
-        internal ClickHandler ClickHandler;
+		internal ClickHandler ClickHandler;
 
-        public event EventHandler<DateSelectedEventArgs> OnInvalidDateSelected;
-        public event EventHandler<DateSelectedEventArgs> OnDateSelected;
-        public event EventHandler<DateSelectedEventArgs> OnDateUnselected;
-        public event DateSelectableHandler OnDateSelectable;
+		public event EventHandler<DateSelectedEventArgs> OnInvalidDateSelected;
+		public event EventHandler<DateSelectedEventArgs> OnDateSelected;
+		public event EventHandler<DateSelectedEventArgs> OnDateUnselected;
+		public event DateSelectableHandler OnDateSelectable;
 
-        public SelectionMode Mode { get; set; }
+		public SelectionMode Mode { get; set; }
 
-        public DateTime SelectedDate
-        {
-            get { return SelectedCals.Count > 0 ? SelectedCals[0] : DateTime.MinValue; }
-        }
+		public DateTime SelectedDate
+		{
+			get { return SelectedCals.Count > 0 ? SelectedCals[0] : DateTime.MinValue; }
+		}
 
-        public List<DateTime> SelectedDates
-        {
-            get
-            {
-                var selectedDates = SelectedCells.Select(cal => cal.DateTime).ToList();
-                selectedDates.Sort();
-                return selectedDates;
-            }
-        }
+		public List<DateTime> SelectedDates
+		{
+			get
+			{
+				var selectedDates = SelectedCells.Select(cal => cal.DateTime).ToList();
+				selectedDates.Sort();
+				return selectedDates;
+			}
+		}
 
-        public CalendarPickerView(Context context, IAttributeSet attrs)
-            : base(context, attrs)
-        {
-            ResourceIdManager.UpdateIdValues();
+		public CalendarPickerView(Context context, IAttributeSet attrs)
+			: base(context, attrs)
+		{
+			ResourceIdManager.UpdateIdValues();
 
-            var a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CalendarPickerView);
-            var bg = a.GetColor(Resource.Styleable.CalendarPickerView_android_background,
-                Resource.Color.calendar_bg);
-            DividerColor = a.GetColor(Resource.Styleable.CalendarPickerView_dividerColor,
-                Resource.Color.calendar_divider);
-            DayBackgroundResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayBackground,
-                Resource.Drawable.calendar_bg_selector);
-            DayTextColorResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayTextColor,
-                Resource.Color.calendar_text_selector);
-            TitleTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_titleTextColor,
-                Resource.Color.calendar_text_active);
-            //TitleTextColor = Color.White;
-            HeaderTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_headerTextColor,
-                Resource.Color.calendar_text_active);
+			var a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CalendarPickerView);
+			var bg = a.GetColor(Resource.Styleable.CalendarPickerView_android_background,
+				Resource.Color.calendar_bg);
+			DividerColor = a.GetColor(Resource.Styleable.CalendarPickerView_dividerColor,
+				Resource.Color.calendar_divider);
+			DayBackgroundResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayBackground,
+				Resource.Drawable.calendar_bg_selector);
+			DayTextColorResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayTextColor,
+				Resource.Color.calendar_text_selector);
+			TitleTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_titleTextColor,
+				Resource.Color.calendar_text_active);
+			//TitleTextColor = Color.White;
+			HeaderTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_headerTextColor,
+				Resource.Color.calendar_text_active);
 
-            a.Recycle();
+			a.Recycle();
 
-            _context = context;
-            MyAdapter = new MonthAdapter(context, this);
-            base.Adapter = MyAdapter;
-            base.Divider = null;
-            base.DividerHeight = 0;
+			_context = context;
+			MyAdapter = new MonthAdapter(context, this);
+			base.Adapter = MyAdapter;
+			base.Divider = null;
+			base.DividerHeight = 0;
 
-            base.SetBackgroundColor(bg);
-            base.CacheColorHint = bg;
+			base.SetBackgroundColor(bg);
+			base.CacheColorHint = bg;
 
-            MonthNameFormat = base.Resources.GetString(Resource.String.month_name_format);
-            WeekdayNameFormat = base.Resources.GetString(Resource.String.day_name_format);
-            FullDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
-            ClickHandler += OnCellClicked;
-            OnInvalidDateSelected += OnInvalidateDateClicked;
+			MonthNameFormat = base.Resources.GetString(Resource.String.month_name_format);
+			WeekdayNameFormat = base.Resources.GetString(Resource.String.day_name_format);
+			FullDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
+			ClickHandler += OnCellClicked;
+			OnInvalidDateSelected += OnInvalidateDateClicked;
 
-            if (base.IsInEditMode)
-            {
-                Init(DateTime.Now, DateTime.Now.AddYears(1)).WithSelectedDate(DateTime.Now);
-            }
+			if (base.IsInEditMode)
+			{
+				Init(DateTime.Now, DateTime.Now.AddYears(1)).WithSelectedDate(DateTime.Now);
+			}
 
-        }
+		}
 
-        private void OnCellClicked(MonthCellDescriptor cell)
-        {
-            var clickedDate = cell.DateTime;
+		private void OnCellClicked(MonthCellDescriptor cell)
+		{
+			var clickedDate = cell.DateTime;
 
-            //if (!IsBetweenDates(clickedDate, MinDate, MaxDate) || !IsSelectable(clickedDate)) {
-            //    if (OnInvalidDateSelected != null) {
-            //        OnInvalidDateSelected(this, new DateSelectedEventArgs(clickedDate));
-            //    }
-            //}
-            //  else 
-            {
-                bool wasSelected = DoSelectDate(clickedDate, cell);
-                if (OnDateSelected != null)
-                {
-                    if (wasSelected)
-                    {
-                        OnDateSelected(this, new DateSelectedEventArgs(clickedDate));
-                    }
-                    else if (OnDateUnselected != null)
-                    {
-                        OnDateUnselected(this, new DateSelectedEventArgs(clickedDate));
-                    }
-                }
-            }
-        }
+			//if (!IsBetweenDates(clickedDate, MinDate, MaxDate) || !IsSelectable(clickedDate)) {
+			//    if (OnInvalidDateSelected != null) {
+			//        OnInvalidDateSelected(this, new DateSelectedEventArgs(clickedDate));
+			//    }
+			//}
+			//  else 
+			{
+				bool wasSelected = DoSelectDate(clickedDate, cell);
+				if (OnDateSelected != null)
+				{
+					if (wasSelected)
+					{
+						OnDateSelected(this, new DateSelectedEventArgs(clickedDate));
+					}
+					else if (OnDateUnselected != null)
+					{
+						OnDateUnselected(this, new DateSelectedEventArgs(clickedDate));
+					}
+				}
+			}
+		}
 
-        private void OnInvalidateDateClicked(object sender, DateSelectedEventArgs e)
-        {
-            string fullDateFormat = _context.Resources.GetString(Resource.String.full_date_format);
-            string errorMsg = _context.Resources.GetString(Resource.String.invalid_date);
-            errorMsg = string.Format(errorMsg, MinDate.ToString(fullDateFormat),
-                MaxDate.ToString(fullDateFormat));
-            Toast.MakeText(_context, errorMsg, ToastLength.Short).Show();
-        }
+		private void OnInvalidateDateClicked(object sender, DateSelectedEventArgs e)
+		{
+			string fullDateFormat = _context.Resources.GetString(Resource.String.full_date_format);
+			string errorMsg = _context.Resources.GetString(Resource.String.invalid_date);
+			errorMsg = string.Format(errorMsg, MinDate.ToString(fullDateFormat),
+				MaxDate.ToString(fullDateFormat));
+			Toast.MakeText(_context, errorMsg, ToastLength.Short).Show();
+		}
 
-        public FluentInitializer Init(DateTime minDate, DateTime maxDate)
-        {
-            if (minDate == DateTime.MinValue || maxDate == DateTime.MinValue)
-            {
-                throw new IllegalArgumentException("minDate and maxDate must be non-zero. " +
-                                                   Debug(minDate, maxDate));
-            }
-            if (minDate.CompareTo(maxDate) > 0)
-            {
-                throw new IllegalArgumentException("minDate must be before maxDate. " +
-                                                   Debug(minDate, maxDate));
-            }
+		public FluentInitializer Init(DateTime minDate, DateTime maxDate)
+		{
+			if (minDate == DateTime.MinValue || maxDate == DateTime.MinValue)
+			{
+				throw new IllegalArgumentException("minDate and maxDate must be non-zero. " +
+												   Debug(minDate, maxDate));
+			}
+			if (minDate.CompareTo(maxDate) > 0)
+			{
+				throw new IllegalArgumentException("minDate must be before maxDate. " +
+												   Debug(minDate, maxDate));
+			}
 
-            Mode = SelectionMode.Single;
-            //Clear out any previously selected dates/cells.
-            SelectedCals.Clear();
-            SelectedCells.Clear();
-            _highlightedCals.Clear();
-            _highlightedCells.Clear();
+			Mode = SelectionMode.Single;
+			//Clear out any previously selected dates/cells.
+			SelectedCals.Clear();
+			SelectedCells.Clear();
+			_highlightedCals.Clear();
+			_highlightedCells.Clear();
 
-            //Clear previous state.
-            Cells.Clear();
-            Months.Clear();
-            MinDate = minDate;
-            MaxDate = maxDate;
-            MinDate = SetMidnight(MinDate);
-            MaxDate = SetMidnight(MaxDate);
+			//Clear previous state.
+			Cells.Clear();
+			Months.Clear();
+			MinDate = minDate;
+			MaxDate = maxDate;
+			MinDate = SetMidnight(MinDate);
+			MaxDate = SetMidnight(MaxDate);
 
-            // maxDate is exclusive: bump back to the previous day so if maxDate is the first of a month,
-            // We don't accidentally include that month in the view.
-            MaxDate = MaxDate.AddMinutes(-1);
+			// maxDate is exclusive: bump back to the previous day so if maxDate is the first of a month,
+			// We don't accidentally include that month in the view.
+			MaxDate = MaxDate.AddMinutes(-1);
 
-            //Now iterate between minCal and maxCal and build up our list of months to show.
-            _monthCounter = MinDate;
-            int maxMonth = MaxDate.Month;
-            int maxYear = MaxDate.Year;
-            while ((_monthCounter.Month <= maxMonth
-                    || _monthCounter.Year < maxYear)
-                   && _monthCounter.Year < maxYear + 1)
-            {
-                var month = new MonthDescriptor(_monthCounter.Month, _monthCounter.Year, _monthCounter,
-                    _monthCounter.ToString(MonthNameFormat));
-                Cells.Add(GetMonthCells(month, _monthCounter));
-                Logr.D("Adding month {0}", month);
-                Months.Add(month);
-                _monthCounter = _monthCounter.AddMonths(1);
-            }
+			//Now iterate between minCal and maxCal and build up our list of months to show.
+			_monthCounter = MinDate;
+			int maxMonth = MaxDate.Month;
+			int maxYear = MaxDate.Year;
+			while ((_monthCounter.Month <= maxMonth
+					|| _monthCounter.Year < maxYear)
+				   && _monthCounter.Year < maxYear + 1)
+			{
+				var month = new MonthDescriptor(_monthCounter.Month, _monthCounter.Year, _monthCounter,
+					_monthCounter.ToString(MonthNameFormat));
+				Cells.Add(GetMonthCells(month, _monthCounter));
+				Logr.D("Adding month {0}", month);
+				Months.Add(month);
+				_monthCounter = _monthCounter.AddMonths(1);
+			}
 
-            ValidateAndUpdate();
-            return new FluentInitializer(this);
-        }
+			ValidateAndUpdate();
+			return new FluentInitializer(this);
+		}
 
-        internal List<List<MonthCellDescriptor>> GetMonthCells(MonthDescriptor month, DateTime startCal)
-        {
-            var cells = new List<List<MonthCellDescriptor>>();
-            var cal = new DateTime(startCal.Year, startCal.Month, 1);
-            var firstDayOfWeek = (int)cal.DayOfWeek;
-            cal = cal.AddDays((int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - firstDayOfWeek);
+		internal List<List<MonthCellDescriptor>> GetMonthCells(MonthDescriptor month, DateTime startCal)
+		{
+			var cells = new List<List<MonthCellDescriptor>>();
+			var cal = new DateTime(startCal.Year, startCal.Month, 1);
+			var firstDayOfWeek = (int)cal.DayOfWeek;
+			cal = cal.AddDays((int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - firstDayOfWeek);
 
-            var minSelectedCal = GetMinDate(SelectedCals);
-            var maxSelectedCal = GetMaxDate(SelectedCals);
+			var minSelectedCal = GetMinDate(SelectedCals);
+			var maxSelectedCal = GetMaxDate(SelectedCals);
 
-            while ((cal.Month < month.Month + 1 || cal.Year < month.Year)
-                   && cal.Year <= month.Year)
-            {
-                Logr.D("Building week row starting at {0}", cal);
-                var weekCells = new List<MonthCellDescriptor>();
-                cells.Add(weekCells);
-                for (int i = 0; i < 7; i++)
-                {
-                    var date = cal;
-                    bool isCurrentMonth = cal.Month == month.Month;
-                    bool isSelected = isCurrentMonth && ContatinsDate(SelectedCals, cal);
-                    bool isSelectable = isCurrentMonth && IsBetweenDates(cal, MinDate, MaxDate);
-                    bool isToday = IsSameDate(cal, Today);
-                    bool isHighlighted = ContatinsDate(_highlightedCals, cal);
-                    int value = cal.Day;
+			while ((cal.Month < month.Month + 1 || cal.Year < month.Year)
+				   && cal.Year <= month.Year)
+			{
+				Logr.D("Building week row starting at {0}", cal);
+				var weekCells = new List<MonthCellDescriptor>();
+				cells.Add(weekCells);
+				for (int i = 0; i < 7; i++)
+				{
+					var date = cal;
+					bool isCurrentMonth = cal.Month == month.Month;
+					bool isSelected = isCurrentMonth && ContatinsDate(SelectedCals, cal);
+					bool isSelectable = isCurrentMonth && IsBetweenDates(cal, MinDate, MaxDate);
+					bool isToday = IsSameDate(cal, Today);
+					bool isHighlighted = ContatinsDate(_highlightedCals, cal);
+					int value = cal.Day;
 
-                    var rangeState = RangeState.None;
-                    if (SelectedCals.Count > 1)
-                    {
-                        if (IsSameDate(minSelectedCal, cal))
-                        {
-                            rangeState = RangeState.First;
-                        }
-                        else if (IsSameDate(maxSelectedCal, cal))
-                        {
-                            rangeState = RangeState.Last;
-                        }
-                        else if (IsBetweenDates(cal, minSelectedCal, maxSelectedCal))
-                        {
-                            rangeState = RangeState.Middle;
-                        }
-                    }
+					var rangeState = RangeState.None;
+					if (SelectedCals.Count > 1)
+					{
+						if (IsSameDate(minSelectedCal, cal))
+						{
+							rangeState = RangeState.First;
+						}
+						else if (IsSameDate(maxSelectedCal, cal))
+						{
+							rangeState = RangeState.Last;
+						}
+						else if (IsBetweenDates(cal, minSelectedCal, maxSelectedCal))
+						{
+							rangeState = RangeState.Middle;
+						}
+					}
 
-                    weekCells.Add(new MonthCellDescriptor(date, isCurrentMonth, isSelectable, isSelected,
-                        isToday, isHighlighted, value, rangeState));
-                    cal = cal.AddDays(1);
-                }
-            }
-            return cells;
-        }
+					weekCells.Add(new MonthCellDescriptor(date, isCurrentMonth, isSelectable, isSelected,
+						isToday, isHighlighted, value, rangeState));
+					cal = cal.AddDays(1);
+				}
+			}
+			return cells;
+		}
 
-        internal void ScrollToSelectedMonth(int selectedIndex)
-        {
-            ScrollToSelectedMonth(selectedIndex, false);
-        }
+		internal void ScrollToSelectedMonth(int selectedIndex)
+		{
+			ScrollToSelectedMonth(selectedIndex, false);
+		}
 
-        internal void ScrollToSelectedMonth(int selectedIndex, bool smoothScroll)
-        {
+		internal void ScrollToSelectedMonth(int selectedIndex, bool smoothScroll)
+		{
 			ClearFocus();
-            Task.Factory.StartNew(() =>
-            {
-                if (!smoothScroll)
-                {
-                    SmoothScrollToPosition(selectedIndex);
-                }
-                else
-                {
-                    SetSelection(selectedIndex);
+			Task.Factory.StartNew(() =>
+			{
+				if (smoothScroll)
+				{
+					SmoothScrollToPosition(selectedIndex);
+				}
+				else
+				{
+					System.Threading.Thread th = new System.Threading.Thread(new ThreadStart(() =>
+					{
+						SetSelection(selectedIndex);
+						System.Threading.Thread.Sleep(500);
+					}));
+					th.Start();
+					//SetSelection(selectedIndex);
                 }
 				MyAdapter.NotifyDataSetChanged();
             });
