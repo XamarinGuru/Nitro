@@ -74,8 +74,8 @@ namespace goheja
               	.SetContentIntent(contentIntent)
                	.SetCategory("tst")
               	.SetStyle(new NotificationCompat.BigTextStyle()
-          		.BigText(Html.FromHtml("Nitro is now tarcking practice<br> Running. Tap to Open")))
-               	.SetContentText(Html.FromHtml("Nitro is now tarcking practice \n Running. Tap to Open"));
+          		.BigText(Html.FromHtml("Tap to Open")))
+               	.SetContentText(Html.FromHtml("Tap to Open"));
 			
             var clossIntent = new Intent(this, typeof(CloseApplicationActivity));
             clossIntent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask | ActivityFlags.ClearTop);

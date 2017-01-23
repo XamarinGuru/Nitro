@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using MonoDroid.TimesSquare;
@@ -11,6 +12,8 @@ namespace goheja
 		private static ISharedPreferences _appSettings = Application.Context.GetSharedPreferences("App_settings", FileCreationMode.Private);
 
 		public static BaseActivity baseVC;
+
+		public static List<NitroEvent> currentEventsList;
 
 		public static NitroEvent selectedEvent;
 

@@ -543,8 +543,8 @@ namespace MonoDroid.TimesSquare
                 }
             }
 
+			Adapter = MyAdapter;
             MyAdapter.NotifyDataSetChanged();
-            Adapter = MyAdapter;
         }
 
         private static string Debug(DateTime minDate, DateTime maxDate)

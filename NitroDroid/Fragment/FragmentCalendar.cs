@@ -30,7 +30,7 @@ namespace goheja
 		public override void OnViewCreated(View view, Bundle savedInstanceState)
 		{
 			base.OnViewCreated(view, savedInstanceState);
-
+			//child
 			mView = view;
 
 			SetUIVariablesAndActions();

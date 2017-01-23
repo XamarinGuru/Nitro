@@ -51,6 +51,8 @@ namespace goheja
 				_events.AddRange(todayEvents);
 				_events.AddRange(futureEvents);
 
+				AppSettings.currentEventsList = _events;
+
 				RunOnUiThread(() =>
 				{
 					calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);

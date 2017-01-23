@@ -22,7 +22,7 @@ namespace goheja
 
 		Action<List<NitroEvent>> _callback;
 		List<DateTime> ListDateEvent = new List<DateTime>();
-		List<NitroEvent> _events = new List<NitroEvent>();
+		public List<NitroEvent> _events = new List<NitroEvent>();
 
 		public ItemViewPagerCalendarFragment(Action<List<NitroEvent>> callback, List<NitroEvent> events)
 		{
@@ -38,6 +38,7 @@ namespace goheja
 
 			calendar = view.FindViewById<CalendarPickerView>(Resource.Id.calendaritem);
 
+			_events = AppSettings.currentEventsList;
 			if (_events != null && _events.Count != 0)
 			{
 				ListDateEvent.Clear();

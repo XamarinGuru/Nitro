@@ -11,10 +11,15 @@ namespace goheja
 		private Action<List<NitroEvent>> _callback;
 		private List<NitroEvent> _events;
 
+		public static ItemViewPagerCalendarFragment fragment;
+
 		public CalendarAdapter(FragmentManager fm, Action<List<NitroEvent>> callback, List<NitroEvent> events) : base(fm)
 		{
 			_callback = callback;
 			_events = events;
+			AppSettings.currentEventsList = events;
+			if (fragment!= null)
+				AppSettings.currentEventsList = new List<NitroEvent>();
 		}
 
 		public override int Count
@@ -27,7 +32,7 @@ namespace goheja
 
 		public override Fragment GetItem(int position)
 		{
-			Fragment fragment = new ItemViewPagerCalendarFragment(_callback, _events);
+			fragment = new ItemViewPagerCalendarFragment(_callback, _events);
 			return fragment;
 		}
 
