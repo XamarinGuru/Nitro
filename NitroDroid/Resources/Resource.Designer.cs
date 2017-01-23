@@ -1208,8 +1208,8 @@ namespace goheja
 			// aapt resource value: 0x7f090109
 			public const int invalidAge = 2131296521;
 			
-			// aapt resource value: 0x7f0900f8
-			public const int invalidEmail = 2131296504;
+			// aapt resource value: 0x7f0900f4
+			public const int invalidEmail = 2131296500;
 			
 			// aapt resource value: 0x7f0900fe
 			public const int invalidFirstname = 2131296510;
@@ -1217,8 +1217,8 @@ namespace goheja
 			// aapt resource value: 0x7f090100
 			public const int invalidLastname = 2131296512;
 			
-			// aapt resource value: 0x7f0900f4
-			public const int invalidPassword = 2131296500;
+			// aapt resource value: 0x7f0900f8
+			public const int invalidPassword = 2131296504;
 			
 			// aapt resource value: 0x7f09010c
 			public const int invalidTerms = 2131296524;
@@ -1595,8 +1595,8 @@ namespace goheja
 			// aapt resource value: 0x7f0900a9
 			public const int txtDistance = 2131296425;
 			
-			// aapt resource value: 0x7f0900f7
-			public const int txtEmail = 2131296503;
+			// aapt resource value: 0x7f0900f3
+			public const int txtEmail = 2131296499;
 			
 			// aapt resource value: 0x7f090099
 			public const int txtFatPercentage = 2131296409;
@@ -1625,8 +1625,8 @@ namespace goheja
 			// aapt resource value: 0x7f0900a7
 			public const int txtOlympic = 2131296423;
 			
-			// aapt resource value: 0x7f0900f3
-			public const int txtPassword = 2131296499;
+			// aapt resource value: 0x7f0900f7
+			public const int txtPassword = 2131296503;
 			
 			// aapt resource value: 0x7f0900d3
 			public const int txtRFTPHB = 2131296467;

@@ -256,17 +256,17 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout16">
+                    android:id="@+id/linearLayout17">
                     <ImageView
-                        android:src="@drawable/icon_lock"
+                        android:src="@drawable/icon_email"
                         android:id="@+id/ImageView1"
                         style="@style/EditBoxIcon"
                         android:layout_width="15dp"
                         android:layout_height="20dp" />
                     <EditText
-                        android:inputType="textPassword"
-                        android:id="@+id/txtPassword"
-                        android:hint="CREATE PASSWORD"
+                        android:inputType="text"
+                        android:id="@+id/txtEmail"
+                        android:hint="EMAIL ADDRESS"
                         style="@style/BlackEditBoxWithImage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -275,7 +275,7 @@
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:id="@+id/invalidPassword"
+                        android:id="@+id/invalidEmail"
                         android:padding="5dp"
                         tools:visibility="invisible" />
                 </LinearLayout>
@@ -324,17 +324,17 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout17">
+                    android:id="@+id/linearLayout16">
                     <ImageView
-                        android:src="@drawable/icon_email"
+                        android:src="@drawable/icon_lock"
                         android:id="@+id/ImageView1"
                         style="@style/EditBoxIcon"
                         android:layout_width="15dp"
                         android:layout_height="20dp" />
                     <EditText
-                        android:inputType="text"
-                        android:id="@+id/txtEmail"
-                        android:hint="EMAIL ADDRESS"
+                        android:inputType="textPassword"
+                        android:id="@+id/txtPassword"
+                        android:hint="CREATE PASSWORD"
                         style="@style/BlackEditBoxWithImage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -343,7 +343,7 @@
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:id="@+id/invalidEmail"
+                        android:id="@+id/invalidPassword"
                         android:padding="5dp"
                         tools:visibility="invisible" />
                 </LinearLayout>
