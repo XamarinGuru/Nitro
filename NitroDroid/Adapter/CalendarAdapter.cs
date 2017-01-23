@@ -18,8 +18,8 @@ namespace goheja
 			_callback = callback;
 			_events = events;
 			AppSettings.currentEventsList = events;
-			if (fragment!= null)
-				AppSettings.currentEventsList = new List<NitroEvent>();
+			//if (fragment!= null)
+			//	AppSettings.currentEventsList = new List<NitroEvent>();
 		}
 
 		public override int Count
