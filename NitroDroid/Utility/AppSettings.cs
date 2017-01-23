@@ -14,10 +14,9 @@ namespace goheja
 		public static BaseActivity baseVC;
 
 		public static List<NitroEvent> currentEventsList;
+		public static EventTotal currentEventTotal;
 
 		public static NitroEvent selectedEvent;
-
-		//public static FluentInitializer fInitializer;
 
 		private const string userIDKey = "userID";
 		public static string UserID

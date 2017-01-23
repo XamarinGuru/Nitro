@@ -40,20 +40,45 @@ namespace goheja
 			});
 
 			InitUISettings();
+			InitBindingEventTotal();
 		}
 
 		void InitUISettings()
 		{
+			attended = FindViewById<CheckBox>(Resource.Id.checkAttended);
+
 			lblTime = FindViewById<TextView>(Resource.Id.lblTime);
 			lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
 			lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
 			txtComment = FindViewById<EditText>(Resource.Id.txtComment);
-			attended = FindViewById<CheckBox>(Resource.Id.checkAttended);
 
-			FindViewById<SeekBar>(Resource.Id.ActionTimeChanged).ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
-			FindViewById<SeekBar>(Resource.Id.ActionDistanceChanged).ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
-			FindViewById<SeekBar>(Resource.Id.ActionTSSChanged).ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekTime = FindViewById<SeekBar>(Resource.Id.ActionTimeChanged);
+			seekDistance = FindViewById<SeekBar>(Resource.Id.ActionDistanceChanged);
+			seekTSS = FindViewById<SeekBar>(Resource.Id.ActionTSSChanged);
+
+			seekTime.ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekDistance.ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekTSS.ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
+		}
+
+		void InitBindingEventTotal()
+		{
+			var eventTotal = AppSettings.currentEventTotal;
+
+			if (eventTotal == null || eventTotal.totals == null) return;
+
+			var distance = GetFormatedDurationAsMin(eventTotal.totals[2].value);
+
+			lblTime.Text = distance.ToString();
+			lblDistance.Text = eventTotal.totals[1].value;
+			lblTSS.Text = eventTotal.totals[7].value;
+
+			seekTime.Progress = distance;
+			seekDistance.Progress = int.Parse(eventTotal.totals[1].value);
+			seekTSS.Progress = int.Parse(eventTotal.totals[7].value);
+
+			attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
 		}
 
 		void ActionAdjustTrainning(object sender, EventArgs e)

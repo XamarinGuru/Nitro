@@ -251,6 +251,10 @@
     <AndroidResource Include="Resources\layout\item_Comment.axml" />
     <AndroidResource Include="Resources\layout\AddCommentActivity.axml" />
     <AndroidResource Include="Resources\layout\AdjustTrainningActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_whistle.png" />
+    <AndroidResource Include="Resources\drawable\icon_delete.png" />
+    <AndroidResource Include="Resources\drawable\icon_group_report.png" />
+    <AndroidResource Include="Resources\drawable\icon_workout_report.png" />
     <None Include="Web References\trackSvc\Service1.xsd" />
     <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
@@ -262,10 +266,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <AndroidResource Include="Resources\drawable\icon_whistle.png" />
-    <AndroidResource Include="Resources\drawable\icon_delete.png" />
-    <AndroidResource Include="Resources\drawable\icon_group_report.png" />
-    <AndroidResource Include="Resources\drawable\icon_workout_report.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

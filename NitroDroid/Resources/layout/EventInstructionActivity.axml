@@ -148,13 +148,227 @@
                             android:textStyle="normal" />
                     </LinearLayout>
                 </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/linearLayout26"
+                    android:background="#ffffffff"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+                    android:orientation="vertical"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/totalContent111"
+                    android:background="#1E1E1E"
+                    tools:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="1dp">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/viewCycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center_vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:text="Planned Distance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblPDistance"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center_vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:text="Planned Duration"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblPDuration"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center_vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:text="Planned Load"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="1"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblPLoad"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center_vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:text="Planned HB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="1"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblPHB"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:id="@+id/totalContent"
                 android:background="#1E1E1E"
                 android:layout_marginTop="1dp"
@@ -164,447 +378,472 @@
                 android:paddingLeft="20dp"
                 tools:visibility="visible">
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:minWidth="25px"
                     android:minHeight="25px"
-                    android:id="@+id/viewCycle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Avg. Speed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblAvgSpeed"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Total Distance"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblTotalDistance"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Elapsed Time"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblElapsedTime"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Total Acent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblTotalAcent"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Avg. HR"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblAvgHR"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
+                    android:id="@+id/linearLayout25"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="PRACTICE TOTALS"
+                        android:id="@+id/textView1"
+                        android:textStyle="bold"
+                        android:textColor="#ffffffff"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
                 </LinearLayout>
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:minWidth="25px"
                     android:minHeight="25px"
-                    android:id="@+id/viewCycle"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp">
+                    android:id="@+id/linearLayout27">
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
+                        android:id="@+id/viewCycle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp">
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Total Calories"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Avg. Speed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblAvgSpeed"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblTotalCalories"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Total Distance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblTotalDistance"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Elapsed Time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblElapsedTime"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Total Acent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblTotalAcent"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Avg. HR"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblAvgHR"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
+                        android:id="@+id/viewCycle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp">
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Avg. Power"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Total Calories"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblTotalCalories"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblAvgPower"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Load"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Avg. Power"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblAvgPower"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblLoad"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout17"
-                            android:gravity="center">
-                            <TextView
-                                android:text="Leveled Power"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView3"
-                                android:textColor="#ffffffff"
-                                android:textSize="11dp"
-                                android:textStyle="normal" />
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Load"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblLoad"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/linearLayout18"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical">
-                            <TextView
-                                android:text="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/lblLeveledPower"
-                                android:textColor="#ffe5a109"
-                                android:textSize="11dp"
-                                android:textStyle="normal"
-                                android:gravity="right" />
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout17"
+                                android:gravity="center">
+                                <TextView
+                                    android:text="Leveled Power"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView3"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:id="@+id/linearLayout18"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/lblLeveledPower"
+                                    android:textColor="#ffe5a109"
+                                    android:textSize="11dp"
+                                    android:textStyle="normal"
+                                    android:gravity="right" />
+                            </LinearLayout>
                         </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout13"
+                            android:layout_weight="0.5" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/linearLayout13"
-                        android:layout_weight="0.5" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
+            <LinearLayout xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout3"
-                xmlns:tools="http://schemas.android.com/tools"
                 tools:visibility="visible">
                 <Button
                     android:text="ADJUST TRAINING"

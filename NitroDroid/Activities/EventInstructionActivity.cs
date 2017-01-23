@@ -20,11 +20,6 @@ namespace goheja
 
 			var selectedEvent = AppSettings.selectedEvent;
 
-			if (selectedEvent.attended == "1")
-				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
-			else
-				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
-
 			InitUISettings(selectedEvent);
 			InitBindingEventData(selectedEvent);
 		}
@@ -39,11 +34,17 @@ namespace goheja
 			{
 				ShowLoadingView("Retreving Event Details...");
 
+				var eventDetail = GetEventDetail(selectedEvent._id);
 				var eventTotal = GetEventTotals(selectedEvent._id);
 				var eventComment = GetComments(selectedEvent._id);
 
+				AppSettings.selectedEvent = eventDetail;
+				AppSettings.selectedEvent._id = selectedEvent._id;
+				AppSettings.currentEventTotal = eventTotal;
+
 				RunOnUiThread(() =>
 				{
+					InitBindingEventData(eventDetail);
 					InitBindingEventTotal(eventTotal);
 					InitBindingEventComments(eventComment);
 				});
@@ -66,9 +67,15 @@ namespace goheja
 			};
 
 			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
+			{
 				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Gone;
+				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
+			}
 			else
+			{
 				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Visible;
+				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
+			}
 		}
 
 		void InitBindingEventData(NitroEvent selectedEvent)
@@ -77,6 +84,25 @@ namespace goheja
 			FindViewById<TextView>(Resource.Id.lblTitle).Text = selectedEvent.title;
 			FindViewById<TextView>(Resource.Id.lblStartDate).Text = startDateFormats[11];
 			FindViewById<TextView>(Resource.Id.lblData).Text = selectedEvent.eventData;
+
+			var strDistance = selectedEvent.distance;
+			float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
+			var b = Math.Truncate(floatDistance * 100);
+			var c = b / 100;
+			var formattedDistance = c.ToString("F2");
+
+			FindViewById<TextView>(Resource.Id.lblPDistance).Text = formattedDistance + " KM";
+
+			var durMin = selectedEvent.durMin == "" ? 0 : int.Parse(selectedEvent.durMin);
+			var durHrs = selectedEvent.durHrs == "" ? 0 : int.Parse(selectedEvent.durHrs);
+			var pHrs = durMin / 60;
+			durHrs = durHrs + pHrs;
+			durMin = durMin % 60;
+			var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+			FindViewById<TextView>(Resource.Id.lblPDuration).Text = strDuration;
+			FindViewById<TextView>(Resource.Id.lblPLoad).Text = selectedEvent.tss;
+			FindViewById<TextView>(Resource.Id.lblPHB).Text = selectedEvent.hb;
 
 			var imgType = FindViewById<ImageView>(Resource.Id.imgType);
 			switch (selectedEvent.type)
@@ -99,6 +125,7 @@ namespace goheja
 		void InitBindingEventTotal(EventTotal eventTotal)
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
+
 			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = eventTotal.totals[0].value;
 			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = eventTotal.totals[1].value;
 			FindViewById<TextView>(Resource.Id.lblElapsedTime).Text = eventTotal.totals[2].value;

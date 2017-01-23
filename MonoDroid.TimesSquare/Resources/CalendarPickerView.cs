@@ -573,7 +573,6 @@ namespace MonoDroid.TimesSquare
 						_highlightedCells.Add(cell);
 						_highlightedCals.Add(date);
 						cell.IsHighlighted = true;
-						//cell.IsCurrentMonth = true;
 						cell.IsSelectable = true;
 					}
                 }
