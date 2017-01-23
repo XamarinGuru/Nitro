@@ -100,7 +100,7 @@ namespace MonoDroid.TimesSquare
                         var cell = week[c];
                         var cellView = (CalendarCellView)weekRow.GetChildAt(c);
                         cellView.Text = cell.Value.ToString();
-                        cellView.Enabled = cell.IsCurrentMonth;
+                        cellView.Enabled = cell.IsHighlighted;
 
                         cellView.Selectable = cell.IsSelectable;
                         cellView.Selected = cell.IsSelected;

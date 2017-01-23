@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDroid.TimesSquare/Resources/MonthAdapter.cs">
     <Files>
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="58" Column="23" />
-      <File FileName="NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" Line="77" Column="25" />
-      <File FileName="NitroDroid/Adapter/CalendarAdapter.cs" Line="18" Column="1" />
-      <File FileName="MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" Line="274" Column="1" />
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="28" Column="11" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="50" Column="1" />
+      <File FileName="NitroDroid/Adapter/CalendarAdapter.cs" Line="35" Column="31" />
+      <File FileName="NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" Line="73" Column="1" />
+      <File FileName="MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" Line="28" Column="26" />
+      <File FileName="MonoDroid.TimesSquare/Resources/MonthCellDescriptor.cs" Line="13" Column="18" />
+      <File FileName="MonoDroid.TimesSquare/Resources/MonthAdapter.cs" Line="7" Column="18" />
+      <File FileName="MonoDroid.TimesSquare/Resources/MonthView.cs" Line="94" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,6 +16,7 @@
             <Node name="MonoDroid.TimesSquare" expanded="True">
               <Node name="Resources" expanded="True">
                 <Node name="Values" expanded="True" />
+                <Node name="MonthAdapter.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Nitro.Droid" expanded="True">
@@ -21,9 +24,7 @@
               <Node name="Adapter" expanded="True" />
               <Node name="Fragment" expanded="True" />
               <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True">
-                  <Node name="EventInstructionActivity.axml" selected="True" />
-                </Node>
+                <Node name="layout" expanded="True" />
               </Node>
               <Node name="Services" expanded="True" />
               <Node name="Utility" expanded="True" />
@@ -35,11 +36,6 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>_events</Value>
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -47,6 +43,9 @@
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="479" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="551" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="555" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

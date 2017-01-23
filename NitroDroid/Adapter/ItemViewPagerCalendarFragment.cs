@@ -50,7 +50,7 @@ namespace goheja
 						var IsExits = false;
 						for (int j = 0; j < ListDateEvent.Count; j++)
 						{
-							if (ListDateEvent[j].Day == startDate.Day)
+							if (ListDateEvent[j].DayOfYear == startDate.DayOfYear)
 								IsExits = true;
 						}
 						if (!IsExits)
@@ -68,12 +68,13 @@ namespace goheja
 					ListDateEvent.Clear();
 			}
 
-			FluentInitializer fInitializer = calendar.Init(DateTime.UtcNow.AddYears(-1), DateTime.UtcNow.AddYears(1))
+			FluentInitializer fInitializer = calendar.Init(DateTime.UtcNow.AddYears(-2), DateTime.UtcNow.AddYears(2))
 			.InMode(CalendarPickerView.SelectionMode.Single)
 			.WithHighlightedDates(ListDateEvent);
 
 			//AppSettings.fInitializer = fInitializer;
 
+			//fInitializer.WithHighlightedDates(ListDateEvent);
 			fInitializer.WithSelectedDate(DateTime.Now);
 
 			calendar.OnDateSelected += (s, e) => { UpdateEventFilterByDay(e.SelectedDate); };

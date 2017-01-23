@@ -305,8 +305,36 @@ namespace MonoDroid.TimesSquare
 
                 index++;
             }
-            return null;
+			return null;
         }
+
+		private List<MonthCellWithMonthIndex> GetAllMonthCellWithIndexByDate(DateTime date)
+		{
+			Console.WriteLine("\n MonthCellWithMonthIndex: " + date);
+
+			List<MonthCellWithMonthIndex> returnArr = new List<MonthCellWithMonthIndex>();
+
+			int index = 0;
+
+			foreach (var monthCell in Cells)
+			{
+				foreach (var actCell in from weekCell in monthCell
+										from actCell in weekCell
+										where IsSameDate(actCell.DateTime, date)
+										select actCell)
+				{
+					// && actCell.IsSelectable
+					//return new MonthCellWithMonthIndex(actCell, index);
+					returnArr.Add(new MonthCellWithMonthIndex(actCell, index));
+				}
+
+
+
+
+				index++;
+			}
+			return returnArr;
+		}
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {
@@ -536,13 +564,18 @@ namespace MonoDroid.TimesSquare
                 Console.WriteLine("HighLighted :" + date + "\n");
                 ValidateDate(date);
 
-                var monthCellWithMonthIndex = GetMonthCellWithIndexByDate(date);
-                if (monthCellWithMonthIndex != null)
+                var monthCellWithMonthIndexs = GetAllMonthCellWithIndexByDate(date);
+				if (monthCellWithMonthIndexs.Count != 0)
                 {
-                    var cell = monthCellWithMonthIndex.Cell;
-                    _highlightedCells.Add(cell);
-                    _highlightedCals.Add(date);
-                    cell.IsHighlighted = true;
+					foreach (var monthCellWithMonthIndex in monthCellWithMonthIndexs)
+					{
+						var cell = monthCellWithMonthIndex.Cell;
+						_highlightedCells.Add(cell);
+						_highlightedCals.Add(date);
+						cell.IsHighlighted = true;
+						//cell.IsCurrentMonth = true;
+						cell.IsSelectable = true;
+					}
                 }
                 else
                 {
