@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventInstructionActivity.cs">
     <Files>
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="42" Column="55" />
-      <File FileName="PortableLibrary/Model/NitroEvent.cs" Line="5" Column="15" />
-      <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="9" Column="18" />
-      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="240" Column="27" />
+      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="42" Column="10" />
+      <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="6" Column="1" />
+      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="234" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -13,8 +12,6 @@
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="507" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/EventInstructionActivity.cs" line="38" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/BaseActivity.cs" line="239" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -261,21 +261,6 @@ namespace goheja
 			return returnEvents;
 		}
 
-		//public NitroEvent CastNitroEvent(JArray events)
-		//{
-
-		//	var returnEvents = new List<NitroEvent>();
-
-		//	if (events == null) return returnEvents;
-
-		//	foreach (var eventJson in events)
-		//	{
-		//		NitroEvent nitroEvent = JsonConvert.DeserializeObject<NitroEvent>(eventJson.ToString());
-		//		returnEvents.Add(nitroEvent);
-		//	}
-		//	return returnEvents;
-		//}
-
 		public EventTotal GetEventTotals(string eventID)
 		{
 			var eventTotal = new EventTotal();
@@ -396,15 +381,6 @@ namespace goheja
 
 			if (errorEmail != null)
 				errorEmail.Visibility = isInvalid ? ViewStates.Visible : ViewStates.Invisible;
-			
-			//InvokeOnMainThread(() =>
-			//{
-			//	if (validEmail != null)
-			//		validEmail.Selected = isInvalid;
-
-			//	if (errorEmail != null)
-			//		errorEmail.Hidden = !isInvalid;
-			//});
 		}
 
 		#endregion
