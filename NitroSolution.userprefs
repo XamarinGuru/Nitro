@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventInstructionActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventCalendarActivity.cs">
     <Files>
       <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="42" Column="10" />
       <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="6" Column="1" />
       <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="234" Column="21" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
@@ -16,7 +17,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "EventCalendarActivity")]
+	[Activity(Label = "EventCalendarActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EventCalendarActivity : BaseActivity
 	{
 		ViewPager calendarPager;
