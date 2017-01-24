@@ -13,7 +13,7 @@ namespace goheja
 
         public override int Count
         {
-            get { return 4; }
+            get { return 3; }
         }
 
         public override Fragment GetItem(int position)
@@ -24,8 +24,8 @@ namespace goheja
 				return new FragmentEvents();
             if (position == 2)
 				return new FragmentProfile();
-			if (position == 3)
-				return new FragmentSerious();
+			//if (position == 3)
+			//	return new FragmentSerious();
 
             TabChanged?.Invoke(position, null);
 

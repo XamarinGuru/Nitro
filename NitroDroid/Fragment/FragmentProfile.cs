@@ -37,7 +37,7 @@ namespace goheja
         {
             base.OnViewCreated(view, savedInstanceState);
 
-			MemberModel.rootMember = rootActivity.GetUserObject();
+			//MemberModel.rootMember = rootActivity.GetUserObject();
 
 			mView = view;
 
@@ -89,7 +89,8 @@ namespace goheja
 
         private void ActionEditProfile(object sender, EventArgs e)
         {
-			rootActivity.SetPage(3);
+			var intent = new Intent(Activity, typeof(EditProfileActivity));
+			StartActivity(intent);
         }
 
 		private void ActionSyncDevice(object sender, EventArgs e)

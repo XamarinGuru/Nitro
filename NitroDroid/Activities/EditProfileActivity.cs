@@ -8,7 +8,6 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
@@ -16,7 +15,8 @@ using PortableLibrary;
 
 namespace goheja
 {
-	public class FragmentSerious : Android.Support.V4.App.Fragment
+	[Activity(Label = "EditProfileActivity")]
+	public class EditProfileActivity : BaseActivity
 	{
 		const int TAG_COLLEPS_PHYSICAL = 101;
 		const int TAG_COLLEPS_GOALS = 102;
@@ -31,11 +31,7 @@ namespace goheja
 		const int TAG_EDIT_RUN = 1006;
 		const int TAG_EDIT_BIKE = 1007;
 
-		View mView;
-
 		private RootMemberModel MemberModel { get; set; }
-
-		SwipeTabActivity rootActivity;
 
 		TextView lblFirstname, lblLastname, lblCountry, lblAddress, lblBib, lblAge, lblGender, lblBirth, lblEmail, lblPhone;
 		EditText txtWeight, txtHeight, txtBMI, txtFatPercentage;
@@ -53,145 +49,135 @@ namespace goheja
 		EditText txtBZone1POWER, txtBZone2POWER, txtBZone3POWER, txtBZone4POWER, txtBZone5POWER;
 		EditText txtBFTPHB, txtBFTPower;
 
-		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		protected override void OnCreate(Bundle savedInstanceState)
 		{
+			base.OnCreate(savedInstanceState);
+
+			SetContentView(Resource.Layout.EditProfileActivity);
+
 			MemberModel = new RootMemberModel();
-			rootActivity = this.Activity as SwipeTabActivity;
-
-			return inflater.Inflate(Resource.Layout.fSerious, container, false);
-		}
-
-		public override void OnViewCreated(View view, Bundle savedInstanceState)
-		{
-			base.OnViewCreated(view, savedInstanceState);
-
-			//MemberModel.rootMember = rootActivity.GetUserObject();
-
-			mView = view;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				rootActivity.ShowLoadingView("Loading data...");
+				ShowLoadingView("Loading data...");
 
-				MemberModel.rootMember = rootActivity.GetUserObject();
+				MemberModel.rootMember = GetUserObject();
 
-				rootActivity.HideLoadingView();
+				HideLoadingView();
 
-				rootActivity.RunOnUiThread(() =>
+				RunOnUiThread(() =>
 				{
-					//SetUIVariablesAndActions();
 					SetInputBinding();
 				});
 			});
 
 			SetUIVariablesAndActions();
 			SetInputValidation();
-			//SetInputBinding();
 		}
 
 		private void SetUIVariablesAndActions()
 		{
 			#region UI Variables
-			lblFirstname = mView.FindViewById<TextView>(Resource.Id.lblFirstname);
-			lblLastname = mView.FindViewById<TextView>(Resource.Id.lblLastname);
-			lblCountry = mView.FindViewById<TextView>(Resource.Id.lblCountry);
-			lblAddress = mView.FindViewById<TextView>(Resource.Id.lblAddress);
-			lblBib = mView.FindViewById<TextView>(Resource.Id.lblBib);
-			lblAge = mView.FindViewById<TextView>(Resource.Id.lblAge);
-			lblGender = mView.FindViewById<TextView>(Resource.Id.lblGender);
-			lblBirth = mView.FindViewById<TextView>(Resource.Id.lblBirth);
-			lblEmail = mView.FindViewById<TextView>(Resource.Id.lblEmail);
-			lblPhone = mView.FindViewById<TextView>(Resource.Id.lblPhone);
+			lblFirstname = FindViewById<TextView>(Resource.Id.lblFirstname);
+			lblLastname = FindViewById<TextView>(Resource.Id.lblLastname);
+			lblCountry = FindViewById<TextView>(Resource.Id.lblCountry);
+			lblAddress = FindViewById<TextView>(Resource.Id.lblAddress);
+			lblBib = FindViewById<TextView>(Resource.Id.lblBib);
+			lblAge = FindViewById<TextView>(Resource.Id.lblAge);
+			lblGender = FindViewById<TextView>(Resource.Id.lblGender);
+			lblBirth = FindViewById<TextView>(Resource.Id.lblBirth);
+			lblEmail = FindViewById<TextView>(Resource.Id.lblEmail);
+			lblPhone = FindViewById<TextView>(Resource.Id.lblPhone);
 
-			txtWeight = mView.FindViewById<EditText>(Resource.Id.txtWeight);
-			txtHeight = mView.FindViewById<EditText>(Resource.Id.txtHeight);
-			txtBMI = mView.FindViewById<EditText>(Resource.Id.txtBMI);
-			txtFatPercentage = mView.FindViewById<EditText>(Resource.Id.txtFatPercentage);
+			txtWeight = FindViewById<EditText>(Resource.Id.txtWeight);
+			txtHeight = FindViewById<EditText>(Resource.Id.txtHeight);
+			txtBMI = FindViewById<EditText>(Resource.Id.txtBMI);
+			txtFatPercentage = FindViewById<EditText>(Resource.Id.txtFatPercentage);
 
-			txtID = mView.FindViewById<EditText>(Resource.Id.txtID);
-			txtLastname = mView.FindViewById<EditText>(Resource.Id.txtLastname);
-			txtCountry = mView.FindViewById<EditText>(Resource.Id.txtCountry);
+			txtID = FindViewById<EditText>(Resource.Id.txtID);
+			txtLastname = FindViewById<EditText>(Resource.Id.txtLastname);
+			txtCountry = FindViewById<EditText>(Resource.Id.txtCountry);
 
-			txtSprint = mView.FindViewById<EditText>(Resource.Id.txtSprint);
-			txtOlympic = mView.FindViewById<EditText>(Resource.Id.txtOlympic);
-			txtHDistance = mView.FindViewById<EditText>(Resource.Id.txtHDistance);
-			txtDistance = mView.FindViewById<EditText>(Resource.Id.txtDistance);
-			txtMarathon = mView.FindViewById<EditText>(Resource.Id.txtMarathon);
-			txtHMarathon = mView.FindViewById<EditText>(Resource.Id.txtHMarathon);
-			txt10KRun = mView.FindViewById<EditText>(Resource.Id.txt10KRun);
+			txtSprint = FindViewById<EditText>(Resource.Id.txtSprint);
+			txtOlympic = FindViewById<EditText>(Resource.Id.txtOlympic);
+			txtHDistance = FindViewById<EditText>(Resource.Id.txtHDistance);
+			txtDistance = FindViewById<EditText>(Resource.Id.txtDistance);
+			txtMarathon = FindViewById<EditText>(Resource.Id.txtMarathon);
+			txtHMarathon = FindViewById<EditText>(Resource.Id.txtHMarathon);
+			txt10KRun = FindViewById<EditText>(Resource.Id.txt10KRun);
 
-			txtRankSwim = mView.FindViewById<EditText>(Resource.Id.txtRankSwim);
-			txtRankRun = mView.FindViewById<EditText>(Resource.Id.txtRankRun);
-			txtRankBike = mView.FindViewById<EditText>(Resource.Id.txtRankBike);
+			txtRankSwim = FindViewById<EditText>(Resource.Id.txtRankSwim);
+			txtRankRun = FindViewById<EditText>(Resource.Id.txtRankRun);
+			txtRankBike = FindViewById<EditText>(Resource.Id.txtRankBike);
 
-			txtSZone1HR = mView.FindViewById<EditText>(Resource.Id.txtSZone1HR);
-			txtSZone2HR = mView.FindViewById<EditText>(Resource.Id.txtSZone2HR);
-			txtSZone3HR = mView.FindViewById<EditText>(Resource.Id.txtSZone3HR);
-			txtSZone4HR = mView.FindViewById<EditText>(Resource.Id.txtSZone4HR);
-			txtSZone5HR = mView.FindViewById<EditText>(Resource.Id.txtSZone5HR);
+			txtSZone1HR = FindViewById<EditText>(Resource.Id.txtSZone1HR);
+			txtSZone2HR = FindViewById<EditText>(Resource.Id.txtSZone2HR);
+			txtSZone3HR = FindViewById<EditText>(Resource.Id.txtSZone3HR);
+			txtSZone4HR = FindViewById<EditText>(Resource.Id.txtSZone4HR);
+			txtSZone5HR = FindViewById<EditText>(Resource.Id.txtSZone5HR);
 
-			txtSZone1PACE = mView.FindViewById<EditText>(Resource.Id.txtSZone1PACE);
-			txtSZone2PACE = mView.FindViewById<EditText>(Resource.Id.txtSZone2PACE);
-			txtSZone3PACE = mView.FindViewById<EditText>(Resource.Id.txtSZone3PACE);
-			txtSZone4PACE = mView.FindViewById<EditText>(Resource.Id.txtSZone4PACE);
-			txtSZone5PACE = mView.FindViewById<EditText>(Resource.Id.txtSZone5PACE);
+			txtSZone1PACE = FindViewById<EditText>(Resource.Id.txtSZone1PACE);
+			txtSZone2PACE = FindViewById<EditText>(Resource.Id.txtSZone2PACE);
+			txtSZone3PACE = FindViewById<EditText>(Resource.Id.txtSZone3PACE);
+			txtSZone4PACE = FindViewById<EditText>(Resource.Id.txtSZone4PACE);
+			txtSZone5PACE = FindViewById<EditText>(Resource.Id.txtSZone5PACE);
 
-			txtSFTPace = mView.FindViewById<EditText>(Resource.Id.txtSFTPace);
-			txtSFTPHB = mView.FindViewById<EditText>(Resource.Id.txtSFTPHB);
+			txtSFTPace = FindViewById<EditText>(Resource.Id.txtSFTPace);
+			txtSFTPHB = FindViewById<EditText>(Resource.Id.txtSFTPHB);
 
-			txtRZone1HR = mView.FindViewById<EditText>(Resource.Id.txtRZone1HR);
-			txtRZone2HR = mView.FindViewById<EditText>(Resource.Id.txtRZone2HR);
-			txtRZone3HR = mView.FindViewById<EditText>(Resource.Id.txtRZone3HR);
-			txtRZone4HR = mView.FindViewById<EditText>(Resource.Id.txtRZone4HR);
-			txtRZone5HR = mView.FindViewById<EditText>(Resource.Id.txtRZone5HR);
+			txtRZone1HR = FindViewById<EditText>(Resource.Id.txtRZone1HR);
+			txtRZone2HR = FindViewById<EditText>(Resource.Id.txtRZone2HR);
+			txtRZone3HR = FindViewById<EditText>(Resource.Id.txtRZone3HR);
+			txtRZone4HR = FindViewById<EditText>(Resource.Id.txtRZone4HR);
+			txtRZone5HR = FindViewById<EditText>(Resource.Id.txtRZone5HR);
 
-			txtRZone1PACE = mView.FindViewById<EditText>(Resource.Id.txtRZone1PACE);
-			txtRZone2PACE = mView.FindViewById<EditText>(Resource.Id.txtRZone2PACE);
-			txtRZone3PACE = mView.FindViewById<EditText>(Resource.Id.txtRZone3PACE);
-			txtRZone4PACE = mView.FindViewById<EditText>(Resource.Id.txtRZone4PACE);
-			txtRZone5PACE = mView.FindViewById<EditText>(Resource.Id.txtRZone5PACE);
+			txtRZone1PACE = FindViewById<EditText>(Resource.Id.txtRZone1PACE);
+			txtRZone2PACE = FindViewById<EditText>(Resource.Id.txtRZone2PACE);
+			txtRZone3PACE = FindViewById<EditText>(Resource.Id.txtRZone3PACE);
+			txtRZone4PACE = FindViewById<EditText>(Resource.Id.txtRZone4PACE);
+			txtRZone5PACE = FindViewById<EditText>(Resource.Id.txtRZone5PACE);
 
-			txtRZone1Power = mView.FindViewById<EditText>(Resource.Id.txtRZone1Power);
-			txtRZone2Power = mView.FindViewById<EditText>(Resource.Id.txtRZone2Power);
-			txtRZone3Power = mView.FindViewById<EditText>(Resource.Id.txtRZone3Power);
-			txtRZone4Power = mView.FindViewById<EditText>(Resource.Id.txtRZone4Power);
-			txtRZone5Power = mView.FindViewById<EditText>(Resource.Id.txtRZone5Power);
+			txtRZone1Power = FindViewById<EditText>(Resource.Id.txtRZone1Power);
+			txtRZone2Power = FindViewById<EditText>(Resource.Id.txtRZone2Power);
+			txtRZone3Power = FindViewById<EditText>(Resource.Id.txtRZone3Power);
+			txtRZone4Power = FindViewById<EditText>(Resource.Id.txtRZone4Power);
+			txtRZone5Power = FindViewById<EditText>(Resource.Id.txtRZone5Power);
 
-			txtRFTPace = mView.FindViewById<EditText>(Resource.Id.txtRFTPace);
-			txtRFTPHB = mView.FindViewById<EditText>(Resource.Id.txtRFTPHB);
-			txtRFTPower = mView.FindViewById<EditText>(Resource.Id.txtRFTPower);
+			txtRFTPace = FindViewById<EditText>(Resource.Id.txtRFTPace);
+			txtRFTPHB = FindViewById<EditText>(Resource.Id.txtRFTPHB);
+			txtRFTPower = FindViewById<EditText>(Resource.Id.txtRFTPower);
 
-			txtBZone1HR = mView.FindViewById<EditText>(Resource.Id.txtBZone1HR);
-			txtBZone2HR = mView.FindViewById<EditText>(Resource.Id.txtBZone2HR);
-			txtBZone3HR = mView.FindViewById<EditText>(Resource.Id.txtBZone3HR);
-			txtBZone4HR = mView.FindViewById<EditText>(Resource.Id.txtBZone4HR);
-			txtBZone5HR = mView.FindViewById<EditText>(Resource.Id.txtBZone5HR);
+			txtBZone1HR = FindViewById<EditText>(Resource.Id.txtBZone1HR);
+			txtBZone2HR = FindViewById<EditText>(Resource.Id.txtBZone2HR);
+			txtBZone3HR = FindViewById<EditText>(Resource.Id.txtBZone3HR);
+			txtBZone4HR = FindViewById<EditText>(Resource.Id.txtBZone4HR);
+			txtBZone5HR = FindViewById<EditText>(Resource.Id.txtBZone5HR);
 
-			txtBZone1POWER = mView.FindViewById<EditText>(Resource.Id.txtBZone1POWER);
-			txtBZone2POWER = mView.FindViewById<EditText>(Resource.Id.txtBZone2POWER);
-			txtBZone3POWER = mView.FindViewById<EditText>(Resource.Id.txtBZone3POWER);
-			txtBZone4POWER = mView.FindViewById<EditText>(Resource.Id.txtBZone4POWER);
-			txtBZone5POWER = mView.FindViewById<EditText>(Resource.Id.txtBZone5POWER);
+			txtBZone1POWER = FindViewById<EditText>(Resource.Id.txtBZone1POWER);
+			txtBZone2POWER = FindViewById<EditText>(Resource.Id.txtBZone2POWER);
+			txtBZone3POWER = FindViewById<EditText>(Resource.Id.txtBZone3POWER);
+			txtBZone4POWER = FindViewById<EditText>(Resource.Id.txtBZone4POWER);
+			txtBZone5POWER = FindViewById<EditText>(Resource.Id.txtBZone5POWER);
 
-			txtBFTPHB = mView.FindViewById<EditText>(Resource.Id.txtBFTPHB);
-			txtBFTPower = mView.FindViewById<EditText>(Resource.Id.txtBFTPower);
+			txtBFTPHB = FindViewById<EditText>(Resource.Id.txtBFTPHB);
+			txtBFTPower = FindViewById<EditText>(Resource.Id.txtBFTPower);
 			#endregion
 
 			#region Actions
-			mView.FindViewById<RelativeLayout>(Resource.Id.collapsePhysical).Click += ActionCollepse;
-			mView.FindViewById<RelativeLayout>(Resource.Id.collapseGoals).Click += ActionCollepse;
-			mView.FindViewById<RelativeLayout>(Resource.Id.collapseBestResults).Click += ActionCollepse;
-			mView.FindViewById<RelativeLayout>(Resource.Id.collapseSelfRanking).Click += ActionCollepse;
+			FindViewById<RelativeLayout>(Resource.Id.collapsePhysical).Click += ActionCollepse;
+			FindViewById<RelativeLayout>(Resource.Id.collapseGoals).Click += ActionCollepse;
+			FindViewById<RelativeLayout>(Resource.Id.collapseBestResults).Click += ActionCollepse;
+			FindViewById<RelativeLayout>(Resource.Id.collapseSelfRanking).Click += ActionCollepse;
 
-			mView.FindViewById<TextView>(Resource.Id.edtPhysical).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtGoals).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtBestResults).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtSeflRanking).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtSwim).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtRun).Click += ActionEdit;
-			mView.FindViewById<TextView>(Resource.Id.edtBike).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtPhysical).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtGoals).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtBestResults).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtSeflRanking).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtSwim).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtRun).Click += ActionEdit;
+			FindViewById<TextView>(Resource.Id.edtBike).Click += ActionEdit;
 
-			mView.FindViewById<Button>(Resource.Id.btnUpdate).Click += ActionUpdate;
+			FindViewById<Button>(Resource.Id.btnUpdate).Click += ActionUpdate;
 			#endregion
 		}
 
@@ -345,10 +331,11 @@ namespace goheja
 		#region update actions
 		void ActionUpdate(object sender, EventArgs e)
 		{
-			SwipeTabActivity rootVC = (SwipeTabActivity)this.Activity;
-			var result = rootActivity.UpdateUserDataJson(MemberModel.rootMember);
-			rootVC.ShowMessageBox(null, "updated successfully.");
-			rootVC.SetPage(2);
+			//ShowLoadingView("Updating user data...");
+			var result = UpdateUserDataJson(MemberModel.rootMember);
+			//HideLoadingView();
+			ShowMessageBox(null, "updated successfully.");
+			//Finish();
 		}
 		#endregion
 
@@ -358,16 +345,16 @@ namespace goheja
 			switch (int.Parse(((RelativeLayout)sender).Tag.ToString()))
 			{
 				case TAG_COLLEPS_PHYSICAL:
-					CollepseAnimation(mView.FindViewById<LinearLayout>(Resource.Id.viewPhysical));
+					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPhysical));
 					break;
 				case TAG_COLLEPS_GOALS:
-					CollepseAnimation(mView.FindViewById<LinearLayout>(Resource.Id.viewGoals));
+					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewGoals));
 					break;
 				case TAG_COLLEPS_BEST_RESULTS:
-					CollepseAnimation(mView.FindViewById<LinearLayout>(Resource.Id.viewBestResults));
+					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewBestResults));
 					break;
 				case TAG_COLLEPS_SELF_RANKING:
-					CollepseAnimation(mView.FindViewById<LinearLayout>(Resource.Id.viewSelfRankings));
+					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewSelfRankings));
 					break;
 				default:
 					break;
@@ -433,9 +420,9 @@ namespace goheja
 					txtID.Enabled = !txtID.Enabled;
 					txtLastname.Enabled = !txtLastname.Enabled;
 					txtCountry.Enabled = !txtCountry.Enabled;
-					txtID.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtLastname.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtCountry.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtID.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtLastname.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtCountry.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_BEST_RESULTS:
 					txtSprint.Enabled = !txtSprint.Enabled;
@@ -445,21 +432,21 @@ namespace goheja
 					txtMarathon.Enabled = !txtMarathon.Enabled;
 					txtHMarathon.Enabled = !txtHMarathon.Enabled;
 					txt10KRun.Enabled = !txt10KRun.Enabled;
-					txtSprint.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtOlympic.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtHDistance.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtDistance.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtMarathon.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtHMarathon.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txt10KRun.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtSprint.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtOlympic.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtHDistance.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtDistance.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtMarathon.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtHMarathon.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txt10KRun.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_SELF_RANKING:
 					txtRankSwim.Enabled = !txtRankSwim.Enabled;
 					txtRankRun.Enabled = !txtRankRun.Enabled;
 					txtRankBike.Enabled = !txtRankBike.Enabled;
-					txtRankSwim.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRankRun.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRankBike.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtRankSwim.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRankRun.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRankBike.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_SWIM:
 					txtSZone1HR.Enabled = !txtSZone1HR.Enabled;
@@ -474,18 +461,18 @@ namespace goheja
 					txtSZone5PACE.Enabled = !txtSZone5PACE.Enabled;
 					txtSFTPace.Enabled = !txtSFTPace.Enabled;
 					txtSFTPHB.Enabled = !txtSFTPHB.Enabled;
-					txtSZone1HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone2HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone3HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone4HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone5HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone1PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone2PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone3PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone4PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSZone5PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSFTPace.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtSFTPHB.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtSZone1HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone2HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone3HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone4HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone5HR.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone1PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone2PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone3PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone4PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSZone5PACE.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSFTPace.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtSFTPHB.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_RUN:
 					txtRZone1HR.Enabled = !txtRZone1HR.Enabled;
@@ -506,24 +493,24 @@ namespace goheja
 					txtRFTPace.Enabled = !txtRFTPace.Enabled;
 					txtRFTPHB.Enabled = !txtRFTPHB.Enabled;
 					txtRFTPower.Enabled = !txtRFTPower.Enabled;
-					txtRZone1HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone2HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone3HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone4HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone5HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone1PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone2PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone3PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone4PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone5PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone1Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone2Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone3Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone4Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRZone5Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRFTPace.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRFTPHB.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtRFTPower.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtRZone1HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone2HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone3HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone4HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone5HR.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone1PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone2PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone3PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone4PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone5PACE.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone1Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone2Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone3Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone4Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRZone5Power.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRFTPace.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRFTPHB.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtRFTPower.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_BIKE:
 					txtBZone1HR.Enabled = !txtBZone1HR.Enabled;
@@ -538,18 +525,18 @@ namespace goheja
 					txtBZone5POWER.Enabled = !txtBZone5POWER.Enabled;
 					txtBFTPower.Enabled = !txtBFTPower.Enabled;
 					txtBFTPHB.Enabled = !txtBFTPHB.Enabled;
-					txtBZone1HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone2HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone3HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone4HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone5HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone1POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone2POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone3POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone4POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBZone5POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBFTPower.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
-					txtBFTPHB.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);;
+					txtBZone1HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone2HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone3HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone4HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone5HR.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone1POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone2POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone3POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone4POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBZone5POWER.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBFTPower.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtBFTPHB.SetBackgroundColor(txtBZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				default:
 					break;
@@ -566,13 +553,13 @@ namespace goheja
 				dcount = 2;
 			else
 				dcount = 1;
-			
+
 			textView.Touch += (object sender, View.TouchEventArgs e) =>
 			{
 				if (e.Event.Action == MotionEventActions.Down)
 				{
 					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, dcount, format);
-					myDiag.Show(this.Activity.FragmentManager, "Diag");
+					myDiag.Show(FragmentManager, "Diag");
 				}
 			};
 		}

@@ -911,7 +911,7 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitStart"
-                                        android:src="@drawable/icon_01" />
+                                        android:src="@drawable/icon_swim" />
                                     <EditText
                                         android:text="66"
                                         android:id="@+id/txtRankSwim"
@@ -939,7 +939,7 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_01" />
+                                        android:src="@drawable/icon_run" />
                                     <EditText
                                         android:text="66"
                                         android:id="@+id/txtRankRun"
@@ -968,7 +968,7 @@
                                         android:layout_height="wrap_content"
                                         android:id="@+id/imageView1"
                                         android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_01" />
+                                        android:src="@drawable/icon_bike" />
                                     <EditText
                                         android:text="66"
                                         android:id="@+id/txtRankBike"
@@ -984,6 +984,14 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </RelativeLayout>
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/relativeLayout2"
+                            android:background="#ffd3d3d3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp" />
                         <RelativeLayout
                             android:minWidth="25px"
                             android:minHeight="25px"
@@ -1008,7 +1016,7 @@
                                     <ImageView
                                         android:id="@+id/imgSwim"
                                         android:scaleType="fitStart"
-                                        android:src="@drawable/icon_01"
+                                        android:src="@drawable/icon_swim"
                                         android:layout_width="25dp"
                                         android:layout_height="25dp" />
                                     <TextView
@@ -1672,7 +1680,7 @@
                                     <ImageView
                                         android:id="@+id/imgSwim"
                                         android:scaleType="fitStart"
-                                        android:src="@drawable/icon_01"
+                                        android:src="@drawable/icon_run"
                                         android:layout_width="25dp"
                                         android:layout_height="25dp" />
                                     <TextView
@@ -2489,7 +2497,7 @@
                                     <ImageView
                                         android:id="@+id/imgSwim"
                                         android:scaleType="fitStart"
-                                        android:src="@drawable/icon_01"
+                                        android:src="@drawable/icon_bike"
                                         android:layout_width="25dp"
                                         android:layout_height="25dp" />
                                     <TextView

@@ -1,10 +1,9 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventCalendarActivity.cs">
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="42" Column="10" />
-      <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="6" Column="1" />
-      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="234" Column="21" />
+      <File FileName="NitroiOS/Controllers/AdjustTrainningController.cs" Line="72" Column="7" />
       <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="1" Column="1" />
+      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -13,6 +12,7 @@
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="507" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/EventCalendarViewController.cs" line="102" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

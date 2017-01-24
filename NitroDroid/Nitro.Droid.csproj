@@ -117,7 +117,6 @@
     <Compile Include="Utility\AppSettings.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="Fragment\FragmentSerious.cs" />
     <Compile Include="Fragment\TimeFormatDialog.cs" />
     <Compile Include="Activities\InitActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
@@ -131,6 +130,7 @@
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Activities\EditProfileActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -217,7 +217,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_back.png" />
     <AndroidResource Include="Resources\drawable\bg_new.png" />
-    <AndroidResource Include="Resources\layout\fSerious.axml" />
+    <AndroidResource Include="Resources\layout\EditProfileActivity.axml" />
     <AndroidResource Include="Resources\layout\InitActivity.axml" />
     <AndroidResource Include="Resources\drawable\icon_logo.png" />
     <AndroidResource Include="Resources\drawable\icon_email.png" />

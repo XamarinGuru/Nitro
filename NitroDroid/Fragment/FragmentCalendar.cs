@@ -34,7 +34,21 @@ namespace goheja
 			mView = view;
 
 			SetUIVariablesAndActions();
-			InitGaugeData();
+
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				rootActivity.ShowLoadingView("Loading data...");
+
+				var gaugeData = rootActivity.GetGauge();
+
+				rootActivity.HideLoadingView();
+
+				rootActivity.RunOnUiThread(() =>
+				{
+					InitGaugeData(gaugeData);
+				});
+			});
+			//InitGaugeData();
 		}
 		private void SetUIVariablesAndActions()
 		{
@@ -89,9 +103,9 @@ namespace goheja
 		}
 
 
-		void InitGaugeData()
+		void InitGaugeData(Gauge gaugeData)
 		{
-			var gaugeData = rootActivity.GetGauge();
+			//var gaugeData = rootActivity.GetGauge();
 
 			lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
 			lblRunDuration.Text = gaugeData.Run[0].value + "%";
