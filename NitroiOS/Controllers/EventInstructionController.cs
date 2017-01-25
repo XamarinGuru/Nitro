@@ -9,6 +9,8 @@ namespace location2
     public partial class EventInstructionController : BaseViewController
     {
 		public NitroEvent selectedEvent;
+		private EventTotal eventTotal;
+		string eventID;
         public EventInstructionController() : base()
 		{
 		}
@@ -27,6 +29,9 @@ namespace location2
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
+			eventID = selectedEvent._id;
+
+			InitUISettings();
 			InitBindingEventData();
 		}
 
@@ -38,17 +43,34 @@ namespace location2
 			{
 				ShowLoadingView("Retreving Event Details...");
 
-				var eventTotal = GetEventTotals(selectedEvent._id);
+				selectedEvent = GetEventDetail(selectedEvent._id);
+				selectedEvent._id = eventID;
+				eventTotal = GetEventTotals(selectedEvent._id);
 				var eventComment = GetComments(selectedEvent._id);
 
 				InvokeOnMainThread(() =>
 				{
-					InitBindingEventTotal(eventTotal);
+					InitBindingEventData();
+					InitBindingEventTotal();
 					InitBindingEventComments(eventComment);
 				});
 
 				HideLoadingView();
 			});
+		}
+
+		void InitUISettings()
+		{
+			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
+			{
+				heightInstructions.Constant = 0;
+				heightAdjust.Constant = 0;
+			}
+			else
+			{
+				heightInstructions.Constant = 200;
+				heightAdjust.Constant = 100;
+			}
 		}
 
 		void InitBindingEventData()
@@ -57,6 +79,25 @@ namespace location2
 			lblTitle.Text = selectedEvent.title;
 			lblStartDate.Text = startDateFormats[11];
 			lblData.Text = selectedEvent.eventData;
+
+			var strDistance = selectedEvent.distance;
+			float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
+			var b = Math.Truncate(floatDistance * 100);
+			var c = b / 100;
+			var formattedDistance = c.ToString("F2");
+
+			lblPDistance.Text = formattedDistance + " KM";
+
+			var durMin = selectedEvent.durMin == "" ? 0 : int.Parse(selectedEvent.durMin);
+			var durHrs = selectedEvent.durHrs == "" ? 0 : int.Parse(selectedEvent.durHrs);
+			var pHrs = durMin / 60;
+			durHrs = durHrs + pHrs;
+			durMin = durMin % 60;
+			var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+			lblPDuration.Text = strDuration;
+			lblPLoad.Text = selectedEvent.tss;
+			lblPHB.Text = selectedEvent.hb;
 
 			switch (selectedEvent.type)
 			{
@@ -75,7 +116,7 @@ namespace location2
 			}
 		}
 
-		void InitBindingEventTotal(EventTotal eventTotal)
+		void InitBindingEventTotal()
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
@@ -116,6 +157,7 @@ namespace location2
 		{
 			AdjustTrainningController atVC = Storyboard.InstantiateViewController("AdjustTrainningController") as AdjustTrainningController;
 			atVC.selectedEvent = selectedEvent;
+			atVC.eventTotal = eventTotal;
 
 			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 			myDelegate.baseVC.PresentModalViewController(atVC, true);

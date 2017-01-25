@@ -243,6 +243,12 @@
   <wsdl:message name="IService1_getProgramsJsonStringId_OutputMessage">
     <wsdl:part name="parameters" element="tns:getProgramsJsonStringIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getEventMob_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEventMob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEventMob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEventMobResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_updatePractice_InputMessage">
     <wsdl:part name="parameters" element="tns:updatePractice" />
   </wsdl:message>
@@ -855,6 +861,10 @@
     <wsdl:operation name="getProgramsJsonStringId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProgramsJsonStringId" message="tns:IService1_getProgramsJsonStringId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProgramsJsonStringIdResponse" message="tns:IService1_getProgramsJsonStringId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventMob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventMob" message="tns:IService1_getEventMob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventMobResponse" message="tns:IService1_getEventMob_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="updatePractice">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updatePractice" message="tns:IService1_updatePractice_InputMessage" />
@@ -1507,6 +1517,15 @@
     </wsdl:operation>
     <wsdl:operation name="getProgramsJsonStringId">
       <soap:operation soapAction="http://tempuri.org/IService1/getProgramsJsonStringId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventMob">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEventMob" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

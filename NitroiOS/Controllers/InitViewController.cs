@@ -34,16 +34,16 @@ namespace location2
 
 				userID = GetUserID();
 
-				HideLoadingView();
-
-				if (userID != "0")
+				InvokeOnMainThread(() =>
 				{
-					this.InvokeOnMainThread(delegate
+					HideLoadingView();
+
+					if (userID != "0")
 					{
 						MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
 						this.PresentViewController(mainVC, false, null);
-					});
-				}
+					}
+				});
 			});
 		}
 

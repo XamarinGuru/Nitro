@@ -20,7 +20,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightAdjust { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightCommentContent { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightInstructions { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -60,6 +68,22 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPDuration { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPHB { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPLoad { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblStartDate { get; set; }
 
         [Outlet]
@@ -93,9 +117,19 @@ namespace location2
                 contentComment = null;
             }
 
+            if (heightAdjust != null) {
+                heightAdjust.Dispose ();
+                heightAdjust = null;
+            }
+
             if (heightCommentContent != null) {
                 heightCommentContent.Dispose ();
                 heightCommentContent = null;
+            }
+
+            if (heightInstructions != null) {
+                heightInstructions.Dispose ();
+                heightInstructions = null;
             }
 
             if (imgType != null) {
@@ -141,6 +175,26 @@ namespace location2
             if (lblLoad != null) {
                 lblLoad.Dispose ();
                 lblLoad = null;
+            }
+
+            if (lblPDistance != null) {
+                lblPDistance.Dispose ();
+                lblPDistance = null;
+            }
+
+            if (lblPDuration != null) {
+                lblPDuration.Dispose ();
+                lblPDuration = null;
+            }
+
+            if (lblPHB != null) {
+                lblPHB.Dispose ();
+                lblPHB = null;
+            }
+
+            if (lblPLoad != null) {
+                lblPLoad.Dispose ();
+                lblPLoad = null;
             }
 
             if (lblStartDate != null) {

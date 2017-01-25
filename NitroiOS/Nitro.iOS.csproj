@@ -214,9 +214,6 @@
     <Compile Include="ViewModel\NitroEventCell.designer.cs">
       <DependentUpon>NitroEventCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\EventInstructionController.cs" />
     <Compile Include="Controllers\EventInstructionController.designer.cs">
       <DependentUpon>EventInstructionController.cs</DependentUpon>
@@ -232,6 +229,9 @@
     <Compile Include="ViewModel\CommentView.cs" />
     <Compile Include="ViewModel\CommentView.designer.cs">
       <DependentUpon>CommentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -337,6 +337,8 @@
     <BundleResource Include="Resources\icon_down.png" />
     <BundleResource Include="Resources\icon_delete.png" />
     <BundleResource Include="Resources\icon_whistle.png" />
+    <BundleResource Include="Resources\icon_group_report.png" />
+    <BundleResource Include="Resources\icon_workout_report.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

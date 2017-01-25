@@ -16,7 +16,7 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISwitch checkAttended { get; set; }
+        UIKit.UISwitch attended { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,6 +32,18 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISlider seekDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISlider seekTime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISlider seekTSS { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextView txtComment { get; set; }
 
         [Action ("ActionAdjustTrainning:")]
@@ -44,9 +56,9 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
-            if (checkAttended != null) {
-                checkAttended.Dispose ();
-                checkAttended = null;
+            if (attended != null) {
+                attended.Dispose ();
+                attended = null;
             }
 
             if (lblDistance != null) {
@@ -62,6 +74,21 @@ namespace location2
             if (lblTSS != null) {
                 lblTSS.Dispose ();
                 lblTSS = null;
+            }
+
+            if (seekDistance != null) {
+                seekDistance.Dispose ();
+                seekDistance = null;
+            }
+
+            if (seekTime != null) {
+                seekTime.Dispose ();
+                seekTime = null;
+            }
+
+            if (seekTSS != null) {
+                seekTSS.Dispose ();
+                seekTSS = null;
             }
 
             if (txtComment != null) {

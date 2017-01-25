@@ -31,6 +31,11 @@ namespace location2
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
+			var rightButton = new UIButton(new CGRect(0, 0, 80, 20));
+			rightButton.SetTitle("Reload", UIControlState.Normal);
+			rightButton.TouchUpInside += (sender, e) => ReloadEvents();
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
+
 			SetCalendarView();
 		}
 
@@ -39,6 +44,33 @@ namespace location2
 			base.ViewWillAppear(animated);
 
 			_calendar.ReloadData();
+		}
+
+		void ReloadEvents()
+		{
+			_events = new List<NitroEvent>();
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				ShowLoadingView("Retreving Nitro Events...");
+
+				var pastEvents = GetPastEvents();
+				var todayEvents = GetTodayEvents();
+				var futureEvents = GetFutureEvents();
+
+				_events.AddRange(pastEvents);
+				_events.AddRange(todayEvents);
+				_events.AddRange(futureEvents);
+
+				InvokeOnMainThread(() =>
+				{
+					AddEventsToCustomCalendar();
+					FilterEventsByDate(DateTime.Now);
+
+					_calendar.ReloadData();
+
+					HideLoadingView();
+				});
+			});
 		}
 
 		void SetCalendarView()
@@ -71,23 +103,7 @@ namespace location2
 			viewDate.Add(menuView);
 			viewCalendar.Add(contentView);
 
-			//System.Threading.ThreadPool.QueueUserWorkItem(delegate
-			//{
-				ShowLoadingView("Retreving Nitro Events...");
-
-				var pastEvents = GetPastEvents();
-				var todayEvents = GetTodayEvents();
-				var futureEvents = GetFutureEvents();
-
-				_events.AddRange(pastEvents);
-				_events.AddRange(todayEvents);
-				_events.AddRange(futureEvents);
-
-				AddEventsToCustomCalendar();
-				FilterEventsByDate(DateTime.Now);
-
-				HideLoadingView();
-			//});
+			ReloadEvents();
 		}
 
 		void AddEventsToCustomCalendar()

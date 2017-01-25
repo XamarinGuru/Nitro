@@ -9,6 +9,7 @@ namespace location2
     public partial class AdjustTrainningController : BaseViewController
     {
 		public NitroEvent selectedEvent;
+		public EventTotal eventTotal;
 
         public AdjustTrainningController() : base()
 		{
@@ -38,6 +39,7 @@ namespace location2
 			});
 
 			InitUISettings();
+			InitBindingEventTotal();
 		}
 
 		void InitUISettings()
@@ -45,6 +47,23 @@ namespace location2
 			//lblTime = FindViewById<TextView>(Resource.Id.lblTime);
 			//lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
 			//lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
+		}
+
+		void InitBindingEventTotal()
+		{
+			if (selectedEvent == null || eventTotal.totals == null) return;
+
+			var distance = GetFormatedDurationAsMin(eventTotal.totals[2].value);
+
+			lblTime.Text = distance.ToString();
+			lblDistance.Text = eventTotal.totals[1].value;
+			lblTSS.Text = eventTotal.totals[7].value;
+
+			seekTime.Value = distance;
+			seekDistance.Value = int.Parse(eventTotal.totals[1].value);
+			seekTSS.Value = int.Parse(eventTotal.totals[7].value);
+
+			attended.On = selectedEvent.attended == "1" ? true : false;
 		}
 
 		partial void ActionDataChanged(UISlider sender)
@@ -78,7 +97,7 @@ namespace location2
 				InvokeOnMainThread(() =>
 				{
 					HideLoadingView();
-					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, checkAttended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
+					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
 					this.DismissModalViewController(true);
 				});
 			});

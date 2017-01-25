@@ -20,6 +20,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblEventTime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblTitle { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -27,6 +31,11 @@ namespace location2
             if (imgType != null) {
                 imgType.Dispose ();
                 imgType = null;
+            }
+
+            if (lblEventTime != null) {
+                lblEventTime.Dispose ();
+                lblEventTime = null;
             }
 
             if (lblTitle != null) {

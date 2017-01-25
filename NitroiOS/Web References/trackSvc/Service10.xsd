@@ -630,6 +630,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getEventMob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEventMobResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getEventMobResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="updatePractice">
     <xs:complexType>
       <xs:sequence>
@@ -667,9 +681,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="programId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="programDate" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ownerId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isGroup" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -872,7 +887,8 @@
   <xs:element name="sessionUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="usr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="psw" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

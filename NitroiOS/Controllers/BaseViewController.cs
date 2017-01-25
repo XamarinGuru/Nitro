@@ -188,7 +188,7 @@ namespace location2
 			{
 				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
-				return CastNitroEvent(eventsData);
+				return CastNitroEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -203,7 +203,7 @@ namespace location2
 			{
 				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
-				return CastNitroEvent(eventsData);
+				return CastNitroEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -218,7 +218,7 @@ namespace location2
 			{
 				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
-				return CastNitroEvent(eventsData);
+				return CastNitroEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -227,7 +227,22 @@ namespace location2
 			}
 		}
 
-		public List<NitroEvent> CastNitroEvent(JArray events)
+		public NitroEvent GetEventDetail(string eventID)
+		{
+			try
+			{
+				var strEventDetail = mTrackSvc.getEventMob(eventID);
+				var eventsData = JArray.Parse(FormatJsonType(strEventDetail.ToString()));
+				return CastNitroEvents(eventsData)[0];
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return null;
+			}
+		}
+
+		public List<NitroEvent> CastNitroEvents(JArray events)
 		{
 			
 			var returnEvents = new List<NitroEvent>();
@@ -300,6 +315,18 @@ namespace location2
 				ShowMessageBox(null, ex.Message);
 				return;
 			}
+		}
+
+		public int GetFormatedDurationAsMin(string strTime)
+		{
+			if (strTime == "") return 0;
+
+			var arrTimes = strTime.Split(new char[] { ':' });
+
+			var hrs = int.Parse(arrTimes[0]);
+			var min = int.Parse(arrTimes[1]);
+
+			return hrs * 60 + min;
 		}
 
 		public bool ValidateUserNickName(string nickName)
