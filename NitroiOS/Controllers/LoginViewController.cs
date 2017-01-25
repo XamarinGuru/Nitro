@@ -16,6 +16,8 @@ namespace location2
 
 		public override void ViewDidLoad()
 		{
+			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+			View.AddGestureRecognizer(g);
 		}
 
 		async partial void ActionLogin(UIButton sender)

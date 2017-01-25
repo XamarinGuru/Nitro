@@ -28,6 +28,9 @@ namespace location2
 			leftButton.TouchUpInside += (sender, e) => this.DismissModalViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
+			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+			View.AddGestureRecognizer(g);
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Loading data...");

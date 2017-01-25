@@ -35,15 +35,17 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
-			//ShowLoadingView("Getting User Data...");
+			ShowLoadingView("Getting User Data...");
 
-			//await Task.Run(() =>
-			//{
-			//	MemberModel.rootMember = GetUserObject();
-			//	HideLoadingView();
-			//});
+			await Task.Run(() =>
+			{
+				MemberModel.rootMember = GetUserObject();
 
-			//SetInputBinding();
+				InvokeOnMainThread(() => { SetInputBinding(); });
+
+				HideLoadingView();
+			});
+
 		}
 
 		private void SetInputBinding()
@@ -77,7 +79,10 @@ namespace location2
 
 		partial void ActionEditProfile(UIButton sender)
 		{
-			rootVC.SetCurrentPage(3);
+			//rootVC.SetCurrentPage(3);
+
+			SeriousViewController eventVC = Storyboard.InstantiateViewController("SeriousViewController") as SeriousViewController;
+			NavigationController.PushViewController(eventVC, true);
 		}
 
 		partial void ActionSyncDevice(UIButton sender)

@@ -5,6 +5,8 @@ using EventKit;
 using GalaSoft.MvvmLight.Helpers;
 using System.Collections.Generic;
 using PortableLibrary;
+using System.Threading.Tasks;
+using CoreGraphics;
 
 namespace location2
 {
@@ -26,7 +28,7 @@ namespace location2
 		//private RootMemberModel MemberModel { get; set; }
 		public SeriousViewController(IntPtr handle) : base(handle)
         {
-			//MemberModel = new RootMemberModel();
+			MemberModel = new RootMemberModel();
 		}
 
 		public override void ViewDidLoad()
@@ -35,17 +37,28 @@ namespace location2
 
 			var tap = new UITapGestureRecognizer(() => { View.EndEditing(true); });
 			View.AddGestureRecognizer(tap);
+
+			var leftButton = new UIButton(new CGRect(0, 0, 20, 20));
+			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
+			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
+			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 		}
 
-		public override void ViewWillAppear(bool animated)
+		async public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 
-			//MemberModel.rootMember = GetUserObject();
+			ShowLoadingView("Getting User Data...");
+
+			await Task.Run(() =>
+			{
+				MemberModel.rootMember = GetUserObject();
+				InvokeOnMainThread(() => { SetInputBinding(); });
+				HideLoadingView();
+			});
 
 			SetInputEditingChanged(this.View);
 			SetInputValidation();
-			SetInputBinding();
 		}
 
 		private void SetInputEditingChanged(UIView view)

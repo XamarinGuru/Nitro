@@ -14,7 +14,8 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
-			calendarWebView.BackgroundColor = UIColor.Black;
+			calendarWebView.Opaque = false;
+			calendarWebView.BackgroundColor = UIColor.Clear;
 			var url = string.Format(Constants.URL_GAUGE, AppSettings.UserID);
 			calendarWebView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 
