@@ -456,8 +456,8 @@ namespace location2
 		partial void ActionUpdate(UIButton sender)
 		{
 			var result = UpdateUserDataJson(MemberModel.rootMember);
-			ShowMessageBox(null, "updated successfully");
-			rootVC.SetCurrentPage(2);
+			ShowMessageBox(null, result);
+			NavigationController.PopViewController(true);
 		}
 		#endregion
 	}

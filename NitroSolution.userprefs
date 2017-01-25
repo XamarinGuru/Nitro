@@ -1,19 +1,19 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/SeriousViewController.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="NitroiOS/Controllers/ProfileViewController.cs" Line="84" Column="122" NotebookId="1" />
       <File FileName="NitroiOS/Controllers/MainPageViewController.cs" Line="63" Column="15" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="52" Column="59" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="32" Column="71" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="41" Column="40" NotebookId="1" />
+      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="46" Column="62" NotebookId="1" />
+      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="14" Column="24" NotebookId="1" />
+      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="123" Column="1" NotebookId="1" />
     </Files>
     <FloatingWindows>
-      <FloatingWindow WindowId="1" X="30" Y="48" Width="830" Height="710">
+      <FloatingWindow WindowId="1" X="867" Y="179" Width="830" Height="710">
         <Files>
           <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="47" Column="29" />
           <File FileName="NitroDroid/Adapter/NitroEventAdapter.cs" Line="51" Column="83" />
           <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="46" Column="6" />
-          <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="375" Column="4" />
+          <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="157" Column="17" />
           <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="65" Column="35" />
         </Files>
       </FloatingWindow>
@@ -33,9 +33,12 @@
             </Node>
             <Node name="Nitro.iOS" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="SeriousViewController.cs" selected="True" />
+                <Node name="EventCalendarViewController.cs" selected="True" />
               </Node>
               <Node name="ViewModel" expanded="True" />
+            </Node>
+            <Node name="PortableLibrary" expanded="True">
+              <Node name="Model" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -48,7 +51,6 @@
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="507" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/ProfileViewController.cs" line="82" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

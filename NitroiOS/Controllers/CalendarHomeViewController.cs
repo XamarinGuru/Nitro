@@ -33,17 +33,17 @@ namespace location2
 		{
 			var gaugeData = GetGauge();
 
-			lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
-			lblRunDuration.Text = gaugeData.Run[0].value + "%";
-			lblSwimDuration.Text = gaugeData.Swim[0].value + "%";
+			lblCycleDuration.Text = FormatNumber(gaugeData.Bike[0].value) + "%";
+			lblRunDuration.Text = FormatNumber(gaugeData.Run[0].value) + "%";
+			lblSwimDuration.Text = FormatNumber(gaugeData.Swim[0].value) + "%";
 
-			lblCycleDistance.Text = gaugeData.Bike[1].value + "%";
-			lblRunDistance.Text = gaugeData.Bike[1].value + "%";
-			lblSwimDistance.Text = gaugeData.Bike[1].value + "%";
+			lblCycleDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblRunDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblSwimDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
 
-			lblCycleStress.Text = gaugeData.Bike[2].value + "%";
-			lblRunStress.Text = gaugeData.Bike[2].value + "%";
-			lblSwimStress.Text = gaugeData.Bike[2].value + "%";
+			lblCycleStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblRunStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblSwimStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
 		}
 
 		partial void ActionViewCalendar(UIButton sender)

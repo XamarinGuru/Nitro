@@ -31,10 +31,18 @@ namespace location2
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
-			var rightButton = new UIButton(new CGRect(0, 0, 80, 20));
+			var rightButton = new UIButton(new CGRect(0, 0, 70, 20));
 			rightButton.SetTitle("Reload", UIControlState.Normal);
 			rightButton.TouchUpInside += (sender, e) => ReloadEvents();
-			NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
+			//NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
+
+			var rightButton1 = new UIButton(new CGRect(100, 0, 70, 20));
+			rightButton1.SetTitle("Today", UIControlState.Normal);
+			rightButton1.TouchUpInside += (sender, e) => _calendar.CurrentDate = (NSDate)DateTime.Now;
+
+			UIBarButtonItem[] rightButtons = { new UIBarButtonItem(rightButton), new UIBarButtonItem(rightButton1) };
+
+			NavigationItem.RightBarButtonItems = rightButtons;
 
 			SetCalendarView();
 		}

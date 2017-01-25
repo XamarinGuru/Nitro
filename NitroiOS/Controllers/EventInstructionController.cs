@@ -86,7 +86,7 @@ namespace location2
 			var c = b / 100;
 			var formattedDistance = c.ToString("F2");
 
-			lblPDistance.Text = formattedDistance + " KM";
+			lblPDistance.Text = FormatNumber(formattedDistance) + " KM";
 
 			var durMin = selectedEvent.durMin == "" ? 0 : int.Parse(selectedEvent.durMin);
 			var durHrs = selectedEvent.durHrs == "" ? 0 : int.Parse(selectedEvent.durHrs);
@@ -95,9 +95,9 @@ namespace location2
 			durMin = durMin % 60;
 			var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-			lblPDuration.Text = strDuration;
-			lblPLoad.Text = selectedEvent.tss;
-			lblPHB.Text = selectedEvent.hb;
+			lblPDuration.Text = FormatNumber(strDuration);
+			lblPLoad.Text = FormatNumber(selectedEvent.tss);
+			lblPHB.Text = FormatNumber(selectedEvent.hb);
 
 			switch (selectedEvent.type)
 			{
@@ -120,15 +120,15 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblAvgSpeed.Text = eventTotal.totals[0].value;
-			lblTotalDistance.Text = eventTotal.totals[1].value;
-			lblElapsedTime.Text = eventTotal.totals[2].value;
-			lblTotalAcent.Text = eventTotal.totals[3].value;
-			lblAvgHR.Text = eventTotal.totals[4].value;
-			lblTotalCalories.Text = eventTotal.totals[5].value;
-			lblAvgPower.Text = eventTotal.totals[6].value;
-			lblLoad.Text = eventTotal.totals[7].value;
-			lblLeveledPower.Text = eventTotal.totals[8].value;
+			lblAvgSpeed.Text = FormatNumber(eventTotal.totals[0].value);
+			lblTotalDistance.Text = FormatNumber(eventTotal.totals[1].value);
+			lblElapsedTime.Text = FormatNumber(eventTotal.totals[2].value);
+			lblTotalAcent.Text = FormatNumber(eventTotal.totals[3].value);
+			lblAvgHR.Text = FormatNumber(eventTotal.totals[4].value);
+			lblTotalCalories.Text = FormatNumber(eventTotal.totals[5].value);
+			lblAvgPower.Text = FormatNumber(eventTotal.totals[6].value);
+			lblLoad.Text = FormatNumber(eventTotal.totals[7].value);
+			lblLeveledPower.Text = FormatNumber(eventTotal.totals[8].value);
 		}
 
 		void InitBindingEventComments(Comment comments)

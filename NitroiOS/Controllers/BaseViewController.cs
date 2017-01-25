@@ -358,6 +358,19 @@ namespace location2
 
 			return returnString;
 		}
+
+		public string FormatNumber(string number)
+		{
+			try
+			{
+				var fNumber = float.Parse(number);
+				return fNumber.ToString("F2");
+			}
+			catch
+			{
+				return number;
+			}
+		}
 		#endregion
 
 		public NSDate ConvertDateTimeToNSDate(DateTime date)

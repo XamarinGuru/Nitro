@@ -610,7 +610,7 @@ namespace PortableLibrary
 		public RootMember()
 		{
 			profile = new Profile();
-			updatedBy = "";
+			//updatedBy = "";
 			//lastUpdateDate = new DateTime();
 			//createdDate = new DateTime();
 			auth = "";
@@ -620,7 +620,7 @@ namespace PortableLibrary
 			sportCompKey = "";
 		}
 		public Profile profile { get; set; }
-		public string updatedBy { get; set; }
+		//public string updatedBy { get; set; }
 		//public DateTime lastUpdateDate { get; set; }
 		//public DateTime createdDate { get; set; }
 		public string auth { get; set; }
