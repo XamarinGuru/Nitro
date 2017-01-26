@@ -22,6 +22,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAddComment (UIKit.UIButton sender);
 
+        [Action ("ActionClose:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionClose (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (txtComment != null) {

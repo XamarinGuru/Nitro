@@ -1,23 +1,13 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="NitroiOS/Controllers/ProfileViewController.cs" Line="84" Column="122" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/MainPageViewController.cs" Line="63" Column="15" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="46" Column="62" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="14" Column="24" NotebookId="1" />
-      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="123" Column="1" NotebookId="1" />
+      <File FileName="NitroiOS/Controllers/SignUpViewController.cs" Line="31" Column="110" />
+      <File FileName="NitroiOS/Controllers/LoginViewController.cs" Line="9" Column="53" />
+      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="18" Column="3" />
+      <File FileName="NitroiOS/Controllers/AdjustTrainningController.cs" Line="77" Column="4" />
+      <File FileName="NitroiOS/Controllers/AddCommentViewController.cs" Line="70" Column="37" />
+      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="163" Column="48" />
     </Files>
-    <FloatingWindows>
-      <FloatingWindow WindowId="1" X="867" Y="179" Width="830" Height="710">
-        <Files>
-          <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="47" Column="29" />
-          <File FileName="NitroDroid/Adapter/NitroEventAdapter.cs" Line="51" Column="83" />
-          <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="46" Column="6" />
-          <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="157" Column="17" />
-          <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="65" Column="35" />
-        </Files>
-      </FloatingWindow>
-    </FloatingWindows>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -27,15 +17,16 @@
               <Node name="Adapter" expanded="True" />
               <Node name="Fragment" expanded="True" />
               <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
+                <Node name="layout" expanded="True">
+                  <Node name="EventInstructionActivity.axml" selected="True" />
+                </Node>
               </Node>
+              <Node name="Services" expanded="True" />
               <Node name="Utility" expanded="True" />
             </Node>
             <Node name="Nitro.iOS" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="EventCalendarViewController.cs" selected="True" />
-              </Node>
-              <Node name="ViewModel" expanded="True" />
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="PortableLibrary" expanded="True">
               <Node name="Model" expanded="True" />
@@ -55,6 +46,6 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9BA789B0-5F3C-4963-B9F8-98D6E6945039" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
 </Properties>

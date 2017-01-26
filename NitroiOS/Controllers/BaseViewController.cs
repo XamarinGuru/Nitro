@@ -13,6 +13,9 @@ namespace location2
 {
 	public partial class BaseViewController : UIViewController
 	{
+		protected float scroll_amount = 0.0f;
+		protected bool moveViewUp = false;
+
 		public MainPageViewController rootVC;
 		public int pageIndex = 0;
 		public string titleText;

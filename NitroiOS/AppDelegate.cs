@@ -9,6 +9,7 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp;
 using PortableLibrary;
+using System.Collections.Generic;
 
 namespace location2
 {
@@ -47,7 +48,7 @@ namespace location2
 
 		public override void DidEnterBackground(UIApplication application)
 		{
-			if (AppSettings.Username == null || baseVC == null)
+			if (AppSettings.UserID == null || baseVC == null)
 				return;
 
 			App.Current.EventStore.RequestAccess(EKEntityType.Event,
@@ -152,28 +153,28 @@ namespace location2
 
 		private void AddEvents()
 		{
-			//var pastEvents = baseVC.GetPastEvents();
+			var pastEvents = baseVC.GetPastEvents();
 			var todayEvents = baseVC.GetTodayEvents();
 			var futureEvents = baseVC.GetFutureEvents();
 
-			//AddEventsToNitroCalendar(pastEvents);
-			//AddEventsToNitroCalendar(todayEvents);
-			//AddEventsToNitroCalendar(futureEvents);
+			AddEventsToNitroCalendar(pastEvents);
+			AddEventsToNitroCalendar(todayEvents);
+			AddEventsToNitroCalendar(futureEvents);
 		}
 
-		private void AddEventsToNitroCalendar(JArray eventsData)
+		private void AddEventsToNitroCalendar(List<NitroEvent> eventsData)
 		{
 			if (nitroCalendar == null || eventsData == null)
 				return;
 
-			foreach (var eventJson in eventsData)
+			foreach (var nitroEvent in eventsData)
 			{
-				var eventData = JObject.FromObject(eventJson);
+				//var eventData = JObject.FromObject(eventJson);
 
 				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-				var startDate = Convert.ToDateTime(eventData["start"].ToString());
-				var endDate = Convert.ToDateTime(eventData["end"].ToString());
+				var startDate = Convert.ToDateTime(nitroEvent.start);
+				var endDate = Convert.ToDateTime(nitroEvent.end);
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -186,9 +187,9 @@ namespace location2
 				newEvent.StartDate = baseVC.ConvertDateTimeToNSDate(tmpStart);
 				var tmpEnd = endDate.AddHours(-2);
 				newEvent.EndDate = baseVC.ConvertDateTimeToNSDate(tmpEnd);
-				newEvent.Title = eventData["title"].ToString();
+				newEvent.Title = nitroEvent.title;
 
-				string eventDescription = baseVC.FormatEventDescription(eventData["eventData"].ToString());
+				string eventDescription = baseVC.FormatEventDescription(nitroEvent.eventData);
 
 				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
 
@@ -197,26 +198,26 @@ namespace location2
 					newEvent.Notes += arryEventDes[i].ToString() + Environment.NewLine;
 				}
 
-				var strDistance = eventData["distance"].ToString();
+				var strDistance = nitroEvent.distance;
 				var floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
 
-				var durMin = eventData["durMin"].ToString() == "" ? 0 : int.Parse(eventData["durMin"].ToString());
-				var durHrs = eventData["durHrs"].ToString() == "" ? 0 : int.Parse(eventData["durHrs"].ToString());
+				var durMin = nitroEvent.durMin == "" ? 0 : int.Parse(nitroEvent.durMin);
+				var durHrs = nitroEvent.durHrs == "" ? 0 : int.Parse(nitroEvent.durHrs);
 				var pHrs = durMin / 60;
 				durHrs = durHrs + pHrs;
 				durMin = durMin % 60;
 
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-				newEvent.Notes += Environment.NewLine + "Planned HB : " + eventData["hb"].ToString() + Environment.NewLine +
-								"Planned TSS : " + eventData["tss"].ToString() + Environment.NewLine +
+				newEvent.Notes += Environment.NewLine + "Planned HB : " + nitroEvent.hb + Environment.NewLine +
+								"Planned TSS : " + nitroEvent.tss + Environment.NewLine +
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				var encodedTitle = System.Web.HttpUtility.UrlEncode(eventData["title"].ToString());
+				var encodedTitle = System.Web.HttpUtility.UrlEncode(nitroEvent.title);
 
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);

@@ -13,9 +13,6 @@ namespace location2
 	{
 		bool termsAccepted = false;
 
-		private float scroll_amount = 0.0f;
-		private bool moveViewUp = false;
-
 		public SignUpViewController() : base()
 		{
 		}
