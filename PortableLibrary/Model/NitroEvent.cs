@@ -32,5 +32,14 @@ namespace PortableLibrary
 		public string tss { get; set; }
 		public string hb { get; set; }
 		public string pace { get; set; }
+
+		public DateTime StartDateTime()
+		{
+			return Convert.ToDateTime(start).ToUniversalTime();
+		}
+		public DateTime EndDateTime()
+		{
+			return Convert.ToDateTime(end).ToUniversalTime();
+		}
 	}
 }

@@ -385,6 +385,17 @@ namespace location2
 				(date - newDate).TotalSeconds + 3600);
 		}
 
+		public static DateTime ConvertNSDateToDateTime(NSDate date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+			reference = reference.AddSeconds(date.SecondsSinceReferenceDate);
+			if (reference.IsDaylightSavingTime())
+			{
+				reference = reference.AddHours(1);
+			}
+			return reference;
+		}
+
 		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
 		{
 			try

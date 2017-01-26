@@ -120,8 +120,8 @@ namespace location2
 			for (var i = 0; i < _events.Count; i ++)
 			{
 				var nitroEvent = _events[i];
-				var startDate = DateTime.Parse(nitroEvent.start);
-				var endDate = DateTime.Parse(nitroEvent.end);
+				var startDate = nitroEvent.StartDateTime();
+				var endDate = nitroEvent.EndDateTime();
 				var eventDetail = new EventDetails((NSDate)startDate, (NSDate)endDate, nitroEvent.title);
 				eventDetails[i] = eventDetail;
 			}
@@ -134,7 +134,7 @@ namespace location2
 			var eventsByDate = new List<NitroEvent>();
 			foreach (var nitroEvent in _events)
 			{
-				var eventDate = DateTime.Parse(nitroEvent.start);
+				var eventDate = nitroEvent.StartDateTime();
 				if (filterDate.DayOfYear == eventDate.DayOfYear)
 				{
 					eventsByDate.Add(nitroEvent);
@@ -150,7 +150,7 @@ namespace location2
 		public void DateSelected(object sender, DateSelectedEventArgs args)
 		{
 			Console.WriteLine(String.Format("Selected date is {0}", ((DateTime)args.Date).ToLocalTime().ToString("dd-MMM-yyyy")));
-			FilterEventsByDate((DateTime)args.Date);
+			FilterEventsByDate(((DateTime)args.Date).ToLocalTime());
 		}
 
 		public void DidLoadPreviousPage(object sender, EventArgs args)

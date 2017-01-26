@@ -61,7 +61,7 @@ namespace location2
 
 		void InitUISettings()
 		{
-			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
+			if ((selectedEvent.StartDateTime() - DateTime.Now).TotalMinutes > 1)
 			{
 				heightInstructions.Constant = 0;
 				heightAdjust.Constant = 0;
@@ -75,7 +75,7 @@ namespace location2
 
 		void InitBindingEventData()
 		{
-			var startDateFormats = DateTime.Parse(selectedEvent.start).GetDateTimeFormats();
+			var startDateFormats = selectedEvent.StartDateTime().GetDateTimeFormats();
 			lblTitle.Text = selectedEvent.title;
 			lblStartDate.Text = startDateFormats[11];
 			lblData.Text = selectedEvent.eventData;
