@@ -233,6 +233,10 @@
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SplashViewController.cs" />
+    <Compile Include="Controllers\SplashViewController.designer.cs">
+      <DependentUpon>SplashViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

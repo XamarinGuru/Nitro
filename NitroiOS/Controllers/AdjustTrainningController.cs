@@ -26,7 +26,7 @@ namespace location2
 
 			var leftButton = new UIButton(new CGRect(0, 0, 20, 20));
 			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
-			leftButton.TouchUpInside += (sender, e) => this.DismissModalViewController(true);
+			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
@@ -57,19 +57,22 @@ namespace location2
 
 		void InitBindingEventTotal()
 		{
-			if (selectedEvent == null || eventTotal.totals == null) return;
-
-			var distance = GetFormatedDurationAsMin(eventTotal.totals[2].value);
-
-			lblTime.Text = distance.ToString();
-			lblDistance.Text = eventTotal.totals[1].value;
-			lblTSS.Text = eventTotal.totals[7].value;
-
-			seekTime.Value = distance;
-			seekDistance.Value = int.Parse(eventTotal.totals[1].value);
-			seekTSS.Value = int.Parse(eventTotal.totals[7].value);
-
 			attended.On = selectedEvent.attended == "1" ? true : false;
+
+			if (eventTotal.totals == null) return;
+
+			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue("Elapsed time"));
+			var strTd = eventTotal.GetValue("Total Distance");
+			var strTss = eventTotal.GetValue("Load");
+
+			lblTime.Text = strEt.ToString();
+			lblDistance.Text = float.Parse(strTd).ToString("F0");
+			lblTSS.Text = float.Parse(strTss).ToString("F0");
+
+			seekTime.Value = strEt;
+			seekDistance.Value = float.Parse(strTd);
+			seekTSS.Value = float.Parse(strTss);
+
 		}
 
 		partial void ActionClose(UIButton sender)
@@ -109,7 +112,8 @@ namespace location2
 				{
 					HideLoadingView();
 					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
-					this.DismissModalViewController(true);
+					//this.DismissModalViewController(true);
+					NavigationController.PopViewController(true);
 				});
 			});
 		}

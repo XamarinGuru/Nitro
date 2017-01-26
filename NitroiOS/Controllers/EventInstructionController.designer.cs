@@ -36,35 +36,11 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblAvgHR { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblAvgPower { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblAvgSpeed { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblCommentTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblData { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblElapsedTime { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblLeveledPower { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblLoad { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -92,15 +68,75 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTotalAcent { get; set; }
+        UIKit.UILabel lblTotalName0 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTotalCalories { get; set; }
+        UIKit.UILabel lblTotalName1 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTotalDistance { get; set; }
+        UIKit.UILabel lblTotalName2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName4 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName5 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName6 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName7 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalName8 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue0 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue1 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue4 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue5 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue6 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue7 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTotalValue8 { get; set; }
 
         [Action ("ActionAddComment:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -137,21 +173,6 @@ namespace location2
                 imgType = null;
             }
 
-            if (lblAvgHR != null) {
-                lblAvgHR.Dispose ();
-                lblAvgHR = null;
-            }
-
-            if (lblAvgPower != null) {
-                lblAvgPower.Dispose ();
-                lblAvgPower = null;
-            }
-
-            if (lblAvgSpeed != null) {
-                lblAvgSpeed.Dispose ();
-                lblAvgSpeed = null;
-            }
-
             if (lblCommentTitle != null) {
                 lblCommentTitle.Dispose ();
                 lblCommentTitle = null;
@@ -160,21 +181,6 @@ namespace location2
             if (lblData != null) {
                 lblData.Dispose ();
                 lblData = null;
-            }
-
-            if (lblElapsedTime != null) {
-                lblElapsedTime.Dispose ();
-                lblElapsedTime = null;
-            }
-
-            if (lblLeveledPower != null) {
-                lblLeveledPower.Dispose ();
-                lblLeveledPower = null;
-            }
-
-            if (lblLoad != null) {
-                lblLoad.Dispose ();
-                lblLoad = null;
             }
 
             if (lblPDistance != null) {
@@ -207,19 +213,94 @@ namespace location2
                 lblTitle = null;
             }
 
-            if (lblTotalAcent != null) {
-                lblTotalAcent.Dispose ();
-                lblTotalAcent = null;
+            if (lblTotalName0 != null) {
+                lblTotalName0.Dispose ();
+                lblTotalName0 = null;
             }
 
-            if (lblTotalCalories != null) {
-                lblTotalCalories.Dispose ();
-                lblTotalCalories = null;
+            if (lblTotalName1 != null) {
+                lblTotalName1.Dispose ();
+                lblTotalName1 = null;
             }
 
-            if (lblTotalDistance != null) {
-                lblTotalDistance.Dispose ();
-                lblTotalDistance = null;
+            if (lblTotalName2 != null) {
+                lblTotalName2.Dispose ();
+                lblTotalName2 = null;
+            }
+
+            if (lblTotalName3 != null) {
+                lblTotalName3.Dispose ();
+                lblTotalName3 = null;
+            }
+
+            if (lblTotalName4 != null) {
+                lblTotalName4.Dispose ();
+                lblTotalName4 = null;
+            }
+
+            if (lblTotalName5 != null) {
+                lblTotalName5.Dispose ();
+                lblTotalName5 = null;
+            }
+
+            if (lblTotalName6 != null) {
+                lblTotalName6.Dispose ();
+                lblTotalName6 = null;
+            }
+
+            if (lblTotalName7 != null) {
+                lblTotalName7.Dispose ();
+                lblTotalName7 = null;
+            }
+
+            if (lblTotalName8 != null) {
+                lblTotalName8.Dispose ();
+                lblTotalName8 = null;
+            }
+
+            if (lblTotalValue0 != null) {
+                lblTotalValue0.Dispose ();
+                lblTotalValue0 = null;
+            }
+
+            if (lblTotalValue1 != null) {
+                lblTotalValue1.Dispose ();
+                lblTotalValue1 = null;
+            }
+
+            if (lblTotalValue2 != null) {
+                lblTotalValue2.Dispose ();
+                lblTotalValue2 = null;
+            }
+
+            if (lblTotalValue3 != null) {
+                lblTotalValue3.Dispose ();
+                lblTotalValue3 = null;
+            }
+
+            if (lblTotalValue4 != null) {
+                lblTotalValue4.Dispose ();
+                lblTotalValue4 = null;
+            }
+
+            if (lblTotalValue5 != null) {
+                lblTotalValue5.Dispose ();
+                lblTotalValue5 = null;
+            }
+
+            if (lblTotalValue6 != null) {
+                lblTotalValue6.Dispose ();
+                lblTotalValue6 = null;
+            }
+
+            if (lblTotalValue7 != null) {
+                lblTotalValue7.Dispose ();
+                lblTotalValue7 = null;
+            }
+
+            if (lblTotalValue8 != null) {
+                lblTotalValue8.Dispose ();
+                lblTotalValue8 = null;
             }
         }
     }

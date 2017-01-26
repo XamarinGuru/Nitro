@@ -25,7 +25,7 @@ namespace location2
 
 			var leftButton = new UIButton(new CGRect(0, 0, 20, 20));
 			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
-			leftButton.TouchUpInside += (sender, e) => this.DismissModalViewController(true);
+			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
@@ -60,7 +60,7 @@ namespace location2
 				{
 					HideLoadingView();
 					var response = SetComment(author, authorID, txtComment.Text, selectedEvent._id);
-					this.DismissModalViewController(true);
+					NavigationController.PopViewController(true);
 				});
 			});
 		}

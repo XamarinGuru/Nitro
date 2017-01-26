@@ -120,15 +120,25 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblAvgSpeed.Text = FormatNumber(eventTotal.totals[0].value);
-			lblTotalDistance.Text = FormatNumber(eventTotal.totals[1].value);
-			lblElapsedTime.Text = FormatNumber(eventTotal.totals[2].value);
-			lblTotalAcent.Text = FormatNumber(eventTotal.totals[3].value);
-			lblAvgHR.Text = FormatNumber(eventTotal.totals[4].value);
-			lblTotalCalories.Text = FormatNumber(eventTotal.totals[5].value);
-			lblAvgPower.Text = FormatNumber(eventTotal.totals[6].value);
-			lblLoad.Text = FormatNumber(eventTotal.totals[7].value);
-			lblLeveledPower.Text = FormatNumber(eventTotal.totals[8].value);
+			lblTotalName0.Text = eventTotal.totals[0].name;
+			lblTotalName1.Text = eventTotal.totals[1].name;
+			lblTotalName2.Text = eventTotal.totals[2].name;
+			lblTotalName3.Text = eventTotal.totals[3].name;
+			lblTotalName4.Text = eventTotal.totals[4].name;
+			lblTotalName5.Text = eventTotal.totals[5].name;
+			lblTotalName6.Text = eventTotal.totals[6].name;
+			lblTotalName7.Text = eventTotal.totals[7].name;
+			lblTotalName8.Text = eventTotal.totals[8].name;
+
+			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);
+			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
+			lblTotalValue2.Text = FormatNumber(eventTotal.totals[2].value);
+			lblTotalValue3.Text = FormatNumber(eventTotal.totals[3].value);
+			lblTotalValue4.Text = FormatNumber(eventTotal.totals[4].value);
+			lblTotalValue5.Text = FormatNumber(eventTotal.totals[5].value);
+			lblTotalValue6.Text = FormatNumber(eventTotal.totals[6].value);
+			lblTotalValue7.Text = FormatNumber(eventTotal.totals[7].value);
+			lblTotalValue8.Text = FormatNumber(eventTotal.totals[8].value);
 		}
 
 		void InitBindingEventComments(Comment comments)
@@ -159,8 +169,10 @@ namespace location2
 			atVC.selectedEvent = selectedEvent;
 			atVC.eventTotal = eventTotal;
 
-			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-			myDelegate.baseVC.PresentModalViewController(atVC, true);
+			NavigationController.PushViewController(atVC, true);
+
+			//AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+			//myDelegate.baseVC.PresentModalViewController(atVC, true);
 		}
 
 		partial void ActionAddComment(UIButton sender)
@@ -168,8 +180,10 @@ namespace location2
 			AddCommentViewController acVC = Storyboard.InstantiateViewController("AddCommentViewController") as AddCommentViewController;
 			acVC.selectedEvent = selectedEvent;
 
-			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-			myDelegate.baseVC.PresentModalViewController(acVC, true);
+			NavigationController.PushViewController(acVC, true);
+
+			//AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+			//myDelegate.baseVC.PresentModalViewController(acVC, true);
 		}
 		#endregion
     }

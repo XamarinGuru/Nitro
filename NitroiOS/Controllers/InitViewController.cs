@@ -16,35 +16,12 @@ namespace location2
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			GotoMainIfAlreadyLoggedin();
 		}
 
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
 			// Release any cached data, images, etc that aren't in use.
-		}
-
-		private void GotoMainIfAlreadyLoggedin()
-		{
-			string userID = "0";
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
-			{
-				ShowLoadingView("Sign In...");
-
-				userID = GetUserID();
-
-				InvokeOnMainThread(() =>
-				{
-					HideLoadingView();
-
-					if (userID != "0")
-					{
-						MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-						this.PresentViewController(mainVC, false, null);
-					}
-				});
-			});
 		}
 
 		partial void ActionSignIn(UIButton sender)
