@@ -504,14 +504,14 @@
                             android:id="@+id/relativeLayout1"
                             android:layout_marginTop="5dp">
                             <TextView
-                                android:text="_id"
+                                android:text="Date"
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="55"
-                                android:id="@+id/txtID"
+                                android:text="01-01-2016"
+                                android:id="@+id/txtGoalDate"
                                 android:gravity="center"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -529,14 +529,14 @@
                             android:id="@+id/relativeLayout1"
                             android:layout_marginTop="5dp">
                             <TextView
-                                android:text="Last name"
+                                android:text="Name"
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
                                 android:text="66"
-                                android:id="@+id/txtLastname"
+                                android:id="@+id/txtGoalName"
                                 android:gravity="center"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -555,14 +555,14 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp">
                             <TextView
-                                android:text="Country"
+                                android:text="Load"
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
                                 android:text="77"
-                                android:id="@+id/txtCountry"
+                                android:id="@+id/txtGoalLoad"
                                 android:gravity="center"
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
@@ -570,7 +570,8 @@
                                 android:singleLine="true"
                                 android:textSize="15dp"
                                 android:textColor="#ff000000"
-                                android:background="#ffffffff" />
+                                android:background="#ffffffff"
+                                android:inputType="phone" />
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>

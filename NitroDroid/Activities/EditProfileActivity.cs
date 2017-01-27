@@ -35,7 +35,7 @@ namespace goheja
 
 		TextView lblFirstname, lblLastname, lblCountry, lblAddress, lblBib, lblAge, lblGender, lblBirth, lblEmail, lblPhone;
 		EditText txtWeight, txtHeight, txtBMI, txtFatPercentage;
-		EditText txtID, txtLastname, txtCountry;
+		EditText txtGoalDate, txtGoalName, txtGoalLoad;
 		EditText txtSprint, txtOlympic, txtHDistance, txtDistance, txtMarathon, txtHMarathon, txt10KRun;
 		EditText txtRankSwim, txtRankRun, txtRankBike;
 		EditText txtSZone1HR, txtSZone2HR, txtSZone3HR, txtSZone4HR, txtSZone5HR;
@@ -94,9 +94,9 @@ namespace goheja
 			txtBMI = FindViewById<EditText>(Resource.Id.txtBMI);
 			txtFatPercentage = FindViewById<EditText>(Resource.Id.txtFatPercentage);
 
-			txtID = FindViewById<EditText>(Resource.Id.txtID);
-			txtLastname = FindViewById<EditText>(Resource.Id.txtLastname);
-			txtCountry = FindViewById<EditText>(Resource.Id.txtCountry);
+			txtGoalDate = FindViewById<EditText>(Resource.Id.txtGoalDate);
+			txtGoalName = FindViewById<EditText>(Resource.Id.txtGoalName);
+			txtGoalLoad = FindViewById<EditText>(Resource.Id.txtGoalLoad);
 
 			txtSprint = FindViewById<EditText>(Resource.Id.txtSprint);
 			txtOlympic = FindViewById<EditText>(Resource.Id.txtOlympic);
@@ -248,9 +248,9 @@ namespace goheja
 			#endregion
 
 			#region goals
-			this.SetBinding(() => MemberModel.id, () => txtID.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.lastname, () => txtLastname.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.country, () => txtCountry.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
 			#endregion
 
 			#region best results
@@ -417,12 +417,12 @@ namespace goheja
 					txtFatPercentage.SetBackgroundColor(txtWeight.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);
 					break;
 				case TAG_EDIT_GOALS:
-					txtID.Enabled = !txtID.Enabled;
-					txtLastname.Enabled = !txtLastname.Enabled;
-					txtCountry.Enabled = !txtCountry.Enabled;
-					txtID.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
-					txtLastname.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
-					txtCountry.SetBackgroundColor(txtID.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtGoalDate.Enabled = !txtGoalDate.Enabled;
+					txtGoalName.Enabled = !txtGoalName.Enabled;
+					txtGoalLoad.Enabled = !txtGoalLoad.Enabled;
+					txtGoalDate.SetBackgroundColor(txtGoalDate.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtGoalName.SetBackgroundColor(txtGoalName.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
+					txtGoalLoad.SetBackgroundColor(txtGoalLoad.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
 				case TAG_EDIT_BEST_RESULTS:
 					txtSprint.Enabled = !txtSprint.Enabled;
