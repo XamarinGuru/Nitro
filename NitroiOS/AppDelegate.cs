@@ -176,7 +176,7 @@ namespace location2
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
-				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day, (startDate.Hour - 1), startDate.Minute, startDate.Second);
+				DateTime startDay = new DateTime(startDate.Year, startDate.Month, startDate.Day, startDate.Hour, startDate.Minute, startDate.Second);
 				var deltaSec = (startDay - startNow).TotalSeconds;
 				if (deltaSec < 0)
 					continue;
