@@ -469,7 +469,65 @@ namespace location2
 			});
 		}
 
+		protected void SetupDatePicker(UITextField field)
+		{
+			UIDatePicker picker = new UIDatePicker();
+			picker.Mode = UIDatePickerMode.Date;
 
+			var format = "{0: MM-dd-yyyy}";
+			picker.ValueChanged += (object s, EventArgs e) =>
+			{
+				//if (changeOnEdit)
+				{
+					updateSetupDateTimePicker(field, picker.Date, format, s, e);
+				}
+			};
+
+			// Setup the toolbar
+			UIToolbar toolbar = new UIToolbar();
+			toolbar.BarStyle = UIBarStyle.Black;
+			toolbar.Translucent = true;
+			toolbar.SizeToFit();
+
+			// Create a 'done' button for the toolbar and add it to the toolbar
+			UIBarButtonItem doneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
+			{
+				updateSetupDateTimePicker(field, picker.Date, format, s, e, true);
+			});
+
+			toolbar.SetItems(new UIBarButtonItem[] { doneButton }, true);
+
+			field.InputView = picker;
+			field.InputAccessoryView = toolbar;
+
+			field.ShouldChangeCharacters = new UITextFieldChange(delegate (UITextField textField, NSRange range, string replacementString)
+			{
+				return false;
+			});
+		}
+
+		private void updateSetupDateTimePicker(UITextField field, NSDate date, String format, object sender, EventArgs e, bool done = false)
+		{
+			var newDate = NSDateToDateTime(date);
+			var str = String.Format(format, newDate);
+
+			field.Text = str;
+			field.SendActionForControlEvents(UIControlEvent.ValueChanged);
+			if (done)
+			{
+				field.ResignFirstResponder();
+			}
+		}
+		protected static DateTime NSDateToDateTime(NSDate date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+			reference = reference.AddSeconds(date.SecondsSinceReferenceDate);
+			if (reference.IsDaylightSavingTime())
+			{
+				reference = reference.AddHours(1);
+			}
+			return reference;
+		}
 		protected void SetupPicker(UITextField field, string type)
 		{
 			// Setup the toolbar

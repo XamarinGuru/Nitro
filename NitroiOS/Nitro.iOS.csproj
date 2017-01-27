@@ -343,6 +343,7 @@
     <BundleResource Include="Resources\icon_whistle.png" />
     <BundleResource Include="Resources\icon_group_report.png" />
     <BundleResource Include="Resources\icon_workout_report.png" />
+    <BundleResource Include="Resources\icon_other.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

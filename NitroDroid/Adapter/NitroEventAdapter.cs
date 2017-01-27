@@ -65,6 +65,12 @@ namespace goheja
 				case "3":
 					imgType.SetImageResource(Resource.Drawable.icon_swim);
 					break;
+				case "4":
+					imgType.SetImageResource(Resource.Drawable.icon_triathlon);
+					break;
+				case "5":
+					imgType.SetImageResource(Resource.Drawable.icon_other);
+					break;
 			}
 
 			return convertView;

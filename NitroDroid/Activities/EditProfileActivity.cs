@@ -164,6 +164,9 @@ namespace goheja
 			#endregion
 
 			#region Actions
+
+			txtGoalDate.Touch += SetupDatePicker;
+
 			FindViewById<RelativeLayout>(Resource.Id.collapsePhysical).Click += ActionCollepse;
 			FindViewById<RelativeLayout>(Resource.Id.collapseGoals).Click += ActionCollepse;
 			FindViewById<RelativeLayout>(Resource.Id.collapseBestResults).Click += ActionCollepse;
@@ -562,6 +565,31 @@ namespace goheja
 					myDiag.Show(FragmentManager, "Diag");
 				}
 			};
+		}
+		private void SetupDatePicker(object sender, View.TouchEventArgs e)
+		{
+			if (e.Event.Action == MotionEventActions.Down)
+			{
+				DatePickerDialog ddtime = new DatePickerDialog(this, OnDateSet, DateTime.Today.Year, DateTime.Today.Month - 1,
+													 DateTime.Today.Day
+															 );
+
+				if (txtGoalDate.Text != "")
+					ddtime.DatePicker.DateTime = DateTime.Parse(txtGoalDate.Text);
+
+				ddtime.SetTitle("");
+				ddtime.Show();
+			}
+		}
+		int timesDatePickerCalled = 1;
+		void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
+		{
+			timesDatePickerCalled += 1;
+
+			if ((timesDatePickerCalled % 2) == 0)
+			{
+				txtGoalDate.Text = e.Date.ToString("MM-dd-yyyy");
+			}
 		}
 	}
 }

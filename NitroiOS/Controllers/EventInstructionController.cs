@@ -113,6 +113,12 @@ namespace location2
 				case "3":
 					imgType.Image = UIImage.FromFile("icon_swim.png");
 					break;
+				case "4":
+					imgType.Image = UIImage.FromFile("icon_triathlon.png");
+					break;
+				case "5":
+					imgType.Image = UIImage.FromFile("icon_other.png");
+					break;
 			}
 		}
 

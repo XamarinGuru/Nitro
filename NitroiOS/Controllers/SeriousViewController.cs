@@ -79,6 +79,7 @@ namespace location2
 
 		private void SetInputValidation()
 		{
+			SetupDatePicker(txtGoalDate);
 			SetupPicker(txtSprint, "time");
 			SetupPicker(txtOlympic, "time");
 			SetupPicker(txtHDistance, "time");
@@ -144,7 +145,11 @@ namespace location2
 			#endregion
 
 			#region goals
-			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
+			//this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtGoalDate.Text, () => MemberModel.goalDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+
+
 			this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
 			#endregion
