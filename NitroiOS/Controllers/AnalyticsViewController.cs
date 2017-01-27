@@ -28,7 +28,7 @@ namespace location2
 
 		bool isTimerStarted = false;
 
-		private RootMemberModel MemberModel { get; set; }
+		//private RootMemberModel MemberModel { get; set; }
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
 			Manager = new LocationManager();
@@ -84,7 +84,7 @@ namespace location2
 		{
 			if (flag == 2)
 			{
-				var url = String.Format(Constants.URL_ANALYTICS_MAP, AppSettings.Username);
+				var url = String.Format(Constants.URL_ANALYTICS_MAP, MemberModel.username);
 				wvOngoing.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 			}
 

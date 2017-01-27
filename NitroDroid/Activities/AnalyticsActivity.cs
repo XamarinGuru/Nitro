@@ -222,7 +222,7 @@ namespace goheja
                     }
 					catch (Exception err)
                     {
-						Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+						//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
                     }
 
 					wv.LoadUrl(url);
@@ -292,7 +292,7 @@ namespace goheja
 			}
 			catch (Exception err)
 			{
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
 			}
 			lastAlt = 0;
 			dist = 0;
@@ -494,7 +494,7 @@ namespace goheja
             }
             catch (Exception err)
             {
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
             }
         }
         #endregion

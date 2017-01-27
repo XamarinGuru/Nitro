@@ -44,7 +44,7 @@ namespace goheja
 				ListDateEvent.Clear();
 				for (int i = 0; i < _events.Count; i++)
 				{
-					var startDate = DateTime.Parse(_events[i].start);
+					var startDate = _events[i].StartDateTime();//DateTime.Parse(_events[i].start);
 					if (ListDateEvent.Count != 0)
 					{
 						var IsExits = false;
@@ -72,7 +72,7 @@ namespace goheja
 			.InMode(CalendarPickerView.SelectionMode.Single)
 			.WithHighlightedDates(ListDateEvent);
 
-			fInitializer.WithSelectedDate(DateTime.Now);
+			fInitializer.WithSelectedDate(DateTime.Now.ToUniversalTime());
 
 			calendar.OnDateSelected += (s, e) => { UpdateEventFilterByDay(e.SelectedDate); };
 
@@ -100,7 +100,7 @@ namespace goheja
 			{
 				for (int i = 0; i < _events.Count; i++)
 				{
-					var startDate = DateTime.Parse(_events[i].start);
+					var startDate = _events[i].StartDateTime();
 					if (startDate.DayOfYear == selectedDate.DayOfYear)
 					{
 						returnEvents.Add(_events[i]);

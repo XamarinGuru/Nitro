@@ -80,7 +80,7 @@ namespace goheja
 
 		void InitBindingEventData(NitroEvent selectedEvent)
 		{
-			var startDateFormats = DateTime.Parse(selectedEvent.start).GetDateTimeFormats();
+			var startDateFormats = selectedEvent.StartDateTime().GetDateTimeFormats();
 			FindViewById<TextView>(Resource.Id.lblTitle).Text = selectedEvent.title;
 			FindViewById<TextView>(Resource.Id.lblStartDate).Text = startDateFormats[11];
 			FindViewById<TextView>(Resource.Id.lblData).Text = selectedEvent.eventData;

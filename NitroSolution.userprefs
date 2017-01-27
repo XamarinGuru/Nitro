@@ -1,29 +1,28 @@
-﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/EventInstructionController.cs">
+﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventInstructionActivity.cs">
     <Files>
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="152" Column="1" />
-      <File FileName="NitroiOS/ViewModel/NitroEventCell.cs" Line="28" Column="66" />
-      <File FileName="PortableLibrary/Model/NitroEvent.cs" Line="42" Column="33" />
-      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="47" Column="1" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="75" Column="1" />
+      <File FileName="NitroDroid/Adapter/CalendarAdapter.cs" Line="33" Column="34" />
+      <File FileName="NitroDroid/Adapter/ItemViewPagerCalendarFragment.cs" Line="111" Column="1" />
+      <File FileName="NitroiOS/ViewModel/NitroEventCell.cs" Line="24" Column="15" />
+      <File FileName="NitroDroid/Adapter/NitroEventAdapter.cs" Line="50" Column="52" />
+      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NitroSolution" expanded="True">
             <Node name="Nitro.Droid" expanded="True">
-              <Node name="Activities" expanded="True" />
+              <Node name="Activities" expanded="True">
+                <Node name="EventInstructionActivity.cs" selected="True" />
+              </Node>
               <Node name="Adapter" expanded="True" />
               <Node name="Fragment" expanded="True" />
-              <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
-              </Node>
               <Node name="Services" expanded="True" />
               <Node name="Utility" expanded="True" />
             </Node>
             <Node name="Nitro.iOS" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="EventInstructionController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="ViewModel" expanded="True" />
             </Node>
             <Node name="PortableLibrary" expanded="True">
@@ -38,9 +37,19 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="497" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="400" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="507" column="1" />
       <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/AppDelegate.cs" line="238" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="88" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="159" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="375" column="10" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="380" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="385" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="242" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Services/LocationService.cs" line="77" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Services/LocationService.cs" line="82" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Services/LocationService.cs" line="87" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="440" column="1" />
+      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/ViewModel/NitroEventCell.cs" line="28" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
