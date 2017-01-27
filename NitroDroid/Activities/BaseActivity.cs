@@ -320,6 +320,18 @@ namespace goheja
 				return;
 			}
 		}
+
+		public void SaveUserImage(byte[] fileBytes)
+		{
+			try
+			{
+				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes);
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, "Save error");
+			}
+		}
 		#endregion
 
 		public bool ValidateUserNickName(string nickName)

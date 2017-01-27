@@ -37,8 +37,6 @@ namespace goheja
         {
             base.OnViewCreated(view, savedInstanceState);
 
-			//MemberModel.rootMember = rootActivity.GetUserObject();
-
 			mView = view;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
@@ -172,6 +170,8 @@ namespace goheja
 						bitmapByteData = stream.ToArray();
 					}
 					ExportBitmapAsPNG(GetRoundedCornerBitmap(newBitmap, 400));
+
+					rootActivity.SaveUserImage(bitmapByteData);
 				}
 			}
 			catch (Exception err)

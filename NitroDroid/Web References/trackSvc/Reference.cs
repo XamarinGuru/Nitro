@@ -126,9 +126,17 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback getAthcurrentLocationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback saveUserImageOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteProgramOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getListedDeviceIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback attendReportOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback programsListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback eventsListOperationCompleted;
         
         private System.Threading.SendOrPostCallback insertNewDeviceOperationCompleted;
         
@@ -419,10 +427,22 @@ namespace goheja.trackSvc {
         public event getAthcurrentLocationCompletedEventHandler getAthcurrentLocationCompleted;
         
         /// CodeRemarks
+        public event saveUserImageCompletedEventHandler saveUserImageCompleted;
+        
+        /// CodeRemarks
+        public event deleteProgramCompletedEventHandler deleteProgramCompleted;
+        
+        /// CodeRemarks
         public event getListedDeviceIdCompletedEventHandler getListedDeviceIdCompleted;
         
         /// CodeRemarks
         public event attendReportCompletedEventHandler attendReportCompleted;
+        
+        /// CodeRemarks
+        public event programsListCompletedEventHandler programsListCompleted;
+        
+        /// CodeRemarks
+        public event eventsListCompletedEventHandler eventsListCompleted;
         
         /// CodeRemarks
         public event insertNewDeviceCompletedEventHandler insertNewDeviceCompleted;
@@ -2490,6 +2510,68 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/saveUserImage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object saveUserImage([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)] byte[] imageByteData) {
+            object[] results = this.Invoke("saveUserImage", new object[] {
+                        athId,
+                        imageByteData});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void saveUserImageAsync(string athId, byte[] imageByteData) {
+            this.saveUserImageAsync(athId, imageByteData, null);
+        }
+        
+        /// CodeRemarks
+        public void saveUserImageAsync(string athId, byte[] imageByteData, object userState) {
+            if ((this.saveUserImageOperationCompleted == null)) {
+                this.saveUserImageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsaveUserImageOperationCompleted);
+            }
+            this.InvokeAsync("saveUserImage", new object[] {
+                        athId,
+                        imageByteData}, this.saveUserImageOperationCompleted, userState);
+        }
+        
+        private void OnsaveUserImageOperationCompleted(object arg) {
+            if ((this.saveUserImageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.saveUserImageCompleted(this, new saveUserImageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/deleteProgram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object deleteProgram([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programId) {
+            object[] results = this.Invoke("deleteProgram", new object[] {
+                        programId});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void deleteProgramAsync(string programId) {
+            this.deleteProgramAsync(programId, null);
+        }
+        
+        /// CodeRemarks
+        public void deleteProgramAsync(string programId, object userState) {
+            if ((this.deleteProgramOperationCompleted == null)) {
+                this.deleteProgramOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteProgramOperationCompleted);
+            }
+            this.InvokeAsync("deleteProgram", new object[] {
+                        programId}, this.deleteProgramOperationCompleted, userState);
+        }
+        
+        private void OndeleteProgramOperationCompleted(object arg) {
+            if ((this.deleteProgramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteProgramCompleted(this, new deleteProgramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getListedDeviceId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string getListedDeviceId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mail, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw) {
@@ -2550,6 +2632,70 @@ namespace goheja.trackSvc {
             if ((this.attendReportCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.attendReportCompleted(this, new attendReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/programsList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object programsList([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("programsList", new object[] {
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void programsListAsync(string specGroup) {
+            this.programsListAsync(specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void programsListAsync(string specGroup, object userState) {
+            if ((this.programsListOperationCompleted == null)) {
+                this.programsListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnprogramsListOperationCompleted);
+            }
+            this.InvokeAsync("programsList", new object[] {
+                        specGroup}, this.programsListOperationCompleted, userState);
+        }
+        
+        private void OnprogramsListOperationCompleted(object arg) {
+            if ((this.programsListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.programsListCompleted(this, new programsListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/eventsList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object eventsList([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string ownerId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string isGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("eventsList", new object[] {
+                        ownerId,
+                        isGroup,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void eventsListAsync(string ownerId, string isGroup, string specGroup) {
+            this.eventsListAsync(ownerId, isGroup, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void eventsListAsync(string ownerId, string isGroup, string specGroup, object userState) {
+            if ((this.eventsListOperationCompleted == null)) {
+                this.eventsListOperationCompleted = new System.Threading.SendOrPostCallback(this.OneventsListOperationCompleted);
+            }
+            this.InvokeAsync("eventsList", new object[] {
+                        ownerId,
+                        isGroup,
+                        specGroup}, this.eventsListOperationCompleted, userState);
+        }
+        
+        private void OneventsListOperationCompleted(object arg) {
+            if ((this.eventsListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.eventsListCompleted(this, new eventsListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2636,24 +2782,26 @@ namespace goheja.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/sessionUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string sessionUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usr) {
+        public string sessionUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw) {
             object[] results = this.Invoke("sessionUser", new object[] {
-                        usr});
+                        email,
+                        psw});
             return ((string)(results[0]));
         }
         
         /// CodeRemarks
-        public void sessionUserAsync(string usr) {
-            this.sessionUserAsync(usr, null);
+        public void sessionUserAsync(string email, string psw) {
+            this.sessionUserAsync(email, psw, null);
         }
         
         /// CodeRemarks
-        public void sessionUserAsync(string usr, object userState) {
+        public void sessionUserAsync(string email, string psw, object userState) {
             if ((this.sessionUserOperationCompleted == null)) {
                 this.sessionUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsessionUserOperationCompleted);
             }
             this.InvokeAsync("sessionUser", new object[] {
-                        usr}, this.sessionUserOperationCompleted, userState);
+                        email,
+                        psw}, this.sessionUserOperationCompleted, userState);
         }
         
         private void OnsessionUserOperationCompleted(object arg) {
@@ -4665,26 +4813,6 @@ namespace goheja.trackSvc {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
-    public partial class CompositeType {
-        
-        /// <remarks/>
-        public bool BoolValue;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BoolValueSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string StringValue;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial class BsonValue {
     }
@@ -4704,6 +4832,26 @@ namespace goheja.trackSvc {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public BsonValue _value;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
+    public partial class CompositeType {
+        
+        /// <remarks/>
+        public bool BoolValue;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BoolValueSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StringValue;
     }
     
     /// CodeRemarks
@@ -6008,6 +6156,58 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void saveUserImageCompletedEventHandler(object sender, saveUserImageCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class saveUserImageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal saveUserImageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void deleteProgramCompletedEventHandler(object sender, deleteProgramCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteProgramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteProgramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void getListedDeviceIdCompletedEventHandler(object sender, getListedDeviceIdCompletedEventArgs e);
     
     /// CodeRemarks
@@ -6054,6 +6254,58 @@ namespace goheja.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void programsListCompletedEventHandler(object sender, programsListCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class programsListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal programsListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void eventsListCompletedEventHandler(object sender, eventsListCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class eventsListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal eventsListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
             }
         }
     }

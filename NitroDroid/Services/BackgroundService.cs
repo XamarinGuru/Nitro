@@ -156,8 +156,8 @@ namespace goheja
 
 			foreach (var nitroEvent in events)
 			{
-				var startDate = Convert.ToDateTime(nitroEvent.start);
-				var endDate = Convert.ToDateTime(nitroEvent.end);
+				var startDate = nitroEvent.StartDateTime();//Convert.ToDateTime(nitroEvent.start);
+				var endDate = nitroEvent.EndDateTime();//Convert.ToDateTime(nitroEvent.end);
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);

@@ -149,13 +149,14 @@ namespace PortableLibrary
 		public athGoals()
 		{
 			_id = "";
-			year = "";
-			text = "";
+			Date = "";
+			Name = "";
+			Load = 0;
 		}
 		public string _id { get; set; }
-		public string year { get; set; }
-		public string text { get; set; }
-
+		public string Date { get; set; }
+		public string Name { get; set; }
+		public float Load { get; set; }
 	}
 
 	public class eventProp
@@ -415,8 +416,9 @@ namespace PortableLibrary
 		{
 			athGoals p = new athGoals();
 			p._id = "0";
-			p.year = DateTime.Now.Year.ToString();
-			p.text = "";
+			p.Name = DateTime.Now.Year.ToString();
+			p.Date = "";
+			p.Load = 0;
 			return p;
 		}
 
@@ -529,9 +531,10 @@ namespace PortableLibrary
 		public string fper { get { return rootMember.profile.physical[3].value; } set { rootMember.profile.physical[3].value = value; } }
 
 		//goals
-		public string id { get; set; }
-		//public string lastname { get; set; }
-		//public string country { get; set; }
+		public string id { get { return rootMember.profile.goals[0]._id; } set { rootMember.profile.goals[0]._id = value; } }
+		public string goalDate { get { return rootMember.profile.goals[0].Date; } set { rootMember.profile.goals[0].Date = value; } }
+		public string goalName { get { return rootMember.profile.goals[0].Name; } set { rootMember.profile.goals[0].Name = value; } }
+		public float goalLoad { get { return rootMember.profile.goals[0].Load; } set { rootMember.profile.goals[0].Load = value; } }
 
 		//best results
 		public string sprint { get { return rootMember.profile.bestResults[0].value; } set { rootMember.profile.bestResults[0].value = value; } }

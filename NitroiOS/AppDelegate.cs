@@ -169,12 +169,10 @@ namespace location2
 
 			foreach (var nitroEvent in eventsData)
 			{
-				//var eventData = JObject.FromObject(eventJson);
-
 				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-				var startDate = Convert.ToDateTime(nitroEvent.start);
-				var endDate = Convert.ToDateTime(nitroEvent.end);
+				var startDate = nitroEvent.StartDateTime();
+				var endDate = nitroEvent.EndDateTime();
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -183,10 +181,8 @@ namespace location2
 				if (deltaSec < 0)
 					continue;
 
-				var tmpStart = startDate.AddHours(-2);
-				newEvent.StartDate = baseVC.ConvertDateTimeToNSDate(tmpStart);
-				var tmpEnd = endDate.AddHours(-2);
-				newEvent.EndDate = baseVC.ConvertDateTimeToNSDate(tmpEnd);
+				newEvent.StartDate = baseVC.ConvertDateTimeToNSDate(startDate);
+				newEvent.EndDate = baseVC.ConvertDateTimeToNSDate(endDate);
 				newEvent.Title = nitroEvent.title;
 
 				string eventDescription = baseVC.FormatEventDescription(nitroEvent.eventData);

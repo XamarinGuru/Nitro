@@ -315,6 +315,18 @@
   <wsdl:message name="IService1_getAthcurrentLocation_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAthcurrentLocationResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_saveUserImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveUserImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveUserImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveUserImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteProgram_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteProgram" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteProgram_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteProgramResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getListedDeviceId_InputMessage">
     <wsdl:part name="parameters" element="tns:getListedDeviceId" />
   </wsdl:message>
@@ -326,6 +338,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_attendReport_OutputMessage">
     <wsdl:part name="parameters" element="tns:attendReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_programsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:programsList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_programsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:programsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_eventsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:eventsList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_eventsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:eventsListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_insertNewDevice_InputMessage">
     <wsdl:part name="parameters" element="tns:insertNewDevice" />
@@ -910,6 +934,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAthcurrentLocation" message="tns:IService1_getAthcurrentLocation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAthcurrentLocationResponse" message="tns:IService1_getAthcurrentLocation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="saveUserImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveUserImage" message="tns:IService1_saveUserImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveUserImageResponse" message="tns:IService1_saveUserImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProgram">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteProgram" message="tns:IService1_deleteProgram_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteProgramResponse" message="tns:IService1_deleteProgram_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getListedDeviceId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getListedDeviceId" message="tns:IService1_getListedDeviceId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getListedDeviceIdResponse" message="tns:IService1_getListedDeviceId_OutputMessage" />
@@ -917,6 +949,14 @@
     <wsdl:operation name="attendReport">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/attendReport" message="tns:IService1_attendReport_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/attendReportResponse" message="tns:IService1_attendReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="programsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/programsList" message="tns:IService1_programsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/programsListResponse" message="tns:IService1_programsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="eventsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/eventsList" message="tns:IService1_eventsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/eventsListResponse" message="tns:IService1_eventsList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="insertNewDevice">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/insertNewDevice" message="tns:IService1_insertNewDevice_InputMessage" />
@@ -1632,6 +1672,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="saveUserImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/saveUserImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProgram">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteProgram" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getListedDeviceId">
       <soap:operation soapAction="http://tempuri.org/IService1/getListedDeviceId" style="document" />
       <wsdl:input>
@@ -1643,6 +1701,24 @@
     </wsdl:operation>
     <wsdl:operation name="attendReport">
       <soap:operation soapAction="http://tempuri.org/IService1/attendReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="programsList">
+      <soap:operation soapAction="http://tempuri.org/IService1/programsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eventsList">
+      <soap:operation soapAction="http://tempuri.org/IService1/eventsList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

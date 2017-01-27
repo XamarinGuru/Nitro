@@ -161,9 +161,8 @@ namespace location2
 
 			try
 			{
-				var strUser = mTrackSvc.getUsrObject(userID).ToString();
-				var jsonUser = FormatJsonType(strUser);
-				//var jsonUser = "{ \"profile\" : { \"idData\" : [], \"userSystemData\" : [], \"injuries\" : [{ \"_id\" : \"17\", \"name\" : \"in name\", \"value\" : \"\", \"isCurrent\" : false, \"date\" : \"1 / 1 / 0001 12:00:00 AM\" }], \"history\" : [{ \"_id\" : \"0\", \"date\" : \"1 / 1 / 0001 12:00:00 AM\", \"text\" : \"\" }], \"performance\" : [{ \"_id\" : \"0\", \"name\" : \"ACL\", \"value\" : \"\" }, { \"_id\" : \"1\", \"name\" : \"ATL\", \"value\" : \"\" }, { \"_id\" : \"2\", \"name\" : \"TSB\", \"value\" : \"\" }, { \"_id\" : \"3\", \"name\" : \"TSS\", \"value\" : \"\" }], \"physical\" : [{ \"_id\" : \"0\", \"name\" : \"Weight\", \"value\" : \"55\", \"unit\" : \"55\" }, { \"_id\" : \"1\", \"name\" : \"Height\", \"value\" : \"44\", \"unit\" : \"44\" }, { \"_id\" : \"2\", \"name\" : \"BMI\", \"value\" : \"33\", \"unit\" : \"33\" }, { \"_id\" : \"3\", \"name\" : \"Fat percentage\", \"value\" : \"11\", \"unit\" : \"11\" }], \"goals\" : [{ \"_id\" : \"0\", \"year\" : \"2016\", \"text\" : \"\" }], \"bestResults\" : [], \"experience\" : [{ \"_id\" : \"0\", \"name\" : \"Swim\", \"value\" : \"\" }, { \"_id\" : \"2\", \"name\" : \"Run\", \"value\" : \"\" }, { \"_id\" : \"1\", \"name\" : \"Bike\", \"value\" : \"\" }, { \"_id\" : \"3\", \"name\" : \"Endurance\", \"value\" : \"\" }], \"selfRanking\" : [{ \"fieldId\" : \"0\", \"fieldName\" : \"Swim\", \"rank\" : \"1\" }, { \"fieldId\" : \"1\", \"fieldName\" : \"Bike\", \"rank\" : \"1\" }, { \"fieldId\" : \"2\", \"fieldName\" : \"Run\", \"rank\" : \"1\" }], \"events\" : [], \"fields\" : [] }, \"updatedBy\" : \"12 / 12 / 2017 12:00:00 AM\", \"lastUpdateDate\" : \"1 / 1 / 2017 12:00:00 AM\", \"createdDate\" : \"1 / 1 / 2016 12:00:00 AM\", \"auth\" : \"\", \"userName\" : \"test user\", \"password\" : \"test password\", \"sportComp\" : 0, \"sportCompKey\" : \"\" }";
+				var objUser = mTrackSvc.getUsrObject(userID);
+				var jsonUser = FormatJsonType(objUser.ToString());
 				RootMember rootMember = JsonConvert.DeserializeObject<RootMember>(jsonUser);
 				return rootMember;
 			}
@@ -381,8 +380,10 @@ namespace location2
 			DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
 				new DateTime(2001, 1, 1, 0, 0, 0));
 
+			//return NSDate.FromTimeIntervalSinceReferenceDate(
+			//	(date - newDate).TotalSeconds + 3600);
 			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - newDate).TotalSeconds + 3600);
+				(date - newDate).TotalSeconds);
 		}
 
 		public static DateTime ConvertNSDateToDateTime(NSDate date)
@@ -417,7 +418,7 @@ namespace location2
 			}
 		}
 
-		public UIImage getPictureFromLocal()
+		public UIImage GetPictureFromLocal()
 		{
 			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string jpgFilename = System.IO.Path.Combine(documentsDirectory, "meImg.jpg");
@@ -426,26 +427,32 @@ namespace location2
 			return currentImage;
 		}
 
-		public void saveImageToLocal(UIImage img)
+		public void SaveUserImage(UIImage img)
 		{
-			trackSvc.Service1 sv = new trackSvc.Service1();
 			try
 			{
+				var scaledImage = MaxResizeImage(img, 100, 100);
+				NSData imgData = scaledImage.AsPNG();
+				//save to local
 				var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				string jpgFilename = System.IO.Path.Combine(documentsDirectory, "meImg.jpg");
-				NSData imgData = img.AsJPEG();
 
 				NSError err = null;
 				if (!imgData.Save(jpgFilename, false, out err))
 				{
 					ShowMessageBox(null, "NOT saved as " + jpgFilename + " because" + err.LocalizedDescription);
 				}
+
+				//save to server
+
+				var fileBytes = new Byte[imgData.Length];
+				System.Runtime.InteropServices.Marshal.Copy(imgData.Bytes, fileBytes, 0, Convert.ToInt32(imgData.Length));
+
+				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes);
 			}
 			catch (Exception err)
 			{
-				bool out1 = false;
-				bool out2 = false;
-				sv.getErrprFromMobile(err.ToString(), NSUserDefaults.StandardUserDefaults.StringForKey("id").ToString(), out out1, out out2);
+				
 				ShowMessageBox(null, "Save error");
 			}
 		}

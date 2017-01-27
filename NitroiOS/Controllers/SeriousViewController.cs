@@ -144,9 +144,9 @@ namespace location2
 			#endregion
 
 			#region goals
-			this.SetBinding(() => MemberModel.id, () => txtID.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.lastname, () => txtLastname.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.country, () => txtCountry.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
 			#endregion
 
 			#region best results
@@ -323,12 +323,12 @@ namespace location2
 					txtFatPercentage.BackgroundColor = backgroundColor;
 					break;
 				case TAG_EDIT_GOALS:
-					txtID.Enabled = sender.Selected;
-					txtLastname.Enabled = sender.Selected;
-					txtCountry.Enabled = sender.Selected;
-					txtID.BackgroundColor = backgroundColor;
-					txtLastname.BackgroundColor = backgroundColor;
-					txtCountry.BackgroundColor = backgroundColor;
+					txtGoalDate.Enabled = sender.Selected;
+					txtGoalName.Enabled = sender.Selected;
+					txtGoalLoad.Enabled = sender.Selected;
+					txtGoalDate.BackgroundColor = backgroundColor;
+					txtGoalName.BackgroundColor = backgroundColor;
+					txtGoalLoad.BackgroundColor = backgroundColor;
 					break;
 				case TAG_EDIT_BEST_RESULTS:
 					txtSprint.Enabled = sender.Selected;

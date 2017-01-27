@@ -818,6 +818,35 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="saveUserImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="athId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageByteData" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveUserImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="saveUserImageResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteProgram">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="programId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteProgramResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteProgramResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="getListedDeviceId">
     <xs:complexType>
       <xs:sequence>
@@ -845,6 +874,36 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="attendReportResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="programsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="programsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="programsListResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eventsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ownerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isGroup" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eventsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventsListResult" nillable="true" type="xs:anyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -887,7 +946,8 @@
   <xs:element name="sessionUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="usr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="psw" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

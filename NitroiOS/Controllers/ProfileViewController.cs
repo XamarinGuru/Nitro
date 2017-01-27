@@ -10,8 +10,6 @@ namespace location2
 {
 	partial class ProfileViewController : BaseViewController
 	{
-		internal static UIImage temMeImg;
-
 		UIImagePickerController imagePicker = new UIImagePickerController();
 
 		//private RootMemberModel MemberModel { get; set; }
@@ -45,7 +43,6 @@ namespace location2
 
 				HideLoadingView();
 			});
-
 		}
 
 		private void SetInputBinding()
@@ -56,10 +53,9 @@ namespace location2
 			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
 			#endregion
 
-			if (getPictureFromLocal() != null)
+			if (GetPictureFromLocal() != null)
 			{
-				imgPicture.Image = getPictureFromLocal();
-				temMeImg = getPictureFromLocal();
+				imgPicture.Image = GetPictureFromLocal();
 			}
 		}
 
@@ -74,13 +70,12 @@ namespace location2
 		#region event handler
 		partial void ActionChangePhoto(UIButton sender)
 		{
-			this.PresentViewController(imagePicker, true, null);
+			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+			myDelegate.baseVC.PresentViewController(imagePicker, true, null);
 		}
 
 		partial void ActionEditProfile(UIButton sender)
 		{
-			//rootVC.SetCurrentPage(3);
-
 			SeriousViewController eventVC = Storyboard.InstantiateViewController("SeriousViewController") as SeriousViewController;
 			NavigationController.PushViewController(eventVC, true);
 		}
@@ -105,19 +100,12 @@ namespace location2
 
 		protected void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
 		{
-			NSUrl referenceURL = e.Info[new NSString("UIImagePickerControllerReferenceUrl")] as NSUrl;
-			if (referenceURL != null)
-				Console.WriteLine("Url:" + referenceURL.ToString());
-
 			UIImage originalImage = e.Info[UIImagePickerController.OriginalImage] as UIImage;
 			if (originalImage != null)
 			{
 				imgPicture.Image = originalImage;
-				temMeImg = originalImage;
-				//save to local
-				saveImageToLocal(originalImage);
+				SaveUserImage(imgPicture.Image);
 			}
-			// dismiss the picker
 			imagePicker.DismissViewControllerAsync(true);
 		}
 		void Handle_Canceled(object sender, EventArgs e)

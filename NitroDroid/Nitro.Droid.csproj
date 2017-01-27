@@ -127,10 +127,10 @@
     <Compile Include="Activities\EventInstructionActivity.cs" />
     <Compile Include="Activities\AddCommentActivity.cs" />
     <Compile Include="Activities\AdjustTrainningActivity.cs" />
+    <Compile Include="Activities\EditProfileActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Activities\EditProfileActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />

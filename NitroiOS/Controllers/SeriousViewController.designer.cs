@@ -152,15 +152,23 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtCountry { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtDistance { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtFatPercentage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtGoalDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtGoalLoad { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtGoalName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -173,14 +181,6 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtHMarathon { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtID { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtLastname { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -530,11 +530,6 @@ namespace location2
                 txtBZone5POWER = null;
             }
 
-            if (txtCountry != null) {
-                txtCountry.Dispose ();
-                txtCountry = null;
-            }
-
             if (txtDistance != null) {
                 txtDistance.Dispose ();
                 txtDistance = null;
@@ -543,6 +538,21 @@ namespace location2
             if (txtFatPercentage != null) {
                 txtFatPercentage.Dispose ();
                 txtFatPercentage = null;
+            }
+
+            if (txtGoalDate != null) {
+                txtGoalDate.Dispose ();
+                txtGoalDate = null;
+            }
+
+            if (txtGoalLoad != null) {
+                txtGoalLoad.Dispose ();
+                txtGoalLoad = null;
+            }
+
+            if (txtGoalName != null) {
+                txtGoalName.Dispose ();
+                txtGoalName = null;
             }
 
             if (txtHDistance != null) {
@@ -558,16 +568,6 @@ namespace location2
             if (txtHMarathon != null) {
                 txtHMarathon.Dispose ();
                 txtHMarathon = null;
-            }
-
-            if (txtID != null) {
-                txtID.Dispose ();
-                txtID = null;
-            }
-
-            if (txtLastname != null) {
-                txtLastname.Dispose ();
-                txtLastname = null;
             }
 
             if (txtMarathon != null) {
