@@ -48,7 +48,7 @@
                 android:id="@+id/linearLayout9"
                 android:layout_weight="2">
                 <CheckBox
-                    android:text="Performed without a device"
+                    android:text="Performed / Performed without a device"
                     android:id="@+id/checkAttended"
                     android:textColor="#ffffffff"
                     android:textSize="12dp"

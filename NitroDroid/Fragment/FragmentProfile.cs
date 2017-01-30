@@ -70,7 +70,7 @@ namespace goheja
 
 		private void SetInputBinding()
 		{
-			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.OneWay);
+			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
 

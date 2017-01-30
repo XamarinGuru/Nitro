@@ -26,6 +26,7 @@ namespace goheja
 
             view.FindViewById<ImageView>(Resource.Id.icon01).Click += delegate{ Icon_click(1); };
             view.FindViewById<ImageView>(Resource.Id.icon02).Click += delegate{ Icon_click(2); };
+			view.FindViewById<ImageView>(Resource.Id.icon06).Click += delegate { Icon_click(6); };
 
 			///coming soon
             //Icon03 = view.FindViewById<ImageView>(Resource.Id.icon03);

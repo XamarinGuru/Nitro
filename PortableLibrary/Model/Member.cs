@@ -149,7 +149,7 @@ namespace PortableLibrary
 		public athGoals()
 		{
 			_id = "";
-			Date = "";
+			Date = DateTime.Now.ToString();
 			Name = "";
 			Load = 0;
 		}

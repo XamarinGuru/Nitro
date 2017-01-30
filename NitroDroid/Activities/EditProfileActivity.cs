@@ -35,7 +35,8 @@ namespace goheja
 
 		TextView lblFirstname, lblLastname, lblCountry, lblAddress, lblBib, lblAge, lblGender, lblBirth, lblEmail, lblPhone;
 		EditText txtWeight, txtHeight, txtBMI, txtFatPercentage;
-		EditText txtGoalDate, txtGoalName, txtGoalLoad;
+		TextView txtGoalDate;
+		EditText txtGoalName, txtGoalLoad;
 		EditText txtSprint, txtOlympic, txtHDistance, txtDistance, txtMarathon, txtHMarathon, txt10KRun;
 		EditText txtRankSwim, txtRankRun, txtRankBike;
 		EditText txtSZone1HR, txtSZone2HR, txtSZone3HR, txtSZone4HR, txtSZone5HR;
@@ -54,6 +55,8 @@ namespace goheja
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.EditProfileActivity);
+
+			Window.SetBackgroundDrawableResource(Resource.Drawable.bg_new);
 
 			MemberModel = new RootMemberModel();
 
@@ -94,7 +97,7 @@ namespace goheja
 			txtBMI = FindViewById<EditText>(Resource.Id.txtBMI);
 			txtFatPercentage = FindViewById<EditText>(Resource.Id.txtFatPercentage);
 
-			txtGoalDate = FindViewById<EditText>(Resource.Id.txtGoalDate);
+			txtGoalDate = FindViewById<TextView>(Resource.Id.txtGoalDate);
 			txtGoalName = FindViewById<EditText>(Resource.Id.txtGoalName);
 			txtGoalLoad = FindViewById<EditText>(Resource.Id.txtGoalLoad);
 
@@ -577,6 +580,9 @@ namespace goheja
 				if (txtGoalDate.Text != "")
 					ddtime.DatePicker.DateTime = DateTime.Parse(txtGoalDate.Text);
 
+				var origin = new DateTime(1970, 1, 1);
+				ddtime.DatePicker.MinDate = (long)(DateTime.Now - origin).TotalMilliseconds;
+				ddtime.DatePicker.MaxDate = (long)(DateTime.Now.Date.AddYears(3) - origin).TotalMilliseconds;
 				ddtime.SetTitle("");
 				ddtime.Show();
 			}

@@ -23,12 +23,16 @@ namespace goheja
 		ViewPager calendarPager;
 		ListView eventsList;
 		List<NitroEvent> _events = new List<NitroEvent>();
+		LinearLayout noEventsContent;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.EventCalendarActivity);
+
+			noEventsContent = FindViewById<LinearLayout>(Resource.Id.noEventsContent);
+			noEventsContent.Visibility = ViewStates.Gone;
 
 			ReloadEvents();
 
@@ -72,6 +76,11 @@ namespace goheja
 
 		void FilteredEventsByDate(List<NitroEvent> events)
 		{
+			if (events.Count == 0)
+				noEventsContent.Visibility = ViewStates.Visible;
+			else
+				noEventsContent.Visibility = ViewStates.Gone;
+			
 			eventsList = FindViewById(Resource.Id.eventsList) as ListView;
 			var adapter = new NitroEventAdapter(events, this);
 			eventsList.Adapter = adapter;

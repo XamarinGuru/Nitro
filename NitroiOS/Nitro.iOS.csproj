@@ -138,6 +138,12 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\watch.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -249,15 +255,10 @@
     <BundleResource Include="Resources\ninja.png" />
     <BundleResource Include="Resources\pen.png" />
     <BundleResource Include="Resources\icon.png" />
-    <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -293,12 +294,9 @@
     <BundleResource Include="Resources\dist_new.png" />
     <BundleResource Include="Resources\active_tab.png" />
     <BundleResource Include="Resources\icon_07_inactive.png" />
-    <BundleResource Include="Resources\icon_3_inactive.png" />
     <BundleResource Include="Resources\icon_06_inactive.png" />
     <BundleResource Include="Resources\icon_05_inactive.png" />
     <BundleResource Include="Resources\icon_04_inactive.png" />
-    <BundleResource Include="Resources\icon_04_inactive_200.png" />
-    <BundleResource Include="Resources\icon_05_inactive_150.png" />
     <BundleResource Include="Resources\icon_home_act.png" />
     <BundleResource Include="Resources\icon_home_disable.png" />
     <BundleResource Include="Resources\icon_bycle_act.png" />

@@ -87,11 +87,11 @@
                         android:layout_height="100dp"
                         android:src="@drawable/icon_02" />
                     <ImageView
-                        android:id="@+id/icon03"
+                        android:id="@+id/icon06"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/icon_03"
+                        android:src="@drawable/icon_06"
                         android:layout_marginLeft="20dp" />
                 </LinearLayout>
                 <LinearLayout
@@ -108,20 +108,20 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/icon_04"
+                        android:src="@drawable/icon_04_inactive"
                         android:layout_marginRight="20dp" />
                     <ImageView
                         android:id="@+id/icon05"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/icon_05" />
+                        android:src="@drawable/icon_05_inactive" />
                     <ImageView
-                        android:id="@+id/icon06"
+                        android:id="@+id/icon03"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/icon_06"
+                        android:src="@drawable/icon_03_inactive"
                         android:layout_marginLeft="20dp" />
                 </LinearLayout>
                 <LinearLayout

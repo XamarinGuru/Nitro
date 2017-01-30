@@ -2,6 +2,8 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 
 namespace goheja
@@ -219,5 +221,7 @@ namespace goheja
             base.OnDestroy();
             Finish();
         }
+
+
     }
 }

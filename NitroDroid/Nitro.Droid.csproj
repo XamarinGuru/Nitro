@@ -267,6 +267,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <AndroidResource Include="Resources\drawable\icon_other.png" />
+    <AndroidResource Include="Resources\drawable\icon_03_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_04_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_05_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_06_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_07_inactive.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

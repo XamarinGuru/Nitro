@@ -34,11 +34,36 @@
         android:background="#ff1e1e1e"
         android:layout_width="match_parent"
         android:layout_height="280dp" />
-    <ListView
+    <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/eventsList"
-        android:layout_marginTop="5dp" />
+        android:id="@+id/relativeLayout2"
+        android:layout_marginTop="5dp">
+        <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/eventsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/noEventsContent"
+            android:gravity="center"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:visibility="gone">
+            <TextView
+                android:text="No Events"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:textColor="#ffe5a109"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

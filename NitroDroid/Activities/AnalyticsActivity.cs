@@ -22,8 +22,9 @@ namespace goheja
     {
 		enum RIDE_TYPE
 		{
-			bike = 0,
-			run = 1,
+			bike = 1,
+			run = 2,
+			mountain = 6
 		};
 		RIDE_TYPE mType;
 
@@ -165,6 +166,9 @@ namespace goheja
                 case 2:
 					SetViewByType(RIDE_TYPE.run);
                     break;
+				case 6:
+					SetViewByType(RIDE_TYPE.mountain);
+					break;
             }
 
 			initiatAth();
@@ -182,11 +186,15 @@ namespace goheja
 			if (type == RIDE_TYPE.run)
 			{
 				speedLbl.Text = "min/km";
+				dummyBtn.SetBackgroundResource(Resource.Drawable.runRound_new);
+			}
+			else if (type == RIDE_TYPE.bike) {
+				speedLbl.Text = "km/h";
 				dummyBtn.SetBackgroundResource(Resource.Drawable.bikeRound_new);
 			}
-			else {
+			else if (type == RIDE_TYPE.mountain) {
 				speedLbl.Text = "km/h";
-				dummyBtn.SetBackgroundResource(Resource.Drawable.runRound_new);
+				dummyBtn.SetBackgroundResource(Resource.Drawable.icon_06);
 			}
 		}
 
@@ -498,6 +506,16 @@ namespace goheja
             }
         }
         #endregion
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				return false;
+			}
+
+			return base.OnKeyDown(keyCode, e);
+		}
     }
 }
 

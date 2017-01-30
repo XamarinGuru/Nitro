@@ -185,10 +185,10 @@ namespace goheja
 		}
 		#endregion
 
-		public Animation OnCreateAnimation(int transit, bool enter, int nextAnim)
-		{
-			return AnimationUtils.LoadAnimation(Activity,
-				enter ? Android.Resource.Animation.FadeIn : Android.Resource.Animation.FadeOut);
-		}
+		//public Animation OnCreateAnimation(int transit, bool enter, int nextAnim)
+		//{
+		//	return AnimationUtils.LoadAnimation(Activity,
+		//		enter ? Android.Resource.Animation.FadeIn : Android.Resource.Animation.FadeOut);
+		//}
     }
 }

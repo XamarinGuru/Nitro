@@ -69,8 +69,8 @@ namespace goheja
 			lblTSS.Text = eventTotal.totals[7].value;
 
 			seekTime.Progress = distance;
-			seekDistance.Progress = int.Parse(eventTotal.totals[1].value);
-			seekTSS.Progress = int.Parse(eventTotal.totals[7].value);
+			seekDistance.Progress = (int)float.Parse(eventTotal.totals[1].value);
+			seekTSS.Progress = (int)float.Parse(eventTotal.totals[7].value);
 
 			attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
 		}

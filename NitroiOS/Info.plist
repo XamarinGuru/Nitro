@@ -35,18 +35,6 @@
 	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>com.go-heja.nitro</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon-Small@2x</string>
-		<string>Icon@2x</string>
-		<string>Icon-76</string>
-		<string>Icon-72@2x</string>
-		<string>Icon-76@2x</string>
-		<string>Icon-72</string>
-		<string>Icon-60@2x</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small-40@2x</string>
-	</array>
 	<key>UIRequiresFullScreen</key>
 	<string>YES</string>
 	<key>com.apple.developer.healthkit</key>
@@ -71,5 +59,7 @@
 	<string>3.8</string>
 	<key>CFBundleVersion</key>
 	<string>3.8.1</string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>

@@ -6,6 +6,7 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using AndroidHUD;
 using Newtonsoft.Json;
@@ -36,6 +37,15 @@ namespace goheja
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+		}
+
+		public override bool OnTouchEvent(MotionEvent e)
+		{
+			if (this.CurrentFocus == null) return true;
+
+			InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
+			imm.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, 0);
+			return base.OnTouchEvent(e);
 		}
 
 		public void ShowLoadingView(string title)

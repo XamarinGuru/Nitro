@@ -45,6 +45,25 @@ namespace goheja
             StartLocationService();
         }
 
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				if (_pager.CurrentItem != 0)
+				{
+					SetPage(0);
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+
+			return base.OnKeyDown(keyCode, e);
+		}
+
+
         private void InitilizeComponant()
         {
             tabCalendar = FindViewById<RelativeLayout>(Resource.Id.tabCalendar);
