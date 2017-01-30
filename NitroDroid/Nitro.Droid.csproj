@@ -128,6 +128,7 @@
     <Compile Include="Activities\AddCommentActivity.cs" />
     <Compile Include="Activities\AdjustTrainningActivity.cs" />
     <Compile Include="Activities\EditProfileActivity.cs" />
+    <Compile Include="Activities\ForgotPasswordActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
@@ -255,6 +256,13 @@
     <AndroidResource Include="Resources\drawable\icon_delete.png" />
     <AndroidResource Include="Resources\drawable\icon_group_report.png" />
     <AndroidResource Include="Resources\drawable\icon_workout_report.png" />
+    <AndroidResource Include="Resources\drawable\icon_other.png" />
+    <AndroidResource Include="Resources\drawable\icon_03_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_04_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_05_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_06_inactive.png" />
+    <AndroidResource Include="Resources\drawable\icon_07_inactive.png" />
+    <AndroidResource Include="Resources\layout\ForgotPasswordActivity.axml" />
     <None Include="Web References\trackSvc\Service1.xsd" />
     <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
@@ -266,12 +274,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <AndroidResource Include="Resources\drawable\icon_other.png" />
-    <AndroidResource Include="Resources\drawable\icon_03_inactive.png" />
-    <AndroidResource Include="Resources\drawable\icon_04_inactive.png" />
-    <AndroidResource Include="Resources\drawable\icon_05_inactive.png" />
-    <AndroidResource Include="Resources\drawable\icon_06_inactive.png" />
-    <AndroidResource Include="Resources\drawable\icon_07_inactive.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

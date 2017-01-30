@@ -11,8 +11,8 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("LoginViewController")]
-    partial class LoginViewController
+    [Register ("ForgotPasswordViewController")]
+    partial class ForgotPasswordViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,11 +24,19 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnValidPwConfirm { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtEmail { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtPassword { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtPwConfirm { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -38,17 +46,17 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewErrorPassword { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewErrorPwConfirm { get; set; }
+
         [Action ("ActionBack:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionBack (UIKit.UIButton sender);
 
-        [Action ("ActionForgotPassword:")]
+        [Action ("ActionResetPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionForgotPassword (UIKit.UIButton sender);
-
-        [Action ("ActionLogin:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionLogin (UIKit.UIButton sender);
+        partial void ActionResetPassword (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -62,6 +70,11 @@ namespace location2
                 btnValidPassword = null;
             }
 
+            if (btnValidPwConfirm != null) {
+                btnValidPwConfirm.Dispose ();
+                btnValidPwConfirm = null;
+            }
+
             if (txtEmail != null) {
                 txtEmail.Dispose ();
                 txtEmail = null;
@@ -72,6 +85,11 @@ namespace location2
                 txtPassword = null;
             }
 
+            if (txtPwConfirm != null) {
+                txtPwConfirm.Dispose ();
+                txtPwConfirm = null;
+            }
+
             if (viewErrorEmail != null) {
                 viewErrorEmail.Dispose ();
                 viewErrorEmail = null;
@@ -80,6 +98,11 @@ namespace location2
             if (viewErrorPassword != null) {
                 viewErrorPassword.Dispose ();
                 viewErrorPassword = null;
+            }
+
+            if (viewErrorPwConfirm != null) {
+                viewErrorPwConfirm.Dispose ();
+                viewErrorPwConfirm = null;
             }
         }
     }

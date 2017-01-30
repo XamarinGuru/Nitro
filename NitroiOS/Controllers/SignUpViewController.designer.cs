@@ -98,6 +98,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAcceptTerms (UIKit.UIButton sender);
 
+        [Action ("ActionBack:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionBack (UIKit.UIButton sender);
+
         [Action ("ActionSignUp:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionSignUp (UIKit.UIButton sender);

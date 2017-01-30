@@ -135,17 +135,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\watch.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\120.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="ViewModel\CommentView.xib" />
@@ -240,6 +229,10 @@
     <Compile Include="Controllers\SplashViewController.designer.cs">
       <DependentUpon>SplashViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ForgotPasswordViewController.cs" />
+    <Compile Include="Controllers\ForgotPasswordViewController.designer.cs">
+      <DependentUpon>ForgotPasswordViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
@@ -270,13 +263,6 @@
     <BundleResource Include="Resources\email_icon.png" />
     <BundleResource Include="Resources\key_icon.png" />
     <BundleResource Include="Resources\user_icon.png" />
-    <BundleResource Include="Resources\icon_01.png" />
-    <BundleResource Include="Resources\icon_02.png" />
-    <BundleResource Include="Resources\icon_03.png" />
-    <BundleResource Include="Resources\icon_04.png" />
-    <BundleResource Include="Resources\icon_05.png" />
-    <BundleResource Include="Resources\icon_06.png" />
-    <BundleResource Include="Resources\icon_07.png" />
     <BundleResource Include="Resources\heja_icon.png" />
     <BundleResource Include="Resources\calen_icon_active.png" />
     <BundleResource Include="Resources\transparent.png" />
@@ -293,10 +279,6 @@
     <BundleResource Include="Resources\bikeRound_new.png" />
     <BundleResource Include="Resources\dist_new.png" />
     <BundleResource Include="Resources\active_tab.png" />
-    <BundleResource Include="Resources\icon_07_inactive.png" />
-    <BundleResource Include="Resources\icon_06_inactive.png" />
-    <BundleResource Include="Resources\icon_05_inactive.png" />
-    <BundleResource Include="Resources\icon_04_inactive.png" />
     <BundleResource Include="Resources\icon_home_act.png" />
     <BundleResource Include="Resources\icon_home_disable.png" />
     <BundleResource Include="Resources\icon_bycle_act.png" />
@@ -342,6 +324,18 @@
     <BundleResource Include="Resources\icon_group_report.png" />
     <BundleResource Include="Resources\icon_workout_report.png" />
     <BundleResource Include="Resources\icon_other.png" />
+    <BundleResource Include="Resources\icon_01.png" />
+    <BundleResource Include="Resources\icon_02.png" />
+    <BundleResource Include="Resources\icon_03_inactive.png" />
+    <BundleResource Include="Resources\icon_03.png" />
+    <BundleResource Include="Resources\icon_04_inactive.png" />
+    <BundleResource Include="Resources\icon_04.png" />
+    <BundleResource Include="Resources\icon_05_inactive.png" />
+    <BundleResource Include="Resources\icon_05.png" />
+    <BundleResource Include="Resources\icon_06_inactive.png" />
+    <BundleResource Include="Resources\icon_06.png" />
+    <BundleResource Include="Resources\icon_07_inactive.png" />
+    <BundleResource Include="Resources\icon_07.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
@@ -376,6 +370,11 @@
       <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
       <Name>PortableLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\watch.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References" />

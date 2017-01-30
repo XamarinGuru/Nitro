@@ -62,6 +62,20 @@ namespace location2
 			alertView.Show();
 		}
 
+		protected void ShowMessageBox1(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
+		{
+			InvokeOnMainThread(() =>
+			{
+				var alertView = new UIAlertView(title, message, null, cancelButton, otherButtons);
+				alertView.Clicked += (sender, e) =>
+				{
+					successHandler();
+				};
+				alertView.Show();
+
+			});
+		}
+
 		//overloaded method
 		protected void ShowMessageBox(string title, string message)
 		{
@@ -112,6 +126,24 @@ namespace location2
 			AppSettings.DeviceID = string.Empty;
 			AppSettings.DeviceUDID = string.Empty;
 		}
+
+		public int ResetPassword(string email, string password)
+		{
+			try
+			{
+				int result = 0;
+				bool resultSpecified = false;
+				mTrackSvc.restPasword(email, password, out result, out resultSpecified);
+
+				return result;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return 0;
+			}
+		}
+
 		public string GetUserID()
 		{
 			var userID = AppSettings.UserID;
@@ -473,6 +505,8 @@ namespace location2
 		{
 			UIDatePicker picker = new UIDatePicker();
 			picker.Mode = UIDatePickerMode.Date;
+			picker.MinimumDate = NSDate.Now;
+			picker.MaximumDate = NSDate.Now.AddSeconds(60 * 60 * 24 * 365 * 3);
 
 			var format = "{0: MM-dd-yyyy}";
 			picker.ValueChanged += (object s, EventArgs e) =>

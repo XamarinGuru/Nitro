@@ -35,6 +35,7 @@ namespace goheja
 		{
 			FindViewById<Button>(Resource.Id.ActionLogin).Click += ActionLogin;
 			FindViewById<ImageView>(Resource.Id.ActionBack).Click += ActionBack;
+			FindViewById<Button>(Resource.Id.ActionForgotPassword).Click += ActionForgotPassword;
 
 			txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
 			txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
@@ -105,6 +106,12 @@ namespace goheja
 				});
 
 			}
+		}
+
+		void ActionForgotPassword(object sender, EventArgs e)
+		{
+			var activity = new Intent(this, typeof(ForgotPasswordActivity));
+			StartActivity(activity);
 		}
 
 		void ActionBack(object sender, EventArgs e)

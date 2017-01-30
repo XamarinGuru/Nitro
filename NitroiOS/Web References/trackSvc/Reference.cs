@@ -32,6 +32,8 @@ namespace location2.trackSvc {
         
         private System.Threading.SendOrPostCallback setEventInCalendarOperationCompleted;
         
+        private System.Threading.SendOrPostCallback restPaswordOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getEventTotalsMobOperationCompleted;
         
         private System.Threading.SendOrPostCallback getPracticeTotalsOperationCompleted;
@@ -125,6 +127,8 @@ namespace location2.trackSvc {
         private System.Threading.SendOrPostCallback getEventNameByTypeOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAthcurrentLocationOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getProgramOperationCompleted;
         
         private System.Threading.SendOrPostCallback saveUserImageOperationCompleted;
         
@@ -286,6 +290,9 @@ namespace location2.trackSvc {
         public event setEventInCalendarCompletedEventHandler setEventInCalendarCompleted;
         
         /// CodeRemarks
+        public event restPaswordCompletedEventHandler restPaswordCompleted;
+        
+        /// CodeRemarks
         public event getEventTotalsMobCompletedEventHandler getEventTotalsMobCompleted;
         
         /// CodeRemarks
@@ -425,6 +432,9 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         public event getAthcurrentLocationCompletedEventHandler getAthcurrentLocationCompleted;
+        
+        /// CodeRemarks
+        public event getProgramCompletedEventHandler getProgramCompleted;
         
         /// CodeRemarks
         public event saveUserImageCompletedEventHandler saveUserImageCompleted;
@@ -865,6 +875,38 @@ namespace location2.trackSvc {
             if ((this.setEventInCalendarCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.setEventInCalendarCompleted(this, new setEventInCalendarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/restPasword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void restPasword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string mail, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw, out int restPaswordResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool restPaswordResultSpecified) {
+            object[] results = this.Invoke("restPasword", new object[] {
+                        mail,
+                        psw});
+            restPaswordResult = ((int)(results[0]));
+            restPaswordResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void restPaswordAsync(string mail, string psw) {
+            this.restPaswordAsync(mail, psw, null);
+        }
+        
+        /// CodeRemarks
+        public void restPaswordAsync(string mail, string psw, object userState) {
+            if ((this.restPaswordOperationCompleted == null)) {
+                this.restPaswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnrestPaswordOperationCompleted);
+            }
+            this.InvokeAsync("restPasword", new object[] {
+                        mail,
+                        psw}, this.restPaswordOperationCompleted, userState);
+        }
+        
+        private void OnrestPaswordOperationCompleted(object arg) {
+            if ((this.restPaswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.restPaswordCompleted(this, new restPaswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2506,6 +2548,36 @@ namespace location2.trackSvc {
             if ((this.getAthcurrentLocationCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAthcurrentLocationCompleted(this, new getAthcurrentLocationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getProgram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getProgram([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string programId) {
+            object[] results = this.Invoke("getProgram", new object[] {
+                        programId});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getProgramAsync(string programId) {
+            this.getProgramAsync(programId, null);
+        }
+        
+        /// CodeRemarks
+        public void getProgramAsync(string programId, object userState) {
+            if ((this.getProgramOperationCompleted == null)) {
+                this.getProgramOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetProgramOperationCompleted);
+            }
+            this.InvokeAsync("getProgram", new object[] {
+                        programId}, this.getProgramOperationCompleted, userState);
+        }
+        
+        private void OngetProgramOperationCompleted(object arg) {
+            if ((this.getProgramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getProgramCompleted(this, new getProgramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4813,26 +4885,6 @@ namespace location2.trackSvc {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
-    public partial class CompositeType {
-        
-        /// <remarks/>
-        public bool BoolValue;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BoolValueSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string StringValue;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial class BsonValue {
     }
@@ -4852,6 +4904,26 @@ namespace location2.trackSvc {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public BsonValue _value;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
+    public partial class CompositeType {
+        
+        /// <remarks/>
+        public bool BoolValue;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BoolValueSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StringValue;
     }
     
     /// CodeRemarks
@@ -4932,6 +5004,40 @@ namespace location2.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void restPaswordCompletedEventHandler(object sender, restPaswordCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class restPaswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal restPaswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public int restPaswordResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool restPaswordResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
             }
         }
     }
@@ -6150,6 +6256,32 @@ namespace location2.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getProgramCompletedEventHandler(object sender, getProgramCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getProgramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getProgramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
             }
         }
     }

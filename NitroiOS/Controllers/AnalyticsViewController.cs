@@ -13,6 +13,7 @@ namespace location2
 		{
 			bike = 0,
 			run = 1,
+			mountain = 5
 		};
 
 		public static LocationManager Manager { get; set; }
@@ -277,34 +278,53 @@ namespace location2
 			NSUserDefaults.StandardUserDefaults.SetDouble(0, "lastAltitude");
 		}
 
-		private void SwitchSecondViewByType(RIDE_TYPE type)
-		{
-			selected = type;
+		//private void SwitchSecondViewByType(RIDE_TYPE type)
+		//{
+		//	selected = type;
 
+		//	viewSelectType.Hidden = true;
+
+		//	Manager.LocationUpdated += HandleLocationChanged;
+
+		//	if (type == RIDE_TYPE.run)
+		//	{
+		//		speedTypeLbl.Text = "min/km";
+		//		imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
+		//	}
+		//	else {
+		//		speedTypeLbl.Text = "km/h";
+		//		imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
+		//	}
+		//}
+
+		#region event handlers
+		partial void ActionSelectSportType(UIButton sender)
+		{
 			viewSelectType.Hidden = true;
 
 			Manager.LocationUpdated += HandleLocationChanged;
 
-			if (type == RIDE_TYPE.run)
+			switch (sender.Tag)
 			{
-				speedTypeLbl.Text = "min/km";
-				imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
+				case (int)RIDE_TYPE.bike:
+					speedTypeLbl.Text = "km/h";
+					imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
+					selected = RIDE_TYPE.bike;
+					//SwitchSecondViewByType(RIDE_TYPE.bike);
+					break;
+				case (int)RIDE_TYPE.run:
+					speedTypeLbl.Text = "min/km";
+					imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
+					selected = RIDE_TYPE.run;
+					//SwitchSecondViewByType(RIDE_TYPE.run);
+					break;
+				case (int)RIDE_TYPE.mountain:
+					speedTypeLbl.Text = "km/h";
+					imgTypeIcon.Image = UIImage.FromBundle("icon_06.png");
+					selected = RIDE_TYPE.mountain;
+					//SwitchSecondViewByType(RIDE_TYPE.mountain);
+					break;
 			}
-			else {
-				speedTypeLbl.Text = "km/h";
-				imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
-			}
-		}
-
-		#region event handlers
-		partial void SelectRunBtn_TouchUpInside(UIButton sender)
-		{
-			SwitchSecondViewByType(RIDE_TYPE.run);
-		}
-
-		partial void SelectBikeBtn_TouchUpInside(UIButton sender)
-		{
-			SwitchSecondViewByType(RIDE_TYPE.bike);
 		}
 
 		partial void StopBtn_TouchUpInside(UIButton sender)
@@ -318,6 +338,10 @@ namespace location2
 		#endregion
 
 
+		//partial void ActionSelectSportType(UIButton sender)
+		//{
+		//	throw new NotImplementedException();
+		//}
 	}
 }
 

@@ -1,17 +1,16 @@
 using Foundation;
 using System;
 using UIKit;
-using System.Threading.Tasks;
 using CoreGraphics;
 
 namespace location2
 {
-    public partial class LoginViewController : BaseViewController
+    public partial class ForgotPasswordViewController : BaseViewController
     {
-        public LoginViewController() : base()
+        public ForgotPasswordViewController() : base()
 		{
 		}
-		public LoginViewController(IntPtr handle) : base(handle)
+		public ForgotPasswordViewController(IntPtr handle) : base(handle)
 		{
 		}
 
@@ -26,10 +25,12 @@ namespace location2
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
 		}
 
+
 		private bool Validate()
 		{
 			btnValidPassword.Hidden = false;
 			btnValidEmail.Hidden = false;
+			btnValidPwConfirm.Hidden = false;
 
 			bool isValid = true;
 
@@ -53,55 +54,67 @@ namespace location2
 				MarkAsInvalide(btnValidPassword, viewErrorPassword, false);
 			}
 
+			if (txtPwConfirm.Text.Length <= 0 || txtPwConfirm.Text != txtPassword.Text)
+			{
+				MarkAsInvalide(btnValidPwConfirm, viewErrorPwConfirm, true);
+				isValid = false;
+			}
+			else
+			{
+				MarkAsInvalide(btnValidPwConfirm, viewErrorPwConfirm, false);
+			}
+
 			return isValid;
 		}
 
-		partial void ActionLogin(UIButton sender)
+		partial void ActionResetPassword(UIButton sender)
 		{
 			if (Validate())
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Log In...");
+					ShowLoadingView("Requesting...");
 
-					bool isSuccess = false;
+					int isSuccess = 0;
 
-					InvokeOnMainThread(() =>
+					InvokeOnMainThread(() => { isSuccess = ResetPassword(txtEmail.Text, txtPassword.Text); });
+
+					HideLoadingView();
+
+					if (isSuccess == 1)
 					{
-						isSuccess = LoginUser(txtEmail.Text, txtPassword.Text);
-
-						HideLoadingView();
-
-						if (isSuccess)
-						{
-							MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-							this.PresentViewController(mainVC, true, null);
-						}
-						else
-						{
-							ShowMessageBox(null, "Login Failed.");
-						}
-					});
+						ShowMessageBox1(null, "Password updated successfully", "OK", null, ReturnToLogin);
+					}
+					else if (isSuccess == 2)
+					{
+						ShowMessageBox(null, "Passwords don’t match");
+					}
+					else if (isSuccess == 3)
+					{
+						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
+					}
 				});
-
 			}
 		}
-		partial void ActionForgotPassword(UIButton sender)
+		void ReturnToLogin()
 		{
-			ForgotPasswordViewController mainVC = Storyboard.InstantiateViewController("ForgotPasswordViewController") as ForgotPasswordViewController;
-			this.PresentViewController(mainVC, true, null);
+			InvokeOnMainThread(() =>
+			{
+				LoginViewController mainVC = Storyboard.InstantiateViewController("LoginViewController") as LoginViewController;
+				this.PresentViewController(mainVC, false, null);
+			});
 		}
 
 		partial void ActionBack(UIButton sender)
 		{
-			InitViewController mainVC = Storyboard.InstantiateViewController("InitViewController") as InitViewController;
+			LoginViewController mainVC = Storyboard.InstantiateViewController("LoginViewController") as LoginViewController;
 			this.PresentViewController(mainVC, false, null);
 		}
 
 		#region keyboard process
 		private void KeyBoardUpNotification(NSNotification notification)
 		{
-			if (!txtEmail.IsEditing && !txtPassword.IsEditing)
+			if (!txtEmail.IsEditing && !txtPassword.IsEditing && !txtPwConfirm.IsEditing)
 				return;
 
 			CGRect r = UIKeyboard.BoundsFromNotification(notification);
@@ -117,6 +130,10 @@ namespace location2
 				moveViewUp = false;
 			}
 		}
+
+
+
+
 		private void KeyBoardDownNotification(NSNotification notification)
 		{
 			if (moveViewUp) { ScrollTheView(false); }
@@ -141,5 +158,5 @@ namespace location2
 			UIView.CommitAnimations();
 		}
 		#endregion
-    }
+	}
 }

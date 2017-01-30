@@ -43,6 +43,12 @@ namespace location2
 			}
 		}
 
+		partial void ActionBack(UIButton sender)
+		{
+			InitViewController mainVC = Storyboard.InstantiateViewController("InitViewController") as InitViewController;
+			this.PresentViewController(mainVC, false, null);
+		}
+
 		private bool Validate()
 		{
 			btnValidFirstname.Hidden = false;

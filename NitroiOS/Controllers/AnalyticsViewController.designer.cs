@@ -80,6 +80,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton selectMountainBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton selectRunBtn { get; set; }
 
         [Outlet]
@@ -110,17 +114,13 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIWebView wvOngoing { get; set; }
 
+        [Action ("ActionSelectSportType:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionSelectSportType (UIKit.UIButton sender);
+
         [Action ("BackBtn_TouchupInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BackBtn_TouchupInside (UIKit.UIButton sender);
-
-        [Action ("SelectBikeBtn_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SelectBikeBtn_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("SelectRunBtn_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SelectRunBtn_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("StartStopBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -210,6 +210,11 @@ namespace location2
             if (selectBikeBtn != null) {
                 selectBikeBtn.Dispose ();
                 selectBikeBtn = null;
+            }
+
+            if (selectMountainBtn != null) {
+                selectMountainBtn.Dispose ();
+                selectMountainBtn = null;
             }
 
             if (selectRunBtn != null) {

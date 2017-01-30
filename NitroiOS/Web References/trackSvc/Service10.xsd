@@ -82,6 +82,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="restPasword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="psw" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="restPaswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="restPaswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="getEventTotalsMob">
     <xs:complexType>
       <xs:sequence>
@@ -815,6 +830,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="getAthcurrentLocationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProgram">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="programId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProgramResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getProgramResult" nillable="true" type="xs:anyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

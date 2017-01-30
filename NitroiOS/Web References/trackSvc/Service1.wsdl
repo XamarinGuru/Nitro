@@ -33,6 +33,12 @@
   <wsdl:message name="IService1_setEventInCalendar_OutputMessage">
     <wsdl:part name="parameters" element="tns:setEventInCalendarResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_restPasword_InputMessage">
+    <wsdl:part name="parameters" element="tns:restPasword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_restPasword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:restPaswordResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getEventTotalsMob_InputMessage">
     <wsdl:part name="parameters" element="tns:getEventTotalsMob" />
   </wsdl:message>
@@ -314,6 +320,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_getAthcurrentLocation_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAthcurrentLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getProgram_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProgram" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getProgram_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProgramResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_saveUserImage_InputMessage">
     <wsdl:part name="parameters" element="tns:saveUserImage" />
@@ -746,6 +758,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/setEventInCalendar" message="tns:IService1_setEventInCalendar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/setEventInCalendarResponse" message="tns:IService1_setEventInCalendar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="restPasword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/restPasword" message="tns:IService1_restPasword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/restPaswordResponse" message="tns:IService1_restPasword_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getEventTotalsMob">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventTotalsMob" message="tns:IService1_getEventTotalsMob_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventTotalsMobResponse" message="tns:IService1_getEventTotalsMob_OutputMessage" />
@@ -933,6 +949,10 @@
     <wsdl:operation name="getAthcurrentLocation">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAthcurrentLocation" message="tns:IService1_getAthcurrentLocation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAthcurrentLocationResponse" message="tns:IService1_getAthcurrentLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProgram">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProgram" message="tns:IService1_getProgram_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProgramResponse" message="tns:IService1_getProgram_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="saveUserImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveUserImage" message="tns:IService1_saveUserImage_InputMessage" />
@@ -1242,6 +1262,15 @@
     </wsdl:operation>
     <wsdl:operation name="setEventInCalendar">
       <soap:operation soapAction="http://tempuri.org/IService1/setEventInCalendar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="restPasword">
+      <soap:operation soapAction="http://tempuri.org/IService1/restPasword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1665,6 +1694,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAthcurrentLocation">
       <soap:operation soapAction="http://tempuri.org/IService1/getAthcurrentLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgram">
+      <soap:operation soapAction="http://tempuri.org/IService1/getProgram" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
