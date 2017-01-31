@@ -29,7 +29,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/goals"
+                android:id="@+id/contentView"
                 android:gravity="center">
                 <LinearLayout
                     android:orientation="vertical"
@@ -54,7 +54,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="Sagiv"
                             android:id="@+id/lblFirstname"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -77,7 +76,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="Daniel"
                             android:id="@+id/lblLastname"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -100,7 +98,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="Isurael"
                             android:id="@+id/lblCountry"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -123,7 +120,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="Here"
                             android:id="@+id/lblAddress"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -151,7 +147,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:text="23"
                             android:textSize="15dp"
                             android:textColor="#fffb8c00" />
                     </RelativeLayout>
@@ -169,7 +164,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="80"
                             android:id="@+id/lblAge"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -192,7 +186,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="woman"
                             android:id="@+id/lblGender"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -215,7 +208,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="2016/12/30"
                             android:id="@+id/lblBirth"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -238,7 +230,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="sagiv@mail.com"
                             android:id="@+id/lblEmail"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -262,7 +253,6 @@
                             android:layout_height="wrap_content"
                             android:textSize="15dp" />
                         <TextView
-                            android:text="123456789"
                             android:id="@+id/lblPhone"
                             android:gravity="end"
                             android:layout_width="wrap_content"
@@ -345,7 +335,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="55"
+                                android:text="0"
                                 android:id="@+id/txtWeight"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -371,7 +361,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="66"
+                                android:text="0"
                                 android:id="@+id/txtHeight"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -397,7 +387,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtBMI"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -429,7 +419,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="88"
+                                android:text="0"
                                 android:background="#ffffffff"
                                 android:textColor="#ff000000"
                                 android:singleLine="true"
@@ -509,8 +499,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
-                            <TextView
-                                android:text="01-01-2016"
+                            <EditText
+                                android:text="00-00-00"
                                 android:id="@+id/txtGoalDate"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -535,7 +525,6 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="66"
                                 android:id="@+id/txtGoalName"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -561,7 +550,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtGoalLoad"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -647,7 +636,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="55"
+                                android:text="0"
                                 android:id="@+id/txtSprint"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -673,7 +662,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="66"
+                                android:text="0"
                                 android:id="@+id/txtOlympic"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -698,7 +687,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtHDistance"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -723,7 +712,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtDistance"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -748,7 +737,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txt10KRun"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -773,7 +762,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtHMarathon"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -799,7 +788,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="15dp" />
                             <EditText
-                                android:text="77"
+                                android:text="0"
                                 android:id="@+id/txtMarathon"
                                 android:gravity="center"
                                 android:layout_width="100dp"
@@ -914,7 +903,7 @@
                                         android:scaleType="fitStart"
                                         android:src="@drawable/icon_swim" />
                                     <EditText
-                                        android:text="66"
+                                        android:text="0"
                                         android:id="@+id/txtRankSwim"
                                         android:gravity="center"
                                         android:textColor="#ff000000"
@@ -942,7 +931,7 @@
                                         android:scaleType="fitCenter"
                                         android:src="@drawable/icon_run" />
                                     <EditText
-                                        android:text="66"
+                                        android:text="0"
                                         android:id="@+id/txtRankRun"
                                         android:gravity="center"
                                         android:textColor="#ff000000"
@@ -971,7 +960,7 @@
                                         android:scaleType="fitCenter"
                                         android:src="@drawable/icon_bike" />
                                     <EditText
-                                        android:text="66"
+                                        android:text="0"
                                         android:id="@+id/txtRankBike"
                                         android:gravity="center"
                                         android:textColor="#ff000000"

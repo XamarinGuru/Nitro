@@ -128,9 +128,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout12"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout12">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -173,9 +172,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout13"
-                    android:layout_weight="0.5">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout13">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -218,9 +216,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout14"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout14">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -320,9 +317,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout12"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout12">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -365,9 +361,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout13"
-                    android:layout_weight="0.5">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout13">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -410,9 +405,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout14"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout14">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -512,9 +506,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout12"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout12">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -557,9 +550,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout13"
-                    android:layout_weight="0.5">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout13">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -602,9 +594,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/linearLayout14"
-                    android:layout_weight="1">
+                    android:layout_height="33dp"
+                    android:id="@+id/linearLayout14">
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"

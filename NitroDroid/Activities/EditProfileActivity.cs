@@ -35,7 +35,7 @@ namespace goheja
 
 		TextView lblFirstname, lblLastname, lblCountry, lblAddress, lblBib, lblAge, lblGender, lblBirth, lblEmail, lblPhone;
 		EditText txtWeight, txtHeight, txtBMI, txtFatPercentage;
-		TextView txtGoalDate;
+		EditText txtGoalDate;
 		EditText txtGoalName, txtGoalLoad;
 		EditText txtSprint, txtOlympic, txtHDistance, txtDistance, txtMarathon, txtHMarathon, txt10KRun;
 		EditText txtRankSwim, txtRankRun, txtRankBike;
@@ -97,7 +97,8 @@ namespace goheja
 			txtBMI = FindViewById<EditText>(Resource.Id.txtBMI);
 			txtFatPercentage = FindViewById<EditText>(Resource.Id.txtFatPercentage);
 
-			txtGoalDate = FindViewById<TextView>(Resource.Id.txtGoalDate);
+			txtGoalDate = FindViewById<EditText>(Resource.Id.txtGoalDate);
+			txtGoalDate.Focusable = false;
 			txtGoalName = FindViewById<EditText>(Resource.Id.txtGoalName);
 			txtGoalLoad = FindViewById<EditText>(Resource.Id.txtGoalLoad);
 
@@ -185,8 +186,42 @@ namespace goheja
 
 			FindViewById<Button>(Resource.Id.btnUpdate).Click += ActionUpdate;
 			#endregion
-		}
 
+			var contentView = FindViewById<LinearLayout>(Resource.Id.contentView);
+			var childs = GetAllChildren(contentView);
+			for (int i = 0; i < childs.Count; i++)
+			{
+
+				if (childs[i] is EditText)
+				{
+					// change the values of text view here
+					((EditText)childs[i]).TextChanged += (s, e) => { };
+
+				}
+			}
+		}
+		List<View> GetAllChildren(View view)
+		{
+			if (!(view is ViewGroup))
+			{
+				List<View> viewArrayList = new List<View>();
+				viewArrayList.Add(view);
+				return viewArrayList;
+			}
+
+			List<View> result = new List<View>();
+
+			ViewGroup vg = (ViewGroup)view;
+			for (int i = 0; i < vg.ChildCount; i++)
+			{
+				View child = vg.GetChildAt(i);
+				List<View> viewArrayList = new List<View>();
+				viewArrayList.Add(view);
+				viewArrayList.AddRange(GetAllChildren(child));
+				result.AddRange(viewArrayList);
+			}
+			return result;
+		}
 		private void SetInputValidation()
 		{
 			SetupPicker(txtSprint, "time");
@@ -573,9 +608,10 @@ namespace goheja
 		{
 			if (e.Event.Action == MotionEventActions.Down)
 			{
-				DatePickerDialog ddtime = new DatePickerDialog(this, OnDateSet, DateTime.Today.Year, DateTime.Today.Month - 1,
-													 DateTime.Today.Day
-															 );
+				DatePickerDialog ddtime = new DatePickerDialog(this, OnDateSet, DateTime.Today.Year, 
+				                                               					DateTime.Today.Month - 1,
+													 							DateTime.Today.Day
+															 	);
 
 				if (txtGoalDate.Text != "")
 					ddtime.DatePicker.DateTime = DateTime.Parse(txtGoalDate.Text);
@@ -587,15 +623,9 @@ namespace goheja
 				ddtime.Show();
 			}
 		}
-		int timesDatePickerCalled = 1;
 		void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
 		{
-			timesDatePickerCalled += 1;
-
-			if ((timesDatePickerCalled % 2) == 0)
-			{
-				txtGoalDate.Text = e.Date.ToString("MM-dd-yyyy");
-			}
+			txtGoalDate.Text = e.Date.ToString("MM-dd-yyyy");
 		}
 	}
 }

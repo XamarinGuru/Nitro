@@ -107,7 +107,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/linearLayout6"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:text="v. 1/31/2017"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

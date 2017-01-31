@@ -143,7 +143,7 @@ namespace goheja
 			if (userID != null && userID != "0" && userID != string.Empty)
 				return userID;
 
-			if (AppSettings.Email == string.Empty || AppSettings.Password == string.Empty)
+			if (AppSettings.Email == string.Empty || AppSettings.Password == string.Empty || AppSettings.Email == null || AppSettings.Password == null)
 				return "0";
 
 			try
