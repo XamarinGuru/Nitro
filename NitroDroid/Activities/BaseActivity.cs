@@ -64,6 +64,29 @@ namespace goheja
 			});
 		}
 
+		public void ShowMessageBox(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
+		{
+			alert = new AlertDialog.Builder(this);
+			alert.SetTitle(title);
+			alert.SetMessage(message);
+			alert.SetPositiveButton("Cancel", (senderAlert, args) =>
+			{
+			});
+			alert.SetNegativeButton("OK", (senderAlert, args) =>
+			{
+				successHandler();
+			});
+			RunOnUiThread(() =>
+			{
+				alert.Show();
+			});
+		}
+
+		//public void ShowMessageBox(string title, string message)
+		//{
+		//	ShowMessageBox(title, message, "Ok", null, null);
+		//}
+
 		public void ShowMessageBox(string title, string message, bool isFinish = false)
 		{
 			alert = new AlertDialog.Builder(this);

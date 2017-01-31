@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ff000000">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -53,7 +54,8 @@
                     android:textColor="#ffffffff"
                     android:textSize="12dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:buttonTint="#ff40403e" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -99,7 +101,8 @@
                     android:thumbTint="#ffe5a109"
                     android:progress="0"
                     android:max="360"
-                    android:progressTint="#ffe5a109" />
+                    android:progressTint="#ffe5a109"
+                    android:progressBackgroundTint="#ff40403e" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -145,7 +148,8 @@
                     android:thumbTint="#ffe5a109"
                     android:progress="0"
                     android:max="250"
-                    android:progressTint="#ffe5a109" />
+                    android:progressTint="#ffe5a109"
+                    android:progressBackgroundTint="#ff40403e" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -191,7 +195,8 @@
                     android:thumbTint="#ffe5a109"
                     android:progress="0"
                     android:max="400"
-                    android:progressTint="#ffe5a109" />
+                    android:progressTint="#ffe5a109"
+                    android:progressBackgroundTint="#ff40403e" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"

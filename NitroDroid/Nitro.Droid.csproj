@@ -13,7 +13,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
@@ -106,9 +106,9 @@
     <Compile Include="App.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
-    <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\RegisterActivity.cs" />
     <Compile Include="Activities\SwipeTabActivity.cs" />
+    <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Utility\util.cs" />
     <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Activities\CloseApplicationActivity.cs" />

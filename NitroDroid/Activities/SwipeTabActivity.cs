@@ -10,15 +10,21 @@ using System;
 using Android.Locations;
 using Android.Net;
 using goheja.Services;
+using Android;
 
 namespace goheja
 {
     [Activity(Label = "Nitro" , Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
 	public class SwipeTabActivity : BaseActivity
     {
-		private static Intent serviceIntent = null;
+		string[] PermissionsCalendar =
+			{
+				Manifest.Permission.ReadCalendar,
+				Manifest.Permission.WriteCalendar
+			};
+		const int RequestCalendarId = 0;
 
-		//ISharedPreferences contextPref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
+		private static Intent serviceIntent = null;
 
 		RelativeLayout tabCalendar, tabAnalytics, tabProfile;
 
@@ -33,18 +39,11 @@ namespace goheja
 
             SetContentView(Resource.Layout.SwipeTabActivity);
 
-			if (serviceIntent == null)
-			{
-				AppSettings.baseVC = this;
-				serviceIntent = new Intent(this, typeof(BackgroundService));
-				this.StartService(serviceIntent);
-			}
-
-            InitilizeComponant();
+            InitUISettings();
            
-            StartLocationService();
+			CheckCalendarPermission();
+            //StartLocationService();
         }
-
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
 		{
@@ -63,8 +62,7 @@ namespace goheja
 			return base.OnKeyDown(keyCode, e);
 		}
 
-
-        private void InitilizeComponant()
+        private void InitUISettings()
         {
             tabCalendar = FindViewById<RelativeLayout>(Resource.Id.tabCalendar);
             tabAnalytics = FindViewById<RelativeLayout>(Resource.Id.tabAnalytics);
@@ -117,49 +115,122 @@ namespace goheja
             }
         }
 
-        private void StartLocationService()
-        {
-            //SetMiddleTabTitle("Searching for GPS...");
-            
-            if (App.Current.locationServiceConnection?.Binder == null)
-            {
-                App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
-                {
-                    SubscribeLocationServie();
-                };
-            }
-            else
-            {
-                SubscribeLocationServie();
-            }
-        }
+		#region grant calendar access permission
+		private void CheckCalendarPermission()
+		{
+			if ((int)Build.VERSION.SdkInt < 23)
+			{
+				StartBackgroundService();
+			}
+			else {
+				RequestCalendarPermission();
 
-        private void SubscribeLocationServie()
-        {
-            App.Current.LocationService.LocationChanged += HandleLocationChanged;
-            App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
-            App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
-            App.Current.LocationService.StatusChanged += HandleStatusChanged;
-        }
+			}
+		}
+		void RequestCalendarPermission()
+		{
+			const string rdPermission = Manifest.Permission.ReadCalendar;
+			const string wrPermission = Manifest.Permission.WriteCalendar;
+			if (CheckSelfPermission(rdPermission) == (int)Permission.Granted && CheckSelfPermission(wrPermission) == (int)Permission.Granted)
+			{
+				StartBackgroundService();
+				return;
+			}
 
-        public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
-        {
-            //SetMiddleTabTitle("Nitro ready...");
-        }
+			if (ShouldShowRequestPermissionRationale(rdPermission) || ShouldShowRequestPermissionRationale(wrPermission))
+			{
+				AlertDialog.Builder alert = new AlertDialog.Builder(this);
+				alert.SetTitle("");
+				alert.SetMessage("Calendar access is required to show your events on your device calendar.");
+				alert.SetPositiveButton("Cancel", (senderAlert, args) =>
+				{
+				});
+				alert.SetNegativeButton("OK", (senderAlert, args) =>
+				{
+					ActivityCompat.RequestPermissions(this, PermissionsCalendar, RequestCalendarId);
+				});
+				RunOnUiThread(() =>
+				{
+					alert.Show();
+				});
 
-        public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
-        {
-            //SetMiddleTabTitle("GPS disabled");
-        }
+				return;
+			}
 
-        public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
-        {
-            //SetMiddleTabTitle("GPS enabled");
-        }
+			ActivityCompat.RequestPermissions(this, PermissionsCalendar, RequestCalendarId);
+		}
 
-        public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
-        {
-            //SetMiddleTabTitle("GPS low signal");
-        }
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+			switch (requestCode)
+			{
+				case RequestCalendarId:
+					{
+						if (grantResults[0] == Permission.Granted)
+						{
+							StartBackgroundService();
+						}
+						else
+						{
+						}
+					}
+					break;
+			}
+		}
+
+		void StartBackgroundService()
+		{
+			if (serviceIntent == null)
+			{
+				AppSettings.baseVC = this;
+				serviceIntent = new Intent(this, typeof(BackgroundService));
+				this.StartService(serviceIntent);
+			}
+		}
+		#endregion
+
+
+        //private void StartLocationService()
+        //{
+        //    if (App.Current.locationServiceConnection?.Binder == null)
+        //    {
+        //        App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
+        //        {
+        //            SubscribeLocationServie();
+        //        };
+        //    }
+        //    else
+        //    {
+        //        SubscribeLocationServie();
+        //    }
+        //}
+
+        //private void SubscribeLocationServie()
+        //{
+        //    App.Current.LocationService.LocationChanged += HandleLocationChanged;
+        //    App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
+        //    App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
+        //    App.Current.LocationService.StatusChanged += HandleStatusChanged;
+        //}
+
+        //public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+        //{
+        //}
+
+        //public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
+        //{
+        //}
+
+        //public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
+        //{
+        //    //SetMiddleTabTitle("GPS enabled");
+        //}
+
+        //public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
+        //{
+        //    //SetMiddleTabTitle("GPS low signal");
+        //}
+
+
     }
 }

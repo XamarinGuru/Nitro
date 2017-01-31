@@ -52,7 +52,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblFirstname"
                             android:gravity="end"
@@ -74,7 +75,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblLastname"
                             android:gravity="end"
@@ -96,7 +98,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblCountry"
                             android:gravity="end"
@@ -118,7 +121,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblAddress"
                             android:gravity="end"
@@ -140,7 +144,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblBib"
                             android:gravity="end"
@@ -162,7 +167,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblAge"
                             android:gravity="end"
@@ -184,7 +190,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblGender"
                             android:gravity="end"
@@ -206,7 +213,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblBirth"
                             android:gravity="end"
@@ -228,7 +236,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblEmail"
                             android:gravity="end"
@@ -251,7 +260,8 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:textColor="#ffffffff" />
                         <TextView
                             android:id="@+id/lblPhone"
                             android:gravity="end"
@@ -333,7 +343,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtWeight"
@@ -359,7 +370,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtHeight"
@@ -385,7 +397,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtBMI"
@@ -412,7 +425,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:id="@+id/txtFatPercentage"
                                 android:gravity="center"
@@ -498,7 +512,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="00-00-00"
                                 android:id="@+id/txtGoalDate"
@@ -523,7 +538,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:id="@+id/txtGoalName"
                                 android:gravity="center"
@@ -548,7 +564,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtGoalLoad"
@@ -634,7 +651,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtSprint"
@@ -660,7 +678,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtOlympic"
@@ -685,7 +704,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtHDistance"
@@ -710,7 +730,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtDistance"
@@ -735,7 +756,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txt10KRun"
@@ -760,7 +782,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtHMarathon"
@@ -786,7 +809,8 @@
                                 android:id="@+id/textView1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                android:textColor="#ffffffff" />
                             <EditText
                                 android:text="0"
                                 android:id="@+id/txtMarathon"
@@ -3136,15 +3160,26 @@
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
-                <Button
-                    android:text="Update"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnUpdate"
-                    android:gravity="center"
-                    android:textColor="#fffb8c00"
-                    android:layout_marginTop="20dp"
-                    android:textSize="15dp" />
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout3"
+                    tools:visibility="visible">
+                    <Button
+                        android:text="UPDATE"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:id="@+id/btnUpdate"
+                        android:background="#ffe5a109"
+                        android:textColor="#ffffffff"
+                        android:textSize="12dp"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"
+                        tools:visibility="visible" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
         <LinearLayout

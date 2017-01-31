@@ -14,12 +14,24 @@ using System.Timers;
 using System.IO;
 using Android.Graphics;
 using PortableLibrary;
+using Android;
+using Android.Support.V4.App;
 
 namespace goheja
 {
     [Activity(Label = "Nitro", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class AnalyticsActivity : BaseActivity, ILocationListener
     {
+
+		readonly string[] PermissionsLocation =
+		{
+		  Manifest.Permission.AccessCoarseLocation,
+		  Manifest.Permission.AccessFineLocation
+		};
+
+		const int RequestLocationId = 0;
+
+
 		enum RIDE_TYPE
 		{
 			bike = 1,
@@ -172,7 +184,7 @@ namespace goheja
             }
 
 			initiatAth();
-			startLocationService();
+			CheckLocationPermission();
         }
 
 		private void SetViewByType(RIDE_TYPE type)
@@ -328,7 +340,68 @@ namespace goheja
 
 			Finish();
 		}
-        private void startLocationService()
+
+
+		#region grant location service
+		private void CheckLocationPermission()
+		{
+			if ((int)Build.VERSION.SdkInt < 23)
+			{
+				StartLocationService();
+			}
+			else {
+				RequestCalendarPermission();
+
+			}
+		}
+		void RequestCalendarPermission()
+		{
+			const string permission = Manifest.Permission.AccessFineLocation;
+			if (CheckSelfPermission(permission) == (int)Permission.Granted)
+			{
+				StartLocationService();
+				return;
+			}
+
+			if (ShouldShowRequestPermissionRationale(permission))
+			{
+				AlertDialog.Builder alert = new AlertDialog.Builder(this);
+				alert.SetTitle("");
+				alert.SetMessage("Location access is required to gaugo your sports.");
+				alert.SetPositiveButton("Cancel", (senderAlert, args) =>
+				{
+				});
+				alert.SetNegativeButton("OK", (senderAlert, args) =>
+				{
+					ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
+				});
+				RunOnUiThread(() =>
+				{
+					alert.Show();
+				});
+
+				return;
+			}
+
+			ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
+		}
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+			switch (requestCode)
+			{
+				case RequestLocationId:
+					{
+						if (grantResults[0] == Permission.Granted)
+							StartLocationService();
+					}
+					break;
+			}
+		}
+
+
+		#endregion
+        private void StartLocationService()
         {
             _title.Text = "Searching for GPS...";
 
@@ -516,6 +589,8 @@ namespace goheja
 
 			return base.OnKeyDown(keyCode, e);
 		}
+
+
     }
 }
 

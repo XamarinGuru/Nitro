@@ -1,32 +1,16 @@
 ﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/BaseViewController.cs">
-    <Files>
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="144" Column="5" />
-      <File FileName="NitroiOS/Controllers/AnalyticsViewController.cs" Line="323" Column="53" />
-      <File FileName="NitroDroid/Fragment/FragmentEvents.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/AnalyticsActivity.cs" Line="28" Column="5" />
-      <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="76" Column="17" />
-      <File FileName="NitroDroid/Activities/EditProfileActivity.cs" Line="611" Column="17" />
-      <File FileName="NitroiOS/Controllers/SeriousViewController.cs" Line="151" Column="1" />
-      <File FileName="NitroDroid/Fragment/TimeFormatDialog.cs" Line="24" Column="34" />
-      <File FileName="NitroDroid/Activities/InitActivity.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/SplashActivity.cs" Line="52" Column="23" />
-      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="147" Column="16" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NitroSolution" expanded="True">
             <Node name="Nitro.Droid" expanded="True" selected="True">
               <Node name="Activities" expanded="True" />
-              <Node name="Adapter" expanded="True" />
               <Node name="Fragment" expanded="True" />
               <Node name="Resources" expanded="True">
                 <Node name="layout" expanded="True" />
               </Node>
-            </Node>
-            <Node name="Nitro.iOS" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -35,24 +19,10 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="506" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/MonoDroid.TimesSquare/Resources/CalendarPickerView.cs" line="507" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/AnalyticsViewController.cs" line="160" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="383" column="10" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="388" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="393" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/AnalyticsActivity.cs" line="448" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/BaseViewController.cs" line="488" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/BaseViewController.cs" line="484" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Fragment/FragmentProfile.cs" line="174" column="49" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/AppDelegate.cs" line="150" column="26" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroDroid/Activities/EventInstructionActivity.cs" line="122" column="1" />
-      <Breakpoint file="/Volumes/work/nitroAndrod5004/NitroiOS/Controllers/LoginViewController.cs" line="82" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.06157df6bb041820" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>
