@@ -28,9 +28,7 @@ namespace location2
 
 		private bool Validate()
 		{
-			btnValidPassword.Hidden = false;
 			btnValidEmail.Hidden = false;
-			btnValidPwConfirm.Hidden = false;
 
 			bool isValid = true;
 
@@ -44,26 +42,6 @@ namespace location2
 				MarkAsInvalide(btnValidEmail, viewErrorEmail, false);
 			}
 
-			if (txtPassword.Text.Length <= 0)
-			{
-				MarkAsInvalide(btnValidPassword, viewErrorPassword, true);
-				isValid = false;
-			}
-			else
-			{
-				MarkAsInvalide(btnValidPassword, viewErrorPassword, false);
-			}
-
-			if (txtPwConfirm.Text.Length <= 0 || txtPwConfirm.Text != txtPassword.Text)
-			{
-				MarkAsInvalide(btnValidPwConfirm, viewErrorPwConfirm, true);
-				isValid = false;
-			}
-			else
-			{
-				MarkAsInvalide(btnValidPwConfirm, viewErrorPwConfirm, false);
-			}
-
 			return isValid;
 		}
 
@@ -75,21 +53,17 @@ namespace location2
 				{
 					ShowLoadingView("Requesting...");
 
-					int isSuccess = 0;
+					string isSuccess = "0";
 
-					InvokeOnMainThread(() => { isSuccess = ResetPassword(txtEmail.Text, txtPassword.Text); });
+					InvokeOnMainThread(() => { isSuccess = GetCode(txtEmail.Text); });
 
 					HideLoadingView();
 
-					if (isSuccess == 1)
+					if (isSuccess == "1")
 					{
-						ShowMessageBox1(null, "Password updated successfully", "OK", null, ReturnToLogin);
+						ShowMessageBox1(null, "A mail was sent to you with a temporary code", "OK", null, ReturnToLogin);
 					}
-					else if (isSuccess == 2)
-					{
-						ShowMessageBox(null, "Passwords don’t match");
-					}
-					else if (isSuccess == 3)
+					else if (isSuccess == "0")
 					{
 						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
 					}
@@ -114,7 +88,7 @@ namespace location2
 		#region keyboard process
 		private void KeyBoardUpNotification(NSNotification notification)
 		{
-			if (!txtEmail.IsEditing && !txtPassword.IsEditing && !txtPwConfirm.IsEditing)
+			if (!txtEmail.IsEditing)
 				return;
 
 			CGRect r = UIKeyboard.BoundsFromNotification(notification);

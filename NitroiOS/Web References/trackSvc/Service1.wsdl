@@ -15,6 +15,12 @@
   <wsdl:message name="IService1_updateMomgoData_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateMomgoDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCode" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCodeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getMobTotalsGraph_InputMessage">
     <wsdl:part name="parameters" element="tns:getMobTotalsGraph" />
   </wsdl:message>
@@ -746,6 +752,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateMomgoData" message="tns:IService1_updateMomgoData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateMomgoDataResponse" message="tns:IService1_updateMomgoData_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getCode" message="tns:IService1_getCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getCodeResponse" message="tns:IService1_getCode_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getMobTotalsGraph">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getMobTotalsGraph" message="tns:IService1_getMobTotalsGraph_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getMobTotalsGraphResponse" message="tns:IService1_getMobTotalsGraph_OutputMessage" />
@@ -1235,6 +1245,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="updateMomgoData">
       <soap:operation soapAction="http://tempuri.org/IService1/updateMomgoData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCode">
+      <soap:operation soapAction="http://tempuri.org/IService1/getCode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

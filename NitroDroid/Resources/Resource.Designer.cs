@@ -977,47 +977,47 @@ namespace goheja
 			// aapt resource value: 0x7f090002
 			public const int ActionBar = 2131296258;
 			
-			// aapt resource value: 0x7f09011f
-			public const int ActionBarMain = 2131296543;
+			// aapt resource value: 0x7f09011c
+			public const int ActionBarMain = 2131296540;
 			
 			// aapt resource value: 0x7f090013
 			public const int ActionDistanceChanged = 2131296275;
 			
-			// aapt resource value: 0x7f0900f9
-			public const int ActionEditProfile = 2131296505;
+			// aapt resource value: 0x7f0900f2
+			public const int ActionEditProfile = 2131296498;
 			
-			// aapt resource value: 0x7f0900fe
-			public const int ActionEventDetail = 2131296510;
+			// aapt resource value: 0x7f0900f7
+			public const int ActionEventDetail = 2131296503;
 			
-			// aapt resource value: 0x7f090109
-			public const int ActionForgotPassword = 2131296521;
+			// aapt resource value: 0x7f090106
+			public const int ActionForgotPassword = 2131296518;
 			
-			// aapt resource value: 0x7f09010a
-			public const int ActionLogin = 2131296522;
+			// aapt resource value: 0x7f090107
+			public const int ActionLogin = 2131296519;
 			
 			// aapt resource value: 0x7f0900a7
 			public const int ActionReload = 2131296423;
 			
+			// aapt resource value: 0x7f0900ef
+			public const int ActionResetPassword = 2131296495;
+			
+			// aapt resource value: 0x7f0900f5
+			public const int ActionSignIn = 2131296501;
+			
+			// aapt resource value: 0x7f0900f4
+			public const int ActionSignOut = 2131296500;
+			
 			// aapt resource value: 0x7f0900f6
-			public const int ActionResetPassword = 2131296502;
+			public const int ActionSignUp = 2131296502;
 			
-			// aapt resource value: 0x7f0900fc
-			public const int ActionSignIn = 2131296508;
-			
-			// aapt resource value: 0x7f0900fb
-			public const int ActionSignOut = 2131296507;
-			
-			// aapt resource value: 0x7f0900fd
-			public const int ActionSignUp = 2131296509;
-			
-			// aapt resource value: 0x7f0900fa
-			public const int ActionSyncDevice = 2131296506;
+			// aapt resource value: 0x7f0900f3
+			public const int ActionSyncDevice = 2131296499;
 			
 			// aapt resource value: 0x7f090017
 			public const int ActionTSSChanged = 2131296279;
 			
-			// aapt resource value: 0x7f09011c
-			public const int ActionTerms = 2131296540;
+			// aapt resource value: 0x7f090119
+			public const int ActionTerms = 2131296537;
 			
 			// aapt resource value: 0x7f09000f
 			public const int ActionTimeChanged = 2131296271;
@@ -1061,14 +1061,14 @@ namespace goheja
 			// aapt resource value: 0x7f09003a
 			public const int StartPractice = 2131296314;
 			
-			// aapt resource value: 0x7f090121
-			public const int Tab1Icon = 2131296545;
+			// aapt resource value: 0x7f09011e
+			public const int Tab1Icon = 2131296542;
+			
+			// aapt resource value: 0x7f090120
+			public const int Tab2Icon = 2131296544;
 			
 			// aapt resource value: 0x7f090123
-			public const int Tab2Icon = 2131296547;
-			
-			// aapt resource value: 0x7f090126
-			public const int Tab3Icon = 2131296550;
+			public const int Tab3Icon = 2131296547;
 			
 			// aapt resource value: 0x7f090021
 			public const int TitleBarText = 2131296289;
@@ -1097,17 +1097,17 @@ namespace goheja
 			// aapt resource value: 0x7f0900a6
 			public const int btnUpdate = 2131296422;
 			
-			// aapt resource value: 0x7f09010c
-			public const int calendar_grid = 2131296524;
+			// aapt resource value: 0x7f090109
+			public const int calendar_grid = 2131296521;
 			
-			// aapt resource value: 0x7f090104
-			public const int calendaritem = 2131296516;
+			// aapt resource value: 0x7f0900fd
+			public const int calendaritem = 2131296509;
 			
 			// aapt resource value: 0x7f09000a
 			public const int checkAttended = 2131296266;
 			
-			// aapt resource value: 0x7f09011b
-			public const int checkTerms = 2131296539;
+			// aapt resource value: 0x7f090118
+			public const int checkTerms = 2131296536;
 			
 			// aapt resource value: 0x7f0900c9
 			public const int collapsCycle = 2131296457;
@@ -1172,20 +1172,17 @@ namespace goheja
 			// aapt resource value: 0x7f0900ed
 			public const int errorEmail = 2131296493;
 			
+			// aapt resource value: 0x7f09010c
+			public const int errorFirstname = 2131296524;
+			
 			// aapt resource value: 0x7f09010f
-			public const int errorFirstname = 2131296527;
+			public const int errorLastname = 2131296527;
 			
-			// aapt resource value: 0x7f090112
-			public const int errorLastname = 2131296530;
+			// aapt resource value: 0x7f090105
+			public const int errorPassword = 2131296517;
 			
-			// aapt resource value: 0x7f0900f2
-			public const int errorPassword = 2131296498;
-			
-			// aapt resource value: 0x7f0900f5
-			public const int errorPwConfirm = 2131296501;
-			
-			// aapt resource value: 0x7f090116
-			public const int errorUsername = 2131296534;
+			// aapt resource value: 0x7f090113
+			public const int errorUsername = 2131296531;
 			
 			// aapt resource value: 0x7f0900aa
 			public const int eventsList = 2131296426;
@@ -1226,8 +1223,8 @@ namespace goheja
 			// aapt resource value: 0x7f0900ee
 			public const int imageView2 = 2131296494;
 			
-			// aapt resource value: 0x7f0900f7
-			public const int imgProfile = 2131296503;
+			// aapt resource value: 0x7f0900f0
+			public const int imgProfile = 2131296496;
 			
 			// aapt resource value: 0x7f090077
 			public const int imgSwim = 2131296375;
@@ -1235,29 +1232,26 @@ namespace goheja
 			// aapt resource value: 0x7f0900af
 			public const int imgType = 2131296431;
 			
-			// aapt resource value: 0x7f09011a
-			public const int invalidAge = 2131296538;
+			// aapt resource value: 0x7f090117
+			public const int invalidAge = 2131296535;
 			
 			// aapt resource value: 0x7f0900ec
 			public const int invalidEmail = 2131296492;
 			
+			// aapt resource value: 0x7f09010b
+			public const int invalidFirstname = 2131296523;
+			
 			// aapt resource value: 0x7f09010e
-			public const int invalidFirstname = 2131296526;
+			public const int invalidLastname = 2131296526;
 			
-			// aapt resource value: 0x7f090111
-			public const int invalidLastname = 2131296529;
+			// aapt resource value: 0x7f090104
+			public const int invalidPassword = 2131296516;
 			
-			// aapt resource value: 0x7f0900f1
-			public const int invalidPassword = 2131296497;
+			// aapt resource value: 0x7f09011a
+			public const int invalidTerms = 2131296538;
 			
-			// aapt resource value: 0x7f0900f4
-			public const int invalidPwConfirm = 2131296500;
-			
-			// aapt resource value: 0x7f09011d
-			public const int invalidTerms = 2131296541;
-			
-			// aapt resource value: 0x7f090115
-			public const int invalidUsername = 2131296533;
+			// aapt resource value: 0x7f090112
+			public const int invalidUsername = 2131296530;
 			
 			// aapt resource value: 0x7f090048
 			public const int lblAddress = 2131296328;
@@ -1265,8 +1259,8 @@ namespace goheja
 			// aapt resource value: 0x7f09004a
 			public const int lblAge = 2131296330;
 			
-			// aapt resource value: 0x7f0900ff
-			public const int lblAuthorName = 2131296511;
+			// aapt resource value: 0x7f0900f8
+			public const int lblAuthorName = 2131296504;
 			
 			// aapt resource value: 0x7f0900c4
 			public const int lblAvgHR = 2131296452;
@@ -1283,11 +1277,11 @@ namespace goheja
 			// aapt resource value: 0x7f09004c
 			public const int lblBirth = 2131296332;
 			
-			// aapt resource value: 0x7f090101
-			public const int lblComment = 2131296513;
+			// aapt resource value: 0x7f0900fa
+			public const int lblComment = 2131296506;
 			
-			// aapt resource value: 0x7f090100
-			public const int lblCommentDate = 2131296512;
+			// aapt resource value: 0x7f0900f9
+			public const int lblCommentDate = 2131296505;
 			
 			// aapt resource value: 0x7f0900ce
 			public const int lblCommentTitle = 2131296462;
@@ -1385,8 +1379,8 @@ namespace goheja
 			// aapt resource value: 0x7f0900c1
 			public const int lblTotalDistance = 2131296449;
 			
-			// aapt resource value: 0x7f0900f8
-			public const int lblUsername = 2131296504;
+			// aapt resource value: 0x7f0900f1
+			public const int lblUsername = 2131296497;
 			
 			// aapt resource value: 0x7f090003
 			public const int linearLayout1 = 2131296259;
@@ -1484,14 +1478,14 @@ namespace goheja
 			// aapt resource value: 0x7f090009
 			public const int linearLayout9 = 2131296265;
 			
-			// aapt resource value: 0x7f090107
-			public const int loadingImage = 2131296519;
+			// aapt resource value: 0x7f090100
+			public const int loadingImage = 2131296512;
 			
-			// aapt resource value: 0x7f090105
-			public const int loadingProgressBar = 2131296517;
+			// aapt resource value: 0x7f0900fe
+			public const int loadingProgressBar = 2131296510;
 			
-			// aapt resource value: 0x7f090108
-			public const int loadingProgressWheel = 2131296520;
+			// aapt resource value: 0x7f090101
+			public const int loadingProgressWheel = 2131296513;
 			
 			// aapt resource value: 0x7f090000
 			public const int monday = 2131296256;
@@ -1499,11 +1493,11 @@ namespace goheja
 			// aapt resource value: 0x7f0900ab
 			public const int noEventsContent = 2131296427;
 			
-			// aapt resource value: 0x7f090117
-			public const int note = 2131296535;
+			// aapt resource value: 0x7f090114
+			public const int note = 2131296532;
 			
-			// aapt resource value: 0x7f09011e
-			public const int pager = 2131296542;
+			// aapt resource value: 0x7f09011b
+			public const int pager = 2131296539;
 			
 			// aapt resource value: 0x7f090050
 			public const int physical = 2131296336;
@@ -1517,17 +1511,17 @@ namespace goheja
 			// aapt resource value: 0x7f09004f
 			public const int relativeLayout2 = 2131296335;
 			
-			// aapt resource value: 0x7f090113
-			public const int relativeLayout4 = 2131296531;
+			// aapt resource value: 0x7f090110
+			public const int relativeLayout4 = 2131296528;
 			
 			// aapt resource value: 0x7f0900e9
 			public const int relativeLayout5 = 2131296489;
 			
-			// aapt resource value: 0x7f0900ef
-			public const int relativeLayout6 = 2131296495;
+			// aapt resource value: 0x7f090102
+			public const int relativeLayout6 = 2131296514;
 			
-			// aapt resource value: 0x7f090118
-			public const int relativeLayout7 = 2131296536;
+			// aapt resource value: 0x7f090115
+			public const int relativeLayout7 = 2131296533;
 			
 			// aapt resource value: 0x7f090041
 			public const int scrollView = 2131296321;
@@ -1550,14 +1544,14 @@ namespace goheja
 			// aapt resource value: 0x7f090001
 			public const int sunday = 2131296257;
 			
+			// aapt resource value: 0x7f09011f
+			public const int tabAnalytics = 2131296543;
+			
+			// aapt resource value: 0x7f09011d
+			public const int tabCalendar = 2131296541;
+			
 			// aapt resource value: 0x7f090122
-			public const int tabAnalytics = 2131296546;
-			
-			// aapt resource value: 0x7f090120
-			public const int tabCalendar = 2131296544;
-			
-			// aapt resource value: 0x7f090125
-			public const int tabProfile = 2131296549;
+			public const int tabProfile = 2131296546;
 			
 			// aapt resource value: 0x7f090004
 			public const int textView1 = 2131296260;
@@ -1574,14 +1568,14 @@ namespace goheja
 			// aapt resource value: 0x7f090019
 			public const int textView5 = 2131296281;
 			
-			// aapt resource value: 0x7f090106
-			public const int textViewStatus = 2131296518;
+			// aapt resource value: 0x7f0900ff
+			public const int textViewStatus = 2131296511;
 			
 			// aapt resource value: 0x7f09005b
 			public const int textview111 = 2131296347;
 			
-			// aapt resource value: 0x7f09010b
-			public const int title = 2131296523;
+			// aapt resource value: 0x7f090108
+			public const int title = 2131296520;
 			
 			// aapt resource value: 0x7f0900bd
 			public const int totalContent = 2131296445;
@@ -1607,8 +1601,8 @@ namespace goheja
 			// aapt resource value: 0x7f09006a
 			public const int txt10KRun = 2131296362;
 			
-			// aapt resource value: 0x7f090119
-			public const int txtAge = 2131296537;
+			// aapt resource value: 0x7f090116
+			public const int txtAge = 2131296534;
 			
 			// aapt resource value: 0x7f0900a3
 			public const int txtBFTPHB = 2131296419;
@@ -1661,8 +1655,8 @@ namespace goheja
 			// aapt resource value: 0x7f090057
 			public const int txtFatPercentage = 2131296343;
 			
-			// aapt resource value: 0x7f09010d
-			public const int txtFirstname = 2131296525;
+			// aapt resource value: 0x7f09010a
+			public const int txtFirstname = 2131296522;
 			
 			// aapt resource value: 0x7f09005e
 			public const int txtGoalDate = 2131296350;
@@ -1682,8 +1676,8 @@ namespace goheja
 			// aapt resource value: 0x7f090055
 			public const int txtHeight = 2131296341;
 			
-			// aapt resource value: 0x7f090110
-			public const int txtLastname = 2131296528;
+			// aapt resource value: 0x7f09010d
+			public const int txtLastname = 2131296525;
 			
 			// aapt resource value: 0x7f09006c
 			public const int txtMarathon = 2131296364;
@@ -1691,11 +1685,8 @@ namespace goheja
 			// aapt resource value: 0x7f090067
 			public const int txtOlympic = 2131296359;
 			
-			// aapt resource value: 0x7f0900f0
-			public const int txtPassword = 2131296496;
-			
-			// aapt resource value: 0x7f0900f3
-			public const int txtPwConfirm = 2131296499;
+			// aapt resource value: 0x7f090103
+			public const int txtPassword = 2131296515;
 			
 			// aapt resource value: 0x7f090096
 			public const int txtRFTPHB = 2131296406;
@@ -1799,20 +1790,20 @@ namespace goheja
 			// aapt resource value: 0x7f090066
 			public const int txtSprint = 2131296358;
 			
-			// aapt resource value: 0x7f090103
-			public const int txtTime = 2131296515;
+			// aapt resource value: 0x7f0900fc
+			public const int txtTime = 2131296508;
 			
-			// aapt resource value: 0x7f090102
-			public const int txtTitle = 2131296514;
+			// aapt resource value: 0x7f0900fb
+			public const int txtTitle = 2131296507;
 			
-			// aapt resource value: 0x7f090114
-			public const int txtUsername = 2131296532;
+			// aapt resource value: 0x7f090111
+			public const int txtUsername = 2131296529;
 			
 			// aapt resource value: 0x7f090054
 			public const int txtWeight = 2131296340;
 			
-			// aapt resource value: 0x7f090124
-			public const int vertical2 = 2131296548;
+			// aapt resource value: 0x7f090121
+			public const int vertical2 = 2131296545;
 			
 			// aapt resource value: 0x7f090065
 			public const int viewBestResults = 2131296357;

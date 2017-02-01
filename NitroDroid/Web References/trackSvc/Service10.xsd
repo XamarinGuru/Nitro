@@ -26,6 +26,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="getCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usr" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="getMobTotalsGraph">
     <xs:complexType>
       <xs:sequence>

@@ -16,11 +16,9 @@ namespace goheja
 	[Activity(Label = "ForgotPasswordActivity")]
 	public class ForgotPasswordActivity : BaseActivity
 	{
-		EditText txtEmail, txtPassword, txtPwConfirm;
-
-		ImageView invalidEmail, invalidPassword, invalidPwConfirm;
-
-		LinearLayout errorEmail, errorPassword, errorPwConfirm;
+		EditText txtEmail;
+		ImageView invalidEmail;
+		LinearLayout errorEmail;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -37,29 +35,17 @@ namespace goheja
 			FindViewById<ImageView>(Resource.Id.ActionBack).Click += ActionBack;
 
 			txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
-			txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
-			txtPwConfirm = FindViewById<EditText>(Resource.Id.txtPwConfirm);
 
 			invalidEmail = FindViewById<ImageView>(Resource.Id.invalidEmail);
-			invalidPassword = FindViewById<ImageView>(Resource.Id.invalidPassword);
 			errorEmail = FindViewById<LinearLayout>(Resource.Id.errorEmail);
-			errorPassword = FindViewById<LinearLayout>(Resource.Id.errorPassword);
-			invalidPwConfirm = FindViewById<ImageView>(Resource.Id.invalidPwConfirm);
-			errorPwConfirm = FindViewById<LinearLayout>(Resource.Id.errorPwConfirm);
 
 			invalidEmail.Visibility = ViewStates.Invisible;
-			invalidPassword.Visibility = ViewStates.Invisible;
-			invalidPwConfirm.Visibility = ViewStates.Invisible;
 			errorEmail.Visibility = ViewStates.Invisible;
-			errorPassword.Visibility = ViewStates.Invisible;
-			errorPwConfirm.Visibility = ViewStates.Invisible;
 		}
 
 		private bool Validate()
 		{
 			invalidEmail.Visibility = ViewStates.Visible;
-			invalidPassword.Visibility = ViewStates.Visible;
-			invalidPwConfirm.Visibility = ViewStates.Visible;
 			
 			bool isValid = true;
 
@@ -73,26 +59,6 @@ namespace goheja
 				MarkAsInvalide(invalidEmail, errorEmail, false);
 			}
 
-			if (txtPassword.Text.Length <= 0)
-			{
-				MarkAsInvalide(invalidPassword, errorPassword, true);
-				isValid = false;
-			}
-			else
-			{
-				MarkAsInvalide(invalidPassword, errorPassword, false);
-			}
-
-			if (txtPwConfirm.Text.Length <= 0 || txtPwConfirm.Text != txtPassword.Text)
-			{
-				MarkAsInvalide(invalidPwConfirm, errorPwConfirm, true);
-				isValid = false;
-			}
-			else
-			{
-				MarkAsInvalide(invalidPwConfirm, errorPwConfirm, false);
-			}
-
 			return isValid;
 		}
 
@@ -104,15 +70,15 @@ namespace goheja
 				{
 					ShowLoadingView("Requesting...");
 
-					int isSuccess = ResetPassword(txtEmail.Text, txtPassword.Text);
+					string isSuccess = GetCode(txtEmail.Text);
 
 					HideLoadingView();
 
-					if (isSuccess == 1)
+					if (isSuccess == "1")
 					{
 						AlertDialog.Builder alert = new AlertDialog.Builder(this);
 						alert.SetTitle("");
-						alert.SetMessage("Password updated successfully");
+						alert.SetMessage("A mail was sent to you with a temporary code");
 						alert.SetPositiveButton("OK", (senderAlert, args) =>
 						{
 							RunOnUiThread(() => { base.OnBackPressed(); });
@@ -122,11 +88,7 @@ namespace goheja
 							alert.Show();
 						});
 					}
-					else if (isSuccess == 2)
-					{
-						ShowMessageBox(null, "Passwords don’t match");
-					}
-					else if (isSuccess == 3)
+					else if (isSuccess == "0")
 					{
 						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
 					}

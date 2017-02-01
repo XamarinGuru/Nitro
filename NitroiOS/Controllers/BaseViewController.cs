@@ -127,20 +127,18 @@ namespace location2
 			AppSettings.DeviceUDID = string.Empty;
 		}
 
-		public int ResetPassword(string email, string password)
+		public string GetCode(string email)
 		{
 			try
 			{
-				int result = 0;
-				bool resultSpecified = false;
-				mTrackSvc.restPasword(email, password, out result, out resultSpecified);
+				var response = mTrackSvc.getCode(email);
 
-				return result;
+				return response;
 			}
 			catch (Exception err)
 			{
 				ShowMessageBox(null, err.Message);
-				return 0;
+				return null;
 			}
 		}
 

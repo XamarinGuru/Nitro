@@ -26,6 +26,8 @@ namespace location2.trackSvc {
         
         private System.Threading.SendOrPostCallback updateMomgoDataOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getCodeOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getMobTotalsGraphOperationCompleted;
         
         private System.Threading.SendOrPostCallback addPracticeOperationCompleted;
@@ -279,6 +281,9 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         public event updateMomgoDataCompletedEventHandler updateMomgoDataCompleted;
+        
+        /// CodeRemarks
+        public event getCodeCompletedEventHandler getCodeCompleted;
         
         /// CodeRemarks
         public event getMobTotalsGraphCompletedEventHandler getMobTotalsGraphCompleted;
@@ -757,6 +762,36 @@ namespace location2.trackSvc {
             if ((this.updateMomgoDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.updateMomgoDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getCode", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string getCode([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usr) {
+            object[] results = this.Invoke("getCode", new object[] {
+                        usr});
+            return ((string)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getCodeAsync(string usr) {
+            this.getCodeAsync(usr, null);
+        }
+        
+        /// CodeRemarks
+        public void getCodeAsync(string usr, object userState) {
+            if ((this.getCodeOperationCompleted == null)) {
+                this.getCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCodeOperationCompleted);
+            }
+            this.InvokeAsync("getCode", new object[] {
+                        usr}, this.getCodeOperationCompleted, userState);
+        }
+        
+        private void OngetCodeOperationCompleted(object arg) {
+            if ((this.getCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getCodeCompleted(this, new getCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4929,6 +4964,32 @@ namespace location2.trackSvc {
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void updateMomgoDataCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getCodeCompletedEventHandler(object sender, getCodeCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
