@@ -236,6 +236,10 @@
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ChangePasswordViewController.cs" />
+    <Compile Include="Controllers\ChangePasswordViewController.designer.cs">
+      <DependentUpon>ChangePasswordViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -336,6 +340,7 @@
     <BundleResource Include="Resources\icon_06.png" />
     <BundleResource Include="Resources\icon_07_inactive.png" />
     <BundleResource Include="Resources\icon_07.png" />
+    <BundleResource Include="Resources\icon_changepw.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

@@ -25,8 +25,11 @@ namespace location2
 		{
 			lblTitle.Text = nitroEvent.title;
 
-			var arrDates = nitroEvent.StartDateTime().GetDateTimeFormats();
-			lblEventTime.Text = arrDates[106];
+			//var arrDates = nitroEvent.StartDateTime().GetDateTimeFormats();
+			//lblEventTime.Text = arrDates[106];
+
+			var eventDate = nitroEvent.StartDateTime();
+			lblEventTime.Text = String.Format("{0:t}", eventDate);
 
 			switch (nitroEvent.type)
 			{

@@ -80,9 +80,9 @@ namespace goheja
 
 		void InitBindingEventData(NitroEvent selectedEvent)
 		{
-			var startDateFormats = selectedEvent.StartDateTime().GetDateTimeFormats();
+			var startDateFormats = String.Format("{0:f}", selectedEvent.StartDateTime());//selectedEvent.StartDateTime().GetDateTimeFormats();
 			FindViewById<TextView>(Resource.Id.lblTitle).Text = selectedEvent.title;
-			FindViewById<TextView>(Resource.Id.lblStartDate).Text = startDateFormats[11];
+			FindViewById<TextView>(Resource.Id.lblStartDate).Text = startDateFormats;
 			FindViewById<TextView>(Resource.Id.lblData).Text = selectedEvent.eventData;
 
 			var strDistance = selectedEvent.distance;
@@ -152,11 +152,11 @@ namespace goheja
 				var commentView = LayoutInflater.From(this).Inflate(Resource.Layout.item_Comment, null);
 
 				var deltaSecs = float.Parse(comment.date) / 1000;
-				var commentDateFormats = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(deltaSecs).ToLocalTime().GetDateTimeFormats();
+				var commentDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(deltaSecs).ToLocalTime();
 
 				FindViewById<TextView>(Resource.Id.lblCommentTitle).Text = "COMMENT" + " (" + comments.comments.Count + ")";
 				commentView.FindViewById<TextView>(Resource.Id.lblAuthorName).Text = comment.author;
-				commentView.FindViewById<TextView>(Resource.Id.lblCommentDate).Text = commentDateFormats[106] + " | " + commentDateFormats[0];
+				commentView.FindViewById<TextView>(Resource.Id.lblCommentDate).Text = String.Format("{0:t}", commentDate) + " | " + String.Format("{0:d}", commentDate);
 				commentView.FindViewById<TextView>(Resource.Id.lblComment).Text = comment.commentText;
 				contentComment.AddView(commentView);
 			}

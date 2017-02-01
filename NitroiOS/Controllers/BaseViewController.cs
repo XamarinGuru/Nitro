@@ -142,6 +142,24 @@ namespace location2
 			}
 		}
 
+		public int ResetPassword(string email, string password)
+		{
+			try
+			{
+				int result = 0;
+				bool resultSpecified = false;
+				mTrackSvc.restPasword(email, password, out result, out resultSpecified);
+
+				return result;
+			}
+			catch (Exception err)
+			{
+				ShowMessageBox(null, err.Message);
+				return 0;
+			}
+		}
+
+
 		public string GetUserID()
 		{
 			var userID = AppSettings.UserID;

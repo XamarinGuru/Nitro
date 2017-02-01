@@ -18,6 +18,8 @@ namespace goheja
 
 		public static NitroEvent selectedEvent;
 
+		public static string currentEmail;
+
 		private const string userIDKey = "userID";
 		public static string UserID
 		{

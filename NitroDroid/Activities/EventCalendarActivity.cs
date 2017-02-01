@@ -86,5 +86,16 @@ namespace goheja
 			eventsList.Adapter = adapter;
 			adapter.NotifyDataSetChanged();
 		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				//OnBackPressed();
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
+		}
 	}
 }

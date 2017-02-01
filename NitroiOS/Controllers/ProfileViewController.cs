@@ -66,12 +66,18 @@ namespace location2
 			imgPicture.Layer.MasksToBounds = true;
 		}
 
-
 		#region event handler
 		partial void ActionChangePhoto(UIButton sender)
 		{
 			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 			myDelegate.baseVC.PresentViewController(imagePicker, true, null);
+		}
+
+		partial void ActionChangePassword(UIButton sender)
+		{
+			ChangePasswordViewController changePWVC = Storyboard.InstantiateViewController("ChangePasswordViewController") as ChangePasswordViewController;
+			changePWVC.email = MemberModel.email;
+			NavigationController.PushViewController(changePWVC, true);
 		}
 
 		partial void ActionEditProfile(UIButton sender)

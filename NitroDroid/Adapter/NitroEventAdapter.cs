@@ -47,8 +47,12 @@ namespace goheja
 			convertView.FindViewById(Resource.Id.ActionEventDetail).Tag = position;
 			((TextView)convertView.FindViewById(Resource.Id.txtTitle)).Text = _events[position].title;
 
-			var arrDates = _events[position].StartDateTime().GetDateTimeFormats();
-			((TextView)convertView.FindViewById(Resource.Id.txtTime)).Text = arrDates[106];
+			//var arrDates = _events[position].StartDateTime().GetDateTimeFormats();
+
+			var eventDate = _events[position].StartDateTime();
+			//lblEventTime.Text = String.Format("{0:t}", eventDate);
+
+			((TextView)convertView.FindViewById(Resource.Id.txtTime)).Text = String.Format("{0:t}", eventDate);
 
 			var imgType = convertView.FindViewById<ImageView>(Resource.Id.imgType);
 			switch (_events[position].type)

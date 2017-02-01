@@ -27,10 +27,10 @@ namespace location2
 		public nfloat SetView(Content comment)
 		{
 			var deltaSecs = float.Parse(comment.date) / 1000;
-			var commentDateFormats = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(deltaSecs).ToLocalTime().GetDateTimeFormats();
+			var commentDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(deltaSecs).ToLocalTime();
 
 			lblAuthor.Text = comment.author;
-			lblCommentDate.Text = commentDateFormats[106] + " | " + commentDateFormats[0];
+			lblCommentDate.Text = String.Format("{0:t}", commentDate) + " | " + String.Format("{0:d}", commentDate);
 			lblComment.Text = comment.commentText;
 
 			LayoutIfNeeded();

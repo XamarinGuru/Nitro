@@ -65,6 +65,7 @@ namespace goheja
 			imgProfile.Click += ActionChangePicture;
 			mView.FindViewById<LinearLayout>(Resource.Id.ActionEditProfile).Click += ActionEditProfile;
 			mView.FindViewById<LinearLayout>(Resource.Id.ActionSyncDevice).Click += ActionSyncDevice;
+			mView.FindViewById<LinearLayout>(Resource.Id.ActionChangePassword).Click += ActionChangePassword;
 			mView.FindViewById<LinearLayout>(Resource.Id.ActionSignOut).Click += ActionSignOut;
 		}
 
@@ -96,6 +97,13 @@ namespace goheja
 			var userID = rootActivity.GetUserID();
 			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID));
 			var intent = new Intent(Intent.ActionView, uri);
+			StartActivity(intent);
+		}
+
+		private void ActionChangePassword(object sender, EventArgs e)
+		{
+			var intent = new Intent(Activity, typeof(ChangePasswordActivity));
+			AppSettings.currentEmail = MemberModel.email;
 			StartActivity(intent);
 		}
 

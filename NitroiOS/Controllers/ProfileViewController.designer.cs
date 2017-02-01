@@ -38,6 +38,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton removeNitroEventsBtn { get; set; }
 
+        [Action ("ActionChangePassword:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionChangePassword (UIKit.UIButton sender);
+
         [Action ("ActionChangePhoto:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionChangePhoto (UIKit.UIButton sender);

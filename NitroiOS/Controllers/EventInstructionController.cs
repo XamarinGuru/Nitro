@@ -75,9 +75,9 @@ namespace location2
 
 		void InitBindingEventData()
 		{
-			var startDateFormats = selectedEvent.StartDateTime().GetDateTimeFormats();
+			var startDateFormats = String.Format("{0:f}", selectedEvent.StartDateTime());
 			lblTitle.Text = selectedEvent.title;
-			lblStartDate.Text = startDateFormats[11];
+			lblStartDate.Text = startDateFormats;
 			lblData.Text = selectedEvent.eventData;
 
 			var strDistance = selectedEvent.distance;

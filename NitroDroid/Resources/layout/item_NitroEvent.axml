@@ -42,7 +42,8 @@
                 android:id="@+id/txtTime"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#ffffffff" />
             <ImageView
                 android:src="@drawable/icon_run"
                 android:layout_width="25dp"
