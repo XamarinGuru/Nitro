@@ -21,11 +21,12 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
     <AssemblyName>location2</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>false</MtouchFastDev>
+    <CodesignProvision>dfe315be-d90c-4a26-99b6-c6b7e510c7ba</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -72,6 +73,7 @@
     <AssemblyName>Nitro</AssemblyName>
     <MtouchFloat32>true</MtouchFloat32>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <CodesignProvision>1ad51c81-de7e-4cfb-a848-fb0e7bbced77</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

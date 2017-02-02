@@ -64,8 +64,22 @@ namespace goheja
 
 				HideLoadingView();
 
+				var activity = new Intent(this, typeof(EventInstructionActivity));
+				StartActivity(activity);
 				Finish();
 			});
+		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				var activity = new Intent(this, typeof(EventInstructionActivity));
+				StartActivity(activity);
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
 		}
 	}
 }

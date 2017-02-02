@@ -56,6 +56,7 @@
                         style="@style/BlackEditBox"
                         android:background="@android:color/transparent"
                         android:layout_width="0dp"
+                        android:singleLine="true"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"
@@ -120,6 +121,7 @@
                         style="@style/BlackEditBox"
                         android:background="@android:color/transparent"
                         android:layout_width="0dp"
+                        android:singleLine="true"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"
@@ -189,6 +191,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/txtUsername"
                         android:hint="PICK A USER NAME"
+                        android:singleLine="true"
                         style="@style/BlackEditBoxWithImage"
                         android:layout_weight="1" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"

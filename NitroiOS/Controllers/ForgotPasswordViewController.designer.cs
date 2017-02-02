@@ -20,35 +20,11 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnValidPassword { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnValidPwConfirm { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtEmail { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtPassword { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtPwConfirm { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewErrorEmail { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView viewErrorPassword { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView viewErrorPwConfirm { get; set; }
 
         [Action ("ActionBack:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -65,44 +41,14 @@ namespace location2
                 btnValidEmail = null;
             }
 
-            if (btnValidPassword != null) {
-                btnValidPassword.Dispose ();
-                btnValidPassword = null;
-            }
-
-            if (btnValidPwConfirm != null) {
-                btnValidPwConfirm.Dispose ();
-                btnValidPwConfirm = null;
-            }
-
             if (txtEmail != null) {
                 txtEmail.Dispose ();
                 txtEmail = null;
             }
 
-            if (txtPassword != null) {
-                txtPassword.Dispose ();
-                txtPassword = null;
-            }
-
-            if (txtPwConfirm != null) {
-                txtPwConfirm.Dispose ();
-                txtPwConfirm = null;
-            }
-
             if (viewErrorEmail != null) {
                 viewErrorEmail.Dispose ();
                 viewErrorEmail = null;
-            }
-
-            if (viewErrorPassword != null) {
-                viewErrorPassword.Dispose ();
-                viewErrorPassword = null;
-            }
-
-            if (viewErrorPwConfirm != null) {
-                viewErrorPwConfirm.Dispose ();
-                viewErrorPwConfirm = null;
             }
         }
     }

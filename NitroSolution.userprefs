@@ -1,43 +1,47 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventCalendarActivity.cs">
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="NitroDroid/Activities/ChangePasswordActivity.cs" Line="91" Column="60" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="162" Column="3" />
-      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="176" Column="4" />
-      <File FileName="NitroDroid/Fragment/FragmentProfile.cs" Line="105" Column="53" />
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="99" Column="4" />
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="152" Column="1" />
+      <File FileName="NitroDroid/Resources/values/style.xml" Line="15" Column="37" />
+      <File FileName="NitroDroid/Activities/SwipeTabActivity.cs" Line="63" Column="4" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="100" Column="4" />
+      <File FileName="NitroDroid/Activities/LoginActivity.cs" Line="100" Column="16" />
+      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="179" Column="4" />
+      <File FileName="NitroDroid/Activities/AddCommentActivity.cs" Line="2" Column="1" />
+      <File FileName="NitroDroid/Activities/AdjustTrainningActivity.cs" Line="116" Column="4" />
       <File FileName="NitroDroid/Activities/AnalyticsActivity.cs" Line="591" Column="4" />
+      <File FileName="NitroDroid/Activities/ChangePasswordActivity.cs" Line="139" Column="4" />
+      <File FileName="NitroDroid/Activities/EditProfileActivity.cs" Line="641" Column="4" />
+      <File FileName="NitroiOS/Controllers/ForgotPasswordViewController.cs" Line="91" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NitroSolution" expanded="True">
             <Node name="Nitro.Droid" expanded="True">
-              <Node name="Activities" expanded="True">
-                <Node name="EventCalendarActivity.cs" selected="True" />
-              </Node>
+              <Node name="Activities" expanded="True" />
               <Node name="Fragment" expanded="True" />
               <Node name="Resources" expanded="True">
                 <Node name="layout" expanded="True" />
+                <Node name="values" expanded="True" />
               </Node>
               <Node name="Utility" expanded="True" />
               <Node name="ViewModel" expanded="True" />
             </Node>
             <Node name="Nitro.iOS" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Main.storyboard" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.31572f11d95f03ae1cc984ea56f2d5a9be1a44e5" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
 </Properties>

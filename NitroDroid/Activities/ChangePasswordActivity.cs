@@ -121,7 +121,21 @@ namespace goheja
 
 		void ActionBack(object sender, EventArgs e)
 		{
-			base.OnBackPressed();
+			var activity = new Intent(this, typeof(SwipeTabActivity));
+			StartActivity(activity);
+			Finish();
+		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				var activity = new Intent(this, typeof(SwipeTabActivity));
+				StartActivity(activity);
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
 		}
 	}
 }

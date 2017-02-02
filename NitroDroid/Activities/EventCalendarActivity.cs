@@ -91,7 +91,8 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				//OnBackPressed();
+				var activity = new Intent(this, typeof(SwipeTabActivity));
+				StartActivity(activity);
 				Finish();
 			}
 

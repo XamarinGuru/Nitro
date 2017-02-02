@@ -55,7 +55,11 @@ namespace goheja
 
 		void InitUISettings(NitroEvent selectedEvent)
 		{
-			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) { OnBack(); };
+			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) { 
+				var activity = new Intent(this, typeof(EventCalendarActivity));
+				StartActivity(activity);
+				Finish();
+			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
 			{
 				var activity = new Intent(this, typeof(AdjustTrainningActivity));
@@ -160,6 +164,18 @@ namespace goheja
 				commentView.FindViewById<TextView>(Resource.Id.lblComment).Text = comment.commentText;
 				contentComment.AddView(commentView);
 			}
+		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				var activity = new Intent(this, typeof(EventCalendarActivity));
+				StartActivity(activity);
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
 		}
 	}
 }

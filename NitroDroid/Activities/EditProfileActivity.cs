@@ -627,5 +627,17 @@ namespace goheja
 		{
 			txtGoalDate.Text = e.Date.ToString("MM-dd-yyyy");
 		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				var activity = new Intent(this, typeof(SwipeTabActivity));
+				StartActivity(activity);
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
+		}
 	}
 }

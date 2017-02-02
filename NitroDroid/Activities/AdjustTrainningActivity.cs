@@ -1,8 +1,14 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Runtime;
+using Android.Views;
 using Android.Widget;
 using PortableLibrary;
 
@@ -91,8 +97,22 @@ namespace goheja
 
 				HideLoadingView();
 
+				var activity = new Intent(this, typeof(EventInstructionActivity));
+				StartActivity(activity);
 				Finish();
 			});
+		}
+
+		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back)
+			{
+				var activity = new Intent(this, typeof(EventInstructionActivity));
+				StartActivity(activity);
+				Finish();
+			}
+
+			return base.OnKeyDown(keyCode, e);
 		}
 	}
 }
