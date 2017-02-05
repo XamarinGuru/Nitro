@@ -268,77 +268,77 @@ namespace goheja
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f01001e
-			public const int ahBarColor = 2130771998;
-			
-			// aapt resource value: 0x7f010026
-			public const int ahBarLength = 2130772006;
-			
-			// aapt resource value: 0x7f010025
-			public const int ahBarWidth = 2130772005;
+			// aapt resource value: 0x7f01001b
+			public const int ahBarColor = 2130771995;
 			
 			// aapt resource value: 0x7f010023
-			public const int ahCircleColor = 2130772003;
+			public const int ahBarLength = 2130772003;
 			
 			// aapt resource value: 0x7f010022
-			public const int ahDelayMillis = 2130772002;
-			
-			// aapt resource value: 0x7f010024
-			public const int ahRadius = 2130772004;
-			
-			// aapt resource value: 0x7f01001f
-			public const int ahRimColor = 2130771999;
+			public const int ahBarWidth = 2130772002;
 			
 			// aapt resource value: 0x7f010020
-			public const int ahRimWidth = 2130772000;
+			public const int ahCircleColor = 2130772000;
+			
+			// aapt resource value: 0x7f01001f
+			public const int ahDelayMillis = 2130771999;
 			
 			// aapt resource value: 0x7f010021
-			public const int ahSpinSpeed = 2130772001;
-			
-			// aapt resource value: 0x7f01001b
-			public const int ahText = 2130771995;
+			public const int ahRadius = 2130772001;
 			
 			// aapt resource value: 0x7f01001c
-			public const int ahTextColor = 2130771996;
+			public const int ahRimColor = 2130771996;
 			
 			// aapt resource value: 0x7f01001d
-			public const int ahTextSize = 2130771997;
+			public const int ahRimWidth = 2130771997;
 			
-			// aapt resource value: 0x7f010010
-			public const int calendar_background = 2130771984;
-			
-			// aapt resource value: 0x7f010011
-			public const int calendar_cellbackground = 2130771985;
-			
-			// aapt resource value: 0x7f010012
-			public const int calendar_highlight_cellbackground = 2130771986;
-			
-			// aapt resource value: 0x7f010015
-			public const int calendar_next_text = 2130771989;
-			
-			// aapt resource value: 0x7f010014
-			public const int calendar_nextbutton_background = 2130771988;
-			
-			// aapt resource value: 0x7f010016
-			public const int calendar_prev_text = 2130771990;
-			
-			// aapt resource value: 0x7f010013
-			public const int calendar_prevbutton_background = 2130771987;
-			
-			// aapt resource value: 0x7f01000f
-			public const int calendar_separator = 2130771983;
-			
-			// aapt resource value: 0x7f01001a
-			public const int calendar_shownextmonthsfromcurrentmonth = 2130771994;
+			// aapt resource value: 0x7f01001e
+			public const int ahSpinSpeed = 2130771998;
 			
 			// aapt resource value: 0x7f010018
-			public const int calendar_showonlycurrentmonth = 2130771992;
+			public const int ahText = 2130771992;
 			
 			// aapt resource value: 0x7f010019
-			public const int calendar_showprevmonthsfromcurrentmonth = 2130771993;
+			public const int ahTextColor = 2130771993;
+			
+			// aapt resource value: 0x7f01001a
+			public const int ahTextSize = 2130771994;
+			
+			// aapt resource value: 0x7f01000d
+			public const int calendar_background = 2130771981;
+			
+			// aapt resource value: 0x7f01000e
+			public const int calendar_cellbackground = 2130771982;
+			
+			// aapt resource value: 0x7f01000f
+			public const int calendar_highlight_cellbackground = 2130771983;
+			
+			// aapt resource value: 0x7f010012
+			public const int calendar_next_text = 2130771986;
+			
+			// aapt resource value: 0x7f010011
+			public const int calendar_nextbutton_background = 2130771985;
+			
+			// aapt resource value: 0x7f010013
+			public const int calendar_prev_text = 2130771987;
+			
+			// aapt resource value: 0x7f010010
+			public const int calendar_prevbutton_background = 2130771984;
+			
+			// aapt resource value: 0x7f01000c
+			public const int calendar_separator = 2130771980;
 			
 			// aapt resource value: 0x7f010017
-			public const int calendar_weekstartswith = 2130771991;
+			public const int calendar_shownextmonthsfromcurrentmonth = 2130771991;
+			
+			// aapt resource value: 0x7f010015
+			public const int calendar_showonlycurrentmonth = 2130771989;
+			
+			// aapt resource value: 0x7f010016
+			public const int calendar_showprevmonthsfromcurrentmonth = 2130771990;
+			
+			// aapt resource value: 0x7f010014
+			public const int calendar_weekstartswith = 2130771988;
 			
 			// aapt resource value: 0x7f010001
 			public const int dayBackground = 2130771969;
@@ -352,14 +352,14 @@ namespace goheja
 			// aapt resource value: 0x7f010004
 			public const int headerTextColor = 2130771972;
 			
-			// aapt resource value: 0x7f01000c
-			public const int minTextSize = 2130771980;
+			// aapt resource value: 0x7f010024
+			public const int minTextSize = 2130772004;
 			
-			// aapt resource value: 0x7f01000d
-			public const int precision = 2130771981;
+			// aapt resource value: 0x7f010025
+			public const int precision = 2130772005;
 			
-			// aapt resource value: 0x7f01000e
-			public const int sizeToFit = 2130771982;
+			// aapt resource value: 0x7f010026
+			public const int sizeToFit = 2130772006;
 			
 			// aapt resource value: 0x7f010006
 			public const int state_current_month = 2130771974;
@@ -2036,9 +2036,9 @@ namespace goheja
 			
 			public static int[] AutofitTextView = new int[]
 			{
-					2130771980,
-					2130771981,
-					2130771982};
+					2130772004,
+					2130772005,
+					2130772006};
 			
 			// aapt resource value: 0
 			public const int AutofitTextView_minTextSize = 0;
@@ -2078,6 +2078,9 @@ namespace goheja
 			
 			public static int[] ProgressWheel = new int[]
 			{
+					2130771992,
+					2130771993,
+					2130771994,
 					2130771995,
 					2130771996,
 					2130771997,
@@ -2086,10 +2089,7 @@ namespace goheja
 					2130772000,
 					2130772001,
 					2130772002,
-					2130772003,
-					2130772004,
-					2130772005,
-					2130772006};
+					2130772003};
 			
 			// aapt resource value: 3
 			public const int ProgressWheel_ahBarColor = 3;
@@ -2160,6 +2160,9 @@ namespace goheja
 			
 			public static int[] calendarthis = new int[]
 			{
+					2130771980,
+					2130771981,
+					2130771982,
 					2130771983,
 					2130771984,
 					2130771985,
@@ -2168,10 +2171,7 @@ namespace goheja
 					2130771988,
 					2130771989,
 					2130771990,
-					2130771991,
-					2130771992,
-					2130771993,
-					2130771994};
+					2130771991};
 			
 			// aapt resource value: 1
 			public const int calendarthis_calendar_background = 1;

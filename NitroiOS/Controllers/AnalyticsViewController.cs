@@ -140,7 +140,7 @@ namespace location2
 						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
 						var country = MemberModel.country;
 
-						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString());
+						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString(), Constants.SPEC_GROUP_TYPE[0]);
 
 						if (currspeed < 0)
 							currspeed = 0;
@@ -243,7 +243,7 @@ namespace location2
 				var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 				var bearing = float.Parse(_lastLocation.Course.ToString());
 
-				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString());
+				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString(), Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch
 			{

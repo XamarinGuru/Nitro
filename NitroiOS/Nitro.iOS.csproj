@@ -146,7 +146,6 @@
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="Web References\trackSvc\Service1.xsd" />
-    <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
     <None Include="Web References\trackSvc\Service11.xsd" />
     <None Include="Web References\trackSvc\Service12.xsd" />
@@ -235,17 +234,16 @@
     <Compile Include="Controllers\ForgotPasswordViewController.designer.cs">
       <DependentUpon>ForgotPasswordViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\ChangePasswordViewController.cs" />
     <Compile Include="Controllers\ChangePasswordViewController.designer.cs">
       <DependentUpon>ChangePasswordViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <BundleResource Include="Resources\.DS_Store" />
     <BundleResource Include="Resources\speed.png" />
     <BundleResource Include="Resources\dist.png" />
     <BundleResource Include="Resources\mont.png" />
@@ -387,10 +385,10 @@
     <WebReferences Include="Web References" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://go-heja.com:9006/Service1.svc">
+    <WebReferenceUrl Include="http://go-heja.com/Service1.svc?wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\trackSvc</RelPath>
-      <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
+      <UpdateFromURL>http://go-heja.com/Service1.svc?wsdl</UpdateFromURL>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

@@ -84,14 +84,14 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="AutoFitTextView">
+      <HintPath>..\packages\AutoFitTextView.0.2.1.0\lib\MonoAndroid403\AutoFitTextView.dll</HintPath>
+    </Reference>
     <Reference Include="AndHUD">
       <HintPath>..\Components\AndHUD-1.3.1\lib\android\AndHUD.dll</HintPath>
     </Reference>
     <Reference Include="com.alliance.calendar">
       <HintPath>..\Components\alliance-calendar-component-1.0\lib\android\com.alliance.calendar.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoFitTextView">
-      <HintPath>..\packages\AutoFitTextView.0.2.1.0\lib\MonoAndroid403\AutoFitTextView.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -129,10 +129,10 @@
     <Compile Include="Activities\AdjustTrainningActivity.cs" />
     <Compile Include="Activities\EditProfileActivity.cs" />
     <Compile Include="Activities\ForgotPasswordActivity.cs" />
+    <Compile Include="Activities\ChangePasswordActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Activities\ChangePasswordActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -264,8 +264,9 @@
     <AndroidResource Include="Resources\drawable\icon_06_inactive.png" />
     <AndroidResource Include="Resources\drawable\icon_07_inactive.png" />
     <AndroidResource Include="Resources\layout\ForgotPasswordActivity.axml" />
+    <AndroidResource Include="Resources\layout\ChangePasswordActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_changepw.png" />
     <None Include="Web References\trackSvc\Service1.xsd" />
-    <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service10.xsd" />
     <None Include="Web References\trackSvc\Service11.xsd" />
     <None Include="Web References\trackSvc\Service12.xsd" />
@@ -275,8 +276,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <AndroidResource Include="Resources\layout\ChangePasswordActivity.axml" />
-    <AndroidResource Include="Resources\drawable\icon_changepw.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -329,10 +328,10 @@
     <WebReferences Include="Web References" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://go-heja.com:9006/Service1.svc">
+    <WebReferenceUrl Include="http://go-heja.com/Service1.svc?wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\trackSvc</RelPath>
-      <UpdateFromURL>http://go-heja.com:9006/Service1.svc</UpdateFromURL>
+      <UpdateFromURL>http://go-heja.com/Service1.svc?wsdl</UpdateFromURL>
     </WebReferenceUrl>
   </ItemGroup>
 </Project>

@@ -111,7 +111,7 @@ namespace goheja
 		#region USER_MANAGEMENT
 		public string RegisterUser(string fName, string lName, string deviceId, string userName, string psw, string email, int age, bool ageSpecified = true, bool acceptedTerms = true, bool acceptedTermsSpecified = true)
 		{
-			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified);
+			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified, Constants.SPEC_GROUP_TYPE[0]);
 			return result;
 		}
 
@@ -119,7 +119,7 @@ namespace goheja
 		{
 			try
 			{
-				var userID = mTrackSvc.getListedDeviceId(email, password);
+				var userID = mTrackSvc.getListedDeviceId(email, password, Constants.SPEC_GROUP_TYPE[0]);
 
 				if (userID == "0")
 					return false;
@@ -147,7 +147,7 @@ namespace goheja
 		{
 			try
 			{
-				var response = mTrackSvc.getCode(email);
+				var response = mTrackSvc.getCode(email, Constants.SPEC_GROUP_TYPE[0]);
 
 				return response;
 			}
@@ -164,7 +164,7 @@ namespace goheja
 			{
 				int result = 0;
 				bool resultSpecified = false;
-				mTrackSvc.restPasword(email, password, out result, out resultSpecified);
+				mTrackSvc.restPasword(email, password, Constants.SPEC_GROUP_TYPE[0], out result, out resultSpecified);
 
 				return result;
 			}
@@ -186,7 +186,7 @@ namespace goheja
 
 			try
 			{
-				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password);
+				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password, Constants.SPEC_GROUP_TYPE[0]);
 
 				if (userID != "0")
 					AppSettings.UserID = userID;
@@ -206,7 +206,7 @@ namespace goheja
 
 			try
 			{
-				var strUser = mTrackSvc.getUsrObject(userID).ToString();
+				var strUser = mTrackSvc.getUsrObject(userID, Constants.SPEC_GROUP_TYPE[0]).ToString();
 				var jsonUser = FormatJsonType(strUser);
 				RootMember rootMember = JsonConvert.DeserializeObject<RootMember>(jsonUser);
 				return rootMember;
@@ -219,13 +219,13 @@ namespace goheja
 			return null;
 		}
 
-		public string UpdateUserDataJson(RootMember updatedUserObject, string updatedById = null, string specGroup = "1")
+		public string UpdateUserDataJson(RootMember updatedUserObject, string updatedById = null)
 		{
 			var userID = GetUserID();
 			var jsonUser = JsonConvert.SerializeObject(updatedUserObject);
 			Console.WriteLine(jsonUser);
 			updatedById = userID;
-			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, specGroup);
+			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, Constants.SPEC_GROUP_TYPE[0]);
 			return result;
 		}
 		#endregion
@@ -237,7 +237,7 @@ namespace goheja
 
 			try
 			{
-				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, null, null, "5");
+				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, Constants.SPEC_GROUP_TYPE[0], null, "5");
 				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
 				return gaugeObject;
 			}
@@ -255,7 +255,7 @@ namespace goheja
 		{
 			try
 			{
-				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID);
+				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
 				return CastNitroEvents(eventsData);
 			}
@@ -270,7 +270,7 @@ namespace goheja
 		{
 			try
 			{
-				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID);
+				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
 				return CastNitroEvents(eventsData);
 			}
@@ -285,7 +285,7 @@ namespace goheja
 		{
 			try
 			{
-				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID);
+				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
 				return CastNitroEvents(eventsData);
 			}
@@ -300,7 +300,7 @@ namespace goheja
 		{
 			try
 			{
-				var strEventDetail = mTrackSvc.getEventMob(eventID);
+				var strEventDetail = mTrackSvc.getEventMob(eventID, Constants.SPEC_GROUP_TYPE[0]);
 				var eventsData = JArray.Parse(FormatJsonType(strEventDetail.ToString()));
 				return CastNitroEvents(eventsData)[0];
 			}
@@ -331,7 +331,7 @@ namespace goheja
 			var eventTotal = new EventTotal();
 			try
 			{
-				var totalObject = mTrackSvc.getEventTotalsMob(eventID);
+				var totalObject = mTrackSvc.getEventTotalsMob(eventID, Constants.SPEC_GROUP_TYPE[0]);
 				eventTotal = JsonConvert.DeserializeObject<EventTotal>(totalObject.ToString());
 			}
 			catch (Exception ex)
@@ -347,7 +347,7 @@ namespace goheja
 			var comment = new Comment();
 			try
 			{
-				var commentObject = mTrackSvc.getComments(eventID, "1");
+				var commentObject = mTrackSvc.getComments(eventID, "1", Constants.SPEC_GROUP_TYPE[0]);
 				comment = JsonConvert.DeserializeObject<Comment>(commentObject.ToString());
 			}
 			catch (Exception ex)
@@ -362,7 +362,7 @@ namespace goheja
 		{
 			try
 			{
-				var response = mTrackSvc.setComments(author, authorId, commentText, eventId);
+				var response = mTrackSvc.setComments(author, authorId, commentText, eventId, Constants.SPEC_GROUP_TYPE[0]);
 				return response;
 			}
 			catch (Exception ex)
@@ -376,7 +376,7 @@ namespace goheja
 		{
 			try
 			{
-				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type);
+				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type, Constants.SPEC_GROUP_TYPE[0]);
 				//return response;
 			}
 			catch (Exception ex)
@@ -401,7 +401,7 @@ namespace goheja
 
 		public bool ValidateUserNickName(string nickName)
 		{
-			var validate = mTrackSvc.validateNickName(nickName);
+			var validate = mTrackSvc.validateNickName(nickName, Constants.SPEC_GROUP_TYPE[0]);
 			if (validate != "1")
 			{
 				return true;

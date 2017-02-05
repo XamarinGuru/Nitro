@@ -238,7 +238,7 @@ namespace goheja
                     {
 						var name = athFirstName + " " + athLastName;
 						var loc = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
-						svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, mType.ToString());
+						svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, mType.ToString(), Constants.SPEC_GROUP_TYPE[0]);
                     }
 					catch (Exception err)
                     {
@@ -308,7 +308,7 @@ namespace goheja
 				var loc = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
 				DateTime dt = DateTime.Now;
 				dist = contextPref.GetFloat("dist", 0f);
-				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, mType.ToString());
+				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, mType.ToString(), Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch (Exception err)
 			{
