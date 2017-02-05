@@ -84,12 +84,13 @@ namespace goheja
 			webView.Settings.SetGeolocationEnabled(true);
 			webView.SetWebViewClient(new WebViewClient());
 			webView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+			webView.Settings.SetAppCacheMaxSize(10 * 1024 * 1024);
 
 			webView.ClearCache(true);
 			webView.ClearHistory();
 
 			var url = string.Format(Constants.URL_GAUGE, AppSettings.UserID);
-			webView.LoadUrl(url);
+			webView.LoadUrl("http://docs.google.com/gview?embedded=true&url=" + url);
 
 			#endregion
 

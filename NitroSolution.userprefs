@@ -1,36 +1,22 @@
-﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventInstructionActivity.cs">
+﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroiOS/Controllers/ProfileViewController.cs">
     <Files>
-      <File FileName="NitroiOS/Controllers/ProfileViewController.cs" Line="37" Column="4" />
-      <File FileName="NitroiOS/Controllers/LoginViewController.cs" Line="73" Column="1" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="102" Column="1" />
-      <File FileName="NitroiOS/Controllers/ForgotPasswordViewController.cs" Line="58" Column="48" />
-      <File FileName="PortableLibrary/Constants.cs" Line="18" Column="59" />
-      <File FileName="NitroDroid/Web References/trackSvc/Reference.cs" Line="230" Column="38" />
-      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="19" Column="41" />
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="202" Column="1" />
-      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="84" Column="71" />
-      <File FileName="NitroiOS/Main.cs" Line="12" Column="1" />
-      <File FileName="PortableLibrary/Model/NitroEvent.cs" Line="11" Column="16" />
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="93" Column="70" />
+      <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="92" Column="1" />
+      <File FileName="PortableLibrary/Constants.cs" Line="17" Column="59" />
+      <File FileName="NitroiOS/Controllers/ProfileViewController.cs" Line="92" Column="81" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NitroSolution" expanded="True">
             <Node name="Nitro.Droid" expanded="True">
-              <Node name="WebReferences" expanded="True">
-                <Node name="WebReferenceItem" expanded="True">
-                  <Node name="Reference.map" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Activities" expanded="True">
-                <Node name="EventInstructionActivity.cs" selected="True" />
-              </Node>
+              <Node name="Activities" expanded="True" />
+              <Node name="Fragment" expanded="True" />
             </Node>
             <Node name="Nitro.iOS" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ProfileViewController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="PortableLibrary" expanded="True">
               <Node name="Model" expanded="True" />
@@ -44,7 +30,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroiOS/Controllers/SignUpViewController.cs" line="257" column="1" />
-      <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroiOS/Controllers/EventInstructionController.cs" line="46" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

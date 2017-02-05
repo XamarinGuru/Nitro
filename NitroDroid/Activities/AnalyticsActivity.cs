@@ -338,6 +338,8 @@ namespace goheja
 
 			startBtn.Visibility = ViewStates.Gone;
 
+			var activity = new Intent(this, typeof(SwipeTabActivity));
+			StartActivity(activity);
 			Finish();
 		}
 
@@ -437,7 +439,11 @@ namespace goheja
                 builder.SetTitle("No internet connection");
                 builder.SetMessage("Oops!No internet connection... Pls try again later");
                 builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { Finish(); });
+                builder.SetPositiveButton("OK", delegate { 
+					var activity = new Intent(this, typeof(SwipeTabActivity));
+					StartActivity(activity);
+					Finish();
+				});
                 builder.Show();
                 return;
             }
