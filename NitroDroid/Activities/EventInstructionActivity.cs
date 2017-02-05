@@ -90,7 +90,7 @@ namespace goheja
 			FindViewById<TextView>(Resource.Id.lblData).Text = selectedEvent.eventData;
 
 			var strDistance = selectedEvent.distance;
-			float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
+			float floatDistance = strDistance == "" || strDistance == null ? 0 : float.Parse(strDistance);
 			var b = Math.Truncate(floatDistance * 100);
 			var c = b / 100;
 			var formattedDistance = c.ToString("F2");

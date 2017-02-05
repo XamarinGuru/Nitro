@@ -96,9 +96,15 @@ namespace location2
 		#region integrate with web reference
 		public string RegisterUser(string fName, string lName, string deviceId, string userName, string psw, string email, int age, bool ageSpecified = true, bool acceptedTerms = true, bool acceptedTermsSpecified = true)
 		{
-			var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified, Constants.SPEC_GROUP_TYPE[0]);
-
-			return result;
+			try
+			{
+				var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified, Constants.SPEC_GROUP_TYPE[0]);
+				return result;
+			}
+			catch (Exception ex)
+			{
+				return ex.Message;
+			}
 		}
 		public bool LoginUser(string email, string password)
 		{
