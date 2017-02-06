@@ -120,6 +120,9 @@ namespace location2
 			SetupPicker(txtRZone3PACE, "pace");
 			SetupPicker(txtRZone4PACE, "pace");
 			SetupPicker(txtRZone5PACE, "pace");
+
+			SetupPicker(txtSFTPace, "pace");
+			SetupPicker(txtRFTPace, "pace");
 		}
 
 		private void SetInputBinding()
@@ -148,7 +151,6 @@ namespace location2
 			//this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.OneWay);
 			this.SetBinding(() => txtGoalDate.Text, () => MemberModel.goalDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
-
 
 			this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
@@ -211,7 +213,11 @@ namespace location2
 			this.SetBinding(() => MemberModel.sZone5PACE,() => txtSZone5PACE.Text,BindingMode.OneWay);
 			this.SetBinding(() => txtSZone5PACE.Text,() => MemberModel.sZone5PACE,BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
-			this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.TwoWay);
+
+			this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtSFTPace.Text, () => MemberModel.sFTPace, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+
+			//this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.sFTPHB, () => txtSFTPHB.Text, BindingMode.TwoWay);
 			#endregion
 
@@ -244,7 +250,10 @@ namespace location2
 			this.SetBinding(() => MemberModel.rZone4POWER, () => txtRZone4Power.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rZone5POWER, () => txtRZone5Power.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.TwoWay);
+			this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtRFTPace.Text, () => MemberModel.rFTPace, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+
+			//this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rFTPHB, () => txtRFTPHB.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rFTPower, () => txtRFTPower.Text, BindingMode.TwoWay);
 			#endregion

@@ -1,15 +1,5 @@
-﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PortableLibrary/Constants.cs">
-    <Files>
-      <File FileName="NitroDroid/Activities/CloseApplicationActivity.cs" Line="12" Column="49" />
-      <File FileName="NitroDroid/Activities/InitActivity.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/LoginActivity.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/RegisterActivity.cs" Line="1" Column="1" />
-      <File FileName="NitroDroid/Activities/SplashActivity.cs" Line="72" Column="59" />
-      <File FileName="NitroDroid/Fragment/FragmentCalendar.cs" Line="92" Column="20" />
-      <File FileName="PortableLibrary/Constants.cs" Line="17" Column="107" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -19,5 +9,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.102:5555" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.06157df6bb041820" />
 </Properties>

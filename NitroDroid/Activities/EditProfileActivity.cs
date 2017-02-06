@@ -264,6 +264,9 @@ namespace goheja
 			SetupPicker(txtRZone3PACE, "pace");
 			SetupPicker(txtRZone4PACE, "pace");
 			SetupPicker(txtRZone5PACE, "pace");
+
+			SetupPicker(txtSFTPace, "pace");
+			SetupPicker(txtRFTPace, "pace");
 		}
 
 		private void SetInputBinding()
@@ -375,8 +378,22 @@ namespace goheja
 			//ShowLoadingView("Updating user data...");
 			var result = UpdateUserDataJson(MemberModel.rootMember);
 			//HideLoadingView();
-			ShowMessageBox(null, "updated successfully.");
-			//Finish();
+
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("");
+			alert.SetMessage("updated successfully.");
+			alert.SetPositiveButton("OK", (senderAlert, args) =>
+			{
+				RunOnUiThread(() => { 
+					var activity = new Intent(this, typeof(SwipeTabActivity));
+					StartActivity(activity);
+					Finish();
+				});
+			});
+			RunOnUiThread(() =>
+			{
+				alert.Show();
+			});
 		}
 		#endregion
 

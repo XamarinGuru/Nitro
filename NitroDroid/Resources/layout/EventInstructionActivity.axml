@@ -53,7 +53,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/linearLayout23"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
                     <ImageView
                         android:src="@drawable/icon_bike"
                         android:layout_width="25dp"
@@ -61,14 +63,16 @@
                         android:id="@+id/imgType"
                         android:padding="3dp" />
                     <TextView
-                        android:text="CYCLING GROUP 2"
+                        android:text="CYCLING GROUP2CYCLING GROUP2CYCLING GROUP2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/lblTitle"
                         android:textStyle="bold"
                         android:textColor="#ffffffff"
                         android:textSize="15dp"
-                        android:layout_marginLeft="5dp" />
+                        android:layout_marginLeft="5dp"
+                        android:singleLine="true"
+                        android:ellipsize="end" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"

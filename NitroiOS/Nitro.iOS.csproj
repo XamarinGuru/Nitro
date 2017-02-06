@@ -26,7 +26,7 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>false</MtouchFastDev>
-    <CodesignProvision>dfe315be-d90c-4a26-99b6-c6b7e510c7ba</CodesignProvision>
+    <CodesignProvision>1ad51c81-de7e-4cfb-a848-fb0e7bbced77</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -53,7 +53,8 @@
     <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <AssemblyName>location2</AssemblyName>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: sagiv daniel (ACS2X6ERDY)</CodesignKey>
+    <CodesignProvision>38b2e85f-fa74-4d48-a519-40245cde3ed0</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>

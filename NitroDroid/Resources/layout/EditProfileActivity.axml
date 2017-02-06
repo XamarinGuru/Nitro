@@ -1657,7 +1657,8 @@
                                             android:singleLine="true"
                                             android:textSize="15dp"
                                             android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp" />
+                                            android:layout_marginRight="5dp"
+                                            android:inputType="number" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"

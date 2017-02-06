@@ -55,11 +55,11 @@
 	<string>Go-heja application will continue reporting your location in the background until you press ‘Stop’ to end your workout . This is for your safety and for your coach to monitor you.</string>
 	<key>Custom Property1</key>
 	<string></string>
-	<key>CFBundleShortVersionString</key>
-	<string>3.8</string>
-	<key>CFBundleVersion</key>
-	<string>3.8.1</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>CFBundleShortVersionString</key>
+	<string>4.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
 </dict>
 </plist>

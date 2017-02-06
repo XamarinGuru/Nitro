@@ -585,9 +585,9 @@ namespace PortableLibrary
 		public string rZone4POWER { get { return rootMember.profile.fields[2].ZoneLevel[3].power; } set { rootMember.profile.fields[2].ZoneLevel[3].power = value; } }
 		public string rZone5POWER { get { return rootMember.profile.fields[2].ZoneLevel[4].power; } set { rootMember.profile.fields[2].ZoneLevel[4].power = value; } }
 
-		public string rFTPace { get { return rootMember.profile.fields[2].FTPACE; } set { rootMember.profile.fields[1].FTPACE = value; } }
-		public string rFTPHB { get { return rootMember.profile.fields[2].FTPHB; } set { rootMember.profile.fields[1].FTPHB = value; } }
-		public string rFTPower { get { return rootMember.profile.fields[2].FTPWATT; } set { rootMember.profile.fields[1].FTPWATT = value; } }
+		public string rFTPace { get { return rootMember.profile.fields[2].FTPACE; } set { rootMember.profile.fields[2].FTPACE = value; } }
+		public string rFTPHB { get { return rootMember.profile.fields[2].FTPHB; } set { rootMember.profile.fields[2].FTPHB = value; } }
+		public string rFTPower { get { return rootMember.profile.fields[2].FTPWATT; } set { rootMember.profile.fields[2].FTPWATT = value; } }
 
 		//experience bike
 		public string bZone1HR { get { return rootMember.profile.fields[1].ZoneLevel[0].hr; } set { rootMember.profile.fields[1].ZoneLevel[0].hr = value; } }

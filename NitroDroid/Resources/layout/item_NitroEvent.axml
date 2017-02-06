@@ -29,12 +29,14 @@
             android:layout_weight="10"
             android:gravity="center_vertical">
             <TextView
-                android:text="Text"
+                android:text="sagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv daniel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTitle"
                 android:textColor="#ffffffff"
-                android:layout_weight="1" />
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:ellipsize="end" />
             <TextView
                 android:text="Text"
                 android:layout_width="wrap_content"
