@@ -276,6 +276,10 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <AndroidResource Include="Resources\drawable\icon_logo_new.png" />
+    <AndroidResource Include="Resources\drawable\splash_new.png" />
+    <AndroidResource Include="Resources\drawable\no_photo_round.png" />
+    <AndroidResource Include="Resources\drawable\icon_notification.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

@@ -42,7 +42,7 @@
                 android:id="@+id/linearLayout2"
                 android:gravity="center">
                 <ImageView
-                    android:src="@drawable/ninja"
+                    android:src="@drawable/no_photo_round"
                     android:id="@+id/imgProfile"
                     android:background="@drawable/img_bg"
                     android:layout_width="100dp"

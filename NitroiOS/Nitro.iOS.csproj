@@ -341,6 +341,9 @@
     <BundleResource Include="Resources\icon_07_inactive.png" />
     <BundleResource Include="Resources\icon_07.png" />
     <BundleResource Include="Resources\icon_changepw.png" />
+    <BundleResource Include="Resources\icon_logo_new.png" />
+    <BundleResource Include="Resources\no-photo-round.png" />
+    <BundleResource Include="Resources\splash_new.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

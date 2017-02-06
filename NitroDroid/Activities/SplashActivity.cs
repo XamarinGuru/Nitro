@@ -69,7 +69,7 @@ namespace goheja
             var contentIntent = PendingIntent.GetActivity(this, 0, new Intent(this, typeof(SwipeTabActivity)), PendingIntentFlags.UpdateCurrent);
             var builder = new NotificationCompat.Builder(this)
                	.SetContentTitle("Nitro on the go")
-               	.SetSmallIcon(Resource.Drawable.icon)
+               	.SetSmallIcon(Resource.Drawable.icon_notification)
                	.SetPriority(1)
               	.SetContentIntent(contentIntent)
                	.SetCategory("tst")

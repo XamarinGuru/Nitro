@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:gravity="center">
             <ImageView
-                android:src="@drawable/icon_logo"
+                android:src="@drawable/icon_logo_new"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:id="@+id/imageView1" />
