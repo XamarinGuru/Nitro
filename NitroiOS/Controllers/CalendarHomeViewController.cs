@@ -26,6 +26,12 @@ namespace location2
 			heightRunning.Constant = 0;
 			heightSwimming.Constant = 0;
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			InitGaugeData();
 		}
 

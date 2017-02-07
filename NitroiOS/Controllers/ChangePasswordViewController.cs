@@ -30,6 +30,12 @@ namespace location2
 
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
+
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
 		}
 
 
@@ -65,6 +71,12 @@ namespace location2
 
 		partial void ActionResetPassword(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			if (Validate())
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate

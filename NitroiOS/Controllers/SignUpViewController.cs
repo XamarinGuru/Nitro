@@ -35,12 +35,7 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				this.Title = "No internet connection..";
-				return;
-			}
+
 		}
 
 		partial void ActionBack(UIButton sender)
@@ -182,6 +177,12 @@ namespace location2
 		#region event handler
 		async partial void ActionSignUp(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			if (Validate())
 			{
 				try
@@ -221,6 +222,12 @@ namespace location2
 
 		partial void ActionAcceptTerms(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			sender.Selected = !sender.Selected;
 
 			if (sender.Selected && !ValidateUserNickName(txtNickName.Text))
@@ -235,6 +242,12 @@ namespace location2
 
 		partial void ActionTerms(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			UIApplication.SharedApplication.OpenUrl(new NSUrl(Constants.URL_TERMS));
 		}
 

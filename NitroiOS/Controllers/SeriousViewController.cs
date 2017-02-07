@@ -48,6 +48,12 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			ShowLoadingView("Getting User Data...");
 
 			await Task.Run(() =>
@@ -469,6 +475,11 @@ namespace location2
 		#region update actions
 		partial void ActionUpdate(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
 			var result = UpdateUserDataJson(MemberModel.rootMember);
 			ShowMessageBox(null, result);
 			NavigationController.PopViewController(true);

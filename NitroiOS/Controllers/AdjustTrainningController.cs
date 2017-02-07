@@ -35,6 +35,12 @@ namespace location2
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Retreving Event Details...");
@@ -98,11 +104,11 @@ namespace location2
 
 		partial void ActionAdjustTrainning(UIButton sender)
 		{
-			//if (txtComment.Text == "")
-			//{
-			//	ShowMessageBox(null, "Type your comment...");
-			//	return;
-			//}
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

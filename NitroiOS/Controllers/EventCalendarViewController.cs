@@ -44,6 +44,12 @@ namespace location2
 
 			NavigationItem.RightBarButtonItems = rightButtons;
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			SetCalendarView();
 		}
 
@@ -56,6 +62,12 @@ namespace location2
 
 		void ReloadEvents()
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			_events = new List<NitroEvent>();
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -199,6 +211,12 @@ namespace location2
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
+				if (!eventCalendarVC.IsNetEnable())
+				{
+					eventCalendarVC.ShowMessageBox(null, "No internet connection!");
+					return;
+				}
+
 				var selectedEvent = nitroEvents[indexPath.Row];
 				UIStoryboard sb = UIStoryboard.FromName("Main", null);
 				EventInstructionController eventInstructionVC = sb.InstantiateViewController("EventInstructionController") as EventInstructionController;

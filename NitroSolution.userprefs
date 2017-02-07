@@ -1,9 +1,29 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NitroSolution" expanded="True">
+            <Node name="Nitro.Droid" expanded="True">
+              <Node name="Activities" expanded="True" />
+            </Node>
+            <Node name="Nitro.iOS" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="ViewModel" expanded="True" />
+              <Node name="Main.storyboard" selected="True" />
+            </Node>
+            <Node name="PortableLibrary" expanded="True">
+              <Node name="Model" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroiOS/Controllers/SignUpViewController.cs" line="257" column="1" />
+      <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroiOS/Controllers/SeriousViewController.cs" line="483" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

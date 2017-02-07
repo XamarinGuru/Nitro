@@ -62,6 +62,12 @@ namespace location2
 			distTypLbl.Layer.ZPosition = 1;
 			altTypeLbl.Layer.ZPosition = 1;
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			MemberModel.rootMember = GetUserObject();
 
 			wvOngoing.ScalesPageToFit = true;

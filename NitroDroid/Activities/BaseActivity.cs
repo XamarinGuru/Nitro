@@ -451,6 +451,79 @@ namespace goheja
 			return hrs * 60 + min;
 		}
 
+		public float TotalSecFromString(string strTime)
+		{
+			if (strTime == "") return 0;
+
+			try
+			{
+				var arrTimes = strTime.Split(new char[] { ':' });
+
+				var hrs = int.Parse(arrTimes[0]);
+				var min = int.Parse(arrTimes[1]);
+				var sec = int.Parse(arrTimes[2]);
+
+				return hrs * 3600 + min * 60 + sec;
+			}
+			catch
+			{
+				return 0;
+			}
+		}
+
+		public float ConvertToFloat(string value)
+		{
+			if (value == null || value == "")
+				return 0;
+
+			try
+			{
+				return float.Parse(value);
+			}
+			catch
+			{
+				return 0;
+			}
+		}
+
+
+		//void CompareEventResult(float planned, float total, UILabel lblPlanned, UILabel lblTotal)
+		//{
+		//	if (planned == total || planned == 0 || total == 0)
+		//	{
+		//		lblPlanned.TextColor = COLOR_ORANGE;
+		//		lblTotal.TextColor = COLOR_ORANGE;
+		//		return;
+		//	}
+
+		//	if (planned > total)
+		//	{
+		//		var delta = (planned - total) / total;
+		//		if (delta < 0.15)
+		//		{
+		//			lblPlanned.TextColor = COLOR_ORANGE;
+		//			lblTotal.TextColor = COLOR_ORANGE;
+		//		}
+		//		else {
+		//			lblPlanned.TextColor = UIColor.Red;
+		//			lblTotal.TextColor = UIColor.Blue;
+		//		}
+		//	}
+		//	else if (planned < total)
+		//	{
+		//		var delta = (total - planned) / planned;
+		//		if (delta < 0.15)
+		//		{
+		//			lblPlanned.TextColor = COLOR_ORANGE;
+		//			lblTotal.TextColor = COLOR_ORANGE;
+		//		}
+		//		else {
+		//			lblPlanned.TextColor = UIColor.Blue;
+		//			lblTotal.TextColor = UIColor.Red;
+		//		}
+		//	}
+		//}
+
 		public void MarkAsInvalide(ImageView validEmail, LinearLayout errorEmail, bool isInvalid)
 		{
 			if (validEmail != null)

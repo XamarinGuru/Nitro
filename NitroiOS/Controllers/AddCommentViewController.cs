@@ -31,6 +31,12 @@ namespace location2
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
 			View.AddGestureRecognizer(g);
 
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Loading data...");
@@ -46,6 +52,12 @@ namespace location2
 			if (txtComment.Text == "")
 			{
 				ShowMessageBox(null, "Type your comment...");
+				return;
+			}
+
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
 				return;
 			}
 

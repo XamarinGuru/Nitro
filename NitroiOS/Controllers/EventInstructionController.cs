@@ -11,6 +11,11 @@ namespace location2
 		public NitroEvent selectedEvent;
 		private EventTotal eventTotal;
 		string eventID;
+
+		float fDistance = 0;
+		float fDuration = 0;
+		float fLoad = 0;
+
         public EventInstructionController() : base()
 		{
 		}
@@ -30,6 +35,12 @@ namespace location2
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
 			eventID = selectedEvent._id;
+
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
 
 			InitUISettings();
 			InitBindingEventData();
@@ -81,8 +92,8 @@ namespace location2
 			lblData.Text = selectedEvent.eventData;
 
 			var strDistance = selectedEvent.distance;
-			float floatDistance = strDistance == "" || strDistance == null ? 0 : float.Parse(strDistance);
-			var b = Math.Truncate(floatDistance * 100);
+			fDistance = strDistance == "" || strDistance == null ? 0 : float.Parse(strDistance);
+			var b = Math.Truncate(fDistance * 100);
 			var c = b / 100;
 			var formattedDistance = c.ToString("F2");
 
@@ -91,9 +102,12 @@ namespace location2
 			var durMin = selectedEvent.durMin == "" ? 0 : int.Parse(selectedEvent.durMin);
 			var durHrs = selectedEvent.durHrs == "" ? 0 : int.Parse(selectedEvent.durHrs);
 			var pHrs = durMin / 60;
+			fDuration = (durHrs * 60 + durMin) * 60;
 			durHrs = durHrs + pHrs;
 			durMin = durMin % 60;
 			var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+			fLoad = selectedEvent.tss == "" ? 0 : float.Parse(selectedEvent.tss);
 
 			lblPDuration.Text = FormatNumber(strDuration);
 			lblPLoad.Text = FormatNumber(selectedEvent.tss);
@@ -126,16 +140,6 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblTotalName0.Text = eventTotal.totals[0].name;
-			lblTotalName1.Text = eventTotal.totals[1].name;
-			lblTotalName2.Text = eventTotal.totals[2].name;
-			lblTotalName3.Text = eventTotal.totals[3].name;
-			lblTotalName4.Text = eventTotal.totals[4].name;
-			lblTotalName5.Text = eventTotal.totals[5].name;
-			lblTotalName6.Text = eventTotal.totals[6].name;
-			lblTotalName7.Text = eventTotal.totals[7].name;
-			lblTotalName8.Text = eventTotal.totals[8].name;
-
 			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);
 			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
 			lblTotalValue2.Text = FormatNumber(eventTotal.totals[2].value);
@@ -145,7 +149,12 @@ namespace location2
 			lblTotalValue6.Text = FormatNumber(eventTotal.totals[6].value);
 			lblTotalValue7.Text = FormatNumber(eventTotal.totals[7].value);
 			lblTotalValue8.Text = FormatNumber(eventTotal.totals[8].value);
+
+			CompareEventResult(fDistance, ConvertToFloat(eventTotal.totals[1].value), lblPDistance, lblTotalValue1);
+			CompareEventResult(fDuration, TotalSecFromString(eventTotal.totals[2].value), lblPDuration, lblTotalValue2);
+			CompareEventResult(fLoad, ConvertToFloat(eventTotal.totals[7].value), lblPLoad, lblTotalValue7);
 		}
+
 
 		void InitBindingEventComments(Comment comments)
 		{

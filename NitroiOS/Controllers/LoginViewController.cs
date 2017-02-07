@@ -58,6 +58,12 @@ namespace location2
 
 		partial void ActionLogin(UIButton sender)
 		{
+			if (!IsNetEnable())
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return;
+			}
+
 			if (Validate())
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
