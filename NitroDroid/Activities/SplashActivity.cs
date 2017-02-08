@@ -36,18 +36,10 @@ namespace goheja
 
         public void initiatAth()
         {
-            ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+			if (!IsNetEnable()) return;
+
             NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
             notificationManager.Notify(1, CreateNotification());
-
-            NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
-            bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
-
-            if (!isOnline)
-            {
-				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
-                return;
-            }
 
 			string userID = GetUserID();
 

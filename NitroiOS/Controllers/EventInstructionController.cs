@@ -36,11 +36,7 @@ namespace location2
 
 			eventID = selectedEvent._id;
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			InitUISettings();
 			InitBindingEventData();
@@ -49,6 +45,8 @@ namespace location2
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
+
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

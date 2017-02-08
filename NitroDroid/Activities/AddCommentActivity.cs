@@ -27,6 +27,8 @@ namespace goheja
 
 			SetContentView(Resource.Layout.AddCommentActivity);
 
+			if (!IsNetEnable()) return;
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Loading data...");
@@ -52,6 +54,8 @@ namespace goheja
 				ShowMessageBox(null, "Type your comment...");
 				return;
 			}
+
+			if (!IsNetEnable()) return;
 
 			var author = MemberModel.firstname + " " + MemberModel.lastname;
 			var authorID = AppSettings.UserID;

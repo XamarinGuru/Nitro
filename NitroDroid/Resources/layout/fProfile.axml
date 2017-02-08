@@ -85,7 +85,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/lblEmail"
                 android:gravity="center"
-                android:textSize="13dp"
+                android:textSize="15dp"
                 android:textColor="#ffffffff"
                 android:layout_marginLeft="10dp"
                 android:text=" " />
@@ -109,7 +109,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/lblPhone"
                 android:gravity="center"
-                android:textSize="13dp"
+                android:textSize="15dp"
                 android:textColor="#ffffffff"
                 android:layout_marginLeft="10dp"
                 android:text=" " />

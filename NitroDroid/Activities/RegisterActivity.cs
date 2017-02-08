@@ -155,6 +155,8 @@ namespace goheja
 
         private void ActionSignUp(object sender, EventArgs eventArgs)
         {
+			if (!IsNetEnable()) return;
+
             try
             {
 				if (Validate())
@@ -188,6 +190,8 @@ namespace goheja
         }
 		private void ActionTerms(object sender, EventArgs eventArgs)
 		{
+			if (!IsNetEnable()) return;
+
 			var uri = Android.Net.Uri.Parse("http://go-heja.com/nitro/terms.php");
 			var intent = new Intent(Intent.ActionView, uri);
 			StartActivity(intent);

@@ -39,6 +39,8 @@ namespace goheja
 
 			mView = view;
 
+			if (!rootActivity.IsNetEnable()) return;
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				rootActivity.ShowLoadingView("Loading data...");
@@ -71,6 +73,8 @@ namespace goheja
 
 		private void SetInputBinding()
 		{
+			if (MemberModel.rootMember == null) return;
+
 			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
@@ -80,6 +84,8 @@ namespace goheja
 
 		private void ActionChangePicture(object sender, EventArgs e)
 		{
+			if (!rootActivity.IsNetEnable()) return;
+
 			var imageIntent = new Intent();
 			imageIntent.SetType("image/*");
 			imageIntent.SetAction(Intent.ActionGetContent);
@@ -88,12 +94,16 @@ namespace goheja
 
         private void ActionEditProfile(object sender, EventArgs e)
         {
+			if (!rootActivity.IsNetEnable()) return;
+
 			var intent = new Intent(Activity, typeof(EditProfileActivity));
 			StartActivity(intent);
         }
 
 		private void ActionSyncDevice(object sender, EventArgs e)
 		{
+			if (!rootActivity.IsNetEnable()) return;
+
 			var userID = rootActivity.GetUserID();
 			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID));
 			var intent = new Intent(Intent.ActionView, uri);
@@ -102,6 +112,8 @@ namespace goheja
 
 		private void ActionChangePassword(object sender, EventArgs e)
 		{
+			if (!rootActivity.IsNetEnable()) return;
+
 			var intent = new Intent(Activity, typeof(ChangePasswordActivity));
 			AppSettings.currentEmail = MemberModel.email;
 			StartActivity(intent);

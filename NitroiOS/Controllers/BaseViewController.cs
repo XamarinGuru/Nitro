@@ -92,7 +92,13 @@ namespace location2
 
 		public bool IsNetEnable()
 		{
-			return mConnection.IsHostReachable("www.google.com") ? true : false;
+			bool isOnline = mConnection.IsHostReachable("www.google.com") ? true : false;
+			if (!isOnline)
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return false;
+			}
+			return true;
 		}
 
 		#region integrate with web reference
@@ -373,6 +379,29 @@ namespace location2
 				ShowMessageBox(null, ex.Message);
 				return;
 			}
+		}
+
+		public void UpdateMomgoData(string name,
+					string loc,
+					System.DateTime time,
+					bool timeSpecified,
+					string deviceID,
+					float speed,
+					bool speedSpecified,
+					string athId,
+					string country,
+					float dist,
+					bool distSpecified,
+					float alt,
+					bool altSpecified,
+					float bearing,
+					bool bearingSpecified,
+					int recordType,
+					bool recordTypeSpecified,
+					string eventType,
+					string specGroup)
+		{
+			mTrackSvc.updateMomgoData(name, loc, time, true, AppSettings.DeviceUDID, speed, true, athId, country, dist, true, alt, true, bearing, true, 1, true, eventType, specGroup);
 		}
 
 		public int GetFormatedDurationAsMin(string strTime)

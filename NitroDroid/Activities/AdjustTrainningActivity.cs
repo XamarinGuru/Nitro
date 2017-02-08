@@ -30,6 +30,8 @@ namespace goheja
 
 			SetContentView(Resource.Layout.AdjustTrainningActivity);
 
+			if (!IsNetEnable()) return;
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Retreving Event Details...");
@@ -83,11 +85,7 @@ namespace goheja
 
 		void ActionAdjustTrainning(object sender, EventArgs e)
 		{
-			//if (txtComment.Text == "")
-			//{
-			//	ShowMessageBox(null, "Type your comment...");
-			//	return;
-			//}
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

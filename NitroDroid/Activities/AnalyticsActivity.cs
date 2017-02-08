@@ -22,7 +22,6 @@ namespace goheja
     [Activity(Label = "Nitro", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class AnalyticsActivity : BaseActivity, ILocationListener
     {
-
 		readonly string[] PermissionsLocation =
 		{
 		  Manifest.Permission.AccessCoarseLocation,
@@ -30,7 +29,6 @@ namespace goheja
 		};
 
 		const int RequestLocationId = 0;
-
 
 		enum RIDE_TYPE
 		{
@@ -47,8 +45,6 @@ namespace goheja
 
 		ISharedPreferencesEditor contextPrefEdit;
 		ISharedPreferencesEditor filePrefEdit;
-
-		NetworkInfo _isINET;
 
 		Location _currentLocation;
         Location _lastLocation;
@@ -91,13 +87,13 @@ namespace goheja
         {
             base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.AnalyticsActivity);
+
+			if (!IsNetEnable()) return;
             
 			MemberModel = new RootMemberModel();
 			MemberModel.rootMember = GetUserObject();
 
 			svc = new trackSvc.Service1();
-
-			_isINET = ((ConnectivityManager)GetSystemService(ConnectivityService)).ActiveNetworkInfo;
 
 			contextPref = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
 			filePref = Application.Context.GetSharedPreferences("goheja", FileCreationMode.Private);
@@ -183,7 +179,6 @@ namespace goheja
 					break;
             }
 
-			initiatAth();
 			CheckLocationPermission();
         }
 
@@ -308,6 +303,7 @@ namespace goheja
 				var loc = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
 				DateTime dt = DateTime.Now;
 				dist = contextPref.GetFloat("dist", 0f);
+
 				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, athId, athCountry, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, mType.ToString(), Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch (Exception err)
@@ -429,26 +425,6 @@ namespace goheja
             App.Current.LocationService.StatusChanged += HandleStatusChanged;
         }
 
-        public void initiatAth()
-        {
-            bool isOnline = (_isINET != null) && _isINET.IsConnected;
-
-            if (!isOnline)
-            {
-                var builder = new AlertDialog.Builder(this);
-                builder.SetTitle("No internet connection");
-                builder.SetMessage("Oops!No internet connection... Pls try again later");
-                builder.SetCancelable(false);
-                builder.SetPositiveButton("OK", delegate { 
-					var activity = new Intent(this, typeof(SwipeTabActivity));
-					StartActivity(activity);
-					Finish();
-				});
-                builder.Show();
-                return;
-            }
-        }
-
         //end of update afroz
         #region Android Location Service methods
 
@@ -563,7 +539,7 @@ namespace goheja
 							float speed = float.Parse(_currentLocation.Speed.ToString()) * 3.6f;
 							record merecord = new record(name, _currentLocation.Latitude, _currentLocation.Longitude, dt, AppSettings.DeviceUDID, athId, athCountry, dist, speed, gainAlt, _currentLocation.Bearing, 0, mType.ToString());
 							handleRecord updateRecord = new handleRecord();
-                            status = updateRecord.updaterecord(merecord, (_isINET != null) && _isINET.IsConnected);//the record and is there internet connection
+							status = updateRecord.updaterecord(merecord, IsNetEnable());//the record and is there internet connection
                         }
 
                         _lastLocation = _currentLocation;

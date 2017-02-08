@@ -35,6 +35,8 @@ namespace goheja
 
 			SetUIVariablesAndActions();
 
+			if (!rootActivity.IsNetEnable()) return;
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				rootActivity.ShowLoadingView("Loading data...");
@@ -106,6 +108,8 @@ namespace goheja
 		void InitGaugeData(Gauge gaugeData)
 		{
 			//var gaugeData = rootActivity.GetGauge();
+
+			if (gaugeData == null) return;
 
 			lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
 			lblRunDuration.Text = gaugeData.Run[0].value + "%";

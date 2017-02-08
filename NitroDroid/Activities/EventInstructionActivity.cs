@@ -12,6 +12,13 @@ namespace goheja
 	[Activity(Label = "EventInstructionActivity")]
 	public class EventInstructionActivity : BaseActivity
 	{
+		TextView lblPDistance, lblPDuration, lblPLoad;
+		TextView lblTDistance, lblTDuration, lblTload;
+
+		float fDistance = 0;
+		float fDuration = 0;
+		float fLoad = 0;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
@@ -21,6 +28,9 @@ namespace goheja
 			var selectedEvent = AppSettings.selectedEvent;
 
 			InitUISettings(selectedEvent);
+
+			if (!IsNetEnable()) return;
+
 			InitBindingEventData(selectedEvent);
 		}
 
@@ -29,6 +39,8 @@ namespace goheja
 			base.OnResume();
 
 			var selectedEvent = AppSettings.selectedEvent;
+
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -55,6 +67,14 @@ namespace goheja
 
 		void InitUISettings(NitroEvent selectedEvent)
 		{
+			lblPDistance = FindViewById<TextView>(Resource.Id.lblPDistance);
+			lblPDuration = FindViewById<TextView>(Resource.Id.lblPDuration);
+			lblPLoad = FindViewById<TextView>(Resource.Id.lblPLoad);
+
+			lblTDistance = FindViewById<TextView>(Resource.Id.lblTotalDistance);
+			lblTDuration = FindViewById<TextView>(Resource.Id.lblElapsedTime);
+			lblTload = FindViewById<TextView>(Resource.Id.lblLoad);
+
 			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) { 
 				var activity = new Intent(this, typeof(EventCalendarActivity));
 				StartActivity(activity);
@@ -90,8 +110,8 @@ namespace goheja
 			FindViewById<TextView>(Resource.Id.lblData).Text = selectedEvent.eventData;
 
 			var strDistance = selectedEvent.distance;
-			float floatDistance = strDistance == "" || strDistance == null ? 0 : float.Parse(strDistance);
-			var b = Math.Truncate(floatDistance * 100);
+			fDistance = strDistance == "" || strDistance == null ? 0 : float.Parse(strDistance);
+			var b = Math.Truncate(fDistance * 100);
 			var c = b / 100;
 			var formattedDistance = c.ToString("F2");
 
@@ -100,9 +120,12 @@ namespace goheja
 			var durMin = selectedEvent.durMin == "" ? 0 : int.Parse(selectedEvent.durMin);
 			var durHrs = selectedEvent.durHrs == "" ? 0 : int.Parse(selectedEvent.durHrs);
 			var pHrs = durMin / 60;
+			fDuration = (durHrs * 60 + durMin) * 60;
 			durHrs = durHrs + pHrs;
 			durMin = durMin % 60;
 			var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
+
+			fLoad = selectedEvent.tss == "" ? 0 : float.Parse(selectedEvent.tss);
 
 			FindViewById<TextView>(Resource.Id.lblPDuration).Text = strDuration;
 			FindViewById<TextView>(Resource.Id.lblPLoad).Text = selectedEvent.tss;
@@ -136,15 +159,19 @@ namespace goheja
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = eventTotal.totals[0].value;
-			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = eventTotal.totals[1].value;
-			FindViewById<TextView>(Resource.Id.lblElapsedTime).Text = eventTotal.totals[2].value;
-			FindViewById<TextView>(Resource.Id.lblTotalAcent).Text = eventTotal.totals[3].value;
-			FindViewById<TextView>(Resource.Id.lblAvgHR).Text = eventTotal.totals[4].value;
-			FindViewById<TextView>(Resource.Id.lblTotalCalories).Text = eventTotal.totals[5].value;
-			FindViewById<TextView>(Resource.Id.lblAvgPower).Text = eventTotal.totals[6].value;
-			FindViewById<TextView>(Resource.Id.lblLoad).Text = eventTotal.totals[7].value;
-			FindViewById<TextView>(Resource.Id.lblLeveledPower).Text = eventTotal.totals[8].value;
+			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value);
+			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = FormatNumber(eventTotal.totals[1].value);
+			FindViewById<TextView>(Resource.Id.lblElapsedTime).Text = FormatNumber(eventTotal.totals[2].value);
+			FindViewById<TextView>(Resource.Id.lblTotalAcent).Text = FormatNumber(eventTotal.totals[3].value);
+			FindViewById<TextView>(Resource.Id.lblAvgHR).Text = FormatNumber(eventTotal.totals[4].value);
+			FindViewById<TextView>(Resource.Id.lblTotalCalories).Text = FormatNumber(eventTotal.totals[5].value);
+			FindViewById<TextView>(Resource.Id.lblAvgPower).Text = FormatNumber(eventTotal.totals[6].value);
+			FindViewById<TextView>(Resource.Id.lblLoad).Text = FormatNumber(eventTotal.totals[7].value);
+			FindViewById<TextView>(Resource.Id.lblLeveledPower).Text = FormatNumber(eventTotal.totals[8].value);
+
+			CompareEventResult(fDistance, ConvertToFloat(eventTotal.totals[1].value), lblPDistance, lblTDistance);
+			CompareEventResult(fDuration, TotalSecFromString(eventTotal.totals[2].value), lblPDuration, lblTDuration);
+			CompareEventResult(fLoad, ConvertToFloat(eventTotal.totals[7].value), lblPLoad, lblTload);
 		}
 
 		void InitBindingEventComments(Comment comments)

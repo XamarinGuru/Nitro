@@ -33,10 +33,7 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
-			if (!IsNetEnable())
-			{
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			ShowLoadingView("Getting User Data...");
 
@@ -74,11 +71,7 @@ namespace location2
 		#region event handler
 		partial void ActionChangePhoto(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 			myDelegate.baseVC.PresentViewController(imagePicker, true, null);
@@ -86,11 +79,7 @@ namespace location2
 
 		partial void ActionChangePassword(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			ChangePasswordViewController changePWVC = Storyboard.InstantiateViewController("ChangePasswordViewController") as ChangePasswordViewController;
 			changePWVC.email = MemberModel.email;
@@ -99,11 +88,7 @@ namespace location2
 
 		partial void ActionEditProfile(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			SeriousViewController eventVC = Storyboard.InstantiateViewController("SeriousViewController") as SeriousViewController;
 			NavigationController.PushViewController(eventVC, true);
@@ -111,11 +96,7 @@ namespace location2
 
 		partial void ActionSyncDevice(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			var userID = GetUserID();
 			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.URL_WATCH, userID)));

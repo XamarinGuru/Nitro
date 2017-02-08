@@ -42,6 +42,8 @@ namespace goheja
 
 		void ReloadEvents()
 		{
+			if (!IsNetEnable()) return;
+
 			_events = new List<NitroEvent>();
 			calendarPager = FindViewById<ViewPager>(Resource.Id.viewPager);
 			calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, null);
@@ -72,6 +74,8 @@ namespace goheja
 
 		void GotoToday()
 		{
+			if (!IsNetEnable()) return;
+
 			calendarPager.Adapter = null;
 			calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 		}

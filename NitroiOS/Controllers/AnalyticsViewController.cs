@@ -18,9 +18,7 @@ namespace location2
 
 		public static LocationManager Manager { get; set; }
 
-
 		trackSvc.Service1 meServ = new trackSvc.Service1();
-		Reachability.Reachability connection = new Reachability.Reachability();
 
 		RIDE_TYPE selected;
 
@@ -62,11 +60,7 @@ namespace location2
 			distTypLbl.Layer.ZPosition = 1;
 			altTypeLbl.Layer.ZPosition = 1;
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			MemberModel.rootMember = GetUserObject();
 
@@ -181,10 +175,8 @@ namespace location2
 			{
 				if (!startStop)
 				{
-					if (!connection.IsHostReachable("www.google.com"))
+					if (!IsNetEnable())
 					{
-						ShowMessageBox(null, "No internet connection!");
-						//this.lblTitle.Text = "No intenet connecion...";
 						return;
 					}
 					else
@@ -203,8 +195,6 @@ namespace location2
 						backBtn.Hidden = true;
 					}
 					isTimerStarted = true;
-
-					//connection = new Reachability.Reachability();
 				}
 				else
 				{

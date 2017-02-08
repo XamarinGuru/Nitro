@@ -58,11 +58,7 @@ namespace location2
 
 		partial void ActionLogin(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			if (Validate())
 			{

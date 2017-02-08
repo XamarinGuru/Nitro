@@ -52,7 +52,7 @@
                     <EditText
                         android:id="@+id/txtFirstname"
                         android:hint="FIRST NAME"
-                        android:textSize="12dp"
+                        android:textSize="14dp"
                         style="@style/BlackEditBox"
                         android:background="@android:color/transparent"
                         android:layout_width="0dp"
@@ -117,7 +117,7 @@
                     <EditText
                         android:id="@+id/txtLastname"
                         android:hint="LAST NAME"
-                        android:textSize="12dp"
+                        android:textSize="14dp"
                         style="@style/BlackEditBox"
                         android:background="@android:color/transparent"
                         android:layout_width="0dp"
@@ -193,7 +193,8 @@
                         android:hint="PICK A USER NAME"
                         android:singleLine="true"
                         style="@style/BlackEditBoxWithImage"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textSize="14dp" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
@@ -241,7 +242,7 @@
                 android:layout_height="0dp"
                 android:id="@+id/note"
                 android:textColor="#ffffff"
-                android:textSize="11dp"
+                android:textSize="13dp"
                 android:textAlignment="textStart"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
@@ -273,7 +274,8 @@
                         style="@style/BlackEditBoxWithImage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textSize="14dp" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
@@ -341,7 +343,8 @@
                         style="@style/BlackEditBoxWithImage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textSize="14dp" />
                     <ImageView xmlns:tools="http://schemas.android.com/tools"
                         android:src="@drawable/icon_cross"
                         android:layout_width="20dp"
@@ -414,7 +417,7 @@
                             <EditText
                                 android:id="@+id/txtAge"
                                 android:hint="AGE"
-                                android:textSize="12dp"
+                                android:textSize="14dp"
                                 style="@style/BlackEditBox"
                                 android:background="@android:color/transparent"
                                 android:layout_width="0dp"
@@ -471,7 +474,7 @@
                                 android:background="@android:color/transparent"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-                                android:textSize="12dp"
+                                android:textSize="14dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginBottom="5dp" />
                             <LinearLayout

@@ -31,11 +31,7 @@ namespace location2
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
 			View.AddGestureRecognizer(g);
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -55,11 +51,7 @@ namespace location2
 				return;
 			}
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			var author = MemberModel.firstname + " " + MemberModel.lastname;
 			var authorID = AppSettings.UserID;
@@ -70,8 +62,9 @@ namespace location2
 
 				InvokeOnMainThread(() =>
 				{
-					HideLoadingView();
 					var response = SetComment(author, authorID, txtComment.Text, selectedEvent._id);
+
+					HideLoadingView();
 					NavigationController.PopViewController(true);
 				});
 			});

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Android.App;
 using Android.Content;
+using Android.Net;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
@@ -18,10 +19,13 @@ namespace goheja
 	[Activity(Label = "BaseActivity")]
 	public class BaseActivity : FragmentActivity
 	{
+		Android.Graphics.Color COLOR_ORANGE = Android.Graphics.Color.Rgb(229, 161, 9);
+		Android.Graphics.Color COLOR_RED = Android.Graphics.Color.Rgb(179, 66, 17);
+		Android.Graphics.Color COLOR_BLUE = Android.Graphics.Color.Rgb(11, 88, 229);
+
 		AlertDialog.Builder alert;
 
 		trackSvc.Service1 mTrackSvc = new trackSvc.Service1();
-		//Reachability.Reachability mConnection = new Reachability.Reachability();
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -104,6 +108,20 @@ namespace goheja
 		{
 			base.OnBackPressed();
 			OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
+		}
+
+		public bool IsNetEnable()
+		{
+			ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+			NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+			bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
+
+			if (!isOnline)
+			{
+				ShowMessageBox(null, "No internet connection!");
+				return false;
+			}
+			return true;
 		}
 
 		#region integrate with web reference
@@ -206,8 +224,8 @@ namespace goheja
 
 			try
 			{
-				var strUser = mTrackSvc.getUsrObject(userID, Constants.SPEC_GROUP_TYPE[0]).ToString();
-				var jsonUser = FormatJsonType(strUser);
+				var objUser = mTrackSvc.getUsrObject(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var jsonUser = FormatJsonType(objUser.ToString());
 				RootMember rootMember = JsonConvert.DeserializeObject<RootMember>(jsonUser);
 				return rootMember;
 			}
@@ -394,10 +412,70 @@ namespace goheja
 			}
 			catch (Exception err)
 			{
-				ShowMessageBox(null, "Save error");
+				ShowMessageBox(null, "Save error\n" + err.Message);
 			}
 		}
+
+		public void UpdateMomgoData(string name,
+					string loc,
+					System.DateTime time,
+					bool timeSpecified,
+					string deviceID,
+					float speed,
+					bool speedSpecified,
+					string id,
+					string country,
+					float dist,
+					bool distSpecified,
+					float alt,
+					bool altSpecified,
+					float bearing,
+					bool bearingSpecified,
+					int recordType,
+					bool recordTypeSpecified,
+					string eventType,
+					string specGroup)
+		{
+			mTrackSvc.updateMomgoDataAsync(name, loc, time, timeSpecified, deviceID, speed, speedSpecified, id, country, dist, distSpecified, alt, altSpecified, bearing, bearingSpecified, recordType, recordTypeSpecified, eventType, specGroup, null);
+		}
 		#endregion
+
+		public void CompareEventResult(float planned, float total, TextView lblPlanned, TextView lblTotal)
+		{
+			if (planned == total || planned == 0 || total == 0)
+			{
+				lblPlanned.SetTextColor(COLOR_ORANGE);
+				lblTotal.SetTextColor(COLOR_ORANGE);
+				return;
+			}
+
+			if (planned > total)
+			{
+				var delta = (planned - total) / total;
+				if (delta < 0.15)
+				{
+					lblPlanned.SetTextColor(COLOR_ORANGE);
+					lblTotal.SetTextColor(COLOR_ORANGE);
+				}
+				else {
+					lblPlanned.SetTextColor(COLOR_BLUE);
+					lblTotal.SetTextColor(COLOR_BLUE);
+				}
+			}
+			else if (planned < total)
+			{
+				var delta = (total - planned) / planned;
+				if (delta < 0.15)
+				{
+					lblPlanned.SetTextColor(COLOR_ORANGE);
+					lblTotal.SetTextColor(COLOR_ORANGE);
+				}
+				else {
+					lblPlanned.SetTextColor(COLOR_RED);
+					lblTotal.SetTextColor(COLOR_RED);
+				}
+			}
+		}
 
 		public bool ValidateUserNickName(string nickName)
 		{
@@ -486,43 +564,18 @@ namespace goheja
 			}
 		}
 
-
-		//void CompareEventResult(float planned, float total, UILabel lblPlanned, UILabel lblTotal)
-		//{
-		//	if (planned == total || planned == 0 || total == 0)
-		//	{
-		//		lblPlanned.TextColor = COLOR_ORANGE;
-		//		lblTotal.TextColor = COLOR_ORANGE;
-		//		return;
-		//	}
-
-		//	if (planned > total)
-		//	{
-		//		var delta = (planned - total) / total;
-		//		if (delta < 0.15)
-		//		{
-		//			lblPlanned.TextColor = COLOR_ORANGE;
-		//			lblTotal.TextColor = COLOR_ORANGE;
-		//		}
-		//		else {
-		//			lblPlanned.TextColor = UIColor.Red;
-		//			lblTotal.TextColor = UIColor.Blue;
-		//		}
-		//	}
-		//	else if (planned < total)
-		//	{
-		//		var delta = (total - planned) / planned;
-		//		if (delta < 0.15)
-		//		{
-		//			lblPlanned.TextColor = COLOR_ORANGE;
-		//			lblTotal.TextColor = COLOR_ORANGE;
-		//		}
-		//		else {
-		//			lblPlanned.TextColor = UIColor.Blue;
-		//			lblTotal.TextColor = UIColor.Red;
-		//		}
-		//	}
-		//}
+		public string FormatNumber(string number)
+		{
+			try
+			{
+				var fNumber = float.Parse(number);
+				return fNumber.ToString("F2");
+			}
+			catch
+			{
+				return number;
+			}
+		}
 
 		public void MarkAsInvalide(ImageView validEmail, LinearLayout errorEmail, bool isInvalid)
 		{

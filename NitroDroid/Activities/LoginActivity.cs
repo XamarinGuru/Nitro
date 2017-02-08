@@ -83,6 +83,8 @@ namespace goheja
 
 		void ActionLogin(object sender, EventArgs e)
 		{
+			if (!IsNetEnable()) return;
+
 			if (Validate())
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate

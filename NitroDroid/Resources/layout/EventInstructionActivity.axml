@@ -123,7 +123,7 @@
                             android:id="@+id/textView1"
                             android:textStyle="bold"
                             android:textColor="#ffffffff"
-                            android:textSize="13dp"
+                            android:textSize="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -149,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/lblData"
                             android:textColor="#ffffffff"
-                            android:textSize="12dp"
+                            android:textSize="14dp"
                             android:textStyle="normal" />
                     </LinearLayout>
                 </LinearLayout>
@@ -180,7 +180,7 @@
                         android:id="@+id/viewCycle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginRight="15dp">
                         <LinearLayout
                             android:orientation="horizontal"
                             android:minWidth="25px"
@@ -204,7 +204,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -222,9 +222,9 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblPDistance"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
-                                    android:gravity="center" />
+                                    android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -250,7 +250,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -268,9 +268,9 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblPDuration"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
-                                    android:gravity="center" />
+                                    android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -296,7 +296,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -314,9 +314,9 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblPLoad"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
-                                    android:gravity="center" />
+                                    android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -342,7 +342,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -360,9 +360,9 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblPHB"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
-                                    android:gravity="center" />
+                                    android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -396,7 +396,7 @@
                         android:id="@+id/textView1"
                         android:textStyle="bold"
                         android:textColor="#ffffffff"
-                        android:textSize="13dp"
+                        android:textSize="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
                 </LinearLayout>
@@ -438,7 +438,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -456,7 +456,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblAvgSpeed"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -483,7 +483,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -501,7 +501,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblTotalDistance"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -528,7 +528,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -546,7 +546,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblElapsedTime"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -573,7 +573,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -591,7 +591,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblTotalAcent"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -618,7 +618,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -636,7 +636,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblAvgHR"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -673,7 +673,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -691,7 +691,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblTotalCalories"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -718,7 +718,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -736,7 +736,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblAvgPower"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -763,7 +763,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -781,7 +781,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblLoad"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>
@@ -808,7 +808,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView3"
                                     android:textColor="#ffffffff"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal" />
                             </LinearLayout>
                             <LinearLayout
@@ -826,7 +826,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/lblLeveledPower"
                                     android:textColor="#ffe5a109"
-                                    android:textSize="12dp"
+                                    android:textSize="14dp"
                                     android:textStyle="normal"
                                     android:gravity="right" />
                             </LinearLayout>

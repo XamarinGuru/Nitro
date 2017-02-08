@@ -60,6 +60,8 @@ namespace goheja
 
 			MemberModel = new RootMemberModel();
 
+			if (!IsNetEnable()) return;
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView("Loading data...");
@@ -375,13 +377,13 @@ namespace goheja
 		#region update actions
 		void ActionUpdate(object sender, EventArgs e)
 		{
-			//ShowLoadingView("Updating user data...");
+			if (!IsNetEnable()) return;
+
 			var result = UpdateUserDataJson(MemberModel.rootMember);
-			//HideLoadingView();
 
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("");
-			alert.SetMessage("updated successfully.");
+			alert.SetMessage(result);
 			alert.SetPositiveButton("OK", (senderAlert, args) =>
 			{
 				RunOnUiThread(() => { 

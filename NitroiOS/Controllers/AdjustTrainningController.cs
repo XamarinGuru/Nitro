@@ -35,11 +35,7 @@ namespace location2
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
 
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -104,11 +100,7 @@ namespace location2
 
 		partial void ActionAdjustTrainning(UIButton sender)
 		{
-			if (!IsNetEnable())
-			{
-				ShowMessageBox(null, "No internet connection!");
-				return;
-			}
+			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -116,8 +108,9 @@ namespace location2
 
 				InvokeOnMainThread(() =>
 				{
-					HideLoadingView();
 					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
+
+					HideLoadingView();
 					//this.DismissModalViewController(true);
 					NavigationController.PopViewController(true);
 				});
