@@ -161,23 +161,25 @@ namespace goheja
             {
 				if (Validate())
 				{
-
 					string deviceUDID = Android.Provider.Settings.Secure.GetString(this.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
 
-					var result = "";
-
-					ShowLoadingView("Sign Up...");
-
-					result = RegisterUser(txtFirstname.Text, txtLastname.Text, deviceUDID, txtUsername.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
-
-					if (result == "user added")
-						GoToMainPage(deviceUDID);
-					else
+					System.Threading.ThreadPool.QueueUserWorkItem(delegate
 					{
-						HideLoadingView();
+						var result = "";
 
-						ShowMessageBox(null, result);
-					}
+						ShowLoadingView("Sign Up...");
+
+						result = RegisterUser(txtFirstname.Text, txtLastname.Text, deviceUDID, txtUsername.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
+
+						if (result == "user added")
+							GoToMainPage(deviceUDID);
+						else
+						{
+							HideLoadingView();
+
+							ShowMessageBox(null, result);
+						}
+					});
 				}
                 
             }
