@@ -227,7 +227,5 @@ namespace goheja
             base.OnDestroy();
             Finish();
         }
-
-
     }
 }

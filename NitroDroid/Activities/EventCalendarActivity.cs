@@ -46,7 +46,7 @@ namespace goheja
 
 			_events = new List<NitroEvent>();
 			calendarPager = FindViewById<ViewPager>(Resource.Id.viewPager);
-			calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, null);
+			//calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, null);
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
