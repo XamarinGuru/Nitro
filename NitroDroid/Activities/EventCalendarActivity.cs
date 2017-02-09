@@ -20,6 +20,8 @@ namespace goheja
 	[Activity(Label = "EventCalendarActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EventCalendarActivity : BaseActivity
 	{
+		//static bool isFirst = true;
+
 		ViewPager calendarPager;
 		ListView eventsList;
 		List<NitroEvent> _events = new List<NitroEvent>();
@@ -34,7 +36,11 @@ namespace goheja
 			noEventsContent = FindViewById<LinearLayout>(Resource.Id.noEventsContent);
 			noEventsContent.Visibility = ViewStates.Gone;
 
-			ReloadEvents();
+			//if (isFirst)
+			//{
+				ReloadEvents();
+			//	isFirst = false;
+			//}
 
 			FindViewById(Resource.Id.ActionReload).Click += (sender, e) => ReloadEvents();
 			FindViewById(Resource.Id.ActionToday).Click += (sender, e) => GotoToday();

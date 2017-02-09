@@ -373,7 +373,7 @@
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="250dp"
                 android:id="@+id/totalContent"
                 android:background="#1E1E1E"
                 android:layout_marginTop="1dp"
@@ -415,7 +415,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginRight="15dp">
                         <LinearLayout
                             android:orientation="horizontal"
                             android:minWidth="25px"
@@ -641,16 +641,6 @@
                                     android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:id="@+id/viewCycle"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="20dp">
                         <LinearLayout
                             android:orientation="horizontal"
                             android:minWidth="25px"
@@ -831,14 +821,6 @@
                                     android:gravity="right" />
                             </LinearLayout>
                         </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:id="@+id/linearLayout13"
-                            android:layout_weight="0.5" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -16,6 +16,8 @@ namespace location2
 		float fDuration = 0;
 		float fLoad = 0;
 
+		string speedSuf = "";
+
         public EventInstructionController() : base()
 		{
 		}
@@ -77,7 +79,7 @@ namespace location2
 			}
 			else
 			{
-				heightInstructions.Constant = 200;
+				heightInstructions.Constant = 320;
 				heightAdjust.Constant = 100;
 			}
 		}
@@ -118,12 +120,15 @@ namespace location2
 					break;
 				case "1":
 					imgType.Image = UIImage.FromFile("icon_bike.png");
+					speedSuf = " km/h";
 					break;
 				case "2":
 					imgType.Image = UIImage.FromFile("icon_run.png");
+					speedSuf = " min/km";
 					break;
 				case "3":
 					imgType.Image = UIImage.FromFile("icon_swim.png");
+					speedSuf = " min/100m";
 					break;
 				case "4":
 					imgType.Image = UIImage.FromFile("icon_triathlon.png");
@@ -138,7 +143,7 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);
+			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value) + speedSuf;
 			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
 			lblTotalValue2.Text = FormatNumber(eventTotal.totals[2].value);
 			lblTotalValue3.Text = FormatNumber(eventTotal.totals[3].value);
@@ -183,9 +188,6 @@ namespace location2
 			atVC.eventTotal = eventTotal;
 
 			NavigationController.PushViewController(atVC, true);
-
-			//AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-			//myDelegate.baseVC.PresentModalViewController(atVC, true);
 		}
 
 		partial void ActionAddComment(UIButton sender)
@@ -194,9 +196,6 @@ namespace location2
 			acVC.selectedEvent = selectedEvent;
 
 			NavigationController.PushViewController(acVC, true);
-
-			//AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-			//myDelegate.baseVC.PresentModalViewController(acVC, true);
 		}
 		#endregion
     }

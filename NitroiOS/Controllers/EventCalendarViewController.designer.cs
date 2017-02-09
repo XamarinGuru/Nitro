@@ -16,6 +16,10 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblNoEvents { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView tableView { get; set; }
 
         [Outlet]
@@ -28,6 +32,11 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (lblNoEvents != null) {
+                lblNoEvents.Dispose ();
+                lblNoEvents = null;
+            }
+
             if (tableView != null) {
                 tableView.Dispose ();
                 tableView = null;

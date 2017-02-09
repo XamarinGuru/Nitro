@@ -144,6 +144,12 @@ namespace location2
 					eventsByDate.Add(nitroEvent);
 				}
 			}
+
+			if (eventsByDate.Count == 0)
+				lblNoEvents.Hidden = false;
+			else
+				lblNoEvents.Hidden = true;
+			
 			var tblDataSource = new NitroEventTableViewSource(eventsByDate, this);
 			this.InvokeOnMainThread(delegate
 			{

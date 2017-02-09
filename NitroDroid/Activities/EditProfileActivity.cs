@@ -256,19 +256,19 @@ namespace goheja
 			SetupPicker(txtBZone4HR, "hr");
 			SetupPicker(txtBZone5HR, "hr");
 
-			SetupPicker(txtSZone1PACE, "pace");
-			SetupPicker(txtSZone2PACE, "pace");
-			SetupPicker(txtSZone3PACE, "pace");
-			SetupPicker(txtSZone4PACE, "pace");
-			SetupPicker(txtSZone5PACE, "pace");
-			SetupPicker(txtRZone1PACE, "pace");
-			SetupPicker(txtRZone2PACE, "pace");
-			SetupPicker(txtRZone3PACE, "pace");
-			SetupPicker(txtRZone4PACE, "pace");
-			SetupPicker(txtRZone5PACE, "pace");
+			SetupPicker(txtSZone1PACE, "pace", "minutes per 100 meter");
+			SetupPicker(txtSZone2PACE, "pace", "minutes per 100 meter");
+			SetupPicker(txtSZone3PACE, "pace", "minutes per 100 meter");
+			SetupPicker(txtSZone4PACE, "pace", "minutes per 100 meter");
+			SetupPicker(txtSZone5PACE, "pace", "minutes per 100 meter");
+			SetupPicker(txtRZone1PACE, "pace", "minutes per kilometer");
+			SetupPicker(txtRZone2PACE, "pace", "minutes per kilometer");
+			SetupPicker(txtRZone3PACE, "pace", "minutes per kilometer");
+			SetupPicker(txtRZone4PACE, "pace", "minutes per kilometer");
+			SetupPicker(txtRZone5PACE, "pace", "minutes per kilometer");
 
-			SetupPicker(txtSFTPace, "pace");
-			SetupPicker(txtRFTPace, "pace");
+			SetupPicker(txtSFTPace, "pace", "minutes per 100 meter");
+			SetupPicker(txtRFTPace, "pace", "minutes per kilometer");
 		}
 
 		private void SetInputBinding()
@@ -604,7 +604,7 @@ namespace goheja
 		}
 
 		#endregion
-		private void SetupPicker(EditText textView, string format)
+		private void SetupPicker(EditText textView, string format, string title = "")
 		{
 			int dcount = 0;
 			if (format == "time")
@@ -618,7 +618,7 @@ namespace goheja
 			{
 				if (e.Event.Action == MotionEventActions.Down)
 				{
-					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, dcount, format);
+					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, dcount, format, title);
 					myDiag.Show(FragmentManager, "Diag");
 				}
 			};

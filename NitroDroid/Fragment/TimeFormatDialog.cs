@@ -15,17 +15,19 @@ namespace goheja
 		private int currentValue;
 
 		private string type;
+		private string title;
 
 		private static string ARG_numDials = "numDials";
 		private static string ARG_initValue = "initValue";
 
 		private EditText textView;
 
-		public static TimeFormatDialog newInstance(EditText textView, int numDials, string type)
+		public static TimeFormatDialog newInstance(EditText textView, int numDials, string type, string title)
 		{
 			TimeFormatDialog numdialog = new TimeFormatDialog();
 			numdialog.textView = textView;
 			numdialog.type = type;
+			numdialog.title = title;
 			Bundle args = new Bundle();
 			args.PutInt(ARG_numDials, numDials);
 			numdialog.Arguments = args;
@@ -35,6 +37,13 @@ namespace goheja
 		public TimeFormatDialog()
 		{
 			// Required empty public constructor
+		}
+
+		public override Dialog OnCreateDialog(Bundle savedInstanceState)
+		{
+			var dialog = base.OnCreateDialog(savedInstanceState);
+			dialog.SetTitle(title);
+			return dialog;
 		}
 
 		public override void OnCreate(Bundle savedInstanceState)
