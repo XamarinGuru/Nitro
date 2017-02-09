@@ -196,7 +196,7 @@ namespace location2
 			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 			{
 				NitroEventCell cell = tableView.DequeueReusableCell("NitroEventCell") as NitroEventCell;
-				cell.SetCell(nitroEvents[indexPath.Section]);
+				cell.SetCell(nitroEvents[indexPath.Row]);
 
 				return cell;
 			}
