@@ -75,9 +75,11 @@ namespace goheja
 			lblTDuration = FindViewById<TextView>(Resource.Id.lblElapsedTime);
 			lblTload = FindViewById<TextView>(Resource.Id.lblLoad);
 
-			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) { 
-				var activity = new Intent(this, typeof(EventCalendarActivity));
-				StartActivity(activity);
+			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) {
+				//var activity = new Intent(this, typeof(EventCalendarActivity));
+				//StartActivity(activity);
+				//Finish();
+				base.OnBackPressed();
 				Finish();
 			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
@@ -197,8 +199,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(EventCalendarActivity));
-				StartActivity(activity);
+				base.OnBackPressed();
 				Finish();
 			}
 

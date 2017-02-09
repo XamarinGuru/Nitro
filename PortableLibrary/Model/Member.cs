@@ -477,7 +477,7 @@ namespace PortableLibrary
 		private SelfRanking srSwim()
 		{
 			SelfRanking p = new SelfRanking();
-			p.fieldId = "0";
+			p.fieldId = "3";
 			p.fieldName = "Swim";
 			p.rank = "1";
 			return p;
