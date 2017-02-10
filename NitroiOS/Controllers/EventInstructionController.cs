@@ -143,7 +143,7 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value) + speedSuf;
+			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);// + speedSuf;
 			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
 			lblTotalValue2.Text = FormatNumber(eventTotal.totals[2].value);
 			lblTotalValue3.Text = FormatNumber(eventTotal.totals[3].value);

@@ -20,8 +20,6 @@ namespace goheja
 	[Activity(Label = "EventCalendarActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EventCalendarActivity : BaseActivity
 	{
-		//static bool isFirst = true;
-
 		ViewPager calendarPager;
 		ListView eventsList;
 		List<NitroEvent> _events = new List<NitroEvent>();
@@ -36,11 +34,7 @@ namespace goheja
 			noEventsContent = FindViewById<LinearLayout>(Resource.Id.noEventsContent);
 			noEventsContent.Visibility = ViewStates.Gone;
 
-			//if (isFirst)
-			//{
-				ReloadEvents();
-			//	isFirst = false;
-			//}
+			ReloadEvents();
 
 			FindViewById(Resource.Id.ActionReload).Click += (sender, e) => ReloadEvents();
 			FindViewById(Resource.Id.ActionToday).Click += (sender, e) => GotoToday();
@@ -52,7 +46,6 @@ namespace goheja
 
 			_events = new List<NitroEvent>();
 			calendarPager = FindViewById<ViewPager>(Resource.Id.viewPager);
-			//calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, null);
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
@@ -74,7 +67,6 @@ namespace goheja
 					calendarPager.Adapter = new CalendarAdapter(SupportFragmentManager, FilteredEventsByDate, _events);
 					HideLoadingView();
 				});
-
 			});
 		}
 

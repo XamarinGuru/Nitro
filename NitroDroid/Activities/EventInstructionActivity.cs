@@ -166,7 +166,7 @@ namespace goheja
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value) + speedSuf;
+			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value);// + speedSuf;
 			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = FormatNumber(eventTotal.totals[1].value);
 			FindViewById<TextView>(Resource.Id.lblElapsedTime).Text = FormatNumber(eventTotal.totals[2].value);
 			FindViewById<TextView>(Resource.Id.lblTotalAcent).Text = FormatNumber(eventTotal.totals[3].value);

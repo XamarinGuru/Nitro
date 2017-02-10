@@ -19,5 +19,6 @@ namespace PortableLibrary
 		public const string URL_GAUGE = "http://go-heja.com:8080/innovi/mobGraph/totalGauge.php?userId={0}";
 
 		public static string[] SPEC_GROUP_TYPE = { "innovi" };
+		//public static string[] SPEC_GROUP_TYPE = { "nitro" };
 	}
 }

@@ -1,40 +1,26 @@
 ﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/EventCalendarActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PortableLibrary/Constants.cs">
     <Files>
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="207" Column="54" />
+      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="169" Column="102" />
       <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="121" Column="1" />
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="21" Column="15" />
+      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="70" Column="1" />
+      <File FileName="NitroDroid/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="NitroiOS/Info.plist" />
+      <File FileName="PortableLibrary/Constants.cs" Line="21" Column="52" />
+      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="1" Column="1" />
+      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="151" Column="67" />
+      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="17" Column="26" />
+      <File FileName="NitroiOS/Main.cs" Line="12" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="NitroSolution" expanded="True">
-            <Node name="Nitro.Droid" expanded="True">
-              <Node name="WebReferences" expanded="True">
-                <Node name="WebReferenceItem" expanded="True">
-                  <Node name="Reference.map" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Activities" expanded="True">
-                <Node name="EventCalendarActivity.cs" selected="True" />
-              </Node>
-              <Node name="Fragment" expanded="True" />
-              <Node name="Utility" expanded="True" />
-            </Node>
-            <Node name="Nitro.iOS" expanded="True">
-              <Node name="Controllers" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroDroid/Activities/EventInstructionActivity.cs" line="169" column="102" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
-  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
+  <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
 </Properties>
