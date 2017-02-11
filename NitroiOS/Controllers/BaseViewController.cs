@@ -606,7 +606,7 @@ namespace location2
 				var fileBytes = new Byte[imgData.Length];
 				System.Runtime.InteropServices.Marshal.Copy(imgData.Bytes, fileBytes, 0, Convert.ToInt32(imgData.Length));
 
-				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes);
+				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes, Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch (Exception err)
 			{

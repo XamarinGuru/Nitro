@@ -29,6 +29,49 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="installg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="installgResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="installgResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="convertUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="convertUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="convertUsersResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="convertEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="athId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="convertEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="convertEventsResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="getCode">
     <xs:complexType>
       <xs:sequence>
@@ -826,6 +869,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="athId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="imageByteData" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

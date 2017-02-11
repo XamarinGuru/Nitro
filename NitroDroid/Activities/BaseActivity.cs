@@ -408,7 +408,7 @@ namespace goheja
 		{
 			try
 			{
-				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes);
+				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes, Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch (Exception err)
 			{

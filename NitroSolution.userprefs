@@ -1,25 +1,21 @@
-﻿<Properties StartupConfiguration="{3EAADAD5-605D-4D6A-9E8C-90EADC2539E6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PortableLibrary/Constants.cs">
+﻿<Properties StartupConfiguration="{7E904771-5A56-4C70-88F8-67D14558069C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NitroDroid/Activities/BaseActivity.cs">
     <Files>
-      <File FileName="NitroDroid/Activities/EventInstructionActivity.cs" Line="169" Column="102" />
-      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="121" Column="1" />
-      <File FileName="NitroDroid/Activities/EventCalendarActivity.cs" Line="70" Column="1" />
-      <File FileName="NitroDroid/Properties/AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="NitroiOS/Info.plist" />
-      <File FileName="PortableLibrary/Constants.cs" Line="21" Column="52" />
-      <File FileName="NitroiOS/Controllers/EventCalendarViewController.cs" Line="1" Column="1" />
-      <File FileName="NitroiOS/Controllers/EventInstructionController.cs" Line="151" Column="67" />
-      <File FileName="NitroiOS/Controllers/CalendarHomeViewController.cs" Line="17" Column="26" />
-      <File FileName="NitroiOS/Main.cs" Line="12" Column="1" />
+      <File FileName="NitroiOS/Controllers/BaseViewController.cs" Line="609" Column="103" />
+      <File FileName="PortableLibrary/Constants.cs" Line="6" Column="78" />
+      <File FileName="NitroDroid/Activities/BaseActivity.cs" Line="411" Column="103" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroDroid/Activities/EventInstructionActivity.cs" line="169" column="102" />
+      <Breakpoint file="/Volumes/Untitled/Go-Heja/NitroiOS/Controllers/EventInstructionController.cs" line="146" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="NitroiOS/Controllers/EventInstructionController.cs" line="146" offsetX="703" offsetY="2175" expression="eventTotal.totals" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.MonoDroid.TimesSquare AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
   <MonoDevelop.Ide.ItemProperties.Nitro.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
   <MonoDevelop.Ide.ItemProperties.Nitro.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />

@@ -4,6 +4,7 @@ namespace PortableLibrary
 	public static class Constants
 	{
 		public const string GOHEJA_BASEPATH = "http://go-heja.com/Service1.svc?wsdl";
+
 		public const string FIREBASE_APPSECRET = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF";
 		public const string FIREBASE_BASEPATH = "https://nitro-8cbda.firebaseio.com/";
 

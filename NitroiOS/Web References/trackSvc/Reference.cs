@@ -26,6 +26,12 @@ namespace location2.trackSvc {
         
         private System.Threading.SendOrPostCallback updateMomgoDataOperationCompleted;
         
+        private System.Threading.SendOrPostCallback installgOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback convertUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback convertEventsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getCodeOperationCompleted;
         
         private System.Threading.SendOrPostCallback getMobTotalsGraphOperationCompleted;
@@ -233,6 +239,15 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         public event updateMomgoDataCompletedEventHandler updateMomgoDataCompleted;
+        
+        /// CodeRemarks
+        public event installgCompletedEventHandler installgCompleted;
+        
+        /// CodeRemarks
+        public event convertUsersCompletedEventHandler convertUsersCompleted;
+        
+        /// CodeRemarks
+        public event convertEventsCompletedEventHandler convertEventsCompleted;
         
         /// CodeRemarks
         public event getCodeCompletedEventHandler getCodeCompleted;
@@ -647,6 +662,98 @@ namespace location2.trackSvc {
             if ((this.updateMomgoDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.updateMomgoDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/installg", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object installg([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("installg", new object[] {
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void installgAsync(string specGroup) {
+            this.installgAsync(specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void installgAsync(string specGroup, object userState) {
+            if ((this.installgOperationCompleted == null)) {
+                this.installgOperationCompleted = new System.Threading.SendOrPostCallback(this.OninstallgOperationCompleted);
+            }
+            this.InvokeAsync("installg", new object[] {
+                        specGroup}, this.installgOperationCompleted, userState);
+        }
+        
+        private void OninstallgOperationCompleted(object arg) {
+            if ((this.installgCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.installgCompleted(this, new installgCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/convertUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object convertUsers([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("convertUsers", new object[] {
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void convertUsersAsync(string specGroup) {
+            this.convertUsersAsync(specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void convertUsersAsync(string specGroup, object userState) {
+            if ((this.convertUsersOperationCompleted == null)) {
+                this.convertUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconvertUsersOperationCompleted);
+            }
+            this.InvokeAsync("convertUsers", new object[] {
+                        specGroup}, this.convertUsersOperationCompleted, userState);
+        }
+        
+        private void OnconvertUsersOperationCompleted(object arg) {
+            if ((this.convertUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.convertUsersCompleted(this, new convertUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/convertEvents", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object convertEvents([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("convertEvents", new object[] {
+                        athId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void convertEventsAsync(string athId, string specGroup) {
+            this.convertEventsAsync(athId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void convertEventsAsync(string athId, string specGroup, object userState) {
+            if ((this.convertEventsOperationCompleted == null)) {
+                this.convertEventsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconvertEventsOperationCompleted);
+            }
+            this.InvokeAsync("convertEvents", new object[] {
+                        athId,
+                        specGroup}, this.convertEventsOperationCompleted, userState);
+        }
+        
+        private void OnconvertEventsOperationCompleted(object arg) {
+            if ((this.convertEventsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.convertEventsCompleted(this, new convertEventsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2404,26 +2511,28 @@ namespace location2.trackSvc {
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/saveUserImage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public object saveUserImage([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)] byte[] imageByteData) {
+        public object saveUserImage([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true)] byte[] imageByteData, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
             object[] results = this.Invoke("saveUserImage", new object[] {
                         athId,
-                        imageByteData});
+                        imageByteData,
+                        specGroup});
             return ((object)(results[0]));
         }
         
         /// CodeRemarks
-        public void saveUserImageAsync(string athId, byte[] imageByteData) {
-            this.saveUserImageAsync(athId, imageByteData, null);
+        public void saveUserImageAsync(string athId, byte[] imageByteData, string specGroup) {
+            this.saveUserImageAsync(athId, imageByteData, specGroup, null);
         }
         
         /// CodeRemarks
-        public void saveUserImageAsync(string athId, byte[] imageByteData, object userState) {
+        public void saveUserImageAsync(string athId, byte[] imageByteData, string specGroup, object userState) {
             if ((this.saveUserImageOperationCompleted == null)) {
                 this.saveUserImageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsaveUserImageOperationCompleted);
             }
             this.InvokeAsync("saveUserImage", new object[] {
                         athId,
-                        imageByteData}, this.saveUserImageOperationCompleted, userState);
+                        imageByteData,
+                        specGroup}, this.saveUserImageOperationCompleted, userState);
         }
         
         private void OnsaveUserImageOperationCompleted(object arg) {
@@ -4200,26 +4309,6 @@ namespace location2.trackSvc {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
-    public partial class CompositeType {
-        
-        /// <remarks/>
-        public bool BoolValue;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BoolValueSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string StringValue;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial class BsonValue {
     }
@@ -4241,9 +4330,107 @@ namespace location2.trackSvc {
         public BsonValue _value;
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
+    public partial class CompositeType {
+        
+        /// <remarks/>
+        public bool BoolValue;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BoolValueSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StringValue;
+    }
+    
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void updateMomgoDataCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void installgCompletedEventHandler(object sender, installgCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class installgCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal installgCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void convertUsersCompletedEventHandler(object sender, convertUsersCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class convertUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal convertUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void convertEventsCompletedEventHandler(object sender, convertEventsCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class convertEventsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal convertEventsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
