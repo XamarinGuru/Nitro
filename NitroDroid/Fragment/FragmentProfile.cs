@@ -43,7 +43,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				rootActivity.ShowLoadingView("Loading data...");
+				rootActivity.ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
 
 				MemberModel.rootMember = rootActivity.GetUserObject();
 

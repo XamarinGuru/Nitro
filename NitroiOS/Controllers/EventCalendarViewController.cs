@@ -63,7 +63,7 @@ namespace location2
 			_events = new List<NitroEvent>();
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Retreving Nitro Events...");
+				ShowLoadingView(Constants.MSG_LOADING_EVENTS);
 
 				var pastEvents = GetPastEvents();
 				var todayEvents = GetTodayEvents();

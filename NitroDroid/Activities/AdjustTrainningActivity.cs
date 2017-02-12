@@ -34,7 +34,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Retreving Event Details...");
+				ShowLoadingView(Constants.MSG_LOADING_EVENT_DETAIL);
 
 				MemberModel.rootMember = GetUserObject();
 
@@ -70,15 +70,17 @@ namespace goheja
 
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			var distance = GetFormatedDurationAsMin(eventTotal.totals[2].value);
+			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
+			var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
+			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
-			lblTime.Text = distance.ToString();
-			lblDistance.Text = eventTotal.totals[1].value;
-			lblTSS.Text = eventTotal.totals[7].value;
+			lblTime.Text = strEt.ToString();
+			lblDistance.Text = float.Parse(strTd).ToString("F0");
+			lblTSS.Text = float.Parse(strTss).ToString("F0");
 
-			seekTime.Progress = distance;
-			seekDistance.Progress = (int)float.Parse(eventTotal.totals[1].value);
-			seekTSS.Progress = (int)float.Parse(eventTotal.totals[7].value);
+			seekTime.Progress = strEt;
+			seekDistance.Progress = (int)float.Parse(strTd);
+			seekTSS.Progress = (int)float.Parse(strTss);
 
 			attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
 		}
@@ -89,7 +91,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Adjusting Trainning...");
+				ShowLoadingView(Constants.MSG_ADJUST_TRAINING);
 
 				UpdateMemberNotes(txtComment.Text, AppSettings.UserID, AppSettings.selectedEvent._id, MemberModel.username, attended.Checked ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, AppSettings.selectedEvent.type);
 

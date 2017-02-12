@@ -3,8 +3,8 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
-using Android.Views.InputMethods;
 using Android.Widget;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -50,31 +50,31 @@ namespace goheja
 			errorEmail = FindViewById<LinearLayout>(Resource.Id.errorEmail);
 			errorPassword = FindViewById<LinearLayout>(Resource.Id.errorPassword);
 
-			invalidFirstname.Visibility = Android.Views.ViewStates.Invisible;
-			invalidLastname.Visibility = Android.Views.ViewStates.Invisible;
-			invalidUsername.Visibility = Android.Views.ViewStates.Invisible;
-			invalidEmail.Visibility = Android.Views.ViewStates.Invisible;
-			invalidPassword.Visibility = Android.Views.ViewStates.Invisible;
-			invalidAge.Visibility = Android.Views.ViewStates.Invisible;
-			invalidTerms.Visibility = Android.Views.ViewStates.Invisible;
-			errorFirstname.Visibility = Android.Views.ViewStates.Invisible;
-			errorLastname.Visibility = Android.Views.ViewStates.Invisible;
-			errorUsername.Visibility = Android.Views.ViewStates.Invisible;
-			errorEmail.Visibility = Android.Views.ViewStates.Invisible;
-			errorPassword.Visibility = Android.Views.ViewStates.Invisible;
+			invalidFirstname.Visibility = ViewStates.Invisible;
+			invalidLastname.Visibility = ViewStates.Invisible;
+			invalidUsername.Visibility = ViewStates.Invisible;
+			invalidEmail.Visibility = ViewStates.Invisible;
+			invalidPassword.Visibility = ViewStates.Invisible;
+			invalidAge.Visibility = ViewStates.Invisible;
+			invalidTerms.Visibility = ViewStates.Invisible;
+			errorFirstname.Visibility = ViewStates.Invisible;
+			errorLastname.Visibility = ViewStates.Invisible;
+			errorUsername.Visibility = ViewStates.Invisible;
+			errorEmail.Visibility = ViewStates.Invisible;
+			errorPassword.Visibility = ViewStates.Invisible;
 		}
 
 		private bool Validate()
 		{
 			var checkTerms = FindViewById<CheckBox>(Resource.Id.checkTerms);
 
-			invalidFirstname.Visibility = Android.Views.ViewStates.Visible;
-			invalidLastname.Visibility = Android.Views.ViewStates.Visible;
-			invalidUsername.Visibility = Android.Views.ViewStates.Visible;
-			invalidEmail.Visibility = Android.Views.ViewStates.Visible;
-			invalidPassword.Visibility = Android.Views.ViewStates.Visible;
-			invalidAge.Visibility = Android.Views.ViewStates.Visible;
-			invalidTerms.Visibility = Android.Views.ViewStates.Visible;
+			invalidFirstname.Visibility = ViewStates.Visible;
+			invalidLastname.Visibility = ViewStates.Visible;
+			invalidUsername.Visibility = ViewStates.Visible;
+			invalidEmail.Visibility = ViewStates.Visible;
+			invalidPassword.Visibility = ViewStates.Visible;
+			invalidAge.Visibility = ViewStates.Visible;
+			invalidTerms.Visibility = ViewStates.Visible;
 
 			bool isValid = true;
 
@@ -167,7 +167,7 @@ namespace goheja
 					{
 						var result = "";
 
-						ShowLoadingView("Sign Up...");
+						ShowLoadingView(Constants.MSG_SIGNUP);
 
 						result = RegisterUser(txtFirstname.Text, txtLastname.Text, deviceUDID, txtUsername.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text));
 
@@ -194,7 +194,7 @@ namespace goheja
 		{
 			if (!IsNetEnable()) return;
 
-			var uri = Android.Net.Uri.Parse("http://go-heja.com/nitro/terms.php");
+			var uri = Android.Net.Uri.Parse(Constants.URL_TERMS);
 			var intent = new Intent(Intent.ActionView, uri);
 			StartActivity(intent);
 		}
@@ -212,7 +212,7 @@ namespace goheja
 
 			if (userID == "0")//if the user not registered yet, go to register screen
 			{
-				ShowMessageBox(null, "You are not registered to Nitro services...");
+				ShowMessageBox(null, Constants.MSG_SIGNUP_FAIL);
 			}
 			else//if the user already registered, go to main screen
 			{

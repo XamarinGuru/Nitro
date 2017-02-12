@@ -18,18 +18,18 @@ namespace goheja
 	[Activity(Label = "EditProfileActivity")]
 	public class EditProfileActivity : BaseActivity
 	{
-		const int TAG_COLLEPS_PHYSICAL = 101;
-		const int TAG_COLLEPS_GOALS = 102;
-		const int TAG_COLLEPS_BEST_RESULTS = 103;
-		const int TAG_COLLEPS_SELF_RANKING = 104;
+		//const int TAG_COLLEPS_PHYSICAL = 101;
+		//const int TAG_COLLEPS_GOALS = 102;
+		//const int TAG_COLLEPS_BEST_RESULTS = 103;
+		//const int TAG_COLLEPS_SELF_RANKING = 104;
 
-		const int TAG_EDIT_PHYSICAL = 1001;
-		const int TAG_EDIT_GOALS = 1002;
-		const int TAG_EDIT_BEST_RESULTS = 1003;
-		const int TAG_EDIT_SELF_RANKING = 1004;
-		const int TAG_EDIT_SWIM = 1005;
-		const int TAG_EDIT_RUN = 1006;
-		const int TAG_EDIT_BIKE = 1007;
+		//const int TAG_EDIT_PHYSICAL = 1001;
+		//const int TAG_EDIT_GOALS = 1002;
+		//const int TAG_EDIT_BEST_RESULTS = 1003;
+		//const int TAG_EDIT_SELF_RANKING = 1004;
+		//const int TAG_EDIT_SWIM = 1005;
+		//const int TAG_EDIT_RUN = 1006;
+		//const int TAG_EDIT_BIKE = 1007;
 
 		private RootMemberModel MemberModel { get; set; }
 
@@ -64,7 +64,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Loading data...");
+				ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
 
 				MemberModel.rootMember = GetUserObject();
 
@@ -226,49 +226,49 @@ namespace goheja
 		}
 		private void SetInputValidation()
 		{
-			SetupPicker(txtSprint, "time");
-			SetupPicker(txtOlympic, "time");
-			SetupPicker(txtHDistance, "time");
-			SetupPicker(txtDistance, "time");
-			SetupPicker(txtMarathon, "time");
-			SetupPicker(txtHMarathon, "time");
-			SetupPicker(txt10KRun, "time");
+			SetupPicker(txtSprint, Constants.PICKER_TIME);
+			SetupPicker(txtOlympic, Constants.PICKER_TIME);
+			SetupPicker(txtHDistance, Constants.PICKER_TIME);
+			SetupPicker(txtDistance, Constants.PICKER_TIME);
+			SetupPicker(txtMarathon, Constants.PICKER_TIME);
+			SetupPicker(txtHMarathon, Constants.PICKER_TIME);
+			SetupPicker(txt10KRun, Constants.PICKER_TIME);
 
-			SetupPicker(txtRankSwim, "ranking");
-			SetupPicker(txtRankRun, "ranking");
-			SetupPicker(txtRankBike, "ranking");
+			SetupPicker(txtRankSwim, Constants.PICKER_RANKING);
+			SetupPicker(txtRankRun, Constants.PICKER_RANKING);
+			SetupPicker(txtRankBike, Constants.PICKER_RANKING);
 
-			SetupPicker(txtSZone1HR, "hr");
-			SetupPicker(txtSZone2HR, "hr");
-			SetupPicker(txtSZone3HR, "hr");
-			SetupPicker(txtSZone4HR, "hr");
-			SetupPicker(txtSZone5HR, "hr");
+			SetupPicker(txtSZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtRZone1HR, "hr");
-			SetupPicker(txtRZone2HR, "hr");
-			SetupPicker(txtRZone3HR, "hr");
-			SetupPicker(txtRZone4HR, "hr");
-			SetupPicker(txtRZone5HR, "hr");
+			SetupPicker(txtRZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtBZone1HR, "hr");
-			SetupPicker(txtBZone2HR, "hr");
-			SetupPicker(txtBZone3HR, "hr");
-			SetupPicker(txtBZone4HR, "hr");
-			SetupPicker(txtBZone5HR, "hr");
+			SetupPicker(txtBZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtSZone1PACE, "pace", "minutes per 100 meter");
-			SetupPicker(txtSZone2PACE, "pace", "minutes per 100 meter");
-			SetupPicker(txtSZone3PACE, "pace", "minutes per 100 meter");
-			SetupPicker(txtSZone4PACE, "pace", "minutes per 100 meter");
-			SetupPicker(txtSZone5PACE, "pace", "minutes per 100 meter");
-			SetupPicker(txtRZone1PACE, "pace", "minutes per kilometer");
-			SetupPicker(txtRZone2PACE, "pace", "minutes per kilometer");
-			SetupPicker(txtRZone3PACE, "pace", "minutes per kilometer");
-			SetupPicker(txtRZone4PACE, "pace", "minutes per kilometer");
-			SetupPicker(txtRZone5PACE, "pace", "minutes per kilometer");
+			SetupPicker(txtSZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtSZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtSZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtSZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtSZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
 
-			SetupPicker(txtSFTPace, "pace", "minutes per 100 meter");
-			SetupPicker(txtRFTPace, "pace", "minutes per kilometer");
+			SetupPicker(txtSFTPace, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+			SetupPicker(txtRFTPace, Constants.PICKER_PACE, Constants.UNIT_RUN);
 		}
 
 		private void SetInputBinding()
@@ -404,16 +404,16 @@ namespace goheja
 		{
 			switch (int.Parse(((RelativeLayout)sender).Tag.ToString()))
 			{
-				case TAG_COLLEPS_PHYSICAL:
+				case Constants.TAG_ANDROID_COLLEPS_PHYSICAL:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPhysical));
 					break;
-				case TAG_COLLEPS_GOALS:
+				case Constants.TAG_ANDROID_COLLEPS_GOALS:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewGoals));
 					break;
-				case TAG_COLLEPS_BEST_RESULTS:
+				case Constants.TAG_ANDROID_COLLEPS_BEST_RESULTS:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewBestResults));
 					break;
-				case TAG_COLLEPS_SELF_RANKING:
+				case Constants.TAG_ANDROID_COLLEPS_SELF_RANKING:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewSelfRankings));
 					break;
 				default:
@@ -466,7 +466,7 @@ namespace goheja
 		{
 			switch (int.Parse(((TextView)sender).Tag.ToString()))
 			{
-				case TAG_EDIT_PHYSICAL:
+				case Constants.TAG_EDIT_PHYSICAL:
 					txtWeight.Enabled = !txtWeight.Enabled;
 					txtHeight.Enabled = !txtHeight.Enabled;
 					txtBMI.Enabled = !txtBMI.Enabled;
@@ -476,7 +476,7 @@ namespace goheja
 					txtBMI.SetBackgroundColor(txtWeight.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);
 					txtFatPercentage.SetBackgroundColor(txtWeight.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray);
 					break;
-				case TAG_EDIT_GOALS:
+				case Constants.TAG_EDIT_GOALS:
 					txtGoalDate.Enabled = !txtGoalDate.Enabled;
 					txtGoalName.Enabled = !txtGoalName.Enabled;
 					txtGoalLoad.Enabled = !txtGoalLoad.Enabled;
@@ -484,7 +484,7 @@ namespace goheja
 					txtGoalName.SetBackgroundColor(txtGoalName.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					txtGoalLoad.SetBackgroundColor(txtGoalLoad.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
-				case TAG_EDIT_BEST_RESULTS:
+				case Constants.TAG_EDIT_BEST_RESULTS:
 					txtSprint.Enabled = !txtSprint.Enabled;
 					txtOlympic.Enabled = !txtOlympic.Enabled;
 					txtHDistance.Enabled = !txtHDistance.Enabled;
@@ -500,7 +500,7 @@ namespace goheja
 					txtHMarathon.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					txt10KRun.SetBackgroundColor(txtSprint.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
-				case TAG_EDIT_SELF_RANKING:
+				case Constants.TAG_EDIT_SELF_RANKING:
 					txtRankSwim.Enabled = !txtRankSwim.Enabled;
 					txtRankRun.Enabled = !txtRankRun.Enabled;
 					txtRankBike.Enabled = !txtRankBike.Enabled;
@@ -508,7 +508,7 @@ namespace goheja
 					txtRankRun.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					txtRankBike.SetBackgroundColor(txtRankSwim.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
-				case TAG_EDIT_SWIM:
+				case Constants.TAG_EDIT_SWIM:
 					txtSZone1HR.Enabled = !txtSZone1HR.Enabled;
 					txtSZone2HR.Enabled = !txtSZone2HR.Enabled;
 					txtSZone3HR.Enabled = !txtSZone3HR.Enabled;
@@ -534,7 +534,7 @@ namespace goheja
 					txtSFTPace.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					txtSFTPHB.SetBackgroundColor(txtSZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
-				case TAG_EDIT_RUN:
+				case Constants.TAG_EDIT_RUN:
 					txtRZone1HR.Enabled = !txtRZone1HR.Enabled;
 					txtRZone2HR.Enabled = !txtRZone2HR.Enabled;
 					txtRZone3HR.Enabled = !txtRZone3HR.Enabled;
@@ -572,7 +572,7 @@ namespace goheja
 					txtRFTPHB.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					txtRFTPower.SetBackgroundColor(txtRZone1HR.Enabled ? Android.Graphics.Color.White : Android.Graphics.Color.Gray); ;
 					break;
-				case TAG_EDIT_BIKE:
+				case Constants.TAG_EDIT_BIKE:
 					txtBZone1HR.Enabled = !txtBZone1HR.Enabled;
 					txtBZone2HR.Enabled = !txtBZone2HR.Enabled;
 					txtBZone3HR.Enabled = !txtBZone3HR.Enabled;
@@ -607,9 +607,9 @@ namespace goheja
 		private void SetupPicker(EditText textView, string format, string title = "")
 		{
 			int dcount = 0;
-			if (format == "time")
+			if (format == Constants.PICKER_TIME)
 				dcount = 3;
-			else if (format == "pace" || format == "hr")
+			else if (format == Constants.PICKER_PACE || format == Constants.PICKER_HR)
 				dcount = 2;
 			else
 				dcount = 1;

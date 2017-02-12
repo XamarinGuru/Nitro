@@ -31,7 +31,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Loading data...");
+				ShowLoadingView(Constants.MSG_LOADING_DATA);
 
 				MemberModel.rootMember = GetUserObject();
 
@@ -51,7 +51,7 @@ namespace goheja
 		{
 			if (txtComment.Text == "")
 			{
-				ShowMessageBox(null, "Type your comment...");
+				ShowMessageBox(null, Constants.MSG_TYPE_COMMENT);
 				return;
 			}
 
@@ -62,7 +62,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Saving your comment...");
+				ShowLoadingView(Constants.MSG_SAVE_COMMENT);
 
 				var response = SetComment(author, authorID, txtComment.Text, AppSettings.selectedEvent._id);
 

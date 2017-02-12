@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -88,7 +89,7 @@ namespace goheja
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Requesting...");
+					ShowLoadingView(Constants.MSG_CHANGE_PASSWORD);
 
 					int isSuccess = ResetPassword(AppSettings.currentEmail, txtPassword.Text);
 
@@ -98,7 +99,7 @@ namespace goheja
 					{
 						AlertDialog.Builder alert = new AlertDialog.Builder(this);
 						alert.SetTitle("");
-						alert.SetMessage("Password updated successfully");
+						alert.SetMessage(Constants.MSG_CHANGE_PW_SUC);
 						alert.SetPositiveButton("OK", (senderAlert, args) =>
 						{
 							RunOnUiThread(() => { base.OnBackPressed(); });
@@ -110,11 +111,11 @@ namespace goheja
 					}
 					else if (isSuccess == 2)
 					{
-						ShowMessageBox(null, "Passwords don’t match");
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_FAIL);
 					}
 					else if (isSuccess == 3)
 					{
-						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_EMAIL_FAIL);
 					}
 				});
 

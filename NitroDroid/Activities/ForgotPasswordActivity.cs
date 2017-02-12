@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -70,7 +71,7 @@ namespace goheja
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Requesting...");
+					ShowLoadingView(Constants.MSG_FORGOT_PASSWORD);
 
 					string isSuccess = GetCode(txtEmail.Text);
 
@@ -80,7 +81,7 @@ namespace goheja
 					{
 						AlertDialog.Builder alert = new AlertDialog.Builder(this);
 						alert.SetTitle("");
-						alert.SetMessage("A mail was sent to you with a temporary code");
+						alert.SetMessage(Constants.MSG_FORGOT_PW_SUC);
 						alert.SetPositiveButton("OK", (senderAlert, args) =>
 						{
 							RunOnUiThread(() => { base.OnBackPressed(); });
@@ -92,7 +93,7 @@ namespace goheja
 					}
 					else if (isSuccess == "0")
 					{
-						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
+						ShowMessageBox(null, Constants.MSG_FORGOT_PW_EMAIL_FAIL);
 					}
 				});
 

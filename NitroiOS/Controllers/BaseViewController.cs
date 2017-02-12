@@ -92,10 +92,10 @@ namespace location2
 
 		public bool IsNetEnable()
 		{
-			bool isOnline = mConnection.IsHostReachable("www.google.com") ? true : false;
+			bool isOnline = mConnection.IsHostReachable(Constants.URL_GOOGLE) ? true : false;
 			if (!isOnline)
 			{
-				ShowMessageBox(null, "No internet connection!");
+				ShowMessageBox(null, Constants.MSG_NO_INTERNET);
 				return false;
 			}
 			return true;
@@ -503,18 +503,18 @@ namespace location2
 
 		private string FormatJsonType(string jsonData)
 		{
-			var returnString = jsonData.Replace("ObjectId(\"", "\"");
-			returnString = returnString.Replace(" ISODate(\"", "\"");
-			returnString = returnString.Replace("\")", "\"");
+			var returnString = jsonData.Replace(Constants.INVALID_JSONS1[0], "\"");
+			returnString = returnString.Replace(Constants.INVALID_JSONS1[1], "\"");
+			returnString = returnString.Replace(Constants.INVALID_JSONS1[2], "\"");
 
 			return returnString;
 		}
 
 		public string FormatEventDescription(string eventJson)
 		{
-			var returnString = eventJson.Replace("<textarea id =\"genData\" class=\"generalData\" name=\"pDesc\"  placeholder=\"Right here coach\" maxlength=\"1000\">", "");
-			returnString = returnString.Replace("<textarea  dir=\"rtl\" lang=\"ar\"id =\"genData\" class=\"pGenData\" name=\"pDesc\"  placeholder=\"Practice details\" maxlength=\"1000\">", "");
-			returnString = returnString.Replace("</textarea><br/>", "");
+			var returnString = eventJson.Replace(Constants.INVALID_JSONS2[0], "");
+			returnString = returnString.Replace(Constants.INVALID_JSONS2[1], "");
+			returnString = returnString.Replace(Constants.INVALID_JSONS2[2], "");
 
 			return returnString;
 		}

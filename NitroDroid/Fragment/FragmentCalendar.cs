@@ -30,7 +30,6 @@ namespace goheja
 		public override void OnViewCreated(View view, Bundle savedInstanceState)
 		{
 			base.OnViewCreated(view, savedInstanceState);
-			//child
 			mView = view;
 
 			SetUIVariablesAndActions();
@@ -175,26 +174,6 @@ namespace goheja
 					content.Visibility = ViewStates.Gone;
 				};
 			}
-
-			//if (content.Visibility.Equals(ViewStates.Gone))
-			//{
-			//	content.Visibility = ViewStates.Visible;
-
-			//	int widthSpec = View.MeasureSpec.MakeMeasureSpec(0, MeasureSpecMode.Unspecified);
-			//	int heightSpec = View.MeasureSpec.MakeMeasureSpec(0, MeasureSpecMode.Unspecified);
-			//	content.Measure(widthSpec, heightSpec);
-
-			//	ValueAnimator mAnimator = slideAnimator(0, 200, content);
-			//	mAnimator.Start();
-			//}
-			//else {
-			//	ValueAnimator mAnimator = slideAnimator(200, 0, content);
-			//	mAnimator.Start();
-			//	mAnimator.AnimationEnd += (object IntentSender, EventArgs arg) =>
-			//	{
-			//		content.Visibility = ViewStates.Gone;
-			//	};
-			//}
 		}
 
 		private ValueAnimator slideAnimator(int start, int end, LinearLayout content)
@@ -210,11 +189,5 @@ namespace goheja
 			return animator;
 		}
 		#endregion
-
-		//public Animation OnCreateAnimation(int transit, bool enter, int nextAnim)
-		//{
-		//	return AnimationUtils.LoadAnimation(Activity,
-		//		enter ? Android.Resource.Animation.FadeIn : Android.Resource.Animation.FadeOut);
-		//}
     }
 }

@@ -118,7 +118,7 @@ namespace goheja
 
 			if (!isOnline)
 			{
-				ShowMessageBox(null, "No internet connection!");
+				ShowMessageBox(null, Constants.MSG_NO_INTERNET);
 				return false;
 			}
 			return true;
@@ -491,9 +491,9 @@ namespace goheja
 
 		private string FormatJsonType(string jsonData)
 		{
-			var returnString = jsonData.Replace("ObjectId(\"", "\"");
-			returnString = returnString.Replace(" ISODate(\"", "\"");
-			returnString = returnString.Replace("\")", "\"");
+			var returnString = jsonData.Replace(Constants.INVALID_JSONS1[0], "\"");
+			returnString = returnString.Replace(Constants.INVALID_JSONS1[1], "\"");
+			returnString = returnString.Replace(Constants.INVALID_JSONS1[2], "\"");
 
 			return returnString;
 		}

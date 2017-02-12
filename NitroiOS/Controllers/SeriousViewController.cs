@@ -12,18 +12,18 @@ namespace location2
 {
 	partial class SeriousViewController : BaseViewController
 	{
-		const int TAG_COLLEPS_PHYSICAL = 130;
-		const int TAG_COLLEPS_GOALS = 100;
-		const int TAG_COLLEPS_BEST_RESULTS = 220;
-		const int TAG_COLLEPS_SELF_RANKING = 1000;
+		//const int TAG_COLLEPS_PHYSICAL = 130;
+		//const int TAG_COLLEPS_GOALS = 100;
+		//const int TAG_COLLEPS_BEST_RESULTS = 220;
+		//const int TAG_COLLEPS_SELF_RANKING = 1000;
 
-		const int TAG_EDIT_PHYSICAL = 1001;
-		const int TAG_EDIT_GOALS = 1002;
-		const int TAG_EDIT_BEST_RESULTS = 1003;
-		const int TAG_EDIT_SELF_RANKING = 1004;
-		const int TAG_EDIT_SWIM = 1005;
-		const int TAG_EDIT_RUN = 1006;
-		const int TAG_EDIT_BIKE = 1007;
+		//const int TAG_EDIT_PHYSICAL = 1001;
+		//const int TAG_EDIT_GOALS = 1002;
+		//const int TAG_EDIT_BEST_RESULTS = 1003;
+		//const int TAG_EDIT_SELF_RANKING = 1004;
+		//const int TAG_EDIT_SWIM = 1005;
+		//const int TAG_EDIT_RUN = 1006;
+		//const int TAG_EDIT_BIKE = 1007;
 
 		//private RootMemberModel MemberModel { get; set; }
 		public SeriousViewController(IntPtr handle) : base(handle)
@@ -50,7 +50,7 @@ namespace location2
 
 			if (!IsNetEnable()) return;
 
-			ShowLoadingView("Getting User Data...");
+			ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
 
 			await Task.Run(() =>
 			{
@@ -82,49 +82,49 @@ namespace location2
 		private void SetInputValidation()
 		{
 			SetupDatePicker(txtGoalDate);
-			SetupPicker(txtSprint, "time");
-			SetupPicker(txtOlympic, "time");
-			SetupPicker(txtHDistance, "time");
-			SetupPicker(txtDistance, "time");
-			SetupPicker(txtMarathon, "time");
-			SetupPicker(txtHMarathon, "time");
-			SetupPicker(txt10KRun, "time");
+			SetupPicker(txtSprint, Constants.PICKER_TIME);
+			SetupPicker(txtOlympic, Constants.PICKER_TIME);
+			SetupPicker(txtHDistance, Constants.PICKER_TIME);
+			SetupPicker(txtDistance, Constants.PICKER_TIME);
+			SetupPicker(txtMarathon, Constants.PICKER_TIME);
+			SetupPicker(txtHMarathon, Constants.PICKER_TIME);
+			SetupPicker(txt10KRun, Constants.PICKER_TIME);
 
-			SetupPicker(txtRankSwim, "ranking");
-			SetupPicker(txtRankRun, "ranking");
-			SetupPicker(txtRankBike, "ranking");
+			SetupPicker(txtRankSwim, Constants.PICKER_RANKING);
+			SetupPicker(txtRankRun, Constants.PICKER_RANKING);
+			SetupPicker(txtRankBike, Constants.PICKER_RANKING);
 
-			SetupPicker(txtSZone1HR, "hr");
-			SetupPicker(txtSZone2HR, "hr");
-			SetupPicker(txtSZone3HR, "hr");
-			SetupPicker(txtSZone4HR, "hr");
-			SetupPicker(txtSZone5HR, "hr");
+			SetupPicker(txtSZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtSZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtRZone1HR, "hr");
-			SetupPicker(txtRZone2HR, "hr");
-			SetupPicker(txtRZone3HR, "hr");
-			SetupPicker(txtRZone4HR, "hr");
-			SetupPicker(txtRZone5HR, "hr");
+			SetupPicker(txtRZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtRZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtBZone1HR, "hr");
-			SetupPicker(txtBZone2HR, "hr");
-			SetupPicker(txtBZone3HR, "hr");
-			SetupPicker(txtBZone4HR, "hr");
-			SetupPicker(txtBZone5HR, "hr");
+			SetupPicker(txtBZone1HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone2HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone3HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone4HR, Constants.PICKER_HR);
+			SetupPicker(txtBZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtSZone1PACE, "pace");
-			SetupPicker(txtSZone2PACE, "pace");
-			SetupPicker(txtSZone3PACE, "pace");
-			SetupPicker(txtSZone4PACE, "pace");
-			SetupPicker(txtSZone5PACE, "pace");
-			SetupPicker(txtRZone1PACE, "pace");
-			SetupPicker(txtRZone2PACE, "pace");
-			SetupPicker(txtRZone3PACE, "pace");
-			SetupPicker(txtRZone4PACE, "pace");
-			SetupPicker(txtRZone5PACE, "pace");
+			SetupPicker(txtSZone1PACE, Constants.PICKER_PACE);
+			SetupPicker(txtSZone2PACE, Constants.PICKER_PACE);
+			SetupPicker(txtSZone3PACE, Constants.PICKER_PACE);
+			SetupPicker(txtSZone4PACE, Constants.PICKER_PACE);
+			SetupPicker(txtSZone5PACE, Constants.PICKER_PACE);
+			SetupPicker(txtRZone1PACE, Constants.PICKER_PACE);
+			SetupPicker(txtRZone2PACE, Constants.PICKER_PACE);
+			SetupPicker(txtRZone3PACE, Constants.PICKER_PACE);
+			SetupPicker(txtRZone4PACE, Constants.PICKER_PACE);
+			SetupPicker(txtRZone5PACE, Constants.PICKER_PACE);
 
-			SetupPicker(txtSFTPace, "pace");
-			SetupPicker(txtRFTPace, "pace");
+			SetupPicker(txtSFTPace, Constants.PICKER_PACE);
+			SetupPicker(txtRFTPace, Constants.PICKER_PACE);
 		}
 
 		private void SetInputBinding()
@@ -295,19 +295,19 @@ namespace location2
 			var alpha = sender.Selected ? 1 : 0;
 			switch (sender.Tag)
 			{
-				case TAG_COLLEPS_PHYSICAL:
+				case Constants.TAG_iOS_COLLEPS_PHYSICAL:
 					heightPhysical.Constant = constant;
 					viewPhysical.Alpha = alpha;
 					break;
-				case TAG_COLLEPS_GOALS:
+				case Constants.TAG_iOS_COLLEPS_GOALS:
 					heightGoals.Constant = constant;
 					viewGoals.Alpha = alpha;
 					break;
-				case TAG_COLLEPS_BEST_RESULTS:
+				case Constants.TAG_iOS_COLLEPS_BEST_RESULTS:
 					heightBestResults.Constant = constant;
 					viewBestResults.Alpha = alpha;
 					break;
-				case TAG_COLLEPS_SELF_RANKING:
+				case Constants.TAG_iOS_COLLEPS_SELF_RANKING:
 					heightSelfRanking.Constant = constant;
 					viewSelfRanking.Alpha = alpha;
 					break;
@@ -328,7 +328,7 @@ namespace location2
 			var backgroundColor = sender.Selected ? UIColor.White : UIColor.Gray;
 			switch (sender.Tag)
 			{
-				case TAG_EDIT_PHYSICAL:
+				case Constants.TAG_EDIT_PHYSICAL:
 					txtWeight.Enabled = sender.Selected;
 					txtHeight.Enabled = sender.Selected;
 					txtBMI.Enabled = sender.Selected;
@@ -338,7 +338,7 @@ namespace location2
 					txtBMI.BackgroundColor = backgroundColor;
 					txtFatPercentage.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_GOALS:
+				case Constants.TAG_EDIT_GOALS:
 					txtGoalDate.Enabled = sender.Selected;
 					txtGoalName.Enabled = sender.Selected;
 					txtGoalLoad.Enabled = sender.Selected;
@@ -346,7 +346,7 @@ namespace location2
 					txtGoalName.BackgroundColor = backgroundColor;
 					txtGoalLoad.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_BEST_RESULTS:
+				case Constants.TAG_EDIT_BEST_RESULTS:
 					txtSprint.Enabled = sender.Selected;
 					txtOlympic.Enabled = sender.Selected;
 					txtHDistance.Enabled = sender.Selected;
@@ -362,7 +362,7 @@ namespace location2
 					txtHMarathon.BackgroundColor = backgroundColor;
 					txt10KRun.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_SELF_RANKING:
+				case Constants.TAG_EDIT_SELF_RANKING:
 					txtRankSwim.Enabled = sender.Selected;
 					txtRankRun.Enabled = sender.Selected;
 					txtRankBike.Enabled = sender.Selected;
@@ -370,7 +370,7 @@ namespace location2
 					txtRankRun.BackgroundColor = backgroundColor;
 					txtRankBike.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_SWIM:
+				case Constants.TAG_EDIT_SWIM:
 					txtSZone1HR.Enabled = sender.Selected;
 					txtSZone2HR.Enabled = sender.Selected;
 					txtSZone3HR.Enabled = sender.Selected;
@@ -396,7 +396,7 @@ namespace location2
 					txtSFTPace.BackgroundColor = backgroundColor;
 					txtSFTPHB.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_RUN:
+				case Constants.TAG_EDIT_RUN:
 					txtRZone1HR.Enabled = sender.Selected;
 					txtRZone2HR.Enabled = sender.Selected;
 					txtRZone3HR.Enabled = sender.Selected;
@@ -434,7 +434,7 @@ namespace location2
 					txtRFTPHB.BackgroundColor = backgroundColor;
 					txtRFTPower.BackgroundColor = backgroundColor;
 					break;
-				case TAG_EDIT_BIKE:
+				case Constants.TAG_EDIT_BIKE:
 					txtBZone1HR.Enabled = sender.Selected;
 					txtBZone2HR.Enabled = sender.Selected;
 					txtBZone3HR.Enabled = sender.Selected;

@@ -2,6 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
+using PortableLibrary;
 
 namespace location2
 {
@@ -71,7 +72,7 @@ namespace location2
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Requesting...");
+					ShowLoadingView(Constants.MSG_CHANGE_PASSWORD);
 
 					int isSuccess = 0;
 
@@ -81,15 +82,15 @@ namespace location2
 
 					if (isSuccess == 1)
 					{
-						ShowMessageBox1(null, "Password updated successfully", "OK", null, ReturnBack);
+						ShowMessageBox1(null, Constants.MSG_CHANGE_PW_SUC, "OK", null, ReturnBack);
 					}
 					else if (isSuccess == 2)
 					{
-						ShowMessageBox(null, "Passwords don’t match");
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_FAIL);
 					}
 					else if (isSuccess == 3)
 					{
-						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_EMAIL_FAIL);
 					}
 				});
 			}

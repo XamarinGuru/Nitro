@@ -39,7 +39,7 @@ namespace location2
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Retreving Event Details...");
+				ShowLoadingView(Constants.MSG_LOADING_EVENT_DETAIL);
 
 				MemberModel.rootMember = GetUserObject();
 
@@ -61,11 +61,11 @@ namespace location2
 		{
 			attended.On = selectedEvent.attended == "1" ? true : false;
 
-			if (eventTotal.totals == null) return;
+			if (eventTotal == null || eventTotal.totals == null) return;
 
-			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue("Elapsed time"));
-			var strTd = eventTotal.GetValue("Total Distance");
-			var strTss = eventTotal.GetValue("Load");
+			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
+			var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
+			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
 			lblTime.Text = strEt.ToString();
 			lblDistance.Text = float.Parse(strTd).ToString("F0");
@@ -104,14 +104,13 @@ namespace location2
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Adjusting Trainning...");
+				ShowLoadingView(Constants.MSG_ADJUST_TRAINING);
 
 				InvokeOnMainThread(() =>
 				{
 					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
 
 					HideLoadingView();
-					//this.DismissModalViewController(true);
 					NavigationController.PopViewController(true);
 				});
 			});

@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using System.Threading.Tasks;
 using CoreGraphics;
+using PortableLibrary;
 
 namespace location2
 {
@@ -64,7 +65,7 @@ namespace location2
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Log In...");
+					ShowLoadingView(Constants.MSG_LOGIN);
 
 					bool isSuccess = false;
 
@@ -81,7 +82,7 @@ namespace location2
 						}
 						else
 						{
-							ShowMessageBox(null, "Login Failed.");
+							ShowMessageBox(null, Constants.MSG_LOGIN_FAIL);
 						}
 					});
 				});

@@ -2,6 +2,7 @@ using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
+using PortableLibrary;
 
 namespace location2
 {
@@ -53,7 +54,7 @@ namespace location2
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Requesting...");
+					ShowLoadingView(Constants.MSG_FORGOT_PASSWORD);
 
 					string isSuccess = "0";
 
@@ -63,11 +64,11 @@ namespace location2
 
 					if (isSuccess == "1")
 					{
-						ShowMessageBox1(null, "A mail was sent to you with a temporary code", "OK", null, ReturnToLogin);
+						ShowMessageBox1(null, Constants.MSG_FORGOT_PW_SUC, "OK", null, ReturnToLogin);
 					}
 					else if (isSuccess == "0")
 					{
-						ShowMessageBox(null, "Email do not exists in the system , please try again or signup");
+						ShowMessageBox(null, Constants.MSG_FORGOT_PW_EMAIL_FAIL);
 					}
 				});
 			}

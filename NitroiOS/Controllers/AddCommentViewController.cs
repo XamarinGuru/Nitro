@@ -35,7 +35,7 @@ namespace location2
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Loading data...");
+				ShowLoadingView(Constants.MSG_LOADING_DATA);
 
 				MemberModel.rootMember = GetUserObject();
 
@@ -47,7 +47,7 @@ namespace location2
 		{
 			if (txtComment.Text == "")
 			{
-				ShowMessageBox(null, "Type your comment...");
+				ShowMessageBox(null, Constants.MSG_TYPE_COMMENT);
 				return;
 			}
 
@@ -58,7 +58,7 @@ namespace location2
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Saving your comment...");
+				ShowLoadingView(Constants.MSG_SAVE_COMMENT);
 
 				InvokeOnMainThread(() =>
 				{

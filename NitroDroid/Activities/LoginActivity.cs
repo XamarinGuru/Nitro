@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -45,10 +46,10 @@ namespace goheja
 			errorEmail = FindViewById<LinearLayout>(Resource.Id.errorEmail);
 			errorPassword = FindViewById<LinearLayout>(Resource.Id.errorPassword);
 
-			invalidEmail.Visibility = Android.Views.ViewStates.Invisible;
-			invalidPassword.Visibility = Android.Views.ViewStates.Invisible;
-			errorEmail.Visibility = Android.Views.ViewStates.Invisible;
-			errorPassword.Visibility = Android.Views.ViewStates.Invisible;
+			invalidEmail.Visibility = ViewStates.Invisible;
+			invalidPassword.Visibility = ViewStates.Invisible;
+			errorEmail.Visibility = ViewStates.Invisible;
+			errorPassword.Visibility = ViewStates.Invisible;
 		}
 
 		private bool Validate()
@@ -89,7 +90,7 @@ namespace goheja
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					ShowLoadingView("Log In...");
+					ShowLoadingView(Constants.MSG_LOGIN);
 
 					bool isSuccess = LoginUser(txtEmail.Text, txtPassword.Text);
 
@@ -103,7 +104,7 @@ namespace goheja
 					}
 					else
 					{
-						ShowMessageBox(null, "Login Failed.");
+						ShowMessageBox(null, Constants.MSG_LOGIN_FAIL);
 					}
 				});
 

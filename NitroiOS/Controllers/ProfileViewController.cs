@@ -35,7 +35,7 @@ namespace location2
 
 			if (!IsNetEnable()) return;
 
-			ShowLoadingView("Getting User Data...");
+			ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
 
 			await Task.Run(() =>
 			{

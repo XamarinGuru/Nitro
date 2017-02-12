@@ -19,8 +19,6 @@ namespace goheja
 		float fDuration = 0;
 		float fLoad = 0;
 
-		string speedSuf = "";
-
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
@@ -46,7 +44,7 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Retreving Event Details...");
+				ShowLoadingView(Constants.MSG_LOADING_EVENT_DETAIL);
 
 				var eventDetail = GetEventDetail(selectedEvent._id);
 				var eventTotal = GetEventTotals(selectedEvent._id);
@@ -81,8 +79,6 @@ namespace goheja
 				var activity = new Intent(this, typeof(EventCalendarActivity));
 				StartActivity(activity);
 				Finish();
-				//base.OnBackPressed();
-				//Finish();
 			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
 			{
@@ -143,15 +139,12 @@ namespace goheja
 					break;
 				case "1":
 					imgType.SetImageResource(Resource.Drawable.icon_bike);
-					speedSuf = " km/h";
 					break;
 				case "2":
 					imgType.SetImageResource(Resource.Drawable.icon_run);
-					speedSuf = " min/km";
 					break;
 				case "3":
 					imgType.SetImageResource(Resource.Drawable.icon_swim);
-					speedSuf = " min/100m";
 					break;
 				case "4":
 					imgType.SetImageResource(Resource.Drawable.icon_triathlon);
@@ -166,7 +159,7 @@ namespace goheja
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value);// + speedSuf;
+			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value);
 			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = FormatNumber(eventTotal.totals[1].value);
 			FindViewById<TextView>(Resource.Id.lblElapsedTime).Text = FormatNumber(eventTotal.totals[2].value);
 			FindViewById<TextView>(Resource.Id.lblTotalAcent).Text = FormatNumber(eventTotal.totals[3].value);
@@ -207,8 +200,6 @@ namespace goheja
 				var activity = new Intent(this, typeof(EventCalendarActivity));
 				StartActivity(activity);
 				Finish();
-				//base.OnBackPressed();
-				//Finish();
 			}
 
 			return base.OnKeyDown(keyCode, e);

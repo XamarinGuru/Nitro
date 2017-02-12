@@ -4,17 +4,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using EventKit;
-using Newtonsoft.Json.Linq;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using FireSharp;
 using PortableLibrary;
 using System.Collections.Generic;
 
 namespace location2
 {
-	// The UIApplicationDelegate for the application. This class is responsible for launching the
-	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{

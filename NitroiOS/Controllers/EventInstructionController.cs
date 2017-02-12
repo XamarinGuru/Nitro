@@ -16,8 +16,6 @@ namespace location2
 		float fDuration = 0;
 		float fLoad = 0;
 
-		string speedSuf = "";
-
         public EventInstructionController() : base()
 		{
 		}
@@ -52,7 +50,7 @@ namespace location2
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				ShowLoadingView("Retreving Event Details...");
+				ShowLoadingView(Constants.MSG_LOADING_EVENT_DETAIL);
 
 				selectedEvent = GetEventDetail(selectedEvent._id);
 				selectedEvent._id = eventID;
@@ -120,15 +118,12 @@ namespace location2
 					break;
 				case "1":
 					imgType.Image = UIImage.FromFile("icon_bike.png");
-					speedSuf = " km/h";
 					break;
 				case "2":
 					imgType.Image = UIImage.FromFile("icon_run.png");
-					speedSuf = " min/km";
 					break;
 				case "3":
 					imgType.Image = UIImage.FromFile("icon_swim.png");
-					speedSuf = " min/100m";
 					break;
 				case "4":
 					imgType.Image = UIImage.FromFile("icon_triathlon.png");
@@ -143,7 +138,7 @@ namespace location2
 		{
 			if (eventTotal == null || eventTotal.totals == null) return;
 
-			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);// + speedSuf;
+			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);
 			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
 			lblTotalValue2.Text = FormatNumber(eventTotal.totals[2].value);
 			lblTotalValue3.Text = FormatNumber(eventTotal.totals[3].value);

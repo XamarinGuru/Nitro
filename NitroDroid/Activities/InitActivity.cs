@@ -36,7 +36,6 @@ namespace goheja
 		{
 			var activity = new Intent(this, typeof(RegisterActivity));
 			StartActivity(activity);
-			//Finish();
 		}
 	}
 }

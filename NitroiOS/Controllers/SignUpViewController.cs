@@ -187,7 +187,7 @@ namespace location2
 
 					var result = "";
 
-					ShowLoadingView("Sign Up...");
+					ShowLoadingView(Constants.MSG_SIGNUP);
 					await Task.Run(() =>
 					{
 						InvokeOnMainThread(() => { result = RegisterUser(txtFirstName.Text, txtLastName.Text, deviceUDID, txtNickName.Text, txtPassword.Text, txtEmail.Text, int.Parse(txtAge.Text)); });
@@ -229,7 +229,6 @@ namespace location2
 				return;
 			}
 			termsAccepted = true;
-			acceprtBtn.SetTitle("Terms accepted!  ", UIControlState.Normal);
 		}
 
 		partial void ActionTerms(UIButton sender)
@@ -257,7 +256,7 @@ namespace location2
 
 			if (userID == "0")//if the user not registered yet, go to register screen
 			{
-				ShowMessageBox(null, "You are not registered to Nitro services...");
+				ShowMessageBox(null, Constants.MSG_SIGNUP_FAIL);
 			}
 			else//if the user already registered, go to main screen
 			{

@@ -12,7 +12,6 @@ namespace goheja
 		private NumberPicker[] numPickers;
 
 		private int numDials;
-		private int currentValue;
 
 		private string type;
 		private string title;
@@ -53,13 +52,7 @@ namespace goheja
 			if (Arguments != null)
 			{
 				numDials = Arguments.GetInt(ARG_numDials);
-				currentValue = Arguments.GetInt(ARG_initValue);
 				numPickers = new NumberPicker[numDials];
-
-				if (savedInstanceState != null)
-				{
-					currentValue = savedInstanceState.GetInt("CurrentValue");
-				}
 			}
 		}
 
@@ -79,7 +72,7 @@ namespace goheja
 					numPickers[numDials - i - 1] = new NumberPicker(this.Activity);
 					numPickers[numDials - i - 1].MaxValue = 19;
 					numPickers[numDials - i - 1].MinValue = 0;
-					numPickers[numDials - i - 1].Value = 0;//getDigit(currentValue, numDials - i - 1);
+					numPickers[numDials - i - 1].Value = 0;
 
 					string[] valSet = new string[20];
 					for (int val = minValue; val <= maxValue; val += 10)
@@ -98,7 +91,7 @@ namespace goheja
 					numPickers[numDials - i - 1] = new NumberPicker(this.Activity);
 					numPickers[numDials - i - 1].MaxValue = maxValue;
 					numPickers[numDials - i - 1].MinValue = minValue;
-					numPickers[numDials - i - 1].Value = 0;//getDigit(currentValue, numDials - i - 1);
+					numPickers[numDials - i - 1].Value = 0;
 					linLayoutH.AddView(numPickers[numDials - i - 1]);
 				}
 			}
