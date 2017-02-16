@@ -109,18 +109,29 @@ namespace goheja
 			//var gaugeData = rootActivity.GetGauge();
 
 			if (gaugeData == null) return;
+			lblCycleDuration.Text = FormatNumber(gaugeData.Bike[0].value) + "%";
+			lblRunDuration.Text = FormatNumber(gaugeData.Run[0].value) + "%";
+			lblSwimDuration.Text = FormatNumber(gaugeData.Swim[0].value) + "%";
 
-			lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
-			lblRunDuration.Text = gaugeData.Run[0].value + "%";
-			lblSwimDuration.Text = gaugeData.Swim[0].value + "%";
+			lblCycleDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblRunDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblSwimDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
 
-			lblCycleDistance.Text = gaugeData.Bike[1].value + "%";
-			lblRunDistance.Text = gaugeData.Bike[1].value + "%";
-			lblSwimDistance.Text = gaugeData.Bike[1].value + "%";
+			lblCycleStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblRunStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblSwimStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
 
-			lblCycleStress.Text = gaugeData.Bike[2].value + "%";
-			lblRunStress.Text = gaugeData.Bike[2].value + "%";
-			lblSwimStress.Text = gaugeData.Bike[2].value + "%";
+			//lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
+			//lblRunDuration.Text = gaugeData.Run[0].value + "%";
+			//lblSwimDuration.Text = gaugeData.Swim[0].value + "%";
+
+			//lblCycleDistance.Text = gaugeData.Bike[1].value + "%";
+			//lblRunDistance.Text = gaugeData.Bike[1].value + "%";
+			//lblSwimDistance.Text = gaugeData.Bike[1].value + "%";
+
+			//lblCycleStress.Text = gaugeData.Bike[2].value + "%";
+			//lblRunStress.Text = gaugeData.Bike[2].value + "%";
+			//lblSwimStress.Text = gaugeData.Bike[2].value + "%";
 		}
 
 		void ActionViewCalendar(object sender, EventArgs e)
@@ -189,5 +200,18 @@ namespace goheja
 			return animator;
 		}
 		#endregion
+
+		public string FormatNumber(string number)
+		{
+			try
+			{
+				var fNumber = float.Parse(number);
+				return fNumber.ToString("F2");
+			}
+			catch
+			{
+				return number;
+			}
+		}
     }
 }

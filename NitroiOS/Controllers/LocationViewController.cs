@@ -74,10 +74,10 @@ namespace location2
 					{
 						mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
 
-						polyline.Path = path;
-						polyline.StrokeColor = UIColor.Red;
-						polyline.StrokeWidth = 2;
-						polyline.Map = mMapView;
+						//polyline.Path = path;
+						//polyline.StrokeColor = UIColor.Red;
+						//polyline.StrokeWidth = 2;
+						//polyline.Map = mMapView;
 					}
 				});
 				HideLoadingView();
