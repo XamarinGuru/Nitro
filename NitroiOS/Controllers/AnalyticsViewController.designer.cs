@@ -104,15 +104,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewMapContent { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewSelectType { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView wattImg { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIWebView wvOngoing { get; set; }
 
         [Action ("ActionSelectSportType:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -242,6 +242,11 @@ namespace location2
                 stopBtn = null;
             }
 
+            if (viewMapContent != null) {
+                viewMapContent.Dispose ();
+                viewMapContent = null;
+            }
+
             if (viewSelectType != null) {
                 viewSelectType.Dispose ();
                 viewSelectType = null;
@@ -250,11 +255,6 @@ namespace location2
             if (wattImg != null) {
                 wattImg.Dispose ();
                 wattImg = null;
-            }
-
-            if (wvOngoing != null) {
-                wvOngoing.Dispose ();
-                wvOngoing = null;
             }
         }
     }

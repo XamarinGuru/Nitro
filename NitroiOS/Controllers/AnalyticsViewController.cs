@@ -4,6 +4,9 @@ using UIKit;
 using CoreLocation;
 using System.Threading.Tasks;
 using PortableLibrary;
+using Google.Maps;
+using System.Drawing;
+using CoreGraphics;
 
 namespace location2
 {
@@ -17,6 +20,8 @@ namespace location2
 		};
 
 		public static LocationManager Manager { get; set; }
+
+		private MapView mMapView;
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
 
@@ -64,12 +69,39 @@ namespace location2
 
 			MemberModel.rootMember = GetUserObject();
 
-			wvOngoing.ScalesPageToFit = true;
+			//InitMapView();
 		}
 
 		public static bool UserInterfaceIdiomIsPhone
 		{
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+			InitMapView();
+		}
+
+		void InitMapView()
+		{
+			var camera = CameraPosition.FromCamera(31.0461, 34.8516, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
+			mMapView.MyLocationEnabled = false;
+
+			viewMapContent.LayoutIfNeeded();
+			var width = viewMapContent.Frame.Width;
+			var height = viewMapContent.Frame.Height;
+			mMapView.Frame = new CGRect(0, 0, width, height);
+			
+			viewMapContent.AddSubview(mMapView);
+		}
+
+		void SetMapPosition(CLLocation location)
+		{
+			var camera = CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+			mMapView.Animate(camera);
 		}
 
 		#region Public Methods
@@ -83,12 +115,6 @@ namespace location2
 
 		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
 		{
-			if (flag == 2)
-			{
-				var url = String.Format(Constants.URL_ANALYTICS_MAP, MemberModel.username);
-				wvOngoing.LoadRequest(new NSUrlRequest(new NSUrl(url)));
-			}
-
 			if (flag <= 2) flag++;
 
 			if (startStop)
@@ -140,13 +166,15 @@ namespace location2
 						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
 						var country = MemberModel.country;
 
-						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString(), Constants.SPEC_GROUP_TYPE[0]);
+						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
 
 						if (currspeed < 0)
 							currspeed = 0;
 						lblSpeed.Text = currspeed.ToString("0.00");
 						lblAlt.Text = currAlt.ToString("0.00");
 						lblDist.Text = _currentDistance.ToString("0.00");
+
+						SetMapPosition(location);
 					}
 
 					//end
@@ -160,6 +188,8 @@ namespace location2
 				}
 			}
 		}
+
+
 
 		partial void StartStopBtn_TouchUpInside(UIButton sender)
 		{
@@ -239,7 +269,7 @@ namespace location2
 				var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 				var bearing = float.Parse(_lastLocation.Course.ToString());
 
-				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString(), Constants.SPEC_GROUP_TYPE[0]);
+				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch
 			{
