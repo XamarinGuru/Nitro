@@ -77,10 +77,10 @@ namespace location2
 
 		}
 
-		partial void ActionClose(UIButton sender)
-		{
-			DismissModalViewController(true);
-		}
+		//partial void ActionClose(UIButton sender)
+		//{
+		//	DismissModalViewController(true);
+		//}
 
 		partial void ActionDataChanged(UISlider sender)
 		{

@@ -146,6 +146,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAdjustTrainning (UIKit.UIButton sender);
 
+        [Action ("ActionLocation:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionLocation (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (contentComment != null) {

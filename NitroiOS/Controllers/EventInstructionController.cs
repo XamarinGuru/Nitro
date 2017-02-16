@@ -185,6 +185,13 @@ namespace location2
 			NavigationController.PushViewController(atVC, true);
 		}
 
+		partial void ActionLocation(UIButton sender)
+		{
+			LocationViewController locVC = Storyboard.InstantiateViewController("LocationViewController") as LocationViewController;
+			locVC.eventID = selectedEvent._id;
+			NavigationController.PushViewController(locVC, true);
+		}
+
 		partial void ActionAddComment(UIButton sender)
 		{
 			AddCommentViewController acVC = Storyboard.InstantiateViewController("AddCommentViewController") as AddCommentViewController;
@@ -193,5 +200,7 @@ namespace location2
 			NavigationController.PushViewController(acVC, true);
 		}
 		#endregion
+
+
     }
 }

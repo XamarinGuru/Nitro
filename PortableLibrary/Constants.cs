@@ -8,6 +8,9 @@ namespace PortableLibrary
 		public const string FIREBASE_APPSECRET = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF";
 		public const string FIREBASE_BASEPATH = "https://nitro-8cbda.firebaseio.com/";
 
+		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
+		public const int MAP_ZOOM_LEVEL = 15;
+
 		public const string CALENDAR_TITLE = "Nitro Calendar";
 
 		//URLs
@@ -32,6 +35,7 @@ namespace PortableLibrary
 		public const string MSG_LOADING_USER_DATA = "Loading user data...";
 		public const string MSG_LOADING_EVENTS = "Loading events...";
 		public const string MSG_LOADING_EVENT_DETAIL = "Loading event details...";
+		public const string MSG_LOADING_ALL_MARKERS = "Loading event all markers...";
 		public const string MSG_TYPE_COMMENT = "Type your comment...";
 		public const string MSG_SAVE_COMMENT = "Saving your comment...";
 		public const string MSG_ADJUST_TRAINING = "Adjusting Trainning...";

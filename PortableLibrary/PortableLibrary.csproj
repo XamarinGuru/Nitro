@@ -35,6 +35,7 @@
     <Compile Include="Model\NitroEvent.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\EventTotal.cs" />
+    <Compile Include="Model\EventPoints.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FluentValidation">

@@ -50,10 +50,6 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAdjustTrainning (UIKit.UIButton sender);
 
-        [Action ("ActionClose:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionClose (UIKit.UIButton sender);
-
         [Action ("ActionDataChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDataChanged (UIKit.UISlider sender);

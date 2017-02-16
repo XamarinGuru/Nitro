@@ -58,6 +58,8 @@ namespace location2.trackSvc {
         
         private System.Threading.SendOrPostCallback getCoachWeekTotalsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllMarkersByPracticeOperationCompleted;
+        
         private System.Threading.SendOrPostCallback athGeneralListOperationCompleted;
         
         private System.Threading.SendOrPostCallback insertMultiToGroupOperationCompleted;
@@ -287,6 +289,9 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         public event getCoachWeekTotalsCompletedEventHandler getCoachWeekTotalsCompleted;
+        
+        /// CodeRemarks
+        public event getAllMarkersByPracticeCompletedEventHandler getAllMarkersByPracticeCompleted;
         
         /// CodeRemarks
         public event athGeneralListCompletedEventHandler athGeneralListCompleted;
@@ -1228,6 +1233,38 @@ namespace location2.trackSvc {
             if ((this.getCoachWeekTotalsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getCoachWeekTotalsCompleted(this, new getCoachWeekTotalsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getAllMarkersByPractice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getAllMarkersByPractice([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Id, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getAllMarkersByPractice", new object[] {
+                        Id,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getAllMarkersByPracticeAsync(string Id, string specGroup) {
+            this.getAllMarkersByPracticeAsync(Id, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getAllMarkersByPracticeAsync(string Id, string specGroup, object userState) {
+            if ((this.getAllMarkersByPracticeOperationCompleted == null)) {
+                this.getAllMarkersByPracticeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllMarkersByPracticeOperationCompleted);
+            }
+            this.InvokeAsync("getAllMarkersByPractice", new object[] {
+                        Id,
+                        specGroup}, this.getAllMarkersByPracticeOperationCompleted, userState);
+        }
+        
+        private void OngetAllMarkersByPracticeOperationCompleted(object arg) {
+            if ((this.getAllMarkersByPracticeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllMarkersByPracticeCompleted(this, new getAllMarkersByPracticeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4309,6 +4346,26 @@ namespace location2.trackSvc {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
+    public partial class CompositeType {
+        
+        /// <remarks/>
+        public bool BoolValue;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BoolValueSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StringValue;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial class BsonValue {
     }
@@ -4328,26 +4385,6 @@ namespace location2.trackSvc {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public BsonValue _value;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
-    public partial class CompositeType {
-        
-        /// <remarks/>
-        public bool BoolValue;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BoolValueSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string StringValue;
     }
     
     /// CodeRemarks
@@ -4760,6 +4797,32 @@ namespace location2.trackSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getAllMarkersByPracticeCompletedEventHandler(object sender, getAllMarkersByPracticeCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllMarkersByPracticeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllMarkersByPracticeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
             }
         }
     }

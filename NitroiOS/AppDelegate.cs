@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EventKit;
 using PortableLibrary;
 using System.Collections.Generic;
+using Google.Maps;
 
 namespace location2
 {
@@ -28,6 +29,8 @@ namespace location2
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 			#endif
+
+			MapServices.ProvideAPIKey(PortableLibrary.Constants.GOOGLE_MAP_API_KEY);
 
 			return true;
 		}
@@ -80,7 +83,7 @@ namespace location2
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
-					if (calendar.Title == Constants.CALENDAR_TITLE)
+					if (calendar.Title == PortableLibrary.Constants.CALENDAR_TITLE)
 					{
 						nitroCalendar = calendar;
 
@@ -130,7 +133,7 @@ namespace location2
 					{
 						return;
 					}
-					nitroCalendar.Title = Constants.CALENDAR_TITLE;
+					nitroCalendar.Title = PortableLibrary.Constants.CALENDAR_TITLE;
 					nitroCalendar.Source = nitroSource;
 				}
 
@@ -212,7 +215,7 @@ namespace location2
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
 				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = String.Format(Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
+				var encodedEventURL = String.Format(PortableLibrary.Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
 
 				newEvent.Url = new NSUrl(System.Web.HttpUtility.UrlEncode(encodedEventURL)); ;
 

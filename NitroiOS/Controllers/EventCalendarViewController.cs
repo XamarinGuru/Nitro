@@ -11,7 +11,7 @@ namespace location2
 {
 	public partial class EventCalendarViewController : BaseViewController
     {
-		private readonly Calendar _calendar;
+		private readonly Softweb.Xamarin.Controls.iOS.Calendar _calendar;
 		private List<NitroEvent> _events;
 
         public EventCalendarViewController (IntPtr handle) : base (handle)

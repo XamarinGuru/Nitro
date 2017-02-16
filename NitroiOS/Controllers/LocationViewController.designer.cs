@@ -11,22 +11,18 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("AddCommentViewController")]
-    partial class AddCommentViewController
+    [Register ("LocationViewController")]
+    partial class LocationViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView txtComment { get; set; }
-
-        [Action ("ActionAddComment:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionAddComment (UIKit.UIButton sender);
+        UIKit.UIView viewMapContent { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (txtComment != null) {
-                txtComment.Dispose ();
-                txtComment = null;
+            if (viewMapContent != null) {
+                viewMapContent.Dispose ();
+                viewMapContent = null;
             }
         }
     }

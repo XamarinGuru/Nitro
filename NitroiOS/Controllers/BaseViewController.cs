@@ -337,6 +337,38 @@ namespace location2
 			return eventTotal;
 		}
 
+		public EventPoints GetAllMarkers(string eventID)
+		{
+			var eventMarkers = new EventPoints();
+			try
+			{
+				var markerObject = mTrackSvc.getAllMarkersByPractice(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				eventMarkers = JsonConvert.DeserializeObject<EventPoints>(markerObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return eventMarkers;
+		}
+
+		public EventPoints GetTrackPoints(string eventID)
+		{
+			var trackPoints = new EventPoints();
+			try
+			{
+				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				//eventMarkers = JsonConvert.DeserializeObject<EventPoints>(pointsObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return trackPoints;
+		}
+
 		public Comment GetComments(string eventID, string type = "1")
 		{
 			var comment = new Comment();
@@ -553,6 +585,56 @@ namespace location2
 				reference = reference.AddHours(1);
 			}
 			return reference;
+		}
+
+		public UIImage GetPinIconByType(string pointType)
+		{
+			var strPinImg = "";
+			switch (pointType)
+			{
+				case "1":
+				case "START":
+					strPinImg = "pin_start.png";
+					break;
+				case "2":
+				case "FINISH":
+					strPinImg = "pin_finish.png";
+					break;
+				case "3":
+				case "CHECK_POINT":
+					strPinImg = "pin_check_mark.png";
+					break;
+				case "4":
+				case "CAMERA":
+					strPinImg = "pin_camera.png";
+					break;
+				case "5":
+				case "NORTH":
+					strPinImg = "pin_north.png";
+					break;
+				case "6":
+				case "EAST":
+					strPinImg = "pin_east.png";
+					break;
+				case "7":
+				case "SOUTH":
+					strPinImg = "pin_south.png";
+					break;
+				case "8":
+				case "WEST":
+					strPinImg = "pin_west.png";
+					break;
+				case "9":
+				case "T1":
+					strPinImg = "pin_T1.png";
+					break;
+				case "10":
+				case "T2":
+					strPinImg = "pin_T2.png";
+					break;
+			}
+
+			return UIImage.FromFile(strPinImg);
 		}
 
 		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
