@@ -1,7 +1,6 @@
 using Foundation;
 using System;
 using UIKit;
-using System.Threading.Tasks;
 using CoreGraphics;
 using PortableLibrary;
 
@@ -126,7 +125,6 @@ namespace location2
 		}
 		private void ScrollTheView(bool move)
 		{
-			// scroll the view up or down
 			UIView.BeginAnimations(string.Empty, System.IntPtr.Zero);
 			UIView.SetAnimationDuration(0.3);
 

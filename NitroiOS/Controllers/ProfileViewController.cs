@@ -12,7 +12,6 @@ namespace location2
 	{
 		UIImagePickerController imagePicker = new UIImagePickerController();
 
-		//private RootMemberModel MemberModel { get; set; }
 		public ProfileViewController(IntPtr handle) : base(handle)
 		{
 			MemberModel = new RootMemberModel();

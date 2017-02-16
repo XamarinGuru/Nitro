@@ -1,15 +1,10 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 
 namespace PortableLibrary
 {
 	public class Point
 	{
-		public Point()
-		{
-			//name = "";
-			//value = "";
-		}
 		public string markerId { get; set; }
 		public string name { get; set; }
 		public string description { get; set; }
@@ -22,9 +17,6 @@ namespace PortableLibrary
 
 	public class EventPoints
 	{
-		public EventPoints()
-		{
-		}
 		public string eventid { get; set; }
 		public List<Point> markers { get; set; }
 	}

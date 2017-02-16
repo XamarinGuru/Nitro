@@ -21,7 +21,7 @@ namespace location2
 
 		public static LocationManager Manager { get; set; }
 
-		private MapView mMapView;
+		MapView mMapView;
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
 
@@ -32,7 +32,6 @@ namespace location2
 
 		bool isTimerStarted = false;
 
-		//private RootMemberModel MemberModel { get; set; }
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
 			Manager = new LocationManager();
@@ -68,8 +67,6 @@ namespace location2
 			if (!IsNetEnable()) return;
 
 			MemberModel.rootMember = GetUserObject();
-
-			//InitMapView();
 		}
 
 		public static bool UserInterfaceIdiomIsPhone
@@ -362,12 +359,6 @@ namespace location2
 			BackProcess();
 		}
 		#endregion
-
-
-		//partial void ActionSelectSportType(UIButton sender)
-		//{
-		//	throw new NotImplementedException();
-		//}
 	}
 }
 

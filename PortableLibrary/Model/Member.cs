@@ -31,8 +31,6 @@ namespace PortableLibrary
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
-
 	}
 	public class userSystemData
 	{
@@ -45,10 +43,7 @@ namespace PortableLibrary
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
-
 	}
-
 	public class athHistory
 	{
 		public athHistory()
@@ -60,9 +55,7 @@ namespace PortableLibrary
 		public string _id { get; set; }
 		public string date { get; set; }
 		public string text { get; set; }
-
 	}
-
 	public class Performance
 	{
 		public Performance()
@@ -70,15 +63,11 @@ namespace PortableLibrary
 			_id = "";
 			name = "";
 			value = "0";
-
-
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
 	}
-
 	public class Physical
 	{
 		public Physical()
@@ -88,17 +77,12 @@ namespace PortableLibrary
 			value = "";
 			unit = "";
 			unit = "";
-
-
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public string unit { get; set; }
-
-
 	}
-
 	public class BestResults
 	{
 		public BestResults()
@@ -106,16 +90,11 @@ namespace PortableLibrary
 			_id = "";
 			name = "";
 			value = "";
-
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
-
 	}
-
-
 	public class Experience
 	{
 		public Experience()
@@ -128,9 +107,7 @@ namespace PortableLibrary
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
 	}
-
 	public class SelfRanking
 	{
 		public SelfRanking()
@@ -143,7 +120,6 @@ namespace PortableLibrary
 		public string fieldName { get; set; }
 		public string rank { get; set; }
 	}
-
 	public class athGoals
 	{
 		public athGoals()
@@ -170,7 +146,6 @@ namespace PortableLibrary
 		public int _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
-
 	}
 
 	public class Event
@@ -202,7 +177,6 @@ namespace PortableLibrary
 		public int hb { get; set; }
 		public string type { get; set; }
 		public string duration { get; set; }
-
 	}
 
 	public class ZoneLevel
@@ -222,7 +196,6 @@ namespace PortableLibrary
 		public string power { get; set; }
 	}
 
-
 	public class Injuries
 	{
 		public Injuries()
@@ -232,19 +205,13 @@ namespace PortableLibrary
 			value = "";
 			isCurrent = false;
 			date = new DateTime().ToString();
-
-
 		}
 		public string _id { get; set; }
 		public string name { get; set; }
 		public string value { get; set; }
 		public bool isCurrent { get; set; }
 		public string date { get; set; }
-
 	}
-
-
-
 
 	public class discipZones
 	{
@@ -258,7 +225,6 @@ namespace PortableLibrary
 			FTPHB = "";
 		}
 		public string fieldId { get; set; }
-
 		public string fieldName { get; set; }
 		public List<ZoneLevel> ZoneLevel { get; set; }
 		public string FTPACE { get; set; }
@@ -308,11 +274,9 @@ namespace PortableLibrary
 			//selfRanking.Add(srRun());
 			//selfRanking.Add(srBike( ));
 
-
 			events = new List<Event>();
 			fields = new List<discipZones>();
 		}
-
 		public List<IdData> idData { get; set; }
 		public List<userSystemData> userSystemData { get; set; }
 		public List<Injuries> injuries { get; set; }
@@ -333,7 +297,6 @@ namespace PortableLibrary
 			inj.name = "";
 			inj.value = "";
 			return inj;
-
 		}
 
 		private Performance acl()
@@ -343,7 +306,6 @@ namespace PortableLibrary
 			p.name = "ACL";
 			p.value = "";
 			return p;
-
 		}
 		private Performance atl()
 		{
@@ -369,7 +331,6 @@ namespace PortableLibrary
 			p.value = "";
 			return p;
 		}
-
 		private Physical weight()
 		{
 			Physical p = new Physical();
@@ -402,7 +363,6 @@ namespace PortableLibrary
 			p.value = "33";
 			return p;
 		}
-
 		private Physical fp()
 		{
 			Physical p = new Physical();
@@ -411,7 +371,6 @@ namespace PortableLibrary
 			p.value = "";
 			return p;
 		}
-
 		private athGoals goal()
 		{
 			athGoals p = new athGoals();
@@ -421,7 +380,6 @@ namespace PortableLibrary
 			p.Load = 0;
 			return p;
 		}
-
 		private athHistory historyEvent()
 		{
 			athHistory p = new athHistory();
@@ -430,7 +388,6 @@ namespace PortableLibrary
 			p.text = "";
 			return p;
 		}
-
 		private Experience expSwim()
 		{
 			Experience p = new Experience();
@@ -439,7 +396,6 @@ namespace PortableLibrary
 			p.value = "";
 			return p;
 		}
-
 		private Experience expBike()
 		{
 			Experience p = new Experience();
@@ -464,7 +420,6 @@ namespace PortableLibrary
 			p.value = "";
 			return p;
 		}
-
 		private Experience expEndur()
 		{
 			Experience p = new Experience();
@@ -498,7 +453,6 @@ namespace PortableLibrary
 			p.rank = "1";
 			return p;
 		}
-
 	}
 
 	public class RootMemberModel : RootObject
@@ -604,8 +558,6 @@ namespace PortableLibrary
 
 		public string bFTPHB { get { return rootMember.profile.fields[1].FTPHB; } set { rootMember.profile.fields[1].FTPHB = value; } }
 		public string bFTPower { get { return rootMember.profile.fields[1].FTPWATT; } set { rootMember.profile.fields[1].FTPWATT = value; } }
-
-
 	}
 
 	public class RootMember
@@ -613,9 +565,6 @@ namespace PortableLibrary
 		public RootMember()
 		{
 			profile = new Profile();
-			//updatedBy = "";
-			//lastUpdateDate = new DateTime();
-			//createdDate = new DateTime();
 			auth = "";
 			userName = "";
 			password = "";
@@ -623,16 +572,11 @@ namespace PortableLibrary
 			sportCompKey = "";
 		}
 		public Profile profile { get; set; }
-		//public string updatedBy { get; set; }
-		//public DateTime lastUpdateDate { get; set; }
-		//public DateTime createdDate { get; set; }
 		public string auth { get; set; }
 		public string userName { get; set; }
 		public string password { get; set; }
 		public int sportComp { get; set; }
 		public string sportCompKey { get; set; }
-
-
 	}
 }
 

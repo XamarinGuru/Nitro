@@ -1,10 +1,8 @@
 ﻿using System;
 using Android.Animation;
-using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
-using Android.Views.Animations;
 using Android.Webkit;
 using Android.Widget;
 using PortableLibrary;
@@ -120,18 +118,6 @@ namespace goheja
 			lblCycleStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
 			lblRunStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
 			lblSwimStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
-
-			//lblCycleDuration.Text = gaugeData.Bike[0].value + "%";
-			//lblRunDuration.Text = gaugeData.Run[0].value + "%";
-			//lblSwimDuration.Text = gaugeData.Swim[0].value + "%";
-
-			//lblCycleDistance.Text = gaugeData.Bike[1].value + "%";
-			//lblRunDistance.Text = gaugeData.Bike[1].value + "%";
-			//lblSwimDistance.Text = gaugeData.Bike[1].value + "%";
-
-			//lblCycleStress.Text = gaugeData.Bike[2].value + "%";
-			//lblRunStress.Text = gaugeData.Bike[2].value + "%";
-			//lblSwimStress.Text = gaugeData.Bike[2].value + "%";
 		}
 
 		void ActionViewCalendar(object sender, EventArgs e)

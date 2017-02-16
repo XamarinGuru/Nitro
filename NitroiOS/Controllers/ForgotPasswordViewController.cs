@@ -108,17 +108,13 @@ namespace location2
 			}
 		}
 
-
-
-
 		private void KeyBoardDownNotification(NSNotification notification)
 		{
 			if (moveViewUp) { ScrollTheView(false); }
 		}
 		private void ScrollTheView(bool move)
 		{
-			// scroll the view up or down
-			UIView.BeginAnimations(string.Empty, System.IntPtr.Zero);
+			UIView.BeginAnimations(string.Empty, IntPtr.Zero);
 			UIView.SetAnimationDuration(0.3);
 
 			CGRect frame = this.View.Frame;

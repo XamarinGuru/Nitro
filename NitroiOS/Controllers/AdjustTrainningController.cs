@@ -46,15 +46,7 @@ namespace location2
 				HideLoadingView();
 			});
 
-			InitUISettings();
 			InitBindingEventTotal();
-		}
-
-		void InitUISettings()
-		{
-			//lblTime = FindViewById<TextView>(Resource.Id.lblTime);
-			//lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
-			//lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
 		}
 
 		void InitBindingEventTotal()

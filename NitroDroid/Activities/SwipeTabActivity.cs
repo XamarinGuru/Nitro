@@ -6,10 +6,6 @@ using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
-using System;
-using Android.Locations;
-using Android.Net;
-using goheja.Services;
 using Android;
 
 namespace goheja
@@ -18,17 +14,17 @@ namespace goheja
 	public class SwipeTabActivity : BaseActivity
     {
 		string[] PermissionsCalendar =
-			{
-				Manifest.Permission.ReadCalendar,
-				Manifest.Permission.WriteCalendar
-			};
+		{
+			Manifest.Permission.ReadCalendar,
+			Manifest.Permission.WriteCalendar
+		};
 		const int RequestCalendarId = 0;
 
-		private static Intent serviceIntent = null;
+		static Intent serviceIntent = null;
 
 		RelativeLayout tabCalendar, tabAnalytics, tabProfile;
 
-        private ViewPager _pager;
+        ViewPager _pager;
 
 		Android.Graphics.Color cTabEnable = new Android.Graphics.Color(146, 146, 146);
 		Android.Graphics.Color cTabDisable = new Android.Graphics.Color(69, 69, 69);

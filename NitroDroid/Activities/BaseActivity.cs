@@ -20,9 +20,9 @@ namespace goheja
 	[Activity(Label = "BaseActivity")]
 	public class BaseActivity : FragmentActivity
 	{
-		Android.Graphics.Color COLOR_ORANGE = Android.Graphics.Color.Rgb(229, 161, 9);
-		Android.Graphics.Color COLOR_RED = Android.Graphics.Color.Rgb(179, 66, 17);
-		Android.Graphics.Color COLOR_BLUE = Android.Graphics.Color.Rgb(11, 88, 229);
+		Color COLOR_ORANGE = Color.Rgb(229, 161, 9);
+		Color COLOR_RED = Color.Rgb(179, 66, 17);
+		Color COLOR_BLUE = Color.Rgb(11, 88, 229);
 
 		AlertDialog.Builder alert;
 
@@ -687,13 +687,9 @@ namespace goheja
 			try
 			{
 				if ((curr - prev) > 0)
-				{
 					return curr - prev;
-				}
 				else
-				{
 					return 0;
-				}
 			}
 			catch
 			{

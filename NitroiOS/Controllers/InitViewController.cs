@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using UIKit;
 
 namespace location2
@@ -16,12 +15,6 @@ namespace location2
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-		}
-
-		public override void DidReceiveMemoryWarning()
-		{
-			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		partial void ActionSignIn(UIButton sender)

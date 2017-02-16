@@ -1,5 +1,4 @@
-﻿using System;
-using EventKit;
+﻿using EventKit;
 
 namespace location2
 {

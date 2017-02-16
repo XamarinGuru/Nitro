@@ -1,9 +1,7 @@
 ﻿using Foundation;
 using System;
 using UIKit;
-using EventKit;
 using GalaSoft.MvvmLight.Helpers;
-using System.Collections.Generic;
 using PortableLibrary;
 using System.Threading.Tasks;
 using CoreGraphics;
@@ -12,20 +10,6 @@ namespace location2
 {
 	partial class SeriousViewController : BaseViewController
 	{
-		//const int TAG_COLLEPS_PHYSICAL = 130;
-		//const int TAG_COLLEPS_GOALS = 100;
-		//const int TAG_COLLEPS_BEST_RESULTS = 220;
-		//const int TAG_COLLEPS_SELF_RANKING = 1000;
-
-		//const int TAG_EDIT_PHYSICAL = 1001;
-		//const int TAG_EDIT_GOALS = 1002;
-		//const int TAG_EDIT_BEST_RESULTS = 1003;
-		//const int TAG_EDIT_SELF_RANKING = 1004;
-		//const int TAG_EDIT_SWIM = 1005;
-		//const int TAG_EDIT_RUN = 1006;
-		//const int TAG_EDIT_BIKE = 1007;
-
-		//private RootMemberModel MemberModel { get; set; }
 		public SeriousViewController(IntPtr handle) : base(handle)
         {
 			MemberModel = new RootMemberModel();
@@ -150,7 +134,6 @@ namespace location2
 			#endregion
 
 			#region goals
-			//this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.OneWay);
 			this.SetBinding(() => txtGoalDate.Text, () => MemberModel.goalDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
@@ -219,7 +202,6 @@ namespace location2
 			this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.OneWay);
 			this.SetBinding(() => txtSFTPace.Text, () => MemberModel.sFTPace, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
-			//this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.sFTPHB, () => txtSFTPHB.Text, BindingMode.TwoWay);
 			#endregion
 
@@ -255,7 +237,6 @@ namespace location2
 			this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.OneWay);
 			this.SetBinding(() => txtRFTPace.Text, () => MemberModel.rFTPace, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 
-			//this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rFTPHB, () => txtRFTPHB.Text, BindingMode.TwoWay);
 			this.SetBinding(() => MemberModel.rFTPower, () => txtRFTPower.Text, BindingMode.TwoWay);
 			#endregion

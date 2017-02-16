@@ -1,4 +1,3 @@
-using Foundation;
 using System;
 using UIKit;
 using PortableLibrary;
@@ -152,7 +151,6 @@ namespace location2
 			CompareEventResult(fDuration, TotalSecFromString(eventTotal.totals[2].value), lblPDuration, lblTotalValue2);
 			CompareEventResult(fLoad, ConvertToFloat(eventTotal.totals[7].value), lblPLoad, lblTotalValue7);
 		}
-
 
 		void InitBindingEventComments(Comment comments)
 		{

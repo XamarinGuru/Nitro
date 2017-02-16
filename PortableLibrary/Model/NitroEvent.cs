@@ -4,10 +4,6 @@ namespace PortableLibrary
 {
 	public class NitroEvent
 	{
-		public NitroEvent()
-		{
-		}
-
 		public string _id { get; set;}
 		public string title { get; set; }
 		public string eventSysId { get; set; }

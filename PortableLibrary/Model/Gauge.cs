@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 
 namespace PortableLibrary
@@ -16,9 +16,6 @@ namespace PortableLibrary
 
 	public class Gauge
 	{
-		public Gauge()
-		{
-		}
 		public List<Item> Bike { get; set; }
 		public List<Item> Run { get; set; }
 		public List<Item> Swim { get; set; }

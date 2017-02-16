@@ -1,4 +1,3 @@
-using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
@@ -12,7 +11,7 @@ namespace location2
     public partial class LocationViewController : BaseViewController
     {
 		public string eventID;
-		private MapView mMapView;
+		MapView mMapView;
 
 		EventPoints mEventMarker = new EventPoints();
 

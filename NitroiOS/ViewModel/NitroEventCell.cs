@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Foundation;
 using PortableLibrary;
 using UIKit;
@@ -24,9 +23,6 @@ namespace location2
 		public void SetCell(NitroEvent nitroEvent)
 		{
 			lblTitle.Text = nitroEvent.title;
-
-			//var arrDates = nitroEvent.StartDateTime().GetDateTimeFormats();
-			//lblEventTime.Text = arrDates[106];
 
 			var eventDate = nitroEvent.StartDateTime();
 			lblEventTime.Text = String.Format("{0:t}", eventDate);

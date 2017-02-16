@@ -20,7 +20,7 @@ namespace goheja
 
         byte[] bitmapByteData = { 0 };
 
-		private RootMemberModel MemberModel { get; set; }
+		RootMemberModel MemberModel { get; set; }
 		SwipeTabActivity rootActivity;
 
 		View mView;

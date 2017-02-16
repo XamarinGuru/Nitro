@@ -3,7 +3,6 @@ using UIKit;
 using BigTed;
 using Foundation;
 using System.Drawing;
-using CoreGraphics;
 using Newtonsoft.Json;
 using PortableLibrary;
 using Newtonsoft.Json.Linq;
@@ -525,12 +524,9 @@ namespace location2
 		{
 			var validate = mTrackSvc.validateNickName(nickName, Constants.SPEC_GROUP_TYPE[0]);
 			if (validate != "1")
-			{
 				return true;
-			}
-			else {
+			else
 				return false;
-			}
 		}
 
 		private string FormatJsonType(string jsonData)

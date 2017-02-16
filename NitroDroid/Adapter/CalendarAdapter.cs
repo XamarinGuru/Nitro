@@ -7,9 +7,9 @@ namespace goheja
 {
 	public class CalendarAdapter : FragmentPagerAdapter
 	{
-		private int MaxCount = 200;
-		private Action<List<NitroEvent>> _callback;
-		private List<NitroEvent> _events;
+		int MaxCount = 200;
+		Action<List<NitroEvent>> _callback;
+		List<NitroEvent> _events;
 
 		public static ItemViewPagerCalendarFragment fragment;
 

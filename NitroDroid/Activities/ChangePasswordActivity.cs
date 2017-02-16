@@ -1,13 +1,8 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using PortableLibrary;
@@ -118,7 +113,6 @@ namespace goheja
 						ShowMessageBox(null, Constants.MSG_CHANGE_PW_EMAIL_FAIL);
 					}
 				});
-
 			}
 		}
 

@@ -1,13 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Android.Animation;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
@@ -18,20 +15,7 @@ namespace goheja
 	[Activity(Label = "EditProfileActivity")]
 	public class EditProfileActivity : BaseActivity
 	{
-		//const int TAG_COLLEPS_PHYSICAL = 101;
-		//const int TAG_COLLEPS_GOALS = 102;
-		//const int TAG_COLLEPS_BEST_RESULTS = 103;
-		//const int TAG_COLLEPS_SELF_RANKING = 104;
-
-		//const int TAG_EDIT_PHYSICAL = 1001;
-		//const int TAG_EDIT_GOALS = 1002;
-		//const int TAG_EDIT_BEST_RESULTS = 1003;
-		//const int TAG_EDIT_SELF_RANKING = 1004;
-		//const int TAG_EDIT_SWIM = 1005;
-		//const int TAG_EDIT_RUN = 1006;
-		//const int TAG_EDIT_BIKE = 1007;
-
-		private RootMemberModel MemberModel { get; set; }
+		RootMemberModel MemberModel { get; set; }
 
 		TextView lblFirstname, lblLastname, lblCountry, lblAddress, lblBib, lblAge, lblGender, lblBirth, lblEmail, lblPhone;
 		EditText txtWeight, txtHeight, txtBMI, txtFatPercentage;
@@ -193,13 +177,8 @@ namespace goheja
 			var childs = GetAllChildren(contentView);
 			for (int i = 0; i < childs.Count; i++)
 			{
-
 				if (childs[i] is EditText)
-				{
-					// change the values of text view here
 					((EditText)childs[i]).TextChanged += (s, e) => { };
-
-				}
 			}
 		}
 		List<View> GetAllChildren(View view)

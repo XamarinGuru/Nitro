@@ -24,8 +24,6 @@ namespace goheja
 				return new FragmentEvents();
             if (position == 2)
 				return new FragmentProfile();
-			//if (position == 3)
-			//	return new FragmentSerious();
 
             TabChanged?.Invoke(position, null);
 

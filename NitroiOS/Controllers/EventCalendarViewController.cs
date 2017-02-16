@@ -177,8 +177,8 @@ namespace location2
 
 		class NitroEventTableViewSource : UITableViewSource
 		{
-			private List<NitroEvent> nitroEvents;
-			private EventCalendarViewController eventCalendarVC;
+			List<NitroEvent> nitroEvents;
+			EventCalendarViewController eventCalendarVC;
 
 			public NitroEventTableViewSource(List<NitroEvent> events, EventCalendarViewController eventCalendarVC)
 			{

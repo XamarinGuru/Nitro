@@ -1,13 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using PortableLibrary;
@@ -56,30 +50,6 @@ namespace goheja
 			infoView.FindViewById<Button>(Resource.Id.ActionNavigate).Click += (sender, e) => Dismiss();
 
 			return infoView;
-
-
-			//LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-
-			//LinearLayout linLayoutV = new LinearLayout(this.Activity);
-			//linLayoutV.Orientation = Orientation.Vertical;
-
-			//EditText input = new EditText(this.Activity);
-			//linLayoutV.AddView(input);
-
-			//Button okButton = new Button(this.Activity);
-			//okButton.Click += (sender, e) =>
-			//{
-			//	callback(input.Text);
-			//	Dismiss();
-			//};
-
-			//params1.Gravity = GravityFlags.CenterHorizontal;
-			//okButton.LayoutParameters = params1;
-			//okButton.Text = "Done";
-
-			//linLayoutV.AddView(okButton);
-			//return linLayoutV;
-
 		}
 	}
 }

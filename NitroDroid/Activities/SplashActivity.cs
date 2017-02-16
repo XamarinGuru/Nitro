@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Net;
 using Android.Support.V4.App;
 using Android.Text;
 using System.Threading.Tasks;
