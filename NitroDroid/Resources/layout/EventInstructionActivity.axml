@@ -906,7 +906,7 @@
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/collapsRun"
+                android:id="@+id/ActionLocation"
                 android:background="#ff1e1e1e"
                 android:layout_marginBottom="1dp"
                 android:tag="1">
@@ -925,27 +925,18 @@
                         android:id="@+id/linearLayout10"
                         android:layout_marginLeft="10dp">
                         <ImageView
-                            android:src="@drawable/icon_group_report"
+                            android:src="@drawable/icon_map_pin"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:id="@+id/imageView1"
                             android:padding="3dp" />
                     </LinearLayout>
                     <TextView
-                        android:text="GROUP REPORT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView2"
-                        android:textStyle="bold"
-                        android:textSize="12dp"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="#ffffffff" />
-                    <TextView
-                        android:text="(coming soon)"
+                        android:text="LOCATION"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
-                        android:textStyle="normal"
+                        android:textStyle="bold"
                         android:textSize="12dp"
                         android:layout_marginLeft="10dp"
                         android:textColor="#ffffffff"

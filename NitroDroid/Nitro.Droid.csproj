@@ -93,6 +93,15 @@
     <Reference Include="com.alliance.calendar">
       <HintPath>..\Components\alliance-calendar-component-1.0\lib\android\com.alliance.calendar.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Basement">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Basement.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Base">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Base.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Maps">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Maps.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Maps.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -112,7 +121,6 @@
     <Compile Include="Utility\util.cs" />
     <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Activities\CloseApplicationActivity.cs" />
-    <Compile Include="Activities\AnalyticsActivity.cs" />
     <Compile Include="Adapter\GenericFragmentPagerAdaptor.cs" />
     <Compile Include="Utility\AppSettings.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -130,9 +138,12 @@
     <Compile Include="Activities\EditProfileActivity.cs" />
     <Compile Include="Activities\ForgotPasswordActivity.cs" />
     <Compile Include="Activities\ChangePasswordActivity.cs" />
+    <Compile Include="Activities\LocationActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\PointInfoDialog.cs" />
+    <Compile Include="Activities\AnalyticsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -270,6 +281,8 @@
     <AndroidResource Include="Resources\drawable\splash_new.png" />
     <AndroidResource Include="Resources\drawable\no_photo_round.png" />
     <AndroidResource Include="Resources\drawable\icon_notification.png" />
+    <AndroidResource Include="Resources\drawable\icon_map_pin.png" />
+    <AndroidResource Include="Resources\layout\LocationActivity.axml" />
     <None Include="Web References\trackSvc\Service1.xsd" />
     <None Include="Web References\trackSvc\Service10.xsd" />
     <None Include="Web References\trackSvc\Service11.xsd" />
@@ -280,6 +293,17 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <AndroidResource Include="Resources\drawable\pin_camera.png" />
+    <AndroidResource Include="Resources\drawable\pin_check_mark.png" />
+    <AndroidResource Include="Resources\drawable\pin_east.png" />
+    <AndroidResource Include="Resources\drawable\pin_finish.png" />
+    <AndroidResource Include="Resources\drawable\pin_north.png" />
+    <AndroidResource Include="Resources\drawable\pin_south.png" />
+    <AndroidResource Include="Resources\drawable\pin_start.png" />
+    <AndroidResource Include="Resources\drawable\pin_T1.png" />
+    <AndroidResource Include="Resources\drawable\pin_T2.png" />
+    <AndroidResource Include="Resources\drawable\pin_west.png" />
+    <AndroidResource Include="Resources\layout\item_PointInfoView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -317,6 +341,10 @@
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="googleplayservices-maps">
+      <Version>29.0.0.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
@@ -338,4 +366,5 @@
       <UpdateFromURL>http://go-heja.com/Service1.svc?wsdl</UpdateFromURL>
     </WebReferenceUrl>
   </ItemGroup>
+  <Import Project="..\packages\Xamarin.GooglePlayServices.Basement.29.0.0.2\build\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Basement.29.0.0.2\build\Xamarin.GooglePlayServices.Basement.targets')" />
 </Project>

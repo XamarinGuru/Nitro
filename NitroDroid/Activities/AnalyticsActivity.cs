@@ -16,11 +16,13 @@ using Android.Graphics;
 using PortableLibrary;
 using Android;
 using Android.Support.V4.App;
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
 
 namespace goheja
 {
     [Activity(Label = "Nitro", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
-	public class AnalyticsActivity : BaseActivity, ILocationListener
+	public class AnalyticsActivity : BaseActivity, ILocationListener, IOnMapReadyCallback, ActivityCompat.IOnRequestPermissionsResultCallback
     {
 		readonly string[] PermissionsLocation =
 		{
@@ -29,6 +31,9 @@ namespace goheja
 		};
 
 		const int RequestLocationId = 0;
+
+		SupportMapFragment mMapViewFragment;
+		GoogleMap mMapView = null;
 
 		enum RIDE_TYPE
 		{
@@ -49,21 +54,10 @@ namespace goheja
 		Location _currentLocation;
         Location _lastLocation;
 
-        TextView _speedText;
-        TextView _altitudeText;
-        TextView _distance;
-		TextView _timerText;
-		TextView _title;
+        TextView _speedText, _altitudeText, _distance, _timerText, _title;
+        string athId, athFirstName, athLastName, athNickName, athCountry;
+        float lastAlt, dist, gainAlt;
 
-        string athId;
-        string athFirstName;
-        string athLastName;
-		string athNickName;
-        string athCountry;
-
-        float lastAlt;
-        float dist;
-        float gainAlt;
         int fFlag = 1;
         
         Button startBtn;
@@ -78,8 +72,6 @@ namespace goheja
         int lapDuration;
         
         DateTime tempTime;
-        
-        WebView wv;
 
 		private RootMemberModel MemberModel { get; set; }
 
@@ -129,10 +121,8 @@ namespace goheja
             _altitudeText = FindViewById<TextView>(Resource.Id.tvAltitude);
             _distance = FindViewById<TextView>(Resource.Id.tvDistance);
 
-            wv = FindViewById<WebView>(Resource.Id.wvCurrentEvent);
-			wv.Settings.JavaScriptEnabled = true;
-			wv.SetWebViewClient(new WebViewClient());
-			wv.SetBackgroundColor(Color.Transparent);
+			mMapViewFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
+			mMapViewFragment.GetMapAsync(this);
 
             FindViewById<Button>(Resource.Id.StartPractice).Click += StartPractice_OnClick;
             FindViewById<Button>(Resource.Id.stopPractice).Click += stopPractice_OnClick;
@@ -182,6 +172,18 @@ namespace goheja
 			CheckLocationPermission();
         }
 
+		#region google map
+
+		public void OnMapReady(GoogleMap googleMap)
+		{
+			mMapView = googleMap;
+			mMapView.MyLocationEnabled = false;
+
+			SetMapPosition(new LatLng(31.0461, 34.8516));
+		}
+
+		#endregion
+
 		private void SetViewByType(RIDE_TYPE type)
 		{
 			mType = type;
@@ -210,9 +212,6 @@ namespace goheja
             btnLapDist.Enabled = true;
 			btnBack.Visibility = ViewStates.Gone;
 
-			var url = String.Format(Constants.URL_ANALYTICS_MAP, athNickName);
-            wv.LoadUrl(url);
-
 			if (isPaused)
             {
                 isPaused = false;
@@ -239,8 +238,6 @@ namespace goheja
                     {
 						//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
                     }
-
-					wv.LoadUrl(url);
                 }
                 else
                 {
@@ -349,7 +346,6 @@ namespace goheja
 			}
 			else {
 				RequestCalendarPermission();
-
 			}
 		}
 		void RequestCalendarPermission()
@@ -386,14 +382,9 @@ namespace goheja
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
 		{
-			switch (requestCode)
+			if (requestCode == RequestLocationId && grantResults[0] == Permission.Granted)
 			{
-				case RequestLocationId:
-					{
-						if (grantResults[0] == Permission.Granted)
-							StartLocationService();
-					}
-					break;
+				StartLocationService();
 			}
 		}
 
@@ -540,6 +531,8 @@ namespace goheja
 							record merecord = new record(name, _currentLocation.Latitude, _currentLocation.Longitude, dt, AppSettings.DeviceUDID, athId, athCountry, dist, speed, gainAlt, _currentLocation.Bearing, 0, mType.ToString());
 							handleRecord updateRecord = new handleRecord();
 							status = updateRecord.updaterecord(merecord, IsNetEnable());//the record and is there internet connection
+
+							SetMapPosition(new LatLng(_currentLocation.Latitude, _currentLocation.Longitude));
                         }
 
                         _lastLocation = _currentLocation;
@@ -547,8 +540,6 @@ namespace goheja
                         contextPrefEdit.PutFloat("dist", dist).Commit();
                         if (fFlag == 1 || status == "backFromOffline")
                         {
-							var url = String.Format(Constants.URL_ANALYTICS_MAP, athNickName);
-							wv.LoadUrl(url);
                             status = "online";
                         }
                         fFlag = 0;
@@ -560,7 +551,13 @@ namespace goheja
 				//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
             }
         }
-        #endregion
+		#endregion
+
+		void SetMapPosition(LatLng location)
+		{
+			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
+			mMapView.MoveCamera(cu_center);
+		}
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
 		{
@@ -571,8 +568,6 @@ namespace goheja
 
 			return base.OnKeyDown(keyCode, e);
 		}
-
-
     }
 }
 

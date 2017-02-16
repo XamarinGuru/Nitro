@@ -38,6 +38,28 @@ namespace location2
 
 			InitMapView();
 
+			GetMarkersAndPoints();
+		}
+
+		public override void ViewWillLayoutSubviews()
+		{
+			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
+			{
+				RepaintMap();
+			}
+		}
+
+		void InitMapView()
+		{
+			var camera = CameraPosition.FromCamera(31.0461, 34.8516, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
+			mMapView.MyLocationEnabled = false;
+
+			mMapView.TappedMarker = ClickedDropItem;
+		}
+
+		void GetMarkersAndPoints()
+		{
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView(PortableLibrary.Constants.MSG_LOADING_ALL_MARKERS);
@@ -76,29 +98,12 @@ namespace location2
 
 						//polyline.Path = path;
 						//polyline.StrokeColor = UIColor.Red;
-						//polyline.StrokeWidth = 2;
+						//polyline.StrokeWidth = 5;
 						//polyline.Map = mMapView;
 					}
 				});
 				HideLoadingView();
 			});
-		}
-
-		public override void ViewWillLayoutSubviews()
-		{
-			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
-			{
-				RepaintMap();
-			}
-		}
-
-		void InitMapView()
-		{
-			var camera = CameraPosition.FromCamera(31.0461, 34.8516, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
-			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
-			mMapView.MyLocationEnabled = false;
-
-			mMapView.TappedMarker = ClickedDropItem;
 		}
 
 		public void RepaintMap()

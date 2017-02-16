@@ -34,3 +34,6 @@ using Android.App;
 #else
 [assembly: Application(Debuggable=false)]
 #endif
+
+
+[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyAoSP1REiI0C1YkBy8rsp9jQcACsPTOxdI")]

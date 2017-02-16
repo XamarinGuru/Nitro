@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Net;
 using Android.OS;
 using Android.Support.V4.App;
@@ -360,6 +361,39 @@ namespace goheja
 			return eventTotal;
 		}
 
+		public EventPoints GetAllMarkers(string eventID)
+		{
+			var eventMarkers = new EventPoints();
+			try
+			{
+				var markerObject = mTrackSvc.getAllMarkersByPractice(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				eventMarkers = JsonConvert.DeserializeObject<EventPoints>(markerObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return eventMarkers;
+		}
+
+		public EventPoints GetTrackPoints(string eventID)
+		{
+			var trackPoints = new EventPoints();
+			try
+			{
+				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				//eventMarkers = JsonConvert.DeserializeObject<EventPoints>(pointsObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return trackPoints;
+		}
+
+
 		public Comment GetComments(string eventID, string type = "1")
 		{
 			var comment = new Comment();
@@ -584,6 +618,66 @@ namespace goheja
 
 			if (errorEmail != null)
 				errorEmail.Visibility = isInvalid ? ViewStates.Visible : ViewStates.Invisible;
+		}
+
+		public Bitmap GetPinIconByType(string pointType)
+		{
+			int strPinImg = 0;
+			switch (pointType)
+			{
+				case "1":
+				case "START":
+					strPinImg = Resource.Drawable.pin_start;
+					break;
+				case "2":
+				case "FINISH":
+					strPinImg = Resource.Drawable.pin_finish;
+					break;
+				case "3":
+				case "CHECK_POINT":
+					strPinImg = Resource.Drawable.pin_check_mark;
+					break;
+				case "4":
+				case "CAMERA":
+					strPinImg = Resource.Drawable.pin_camera;
+					break;
+				case "5":
+				case "NORTH":
+					strPinImg = Resource.Drawable.pin_north;
+					break;
+				case "6":
+				case "EAST":
+					strPinImg = Resource.Drawable.pin_east;
+					break;
+				case "7":
+				case "SOUTH":
+					strPinImg = Resource.Drawable.pin_south;
+					break;
+				case "8":
+				case "WEST":
+					strPinImg = Resource.Drawable.pin_west;
+					break;
+				case "9":
+				case "T1":
+					strPinImg = Resource.Drawable.pin_T1;
+					break;
+				case "10":
+				case "T2":
+					strPinImg = Resource.Drawable.pin_T2;
+					break;
+			}
+
+			return BitmapFactory.DecodeResource(Resources, strPinImg);
+		}
+
+		public static Bitmap ScaleDownImg(Bitmap realImage, float maxImageSize, bool filter)
+		{
+			float ratio = Math.Min((float)maxImageSize / realImage.Width, (float)maxImageSize / realImage.Height);
+			int width = (int)Math.Round((float)ratio * realImage.Width);
+			int height = (int)Math.Round((float)ratio * realImage.Height);
+
+			Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
+			return newBitmap;
 		}
 
 		#endregion

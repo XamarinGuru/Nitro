@@ -80,6 +80,12 @@ namespace goheja
 				StartActivity(activity);
 				Finish();
 			};
+			FindViewById(Resource.Id.ActionLocation).Click += delegate (object sender, EventArgs e)
+			{
+				var activity = new Intent(this, typeof(LocationActivity));
+				StartActivity(activity);
+				Finish();
+			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
 			{
 				var activity = new Intent(this, typeof(AdjustTrainningActivity));

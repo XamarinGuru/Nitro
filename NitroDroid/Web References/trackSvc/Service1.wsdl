@@ -113,6 +113,12 @@
   <wsdl:message name="IService1_getCoachWeekTotals_OutputMessage">
     <wsdl:part name="parameters" element="tns:getCoachWeekTotalsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getAllMarkersByPractice_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllMarkersByPractice" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAllMarkersByPractice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllMarkersByPracticeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_athGeneralList_InputMessage">
     <wsdl:part name="parameters" element="tns:athGeneralList" />
   </wsdl:message>
@@ -692,6 +698,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getCoachWeekTotals" message="tns:IService1_getCoachWeekTotals_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getCoachWeekTotalsResponse" message="tns:IService1_getCoachWeekTotals_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getAllMarkersByPractice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAllMarkersByPractice" message="tns:IService1_getAllMarkersByPractice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAllMarkersByPracticeResponse" message="tns:IService1_getAllMarkersByPractice_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="athGeneralList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/athGeneralList" message="tns:IService1_athGeneralList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/athGeneralListResponse" message="tns:IService1_athGeneralList_OutputMessage" />
@@ -1181,6 +1191,15 @@
     </wsdl:operation>
     <wsdl:operation name="getCoachWeekTotals">
       <soap:operation soapAction="http://tempuri.org/IService1/getCoachWeekTotals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMarkersByPractice">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAllMarkersByPractice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
