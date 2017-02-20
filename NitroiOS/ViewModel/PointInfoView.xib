@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -26,27 +27,27 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Interval : 5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7w-bA-oCO" misplaced="YES">
-                            <rect key="frame" x="20" y="223" width="86.5" height="21"/>
+                            <rect key="frame" x="20" y="222" width="78" height="18"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGj-Yy-6AY" userLabel="BUTTON" misplaced="YES">
-                            <rect key="frame" x="41.5" y="274.5" width="331" height="47"/>
+                            <rect key="frame" x="41.5" y="270.5" width="331" height="55"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYh-as-YJ9" misplaced="YES">
-                                    <rect key="frame" x="0.5" y="0.0" width="331" height="47"/>
+                                    <rect key="frame" x="1" y="0.0" width="331" height="55"/>
                                     <color key="backgroundColor" red="0.90196078430000004" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                     <state key="normal" title="Navigate to this point">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="ActionNavigate:" destination="dwj-2j-NgW" id="3" eventType="touchUpInside"/>
+                                        <action selector="ActionNavigate:" destination="dwj-2j-NgW" eventType="touchUpInside" id="3"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="bfW-rL-nh7" misplaced="YES">
-                                    <rect key="frame" x="248" y="18.5" width="100" height="10"/>
+                                    <rect key="frame" x="248.5" y="22.5" width="100" height="10"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="10" id="fsm-PD-VKi"/>
                                     </constraints>
@@ -63,8 +64,8 @@
                                 <constraint firstItem="bfW-rL-nh7" firstAttribute="centerY" secondItem="sGj-Yy-6AY" secondAttribute="centerY" id="wON-5Y-4YX"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVm-G1-oem" misplaced="YES" text="aaa" baselineAdjustment="alignBaselines">
-                            <rect key="frame" x="20" y="101.5" width="374" height="112"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="aaa" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVm-G1-oem" misplaced="YES">
+                            <rect key="frame" x="20" y="101.5" width="374" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -77,7 +78,13 @@
                             </constraints>
                             <state key="normal" backgroundImage="icon_cross.png"/>
                             <connections>
-                                <action selector="ActionClose:" destination="dwj-2j-NgW" id="2" eventType="touchUpInside"/>
+                                <action selector="ActionClose:" destination="dwj-2j-NgW" eventType="touchUpInside" id="2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSl-n1-Kfz" misplaced="YES">
+                            <rect key="frame" x="351.5" y="12.5" width="50" height="50"/>
+                            <connections>
+                                <action selector="ActionClose:" destination="dwj-2j-NgW" id="6" eventType="touchUpInside"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1F-8V-bdN" misplaced="YES">
@@ -94,14 +101,18 @@
                         <constraint firstItem="h1F-8V-bdN" firstAttribute="leading" secondItem="dut-4K-AIX" secondAttribute="leading" constant="20" id="9yD-hS-Yfq"/>
                         <constraint firstItem="sVm-G1-oem" firstAttribute="top" secondItem="h1F-8V-bdN" secondAttribute="bottom" id="ECx-In-Hcq"/>
                         <constraint firstItem="sVm-G1-oem" firstAttribute="leading" secondItem="dut-4K-AIX" secondAttribute="leading" constant="20" id="FmK-9c-ELW"/>
+                        <constraint firstItem="tiS-gR-JvM" firstAttribute="width" secondItem="cSl-n1-Kfz" secondAttribute="width" multiplier="0.3" id="IZU-Yh-iwq"/>
                         <constraint firstAttribute="height" constant="350" id="KE1-0i-IYg"/>
                         <constraint firstItem="U7w-bA-oCO" firstAttribute="leading" secondItem="dut-4K-AIX" secondAttribute="leading" constant="20" id="KUw-rC-7Vd"/>
                         <constraint firstItem="aGm-Hc-3cd" firstAttribute="centerY" secondItem="dut-4K-AIX" secondAttribute="centerY" multiplier="0.3" id="Out-FQ-y1Q"/>
                         <constraint firstAttribute="trailing" secondItem="tiS-gR-JvM" secondAttribute="trailing" constant="30" id="UZP-ID-wTz"/>
+                        <constraint firstItem="tiS-gR-JvM" firstAttribute="height" secondItem="cSl-n1-Kfz" secondAttribute="height" multiplier="0.3" id="VJs-2Y-0oi"/>
                         <constraint firstItem="tiS-gR-JvM" firstAttribute="top" secondItem="dut-4K-AIX" secondAttribute="top" constant="30" id="Wzq-jc-P5O"/>
+                        <constraint firstItem="tiS-gR-JvM" firstAttribute="centerX" secondItem="cSl-n1-Kfz" secondAttribute="centerX" id="Y5J-jf-7zv"/>
                         <constraint firstItem="h1F-8V-bdN" firstAttribute="top" secondItem="aGm-Hc-3cd" secondAttribute="bottom" constant="20" id="a3R-LZ-f7M"/>
                         <constraint firstItem="tiS-gR-JvM" firstAttribute="leading" secondItem="aGm-Hc-3cd" secondAttribute="trailing" constant="10" id="dFT-7V-AnJ"/>
                         <constraint firstItem="sGj-Yy-6AY" firstAttribute="centerY" secondItem="dut-4K-AIX" secondAttribute="centerY" multiplier="1.7" id="dTp-nU-FkQ"/>
+                        <constraint firstItem="tiS-gR-JvM" firstAttribute="centerY" secondItem="cSl-n1-Kfz" secondAttribute="centerY" id="tbJ-tE-xx5"/>
                         <constraint firstAttribute="trailing" secondItem="sVm-G1-oem" secondAttribute="trailing" constant="20" id="weN-f3-lEi"/>
                         <constraint firstItem="aGm-Hc-3cd" firstAttribute="leading" secondItem="dut-4K-AIX" secondAttribute="leading" constant="20" id="x3j-xp-SXQ"/>
                         <constraint firstItem="sGj-Yy-6AY" firstAttribute="width" secondItem="dut-4K-AIX" secondAttribute="width" multiplier="0.8" id="yGf-an-CsW"/>
@@ -114,13 +125,13 @@
                 <constraint firstAttribute="trailing" secondItem="dut-4K-AIX" secondAttribute="trailing" id="ew1-4V-FAK"/>
                 <constraint firstItem="dut-4K-AIX" firstAttribute="leading" secondItem="dwj-2j-NgW" secondAttribute="leading" id="rS0-iS-gVs"/>
             </constraints>
-            <point key="canvasLocation" x="-170" y="16"/>
             <connections>
-                <outlet property="lblName" destination="aGm-Hc-3cd" id="name-outlet-aGm-Hc-3cd"/>
                 <outlet property="lblDescription" destination="sVm-G1-oem" id="name-outlet-sVm-G1-oem"/>
                 <outlet property="lblInterval" destination="U7w-bA-oCO" id="name-outlet-U7w-bA-oCO"/>
+                <outlet property="lblName" destination="aGm-Hc-3cd" id="name-outlet-aGm-Hc-3cd"/>
                 <outlet property="viewButton" destination="sGj-Yy-6AY" id="name-outlet-sGj-Yy-6AY"/>
             </connections>
+            <point key="canvasLocation" x="-170" y="16"/>
         </view>
     </objects>
     <resources>

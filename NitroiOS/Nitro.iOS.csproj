@@ -22,7 +22,7 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Mitchell Brownlie (AGUR9Z798Q)</CodesignKey>
     <AssemblyName>location2</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
@@ -76,7 +76,7 @@
     <AssemblyName>Nitro</AssemblyName>
     <MtouchFloat32>true</MtouchFloat32>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <CodesignProvision>1ad51c81-de7e-4cfb-a848-fb0e7bbced77</CodesignProvision>
+    <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

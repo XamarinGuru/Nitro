@@ -16,8 +16,8 @@ namespace location2
 			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
 			//	iPhoneLocationManager.RequestWhenInUseAuthorization ();
 
-				locMgr.RequestAlwaysAuthorization (); // works in background
-				//locMgr.RequestWhenInUseAuthorization (); // only in foreground
+				//locMgr.RequestAlwaysAuthorization (); // works in background
+				locMgr.RequestWhenInUseAuthorization (); // only in foreground
 			}
 
 			if (UIDevice.CurrentDevice.CheckSystemVersion (9, 0)) {

@@ -61,5 +61,9 @@
 	<string>4.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.3</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>waze</string>
+	</array>
 </dict>
 </plist>

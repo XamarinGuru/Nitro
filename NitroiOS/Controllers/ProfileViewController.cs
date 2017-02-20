@@ -143,5 +143,29 @@ namespace location2
 			}
 		}
 		#endregion
+
+		[Preserve]
+		static class PreserveEventsAndSettersHack
+		{
+			[Preserve]
+			static void Hack()
+			{
+				var l = new UILabel();
+				l.Text = l.Text + "";
+
+				var tf = new UITextField();
+				tf.Text = tf.Text + "";
+				tf.EditingChanged += delegate { };
+				tf.ValueChanged += delegate { };
+
+				var tv = new UITextView();
+				tv.Text = tv.Text + "";
+				tv.Changed += delegate { };
+
+				var vc = new UIViewController();
+				vc.Title = vc.Title + "";
+				vc.Editing = !vc.Editing;
+			}
+		}
 	}
 }

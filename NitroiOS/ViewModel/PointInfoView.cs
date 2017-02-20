@@ -4,11 +4,14 @@ using UIKit;
 using ObjCRuntime;
 using CoreGraphics;
 using PortableLibrary;
+using MapKit;
 
 namespace location2
 {
 	public partial class PointInfoView : UIView
 	{
+		Point point = new Point();
+
 		public delegate void PopWillCloseHandler();
 		public event PopWillCloseHandler PopWillClose;
 
@@ -30,6 +33,8 @@ namespace location2
 			var arr = NSBundle.MainBundle.LoadNib("PointInfoView", null, null);
 			var v = Runtime.GetNSObject<PointInfoView>(arr.ValueAt(0));
 
+			v.point = point;
+
 			nfloat lx = (UIScreen.MainScreen.Bounds.Width - v.size.Width) / 2;
 			nfloat ly = (UIScreen.MainScreen.Bounds.Height - v.size.Height) / 2;
 			v.Frame = new CGRect(new CGPoint(lx, ly), v.size);
@@ -48,7 +53,15 @@ namespace location2
 
 		partial void ActionNavigate(UIButton sender)
 		{
-			//throw new NotImplementedException();
+			if (UIApplication.SharedApplication.CanOpenUrl(new NSUrl("waze://")))
+			{
+				var wazeURL = new NSUrl(string.Format("waze://?ll={0},{1}&navigate=yes", point.lat, point.lng));
+				UIApplication.SharedApplication.OpenUrl(wazeURL);
+			}
+			else {
+				var wazeAppURL = new NSUrl("http://itunes.apple.com/us/app/id323229106");
+				UIApplication.SharedApplication.OpenUrl(wazeAppURL);
+			}
 		}
 
 		partial void ActionClose(UIButton sender)

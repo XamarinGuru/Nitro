@@ -23,8 +23,8 @@ namespace PortableLibrary
 
 		public const string URL_GOOGLE = "www.google.com";
 
-		public static string[] SPEC_GROUP_TYPE = { "innovi" };
-		//public static string[] SPEC_GROUP_TYPE = { "nitro" };
+		//public static string[] SPEC_GROUP_TYPE = { "innovi" };
+		public static string[] SPEC_GROUP_TYPE = { "nitro" };
 
 		public const string MSG_LOGIN = "Login...";
 		public const string MSG_LOGIN_FAIL = "Login failed.";
