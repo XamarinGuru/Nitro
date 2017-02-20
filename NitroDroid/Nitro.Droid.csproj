@@ -304,6 +304,9 @@
     <AndroidResource Include="Resources\drawable\pin_T2.png" />
     <AndroidResource Include="Resources\drawable\pin_west.png" />
     <AndroidResource Include="Resources\layout\item_PointInfoView.axml" />
+    <AndroidResource Include="Resources\drawable\pin_me.png" />
+    <AndroidResource Include="Resources\drawable\pin_pfinish.png" />
+    <AndroidResource Include="Resources\drawable\pin_pstart.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

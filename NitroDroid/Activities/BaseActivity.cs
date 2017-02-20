@@ -703,6 +703,12 @@ namespace goheja
 				case "T2":
 					strPinImg = Resource.Drawable.pin_T2;
 					break;
+				case "pSTART":
+					strPinImg = Resource.Drawable.pin_pstart;
+					break;
+				case "pFINISH":
+					strPinImg = Resource.Drawable.pin_pfinish;
+					break;
 			}
 
 			return BitmapFactory.DecodeResource(Resources, strPinImg);

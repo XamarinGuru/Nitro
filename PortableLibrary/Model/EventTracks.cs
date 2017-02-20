@@ -17,7 +17,7 @@ namespace PortableLibrary
 		public string Speed { get; set; }
 		public string lapNo { get; set; }
 		public string lapImage { get; set; }
-		public List<TimePoint> LocalTime { get; set;}
+		//public List<TimePoint> LocalTime { get; set;}
 	}
 
 	public class EventTracks

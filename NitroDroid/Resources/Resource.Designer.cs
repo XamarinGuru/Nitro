@@ -1175,85 +1175,94 @@ namespace goheja
 			public const int pin_finish = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int pin_north = 2130837632;
+			public const int pin_me = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int pin_south = 2130837633;
+			public const int pin_north = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int pin_start = 2130837634;
+			public const int pin_pfinish = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int pin_T1 = 2130837635;
+			public const int pin_pstart = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int pin_T2 = 2130837636;
+			public const int pin_south = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int pin_west = 2130837637;
+			public const int pin_start = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int pop_up_bg = 2130837638;
+			public const int pin_T1 = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int resume_active = 2130837639;
+			public const int pin_T2 = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int resume_inactive = 2130837640;
+			public const int pin_west = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int roundedbg = 2130837641;
+			public const int pop_up_bg = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int roundedbgdark = 2130837642;
+			public const int resume_active = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int runRound_new = 2130837643;
+			public const int resume_inactive = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int speed_new = 2130837644;
+			public const int roundedbg = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int splash = 2130837645;
+			public const int roundedbgdark = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int splash_new = 2130837646;
+			public const int runRound_new = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int stop_active = 2130837647;
+			public const int speed_new = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int switch_off = 2130837648;
+			public const int splash = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int text_icon = 2130837649;
+			public const int splash_new = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int timer_new = 2130837650;
+			public const int stop_active = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int transparent = 2130837651;
+			public const int switch_off = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int user_active_new = 2130837652;
+			public const int text_icon = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int user_icon = 2130837653;
+			public const int timer_new = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int user_inactive_new = 2130837654;
+			public const int transparent = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int watch_icon = 2130837655;
+			public const int user_active_new = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int watch_new = 2130837656;
+			public const int user_icon = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int watch_new2 = 2130837657;
+			public const int user_inactive_new = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int watt_new = 2130837658;
+			public const int watch_icon = 2130837658;
+			
+			// aapt resource value: 0x7f02009b
+			public const int watch_new = 2130837659;
+			
+			// aapt resource value: 0x7f02009c
+			public const int watch_new2 = 2130837660;
+			
+			// aapt resource value: 0x7f02009d
+			public const int watt_new = 2130837661;
 			
 			static Drawable()
 			{

@@ -70,22 +70,24 @@ namespace goheja
 						var point = mEventMarker.markers[i];
 						var pointLocation = new LatLng(point.lat, point.lng);
 
-						MarkerOptions markerOpt = new MarkerOptions();
-						markerOpt.SetPosition(pointLocation);
+						//MarkerOptions markerOpt = new MarkerOptions();
+						//markerOpt.SetPosition(pointLocation);
 
-						var metrics = Resources.DisplayMetrics;
-						var wScreen = metrics.WidthPixels;
+						//var metrics = Resources.DisplayMetrics;
+						//var wScreen = metrics.WidthPixels;
 
-						Bitmap bmp = GetPinIconByType(point.type);
-						Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
-						markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+						//Bitmap bmp = GetPinIconByType(point.type);
+						//Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
+						//markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
-						RunOnUiThread(() =>
-						{
-							var marker = mMapView.AddMarker(markerOpt);
-							pointIDs.Add(marker.Id);
-						});
+						//RunOnUiThread(() =>
+						//{
+						//	var marker = mMapView.AddMarker(markerOpt);
+						//	pointIDs.Add(marker.Id);
+						//});
 						mapBounds.Include(pointLocation);
+
+						AddMapPin(pointLocation, point.type);
 					}
 
 					if (trackPoints != null && trackPoints.Count > 0)
@@ -98,6 +100,15 @@ namespace goheja
 								var pointLocation = new LatLng(point.Latitude, point.Longitude);
 								paths.Add(pointLocation);
 								mapBounds.Include(pointLocation);
+
+								if (point.lapImage == "Start")
+								{
+									AddMapPin(pointLocation, "pSTART");
+								}
+								else if (point.lapImage == "Totals")
+								{
+									AddMapPin(pointLocation, "pFINISH");
+								}
 							}
 
 							LatLng[] arrPath = new LatLng[paths.Count];
@@ -114,18 +125,44 @@ namespace goheja
 			});
 		}
 
+		void AddMapPin(LatLng position, string type)
+		{
+			MarkerOptions markerOpt = new MarkerOptions();
+			markerOpt.SetPosition(position);
+
+			var metrics = Resources.DisplayMetrics;
+			var wScreen = metrics.WidthPixels;
+
+			Bitmap bmp = GetPinIconByType(type);
+			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
+			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+
+			RunOnUiThread(() =>
+			{
+				var marker = mMapView.AddMarker(markerOpt);
+				pointIDs.Add(marker.Id);
+			});
+		}
+
 		public bool OnMarkerClick(Marker marker)
 		{
-			PortableLibrary.Point selectedPoint = null;
-			for (var i = 0; i < pointIDs.Count; i++)
+			try
 			{
-				if (marker.Id == pointIDs[i])
-					selectedPoint = mEventMarker.markers[i];
-			}
-			if (selectedPoint == null) return false;
+				PortableLibrary.Point selectedPoint = null;
+				for (var i = 0; i < pointIDs.Count; i++)
+				{
+					if (marker.Id == pointIDs[i])
+						selectedPoint = mEventMarker.markers[i];
+				}
+				if (selectedPoint == null) return false;
 
-			PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);
-			myDiag.Show(FragmentManager, "Diag");
+				PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);
+				myDiag.Show(FragmentManager, "Diag");
+			}
+			catch
+			{
+				return true;
+			}
 
 			return true;
 		}
