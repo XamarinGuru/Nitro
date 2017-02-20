@@ -41,6 +41,11 @@ namespace location2
 			}
 			return this.locMgr;
 		}
+
+		public void StopLocationUpdates()
+		{
+			LocMgr.StopUpdatingLocation();
+		}
 	}
 	public class LocationUpdatedEventArgs : EventArgs
 	{

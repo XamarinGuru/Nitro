@@ -19,7 +19,7 @@ namespace location2
 			mountain = 5
 		};
 
-		public static LocationManager Manager { get; set; }
+		//public static LocationManager Manager = new LocationManager();
 
 		MapView mMapView;
 
@@ -34,8 +34,8 @@ namespace location2
 
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
-			Manager = new LocationManager();
-			Manager.StartLocationUpdates();
+			//Manager = new LocationManager();
+			//Manager.StartLocationUpdates();
 			MemberModel = new RootMemberModel();
 		}
 
@@ -110,8 +110,15 @@ namespace location2
 		float currdistance = 0;
 		int flag = 0;
 
-		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		void LocationUpdated(object sender, EventArgs e)
 		{
+			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
+			var location = locArgs.Locations[locArgs.Locations.Length - 1];
+
+		//}
+
+		//public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		//{
 			if (flag <= 2) flag++;
 
 			if (startStop)
@@ -120,7 +127,7 @@ namespace location2
 				//	this.lblTitle.Text = "On the go";
 
 				// Handle foreground updates
-				CLLocation location = e.Location;
+				//CLLocation location = e.Location;
 
 				if (!paused)
 				{
@@ -197,6 +204,8 @@ namespace location2
 				stopBtn.Hidden = true;
 				paused = false;
 				backBtn.Hidden = true;
+				LocationHelper.StartLocationManager();
+				LocationHelper.LocationUpdated += LocationUpdated;
 			}
 			else
 			{
@@ -209,7 +218,9 @@ namespace location2
 					else
 					{
 						//this.lblTitle.Text = "Searching for GPS...";
-						Manager.LocationUpdated += HandleLocationChanged;
+						//Manager.LocationUpdated += HandleLocationChanged;
+						LocationHelper.StartLocationManager();
+						LocationHelper.LocationUpdated += LocationUpdated;
 					}
 					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
 					stopBtn.Hidden = false;
@@ -229,6 +240,8 @@ namespace location2
 					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
 					stopBtn.Hidden = false;
 					paused = true;
+
+					LocationHelper.StopLocationManager();
 				}
 			}
 		}
@@ -294,7 +307,11 @@ namespace location2
 
 			startStopBtn.SetBackgroundImage(UIImage.FromFile("go_button.png"), UIControlState.Normal);
 
-			Manager.LocationUpdated -= HandleLocationChanged;
+			//Manager.LocationUpdated -= HandleLocationChanged;
+			//Manager.StopLocationUpdates();
+
+			//LocationHelper.LocationUpdated -= LocationUpdated;
+			LocationHelper.StopLocationManager();
 
 			NSUserDefaults.StandardUserDefaults.SetInt(0, "timer");
 			NSUserDefaults.StandardUserDefaults.SetDouble(0, "lastDistance");
@@ -325,7 +342,7 @@ namespace location2
 		{
 			viewSelectType.Hidden = true;
 
-			Manager.LocationUpdated += HandleLocationChanged;
+			//Manager.LocationUpdated += HandleLocationChanged;
 
 			switch (sender.Tag)
 			{

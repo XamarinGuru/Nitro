@@ -13,6 +13,8 @@ namespace location2
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
+		public static LocationHelper MyLocationHelper = new LocationHelper();
+
 		private nint bgThread = -1;
 
 		public BaseViewController baseVC;
