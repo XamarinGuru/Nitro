@@ -352,20 +352,57 @@ namespace location2
 			return eventMarkers;
 		}
 
-		public EventPoints GetTrackPoints(string eventID)
+		Random rand = new Random();
+		public UIColor GetRandomColor()
 		{
-			var trackPoints = new EventPoints();
+			int hue = rand.Next(255);
+			UIColor color = UIColor.FromHSB((hue / 255.0f), 1.0f, 1.0f);
+			return color;
+		}
+
+		public List<List<TPoint>> GetTrackPoints(string eventID)
+		{
+			List<List<TPoint>> returnTPoints = new List<List<TPoint>>();
 			try
 			{
 				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE[0]);
-				//eventMarkers = JsonConvert.DeserializeObject<EventPoints>(pointsObject.ToString());
+				var trackPoints = JsonConvert.DeserializeObject<EventTracks>(pointsObject.ToString());
+
+				if (trackPoints != null && trackPoints.TrackPoints.Count > 0)
+				{
+					List<string> lapNOs = new List<string>();
+					foreach (var tPoint in trackPoints.TrackPoints)
+					{
+						bool isExist = false;
+						foreach (var lapNo in lapNOs)
+						{
+							if (lapNo == tPoint.lapNo)
+								isExist = true;
+						}
+
+						if (!isExist)
+							lapNOs.Add(tPoint.lapNo);
+					}
+
+					foreach (var lapNo in lapNOs)
+					{
+						List<TPoint> tPoints = new List<TPoint>();
+						foreach (var tPoint in trackPoints.TrackPoints)
+						{
+							if (lapNo == tPoint.lapNo && !Equals(tPoint.Latitude, 0d) && !Equals(tPoint.Longitude, 0d))
+								tPoints.Add(tPoint);
+						}
+						returnTPoints.Add(tPoints);
+					}
+				}
+
 			}
 			catch (Exception ex)
 			{
-				ShowMessageBox(null, ex.Message);
+				//ShowMessageBox(null, ex.Message);
 				return null;
 			}
-			return trackPoints;
+			return returnTPoints;
 		}
 
 		public Comment GetComments(string eventID, string type = "1")

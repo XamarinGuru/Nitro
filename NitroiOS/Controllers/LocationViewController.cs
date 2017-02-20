@@ -5,6 +5,7 @@ using PortableLibrary;
 using Google.Maps;
 using System.Drawing;
 using CoreLocation;
+using System.Linq;
 
 namespace location2
 {
@@ -66,40 +67,50 @@ namespace location2
 				mEventMarker = GetAllMarkers(eventID);
 				var trackPoints = GetTrackPoints(eventID);
 
-				var mapBounds = new CoordinateBounds();
-
-				var polyline = new Polyline();
-				var path = new MutablePath();
-
 				InvokeOnMainThread(() =>
 				{
-					for (int i = 0; i < mEventMarker.markers.Count; i++)
-					{
-						var point = mEventMarker.markers[i];
-						var imgPin = GetPinIconByType(point.type);
-						var pointLocation = new CLLocationCoordinate2D(point.lat, point.lng);
+					var mapBounds = new CoordinateBounds();
 
-						var marker = new Marker
+					if (mEventMarker != null && mEventMarker.markers.Count > 0)
+					{
+						for (int i = 0; i < mEventMarker.markers.Count; i++)
 						{
-							Position = pointLocation,
-							Map = mMapView,
-							Icon = imgPin,
-							ZIndex = i
-						};
+							var point = mEventMarker.markers[i];
+							var imgPin = GetPinIconByType(point.type);
+							var pointLocation = new CLLocationCoordinate2D(point.lat, point.lng);
 
-						mapBounds = mapBounds.Including(pointLocation);
-						path.AddCoordinate(pointLocation);
+							var marker = new Marker
+							{
+								Position = pointLocation,
+								Map = mMapView,
+								Icon = imgPin,
+								ZIndex = i
+							};
+
+							mapBounds = mapBounds.Including(pointLocation);
+						}
 					}
 
-					if (mEventMarker.markers.Count > 0)
+					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
-
-						//polyline.Path = path;
-						//polyline.StrokeColor = UIColor.Red;
-						//polyline.StrokeWidth = 5;
-						//polyline.Map = mMapView;
+						foreach (var tPoints in trackPoints)
+						{
+							var polyline = new Polyline();
+							var path = new MutablePath();
+							foreach (var tPoint in tPoints)
+							{
+								var tLocation = new CLLocationCoordinate2D(tPoint.Latitude, tPoint.Longitude);
+								path.AddCoordinate(tLocation);
+								mapBounds = mapBounds.Including(tLocation);
+							}
+							polyline.Path = path;
+							polyline.StrokeColor = GetRandomColor();
+							polyline.StrokeWidth = 5;
+							polyline.Map = mMapView;
+						}
 					}
+
+					mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
 				});
 				HideLoadingView();
 			});

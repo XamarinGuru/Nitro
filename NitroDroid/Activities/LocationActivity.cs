@@ -1,27 +1,23 @@
 ﻿
 using System.Collections.Generic;
-using Android;
 using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
-using Android.Locations;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Views;
 using PortableLibrary;
 
 namespace goheja
 {
 	[Activity(Label = "LocationActivity")]
-	public class LocationActivity : BaseActivity, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
+	public class LocationActivity : BaseActivity, IOnMapReadyCallback, GoogleMap.IOnMarkerClickListener
 	{
 		const int Location_Request_Code = 0;
 
 		EventPoints mEventMarker = new EventPoints();
-		private IList<string> pointIDs;
+		IList<string> pointIDs;
 
 		SupportMapFragment mMapViewFragment;
 		GoogleMap mMapView = null;
@@ -36,7 +32,6 @@ namespace goheja
 			mMapViewFragment.GetMapAsync(this);
 		}
 
-
 		#region google map
 
 		public void OnMapReady(GoogleMap googleMap)
@@ -46,14 +41,6 @@ namespace goheja
 			if (mMapView != null)
 			{
 				mMapView.SetOnMarkerClickListener(this);
-
-				string[] PermissionsLocation =
-				{
-					Manifest.Permission.AccessCoarseLocation,
-					Manifest.Permission.AccessFineLocation
-				};
-				//Explain to the user why we need to read the contacts
-				ActivityCompat.RequestPermissions(this, PermissionsLocation, Location_Request_Code);
 
 				GetMarkersAndPoints();
 			}
@@ -70,8 +57,6 @@ namespace goheja
 				var trackPoints = GetTrackPoints(AppSettings.selectedEvent._id);
 
 				var mapBounds = new LatLngBounds.Builder();
-
-				LatLng[] path = new LatLng[mEventMarker.markers.Count];
 
 				if (mMapView == null) return;
 
@@ -98,18 +83,31 @@ namespace goheja
 						{
 							var marker = mMapView.AddMarker(markerOpt);
 							pointIDs.Add(marker.Id);
-
 						});
 						mapBounds.Include(pointLocation);
-						path[i] = pointLocation;
 					}
 
-					if (mEventMarker.markers.Count > 0)
+					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+						foreach (var tPoints in trackPoints)
+						{
+							List<LatLng> paths = new List<LatLng>();
+							foreach (var point in tPoints)
+							{
+								var pointLocation = new LatLng(point.Latitude, point.Longitude);
+								paths.Add(pointLocation);
+								mapBounds.Include(pointLocation);
+							}
 
-						//mMapView.AddPolyline(new PolylineOptions().Add(path).InvokeColor(Color.Red).InvokeWidth(5f));
+							LatLng[] arrPath = new LatLng[paths.Count];
+							for (var i = 0; i < paths.Count; i++)
+								arrPath[i] = paths[i];
+
+							mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor()).InvokeWidth(5f));
+						}
 					}
+
+					mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
 				});
 				HideLoadingView();
 			});
@@ -125,60 +123,11 @@ namespace goheja
 			}
 			if (selectedPoint == null) return false;
 
-			PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);//(Constants.STR_VERIFY_PASSWORD_TITLE, VerifyPassword);
+			PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);
 			myDiag.Show(FragmentManager, "Diag");
 
 			return true;
 		}
-
-		#region current location
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-		{
-			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-			switch (requestCode)
-			{
-				case Location_Request_Code:
-				{
-					if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
-					{
-						GetMarkersAndPoints();
-					}
-					else {
-						//SetMyLocationOnMap(false);
-					}
-					return;
-				}
-			}
-		}
-
-		public void OnLocationChanged(Location location){}
-		public void OnProviderEnabled(string provider){}
-		public void OnStatusChanged(string provider, Availability status, Bundle extras){}
-
-		public void OnProviderDisabled(string provider)
-		{
-			using (var alert = new AlertDialog.Builder(this))
-			{
-				alert.SetTitle("Please enable GPS");
-				alert.SetMessage("Enable GPS in order to get your current location.");
-
-				alert.SetPositiveButton("Enable", (senderAlert, args) =>
-				{
-					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
-					StartActivity(intent);
-				});
-
-				alert.SetNegativeButton("Continue", (senderAlert, args) =>
-				{
-					alert.Dispose();
-				});
-
-				Dialog dialog = alert.Create();
-				dialog.Show();
-			}
-		}
-
-		#endregion
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
 		{

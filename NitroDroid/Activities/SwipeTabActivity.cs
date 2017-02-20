@@ -120,7 +120,6 @@ namespace goheja
 			}
 			else {
 				RequestCalendarPermission();
-
 			}
 		}
 		void RequestCalendarPermission()
