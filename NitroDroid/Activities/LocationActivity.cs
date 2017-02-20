@@ -69,22 +69,6 @@ namespace goheja
 					{
 						var point = mEventMarker.markers[i];
 						var pointLocation = new LatLng(point.lat, point.lng);
-
-						//MarkerOptions markerOpt = new MarkerOptions();
-						//markerOpt.SetPosition(pointLocation);
-
-						//var metrics = Resources.DisplayMetrics;
-						//var wScreen = metrics.WidthPixels;
-
-						//Bitmap bmp = GetPinIconByType(point.type);
-						//Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
-						//markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
-
-						//RunOnUiThread(() =>
-						//{
-						//	var marker = mMapView.AddMarker(markerOpt);
-						//	pointIDs.Add(marker.Id);
-						//});
 						mapBounds.Include(pointLocation);
 
 						AddMapPin(pointLocation, point.type);
