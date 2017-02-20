@@ -2,6 +2,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -9,7 +10,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "AddCommentActivity")]
+	[Activity(Label = "AddCommentActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class AddCommentActivity : BaseActivity
 	{
 		private RootMemberModel MemberModel = new RootMemberModel();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.Net;
 using Android.OS;
@@ -17,7 +18,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "BaseActivity")]
+	[Activity(Label = "BaseActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class BaseActivity : FragmentActivity
 	{
 		Color COLOR_ORANGE = Color.Rgb(229, 161, 9);

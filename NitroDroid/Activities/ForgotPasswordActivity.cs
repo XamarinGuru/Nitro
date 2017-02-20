@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -8,7 +9,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "ForgotPasswordActivity")]
+	[Activity(Label = "ForgotPasswordActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class ForgotPasswordActivity : BaseActivity
 	{
 		EditText txtEmail;

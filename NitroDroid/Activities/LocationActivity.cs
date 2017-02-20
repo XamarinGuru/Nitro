@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
@@ -11,7 +12,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "LocationActivity")]
+	[Activity(Label = "LocationActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class LocationActivity : BaseActivity, IOnMapReadyCallback, GoogleMap.IOnMarkerClickListener
 	{
 		const int Location_Request_Code = 0;

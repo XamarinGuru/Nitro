@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Android.Animation;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -12,7 +13,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "EditProfileActivity")]
+	[Activity(Label = "EditProfileActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EditProfileActivity : BaseActivity
 	{
 		RootMemberModel MemberModel { get; set; }

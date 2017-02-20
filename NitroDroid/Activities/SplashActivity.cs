@@ -4,10 +4,11 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Text;
 using System.Threading.Tasks;
+using Android.Content.PM;
 
 namespace goheja
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait)]
 
     public class SplashActivity : BaseActivity
     {

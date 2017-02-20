@@ -1,6 +1,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -8,7 +9,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-    [Activity(Label = "listing")]
+    [Activity(Label = "listing", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class RegisterActivity : BaseActivity
     {
 		EditText txtFirstname, txtLastname, txtUsername, txtEmail, txtPassword, txtAge;

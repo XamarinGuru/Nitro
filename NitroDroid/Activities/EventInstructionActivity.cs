@@ -2,6 +2,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -9,7 +10,7 @@ using PortableLibrary;
 
 namespace goheja
 {
-	[Activity(Label = "EventInstructionActivity")]
+	[Activity(Label = "EventInstructionActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EventInstructionActivity : BaseActivity
 	{
 		TextView lblPDistance, lblPDuration, lblPLoad;
