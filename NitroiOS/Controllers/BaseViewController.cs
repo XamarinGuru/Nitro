@@ -665,6 +665,12 @@ namespace location2
 				case "T2":
 					strPinImg = "pin_T2.png";
 					break;
+				case "pSTART":
+					strPinImg = "pin_pstart.png";
+					break;
+				case "pFINISH":
+					strPinImg = "pin_pfinish.png";
+					break;
 			}
 
 			return UIImage.FromFile(strPinImg);

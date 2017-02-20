@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -11,7 +12,6 @@ namespace goheja
 	[Activity(Label = "PointInfoDialog")]
 	public class PointInfoDialog : DialogFragment
 	{
-		Action<string> callback;
 		Point point;
 
 		public static PointInfoDialog newInstance(Point point)
@@ -47,9 +47,24 @@ namespace goheja
 			infoView.FindViewById<TextView>(Resource.Id.lblInterval).Text = "Interval: " + point.interval;
 
 			infoView.FindViewById<ImageView>(Resource.Id.ActionClose).Click += (sender, e) => Dismiss();
-			infoView.FindViewById<Button>(Resource.Id.ActionNavigate).Click += (sender, e) => Dismiss();
+			infoView.FindViewById<Button>(Resource.Id.ActionNavigate).Click += (sender, e) => ActionNavigate();
 
 			return infoView;
+		}
+
+		void ActionNavigate()
+		{
+			try
+			{
+				string url = string.Format("waze://?ll={0},{1}&navigate=yes", point.lat, point.lng);
+				Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(url));
+				StartActivity(intent);
+			}
+			catch (ActivityNotFoundException ex)
+			{
+				Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("market://details?id=com.waze"));
+				StartActivity(intent);
+			}
 		}
 	}
 }

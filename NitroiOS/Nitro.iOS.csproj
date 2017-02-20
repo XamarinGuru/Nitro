@@ -371,6 +371,9 @@
     <BundleResource Include="Resources\pin_T1.png" />
     <BundleResource Include="Resources\pin_T2.png" />
     <BundleResource Include="Resources\pin_west.png" />
+    <BundleResource Include="Resources\pin_pfinish.png" />
+    <BundleResource Include="Resources\pin_pstart.png" />
+    <BundleResource Include="Resources\pin_me.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

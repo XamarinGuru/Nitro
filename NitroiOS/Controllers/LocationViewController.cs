@@ -78,16 +78,9 @@ namespace location2
 							var point = mEventMarker.markers[i];
 							var imgPin = GetPinIconByType(point.type);
 							var pointLocation = new CLLocationCoordinate2D(point.lat, point.lng);
-
-							var marker = new Marker
-							{
-								Position = pointLocation,
-								Map = mMapView,
-								Icon = imgPin,
-								ZIndex = i
-							};
-
 							mapBounds = mapBounds.Including(pointLocation);
+
+							AddMapPin(pointLocation, imgPin, i);
 						}
 					}
 
@@ -102,6 +95,16 @@ namespace location2
 								var tLocation = new CLLocationCoordinate2D(tPoint.Latitude, tPoint.Longitude);
 								path.AddCoordinate(tLocation);
 								mapBounds = mapBounds.Including(tLocation);
+
+								if (tPoint.lapImage == "Start")
+								{
+									UIImage imgPin = GetPinIconByType("pSTART");
+									AddMapPin(tLocation, imgPin, -1);
+								}
+								else if (tPoint.lapImage == "Totals"){
+									UIImage imgPin = GetPinIconByType("pFINISH");
+									AddMapPin(tLocation, imgPin, -1);
+								}
 							}
 							polyline.Path = path;
 							polyline.StrokeColor = GetRandomColor();
@@ -131,9 +134,21 @@ namespace location2
 			viewMapContent.AddSubview(mMapView);
 		}
 
+		void AddMapPin(CLLocationCoordinate2D position, UIImage icon, int zIndex)
+		{
+			var marker = new Marker
+			{
+				Position = position,
+				Map = mMapView,
+				Icon = icon,
+				ZIndex = zIndex
+			};
+		}
 		#region map pin click event
 		bool ClickedDropItem(MapView mapView, Marker marker)
 		{
+			if (marker.ZIndex == -1) return true;
+
 			var selectedPoint = mEventMarker.markers[marker.ZIndex];
 
 			PointInfoView cpuv = PointInfoView.Create(selectedPoint);
