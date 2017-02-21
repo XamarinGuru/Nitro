@@ -28,6 +28,8 @@ namespace goheja
 
 		const int RequestLocationId = 0;
 
+		LocationManager _locationManager;
+
 		SupportMapFragment mMapViewFragment;
 		GoogleMap mMapView = null;
 
@@ -165,6 +167,8 @@ namespace goheja
 					break;
             }
 
+			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
+
 			CheckLocationPermission();
         }
 
@@ -213,11 +217,17 @@ namespace goheja
                 isPaused = false;
 				btnStopPractice.Visibility = ViewStates.Visible;
 				startBtn.SetBackgroundResource(Resource.Drawable.resume_inactive);
+
+				_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
             }
             else
             {
                 if (!isStarted)
                 {
+
+					_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+					
+
 					isStarted = true;
                     isPaused = false;
 					btnStopPractice.Visibility = ViewStates.Visible;
@@ -237,6 +247,9 @@ namespace goheja
                 }
                 else
                 {
+					_locationManager.RemoveUpdates(this);
+
+
 					isPaused = true;
                     startBtn.SetBackgroundResource(Resource.Drawable.resume_active);
 					btnStopPractice.Visibility = ViewStates.Gone;
@@ -327,6 +340,8 @@ namespace goheja
 
 			startBtn.Visibility = ViewStates.Gone;
 
+			_locationManager.RemoveUpdates(this);
+
 			var activity = new Intent(this, typeof(SwipeTabActivity));
 			StartActivity(activity);
 			Finish();
@@ -341,10 +356,10 @@ namespace goheja
 				StartLocationService();
 			}
 			else {
-				RequestCalendarPermission();
+				RequestLocationPermission();
 			}
 		}
-		void RequestCalendarPermission()
+		void RequestLocationPermission()
 		{
 			const string permission = Manifest.Permission.AccessFineLocation;
 			if (CheckSelfPermission(permission) == (int)Permission.Granted)
@@ -390,27 +405,31 @@ namespace goheja
         {
             _title.Text = "Searching for GPS...";
 
-            if (App.Current.locationServiceConnection?.Binder == null)
-            {
-                App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
-                {
-                    SubscribeLocationServie();
-                };
-            }
-            else
-            {
-                SubscribeLocationServie();
-            }
+            //if (App.Current.locationServiceConnection?.Binder == null)
+            //{
+            //    App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
+            //    {
+            //        SubscribeLocationServie();
+            //    };
+            //}
+            //else
+            //{
+            //    SubscribeLocationServie();
+            //}
+
+
         }
 
         //by Afroz date 2/9/2016
-        private void SubscribeLocationServie()
-        {
-            App.Current.LocationService.LocationChanged += HandleLocationChanged;
-            App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
-            App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
-            App.Current.LocationService.StatusChanged += HandleStatusChanged;
-        }
+   //     private void SubscribeLocationServie()
+   //     {
+   //         App.Current.LocationService.LocationChanged += HandleLocationChanged;
+   //         App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
+   //         App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
+   //         App.Current.LocationService.StatusChanged += HandleStatusChanged;
+
+			//App.Current.LocationService.StopLocationUpdates();
+   //     }
 
         //end of update afroz
         #region Android Location Service methods
@@ -420,32 +439,33 @@ namespace goheja
         /// </summary>
         TimeSpan ts = new TimeSpan(0, 0, 20);
 
-		public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
-		{
-			_title.Text = "GPS disabled";
-		}
+		//public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
+		//{
+		//	_title.Text = "GPS disabled";
+		//}
 
-		public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
-		{
-			_title.Text = "GPS enabled";
-		}
+		//public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
+		//{
+		//	_title.Text = "GPS enabled";
+		//}
 
-		public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
-		{
-			_title.Text = "GPS low signal";
-		}
+		//public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
+		//{
+		//	_title.Text = "GPS low signal";
+		//}
 		public void vibrate(long time)
 		{
 			Vibrator vibrator = (Vibrator)this.GetSystemService(Context.VibratorService);
 			vibrator.Vibrate(time);
 		}
 
-		public void OnLocationChanged(Location location) { }
-		public void OnProviderDisabled(string provider) { }
-		public void OnProviderEnabled(string provider) { }
-		public void OnStatusChanged(string provider, Availability status, Bundle extras) { }
+		//public void OnLocationChanged(Location location) { }
+		public void OnProviderDisabled(string provider) {_title.Text = "GPS disabled"; }
+		public void OnProviderEnabled(string provider) { _title.Text = "GPS enabled";}
+		public void OnStatusChanged(string provider, Availability status, Bundle extras) {_title.Text = "GPS low signal"; }
 
-        public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+        //public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+		public void OnLocationChanged(Location location)
         {
             string status = "online";
 
@@ -458,7 +478,7 @@ namespace goheja
 				return;
             }
 
-            _currentLocation = e.Location;
+            _currentLocation = location;
             
             try
             {

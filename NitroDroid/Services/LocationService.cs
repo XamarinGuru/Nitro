@@ -60,6 +60,11 @@ namespace goheja.Services
 			LocMgr.RequestLocationUpdates(locationProvider, 1000,1, this);
 		}
 
+		public void StopLocationUpdates()
+		{
+			LocMgr.RemoveUpdates(this);
+		}
+
 		public override void OnDestroy ()
 		{
 			base.OnDestroy ();
