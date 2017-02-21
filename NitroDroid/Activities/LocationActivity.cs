@@ -57,21 +57,24 @@ namespace goheja
 				mEventMarker = GetAllMarkers(AppSettings.selectedEvent._id);
 				var trackPoints = GetTrackPoints(AppSettings.selectedEvent._id);
 
-				var mapBounds = new LatLngBounds.Builder();
+				HideLoadingView();
 
-				if (mMapView == null) return;
+				var boundPoints = new List<LatLng>();
 
 				pointIDs = new List<string>();
 
 				RunOnUiThread(() =>
 				{
-					for (int i = 0; i < mEventMarker.markers.Count; i++)
+					if (mEventMarker != null && mEventMarker.markers.Count > 0)
 					{
-						var point = mEventMarker.markers[i];
-						var pointLocation = new LatLng(point.lat, point.lng);
-						mapBounds.Include(pointLocation);
+						for (int i = 0; i < mEventMarker.markers.Count; i++)
+						{
+							var point = mEventMarker.markers[i];
+							var pointLocation = new LatLng(point.lat, point.lng);
+							boundPoints.Add(pointLocation);
 
-						AddMapPin(pointLocation, point.type);
+							AddMapPin(pointLocation, point.type);
+						}
 					}
 
 					if (trackPoints != null && trackPoints.Count > 0)
@@ -83,7 +86,7 @@ namespace goheja
 							{
 								var pointLocation = new LatLng(point.Latitude, point.Longitude);
 								paths.Add(pointLocation);
-								mapBounds.Include(pointLocation);
+								boundPoints.Add(pointLocation);
 
 								if (point.lapImage == "Start")
 								{
@@ -103,9 +106,20 @@ namespace goheja
 						}
 					}
 
-					mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+					if (boundPoints.Count == 0)
+					{
+						var location = new LatLng(Constants.LOCATION_ISURAEL[0], Constants.LOCATION_ISURAEL[1]);
+						CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
+						mMapView.MoveCamera(cu_center);
+					}
+					else 
+					{
+						var mapBounds = new LatLngBounds.Builder();
+						foreach (var bound in boundPoints)
+							mapBounds.Include(bound);
+						mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+					}
 				});
-				HideLoadingView();
 			});
 		}
 

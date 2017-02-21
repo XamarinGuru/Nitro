@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 namespace PortableLibrary
 {
-	public class TimePoint
-	{
-		public string date {get; set;}
-	}
 	public class TPoint
 	{
 		public string Altitude { get; set; }
@@ -17,7 +13,8 @@ namespace PortableLibrary
 		public string Speed { get; set; }
 		public string lapNo { get; set; }
 		public string lapImage { get; set; }
-		//public List<TimePoint> LocalTime { get; set;}
+		public string LocalTime { get; set;}
+		public DateTime index { get; set;}
 	}
 
 	public class EventTracks

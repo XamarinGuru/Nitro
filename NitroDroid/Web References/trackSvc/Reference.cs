@@ -188,6 +188,8 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback getEventGraphOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getNearestEventMakersOperationCompleted;
+        
         private System.Threading.SendOrPostCallback athDataOperationCompleted;
         
         private System.Threading.SendOrPostCallback removeMultiFromGroupOperationCompleted;
@@ -484,6 +486,9 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         public event getEventGraphCompletedEventHandler getEventGraphCompleted;
+        
+        /// CodeRemarks
+        public event getNearestEventMakersCompletedEventHandler getNearestEventMakersCompleted;
         
         /// CodeRemarks
         public event athDataCompletedEventHandler athDataCompleted;
@@ -1106,22 +1111,24 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/testPmc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void testPmc(int d, [System.Xml.Serialization.XmlIgnoreAttribute()] bool dSpecified, float pmc, [System.Xml.Serialization.XmlIgnoreAttribute()] bool pmcSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+        public void testPmc(int d, [System.Xml.Serialization.XmlIgnoreAttribute()] bool dSpecified, float pmc, [System.Xml.Serialization.XmlIgnoreAttribute()] bool pmcSpecified, bool type, [System.Xml.Serialization.XmlIgnoreAttribute()] bool typeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
             this.Invoke("testPmc", new object[] {
                         d,
                         dSpecified,
                         pmc,
                         pmcSpecified,
+                        type,
+                        typeSpecified,
                         specGroup});
         }
         
         /// CodeRemarks
-        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, string specGroup) {
-            this.testPmcAsync(d, dSpecified, pmc, pmcSpecified, specGroup, null);
+        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string specGroup) {
+            this.testPmcAsync(d, dSpecified, pmc, pmcSpecified, type, typeSpecified, specGroup, null);
         }
         
         /// CodeRemarks
-        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, string specGroup, object userState) {
+        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string specGroup, object userState) {
             if ((this.testPmcOperationCompleted == null)) {
                 this.testPmcOperationCompleted = new System.Threading.SendOrPostCallback(this.OntestPmcOperationCompleted);
             }
@@ -1130,6 +1137,8 @@ namespace goheja.trackSvc {
                         dSpecified,
                         pmc,
                         pmcSpecified,
+                        type,
+                        typeSpecified,
                         specGroup}, this.testPmcOperationCompleted, userState);
         }
         
@@ -3591,6 +3600,38 @@ namespace goheja.trackSvc {
             if ((this.getEventGraphCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getEventGraphCompleted(this, new getEventGraphCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getNearestEventMakers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getNearestEventMakers([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getNearestEventMakers", new object[] {
+                        athId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getNearestEventMakersAsync(string athId, string specGroup) {
+            this.getNearestEventMakersAsync(athId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getNearestEventMakersAsync(string athId, string specGroup, object userState) {
+            if ((this.getNearestEventMakersOperationCompleted == null)) {
+                this.getNearestEventMakersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNearestEventMakersOperationCompleted);
+            }
+            this.InvokeAsync("getNearestEventMakers", new object[] {
+                        athId,
+                        specGroup}, this.getNearestEventMakersOperationCompleted, userState);
+        }
+        
+        private void OngetNearestEventMakersOperationCompleted(object arg) {
+            if ((this.getNearestEventMakersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNearestEventMakersCompleted(this, new getNearestEventMakersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6512,6 +6553,32 @@ namespace goheja.trackSvc {
         private object[] results;
         
         internal getEventGraphCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getNearestEventMakersCompletedEventHandler(object sender, getNearestEventMakersCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNearestEventMakersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNearestEventMakersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -6,6 +6,7 @@ using Google.Maps;
 using System.Drawing;
 using CoreLocation;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace location2
 {
@@ -67,9 +68,11 @@ namespace location2
 				mEventMarker = GetAllMarkers(eventID);
 				var trackPoints = GetTrackPoints(eventID);
 
+				HideLoadingView();
+
 				InvokeOnMainThread(() =>
 				{
-					var mapBounds = new CoordinateBounds();
+					var boundPoints = new List<CLLocationCoordinate2D>();
 
 					if (mEventMarker != null && mEventMarker.markers.Count > 0)
 					{
@@ -78,7 +81,7 @@ namespace location2
 							var point = mEventMarker.markers[i];
 							var imgPin = GetPinIconByType(point.type);
 							var pointLocation = new CLLocationCoordinate2D(point.lat, point.lng);
-							mapBounds = mapBounds.Including(pointLocation);
+							boundPoints.Add(pointLocation);
 
 							AddMapPin(pointLocation, imgPin, i);
 						}
@@ -94,7 +97,8 @@ namespace location2
 							{
 								var tLocation = new CLLocationCoordinate2D(tPoint.Latitude, tPoint.Longitude);
 								path.AddCoordinate(tLocation);
-								mapBounds = mapBounds.Including(tLocation);
+
+								boundPoints.Add(tLocation);
 
 								if (tPoint.lapImage == "Start")
 								{
@@ -113,9 +117,19 @@ namespace location2
 						}
 					}
 
-					mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
+					if (boundPoints.Count == 0)
+					{
+						var camera = CameraPosition.FromCamera(PortableLibrary.Constants.LOCATION_ISURAEL[0], PortableLibrary.Constants.LOCATION_ISURAEL[1], zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+						mMapView = MapView.FromCamera(RectangleF.Empty, camera);
+					}
+					else
+					{
+						var mapBounds = new CoordinateBounds();
+						foreach (var bound in boundPoints)
+							mapBounds = mapBounds.Including(bound);
+						mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
+					}
 				});
-				HideLoadingView();
 			});
 		}
 

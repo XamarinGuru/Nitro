@@ -139,11 +139,11 @@
     <Compile Include="Activities\ForgotPasswordActivity.cs" />
     <Compile Include="Activities\ChangePasswordActivity.cs" />
     <Compile Include="Activities\LocationActivity.cs" />
+    <Compile Include="ViewModel\PointInfoDialog.cs" />
+    <Compile Include="Activities\AnalyticsActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\PointInfoDialog.cs" />
-    <Compile Include="Activities\AnalyticsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -283,16 +283,6 @@
     <AndroidResource Include="Resources\drawable\icon_notification.png" />
     <AndroidResource Include="Resources\drawable\icon_map_pin.png" />
     <AndroidResource Include="Resources\layout\LocationActivity.axml" />
-    <None Include="Web References\trackSvc\Service1.xsd" />
-    <None Include="Web References\trackSvc\Service10.xsd" />
-    <None Include="Web References\trackSvc\Service11.xsd" />
-    <None Include="Web References\trackSvc\Service12.xsd" />
-    <None Include="Web References\trackSvc\Service13.xsd" />
-    <None Include="Web References\trackSvc\Service1.wsdl" />
-    <None Include="Web References\trackSvc\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <AndroidResource Include="Resources\drawable\pin_camera.png" />
     <AndroidResource Include="Resources\drawable\pin_check_mark.png" />
     <AndroidResource Include="Resources\drawable\pin_east.png" />
@@ -307,6 +297,16 @@
     <AndroidResource Include="Resources\drawable\pin_me.png" />
     <AndroidResource Include="Resources\drawable\pin_pfinish.png" />
     <AndroidResource Include="Resources\drawable\pin_pstart.png" />
+    <None Include="Web References\trackSvc\Service1.xsd" />
+    <None Include="Web References\trackSvc\Service10.xsd" />
+    <None Include="Web References\trackSvc\Service11.xsd" />
+    <None Include="Web References\trackSvc\Service12.xsd" />
+    <None Include="Web References\trackSvc\Service13.xsd" />
+    <None Include="Web References\trackSvc\Service1.wsdl" />
+    <None Include="Web References\trackSvc\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

@@ -14,11 +14,13 @@ using Android;
 using Android.Support.V4.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
+using System.Collections.Generic;
 
 namespace goheja
 {
     [Activity(Label = "Nitro", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
-	public class AnalyticsActivity : BaseActivity, ILocationListener, IOnMapReadyCallback, ActivityCompat.IOnRequestPermissionsResultCallback
+	public class AnalyticsActivity : BaseActivity, ILocationListener, IOnMapReadyCallback, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
     {
 		readonly string[] PermissionsLocation =
 		{
@@ -32,6 +34,9 @@ namespace goheja
 
 		SupportMapFragment mMapViewFragment;
 		GoogleMap mMapView = null;
+
+		EventPoints mEventMarker = new EventPoints();
+		IList<string> pointIDs;
 
 		enum RIDE_TYPE
 		{
@@ -176,10 +181,97 @@ namespace goheja
 
 		public void OnMapReady(GoogleMap googleMap)
 		{
+			if (googleMap == null) return;
+
 			mMapView = googleMap;
 			mMapView.MyLocationEnabled = false;
 
-			SetMapPosition(new LatLng(31.0461, 34.8516));
+			if (mMapView != null)
+			{
+				mMapView.SetOnMarkerClickListener(this);
+
+				//SetNearestEventMarkers();
+			}
+		}
+
+		void SetNearestEventMarkers()
+		{
+			var currentLocation = GetGPSLocation();
+
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				ShowLoadingView(Constants.MSG_LOADING_ALL_MARKERS);
+
+				mEventMarker = GetNearestEventMarkers(AppSettings.UserID);
+				//mEventMarker = GetAllMarkers("58aafae816528b16d898a1f3");
+
+				HideLoadingView();
+
+				var mapBounds = new LatLngBounds.Builder();
+
+				mapBounds.Include(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+
+				pointIDs = new List<string>();
+
+				RunOnUiThread(() =>
+				{
+					if (mEventMarker != null && mEventMarker.markers.Count > 0)
+					{
+						for (int i = 0; i < mEventMarker.markers.Count; i++)
+						{
+							var point = mEventMarker.markers[i];
+							var pointLocation = new LatLng(point.lat, point.lng);
+							mapBounds.Include(pointLocation);
+
+							AddMapPin(pointLocation, point.type);
+						}
+					}
+
+					mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+				});
+			});
+		}
+
+		void AddMapPin(LatLng position, string type)
+		{
+			MarkerOptions markerOpt = new MarkerOptions();
+			markerOpt.SetPosition(position);
+
+			var metrics = Resources.DisplayMetrics;
+			var wScreen = metrics.WidthPixels;
+
+			Bitmap bmp = GetPinIconByType(type);
+			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
+			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+
+			RunOnUiThread(() =>
+			{
+				var marker = mMapView.AddMarker(markerOpt);
+				pointIDs.Add(marker.Id);
+			});
+		}
+
+		public bool OnMarkerClick(Marker marker)
+		{
+			try
+			{
+				PortableLibrary.Point selectedPoint = null;
+				for (var i = 0; i < pointIDs.Count; i++)
+				{
+					if (marker.Id == pointIDs[i])
+						selectedPoint = mEventMarker.markers[i];
+				}
+				if (selectedPoint == null) return false;
+
+				PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);
+				myDiag.Show(FragmentManager, "Diag");
+			}
+			catch
+			{
+				return true;
+			}
+
+			return true;
 		}
 
 		#endregion
@@ -464,6 +556,15 @@ namespace goheja
 		public void OnProviderEnabled(string provider) { _title.Text = "GPS enabled";}
 		public void OnStatusChanged(string provider, Availability status, Bundle extras) {_title.Text = "GPS low signal"; }
 
+		private Location GetGPSLocation()
+		{
+			_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+			Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
+			_locationManager.RemoveUpdates(this);
+
+			return currentLocation;
+		}
+
         //public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
 		public void OnLocationChanged(Location location)
         {
@@ -571,6 +672,8 @@ namespace goheja
 
 		void SetMapPosition(LatLng location)
 		{
+			if (mMapView == null) return;
+
 			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
 			mMapView.MoveCamera(cu_center);
 		}

@@ -29,6 +29,21 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="syncSuunto60">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="syncSuunto60Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="syncSuunto60Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="installg">
     <xs:complexType>
       <xs:sequence>
@@ -239,6 +254,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="d" type="xs:int" />
         <xs:element minOccurs="0" name="pmc" type="xs:float" />
+        <xs:element minOccurs="0" name="type" type="xs:boolean" />
         <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -1365,6 +1381,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="getEventGraphResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getNearestEventMakers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="athId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="specGroup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getNearestEventMakersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getNearestEventMakersResult" nillable="true" type="xs:anyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

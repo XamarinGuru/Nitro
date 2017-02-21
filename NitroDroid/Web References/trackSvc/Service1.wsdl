@@ -503,6 +503,12 @@
   <wsdl:message name="IService1_getEventGraph_OutputMessage">
     <wsdl:part name="parameters" element="tns:getEventGraphResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getNearestEventMakers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getNearestEventMakers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getNearestEventMakers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getNearestEventMakersResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_athData_InputMessage">
     <wsdl:part name="parameters" element="tns:athData" />
   </wsdl:message>
@@ -957,6 +963,10 @@
     <wsdl:operation name="getEventGraph">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventGraph" message="tns:IService1_getEventGraph_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventGraphResponse" message="tns:IService1_getEventGraph_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getNearestEventMakers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getNearestEventMakers" message="tns:IService1_getNearestEventMakers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getNearestEventMakersResponse" message="tns:IService1_getNearestEventMakers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="athData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/athData" message="tns:IService1_athData_InputMessage" />
@@ -1776,6 +1786,15 @@
     </wsdl:operation>
     <wsdl:operation name="getEventGraph">
       <soap:operation soapAction="http://tempuri.org/IService1/getEventGraph" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNearestEventMakers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getNearestEventMakers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

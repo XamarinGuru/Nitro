@@ -7,6 +7,7 @@ using PortableLibrary;
 using Google.Maps;
 using System.Drawing;
 using CoreGraphics;
+using System.Collections.Generic;
 
 namespace location2
 {
@@ -22,6 +23,8 @@ namespace location2
 		//public static LocationManager Manager = new LocationManager();
 
 		MapView mMapView;
+
+		EventPoints mEventMarker = new EventPoints();
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
 
@@ -67,33 +70,135 @@ namespace location2
 			if (!IsNetEnable()) return;
 
 			MemberModel.rootMember = GetUserObject();
-		}
-
-		public static bool UserInterfaceIdiomIsPhone
-		{
-			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
-		}
-
-		public override void ViewDidAppear(bool animated)
-		{
-			base.ViewDidAppear(animated);
 
 			InitMapView();
 		}
 
+		//public static bool UserInterfaceIdiomIsPhone
+		//{
+		//	get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+		//}
+
+		//public override void ViewDidAppear(bool animated)
+		//{
+		//	base.ViewDidAppear(animated);
+
+		//	InitMapView();
+		//}
+
+		//public override void ViewWillLayoutSubviews()
+		//{
+		//	if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
+		//	{
+		//		RepaintMap();
+		//	}
+		//}
 		void InitMapView()
 		{
 			var camera = CameraPosition.FromCamera(31.0461, 34.8516, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
 			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			mMapView.MyLocationEnabled = false;
 
+			mMapView.TappedMarker = ClickedDropItem;
+
+			//viewMapContent.LayoutIfNeeded();
+			//var width = viewMapContent.Frame.Width;
+			//var height = viewMapContent.Frame.Height;
+			//mMapView.Frame = new CGRect(0, 0, width, height);
+			
+			//viewMapContent.AddSubview(mMapView);
+		}
+
+		public void RepaintMap()
+		{
+			foreach (var subview in viewMapContent.Subviews)
+			{
+				subview.RemoveFromSuperview();
+			}
+
 			viewMapContent.LayoutIfNeeded();
 			var width = viewMapContent.Frame.Width;
 			var height = viewMapContent.Frame.Height;
 			mMapView.Frame = new CGRect(0, 0, width, height);
-			
+
 			viewMapContent.AddSubview(mMapView);
+
+			//SetNearestEventMarkers();
 		}
+
+		void SetNearestEventMarkers()
+		{
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				ShowLoadingView(PortableLibrary.Constants.MSG_LOADING_ALL_MARKERS);
+
+				mEventMarker = GetNearestEventMarkers(AppSettings.UserID);
+				//mEventMarker = GetAllMarkers("58aafae816528b16d898a1f3");
+
+				HideLoadingView();
+
+				InvokeOnMainThread(() =>
+				{
+					var boundPoints = new List<CLLocationCoordinate2D>();
+
+					if (mEventMarker != null && mEventMarker.markers.Count > 0)
+					{
+						for (int i = 0; i < mEventMarker.markers.Count; i++)
+						{
+							var point = mEventMarker.markers[i];
+							var imgPin = GetPinIconByType(point.type);
+							var pointLocation = new CLLocationCoordinate2D(point.lat, point.lng);
+							boundPoints.Add(pointLocation);
+
+							AddMapPin(pointLocation, imgPin, i);
+						}
+					}
+
+					if (boundPoints.Count == 0)
+					{
+						SetMapPosition(new CLLocation(PortableLibrary.Constants.LOCATION_ISURAEL[0], PortableLibrary.Constants.LOCATION_ISURAEL[1]));
+						//var camera = CameraPosition.FromCamera(PortableLibrary.Constants.LOCATION_ISURAEL[0], PortableLibrary.Constants.LOCATION_ISURAEL[1], zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+						//mMapView = MapView.FromCamera(RectangleF.Empty, camera);
+					}
+					else
+					{
+						var mapBounds = new CoordinateBounds();
+						foreach (var bound in boundPoints)
+							mapBounds = mapBounds.Including(bound);
+						mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
+					}
+				});
+			});
+		}
+
+
+
+		void AddMapPin(CLLocationCoordinate2D position, UIImage icon, int zIndex)
+		{
+			var marker = new Marker
+			{
+				Position = position,
+				Map = mMapView,
+				Icon = icon,
+				ZIndex = zIndex
+			};
+		}
+		#region map pin click event
+		bool ClickedDropItem(MapView mapView, Marker marker)
+		{
+			if (marker.ZIndex == -1) return true;
+
+			var selectedPoint = mEventMarker.markers[marker.ZIndex];
+
+			PointInfoView cpuv = PointInfoView.Create(selectedPoint);
+			cpuv.PopUp(true, delegate
+			{
+				Console.WriteLine("cpuv will close");
+			});
+
+			return true;
+		}
+		#endregion
 
 		void SetMapPosition(CLLocation location)
 		{
@@ -365,6 +470,13 @@ namespace location2
 					//SwitchSecondViewByType(RIDE_TYPE.mountain);
 					break;
 			}
+
+			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
+			{
+				RepaintMap();
+			}
+
+
 		}
 
 		partial void StopBtn_TouchUpInside(UIButton sender)

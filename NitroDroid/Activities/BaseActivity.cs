@@ -326,7 +326,7 @@ namespace goheja
 			}
 			catch (Exception err)
 			{
-				ShowMessageBox(null, err.Message);
+				//ShowMessageBox(null, err.Message);
 				return null;
 			}
 		}
@@ -356,7 +356,7 @@ namespace goheja
 			}
 			catch (Exception ex)
 			{
-				ShowMessageBox(null, ex.Message);
+				//ShowMessageBox(null, ex.Message);
 				return null;
 			}
 			return eventTotal;
@@ -372,18 +372,26 @@ namespace goheja
 			}
 			catch (Exception ex)
 			{
-				ShowMessageBox(null, ex.Message);
+				//ShowMessageBox(null, ex.Message);
 				return null;
 			}
 			return eventMarkers;
 		}
 
-		Random rand = new Random();
-		public Color GetRandomColor()
+		public EventPoints GetNearestEventMarkers(string userID)
 		{
-			int hue = rand.Next(255);
-			Color color = Color.HSVToColor(new[] { hue, 1.0f, 1.0f, });
-			return color;
+			var eventMarkers = new EventPoints();
+			try
+			{
+				var markerObject = mTrackSvc.getNearestEventMakers(userID, Constants.SPEC_GROUP_TYPE[0]);
+				eventMarkers = JsonConvert.DeserializeObject<EventPoints>(markerObject.ToString());
+			}
+			catch (Exception ex)
+			{
+				//ShowMessageBox(null, ex.Message);
+				return null;
+			}
+			return eventMarkers;
 		}
 
 		public List<List<TPoint>> GetTrackPoints(string eventID)
@@ -392,13 +400,18 @@ namespace goheja
 			try
 			{
 				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE[0]);
-				var trackPoints = JsonConvert.DeserializeObject<EventTracks>(pointsObject.ToString());
+				var jsonPoints = FormatJsonType(pointsObject.ToString());
+				var trackPoints = JsonConvert.DeserializeObject<EventTracks>(jsonPoints);
 
 				if (trackPoints != null && trackPoints.TrackPoints.Count > 0)
 				{
+					List<TPoint> points = new List<TPoint>();
 					List<string> lapNOs = new List<string>();
 					foreach (var tPoint in trackPoints.TrackPoints)
 					{
+						tPoint.index = DateTime.Parse(tPoint.LocalTime);
+						points.Add(tPoint);
+
 						bool isExist = false;
 						foreach (var lapNo in lapNOs)
 						{
@@ -410,10 +423,12 @@ namespace goheja
 							lapNOs.Add(tPoint.lapNo);
 					}
 
+					points.Sort((x, y) => DateTime.Compare(x.index, y.index));
+
 					foreach (var lapNo in lapNOs)
 					{
 						List<TPoint> tPoints = new List<TPoint>();
-						foreach (var tPoint in trackPoints.TrackPoints)
+						foreach (var tPoint in points)
 						{
 							if (lapNo == tPoint.lapNo && !Equals(tPoint.Latitude, 0d) && !Equals(tPoint.Longitude, 0d))
 								tPoints.Add(tPoint);
@@ -431,6 +446,13 @@ namespace goheja
 			return returnTPoints;
 		}
 
+		Random rand = new Random();
+		public Color GetRandomColor()
+		{
+			int hue = rand.Next(255);
+			Color color = Color.HSVToColor(new[] { hue, 1.0f, 1.0f, });
+			return color;
+		}
 
 		public Comment GetComments(string eventID, string type = "1")
 		{

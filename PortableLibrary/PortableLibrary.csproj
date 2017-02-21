@@ -37,6 +37,7 @@
     <Compile Include="Model\EventTotal.cs" />
     <Compile Include="Model\EventPoints.cs" />
     <Compile Include="Model\EventTracks.cs" />
+    <Compile Include="IApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FluentValidation">

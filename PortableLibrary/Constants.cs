@@ -26,6 +26,8 @@ namespace PortableLibrary
 		//public static string[] SPEC_GROUP_TYPE = { "innovi" };
 		public static string[] SPEC_GROUP_TYPE = { "nitro" };
 
+		public static double[] LOCATION_ISURAEL = { 31.0461, 34.8516 };
+
 		public const string MSG_LOGIN = "Login...";
 		public const string MSG_LOGIN_FAIL = "Login failed.";
 		public const string MSG_SIGNUP = "Sign Up...";

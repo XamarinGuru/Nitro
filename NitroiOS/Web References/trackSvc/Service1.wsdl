@@ -17,6 +17,12 @@
   <wsdl:message name="IService1_updateMomgoData_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateMomgoDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_syncSuunto60_InputMessage">
+    <wsdl:part name="parameters" element="tns:syncSuunto60" />
+  </wsdl:message>
+  <wsdl:message name="IService1_syncSuunto60_OutputMessage">
+    <wsdl:part name="parameters" element="tns:syncSuunto60Response" />
+  </wsdl:message>
   <wsdl:message name="IService1_installg_InputMessage">
     <wsdl:part name="parameters" element="tns:installg" />
   </wsdl:message>
@@ -503,6 +509,12 @@
   <wsdl:message name="IService1_getEventGraph_OutputMessage">
     <wsdl:part name="parameters" element="tns:getEventGraphResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getNearestEventMakers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getNearestEventMakers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getNearestEventMakers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getNearestEventMakersResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_athData_InputMessage">
     <wsdl:part name="parameters" element="tns:athData" />
   </wsdl:message>
@@ -633,6 +645,10 @@
     <wsdl:operation name="updateMomgoData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateMomgoData" message="tns:IService1_updateMomgoData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateMomgoDataResponse" message="tns:IService1_updateMomgoData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="syncSuunto60">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/syncSuunto60" message="tns:IService1_syncSuunto60_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/syncSuunto60Response" message="tns:IService1_syncSuunto60_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="installg">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/installg" message="tns:IService1_installg_InputMessage" />
@@ -958,6 +974,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEventGraph" message="tns:IService1_getEventGraph_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEventGraphResponse" message="tns:IService1_getEventGraph_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getNearestEventMakers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getNearestEventMakers" message="tns:IService1_getNearestEventMakers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getNearestEventMakersResponse" message="tns:IService1_getNearestEventMakers_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="athData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/athData" message="tns:IService1_athData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/athDataResponse" message="tns:IService1_athData_OutputMessage" />
@@ -1047,6 +1067,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="updateMomgoData">
       <soap:operation soapAction="http://tempuri.org/IService1/updateMomgoData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="syncSuunto60">
+      <soap:operation soapAction="http://tempuri.org/IService1/syncSuunto60" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1776,6 +1805,15 @@
     </wsdl:operation>
     <wsdl:operation name="getEventGraph">
       <soap:operation soapAction="http://tempuri.org/IService1/getEventGraph" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNearestEventMakers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getNearestEventMakers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
