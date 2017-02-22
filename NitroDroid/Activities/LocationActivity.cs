@@ -82,10 +82,14 @@ namespace goheja
 						foreach (var tPoints in trackPoints)
 						{
 							List<LatLng> paths = new List<LatLng>();
-							foreach (var point in tPoints)
+							for (int i = 0; i < tPoints.Count; i ++)
 							{
+								var point = tPoints[i];
 								var pointLocation = new LatLng(point.Latitude, point.Longitude);
-								paths.Add(pointLocation);
+
+								//if (i == 0 || (i > 0 && DistanceAtoB(point, tPoints[i-1]))
+								//	paths.Add(pointLocation);
+
 								boundPoints.Add(pointLocation);
 
 								if (point.lapImage == "Start")

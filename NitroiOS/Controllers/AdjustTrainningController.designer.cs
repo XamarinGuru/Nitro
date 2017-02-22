@@ -20,18 +20,6 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblDistance { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTime { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTSS { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISlider seekDistance { get; set; }
 
         [Outlet]
@@ -46,6 +34,22 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextView txtComment { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtTime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtTss { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtType { get; set; }
+
         [Action ("ActionAdjustTrainning:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAdjustTrainning (UIKit.UIButton sender);
@@ -54,26 +58,15 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDataChanged (UIKit.UISlider sender);
 
+        [Action ("ActionValueChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionValueChanged (UIKit.UITextField sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (attended != null) {
                 attended.Dispose ();
                 attended = null;
-            }
-
-            if (lblDistance != null) {
-                lblDistance.Dispose ();
-                lblDistance = null;
-            }
-
-            if (lblTime != null) {
-                lblTime.Dispose ();
-                lblTime = null;
-            }
-
-            if (lblTSS != null) {
-                lblTSS.Dispose ();
-                lblTSS = null;
             }
 
             if (seekDistance != null) {
@@ -94,6 +87,26 @@ namespace location2
             if (txtComment != null) {
                 txtComment.Dispose ();
                 txtComment = null;
+            }
+
+            if (txtDistance != null) {
+                txtDistance.Dispose ();
+                txtDistance = null;
+            }
+
+            if (txtTime != null) {
+                txtTime.Dispose ();
+                txtTime = null;
+            }
+
+            if (txtTss != null) {
+                txtTss.Dispose ();
+                txtTss = null;
+            }
+
+            if (txtType != null) {
+                txtType.Dispose ();
+                txtType = null;
             }
         }
     }

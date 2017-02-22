@@ -53,11 +53,22 @@ namespace PortableLibrary
 		public const string TOTALS_ES_TIME = "Elapsed time";
 		public const string TOTALS_DISTANCE = "Total Distance";
 		public const string TOTALS_LOAD = "Load";
+		public const string TOTALS_TYPE = "Type";
 
 		public const string PICKER_TIME = "time";
 		public const string PICKER_RANKING = "ranking";
 		public const string PICKER_HR = "hr";
 		public const string PICKER_PACE = "pace";
+
+		public const string PICKER_PTYPE = "type";
+
+		public static string[] PRACTICE_TYPES = {
+			"Cycling",
+			"Running",
+			"Swimming",
+			"TRI",
+			"Other"
+		};
 
 		public const string UNIT_SWIM = "minutes per 100 meter";
 		public const string UNIT_RUN = "minutes per kilometer";
@@ -96,5 +107,7 @@ namespace PortableLibrary
 			TIME,
 			DATE
 		}
+
+		public const int AVAILABLE_DISTANCE_MAP = 200;
 	}
 }

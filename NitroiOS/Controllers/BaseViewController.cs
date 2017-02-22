@@ -7,11 +7,13 @@ using Newtonsoft.Json;
 using PortableLibrary;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using CoreLocation;
 
 namespace location2
 {
 	public partial class BaseViewController : UIViewController, IApiService
 	{
+		UIColor[] PATH_COLORS = { UIColor.Red, new UIColor(38/255f, 127/255f, 0, alpha: 1.0f), UIColor.Blue };
 		UIColor COLOR_ORANGE = new UIColor(red: 0.90f, green: 0.63f, blue: 0.04f, alpha: 1.0f);
 
 		protected float scroll_amount = 0.0f;
@@ -419,12 +421,9 @@ namespace location2
 			}
 			return returnTPoints;
 		}
-		Random rand = new Random();
-		public UIColor GetRandomColor()
+		public UIColor GetRandomColor(int index)
 		{
-			int hue = rand.Next(255);
-			UIColor color = UIColor.FromHSB((hue / 255.0f), 1.0f, 1.0f);
-			return color;
+			return PATH_COLORS[index % 3];
 		}
 
 		public Comment GetComments(string eventID, string type = "1")
@@ -492,6 +491,23 @@ namespace location2
 					string specGroup)
 		{
 			mTrackSvc.updateMomgoData(name, loc, time, true, AppSettings.DeviceUDID, speed, true, athId, country, dist, true, alt, true, bearing, true, 1, true, eventType, specGroup);
+		}
+
+		public string GetTypeStrFromID(string typeID)
+		{
+			return Constants.PRACTICE_TYPES[int.Parse(typeID) - 1];
+		}
+		public string GetTypeIDFromStr(string typeStr)
+		{
+			return (Array.IndexOf(Constants.PRACTICE_TYPES, typeStr) + 1).ToString();
+		}
+
+		public double DistanceAtoB(TPoint pA, TPoint pB)
+		{
+			CLLocation pointA = new CLLocation(pA.Latitude, pA.Longitude);
+			CLLocation pointB = new CLLocation(pB.Latitude, pB.Longitude);
+			var distance = pointA.DistanceFrom(pointB);
+			return distance;
 		}
 
 		public int GetFormatedDurationAsMin(string strTime)
@@ -611,7 +627,7 @@ namespace location2
 			try
 			{
 				var fNumber = float.Parse(number);
-				return fNumber.ToString("F2");
+				return fNumber.ToString("F1");
 			}
 			catch
 			{
@@ -856,6 +872,8 @@ namespace location2
 				picker_model = new HRPickerViewModel(field);
 			else if (type == "pace")
 				picker_model = new PacePickerViewModel(field);
+			else if (type == "type")
+				picker_model = new PTypePickerViewModel(field);
 			
 			UIPickerView picker = new UIPickerView();
 			picker.BackgroundColor = UIColor.White;
@@ -899,6 +917,39 @@ namespace location2
 			public override void Selected(UIPickerView pickerView, nint row, nint component)
 			{
 				textField.Text = (pickerView.SelectedRowInComponent(0) + 1).ToString();
+				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
+			}
+		}
+		#endregion
+
+		#region CLASS PRACTICE_TYPE_PICKER
+		public class PTypePickerViewModel : UIPickerViewModel
+		{
+			UITextField textField;
+
+			public PTypePickerViewModel(UITextField textField)
+			{
+				this.textField = textField;
+			}
+
+			public override nint GetComponentCount(UIPickerView pickerView)
+			{
+				return 1;
+			}
+
+			public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+			{
+				return 5;
+			}
+
+			public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+			{
+				return Constants.PRACTICE_TYPES[(int)row];
+			}
+
+			public override void Selected(UIPickerView pickerView, nint row, nint component)
+			{
+				textField.Text = Constants.PRACTICE_TYPES[pickerView.SelectedRowInComponent(0)];
 				textField.SendActionForControlEvents(UIControlEvent.ValueChanged);
 			}
 		}

@@ -89,14 +89,44 @@ namespace location2
 
 					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						foreach (var tPoints in trackPoints)
+						for (int i = 0; i < trackPoints.Count; i ++)
 						{
-							var polyline = new Polyline();
+							var tPoints = trackPoints[i];
+
 							var path = new MutablePath();
-							foreach (var tPoint in tPoints)
+							var polyline = new Polyline();
+
+							for (int j = 0; j < tPoints.Count; j ++)
 							{
+								var tPoint = tPoints[j];
 								var tLocation = new CLLocationCoordinate2D(tPoint.Latitude, tPoint.Longitude);
-								path.AddCoordinate(tLocation);
+
+								if (j < tPoints.Count - 1)
+								{
+									var distance = DistanceAtoB(tPoint, tPoints[j + 1]);
+
+									if (PortableLibrary.Constants.AVAILABLE_DISTANCE_MAP > distance)
+									{
+										var nPoint = tPoints[j + 1];
+										path.AddCoordinate(tLocation);
+									}
+									else {
+										polyline.Path = path;
+										polyline.StrokeColor = GetRandomColor(i);
+										polyline.StrokeWidth = 5;
+										polyline.Geodesic = true;
+										polyline.Map = mMapView;
+
+										path = new MutablePath();
+										polyline = new Polyline();
+									}
+								}
+
+								polyline.Path = path;
+								polyline.StrokeColor = GetRandomColor(i);
+								polyline.StrokeWidth = 5;
+								polyline.Geodesic = true;
+								polyline.Map = mMapView;
 
 								boundPoints.Add(tLocation);
 
@@ -110,10 +140,6 @@ namespace location2
 									AddMapPin(tLocation, imgPin, -1);
 								}
 							}
-							polyline.Path = path;
-							polyline.StrokeColor = GetRandomColor();
-							polyline.StrokeWidth = 5;
-							polyline.Map = mMapView;
 						}
 					}
 

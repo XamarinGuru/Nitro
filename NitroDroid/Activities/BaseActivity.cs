@@ -663,7 +663,7 @@ namespace goheja
 			try
 			{
 				var fNumber = float.Parse(number);
-				return fNumber.ToString("F2");
+				return fNumber.ToString("F1");
 			}
 			catch
 			{

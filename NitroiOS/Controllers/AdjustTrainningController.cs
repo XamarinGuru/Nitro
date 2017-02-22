@@ -53,20 +53,62 @@ namespace location2
 		{
 			attended.On = selectedEvent.attended == "1" ? true : false;
 
+			SetupPicker(txtType, Constants.PICKER_PTYPE);
+			txtType.Text = GetTypeStrFromID(selectedEvent.type);
+
+			txtTime.ShouldChangeCharacters = ActionChangeSliderValue;
+			txtDistance.ShouldChangeCharacters = ActionChangeSliderValue;
+			txtTss.ShouldChangeCharacters = ActionChangeSliderValue;
+
 			if (eventTotal == null || eventTotal.totals == null) return;
 
 			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
 			var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
 			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
-			lblTime.Text = strEt.ToString();
-			lblDistance.Text = float.Parse(strTd).ToString("F0");
-			lblTSS.Text = float.Parse(strTss).ToString("F0");
+			txtTime.Text = strEt.ToString();
+			txtDistance.Text = float.Parse(strTd).ToString("F0");
+			txtTss.Text = float.Parse(strTss).ToString("F0");
 
 			seekTime.Value = strEt;
 			seekDistance.Value = float.Parse(strTd);
 			seekTSS.Value = float.Parse(strTss);
 
+
+		}
+
+		bool ActionChangeSliderValue(UITextField textField, NSRange range, string replacementString)
+		{
+			int maxValue = 0;
+			UISlider seekBar = null;
+			switch (textField.Tag)
+			{
+				case 0:
+					maxValue = 360;
+					seekBar = seekTime;
+					break;
+				case 1:
+					maxValue = 250;
+					seekBar = seekDistance;
+					break;
+				case 2:
+					maxValue = 400;
+					seekBar = seekTSS;
+					break;
+			}
+
+			string newValue = "";
+			using (NSString original = new NSString(textField.Text), replace = new NSString(replacementString.ToUpper()))
+			{
+				newValue = original.Replace(range, replace);
+			}
+			var nValue = newValue == "" ? 0 : float.Parse(newValue);
+			if (nValue >= 0 && nValue <= maxValue)
+			{
+				seekBar.Value = nValue;
+				textField.Text = newValue;
+			}
+			return false;
 		}
 
 		//partial void ActionClose(UIButton sender)
@@ -79,16 +121,49 @@ namespace location2
 			switch (sender.Tag)
 			{
 				case 0:
-					lblTime.Text = ((int)sender.Value).ToString();
+					txtTime.Text = ((int)sender.Value).ToString();
 					break;
 				case 1:
-					lblDistance.Text = ((int)sender.Value).ToString();
+					txtDistance.Text = ((int)sender.Value).ToString();
 					break;
 				case 2:
-					lblTSS.Text = ((int)sender.Value).ToString();
+					txtTss.Text = ((int)sender.Value).ToString();
 					break;
 			}
 		}
+
+		//partial void ActionValueChanged(UITextField sender)
+		//{
+		//	var changedValue = float.Parse(sender.Text);
+		//	switch (sender.Tag)
+		//	{
+		//		case 0:
+		//			{
+		//				if (changedValue > 0 && changedValue <= 360)
+		//					seekTime.Value = float.Parse(sender.Text);
+		//				else
+		//					sender.Text = ((int)seekTime.Value).ToString();
+		//				break;
+		//			}
+		//		case 1:
+		//			{
+		//				if (changedValue > 0 && changedValue <= 250)
+		//					seekDistance.Value = float.Parse(sender.Text);
+		//				else
+		//					sender.Text = ((int)seekDistance.Value).ToString();
+		//				break;
+		//			}
+		//		case 2:
+		//			{
+		//				if (changedValue > 0 && changedValue <= 400)
+		//					seekTSS.Value = float.Parse(sender.Text);
+		//				else
+		//					sender.Text = ((int)seekTSS.Value).ToString();
+		//				break;
+		//			}
+		//	}
+		//}
+
 
 		partial void ActionAdjustTrainning(UIButton sender)
 		{
@@ -100,7 +175,7 @@ namespace location2
 
 				InvokeOnMainThread(() =>
 				{
-					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, selectedEvent.type);
+					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, GetTypeIDFromStr(txtType.Text));
 
 					HideLoadingView();
 					NavigationController.PopViewController(true);
@@ -127,6 +202,8 @@ namespace location2
 				moveViewUp = false;
 			}
 		}
+
+
 		private void KeyBoardDownNotification(NSNotification notification)
 		{
 			if (moveViewUp) { ScrollTheView(false); }

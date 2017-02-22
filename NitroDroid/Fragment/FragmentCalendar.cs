@@ -107,17 +107,17 @@ namespace goheja
 			//var gaugeData = rootActivity.GetGauge();
 
 			if (gaugeData == null) return;
-			lblCycleDuration.Text = FormatNumber(gaugeData.Bike[0].value) + "%";
-			lblRunDuration.Text = FormatNumber(gaugeData.Run[0].value) + "%";
-			lblSwimDuration.Text = FormatNumber(gaugeData.Swim[0].value) + "%";
+			lblCycleDuration.Text = rootActivity.FormatNumber(gaugeData.Bike[0].value) + "%";
+			lblRunDuration.Text = rootActivity.FormatNumber(gaugeData.Run[0].value) + "%";
+			lblSwimDuration.Text = rootActivity.FormatNumber(gaugeData.Swim[0].value) + "%";
 
-			lblCycleDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
-			lblRunDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
-			lblSwimDistance.Text = FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblCycleDistance.Text = rootActivity.FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblRunDistance.Text = rootActivity.FormatNumber(gaugeData.Bike[1].value) + "%";
+			lblSwimDistance.Text = rootActivity.FormatNumber(gaugeData.Bike[1].value) + "%";
 
-			lblCycleStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
-			lblRunStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
-			lblSwimStress.Text = FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblCycleStress.Text = rootActivity.FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblRunStress.Text = rootActivity.FormatNumber(gaugeData.Bike[2].value) + "%";
+			lblSwimStress.Text = rootActivity.FormatNumber(gaugeData.Bike[2].value) + "%";
 		}
 
 		void ActionViewCalendar(object sender, EventArgs e)
@@ -187,17 +187,17 @@ namespace goheja
 		}
 		#endregion
 
-		public string FormatNumber(string number)
-		{
-			try
-			{
-				var fNumber = float.Parse(number);
-				return fNumber.ToString("F2");
-			}
-			catch
-			{
-				return number;
-			}
-		}
+		//public string FormatNumber(string number)
+		//{
+		//	try
+		//	{
+		//		var fNumber = float.Parse(number);
+		//		return fNumber.ToString("F1");
+		//	}
+		//	catch
+		//	{
+		//		return number;
+		//	}
+		//}
     }
 }
