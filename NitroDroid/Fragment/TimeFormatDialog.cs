@@ -4,6 +4,7 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -17,7 +18,6 @@ namespace goheja
 		private string title;
 
 		private static string ARG_numDials = "numDials";
-		private static string ARG_initValue = "initValue";
 
 		private EditText textView;
 
@@ -146,4 +146,97 @@ namespace goheja
 			return value;
 		}
 	}
+
+	#region adjust dialog
+	public class AdjustDialog : DialogFragment
+	{
+		TextView textView;
+		SeekBar seekBar;
+		int maxValue;
+		bool isType;
+
+		public static AdjustDialog newInstance(TextView textView, SeekBar seekBar, int maxValue, bool isType)
+		{
+			AdjustDialog numdialog = new AdjustDialog();
+			numdialog.textView = textView;
+			numdialog.seekBar = seekBar;
+			numdialog.maxValue = maxValue;
+			numdialog.isType = isType;
+
+			return numdialog;
+		}
+
+		public override Dialog OnCreateDialog(Bundle savedInstanceState)
+		{
+			var dialog = base.OnCreateDialog(savedInstanceState);
+			dialog.SetTitle("");
+			return dialog;
+		}
+
+		public override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
+		}
+
+		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		{
+			LinearLayout linLayoutH = new LinearLayout(this.Activity);
+
+			LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+			linLayoutH.LayoutParameters = params1;
+
+			var numPicker =  new NumberPicker(this.Activity);
+			numPicker.MaxValue = maxValue;
+			numPicker.MinValue = 0;
+			if (isType)
+			{
+				numPicker.SetDisplayedValues(Constants.PRACTICE_TYPES);
+				numPicker.Value = Array.IndexOf(Constants.PRACTICE_TYPES, textView.Text);
+			}
+			else {
+				numPicker.Value = (int)float.Parse(textView.Text);
+			}
+
+			linLayoutH.AddView(numPicker);
+
+
+			LinearLayout linLayoutV = new LinearLayout(this.Activity);
+			linLayoutV.Orientation = Orientation.Vertical;
+			linLayoutV.AddView(linLayoutH);
+
+			Button okButton = new Button(this.Activity);
+			okButton.Click += (sender, e) =>
+			{
+				textView.Text = numPicker.Value.ToString();
+
+				if (isType)
+				{
+					textView.Text = Constants.PRACTICE_TYPES[numPicker.Value];
+				}
+				else
+				{
+					textView.Text = numPicker.Value.ToString();
+					seekBar.Progress = (int)float.Parse(textView.Text);
+				}
+				
+				Dismiss();
+			};
+
+			params1.Gravity = GravityFlags.CenterHorizontal;
+			okButton.LayoutParameters = params1;
+			okButton.Text = "Done";
+
+			linLayoutV.AddView(okButton);
+			return linLayoutV;
+
+		}
+
+		public void onSaveInstanceState(Bundle outState)
+		{
+			base.OnSaveInstanceState(outState);
+		}
+
+
+	}
+	#endregion
 }

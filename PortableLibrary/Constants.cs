@@ -60,6 +60,10 @@ namespace PortableLibrary
 		public const string PICKER_HR = "hr";
 		public const string PICKER_PACE = "pace";
 
+		public const string PICKER_ATIME = "adjustTime";
+		public const string PICKER_ADISTANCE = "adjustDistance";
+		public const string PICKER_ATSS = "adjustTSS";
+
 		public const string PICKER_PTYPE = "type";
 
 		public static string[] PRACTICE_TYPES = {

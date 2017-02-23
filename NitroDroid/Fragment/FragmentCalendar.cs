@@ -74,21 +74,21 @@ namespace goheja
 			CollepseAnimation(viewRun);
 			CollepseAnimation(viewSwim);
 
-			var webView = mView.FindViewById<WebView>(Resource.Id.webView);
+			//var webView = mView.FindViewById<WebView>(Resource.Id.webView);
 
-			webView.Settings.JavaScriptEnabled = true;
-			webView.Settings.AllowContentAccess = true;
-			webView.Settings.EnableSmoothTransition();
-			webView.Settings.LoadsImagesAutomatically = true;
-			webView.Settings.SetGeolocationEnabled(true);
-			webView.SetWebViewClient(new WebViewClient());
-			webView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+			//webView.Settings.JavaScriptEnabled = true;
+			//webView.Settings.AllowContentAccess = true;
+			//webView.Settings.EnableSmoothTransition();
+			//webView.Settings.LoadsImagesAutomatically = true;
+			//webView.Settings.SetGeolocationEnabled(true);
+			//webView.SetWebViewClient(new WebViewClient());
+			//webView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 
-			webView.ClearCache(true);
-			webView.ClearHistory();
+			//webView.ClearCache(true);
+			//webView.ClearHistory();
 
-			var url = string.Format(Constants.URL_GAUGE, AppSettings.UserID);
-			webView.LoadUrl(url);
+			//var url = string.Format(Constants.URL_GAUGE, AppSettings.UserID);
+			//webView.LoadUrl(url);
 
 			#endregion
 

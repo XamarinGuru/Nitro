@@ -73,8 +73,6 @@ namespace location2
 			seekTime.Value = strEt;
 			seekDistance.Value = float.Parse(strTd);
 			seekTSS.Value = float.Parse(strTss);
-
-
 		}
 
 		bool ActionChangeSliderValue(UITextField textField, NSRange range, string replacementString)
@@ -111,11 +109,6 @@ namespace location2
 			return false;
 		}
 
-		//partial void ActionClose(UIButton sender)
-		//{
-		//	DismissModalViewController(true);
-		//}
-
 		partial void ActionDataChanged(UISlider sender)
 		{
 			switch (sender.Tag)
@@ -131,39 +124,6 @@ namespace location2
 					break;
 			}
 		}
-
-		//partial void ActionValueChanged(UITextField sender)
-		//{
-		//	var changedValue = float.Parse(sender.Text);
-		//	switch (sender.Tag)
-		//	{
-		//		case 0:
-		//			{
-		//				if (changedValue > 0 && changedValue <= 360)
-		//					seekTime.Value = float.Parse(sender.Text);
-		//				else
-		//					sender.Text = ((int)seekTime.Value).ToString();
-		//				break;
-		//			}
-		//		case 1:
-		//			{
-		//				if (changedValue > 0 && changedValue <= 250)
-		//					seekDistance.Value = float.Parse(sender.Text);
-		//				else
-		//					sender.Text = ((int)seekDistance.Value).ToString();
-		//				break;
-		//			}
-		//		case 2:
-		//			{
-		//				if (changedValue > 0 && changedValue <= 400)
-		//					seekTSS.Value = float.Parse(sender.Text);
-		//				else
-		//					sender.Text = ((int)seekTSS.Value).ToString();
-		//				break;
-		//			}
-		//	}
-		//}
-
 
 		partial void ActionAdjustTrainning(UIButton sender)
 		{

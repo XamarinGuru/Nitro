@@ -534,6 +534,15 @@ namespace goheja
 		}
 		#endregion
 
+		public string GetTypeStrFromID(string typeID)
+		{
+			return Constants.PRACTICE_TYPES[int.Parse(typeID) - 1];
+		}
+		public string GetTypeIDFromStr(string typeStr)
+		{
+			return (Array.IndexOf(Constants.PRACTICE_TYPES, typeStr) + 1).ToString();
+		}
+
 		public void CompareEventResult(float planned, float total, TextView lblPlanned, TextView lblTotal)
 		{
 			if (planned == total || planned == 0 || total == 0)

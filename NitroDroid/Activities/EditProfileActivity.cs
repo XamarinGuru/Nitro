@@ -622,6 +622,17 @@ namespace goheja
 				ddtime.Show();
 			}
 		}
+		private void SetupAdjustPicker(EditText textView, SeekBar seekBar, int maxValue)
+		{
+			textView.Touch += (object sender, View.TouchEventArgs e) =>
+			{
+				if (e.Event.Action == MotionEventActions.Down)
+				{
+					TimeFormatDialog myDiag = TimeFormatDialog.newInstance((EditText)sender, 1, "adjust", "");
+					myDiag.Show(FragmentManager, "Diag");
+				}
+			};
+		}
 		void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
 		{
 			txtGoalDate.Text = e.Date.ToString("MM-dd-yyyy");

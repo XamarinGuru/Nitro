@@ -53,6 +53,8 @@ namespace location2
 		{
 			base.ViewWillAppear(animated);
 
+			ReloadEvents();
+
 			_calendar.ReloadData();
 		}
 
@@ -115,7 +117,7 @@ namespace location2
 			viewDate.Add(menuView);
 			viewCalendar.Add(contentView);
 
-			ReloadEvents();
+			//ReloadEvents();
 		}
 
 		void AddEventsToCustomCalendar()

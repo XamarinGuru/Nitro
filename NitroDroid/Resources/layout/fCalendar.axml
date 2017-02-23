@@ -37,16 +37,6 @@
                     android:textColor="#ffffffff"
                     android:textSize="15dp" />
             </LinearLayout>
-            <WebView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/webView"
-                android:layout_weight="4"
-                android:background="#ff000000"
-                android:foreground="#ff000000"
-                android:backgroundTint="#ff000000"
-                android:hapticFeedbackEnabled="true"
-                android:nestedScrollingEnabled="false" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
@@ -62,7 +52,7 @@
                     android:background="#ffe5a109"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="20dp"
                     android:textColor="#ffffffff"
                     android:textSize="12dp" />
