@@ -79,12 +79,15 @@ namespace goheja
 
 					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						var startPoint = trackPoints[0][0];
-						var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
-						var startLocation = new LatLng(startPoint.Latitude, startPoint.Longitude);
-						var endLocation = new LatLng(endPoint.Latitude, endPoint.Longitude);
-						AddMapPin(startLocation, "pSTART");
-						AddMapPin(endLocation, "pFINISH");
+						if (trackPoints[0].Count > 0)
+						{
+							var startPoint = trackPoints[0][0];
+							var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
+							var startLocation = new LatLng(startPoint.Latitude, startPoint.Longitude);
+							var endLocation = new LatLng(endPoint.Latitude, endPoint.Longitude);
+							AddMapPin(startLocation, "pSTART");
+							AddMapPin(endLocation, "pFINISH");
+						}
 
 						for (int i = 0; i < trackPoints.Count; i ++)
 						{

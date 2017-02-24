@@ -34,6 +34,7 @@ namespace goheja
 
 		SupportMapFragment mMapViewFragment;
 		GoogleMap mMapView = null;
+		Marker markerMyLocation = null;
 
 		EventPoints mEventMarker = new EventPoints();
 		IList<string> pointIDs;
@@ -190,7 +191,24 @@ namespace goheja
 			{
 				mMapView.SetOnMarkerClickListener(this);
 
-				//SetNearestEventMarkers();
+				var currentLocation = GetGPSLocation();
+
+				MarkerOptions markerOpt = new MarkerOptions();
+				markerOpt.SetPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+
+				var metrics = Resources.DisplayMetrics;
+				var wScreen = metrics.WidthPixels;
+
+				Bitmap bmp = BitmapFactory.DecodeResource(Resources, Resource.Drawable.pin_me);
+				Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 10, true);
+				markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+
+				RunOnUiThread(() =>
+				{
+					markerMyLocation = mMapView.AddMarker(markerOpt);
+				});
+
+				SetMapPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 			}
 		}
 
@@ -227,7 +245,7 @@ namespace goheja
 						}
 					}
 
-					mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+					//mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
 				});
 			});
 		}
@@ -672,10 +690,13 @@ namespace goheja
 
 		void SetMapPosition(LatLng location)
 		{
-			if (mMapView == null) return;
 
 			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
-			mMapView.MoveCamera(cu_center);
+			if (mMapView != null)
+				mMapView.MoveCamera(cu_center);
+
+			if (markerMyLocation != null)
+				markerMyLocation.Position = location;
 		}
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
