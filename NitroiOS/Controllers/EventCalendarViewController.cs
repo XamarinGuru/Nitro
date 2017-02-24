@@ -126,13 +126,16 @@ namespace location2
 			for (var i = 0; i < _events.Count; i ++)
 			{
 				var nitroEvent = _events[i];
+
 				var startDate = nitroEvent.StartDateTime();
 				var endDate = nitroEvent.EndDateTime();
-				var eventDetail = new EventDetails((NSDate)startDate, (NSDate)endDate, nitroEvent.title);
+
+				var eventDetail = new EventDetails(ConvertDateTimeToNSDate(startDate), ConvertDateTimeToNSDate(endDate), nitroEvent.title);
 				eventDetails[i] = eventDetail;
 			}
 
 			_calendar.EventSchedule = eventDetails;
+
 		}
 
 		void FilterEventsByDate(DateTime filterDate)
