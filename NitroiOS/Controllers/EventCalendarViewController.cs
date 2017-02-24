@@ -11,12 +11,12 @@ namespace location2
 {
 	public partial class EventCalendarViewController : BaseViewController
     {
-		private readonly Softweb.Xamarin.Controls.iOS.Calendar _calendar;
+		private Softweb.Xamarin.Controls.iOS.Calendar _calendar;
 		private List<NitroEvent> _events;
 
         public EventCalendarViewController (IntPtr handle) : base (handle)
         {
-			_calendar = new Calendar();
+			//_calendar = new Calendar();
 			_events = new List<NitroEvent>();
         }
 
@@ -33,7 +33,7 @@ namespace location2
 
 			var rightButton = new UIButton(new CGRect(0, 0, 70, 20));
 			rightButton.SetTitle("Reload", UIControlState.Normal);
-			rightButton.TouchUpInside += (sender, e) => ReloadEvents();
+			rightButton.TouchUpInside += (sender, e) => ResetCalendarView();
 			//NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
 
 			var rightButton1 = new UIButton(new CGRect(100, 0, 70, 20));
@@ -46,50 +46,28 @@ namespace location2
 
 			if (!IsNetEnable()) return;
 
-			SetCalendarView();
+			//SetCalendarView();
 		}
 
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 
-			ReloadEvents();
+			//ReloadEvents();
 
-			_calendar.ReloadData();
+			//_calendar.ReloadData();
+
+			ResetCalendarView();
 		}
 
-		void ReloadEvents()
-		{
-			if (!IsNetEnable()) return;
 
-			_events = new List<NitroEvent>();
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
-			{
-				ShowLoadingView(Constants.MSG_LOADING_EVENTS);
 
-				var pastEvents = GetPastEvents();
-				var todayEvents = GetTodayEvents();
-				var futureEvents = GetFutureEvents();
-
-				_events.AddRange(pastEvents);
-				_events.AddRange(todayEvents);
-				_events.AddRange(futureEvents);
-
-				InvokeOnMainThread(() =>
-				{
-					AddEventsToCustomCalendar();
-					FilterEventsByDate(DateTime.Now);
-
-					_calendar.ReloadData();
-
-					HideLoadingView();
-				});
-			});
-		}
-
-		void SetCalendarView()
+		void ResetCalendarView()
 		{
 			this.View.LayoutIfNeeded();
+
+			_calendar = new Calendar();
+			_calendar.CurrentDate = (NSDate)DateTime.Now;
 
 			var menuView = new CalendarMenuView { Frame = new CGRect(0, 0, viewDate.Frame.Size.Width, viewDate.Frame.Size.Height) };
 			var contentView = new CalendarContentView { Frame = new CGRect(0, 0, viewCalendar.Frame.Size.Width, viewCalendar.Frame.Size.Height) };
@@ -114,10 +92,45 @@ namespace location2
 			_calendar.PreviousPageLoaded += DidLoadPreviousPage;
 
 			//Add calendar views to the main view
+
+			foreach (var view in viewDate.Subviews)
+				view.RemoveFromSuperview();
+
+			foreach (var view in viewCalendar.Subviews)
+				view.RemoveFromSuperview();
+			
 			viewDate.Add(menuView);
 			viewCalendar.Add(contentView);
 
-			//ReloadEvents();
+			ReloadEvents();
+		}
+
+		void ReloadEvents()
+		{
+			if (!IsNetEnable()) return;
+
+			_events = new List<NitroEvent>();
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				ShowLoadingView(Constants.MSG_LOADING_EVENTS);
+
+				var pastEvents = GetPastEvents();
+				var todayEvents = GetTodayEvents();
+				var futureEvents = GetFutureEvents();
+
+				_events.AddRange(pastEvents);
+				_events.AddRange(todayEvents);
+				_events.AddRange(futureEvents);
+
+				InvokeOnMainThread(() =>
+				{
+					AddEventsToCustomCalendar();
+					FilterEventsByDate(DateTime.Now);
+					_calendar.ReloadData();
+
+					HideLoadingView();
+				});
+			});
 		}
 
 		void AddEventsToCustomCalendar()
