@@ -89,12 +89,15 @@ namespace location2
 
 					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						var startPoint = trackPoints[0][0];
-						var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
-						var startLocation = new CLLocationCoordinate2D(startPoint.Latitude, startPoint.Longitude);
-						var endLocation = new CLLocationCoordinate2D(endPoint.Latitude, endPoint.Longitude);
-						AddMapPin(startLocation, GetPinIconByType("pSTART"), -1);
-						AddMapPin(endLocation, GetPinIconByType("pFINISH"), -1);
+						if (trackPoints[0].Count > 0)
+						{
+							var startPoint = trackPoints[0][0];
+							var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
+							var startLocation = new CLLocationCoordinate2D(startPoint.Latitude, startPoint.Longitude);
+							var endLocation = new CLLocationCoordinate2D(endPoint.Latitude, endPoint.Longitude);
+							AddMapPin(startLocation, GetPinIconByType("pSTART"), -1);
+							AddMapPin(endLocation, GetPinIconByType("pFINISH"), -1);
+						}
 
 						for (int i = 0; i < trackPoints.Count; i ++)
 						{
