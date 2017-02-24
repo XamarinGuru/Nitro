@@ -20,6 +20,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgType { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISlider seekDistance { get; set; }
 
         [Outlet]
@@ -29,6 +33,10 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UISlider seekTSS { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel strType { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -46,10 +54,6 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtTss { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtType { get; set; }
-
         [Action ("ActionAdjustTrainning:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAdjustTrainning (UIKit.UIButton sender);
@@ -57,6 +61,10 @@ namespace location2
         [Action ("ActionDataChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDataChanged (UIKit.UISlider sender);
+
+        [Action ("ActionSwitchType:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionSwitchType (UIKit.UIButton sender);
 
         [Action ("ActionValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -67,6 +75,11 @@ namespace location2
             if (attended != null) {
                 attended.Dispose ();
                 attended = null;
+            }
+
+            if (imgType != null) {
+                imgType.Dispose ();
+                imgType = null;
             }
 
             if (seekDistance != null) {
@@ -82,6 +95,11 @@ namespace location2
             if (seekTSS != null) {
                 seekTSS.Dispose ();
                 seekTSS = null;
+            }
+
+            if (strType != null) {
+                strType.Dispose ();
+                strType = null;
             }
 
             if (txtComment != null) {
@@ -102,11 +120,6 @@ namespace location2
             if (txtTss != null) {
                 txtTss.Dispose ();
                 txtTss = null;
-            }
-
-            if (txtType != null) {
-                txtType.Dispose ();
-                txtType = null;
             }
         }
     }

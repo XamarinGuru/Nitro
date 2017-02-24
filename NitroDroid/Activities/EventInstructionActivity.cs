@@ -183,6 +183,8 @@ namespace goheja
 
 		void InitBindingEventComments(Comment comments)
 		{
+			if (comments == null) return;
+
 			var contentComment = FindViewById<LinearLayout>(Resource.Id.contentComment);
 			contentComment.RemoveAllViews();
 			foreach (var comment in comments.comments)

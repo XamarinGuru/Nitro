@@ -49,12 +49,38 @@ namespace location2
 			InitBindingEventTotal();
 		}
 
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			strType.Text = GetTypeStrFromID(selectedEvent.type);
+
+			switch (selectedEvent.type)
+			{
+				case "0":
+					imgType.Image = UIImage.FromFile("icon_triathlon.png");
+					break;
+				case "1":
+					imgType.Image = UIImage.FromFile("icon_bike.png");
+					break;
+				case "2":
+					imgType.Image = UIImage.FromFile("icon_run.png");
+					break;
+				case "3":
+					imgType.Image = UIImage.FromFile("icon_swim.png");
+					break;
+				case "4":
+					imgType.Image = UIImage.FromFile("icon_triathlon.png");
+					break;
+				case "5":
+					imgType.Image = UIImage.FromFile("icon_other.png");
+					break;
+			}
+		}
+
 		void InitBindingEventTotal()
 		{
 			attended.On = selectedEvent.attended == "1" ? true : false;
-
-			SetupPicker(txtType, Constants.PICKER_PTYPE);
-			txtType.Text = GetTypeStrFromID(selectedEvent.type);
 
 			txtTime.ShouldChangeCharacters = ActionChangeSliderValue;
 			txtDistance.ShouldChangeCharacters = ActionChangeSliderValue;
@@ -73,6 +99,14 @@ namespace location2
 			seekTime.Value = strEt;
 			seekDistance.Value = float.Parse(strTd);
 			seekTSS.Value = float.Parse(strTss);
+		}
+
+		partial void ActionSwitchType(UIButton sender)
+		{
+			SelectPTypeViewController ptVC = Storyboard.InstantiateViewController("SelectPTypeViewController") as SelectPTypeViewController;
+			ptVC.selectedEvent = selectedEvent;
+
+			NavigationController.PushViewController(ptVC, true);
 		}
 
 		bool ActionChangeSliderValue(UITextField textField, NSRange range, string replacementString)
@@ -135,7 +169,7 @@ namespace location2
 
 				InvokeOnMainThread(() =>
 				{
-					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, GetTypeIDFromStr(txtType.Text));
+					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, selectedEvent.type);
 
 					HideLoadingView();
 					NavigationController.PopViewController(true);

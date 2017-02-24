@@ -5,6 +5,7 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
+using Android.Locations;
 using Android.Net;
 using Android.OS;
 using Android.Support.V4.App;
@@ -21,6 +22,7 @@ namespace goheja
 	[Activity(Label = "BaseActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class BaseActivity : FragmentActivity
 	{
+		Color[] PATH_COLORS = { Color.Red, Color.Rgb(38, 127, 0), Color.Blue };
 		Color COLOR_ORANGE = Color.Rgb(229, 161, 9);
 		Color COLOR_RED = Color.Rgb(179, 66, 17);
 		Color COLOR_BLUE = Color.Rgb(11, 88, 229);
@@ -446,12 +448,9 @@ namespace goheja
 			return returnTPoints;
 		}
 
-		Random rand = new Random();
-		public Color GetRandomColor()
+		public Color GetRandomColor(int index)
 		{
-			int hue = rand.Next(255);
-			Color color = Color.HSVToColor(new[] { hue, 1.0f, 1.0f, });
-			return color;
+			return PATH_COLORS[index % 3];
 		}
 
 		public Comment GetComments(string eventID, string type = "1")
@@ -541,6 +540,21 @@ namespace goheja
 		public string GetTypeIDFromStr(string typeStr)
 		{
 			return (Array.IndexOf(Constants.PRACTICE_TYPES, typeStr) + 1).ToString();
+		}
+
+		public double DistanceAtoB(TPoint pA, TPoint pB)
+		{
+			Location pointA = new Location("");
+			pointA.Latitude = pA.Latitude;
+			pointA.Longitude = pA.Longitude;
+
+			Location pointB = new Location("");
+			pointB.Latitude = pB.Latitude;
+			pointB.Longitude = pB.Longitude;
+
+			float distance = pointA.DistanceTo(pointB);
+
+			return distance;
 		}
 
 		public void CompareEventResult(float planned, float total, TextView lblPlanned, TextView lblTotal)

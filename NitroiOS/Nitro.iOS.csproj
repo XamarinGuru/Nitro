@@ -257,6 +257,10 @@
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SelectPTypeViewController.cs" />
+    <Compile Include="Controllers\SelectPTypeViewController.designer.cs">
+      <DependentUpon>SelectPTypeViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

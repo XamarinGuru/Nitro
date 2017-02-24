@@ -79,34 +79,53 @@ namespace goheja
 
 					if (trackPoints != null && trackPoints.Count > 0)
 					{
-						foreach (var tPoints in trackPoints)
+						var startPoint = trackPoints[0][0];
+						var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
+						var startLocation = new LatLng(startPoint.Latitude, startPoint.Longitude);
+						var endLocation = new LatLng(endPoint.Latitude, endPoint.Longitude);
+						AddMapPin(startLocation, "pSTART");
+						AddMapPin(endLocation, "pFINISH");
+
+						for (int i = 0; i < trackPoints.Count; i ++)
 						{
+							var tPoints = trackPoints[i];
 							List<LatLng> paths = new List<LatLng>();
-							for (int i = 0; i < tPoints.Count; i ++)
+							LatLng[] arrPath;
+							for (int j = 0; j < tPoints.Count; j ++)
 							{
-								var point = tPoints[i];
-								var pointLocation = new LatLng(point.Latitude, point.Longitude);
+								var tPoint = tPoints[j];
+								var tLocation = new LatLng(tPoint.Latitude, tPoint.Longitude);
 
-								//if (i == 0 || (i > 0 && DistanceAtoB(point, tPoints[i-1]))
-								//	paths.Add(pointLocation);
 
-								boundPoints.Add(pointLocation);
-
-								if (point.lapImage == "Start")
+								if (j < tPoints.Count - 1)
 								{
-									AddMapPin(pointLocation, "pSTART");
+									var distance = DistanceAtoB(tPoint, tPoints[j + 1]);
+
+									if (PortableLibrary.Constants.AVAILABLE_DISTANCE_MAP > distance)
+									{
+										var nPoint = tPoints[j + 1];
+										paths.Add(tLocation);
+									}
+									else {
+
+										arrPath = new LatLng[paths.Count];
+										for (var k = 0; k < paths.Count; k++)
+											arrPath[k] = paths[k];
+										mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
+
+										paths = new List<LatLng>();
+									}
 								}
-								else if (point.lapImage == "Totals")
-								{
-									AddMapPin(pointLocation, "pFINISH");
-								}
+
+								boundPoints.Add(tLocation);
 							}
 
-							LatLng[] arrPath = new LatLng[paths.Count];
-							for (var i = 0; i < paths.Count; i++)
-								arrPath[i] = paths[i];
+							arrPath = new LatLng[paths.Count];
+							for (var k = 0; k < paths.Count; k++)
+								arrPath[k] = paths[k];
+							mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
 
-							mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor()).InvokeWidth(5f));
+							paths = new List<LatLng>();
 						}
 					}
 

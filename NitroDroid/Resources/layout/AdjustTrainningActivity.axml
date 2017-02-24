@@ -28,6 +28,65 @@
                 android:layout_weight="1"
                 android:gravity="center" />
         </LinearLayout>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/ActionSwitchType"
+            android:background="#ff1e1e1e"
+            android:layout_marginBottom="1dp"
+            android:tag="0">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout9"
+                android:gravity="center_vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/linearLayout10"
+                    android:layout_marginLeft="10dp"
+                    android:background="#ffe5a109">
+                    <ImageView
+                        android:src="@drawable/icon_bike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imgType"
+                        android:padding="3dp" />
+                </LinearLayout>
+                <TextView
+                    android:text="CYCLING"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/strType"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#ffffffff" />
+                <TextView
+                    android:text="SWITCH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#ffffffff"
+                    android:layout_marginRight="10dp" />
+                <ImageView
+                    android:src="@drawable/icon_right"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/btnCycle"
+                    android:layout_marginRight="20dp" />
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
@@ -202,35 +261,6 @@
                     android:max="400"
                     android:progressTint="#ffe5a109"
                     android:progressBackgroundTint="#ff40403e" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/linearLayout12"
-                android:layout_weight="2"
-                android:gravity="center_vertical">
-                <TextView
-                    android:text="Type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/textView4"
-                    android:textSize="15dp"
-                    android:textColor="#ffffffff"
-                    android:gravity="center"
-                    android:layout_marginRight="30dp" />
-                <TextView
-                    android:text="Cycling"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/lblType"
-                    android:gravity="center"
-                    android:background="#ffeaeaea"
-                    android:textColor="#ff000000"
-                    android:singleLine="true"
-                    android:textSize="15dp" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"

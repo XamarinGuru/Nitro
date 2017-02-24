@@ -155,7 +155,7 @@ namespace goheja
 		int maxValue;
 		bool isType;
 
-		public static AdjustDialog newInstance(TextView textView, SeekBar seekBar, int maxValue, bool isType)
+		public static AdjustDialog newInstance(TextView textView, SeekBar seekBar, int maxValue, bool isType = false)
 		{
 			AdjustDialog numdialog = new AdjustDialog();
 			numdialog.textView = textView;

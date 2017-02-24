@@ -16,7 +16,7 @@ namespace goheja
 	{
 		private RootMemberModel MemberModel = new RootMemberModel();
 
-		TextView lblTime, lblDistance, lblTSS, lblType;
+		TextView lblTime, lblDistance, lblTSS;
 		EditText txtComment;
 		SeekBar seekTime, seekDistance, seekTSS;
 		CheckBox attended;
@@ -44,12 +44,38 @@ namespace goheja
 
 		void InitUISettings()
 		{
+			var imgType = FindViewById<ImageView>(Resource.Id.imgType);
+			var strType = FindViewById<TextView>(Resource.Id.strType);
+
+			strType.Text = Constants.PRACTICE_TYPES[int.Parse(AppSettings.selectedEvent.type) - 1];
+
+			switch (AppSettings.selectedEvent.type)
+			{
+				case "0":
+					imgType.SetImageResource(Resource.Drawable.icon_triathlon);
+					break;
+				case "1":
+					imgType.SetImageResource(Resource.Drawable.icon_bike);
+					break;
+				case "2":
+					imgType.SetImageResource(Resource.Drawable.icon_run);
+					break;
+				case "3":
+					imgType.SetImageResource(Resource.Drawable.icon_swim);
+					break;
+				case "4":
+					imgType.SetImageResource(Resource.Drawable.icon_triathlon);
+					break;
+				case "5":
+					imgType.SetImageResource(Resource.Drawable.icon_other);
+					break;
+			}
+
 			attended = FindViewById<CheckBox>(Resource.Id.checkAttended);
 
 			lblTime = FindViewById<TextView>(Resource.Id.lblTime);
 			lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
 			lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
-			lblType = FindViewById<TextView>(Resource.Id.lblType);
 			txtComment = FindViewById<EditText>(Resource.Id.txtComment);
 
 			seekTime = FindViewById<SeekBar>(Resource.Id.ActionTimeChanged);
@@ -59,22 +85,25 @@ namespace goheja
 			seekTime.ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
 			seekDistance.ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
 			seekTSS.ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
+
+			FindViewById(Resource.Id.ActionSwitchType).Click += delegate (object sender, EventArgs e)
+			{
+				var activity = new Intent(this, typeof(SelectPTypeActivity));
+				StartActivity(activity);
+			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
 
 			SetupAdjustPicker(lblTime, seekTime, 360);
 			SetupAdjustPicker(lblDistance, seekDistance, 250);
 			SetupAdjustPicker(lblTSS, seekTSS, 400);
-			SetupAdjustPicker(lblType, null, 4, true);
-
-
 		}
-		void SetupAdjustPicker(TextView textView, SeekBar seekBar, int maxValue, bool isType = false)
+		void SetupAdjustPicker(TextView textView, SeekBar seekBar, int maxValue)
 		{
 			textView.Touch += (object sender, View.TouchEventArgs e) =>
 			{
 				if (e.Event.Action == MotionEventActions.Down)
 				{
-					AdjustDialog myDiag = AdjustDialog.newInstance((TextView)sender, seekBar, maxValue, isType);
+					AdjustDialog myDiag = AdjustDialog.newInstance((TextView)sender, seekBar, maxValue);
 					myDiag.Show(FragmentManager, "Diag");
 				}
 			};
@@ -99,8 +128,6 @@ namespace goheja
 			seekTime.Progress = strEt;
 			seekDistance.Progress = (int)float.Parse(strTd);
 			seekTSS.Progress = (int)float.Parse(strTss);
-
-			lblType.Text = GetTypeStrFromID(AppSettings.selectedEvent.type);
 		}
 
 		void ActionAdjustTrainning(object sender, EventArgs e)
@@ -111,9 +138,7 @@ namespace goheja
 			{
 				ShowLoadingView(Constants.MSG_ADJUST_TRAINING);
 
-				var type = (Array.IndexOf(Constants.PRACTICE_TYPES, lblType.Text) + 1).ToString();
-
-				UpdateMemberNotes(txtComment.Text, AppSettings.UserID, AppSettings.selectedEvent._id, MemberModel.username, attended.Checked ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, type);
+				UpdateMemberNotes(txtComment.Text, AppSettings.UserID, AppSettings.selectedEvent._id, MemberModel.username, attended.Checked ? "1" : "0", lblTime.Text, lblDistance.Text, lblTSS.Text, AppSettings.selectedEvent.type);
 
 				HideLoadingView();
 
