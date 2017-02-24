@@ -24,15 +24,23 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton backBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView bpmImg { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel bpmLbl { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnBack { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnStartPause { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnStop { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -76,18 +84,6 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton selectBikeBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton selectMountainBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton selectRunBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView speedImg { get; set; }
 
         [Outlet]
@@ -96,39 +92,23 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton startStopBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton stopBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewMapContent { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView viewSelectType { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView wattImg { get; set; }
 
-        [Action ("ActionSelectSportType:")]
+        [Action ("ActionBack:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionSelectSportType (UIKit.UIButton sender);
+        partial void ActionBack (UIKit.UIButton sender);
 
-        [Action ("BackBtn_TouchupInside:")]
+        [Action ("ActionStartPause:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BackBtn_TouchupInside (UIKit.UIButton sender);
+        partial void ActionStartPause (UIKit.UIButton sender);
 
-        [Action ("StartStopBtn_TouchUpInside:")]
+        [Action ("ActionStop:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void StartStopBtn_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("StopBtn_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void StopBtn_TouchUpInside (UIKit.UIButton sender);
+        partial void ActionStop (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -142,11 +122,6 @@ namespace location2
                 altTypeLbl = null;
             }
 
-            if (backBtn != null) {
-                backBtn.Dispose ();
-                backBtn = null;
-            }
-
             if (bpmImg != null) {
                 bpmImg.Dispose ();
                 bpmImg = null;
@@ -155,6 +130,21 @@ namespace location2
             if (bpmLbl != null) {
                 bpmLbl.Dispose ();
                 bpmLbl = null;
+            }
+
+            if (btnBack != null) {
+                btnBack.Dispose ();
+                btnBack = null;
+            }
+
+            if (btnStartPause != null) {
+                btnStartPause.Dispose ();
+                btnStartPause = null;
+            }
+
+            if (btnStop != null) {
+                btnStop.Dispose ();
+                btnStop = null;
             }
 
             if (distImg != null) {
@@ -207,21 +197,6 @@ namespace location2
                 mainframe = null;
             }
 
-            if (selectBikeBtn != null) {
-                selectBikeBtn.Dispose ();
-                selectBikeBtn = null;
-            }
-
-            if (selectMountainBtn != null) {
-                selectMountainBtn.Dispose ();
-                selectMountainBtn = null;
-            }
-
-            if (selectRunBtn != null) {
-                selectRunBtn.Dispose ();
-                selectRunBtn = null;
-            }
-
             if (speedImg != null) {
                 speedImg.Dispose ();
                 speedImg = null;
@@ -232,24 +207,9 @@ namespace location2
                 speedTypeLbl = null;
             }
 
-            if (startStopBtn != null) {
-                startStopBtn.Dispose ();
-                startStopBtn = null;
-            }
-
-            if (stopBtn != null) {
-                stopBtn.Dispose ();
-                stopBtn = null;
-            }
-
             if (viewMapContent != null) {
                 viewMapContent.Dispose ();
                 viewMapContent = null;
-            }
-
-            if (viewSelectType != null) {
-                viewSelectType.Dispose ();
-                viewSelectType = null;
             }
 
             if (wattImg != null) {

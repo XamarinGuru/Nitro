@@ -24,7 +24,7 @@ namespace location2
 			myDelegate.baseVC = this;
 
 			AddSubController("CalendarHomeViewController");
-			AddSubController("AnalyticsViewController");
+			AddSubController("PracticeSelectionViewController");
 			AddSubController("ProfileViewController");
 
 			SetCurrentPage(0);

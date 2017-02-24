@@ -25,9 +25,9 @@ namespace location2
 				LocationManager.RequestWhenInUseAuthorization();
 			}
 			LocationManager.DistanceFilter = CLLocationDistance.FilterNone;
-			//LocationManager.LocationsUpdated += LocationManager_LocationsUpdated;
-			//LocationManager.StartUpdatingLocation();
-			//_isTracking = true;
+			LocationManager.LocationsUpdated += LocationManager_FirstLocationsUpdated;
+			LocationManager.StartUpdatingLocation();
+			_isTracking = true;
 		}
 
 		#region IDisposable implementation
@@ -74,6 +74,22 @@ namespace location2
 		{
 			LocationManager.StopUpdatingLocation();
 			LocationManager.StartUpdatingLocation();
+		}
+
+		private static void LocationManager_FirstLocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)
+		{
+			if (LocationManager != null)
+			{
+				LocationManager.LocationsUpdated -= LocationManager_FirstLocationsUpdated;
+				LocationManager.StopUpdatingLocation();
+				_isTracking = false;
+			}
+
+			if (LocationUpdated != null)
+			{
+				LocationUpdated(sender, e);
+			}
+			UpdateLocation(e.Locations[e.Locations.Length - 1]);
 		}
 
 		private static void LocationManager_LocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)

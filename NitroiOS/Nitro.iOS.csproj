@@ -261,6 +261,10 @@
     <Compile Include="Controllers\SelectPTypeViewController.designer.cs">
       <DependentUpon>SelectPTypeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\PracticeSelectionViewController.cs" />
+    <Compile Include="Controllers\PracticeSelectionViewController.designer.cs">
+      <DependentUpon>PracticeSelectionViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -290,10 +294,10 @@
     <BundleResource Include="Resources\heja_icon.png" />
     <BundleResource Include="Resources\calen_icon_active.png" />
     <BundleResource Include="Resources\transparent.png" />
-    <BundleResource Include="Resources\resume_active.png" />
-    <BundleResource Include="Resources\resume_inactive.png" />
+    <BundleResource Include="Resources\icon_resume.png" />
+    <BundleResource Include="Resources\icon_pause.png" />
     <BundleResource Include="Resources\stop_active.png" />
-    <BundleResource Include="Resources\go_button.png" />
+    <BundleResource Include="Resources\icon_go.png" />
     <BundleResource Include="Resources\timer_new.png" />
     <BundleResource Include="Resources\watt_new.png" />
     <BundleResource Include="Resources\speed_new.png" />

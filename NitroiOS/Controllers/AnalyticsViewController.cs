@@ -17,20 +17,28 @@ namespace location2
 		{
 			bike = 0,
 			run = 1,
-			mountain = 5
+			mountain = 2
 		};
 
-		//public static LocationManager Manager = new LocationManager();
+		enum PRACTICE_STATE
+		{
+			ready,
+			playing,
+			pause
+		}
+
+		public int pType;
+		PRACTICE_STATE pState = PRACTICE_STATE.ready;
+
+
 
 		MapView mMapView;
-
 		Marker markerMyLocation = null;
 
 		EventPoints mEventMarker = new EventPoints();
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
 
-		RIDE_TYPE selected;
 
 		public bool startStop;
 		public bool paused;
@@ -39,8 +47,6 @@ namespace location2
 
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
-			//Manager = new LocationManager();
-			//Manager.StartLocationUpdates();
 			MemberModel = new RootMemberModel();
 		}
 
@@ -48,77 +54,66 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
+			NavigationItem.HidesBackButton = true;
+
 			startStop = false;
 			paused = false;
 
-			altimg.Layer.ZPosition = 1;
-			bpmImg.Layer.ZPosition = 1;
-			distImg.Layer.ZPosition = 1;
-			wattImg.Layer.ZPosition = 1;
-			speedImg.Layer.ZPosition = 1;
-
-			lblSpeed.Layer.ZPosition = 1;
-			bpmLbl.Layer.ZPosition = 1;
-			lblWatt.Layer.ZPosition = 1;
-			lblDist.Layer.ZPosition = 1;
-			lblAlt.Layer.ZPosition = 1;
-
-			speedTypeLbl.Layer.ZPosition = 1;
-			lblBpm.Layer.ZPosition = 1;
-			lblWatt.Layer.ZPosition = 1;
-			distTypLbl.Layer.ZPosition = 1;
-			altTypeLbl.Layer.ZPosition = 1;
 
 			if (!IsNetEnable()) return;
 
 			MemberModel.rootMember = GetUserObject();
 
+			InitUISettings();
+
 			InitMapView();
 		}
 
-		//public static bool UserInterfaceIdiomIsPhone
-		//{
-		//	get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
-		//}
+		void InitUISettings()
+		{
+			switch (pType)
+			{
+				case (int)RIDE_TYPE.bike:
+					speedTypeLbl.Text = "km/h";
+					imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
+					break;
+				case (int)RIDE_TYPE.run:
+					speedTypeLbl.Text = "min/km";
+					imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
+					break;
+				case (int)RIDE_TYPE.mountain:
+					speedTypeLbl.Text = "km/h";
+					imgTypeIcon.Image = UIImage.FromBundle("icon_06.png");
+					break;
+			}
+		}
 
-		//public override void ViewDidAppear(bool animated)
-		//{
-		//	base.ViewDidAppear(animated);
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
 
-		//	InitMapView();
-		//}
-
-		//public override void ViewWillLayoutSubviews()
-		//{
-		//	if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
-		//	{
-		//		RepaintMap();
-		//	}
-		//}
+			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
+			{
+				RepaintMap();
+			}
+		}
 		void InitMapView()
 		{
-			var camera = CameraPosition.FromCamera(31.0461, 34.8516, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+			var myLocation = LocationHelper.GetLocationResult();
+			var myLocation2D = new CLLocationCoordinate2D(myLocation.Latitude, myLocation.Longitude);
+
+			var camera = CameraPosition.FromCamera(myLocation2D, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
 			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			mMapView.MyLocationEnabled = false;
 
 			mMapView.TappedMarker = ClickedDropItem;
 
-			var myLocation = LocationHelper.GetLocationResult();
-
 			markerMyLocation = new Marker
 			{
-				Position = new CLLocationCoordinate2D(myLocation.Latitude, myLocation.Longitude),
+				Position = myLocation2D,
 				Map = mMapView,
 				Icon = UIImage.FromFile("pin_me.png")
 			};
-			SetMapPosition(new CLLocation(myLocation.Latitude, myLocation.Longitude));
-
-			//viewMapContent.LayoutIfNeeded();
-			//var width = viewMapContent.Frame.Width;
-			//var height = viewMapContent.Frame.Height;
-			//mMapView.Frame = new CGRect(0, 0, width, height);
-			
-			//viewMapContent.AddSubview(mMapView);
 		}
 
 		public void RepaintMap()
@@ -135,7 +130,7 @@ namespace location2
 
 			viewMapContent.AddSubview(mMapView);
 
-			//SetNearestEventMarkers();
+			SetNearestEventMarkers();
 		}
 
 		void SetNearestEventMarkers()
@@ -169,6 +164,11 @@ namespace location2
 					if (boundPoints.Count > 0)
 					{
 						var mapBounds = new CoordinateBounds();
+
+						var myLocation = LocationHelper.GetLocationResult();
+						var myLocation2D = new CLLocationCoordinate2D(myLocation.Latitude, myLocation.Longitude);
+						boundPoints.Add(myLocation2D);
+
 						foreach (var bound in boundPoints)
 							mapBounds = mapBounds.Including(bound);
 						mMapView.MoveCamera(CameraUpdate.FitBounds(mapBounds, 50.0f));
@@ -176,8 +176,6 @@ namespace location2
 				});
 			});
 		}
-
-
 
 		void AddMapPin(CLLocationCoordinate2D position, UIImage icon, int zIndex)
 		{
@@ -189,6 +187,17 @@ namespace location2
 				ZIndex = zIndex
 			};
 		}
+
+		void SetMapPosition(CLLocation location)
+		{
+			var camera = CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
+			if (mMapView != null)
+				mMapView.Animate(camera);
+
+			if (markerMyLocation != null)
+				markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
+		}
+
 		#region map pin click event
 		bool ClickedDropItem(MapView mapView, Marker marker)
 		{
@@ -206,44 +215,28 @@ namespace location2
 		}
 		#endregion
 
-		void SetMapPosition(CLLocation location)
-		{
-			var camera = CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
-			mMapView.Animate(camera);
 
-			if (markerMyLocation != null)
-				markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
-		}
 
 		#region Public Methods
-		CLLocation _lastLocation;
+		CLLocation _lastLocation = null;
 		double _currentDistance = 0;
-		Double _lastAltitude;
+		Double _lastAltitude = 0;
 		DateTime _dt;
-		double _speed;
+		double _speed = 0;
 		float currdistance = 0;
-		int flag = 0;
+		//int flag = 0;
 
 		void LocationUpdated(object sender, EventArgs e)
 		{
 			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
 			var location = locArgs.Locations[locArgs.Locations.Length - 1];
 
-		//}
+			//if (flag <= 2) flag++;
 
-		//public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
-		//{
-			if (flag <= 2) flag++;
-
-			if (startStop)
+			//if (startStop)
 			{
-				//if (this.lblTitle.Text.Contains("GPS"))
-				//	this.lblTitle.Text = "On the go";
 
-				// Handle foreground updates
-				//CLLocation location = e.Location;
-
-				if (!paused)
+				//if (!paused)
 				{
 					try
 					{
@@ -260,11 +253,11 @@ namespace location2
 
 				_dt = DateTime.Now;
 
-				if (selected == RIDE_TYPE.bike)
+				if (pType == (int)RIDE_TYPE.bike)
 				{
 					_speed = location.Speed * 3.6;
 				}
-				if (selected == RIDE_TYPE.run)
+				if (pType == (int)RIDE_TYPE.run)
 				{
 					if (location.Speed > 0)
 						_speed = 16.6666 / location.Speed;
@@ -278,13 +271,13 @@ namespace location2
 				float currspeed = float.Parse(_speed.ToString());
 				try
 				{
-					if (!paused)
+					//if (!paused)
 					{
 						var name = MemberModel.firstname + " " + MemberModel.lastname;
 						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
 						var country = MemberModel.country;
 
-						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, selected.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
 
 						if (currspeed < 0)
 							currspeed = 0;
@@ -308,61 +301,6 @@ namespace location2
 		}
 
 
-
-		partial void StartStopBtn_TouchUpInside(UIButton sender)
-		{
-			if (paused)
-			{
-				//this.lblTitle.Text = "On the go...";
-				startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_inactive.png"), UIControlState.Normal);
-				stopBtn.Hidden = true;
-				paused = false;
-				backBtn.Hidden = true;
-				LocationHelper.StartLocationManager();
-				LocationHelper.LocationUpdated += LocationUpdated;
-			}
-			else
-			{
-				if (!startStop)
-				{
-					if (!IsNetEnable())
-					{
-						return;
-					}
-					else
-					{
-						//this.lblTitle.Text = "Searching for GPS...";
-						//Manager.LocationUpdated += HandleLocationChanged;
-						LocationHelper.StartLocationManager();
-						LocationHelper.LocationUpdated += LocationUpdated;
-					}
-					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
-					stopBtn.Hidden = false;
-					startStop = true;
-					paused = false;
-
-					if (!isTimerStarted)
-					{
-						StartTimer();
-						backBtn.Hidden = true;
-					}
-					isTimerStarted = true;
-				}
-				else
-				{
-					//this.lblTitle.Text = "Paused...";
-					startStopBtn.SetBackgroundImage(UIImage.FromFile("resume_active.png"), UIControlState.Normal);
-					stopBtn.Hidden = false;
-					paused = true;
-
-					LocationHelper.StopLocationManager();
-				}
-			}
-		}
-
-
-
-
 		#endregion
 		private int _duration = 0;
 
@@ -380,11 +318,77 @@ namespace location2
 			}
 		}
 
-		private void BackProcess()
+		partial void ActionBack(UIButton sender)
 		{
-			//this.lblTitle.Text = "Nitro ready...";
-			viewSelectType.Hidden = false;
+			if (pState == PRACTICE_STATE.ready)
+			{
+				NavigationController.PopViewController(true);
+			}
+			else
+			{
+				ShowMessageBox(null, "You sure you want to stop practice?", "Cancel", new[] { "OK" }, StopPractice);
+			}
+		}
 
+		void ShowMessageBox(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
+		{
+			var alertView = new UIAlertView(title, message, null, cancelButton, otherButtons);
+			alertView.Clicked += (sender, e) =>
+			{
+				if (e.ButtonIndex == 0)
+				{
+					return;
+				}
+				if (successHandler != null)
+				{
+					successHandler();
+				}
+			};
+			alertView.Show();
+		}
+
+		partial void ActionStartPause(UIButton sender)
+		{
+			if (pState == PRACTICE_STATE.ready)
+			{
+				StartTimer();
+
+				btnStartPause.SetBackgroundImage(UIImage.FromFile("icon_pause.png"), UIControlState.Normal);
+				btnStop.Hidden = false;
+
+				LocationHelper.StartLocationManager();
+				LocationHelper.LocationUpdated += LocationUpdated;
+
+				pState = PRACTICE_STATE.playing;
+			}
+			else if (pState == PRACTICE_STATE.playing)
+			{
+				btnStartPause.SetBackgroundImage(UIImage.FromFile("icon_resume.png"), UIControlState.Normal);
+				btnStop.Hidden = false;
+
+				LocationHelper.StopLocationManager();
+
+				pState = PRACTICE_STATE.pause;
+			}
+			else if (pState == PRACTICE_STATE.pause)
+			{
+				btnStartPause.SetBackgroundImage(UIImage.FromFile("icon_pause.png"), UIControlState.Normal);
+				btnStop.Hidden = false;
+
+				LocationHelper.StartLocationManager();
+				LocationHelper.LocationUpdated += LocationUpdated;
+
+				pState = PRACTICE_STATE.playing;
+			}
+		}
+
+		partial void ActionStop(UIButton sender)
+		{
+			StopPractice();
+		}
+
+		void StopPractice()
+		{
 			try
 			{
 				var name = MemberModel.firstname + " " + MemberModel.lastname;
@@ -393,110 +397,20 @@ namespace location2
 				var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 				var bearing = float.Parse(_lastLocation.Course.ToString());
 
-				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, selected.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
 			}
 			catch
 			{
 			}
 
-			lblTimer.Text = "";
-			lblSpeed.Text = "0.00";
-			lblDist.Text = "0.00";
-			lblAlt.Text = "0.0";
-			//this.lblTitle.Text = "Nitro ready..";
-			_duration = 0;
-			_lastLocation = null;
-			_currentDistance = 0;
-			_lastAltitude = 0;
-			_speed = 0;
-			currdistance = 0;
-
-			flag = 0;
-
-			backBtn.Hidden = false;
-			stopBtn.Hidden = true;
-
-			startStop = true;
-			paused = true;
-
-			startStopBtn.SetBackgroundImage(UIImage.FromFile("go_button.png"), UIControlState.Normal);
-
-			//Manager.LocationUpdated -= HandleLocationChanged;
-			//Manager.StopLocationUpdates();
-
-			//LocationHelper.LocationUpdated -= LocationUpdated;
 			LocationHelper.StopLocationManager();
 
 			NSUserDefaults.StandardUserDefaults.SetInt(0, "timer");
 			NSUserDefaults.StandardUserDefaults.SetDouble(0, "lastDistance");
 			NSUserDefaults.StandardUserDefaults.SetDouble(0, "lastAltitude");
+
+			NavigationController.PopViewController(true);
 		}
-
-		//private void SwitchSecondViewByType(RIDE_TYPE type)
-		//{
-		//	selected = type;
-
-		//	viewSelectType.Hidden = true;
-
-		//	Manager.LocationUpdated += HandleLocationChanged;
-
-		//	if (type == RIDE_TYPE.run)
-		//	{
-		//		speedTypeLbl.Text = "min/km";
-		//		imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
-		//	}
-		//	else {
-		//		speedTypeLbl.Text = "km/h";
-		//		imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
-		//	}
-		//}
-
-		#region event handlers
-		partial void ActionSelectSportType(UIButton sender)
-		{
-			viewSelectType.Hidden = true;
-
-			//Manager.LocationUpdated += HandleLocationChanged;
-
-			switch (sender.Tag)
-			{
-				case (int)RIDE_TYPE.bike:
-					speedTypeLbl.Text = "km/h";
-					imgTypeIcon.Image = UIImage.FromBundle("bikeRound_new.png");
-					selected = RIDE_TYPE.bike;
-					//SwitchSecondViewByType(RIDE_TYPE.bike);
-					break;
-				case (int)RIDE_TYPE.run:
-					speedTypeLbl.Text = "min/km";
-					imgTypeIcon.Image = UIImage.FromBundle("runRound_new.png");
-					selected = RIDE_TYPE.run;
-					//SwitchSecondViewByType(RIDE_TYPE.run);
-					break;
-				case (int)RIDE_TYPE.mountain:
-					speedTypeLbl.Text = "km/h";
-					imgTypeIcon.Image = UIImage.FromBundle("icon_06.png");
-					selected = RIDE_TYPE.mountain;
-					//SwitchSecondViewByType(RIDE_TYPE.mountain);
-					break;
-			}
-
-			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
-			{
-				RepaintMap();
-			}
-
-
-		}
-
-		partial void StopBtn_TouchUpInside(UIButton sender)
-		{
-			BackProcess();
-		}
-		partial void BackBtn_TouchupInside(UIButton sender)
-		{
-			BackProcess();
-		}
-		#endregion
 	}
 }
 
