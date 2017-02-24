@@ -24,6 +24,8 @@ namespace location2
 
 		MapView mMapView;
 
+		Marker markerMyLocation = null;
+
 		EventPoints mEventMarker = new EventPoints();
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
@@ -101,6 +103,16 @@ namespace location2
 
 			mMapView.TappedMarker = ClickedDropItem;
 
+			var myLocation = LocationHelper.GetLocationResult();
+
+			markerMyLocation = new Marker
+			{
+				Position = new CLLocationCoordinate2D(myLocation.Latitude, myLocation.Longitude),
+				Map = mMapView,
+				Icon = UIImage.FromFile("pin_me.png")
+			};
+			SetMapPosition(new CLLocation(myLocation.Latitude, myLocation.Longitude));
+
 			//viewMapContent.LayoutIfNeeded();
 			//var width = viewMapContent.Frame.Width;
 			//var height = viewMapContent.Frame.Height;
@@ -154,13 +166,7 @@ namespace location2
 						}
 					}
 
-					if (boundPoints.Count == 0)
-					{
-						SetMapPosition(new CLLocation(PortableLibrary.Constants.LOCATION_ISURAEL[0], PortableLibrary.Constants.LOCATION_ISURAEL[1]));
-						//var camera = CameraPosition.FromCamera(PortableLibrary.Constants.LOCATION_ISURAEL[0], PortableLibrary.Constants.LOCATION_ISURAEL[1], zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
-						//mMapView = MapView.FromCamera(RectangleF.Empty, camera);
-					}
-					else
+					if (boundPoints.Count > 0)
 					{
 						var mapBounds = new CoordinateBounds();
 						foreach (var bound in boundPoints)
@@ -204,6 +210,9 @@ namespace location2
 		{
 			var camera = CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
 			mMapView.Animate(camera);
+
+			if (markerMyLocation != null)
+				markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
 		}
 
 		#region Public Methods
