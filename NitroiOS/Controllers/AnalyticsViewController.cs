@@ -175,12 +175,15 @@ namespace location2
 			};
 		}
 
-		void SetMapPosition(CLLocation location)
+		void SetMapPosition(CLLocation location, double bearing = -1)
 		{
-			var camera = CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL);
-			if (mMapView != null)
-				mMapView.Animate(camera);
+			if (mMapView == null) return;
 
+			if (bearing == -1)
+				mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL));
+			else
+				mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, PortableLibrary.Constants.MAP_ZOOM_LEVEL, bearing, 0));
+			
 			if (markerMyLocation != null)
 				markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
 		}
@@ -262,7 +265,7 @@ namespace location2
 				lblAlt.Text = currAlt.ToString("0.00");
 				lblDist.Text = _currentDistance.ToString("0.00");
 
-				SetMapPosition(location);
+				SetMapPosition(location, course);
 
 				_lastLocation = location;
 				NSUserDefaults.StandardUserDefaults.SetDouble(_currentDistance, "lastDistance");
