@@ -2,7 +2,7 @@ using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Android.Graphics;
+using System;
 
 namespace goheja
 {
@@ -16,30 +16,22 @@ namespace goheja
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            InitializeComponent(view);
+
+			view.FindViewById<ImageView>(Resource.Id.ActionType0).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType1).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType2).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType3).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType4).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType5).Click += ActionSelectedType;
+			view.FindViewById<ImageView>(Resource.Id.ActionType6).Click += ActionSelectedType;
         }
 
-        private void InitializeComponent(View view)
-        {
-            var whatItLabel = view.FindViewById<TextView>(Resource.Id.whatItLabel);
-            whatItLabel.SetTypeface(Typeface.CreateFromAsset(Activity.Assets, "font/arialbd.ttf"), TypefaceStyle.Bold);
-
-            view.FindViewById<ImageView>(Resource.Id.icon01).Click += delegate{ Icon_click(1); };
-            view.FindViewById<ImageView>(Resource.Id.icon02).Click += delegate{ Icon_click(2); };
-			view.FindViewById<ImageView>(Resource.Id.icon06).Click += delegate { Icon_click(6); };
-
-			///coming soon
-            //Icon03 = view.FindViewById<ImageView>(Resource.Id.icon03);
-            //Icon04 = view.FindViewById<ImageView>(Resource.Id.icon04);
-            //Icon05 = view.FindViewById<ImageView>(Resource.Id.icon05);
-            //Icon06 = view.FindViewById<ImageView>(Resource.Id.icon06);
-            //Icon07 = view.FindViewById<ImageView>(Resource.Id.icon07);
-        }
-        private void Icon_click(int iconNumber)
-        {
-            var intent = new Intent(Activity, typeof(AnalyticsActivity));
-            intent.PutExtra("EventNumber", iconNumber);
-            StartActivity(intent);
-        }
+		void ActionSelectedType(object sender, EventArgs e)
+		{
+			var practiceType = int.Parse((sender as ImageView).Tag.ToString());
+			var intent = new Intent(Activity, typeof(AnalyticsActivity));
+			intent.PutExtra("pType", practiceType);
+			StartActivity(intent);
+		}
     }
 }

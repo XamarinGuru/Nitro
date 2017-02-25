@@ -30,20 +30,12 @@ namespace location2
 		public int pType;
 		PRACTICE_STATE pState = PRACTICE_STATE.ready;
 
-
-
 		MapView mMapView;
 		Marker markerMyLocation = null;
 
 		EventPoints mEventMarker = new EventPoints();
 
 		trackSvc.Service1 meServ = new trackSvc.Service1();
-
-
-		public bool startStop;
-		public bool paused;
-
-		bool isTimerStarted = false;
 
 		public AnalyticsViewController(IntPtr handle) : base(handle)
 		{
@@ -56,16 +48,11 @@ namespace location2
 
 			NavigationItem.HidesBackButton = true;
 
-			startStop = false;
-			paused = false;
-
-
 			if (!IsNetEnable()) return;
 
 			MemberModel.rootMember = GetUserObject();
 
 			InitUISettings();
-
 			InitMapView();
 		}
 
@@ -224,79 +211,65 @@ namespace location2
 		DateTime _dt;
 		double _speed = 0;
 		float currdistance = 0;
-		//int flag = 0;
 
 		void LocationUpdated(object sender, EventArgs e)
 		{
 			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
 			var location = locArgs.Locations[locArgs.Locations.Length - 1];
 
-			//if (flag <= 2) flag++;
-
-			//if (startStop)
+			try
 			{
-
-				//if (!paused)
+				if (location != null & _lastLocation != null)
 				{
-					try
-					{
-						if (location != null & _lastLocation != null)
-						{
-							_currentDistance = _currentDistance + location.DistanceFrom(_lastLocation) / 1000;
-						}
-						_lastAltitude = NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude") + Calculate.difAlt(_lastAltitude, location.Altitude);
-					}
-					catch
-					{
-					}
+					_currentDistance = _currentDistance + location.DistanceFrom(_lastLocation) / 1000;
 				}
+				_lastAltitude = NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude") + Calculate.difAlt(_lastAltitude, location.Altitude);
+			}
+			catch
+			{
+			}
 
-				_dt = DateTime.Now;
+			_dt = DateTime.Now;
 
-				if (pType == (int)RIDE_TYPE.bike)
-				{
-					_speed = location.Speed * 3.6;
-				}
-				if (pType == (int)RIDE_TYPE.run)
-				{
-					if (location.Speed > 0)
-						_speed = 16.6666 / location.Speed;
-					else
-						_speed = 0;
-				}
-				float course = float.Parse(location.Course.ToString());
+			if (pType == (int)RIDE_TYPE.bike)
+			{
+				_speed = location.Speed * 3.6;
+			}
+			if (pType == (int)RIDE_TYPE.run)
+			{
+				if (location.Speed > 0)
+					_speed = 16.6666 / location.Speed;
+				else
+					_speed = 0;
+			}
+			float course = float.Parse(location.Course.ToString());
 
-				currdistance = float.Parse(_currentDistance.ToString());
-				float currAlt = float.Parse(_lastAltitude.ToString());
-				float currspeed = float.Parse(_speed.ToString());
-				try
-				{
-					//if (!paused)
-					{
-						var name = MemberModel.firstname + " " + MemberModel.lastname;
-						var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
-						var country = MemberModel.country;
+			currdistance = float.Parse(_currentDistance.ToString());
+			float currAlt = float.Parse(_lastAltitude.ToString());
+			float currspeed = float.Parse(_speed.ToString());
 
-						meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+			try
+			{
+				var name = MemberModel.firstname + " " + MemberModel.lastname;
+				var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
+				var country = MemberModel.country;
 
-						if (currspeed < 0)
-							currspeed = 0;
-						lblSpeed.Text = currspeed.ToString("0.00");
-						lblAlt.Text = currAlt.ToString("0.00");
-						lblDist.Text = _currentDistance.ToString("0.00");
+				meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
 
-						SetMapPosition(location);
-					}
+				if (currspeed < 0)
+					currspeed = 0;
+				lblSpeed.Text = currspeed.ToString("0.00");
+				lblAlt.Text = currAlt.ToString("0.00");
+				lblDist.Text = _currentDistance.ToString("0.00");
 
-					//end
-					//save this used location as last location
-					_lastLocation = location;
-					NSUserDefaults.StandardUserDefaults.SetDouble(_currentDistance, "lastDistance");
-					NSUserDefaults.StandardUserDefaults.SetDouble(currAlt, "lastAltitude");
-				}
-				catch
-				{
-				}
+				SetMapPosition(location);
+
+				_lastLocation = location;
+				NSUserDefaults.StandardUserDefaults.SetDouble(_currentDistance, "lastDistance");
+				NSUserDefaults.StandardUserDefaults.SetDouble(currAlt, "lastAltitude");
+			}
+			catch
+			{
 			}
 		}
 
@@ -310,7 +283,7 @@ namespace location2
 			while (true)
 			{
 				await Task.Delay(1000);
-				if (!paused) _duration++;
+				if (pState == PRACTICE_STATE.playing) _duration++;
 				NSUserDefaults.StandardUserDefaults.SetInt(_duration, "timer");
 				string s = TimeSpan.FromSeconds(_duration).ToString(@"hh\:mm\:ss");
 
@@ -330,23 +303,6 @@ namespace location2
 			}
 		}
 
-		void ShowMessageBox(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
-		{
-			var alertView = new UIAlertView(title, message, null, cancelButton, otherButtons);
-			alertView.Clicked += (sender, e) =>
-			{
-				if (e.ButtonIndex == 0)
-				{
-					return;
-				}
-				if (successHandler != null)
-				{
-					successHandler();
-				}
-			};
-			alertView.Show();
-		}
-
 		partial void ActionStartPause(UIButton sender)
 		{
 			if (pState == PRACTICE_STATE.ready)
@@ -360,6 +316,20 @@ namespace location2
 				LocationHelper.LocationUpdated += LocationUpdated;
 
 				pState = PRACTICE_STATE.playing;
+
+				try
+				{
+					var name = MemberModel.firstname + " " + MemberModel.lastname;
+					var location = _lastLocation.Coordinate.Latitude.ToString() + "," + _lastLocation.Coordinate.Longitude.ToString();
+					var speed = float.Parse(_lastLocation.Speed.ToString());
+					var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
+					var bearing = float.Parse(_lastLocation.Course.ToString());
+
+					meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 1, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+				}
+				catch
+				{
+				}
 			}
 			else if (pState == PRACTICE_STATE.playing)
 			{

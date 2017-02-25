@@ -370,7 +370,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_centerInParent="true">
                 <Button
-                    android:id="@+id/StartPractice"
+                    android:id="@+id/btnStartPause"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@drawable/go_button"
@@ -380,7 +380,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginRight="5dp" />
                 <Button
-                    android:id="@+id/stopPractice"
+                    android:id="@+id/btnStop"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:textColor="#000000"
@@ -388,7 +388,7 @@
                     android:layout_y="90dp"
                     android:background="@drawable/stop_active"
                     android:layout_alignParentRight="true"
-                    android:layout_above="@+id/StartPractice"
+                    android:layout_above="@+id/btnStartPause"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="5dp" />
                 <Button

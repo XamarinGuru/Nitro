@@ -1370,6 +1370,27 @@ namespace goheja
 			// aapt resource value: 0x7f0a013a
 			public const int ActionTriathlon = 2131362106;
 			
+			// aapt resource value: 0x7f0a00fb
+			public const int ActionType0 = 2131362043;
+			
+			// aapt resource value: 0x7f0a00fc
+			public const int ActionType1 = 2131362044;
+			
+			// aapt resource value: 0x7f0a00fd
+			public const int ActionType2 = 2131362045;
+			
+			// aapt resource value: 0x7f0a00fe
+			public const int ActionType3 = 2131362046;
+			
+			// aapt resource value: 0x7f0a00ff
+			public const int ActionType4 = 2131362047;
+			
+			// aapt resource value: 0x7f0a0100
+			public const int ActionType5 = 2131362048;
+			
+			// aapt resource value: 0x7f0a0101
+			public const int ActionType6 = 2131362049;
+			
 			// aapt resource value: 0x7f0a00ea
 			public const int ActionViewCalendar = 2131362026;
 			
@@ -1402,9 +1423,6 @@ namespace goheja
 			
 			// aapt resource value: 0x7f0a0045
 			public const int LinearLayout3 = 2131361861;
-			
-			// aapt resource value: 0x7f0a004b
-			public const int StartPractice = 2131361867;
 			
 			// aapt resource value: 0x7f0a0141
 			public const int Tab1Icon = 2131362113;
@@ -1441,6 +1459,12 @@ namespace goheja
 			
 			// aapt resource value: 0x7f0a00e6
 			public const int btnRun = 2131362022;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int btnStartPause = 2131361867;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int btnStop = 2131361868;
 			
 			// aapt resource value: 0x7f0a00f4
 			public const int btnSwim = 2131362036;
@@ -1552,27 +1576,6 @@ namespace goheja
 			
 			// aapt resource value: 0x7f0a0000
 			public const int hybrid = 2131361792;
-			
-			// aapt resource value: 0x7f0a00fb
-			public const int icon01 = 2131362043;
-			
-			// aapt resource value: 0x7f0a00fc
-			public const int icon02 = 2131362044;
-			
-			// aapt resource value: 0x7f0a0100
-			public const int icon03 = 2131362048;
-			
-			// aapt resource value: 0x7f0a00fe
-			public const int icon04 = 2131362046;
-			
-			// aapt resource value: 0x7f0a00ff
-			public const int icon05 = 2131362047;
-			
-			// aapt resource value: 0x7f0a00fd
-			public const int icon06 = 2131362045;
-			
-			// aapt resource value: 0x7f0a0101
-			public const int icon07 = 2131362049;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int icon_only = 2131361797;
@@ -1951,9 +1954,6 @@ namespace goheja
 			
 			// aapt resource value: 0x7f0a013b
 			public const int stateTriathlon = 2131362107;
-			
-			// aapt resource value: 0x7f0a004c
-			public const int stopPractice = 2131361868;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int strType = 2131361818;
