@@ -546,7 +546,8 @@ namespace goheja
 							handleRecord updateRecord = new handleRecord();
 							status = updateRecord.updaterecord(merecord, IsNetEnable());//the record and is there internet connection
 
-							SetMapPosition(new LatLng(_currentLocation.Latitude, _currentLocation.Longitude));
+							//mMapView.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new LatLng(_currentLocation.Latitude, _currentLocation.Longitude), Constants.MAP_ZOOM_LEVEL, 45f, _currentLocation.Bearing)));
+							SetMapPosition(new LatLng(_currentLocation.Latitude, _currentLocation.Longitude), _currentLocation.Bearing);
                         }
 
                         _lastLocation = _currentLocation;
@@ -567,11 +568,14 @@ namespace goheja
         }
 		#endregion
 
-		void SetMapPosition(LatLng location)
+		void SetMapPosition(LatLng location, float bearing = -1)
 		{
-			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
-			if (mMapView != null)
-				mMapView.MoveCamera(cu_center);
+			if (mMapView == null) return;
+
+			if (bearing == -1)
+				mMapView.MoveCamera(CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL));
+			else
+				mMapView.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(location, Constants.MAP_ZOOM_LEVEL, 45f, _currentLocation.Bearing)));
 
 			if (markerMyLocation != null)
 				markerMyLocation.Position = location;
