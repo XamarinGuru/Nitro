@@ -36,4 +36,4 @@ using Android.App;
 #endif
 
 
-[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyAoSP1REiI0C1YkBy8rsp9jQcACsPTOxdI")]
+[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyCzeznWpRr5BngmJGNXWfxA7t49VXt6FF0")]
