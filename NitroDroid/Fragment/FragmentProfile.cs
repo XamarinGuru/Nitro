@@ -205,7 +205,7 @@ namespace goheja
             try
             {
                 var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
-                var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
+                var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.nitro.com/files/me.png");
                 var stream = new FileStream(filePath, FileMode.Create);
 
                 bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);// Bitmap.CompressFormat.Png, 100, stream);

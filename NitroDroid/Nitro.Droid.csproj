@@ -98,7 +98,7 @@
       <HintPath>..\packages\Xamarin.GooglePlayServices.Maps.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Maps.dll</HintPath>
     </Reference>
     <Reference Include="AndHUD">
-      <HintPath>..\..\AndHUD.dll</HintPath>
+      <HintPath>..\..\..\nitroTEST2\AndHUD.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
