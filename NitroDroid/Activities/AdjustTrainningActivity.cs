@@ -42,7 +42,43 @@ namespace goheja
 			InitBindingEventTotal();
 		}
 
+		protected override void OnResume()
+		{
+			base.OnResume();
+			SetPType();
+		}
+
 		void InitUISettings()
+		{
+			SetPType();
+
+			attended = FindViewById<CheckBox>(Resource.Id.checkAttended);
+
+			lblTime = FindViewById<TextView>(Resource.Id.lblTime);
+			lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
+			lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
+			txtComment = FindViewById<EditText>(Resource.Id.txtComment);
+
+			seekTime = FindViewById<SeekBar>(Resource.Id.ActionTimeChanged);
+			seekDistance = FindViewById<SeekBar>(Resource.Id.ActionDistanceChanged);
+			seekTSS = FindViewById<SeekBar>(Resource.Id.ActionTSSChanged);
+
+			seekTime.ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekDistance.ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekTSS.ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
+
+			FindViewById(Resource.Id.ActionSwitchType).Click += delegate (object sender, EventArgs e)
+			{
+				var activity = new Intent(this, typeof(SelectPTypeActivity));
+				StartActivity(activity);
+			};
+			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
+
+			SetupAdjustPicker(lblTime, seekTime, 360);
+			SetupAdjustPicker(lblDistance, seekDistance, 250);
+			SetupAdjustPicker(lblTSS, seekTSS, 400);
+		}
+		void SetPType()
 		{
 			var imgType = FindViewById<ImageView>(Resource.Id.imgType);
 			var strType = FindViewById<TextView>(Resource.Id.strType);
@@ -70,32 +106,6 @@ namespace goheja
 					imgType.SetImageResource(Resource.Drawable.icon_other);
 					break;
 			}
-
-			attended = FindViewById<CheckBox>(Resource.Id.checkAttended);
-
-			lblTime = FindViewById<TextView>(Resource.Id.lblTime);
-			lblDistance = FindViewById<TextView>(Resource.Id.lblDistance);
-			lblTSS = FindViewById<TextView>(Resource.Id.lblTSS);
-			txtComment = FindViewById<EditText>(Resource.Id.txtComment);
-
-			seekTime = FindViewById<SeekBar>(Resource.Id.ActionTimeChanged);
-			seekDistance = FindViewById<SeekBar>(Resource.Id.ActionDistanceChanged);
-			seekTSS = FindViewById<SeekBar>(Resource.Id.ActionTSSChanged);
-
-			seekTime.ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
-			seekDistance.ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
-			seekTSS.ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
-
-			FindViewById(Resource.Id.ActionSwitchType).Click += delegate (object sender, EventArgs e)
-			{
-				var activity = new Intent(this, typeof(SelectPTypeActivity));
-				StartActivity(activity);
-			};
-			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
-
-			SetupAdjustPicker(lblTime, seekTime, 360);
-			SetupAdjustPicker(lblDistance, seekDistance, 250);
-			SetupAdjustPicker(lblTSS, seekTSS, 400);
 		}
 		void SetupAdjustPicker(TextView textView, SeekBar seekBar, int maxValue)
 		{

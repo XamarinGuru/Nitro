@@ -67,8 +67,8 @@ namespace goheja
 		void ActionSelectedType(object sender, EventArgs e)
 		{
 			AppSettings.selectedEvent.type = (sender as RelativeLayout).Tag.ToString();
-			var activity = new Intent(this, typeof(AdjustTrainningActivity));
-			StartActivity(activity);
+			var activity = new Intent();
+			SetResult(Result.Canceled, activity);
 			Finish();
 		}
 
@@ -76,8 +76,8 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(AdjustTrainningActivity));
-				StartActivity(activity);
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
 			}
 
