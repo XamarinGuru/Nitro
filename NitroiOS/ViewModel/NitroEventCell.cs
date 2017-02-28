@@ -22,10 +22,30 @@ namespace location2
 
 		public void SetCell(NitroEvent nitroEvent)
 		{
-			lblTitle.Text = nitroEvent.title;
+			var strTitle = nitroEvent.title;
+			var strTime = String.Format("{0:t}", nitroEvent.StartDateTime());
 
-			var eventDate = nitroEvent.StartDateTime();
-			lblEventTime.Text = String.Format("{0:t}", eventDate);
+			lblTitle.Text = strTitle;
+			lblEventTime.Text = strTime;
+
+			if (nitroEvent.attended == "0" && nitroEvent.StartDateTime().DayOfYear <= DateTime.Now.DayOfYear)
+			{
+				var attrTitle = new NSAttributedString(lblTitle.Text, strikethroughStyle: NSUnderlineStyle.Single);
+				var attrTime = new NSAttributedString(lblEventTime.Text, strikethroughStyle: NSUnderlineStyle.Single);
+				lblTitle.AttributedText = attrTitle;
+				lblEventTime.AttributedText = attrTime;
+				lblTitle.TextColor = UIColor.FromRGB(112, 112, 112);
+				lblEventTime.TextColor = UIColor.FromRGB(112, 112, 112);
+			}
+			else
+			{
+				var attrTitle = new NSAttributedString(lblTitle.Text, strikethroughStyle: NSUnderlineStyle.None);
+				var attrTime = new NSAttributedString(lblEventTime.Text, strikethroughStyle: NSUnderlineStyle.None);
+				lblTitle.AttributedText = attrTitle;
+				lblEventTime.AttributedText = attrTime;
+				lblTitle.TextColor = UIColor.White;
+				lblEventTime.TextColor = UIColor.White;
+			}
 
 			switch (nitroEvent.type)
 			{

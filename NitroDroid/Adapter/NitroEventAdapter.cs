@@ -45,11 +45,14 @@ namespace goheja
 			}
 			convertView.FindViewById(Resource.Id.ActionEventDetail).Click += ActionEventDetail;
 			convertView.FindViewById(Resource.Id.ActionEventDetail).Tag = position;
-			((TextView)convertView.FindViewById(Resource.Id.txtTitle)).Text = _events[position].title;
+
+			var txtTitle = convertView.FindViewById(Resource.Id.txtTitle) as TextView;
+			txtTitle.Text = _events[position].title;
 
 			var eventDate = _events[position].StartDateTime();
 
-			((TextView)convertView.FindViewById(Resource.Id.txtTime)).Text = String.Format("{0:t}", eventDate);
+			var txtTime = convertView.FindViewById(Resource.Id.txtTime) as TextView;
+			txtTime.Text = String.Format("{0:t}", eventDate);
 
 			var imgType = convertView.FindViewById<ImageView>(Resource.Id.imgType);
 			switch (_events[position].type)
@@ -74,6 +77,23 @@ namespace goheja
 					break;
 			}
 
+			if (_events[position].attended == "0" && _events[position].StartDateTime().DayOfYear <= DateTime.Now.DayOfYear)
+			{
+				txtTitle.PaintFlags = txtTitle.PaintFlags | Android.Graphics.PaintFlags.StrikeThruText;
+				txtTitle.SetTextColor(Android.Graphics.Color.Rgb(112, 112, 112));
+
+				txtTime.PaintFlags = txtTime.PaintFlags | Android.Graphics.PaintFlags.StrikeThruText;
+				txtTime.SetTextColor(Android.Graphics.Color.Rgb(112, 112, 112));
+			}
+			//else
+			//{
+			//	txtTitle.PaintFlags = txtTitle.PaintFlags | Android.Graphics.PaintFlags.;
+			//	txtTitle.SetTextColor(Android.Graphics.Color.White);
+
+			//	txtTime.PaintFlags = txtTime.PaintFlags | Android.Graphics.PaintFlags.StrikeThruText;
+			//	txtTime.SetTextColor(Android.Graphics.Color..White);
+			//}
+
 			return convertView;
 		}
 
@@ -84,7 +104,7 @@ namespace goheja
 
 			AppSettings.selectedEvent = selectedEvent;
 
-			mSuperActivity.StartActivity(new Intent(mSuperActivity, typeof(EventInstructionActivity)));
+			mSuperActivity.StartActivityForResult(new Intent(mSuperActivity, typeof(EventInstructionActivity)), 1);
 			mSuperActivity.OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
 		}
 	}

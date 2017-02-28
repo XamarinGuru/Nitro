@@ -50,7 +50,7 @@ namespace location2
 
 			if (!IsNetEnable()) return;
 
-			MemberModel.rootMember = GetUserObject();
+			//MemberModel.rootMember = GetUserObject();
 
 			InitUISettings();
 			InitMapView();
@@ -126,6 +126,8 @@ namespace location2
 			{
 				ShowLoadingView(PortableLibrary.Constants.MSG_LOADING_ALL_MARKERS);
 
+				MemberModel.rootMember = GetUserObject();
+
 				mEventMarker = GetNearestEventMarkers(AppSettings.UserID);
 				//mEventMarker = GetAllMarkers("58aafae816528b16d898a1f3");
 
@@ -177,15 +179,22 @@ namespace location2
 
 		void SetMapPosition(CLLocation location, double bearing = -1)
 		{
-			if (mMapView == null) return;
+			try
+			{
+				if (mMapView == null) return;
 
-			if (bearing == -1)
-				mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL));
-			else
-				mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, PortableLibrary.Constants.MAP_ZOOM_LEVEL, bearing, 0));
-			
-			if (markerMyLocation != null)
-				markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
+				if (bearing == -1)
+					mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, zoom: PortableLibrary.Constants.MAP_ZOOM_LEVEL));
+				else
+					mMapView.Animate(CameraPosition.FromCamera(location.Coordinate.Latitude, location.Coordinate.Longitude, PortableLibrary.Constants.MAP_ZOOM_LEVEL, bearing, 0));
+
+				if (markerMyLocation != null)
+					markerMyLocation.Position = new CLLocationCoordinate2D(location.Coordinate.Latitude, location.Coordinate.Longitude);
+			}
+			catch (Exception ex)
+			{
+				ShowMessageBox(null, ex.Message);
+			}
 		}
 
 		#region map pin click event
@@ -215,8 +224,11 @@ namespace location2
 		double _speed = 0;
 		float currdistance = 0;
 
+		int count = 0;
+
 		void LocationUpdated(object sender, EventArgs e)
 		{
+			count++;
 			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
 			var location = locArgs.Locations[locArgs.Locations.Length - 1];
 
@@ -257,7 +269,11 @@ namespace location2
 				var loc = location.Coordinate.Latitude.ToString() + "," + location.Coordinate.Longitude.ToString();
 				var country = MemberModel.country;
 
-				meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+				System.Threading.ThreadPool.QueueUserWorkItem(delegate
+				{
+					meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+
+				});
 
 				if (currspeed < 0)
 					currspeed = 0;
@@ -328,7 +344,10 @@ namespace location2
 					var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 					var bearing = float.Parse(_lastLocation.Course.ToString());
 
-					meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 1, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+					System.Threading.ThreadPool.QueueUserWorkItem(delegate
+					{
+						meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 1, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+					});
 				}
 				catch
 				{
@@ -370,7 +389,10 @@ namespace location2
 				var alt = float.Parse(NSUserDefaults.StandardUserDefaults.DoubleForKey("lastAltitude").ToString());
 				var bearing = float.Parse(_lastLocation.Course.ToString());
 
-				meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+				System.Threading.ThreadPool.QueueUserWorkItem(delegate
+				{
+					meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+				});
 			}
 			catch
 			{

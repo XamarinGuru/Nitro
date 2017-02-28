@@ -77,24 +77,23 @@ namespace goheja
 			lblTload = FindViewById<TextView>(Resource.Id.lblLoad);
 
 			FindViewById(Resource.Id.btnBack).Click += delegate (object sender, EventArgs e) {
-				var activity = new Intent(this, typeof(EventCalendarActivity));
-				StartActivity(activity);
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
 			};
 			FindViewById(Resource.Id.ActionLocation).Click += delegate (object sender, EventArgs e)
 			{
 				var activity = new Intent(this, typeof(LocationActivity));
-				StartActivity(activity);
-				Finish();
+				StartActivityForResult(activity, 1);
 			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += delegate (object sender, EventArgs e)
 			{
 				var activity = new Intent(this, typeof(AdjustTrainningActivity));
-				StartActivity(activity);
+				StartActivityForResult(activity, 1);
 			};
 			FindViewById(Resource.Id.ActionAddComment).Click += delegate (object sender, EventArgs e) { 
 				var activity = new Intent(this, typeof(AddCommentActivity));
-				StartActivity(activity);
+				StartActivityForResult(activity, 1);
 			};
 
 			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
@@ -206,8 +205,11 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(EventCalendarActivity));
-				StartActivity(activity);
+				//var activity = new Intent(this, typeof(EventCalendarActivity));
+				//StartActivity(activity);
+				//Finish();
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
 			}
 

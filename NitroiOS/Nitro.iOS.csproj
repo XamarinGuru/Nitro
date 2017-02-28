@@ -76,7 +76,7 @@
     <AssemblyName>Nitro</AssemblyName>
     <MtouchFloat32>true</MtouchFloat32>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <CodesignProvision>628a895a-e1fd-47cb-b5bc-f9c763d2bea2</CodesignProvision>
+    <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

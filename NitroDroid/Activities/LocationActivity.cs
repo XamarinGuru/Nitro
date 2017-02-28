@@ -195,8 +195,8 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(EventInstructionActivity));
-				StartActivity(activity);
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
 			}
 

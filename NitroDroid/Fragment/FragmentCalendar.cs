@@ -123,7 +123,7 @@ namespace goheja
 		void ActionViewCalendar(object sender, EventArgs e)
 		{
 			var intent = new Intent(Activity, typeof(EventCalendarActivity));
-			StartActivity(intent);
+			StartActivityForResult(intent, 1);
 		}
 
 		#region Action Collepse
