@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:gravity="center">
                 <TextView
-                    android:text="Week totals"
+                    android:text="Performance (ניר יסביר)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView1"
@@ -37,13 +37,19 @@
                     android:textColor="#ffffffff"
                     android:textSize="15dp" />
             </LinearLayout>
+            <com.grapecity.xuni.flexchart.FlexChart
+                android:id="@+id/pChart"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="#ff000000" />
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/linearLayout3">
+                android:id="@+id/linearLayout3"
+                android:gravity="center">
                 <Button
                     android:text="VIEW YOUR CALENDAR"
                     android:layout_width="match_parent"
@@ -52,10 +58,20 @@
                     android:background="#ffe5a109"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="#ffffffff"
                     android:textSize="12dp" />
+                <TextView
+                    android:text="Totals"
+                    android:id="@+id/textView1"
+                    android:textStyle="bold"
+                    android:textColor="#ffffffff"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
             </LinearLayout>
             <RelativeLayout
                 android:minWidth="25px"

@@ -39,6 +39,7 @@
     <Compile Include="Model\EventTracks.cs" />
     <Compile Include="IApiService.cs" />
     <Compile Include="XuniLicense.cs" />
+    <Compile Include="Model\ReportGraphData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FluentValidation">

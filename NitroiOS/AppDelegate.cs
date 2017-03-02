@@ -69,7 +69,6 @@ namespace location2
 				new Task(() => { new Timer(UpdateCalendar, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60 * 30)); }).Start();
 			}
 		}
-
 		private void UpdateCalendar(object state)
 		{
 			InvokeOnMainThread(() => { AddNitroCalendarToDevice(); });
