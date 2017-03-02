@@ -229,6 +229,7 @@ namespace location2
 		void LocationUpdated(object sender, EventArgs e)
 		{
 			count++;
+			Console.WriteLine("location===" + count + "\n");
 			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
 			var location = locArgs.Locations[locArgs.Locations.Length - 1];
 
@@ -272,7 +273,7 @@ namespace location2
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
 					meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
-
+					Console.Write("location update !!! " + name + "===" + loc + "===" + _dt.ToString() + "\n");
 				});
 
 				if (currspeed < 0)
@@ -307,6 +308,8 @@ namespace location2
 				string s = TimeSpan.FromSeconds(_duration).ToString(@"hh\:mm\:ss");
 
 				lblTimer.Text = s;
+
+				Console.Write("duration===" + _duration + "\n");
 			}
 		}
 

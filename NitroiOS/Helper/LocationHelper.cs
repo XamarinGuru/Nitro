@@ -23,8 +23,11 @@ namespace location2
 			if (LocationManager.RespondsToSelector(new Selector("requestWhenInUseAuthorization")))
 			{
 				LocationManager.RequestWhenInUseAuthorization();
+				//LocationManager.RequestAlwaysAuthorization();
 			}
 			LocationManager.DistanceFilter = CLLocationDistance.FilterNone;
+			LocationManager.AllowsBackgroundLocationUpdates = true;
+			LocationManager.PausesLocationUpdatesAutomatically = false;
 			LocationManager.LocationsUpdated += LocationManager_FirstLocationsUpdated;
 			LocationManager.StartUpdatingLocation();
 			_isTracking = true;

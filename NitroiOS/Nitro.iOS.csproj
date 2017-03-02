@@ -22,12 +22,12 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Mitchell Brownlie (AGUR9Z798Q)</CodesignKey>
+    <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
     <AssemblyName>location2</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>false</MtouchFastDev>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -76,7 +76,7 @@
     <AssemblyName>Nitro</AssemblyName>
     <MtouchFloat32>true</MtouchFloat32>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
+    <CodesignProvision>7e6ad78e-f342-4417-8966-9042a1ee62af</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -139,7 +139,7 @@
       <HintPath>..\packages\Xamarin.Google.iOS.Maps.2.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
     <Reference Include="XCalendar">
-      <HintPath>..\..\XCalendar-1.1\lib\ios-unified\XCalendar.dll</HintPath>
+      <HintPath>..\Components\XCalendar-1.1\lib\ios-unified\XCalendar.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -406,12 +406,12 @@
       <Version>3.2.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="XCalendar">
-      <Version>1.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="googleiosmaps">
       <Version>2.1.0.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="XCalendar">
+      <Version>1.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

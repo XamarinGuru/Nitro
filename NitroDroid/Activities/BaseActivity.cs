@@ -252,7 +252,7 @@ namespace goheja
 		}
 		#endregion
 
-		#region USER_GAUGE
+		#region USER_GAUGE & PERFORMANCE DATA
 		public Gauge GetGauge()
 		{
 			var userID = GetUserID();
@@ -262,6 +262,24 @@ namespace goheja
 				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, Constants.SPEC_GROUP_TYPE[0], null, "5");
 				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
 				return gaugeObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
+		public ReportGraphData GetPerformance()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strPerformance = mTrackSvc.getUserPmc(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var performanceObject = JsonConvert.DeserializeObject<ReportGraphData>(strPerformance.ToString());
+				return performanceObject;
 			}
 			catch (Exception ex)
 			{
