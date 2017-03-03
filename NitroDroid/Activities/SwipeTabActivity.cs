@@ -7,6 +7,9 @@ using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using Android;
+using System;
+using Android.Util;
+using Android.Runtime;
 
 namespace goheja
 {
@@ -24,7 +27,7 @@ namespace goheja
 
 		RelativeLayout tabCalendar, tabAnalytics, tabProfile;
 
-        ViewPager _pager;
+        NonSwipeableViewPager _pager;
 
 		Android.Graphics.Color cTabEnable = new Android.Graphics.Color(146, 146, 146);
 		Android.Graphics.Color cTabDisable = new Android.Graphics.Color(69, 69, 69);
@@ -65,7 +68,8 @@ namespace goheja
             tabProfile = FindViewById<RelativeLayout>(Resource.Id.tabProfile);
 
             GenericFragmentPagerAdaptor _adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager, this);
-			_pager = FindViewById<ViewPager>(Resource.Id.pager);
+			_pager = FindViewById<NonSwipeableViewPager>(Resource.Id.pager);
+			_pager.SetPagingEnabled(false);
             _pager.Adapter = _adaptor;
             _pager.PageSelected += PagerOnPageSelected;
 
@@ -183,49 +187,45 @@ namespace goheja
 			}
 		}
 		#endregion
-
-
-        //private void StartLocationService()
-        //{
-        //    if (App.Current.locationServiceConnection?.Binder == null)
-        //    {
-        //        App.Current.LocationServiceConnected += (object sender, ServiceConnectedEventArgs e) =>
-        //        {
-        //            SubscribeLocationServie();
-        //        };
-        //    }
-        //    else
-        //    {
-        //        SubscribeLocationServie();
-        //    }
-        //}
-
-        //private void SubscribeLocationServie()
-        //{
-        //    App.Current.LocationService.LocationChanged += HandleLocationChanged;
-        //    App.Current.LocationService.ProviderDisabled += HandleProviderDisabled;
-        //    App.Current.LocationService.ProviderEnabled += HandleProviderEnabled;
-        //    App.Current.LocationService.StatusChanged += HandleStatusChanged;
-        //}
-
-        //public void HandleLocationChanged(object sender, LocationChangedEventArgs e)
-        //{
-        //}
-
-        //public void HandleProviderDisabled(object sender, ProviderDisabledEventArgs e)
-        //{
-        //}
-
-        //public void HandleProviderEnabled(object sender, ProviderEnabledEventArgs e)
-        //{
-        //    //SetMiddleTabTitle("GPS enabled");
-        //}
-
-        //public void HandleStatusChanged(object sender, StatusChangedEventArgs e)
-        //{
-        //    //SetMiddleTabTitle("GPS low signal");
-        //}
-
-
     }
+
+	public class NonSwipeableViewPager : ViewPager
+	{
+		bool isEnable;
+
+		public NonSwipeableViewPager(IntPtr handle, JniHandleOwnership transfer)
+			: base(handle, transfer)
+		{
+
+		}
+
+		public NonSwipeableViewPager(Context context, IAttributeSet attrs) : base(context, attrs)
+		{
+			this.isEnable = true;
+		}
+
+
+		public override bool OnTouchEvent(MotionEvent e)
+		{
+			if (this.isEnable)
+			{
+				return base.OnTouchEvent(e);
+			}
+			return false;
+		}
+
+		public override bool OnInterceptTouchEvent(MotionEvent ev)
+		{
+			if (this.isEnable)
+			{
+				return base.OnInterceptTouchEvent(ev);
+			}
+			return false;
+		}
+
+		public void SetPagingEnabled(bool enabled)
+		{
+			this.isEnable = enabled;
+		}
+	}
 }

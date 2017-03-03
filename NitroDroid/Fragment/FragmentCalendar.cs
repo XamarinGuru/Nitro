@@ -17,11 +17,18 @@ namespace goheja
 {
 	public class FragmentCalendar : Android.Support.V4.App.Fragment
 	{
+		int ALPHA_FILL = Convert.ToInt32(0.3 * 255);
+		int ALPHA_AXIS = Convert.ToInt32(0.8 * 255);
+
 		SwipeTabActivity rootActivity;
 
-		View mView;
+		public View mView;
+
+		RangeSliderControl zoomSlider;
 
 		FlexChart mPChart;
+
+		ChartRectangleAnnotation annoFocused = new ChartRectangleAnnotation();
 
 		TextView lblCycleDuration, lblRunDuration, lblSwimDuration, lblCycleDistance, lblRunDistance, lblSwimDistance, lblCycleStress, lblRunStress, lblSwimStress;
 		ImageView btnCycle, btnRun, btnSwim;
@@ -63,6 +70,13 @@ namespace goheja
 		private void SetUIVariablesAndActions()
 		{
 			#region UI Variables
+			zoomSlider = mView.FindViewById<RangeSliderControl>(Resource.Id.zoomSlider);
+			zoomSlider.SetBarHeight(8);
+			zoomSlider.AlwaysActive = false;
+			zoomSlider.DefaultColor = Color.Gray;
+			zoomSlider.ShowTextAboveThumbs = false;
+			zoomSlider.ActiveColor = Color.Rgb(230, 160, 11);
+
 			lblCycleDuration = mView.FindViewById<TextView>(Resource.Id.lblCycleDuration);
 			lblRunDuration = mView.FindViewById<TextView>(Resource.Id.lblRunDuration);
 			lblSwimDuration = mView.FindViewById<TextView>(Resource.Id.lblSwimDuration);
@@ -87,13 +101,23 @@ namespace goheja
 			#endregion
 
 			#region Actions
+			zoomSlider.LowerValueChanged += HanelerGraphZoomChanged;
+			zoomSlider.UpperValueChanged += HanelerGraphZoomChanged;
+
 			mView.FindViewById<RelativeLayout>(Resource.Id.collapsCycle).Click += ActionCollepse;
 			mView.FindViewById<RelativeLayout>(Resource.Id.collapsRun).Click += ActionCollepse;
 			mView.FindViewById<RelativeLayout>(Resource.Id.collapsSwim).Click += ActionCollepse;
 			mView.FindViewById<Button>(Resource.Id.ActionViewCalendar).Click += ActionViewCalendar;
 
+			//toggle series visibility
+			//mView.FindViewById<LinearLayout>(Resource.Id.ActionToggleTSB).Click += ActionToggleSeries;
+			//mView.FindViewById<LinearLayout>(Resource.Id.ActionToggleATL).Click += ActionToggleSeries;
+			//mView.FindViewById<LinearLayout>(Resource.Id.ActionToggleCTL).Click += ActionToggleSeries;
+			//mView.FindViewById<LinearLayout>(Resource.Id.ActionToggleDailyLoad).Click += ActionToggleSeries;
+			//mView.FindViewById<LinearLayout>(Resource.Id.ActionToggleDailyIf).Click += ActionToggleSeries;
 			#endregion
 		}
+
 
 		void InitPerformanceGraph(ReportGraphData pData)
 		{
@@ -102,28 +126,28 @@ namespace goheja
 			mPChart = mView.FindViewById<FlexChart>(Resource.Id.pChart);
 
 			#region configure
-			//mPChart.Header = "PERFORMANCE";
 			mPChart.SetPalette(Palettes.Modern);
+			mPChart.SetBackgroundColor(Color.Transparent);
 			mPChart.ChartType = ChartType.Splinearea;
-			mPChart.SetBackgroundColor(Color.Black);
 			mPChart.BindingX = pData.categoryField;// bind X axis to display category names
 			mPChart.Animated = false;
 			#endregion
 
 			#region regend
 			//mPChart.ToggleLegend = true;
-			mPChart.Legend.LegendFontSize = 15;
-			mPChart.Legend.BackgroundColor = Color.Transparent.ToArgb();
-			mPChart.Legend.Position = ChartPositionType.Bottom;
+			//mPChart.Legend.LegendFontSize = 15;
+			//mPChart.Legend.BackgroundColor = Color.Transparent.ToArgb();
+			mPChart.Legend.Position = ChartPositionType.None;
 			#endregion
 
 			#region axis
 			mPChart.AxisX.LabelsVisible = false;
-			mPChart.AxisX.LineWidth = 3;
+			mPChart.AxisX.MajorTickWidth = 0;
+			mPChart.AxisX.LineWidth = 0.5f;
 
 			mPChart.AxisY.LabelsVisible = false;
-			mPChart.AxisY.LineColor = Color.Orange.ToArgb();
-			mPChart.AxisY.LineWidth = 3;
+			mPChart.AxisY.LineColor = new Color(Color.Orange.R, Color.Orange.G, Color.Orange.B, ALPHA_AXIS);
+			mPChart.AxisY.LineWidth = 2;
 
 			for (int i = 0; i < pData.valueAxes.Count; i++)
 			{
@@ -145,19 +169,50 @@ namespace goheja
 			{
 				ChartSeries cSeries = new ChartSeries(mPChart, series.title, series.valueField);
 				cSeries.AxisY = series.valueAxis;
-				cSeries.SetColor(new Java.Lang.Integer(Color.ParseColor(series.lineColor).ToArgb()));
+
+				Color sColor = Color.ParseColor(series.lineColor);
+				var sRGBA = new Color(sColor.R, sColor.G, sColor.B, ALPHA_FILL);
+				cSeries.SetColor(new Java.Lang.Integer(sRGBA.ToArgb()));
+
+				ImageView imgSymbol = new ImageView(this.Context);
+				switch (series.valueField)
+				{
+					case "tsb":
+						imgSymbol = mView.FindViewById<ImageView>(Resource.Id.symTSB);
+						break;
+					case "atl":
+						imgSymbol = mView.FindViewById<ImageView>(Resource.Id.symATL);
+						break;
+					case "ctl":
+						imgSymbol = mView.FindViewById<ImageView>(Resource.Id.symCTL);
+						break;
+					case "dayliTss":
+						imgSymbol = mView.FindViewById<ImageView>(Resource.Id.symDailyTSS);
+						break;
+					case "dayliIf":
+						imgSymbol = mView.FindViewById<ImageView>(Resource.Id.symDailyIF);
+						break;
+				}
+				imgSymbol.SetBackgroundColor(sColor);
 
 				if (series.lineAlpha.Equals(0))
 				{
 					cSeries.ChartType = ChartType.Scatter;
-					cSeries.SymbolSize = new Java.Lang.Float(2);
+					cSeries.SymbolSize = new Java.Lang.Float(1.5f);
+					cSeries.SymbolColor = new Java.Lang.Integer(sColor);
+					cSeries.SetColor(new Java.Lang.Integer(sColor));
 				}
 				else
 				{
-					cSeries.BorderWidth = 1;
+					cSeries.BorderWidth = 0.5f;
+					cSeries.SetColor(new Java.Lang.Integer(sRGBA.ToArgb()));
 				}
 
 				mPChart.Series.Add(cSeries);
+
+				zoomSlider.SetRangeValues(0, pData.dataProvider.Count);
+				zoomSlider.SetSelectedMaxValue(pData.dataProvider.Count);
+				zoomSlider.SetSelectedMinValue(0);
 			}
 			#endregion
 
@@ -167,23 +222,38 @@ namespace goheja
 				ChartRectangleAnnotation today = new ChartRectangleAnnotation();
 				today.Attachment = ChartAnnotationAttachment.DataIndex;
 				today.PointIndex = pData.TodayIndex();
-				today.Width = 1;
+				today.Width = 3;
 				today.Height = 10000;
-				today.Color = Color.White;
+
+				var tColor = new Color(255, 255, 255, 100);
+				today.Color = Color.Black;
 				today.BorderWidth = 0;
 				today.FontSize = 10;
-				today.Text = "Today";
-				today.TextColor = Color.Gray.ToArgb();
-				today.TooltipText = "Planned performance after today";
+				//today.Text = "Today";
+				today.TextColor = Color.White.ToArgb();
+				today.TooltipText = "Future planned performance";
 				mPChart.Annotations.Add(today);
 			}
+
+			annoFocused.Attachment = ChartAnnotationAttachment.DataIndex;
+			annoFocused.PointIndex = pData.TodayIndex();
+			annoFocused.Width = 1;
+			annoFocused.Height = 10000;
+			annoFocused.Color = Color.White;
+			annoFocused.BorderWidth = 0;
+			annoFocused.Visible = false;
+			annoFocused.FontSize = 12;
+			annoFocused.TextColor = Color.White.ToArgb();
+			mPChart.Annotations.Add(annoFocused);
 			#endregion
 
 			mPChart.ItemsSource = pData.GetSalesDataList();
 
 			#region custom tooltip
-			mPChart.Tooltip.Content = new MyTooltip(mPChart, mPChart.Context, pData);
+			mPChart.Tooltip.Content = new MyTooltip(mPChart, this, pData, annoFocused);
 			#endregion
+			mPChart.ZoomMode = ZoomMode.X;
+			mPChart.AxisX.Scale = 1;
 		}
 
 		void InitGaugeData(Gauge gaugeData)
@@ -209,6 +279,16 @@ namespace goheja
 		}
 
 		#region Action Collepse
+
+		void ActionToggleSeries(object sender, EventArgs e)
+		{
+			var sIndex = int.Parse(((LinearLayout)sender).Tag.ToString());
+			var series = mPChart.Series.Get(sIndex) as ChartSeries;
+			var sVisibility = series.SeriesVisibility == ChartSeriesVisibilityType.Hidden ? ChartSeriesVisibilityType.Visible : ChartSeriesVisibilityType.Hidden;
+
+			series.SetVisibility(sVisibility);
+		}
+
 		void ActionCollepse(object sender, EventArgs e)
 		{
 			switch (int.Parse(((RelativeLayout)sender).Tag.ToString()))
@@ -269,78 +349,46 @@ namespace goheja
 			return animator;
 		}
 		#endregion
+
+		#region Handler
+		void HanelerGraphZoomChanged(object sender, EventArgs e)
+		{
+			var rSlider = sender as RangeSliderControl;
+
+			var gZoomLevel = (rSlider.GetSelectedMaxValue() - rSlider.GetSelectedMinValue()) / rSlider.GetAbsoluteMaxValue();
+			mPChart.AxisX.Scale = gZoomLevel;
+			var posX = new Java.Lang.Double(rSlider.GetSelectedMinValue());
+			mPChart.AxisX.ScrollTo(posX, Position.Max);
+		}
+		#endregion
 	}
 
 #region custom tooltip
 	public class MyTooltip : BaseChartTooltipView
 	{
-		FlexChart mChart;
-		TextView txtDate, txtTSB, txtATL, txtCTL, txtDLoad, txtDIf;
+		FragmentCalendar mContext;
+		ChartRectangleAnnotation mAnnoFocused;
 
 		ReportGraphData mData;
 
-		public MyTooltip(FlexChart chart, Context context, ReportGraphData data) : base(chart)
+		public MyTooltip(FlexChart chart, FragmentCalendar context, ReportGraphData data, ChartRectangleAnnotation annoFocused) : base(chart)
 		{
-			mChart = chart;
+			mContext = context;
+			mAnnoFocused = annoFocused;
 			mData = data;
-			txtDate = new TextView(context);
-			txtTSB = new TextView(context);
-			txtATL = new TextView(context);
-			txtCTL = new TextView(context);
-			txtDLoad = new TextView(context);
-			txtDIf = new TextView(context);
-
-			txtTSB.TextSize = 10;
-			txtATL.TextSize = 10;
-			txtCTL.TextSize = 10;
-			txtDLoad.TextSize = 10;
-			txtDIf.TextSize = 10;
-
-			foreach (var series in mData.graphs)
-			{
-				switch (series.valueField)
-				{
-					case "tsb":
-						txtTSB.SetTextColor(Color.ParseColor(series.lineColor));
-						break;
-					case "atl":
-						txtATL.SetTextColor(Color.ParseColor(series.lineColor));
-						break;
-					case "ctl":
-						txtCTL.SetTextColor(Color.ParseColor(series.lineColor));
-						break;
-					case "dayliTss":
-						txtDLoad.SetTextColor(Color.ParseColor(series.lineColor));
-						break;
-					case "dayliIf":
-						txtDIf.SetTextColor(Color.ParseColor(series.lineColor));
-						break;
-				}
-			}
-
-			LinearLayout layout = new LinearLayout(context);
-			layout.Orientation = Orientation.Vertical;
-			layout.SetBackgroundColor(Color.Gray);
-			layout.SetPadding(5, 5, 5, 5);
-			layout.AddView(txtDate);
-			layout.AddView(txtTSB);
-			layout.AddView(txtATL);
-			layout.AddView(txtCTL);
-			layout.AddView(txtDLoad);
-			layout.AddView(txtDIf);
-
-			AddView(layout);
 		}
 		public override void Render(SuperChartDataPoint point)
 		{
 			var data = mData.dataProvider[point.PointIndex];
-			txtDate.SetText(String.Format("Date: {0}", data.date), TextView.BufferType.Normal);
-			txtTSB.SetText(String.Format("TSB: {0}", data.tsb), TextView.BufferType.Normal);
-			txtATL.SetText(String.Format("ATL: {0}", data.atl), TextView.BufferType.Normal);
-			txtCTL.SetText(String.Format("CTL: {0}", data.ctl), TextView.BufferType.Normal);
-			txtDLoad.SetText(String.Format("Day LOAD: {0}", data.dayliTss), TextView.BufferType.Normal);
-			txtDIf.SetText(String.Format("Day IF: {0}", data.dayliIf), TextView.BufferType.Normal);
-			RequestLayout();
+			mAnnoFocused.PointIndex = point.PointIndex;
+			mAnnoFocused.Text = String.Format("Date: {0}", data.date);
+			mAnnoFocused.Visible = true;
+
+			mContext.mView.FindViewById<TextView>(Resource.Id.txtTSB).Text = String.Format("TSB: {0}", data.tsb);
+			mContext.mView.FindViewById<TextView>(Resource.Id.txtATL).Text = String.Format("ATL: {0}", data.atl);
+			mContext.mView.FindViewById<TextView>(Resource.Id.txtCTL).Text = String.Format("CTL: {0}", data.ctl);
+			mContext.mView.FindViewById<TextView>(Resource.Id.txtDailyTSS).Text = String.Format("Daily Load: {0}", data.dayliTss);
+			mContext.mView.FindViewById<TextView>(Resource.Id.txtDailyIF).Text = String.Format("Daily IF: {0}", data.dayliIf);
 		}
 	}
 #endregion
