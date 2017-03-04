@@ -36,7 +36,7 @@ namespace goheja
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			LicenseManager.Key = License.Key;
+			//LicenseManager.Key = License.Key;
 
 			rootActivity = this.Activity as SwipeTabActivity;
 			return inflater.Inflate(Resource.Layout.fCalendar, container, false);

@@ -288,6 +288,25 @@ namespace goheja
 			}
 			return null;
 		}
+
+		public PerformanceDataForDate GetPerformanceForDate(DateTime date)
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strPerformance = mTrackSvc.getPerformanceFordate(userID, date, true, Constants.SPEC_GROUP_TYPE[0]);
+				//var strPerformance = "{{ \"TSB\" : \" - 03.5\", \"ATL\" : \"03.6\", \"CTL\" : \"00.7\", \"LOAD\" : \"00.0\" }}";
+				var performanceObject = JsonConvert.DeserializeObject<PerformanceDataForDate>(strPerformance.ToString());
+				return performanceObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
 		#endregion
 
 		#region EVENT_MANAGEMENT
@@ -802,6 +821,37 @@ namespace goheja
 			{
 				return 0;
 			}
+		}
+
+		public DateTime FromUnixTime(long unixTimeMillis)
+		{
+			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			return epoch.AddMilliseconds(unixTimeMillis);
+		}
+
+		public void SetListViewHeightBasedOnChildren(ListView listView)
+		{
+			NitroEventAdapter listAdapter = listView.Adapter as NitroEventAdapter;
+			if (listAdapter == null)
+			{
+				// pre-condition
+				return;
+			}
+
+			int totalHeight = 0;
+			int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.AtMost);
+			for (int i = 0; i < listAdapter.Count; i++)
+			{
+				View listItem = listAdapter.GetView(i, null, listView);
+				int heightSpec = View.MeasureSpec.MakeMeasureSpec(0, MeasureSpecMode.Unspecified);
+				listItem.Measure(desiredWidth, heightSpec);
+				totalHeight += listItem.MeasuredHeight;
+			}
+
+			ViewGroup.LayoutParams lp = listView.LayoutParameters;
+			lp.Height = totalHeight + (listView.DividerHeight * (listAdapter.Count - 1));
+			listView.LayoutParameters = lp;
+			listView.RequestLayout();
 		}
 	}
 }

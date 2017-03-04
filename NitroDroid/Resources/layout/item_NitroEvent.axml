@@ -12,14 +12,6 @@
         android:id="@+id/ActionEventDetail"
         android:background="#ff1e1e1e">
         <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/linearLayout2"
-            android:layout_weight="1" />
-        <LinearLayout
             android:orientation="horizontal"
             android:minWidth="25px"
             android:minHeight="25px"
@@ -27,7 +19,9 @@
             android:layout_height="match_parent"
             android:id="@+id/linearLayout3"
             android:layout_weight="10"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp">
             <TextView
                 android:text="sagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv danielsagiv daniel"
                 android:layout_width="0dp"
@@ -50,8 +44,7 @@
                 android:src="@drawable/icon_run"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/imgType"
-                android:layout_marginRight="20dp" />
+                android:id="@+id/imgType" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

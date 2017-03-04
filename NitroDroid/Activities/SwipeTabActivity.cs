@@ -10,6 +10,8 @@ using Android;
 using System;
 using Android.Util;
 using Android.Runtime;
+using PortableLibrary;
+using Com.GrapeCity.Xuni.Core;
 
 namespace goheja
 {
@@ -38,10 +40,11 @@ namespace goheja
 
             SetContentView(Resource.Layout.SwipeTabActivity);
 
+			LicenseManager.Key = License.Key;
+
             InitUISettings();
            
 			CheckCalendarPermission();
-            //StartLocationService();
         }
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
