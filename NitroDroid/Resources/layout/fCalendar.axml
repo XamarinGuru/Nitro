@@ -106,7 +106,7 @@
                     <com.grapecity.xuni.flexchart.FlexChart
                         android:id="@+id/pChart"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_height="200dp" />
                     <LinearLayout
                         android:orientation="horizontal"
                         android:minWidth="25px"
@@ -306,7 +306,7 @@
                         </LinearLayout>
                     </LinearLayout>
                     <TextView
-                        android:text="TOTALS"
+                        android:text="WEEK TOTALS"
                         android:id="@+id/textView4"
                         android:textColor="#ffffffff"
                         android:textSize="15dp"
