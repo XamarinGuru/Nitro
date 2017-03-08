@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -679,7 +680,7 @@ namespace goheja
 		/// <summary>
 		///     Draws the widget on the given canvas.
 		/// </summary>
-		protected override void OnDraw(Canvas canvas)
+		protected async override void OnDraw(Canvas canvas)
 		{
 			base.OnDraw(canvas);
 
@@ -702,6 +703,7 @@ namespace goheja
 			_padding = _internalPad + minMaxLabelSize + _thumbHalfWidth;
 
 			// draw seek bar background line
+			//await Task.Delay(500);
 			_rect.Left = _padding;
 			_rect.Right = Width - _padding;
 			canvas.DrawRect(_rect, _paint);
@@ -783,6 +785,12 @@ namespace goheja
 				_paint);
 		}
 
+		protected override void Dispose(bool disposing)
+		{
+			base.Dispose(disposing);
+			_rect.Dispose();
+			GC.Collect();
+		}
 		protected string ValueToString(float value, Thumb thumb)
 		{
 			var func = FormatLabel;

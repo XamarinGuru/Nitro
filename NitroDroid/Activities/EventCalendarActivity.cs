@@ -17,6 +17,9 @@ namespace goheja
 	[Activity(Label = "EventCalendarActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class EventCalendarActivity : BaseActivity
 	{
+		Android.Graphics.Color COLOR_PAST = Android.Graphics.Color.Rgb(229, 161, 9);
+		Android.Graphics.Color COLOR_FUTURE = Android.Graphics.Color.Rgb(63, 187, 190);
+
 		XuniCalendar calendar;
 
 		ListView eventsList;
@@ -74,7 +77,11 @@ namespace goheja
 					}
 				}
 			}
-
+			if (DateTime.Compare(filterDate, DateTime.Now) > 0)
+				SetPerformanceDataColor(true);
+			else
+				SetPerformanceDataColor(false);
+			
 			if (filteredEvents.Count == 0)
 				noEventsContent.Visibility = ViewStates.Visible;
 			else
@@ -111,7 +118,7 @@ namespace goheja
 			tv.Gravity = GravityFlags.Center;
 			tv.Text = day.ToString();
 
-			if (currentDateTime.DayOfYear == DateTime.Now.DayOfYear)
+			if (currentDateTime.Date == DateTime.Now.Date)
 				tv.SetTextColor(Android.Graphics.Color.Red);
 
 			if (e.AdjacentDay)
@@ -124,7 +131,7 @@ namespace goheja
 				for (int i = 0; i < _events.Count; i++)
 				{
 					var startDate = _events[i].StartDateTime();
-					if (startDate.DayOfYear == currentDateTime.DayOfYear)
+					if (startDate.Date == currentDateTime.Date)
 					{
 						tv.SetBackgroundColor(Android.Graphics.Color.Orange);
 					}
@@ -193,10 +200,18 @@ namespace goheja
 					FindViewById<TextView>(Resource.Id.lblCTL).Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
 					FindViewById<TextView>(Resource.Id.lblATL).Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
 					FindViewById<TextView>(Resource.Id.lblLoad).Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
-
 				});
 			});
+		}
 
+		void SetPerformanceDataColor(bool isFuture)
+		{
+			Android.Graphics.Color color = isFuture ? COLOR_FUTURE : COLOR_PAST;
+
+			FindViewById<TextView>(Resource.Id.lblTSB).SetTextColor(color);
+			FindViewById<TextView>(Resource.Id.lblCTL).SetTextColor(color);
+			FindViewById<TextView>(Resource.Id.lblATL).SetTextColor(color);
+			FindViewById<TextView>(Resource.Id.lblLoad).SetTextColor(color);
 		}
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)

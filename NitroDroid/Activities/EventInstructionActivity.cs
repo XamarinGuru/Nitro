@@ -96,7 +96,7 @@ namespace goheja
 				StartActivityForResult(activity, 1);
 			};
 
-			if ((DateTime.Parse(selectedEvent.start) - DateTime.Now).TotalMinutes > 1)
+			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
 			{
 				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Gone;
 				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;

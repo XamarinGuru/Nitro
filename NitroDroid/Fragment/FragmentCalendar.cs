@@ -51,6 +51,12 @@ namespace goheja
 
 			if (!rootActivity.IsNetEnable()) return;
 
+		}
+
+		public override void OnResume()
+		{
+			base.OnResume();
+
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				rootActivity.ShowLoadingView("Loading data...");
@@ -67,6 +73,7 @@ namespace goheja
 				});
 			});
 		}
+
 		private void SetUIVariablesAndActions()
 		{
 			#region UI Variables
@@ -121,22 +128,31 @@ namespace goheja
 
 		void InitPerformanceGraph(ReportGraphData pData)
 		{
+			mView.FindViewById<ScrollView>(Resource.Id.scrollView).ScrollTo(0, 0);
 			if (pData == null) return;
 
 			mPChart = mView.FindViewById<FlexChart>(Resource.Id.pChart);
+
+			//var mainAxisX = mPChart.AxisX;
+			//var mainAxisY = mPChart.AxisY;
+
+			//mPChart.Axes.Clear();
+			//mPChart.Series.Clear();
+			//mPChart.Annotations.Clear();
+
+			//mPChart.AxisX = mainAxisX;
+			//mPChart.AxisY = mainAxisY;
+
 
 			#region configure
 			mPChart.SetPalette(Palettes.Modern);
 			mPChart.SetBackgroundColor(Color.Transparent);
 			mPChart.ChartType = ChartType.Splinearea;
-			mPChart.BindingX = pData.categoryField;// bind X axis to display category names
+			mPChart.BindingX = pData.categoryField;
 			mPChart.Animated = false;
 			#endregion
 
 			#region regend
-			//mPChart.ToggleLegend = true;
-			//mPChart.Legend.LegendFontSize = 15;
-			//mPChart.Legend.BackgroundColor = Color.Transparent.ToArgb();
 			mPChart.Legend.Position = ChartPositionType.None;
 			#endregion
 
@@ -225,11 +241,9 @@ namespace goheja
 				today.Width = 3;
 				today.Height = 10000;
 
-				var tColor = new Color(255, 255, 255, 100);
 				today.Color = Color.Black;
 				today.BorderWidth = 0;
 				today.FontSize = 10;
-				//today.Text = "Today";
 				today.TextColor = Color.White.ToArgb();
 				today.TooltipText = "Future planned performance";
 				mPChart.Annotations.Add(today);
