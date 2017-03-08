@@ -401,6 +401,12 @@
   <wsdl:message name="IService1_groupResultsMongo_OutputMessage">
     <wsdl:part name="parameters" element="tns:groupResultsMongoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getPerformanceFordate_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPerformanceFordate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPerformanceFordate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPerformanceFordateResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getMyTrailForEventMongo_InputMessage">
     <wsdl:part name="parameters" element="tns:getMyTrailForEventMongo" />
   </wsdl:message>
@@ -442,6 +448,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_setComments_OutputMessage">
     <wsdl:part name="parameters" element="tns:setCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_setCommentsCoach_InputMessage">
+    <wsdl:part name="parameters" element="tns:setCommentsCoach" />
+  </wsdl:message>
+  <wsdl:message name="IService1_setCommentsCoach_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setCommentsCoachResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getUsrObject_InputMessage">
     <wsdl:part name="parameters" element="tns:getUsrObject" />
@@ -902,6 +914,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/groupResultsMongo" message="tns:IService1_groupResultsMongo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/groupResultsMongoResponse" message="tns:IService1_groupResultsMongo_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getPerformanceFordate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPerformanceFordate" message="tns:IService1_getPerformanceFordate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPerformanceFordateResponse" message="tns:IService1_getPerformanceFordate_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getMyTrailForEventMongo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getMyTrailForEventMongo" message="tns:IService1_getMyTrailForEventMongo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getMyTrailForEventMongoResponse" message="tns:IService1_getMyTrailForEventMongo_OutputMessage" />
@@ -929,6 +945,10 @@
     <wsdl:operation name="setComments">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/setComments" message="tns:IService1_setComments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/setCommentsResponse" message="tns:IService1_setComments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setCommentsCoach">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/setCommentsCoach" message="tns:IService1_setCommentsCoach_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/setCommentsCoachResponse" message="tns:IService1_setCommentsCoach_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getUsrObject">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUsrObject" message="tns:IService1_getUsrObject_InputMessage" />
@@ -1650,6 +1670,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getPerformanceFordate">
+      <soap:operation soapAction="http://tempuri.org/IService1/getPerformanceFordate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getMyTrailForEventMongo">
       <soap:operation soapAction="http://tempuri.org/IService1/getMyTrailForEventMongo" style="document" />
       <wsdl:input>
@@ -1706,6 +1735,15 @@
     </wsdl:operation>
     <wsdl:operation name="setComments">
       <soap:operation soapAction="http://tempuri.org/IService1/setComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCommentsCoach">
+      <soap:operation soapAction="http://tempuri.org/IService1/setCommentsCoach" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

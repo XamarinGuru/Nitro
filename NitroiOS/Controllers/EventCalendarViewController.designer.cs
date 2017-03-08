@@ -16,7 +16,27 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightEventDetail { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblATL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblCTL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblLoad { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblNoEvents { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblTSB { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,9 +52,34 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (heightEventDetail != null) {
+                heightEventDetail.Dispose ();
+                heightEventDetail = null;
+            }
+
+            if (lblATL != null) {
+                lblATL.Dispose ();
+                lblATL = null;
+            }
+
+            if (lblCTL != null) {
+                lblCTL.Dispose ();
+                lblCTL = null;
+            }
+
+            if (lblLoad != null) {
+                lblLoad.Dispose ();
+                lblLoad = null;
+            }
+
             if (lblNoEvents != null) {
                 lblNoEvents.Dispose ();
                 lblNoEvents = null;
+            }
+
+            if (lblTSB != null) {
+                lblTSB.Dispose ();
+                lblTSB = null;
             }
 
             if (tableView != null) {

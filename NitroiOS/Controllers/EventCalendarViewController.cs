@@ -5,18 +5,19 @@ using CoreGraphics;
 using Softweb.Xamarin.Controls.iOS;
 using PortableLibrary;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 
 namespace location2
 {
 	public partial class EventCalendarViewController : BaseViewController
     {
-		private Softweb.Xamarin.Controls.iOS.Calendar _calendar;
+		UIColor COLOR_PAST = new UIColor(229 / 255f, 161 / 255f, 9 / 255f, 1.0f);
+		UIColor COLOR_FUTURE = new UIColor(63 / 255f, 187 / 255f, 190 / 255f, 1.0f);
+
+		private Calendar _calendar;
 		private List<NitroEvent> _events;
 
         public EventCalendarViewController (IntPtr handle) : base (handle)
         {
-			//_calendar = new Calendar();
 			_events = new List<NitroEvent>();
         }
 
@@ -34,7 +35,6 @@ namespace location2
 			var rightButton = new UIButton(new CGRect(0, 0, 70, 20));
 			rightButton.SetTitle("Reload", UIControlState.Normal);
 			rightButton.TouchUpInside += (sender, e) => ResetCalendarView();
-			//NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
 
 			var rightButton1 = new UIButton(new CGRect(100, 0, 70, 20));
 			rightButton1.SetTitle("Today", UIControlState.Normal);
@@ -45,22 +45,13 @@ namespace location2
 			NavigationItem.RightBarButtonItems = rightButtons;
 
 			if (!IsNetEnable()) return;
-
-			//SetCalendarView();
 		}
 
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
-
-			//ReloadEvents();
-
-			//_calendar.ReloadData();
-
 			ResetCalendarView();
 		}
-
-
 
 		void ResetCalendarView()
 		{
@@ -90,8 +81,6 @@ namespace location2
 			_calendar.DateSelected += DateSelected;
 			_calendar.NextPageLoaded += DidLoadNextPage;
 			_calendar.PreviousPageLoaded += DidLoadPreviousPage;
-
-			//Add calendar views to the main view
 
 			foreach (var view in viewDate.Subviews)
 				view.RemoveFromSuperview();
@@ -151,63 +140,6 @@ namespace location2
 
 		}
 
-
-
-
-
-
-
-
-		public DateTime ConvertUTCToLocalTimeZone(DateTime dateTimeUtc)
-		{
-			NSTimeZone sourceTimeZone = new NSTimeZone("UTC");
-			NSTimeZone destinationTimeZone = NSTimeZone.LocalTimeZone;
-			NSDate sourceDate = DateTimeToNativeDate(dateTimeUtc);
-
-			int sourceGMTOffset = (int)sourceTimeZone.SecondsFromGMT(sourceDate);
-			int destinationGMTOffset = (int)destinationTimeZone.SecondsFromGMT(sourceDate);
-			int interval = sourceGMTOffset - destinationGMTOffset;
-
-			var destinationDate = dateTimeUtc.AddSeconds(interval);
-			//var destinationDate = sourceDate.AddSeconds(interval);
-			//var dateTime = NativeDateToDateTime(destinationDate);
-			return destinationDate;
-		}
-
-		/// <summary>
-		/// Converts a System.DateTime to an NSDate
-		/// </summary>
-		/// <returns>The time to native date.</returns>
-		/// <param name="date">Date.</param>
-		public static NSDate DateTimeToNativeDate(DateTime date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - reference).TotalSeconds);
-		}
-
-		/// <summary>
-		/// Converts a NSDate to System.DateTime
-		/// </summary>
-		/// <returns>The date to date time.</returns>
-		/// <param name="date">Date.</param>
-		public static DateTime NativeDateToDateTime(NSDate date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
-			return reference.AddSeconds(date.SecondsSinceReferenceDate);
-		}
-
-
-
-
-
-
-
-
-
-
 		void FilterEventsByDate(DateTime filterDate)
 		{
 			var eventsByDate = new List<NitroEvent>();
@@ -219,6 +151,10 @@ namespace location2
 					eventsByDate.Add(nitroEvent);
 				}
 			}
+			if (DateTime.Compare(filterDate, DateTime.Now) > 0)
+				SetPerformanceDataColor(true);
+			else
+				SetPerformanceDataColor(false);
 
 			if (eventsByDate.Count == 0)
 				lblNoEvents.Hidden = false;
@@ -230,7 +166,40 @@ namespace location2
 			{
 				tableView.Source = tblDataSource;
 				tableView.ReloadData();
+
+				SetTableViewHeightBasedOnChildren(tableView, eventsByDate, heightEventDetail);
+				InitPerformanceData(filterDate);
 			});
+		}
+		void InitPerformanceData(DateTime date)
+		{
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				ShowLoadingView(Constants.MSG_LOADING_EVENTS);
+
+				var performanceData = GetPerformanceForDate(date);
+
+				HideLoadingView();
+
+				if (performanceData == null) return;
+
+				InvokeOnMainThread(() =>
+				{
+					lblTSB.Text = performanceData.TSB == "NaN" ? "0" : performanceData.TSB;
+					lblCTL.Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
+					lblATL.Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
+					lblLoad.Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
+				});
+			});
+		}
+
+		void SetPerformanceDataColor(bool isFuture)
+		{
+			UIColor color = isFuture ? COLOR_FUTURE : COLOR_PAST;
+			lblTSB.TextColor = color;
+			lblCTL.TextColor = color;
+			lblATL.TextColor = color;
+			lblLoad.TextColor = color;
 		}
 		public void DateSelected(object sender, DateSelectedEventArgs args)
 		{

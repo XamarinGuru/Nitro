@@ -154,6 +154,8 @@ namespace location2.trackSvc {
         
         private System.Threading.SendOrPostCallback groupResultsMongoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getPerformanceFordateOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getMyTrailForEventMongoOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAthDataByDeviceIdOperationCompleted;
@@ -167,6 +169,8 @@ namespace location2.trackSvc {
         private System.Threading.SendOrPostCallback getUserCalendarPastOperationCompleted;
         
         private System.Threading.SendOrPostCallback setCommentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback setCommentsCoachOperationCompleted;
         
         private System.Threading.SendOrPostCallback getUsrObjectOperationCompleted;
         
@@ -439,6 +443,9 @@ namespace location2.trackSvc {
         public event groupResultsMongoCompletedEventHandler groupResultsMongoCompleted;
         
         /// CodeRemarks
+        public event getPerformanceFordateCompletedEventHandler getPerformanceFordateCompleted;
+        
+        /// CodeRemarks
         public event getMyTrailForEventMongoCompletedEventHandler getMyTrailForEventMongoCompleted;
         
         /// CodeRemarks
@@ -458,6 +465,9 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         public event setCommentsCompletedEventHandler setCommentsCompleted;
+        
+        /// CodeRemarks
+        public event setCommentsCoachCompletedEventHandler setCommentsCoachCompleted;
         
         /// CodeRemarks
         public event getUsrObjectCompletedEventHandler getUsrObjectCompleted;
@@ -1148,24 +1158,27 @@ namespace location2.trackSvc {
         
         /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/testPmc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void testPmc(int d, [System.Xml.Serialization.XmlIgnoreAttribute()] bool dSpecified, float pmc, [System.Xml.Serialization.XmlIgnoreAttribute()] bool pmcSpecified, bool type, [System.Xml.Serialization.XmlIgnoreAttribute()] bool typeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
-            this.Invoke("testPmc", new object[] {
+        public void testPmc(int d, [System.Xml.Serialization.XmlIgnoreAttribute()] bool dSpecified, float pmc, [System.Xml.Serialization.XmlIgnoreAttribute()] bool pmcSpecified, bool type, [System.Xml.Serialization.XmlIgnoreAttribute()] bool typeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string id, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, out bool testPmcResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool testPmcResultSpecified) {
+            object[] results = this.Invoke("testPmc", new object[] {
                         d,
                         dSpecified,
                         pmc,
                         pmcSpecified,
                         type,
                         typeSpecified,
+                        id,
                         specGroup});
+            testPmcResult = ((bool)(results[0]));
+            testPmcResultSpecified = ((bool)(results[1]));
         }
         
         /// CodeRemarks
-        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string specGroup) {
-            this.testPmcAsync(d, dSpecified, pmc, pmcSpecified, type, typeSpecified, specGroup, null);
+        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string id, string specGroup) {
+            this.testPmcAsync(d, dSpecified, pmc, pmcSpecified, type, typeSpecified, id, specGroup, null);
         }
         
         /// CodeRemarks
-        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string specGroup, object userState) {
+        public void testPmcAsync(int d, bool dSpecified, float pmc, bool pmcSpecified, bool type, bool typeSpecified, string id, string specGroup, object userState) {
             if ((this.testPmcOperationCompleted == null)) {
                 this.testPmcOperationCompleted = new System.Threading.SendOrPostCallback(this.OntestPmcOperationCompleted);
             }
@@ -1176,13 +1189,14 @@ namespace location2.trackSvc {
                         pmcSpecified,
                         type,
                         typeSpecified,
+                        id,
                         specGroup}, this.testPmcOperationCompleted, userState);
         }
         
         private void OntestPmcOperationCompleted(object arg) {
             if ((this.testPmcCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.testPmcCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.testPmcCompleted(this, new testPmcCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3004,6 +3018,42 @@ namespace location2.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getPerformanceFordate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object getPerformanceFordate([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athId, System.DateTime date, [System.Xml.Serialization.XmlIgnoreAttribute()] bool dateSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("getPerformanceFordate", new object[] {
+                        athId,
+                        date,
+                        dateSpecified,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void getPerformanceFordateAsync(string athId, System.DateTime date, bool dateSpecified, string specGroup) {
+            this.getPerformanceFordateAsync(athId, date, dateSpecified, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void getPerformanceFordateAsync(string athId, System.DateTime date, bool dateSpecified, string specGroup, object userState) {
+            if ((this.getPerformanceFordateOperationCompleted == null)) {
+                this.getPerformanceFordateOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPerformanceFordateOperationCompleted);
+            }
+            this.InvokeAsync("getPerformanceFordate", new object[] {
+                        athId,
+                        date,
+                        dateSpecified,
+                        specGroup}, this.getPerformanceFordateOperationCompleted, userState);
+        }
+        
+        private void OngetPerformanceFordateOperationCompleted(object arg) {
+            if ((this.getPerformanceFordateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPerformanceFordateCompleted(this, new getPerformanceFordateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getMyTrailForEventMongo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfstring", Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
@@ -3243,6 +3293,48 @@ namespace location2.trackSvc {
             if ((this.setCommentsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.setCommentsCompleted(this, new setCommentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/setCommentsCoach", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public object setCommentsCoach([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string athour, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string authorId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string subGroupId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string isGroup, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string commentText, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            object[] results = this.Invoke("setCommentsCoach", new object[] {
+                        athour,
+                        authorId,
+                        subGroupId,
+                        isGroup,
+                        commentText,
+                        eventId,
+                        specGroup});
+            return ((object)(results[0]));
+        }
+        
+        /// CodeRemarks
+        public void setCommentsCoachAsync(string athour, string authorId, string subGroupId, string isGroup, string commentText, string eventId, string specGroup) {
+            this.setCommentsCoachAsync(athour, authorId, subGroupId, isGroup, commentText, eventId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void setCommentsCoachAsync(string athour, string authorId, string subGroupId, string isGroup, string commentText, string eventId, string specGroup, object userState) {
+            if ((this.setCommentsCoachOperationCompleted == null)) {
+                this.setCommentsCoachOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetCommentsCoachOperationCompleted);
+            }
+            this.InvokeAsync("setCommentsCoach", new object[] {
+                        athour,
+                        authorId,
+                        subGroupId,
+                        isGroup,
+                        commentText,
+                        eventId,
+                        specGroup}, this.setCommentsCoachOperationCompleted, userState);
+        }
+        
+        private void OnsetCommentsCoachOperationCompleted(object arg) {
+            if ((this.setCommentsCoachCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.setCommentsCoachCompleted(this, new setCommentsCoachCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4424,6 +4516,26 @@ namespace location2.trackSvc {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
+    public partial class CompositeType {
+        
+        /// <remarks/>
+        public bool BoolValue;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BoolValueSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StringValue;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial class BsonValue {
     }
@@ -4443,26 +4555,6 @@ namespace location2.trackSvc {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public BsonValue _value;
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/tracker_srv")]
-    public partial class CompositeType {
-        
-        /// <remarks/>
-        public bool BoolValue;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BoolValueSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string StringValue;
     }
     
     /// CodeRemarks
@@ -4833,7 +4925,37 @@ namespace location2.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
-    public delegate void testPmcCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void testPmcCompletedEventHandler(object sender, testPmcCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class testPmcCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal testPmcCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool testPmcResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool testPmcResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
@@ -6155,6 +6277,32 @@ namespace location2.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void getPerformanceFordateCompletedEventHandler(object sender, getPerformanceFordateCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPerformanceFordateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPerformanceFordateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void getMyTrailForEventMongoCompletedEventHandler(object sender, getMyTrailForEventMongoCompletedEventArgs e);
     
     /// CodeRemarks
@@ -6322,6 +6470,32 @@ namespace location2.trackSvc {
         private object[] results;
         
         internal setCommentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public object Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((object)(this.results[0]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void setCommentsCoachCompletedEventHandler(object sender, setCommentsCoachCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class setCommentsCoachCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal setCommentsCoachCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

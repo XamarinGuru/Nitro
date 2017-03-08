@@ -8,6 +8,7 @@ using PortableLibrary;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using CoreLocation;
+using CoreGraphics;
 
 namespace location2
 {
@@ -209,6 +210,42 @@ namespace location2
 				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, Constants.SPEC_GROUP_TYPE[0], null, "5");
 				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
 				return gaugeObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
+		public ReportGraphData GetPerformance()
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strPerformance = mTrackSvc.getUserPmc(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var performanceObject = JsonConvert.DeserializeObject<ReportGraphData>(strPerformance.ToString());
+				return performanceObject;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				ShowMessageBox(null, ex.Message);
+			}
+			return null;
+		}
+
+		public PerformanceDataForDate GetPerformanceForDate(DateTime date)
+		{
+			var userID = GetUserID();
+
+			try
+			{
+				var strPerformance = mTrackSvc.getPerformanceFordate(userID, date, true, Constants.SPEC_GROUP_TYPE[0]);
+				var performanceObject = JsonConvert.DeserializeObject<PerformanceDataForDate>(strPerformance.ToString());
+				return performanceObject;
 			}
 			catch (Exception ex)
 			{
@@ -576,8 +613,8 @@ namespace location2
 					lblTotal.TextColor = COLOR_ORANGE;
 				}
 				else {
-					lblPlanned.TextColor = UIColor.Blue;
-					lblTotal.TextColor = UIColor.Blue;
+					lblPlanned.TextColor = new UIColor(21 / 255f, 181 / 255f, 98 / 255f, 1.0f);
+					lblTotal.TextColor = new UIColor(21 / 255f, 181 / 255f, 98 / 255f, 1.0f);
 				}
 			}
 			else if (planned < total)
@@ -847,6 +884,49 @@ namespace location2
 			}
 			return reference;
 		}
+
+
+		public DateTime ConvertUTCToLocalTimeZone(DateTime dateTimeUtc)
+		{
+			NSTimeZone sourceTimeZone = new NSTimeZone("UTC");
+			NSTimeZone destinationTimeZone = NSTimeZone.LocalTimeZone;
+			NSDate sourceDate = DateTimeToNativeDate(dateTimeUtc);
+
+			int sourceGMTOffset = (int)sourceTimeZone.SecondsFromGMT(sourceDate);
+			int destinationGMTOffset = (int)destinationTimeZone.SecondsFromGMT(sourceDate);
+			int interval = sourceGMTOffset - destinationGMTOffset;
+
+			var destinationDate = dateTimeUtc.AddSeconds(interval);
+			//var destinationDate = sourceDate.AddSeconds(interval);
+			//var dateTime = NativeDateToDateTime(destinationDate);
+			return destinationDate;
+		}
+
+		/// <summary>
+		/// Converts a System.DateTime to an NSDate
+		/// </summary>
+		/// <returns>The time to native date.</returns>
+		/// <param name="date">Date.</param>
+		public static NSDate DateTimeToNativeDate(DateTime date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return NSDate.FromTimeIntervalSinceReferenceDate(
+				(date - reference).TotalSeconds);
+		}
+
+		/// <summary>
+		/// Converts a NSDate to System.DateTime
+		/// </summary>
+		/// <returns>The date to date time.</returns>
+		/// <param name="date">Date.</param>
+		public static DateTime NativeDateToDateTime(NSDate date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return reference.AddSeconds(date.SecondsSinceReferenceDate);
+		}
+
 		protected void SetupPicker(UITextField field, string type)
 		{
 			// Setup the toolbar
@@ -1085,6 +1165,56 @@ namespace location2
 			}
 		}
 		#endregion
+
+		public UIColor FromHexString(string hexValue, float alpha = 1.0f)
+		{
+			var colorString = hexValue.Replace("#", "");
+			if (alpha > 1.0f)
+			{
+				alpha = 1.0f;
+			}
+			else if (alpha < 0.0f)
+			{
+				alpha = 0.0f;
+			}
+
+			float red, green, blue;
+
+			switch (colorString.Length)
+			{
+				case 3: // #RGB
+					{
+						red = Convert.ToInt32(string.Format("{0}{0}", colorString.Substring(0, 1)), 16) / 255f;
+						green = Convert.ToInt32(string.Format("{0}{0}", colorString.Substring(1, 1)), 16) / 255f;
+						blue = Convert.ToInt32(string.Format("{0}{0}", colorString.Substring(2, 1)), 16) / 255f;
+						return UIColor.FromRGBA(red, green, blue, alpha);
+					}
+				case 6: // #RRGGBB
+					{
+						red = Convert.ToInt32(colorString.Substring(0, 2), 16) / 255f;
+						green = Convert.ToInt32(colorString.Substring(2, 2), 16) / 255f;
+						blue = Convert.ToInt32(colorString.Substring(4, 2), 16) / 255f;
+						return UIColor.FromRGBA(red, green, blue, alpha);
+					}
+
+				default:
+					throw new ArgumentOutOfRangeException(string.Format("Invalid color value {0} is invalid. It should be a hex value of the form #RBG, #RRGGBB", hexValue));
+
+			}
+		}
+
+		public void SetTableViewHeightBasedOnChildren(UITableView tableView, List<NitroEvent> children, NSLayoutConstraint conHeight)
+		{
+			nfloat height = children.Count * 60;
+
+			CGRect tableFrame = tableView.Frame;
+			tableFrame.Height = height;
+			tableView.Frame = tableFrame;
+
+			conHeight.Constant = children.Count == 0 ? 80 : height;
+
+			View.LayoutIfNeeded();
+		}
 	}
 }
 

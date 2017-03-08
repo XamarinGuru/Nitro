@@ -25,7 +25,7 @@ namespace goheja
 		Color[] PATH_COLORS = { Color.Red, Color.Rgb(38, 127, 0), Color.Blue };
 		Color COLOR_ORANGE = Color.Rgb(229, 161, 9);
 		Color COLOR_RED = Color.Rgb(179, 66, 17);
-		Color COLOR_BLUE = Color.Rgb(11, 88, 229);
+		Color COLOR_BLUE = Color.Rgb(21, 181, 98);
 
 		AlertDialog.Builder alert;
 

@@ -28,10 +28,6 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIWebView calendarWebView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightCycle { get; set; }
 
         [Outlet]
@@ -80,6 +76,50 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        Xuni.iOS.FlexChart.FlexChart mPChart { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView symATL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView symCTL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView symDailyIF { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView symDailyLoad { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView symTSB { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtATL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtCTL { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtDailyIF { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtDailyTSS { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtTSB { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewCycle { get; set; }
 
         [Outlet]
@@ -89,6 +129,10 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewSwimming { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        location2.RangeSliderControl zoomSlider { get; set; }
 
         [Action ("ActionCollect:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -113,11 +157,6 @@ namespace location2
             if (btnSwimmingColleps != null) {
                 btnSwimmingColleps.Dispose ();
                 btnSwimmingColleps = null;
-            }
-
-            if (calendarWebView != null) {
-                calendarWebView.Dispose ();
-                calendarWebView = null;
             }
 
             if (heightCycle != null) {
@@ -180,6 +219,61 @@ namespace location2
                 lblSwimStress = null;
             }
 
+            if (mPChart != null) {
+                mPChart.Dispose ();
+                mPChart = null;
+            }
+
+            if (symATL != null) {
+                symATL.Dispose ();
+                symATL = null;
+            }
+
+            if (symCTL != null) {
+                symCTL.Dispose ();
+                symCTL = null;
+            }
+
+            if (symDailyIF != null) {
+                symDailyIF.Dispose ();
+                symDailyIF = null;
+            }
+
+            if (symDailyLoad != null) {
+                symDailyLoad.Dispose ();
+                symDailyLoad = null;
+            }
+
+            if (symTSB != null) {
+                symTSB.Dispose ();
+                symTSB = null;
+            }
+
+            if (txtATL != null) {
+                txtATL.Dispose ();
+                txtATL = null;
+            }
+
+            if (txtCTL != null) {
+                txtCTL.Dispose ();
+                txtCTL = null;
+            }
+
+            if (txtDailyIF != null) {
+                txtDailyIF.Dispose ();
+                txtDailyIF = null;
+            }
+
+            if (txtDailyTSS != null) {
+                txtDailyTSS.Dispose ();
+                txtDailyTSS = null;
+            }
+
+            if (txtTSB != null) {
+                txtTSB.Dispose ();
+                txtTSB = null;
+            }
+
             if (viewCycle != null) {
                 viewCycle.Dispose ();
                 viewCycle = null;
@@ -193,6 +287,11 @@ namespace location2
             if (viewSwimming != null) {
                 viewSwimming.Dispose ();
                 viewSwimming = null;
+            }
+
+            if (zoomSlider != null) {
+                zoomSlider.Dispose ();
+                zoomSlider = null;
             }
         }
     }

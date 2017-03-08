@@ -40,7 +40,7 @@ namespace goheja
 
             SetContentView(Resource.Layout.SwipeTabActivity);
 
-			LicenseManager.Key = License.Key;
+			//LicenseManager.Key = License.Key;
 
             InitUISettings();
            

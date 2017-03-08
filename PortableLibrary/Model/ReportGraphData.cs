@@ -102,6 +102,84 @@ namespace PortableLibrary
 			}
 			return -1;
 		}
+
+		public double TodayPosition()
+		{
+			var todayIndex = TodayIndex();
+			return (double)todayIndex / dataProvider.Count;
+		}
+
+		public double GetMaxOfAxis(string axisName)
+		{
+			double max = -1000;
+
+			foreach (var graph in graphs)
+			{
+				if (graph.valueAxis == axisName)
+				{
+					foreach (var data in dataProvider)
+					{
+						double cValue = 0;
+						switch (graph.valueField)
+						{
+							case "tsb":
+								cValue = data.tsb;
+								break;
+							case "atl":
+								cValue = data.atl;
+								break;
+							case "ctl":
+								cValue = data.ctl;
+								break;
+							case "dayliTss":
+								cValue = data.dayliTss;
+								break;
+							case "dayliIf":
+								cValue = data.dayliIf;
+								break;
+						}
+						max = max < cValue ? cValue : max;
+					}
+				}
+			}
+			return max;
+		}
+
+		public double GetMinOfAxis(string axisName)
+		{
+			double min = 1000;
+
+			foreach (var graph in graphs)
+			{
+				if (graph.valueAxis == axisName)
+				{
+					foreach (var data in dataProvider)
+					{
+						double cValue = 0;
+						switch (graph.valueField)
+						{
+							case "tsb":
+								cValue = data.tsb;
+								break;
+							case "atl":
+								cValue = data.atl;
+								break;
+							case "ctl":
+								cValue = data.ctl;
+								break;
+							case "dayliTss":
+								cValue = data.dayliTss;
+								break;
+							case "dayliIf":
+								cValue = data.dayliIf;
+								break;
+						}
+						min = min > cValue ? cValue : min;
+					}
+				}
+			}
+			return min;
+		}
 	}
 
 }

@@ -69,7 +69,7 @@ namespace location2
 
 		void InitUISettings()
 		{
-			if ((selectedEvent.StartDateTime() - DateTime.Now).TotalMinutes > 1)
+			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
 			{
 				heightInstructions.Constant = 0;
 				heightAdjust.Constant = 0;
