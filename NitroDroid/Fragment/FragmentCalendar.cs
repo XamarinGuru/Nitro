@@ -32,6 +32,8 @@ namespace goheja
 		ImageView btnCycle, btnRun, btnSwim;
 		LinearLayout viewCycle, viewRun, viewSwim;
 
+		ReportGraphData pData;
+
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			//LicenseManager.Key = License.Key;
@@ -125,6 +127,8 @@ namespace goheja
 
 		void InitPerformanceGraph(ReportGraphData pData)
 		{
+			this.pData = pData;
+
 			mView.FindViewById<ScrollView>(Resource.Id.scrollView).ScrollTo(0, 0);
 			if (pData == null) return;
 
@@ -368,7 +372,7 @@ namespace goheja
 
 			var gZoomLevel = (rSlider.GetSelectedMaxValue() - rSlider.GetSelectedMinValue()) / rSlider.GetAbsoluteMaxValue();
 			mPChart.AxisX.Scale = gZoomLevel;
-			var posX = new Java.Lang.Double(rSlider.GetSelectedMinValue());
+			var posX = new Java.Lang.Double(rSlider.GetSelectedMinValue() * pData.dataProvider.Count);
 			mPChart.AxisX.ScrollTo(posX, Position.Max);
 		}
 		#endregion

@@ -688,8 +688,10 @@ namespace goheja
 			base.OnDraw(canvas);
 
 			if (!isFirst)
+			{
+				isFirst = false;
 				return;
-
+			}
 			_paint.TextSize = _textSize;
 			_paint.SetStyle(Paint.Style.Fill);
 			_paint.Color = DefaultColor;
