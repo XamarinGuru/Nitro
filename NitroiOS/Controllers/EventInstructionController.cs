@@ -8,7 +8,7 @@ namespace location2
     public partial class EventInstructionController : BaseViewController
     {
 		public NitroEvent selectedEvent;
-		private EventTotal eventTotal;
+		EventTotal eventTotal;
 		string eventID;
 
 		float fDistance = 0;
@@ -71,12 +71,12 @@ namespace location2
 		{
 			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
 			{
-				heightInstructions.Constant = 0;
+				//heightInstructions.Constant = 0;
 				heightAdjust.Constant = 0;
 			}
 			else
 			{
-				heightInstructions.Constant = 320;
+				//heightInstructions.Constant = 320;
 				heightAdjust.Constant = 100;
 			}
 		}
@@ -135,7 +135,13 @@ namespace location2
 
 		void InitBindingEventTotal()
 		{
-			if (eventTotal == null || eventTotal.totals == null) return;
+			if (eventTotal == null || eventTotal.totals == null)
+			{
+				heightInstructions.Constant = 0;
+				return;
+			}
+
+			heightInstructions.Constant = 320;
 
 			lblTotalValue0.Text = FormatNumber(eventTotal.totals[0].value);
 			lblTotalValue1.Text = FormatNumber(eventTotal.totals[1].value);
@@ -198,7 +204,5 @@ namespace location2
 			NavigationController.PushViewController(acVC, true);
 		}
 		#endregion
-
-
     }
 }

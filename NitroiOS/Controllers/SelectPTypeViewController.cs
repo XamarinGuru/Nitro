@@ -1,4 +1,3 @@
-using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
@@ -30,8 +29,6 @@ namespace location2
 			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
-
-
 		}
 
 		public override void ViewWillLayoutSubviews()

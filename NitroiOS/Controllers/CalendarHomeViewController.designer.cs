@@ -28,6 +28,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView chartContent { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightCycle { get; set; }
 
         [Outlet]
@@ -73,10 +77,6 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblSwimStress { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        Xuni.iOS.FlexChart.FlexChart mPChart { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -159,6 +159,11 @@ namespace location2
                 btnSwimmingColleps = null;
             }
 
+            if (chartContent != null) {
+                chartContent.Dispose ();
+                chartContent = null;
+            }
+
             if (heightCycle != null) {
                 heightCycle.Dispose ();
                 heightCycle = null;
@@ -217,11 +222,6 @@ namespace location2
             if (lblSwimStress != null) {
                 lblSwimStress.Dispose ();
                 lblSwimStress = null;
-            }
-
-            if (mPChart != null) {
-                mPChart.Dispose ();
-                mPChart = null;
             }
 
             if (symATL != null) {

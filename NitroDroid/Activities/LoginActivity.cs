@@ -50,8 +50,8 @@ namespace goheja
 
 		private bool Validate()
 		{
-			invalidEmail.Visibility = Android.Views.ViewStates.Visible;
-			invalidPassword.Visibility = Android.Views.ViewStates.Visible;
+			invalidEmail.Visibility = ViewStates.Visible;
+			invalidPassword.Visibility = ViewStates.Visible;
 
 			bool isValid = true;
 
@@ -103,7 +103,6 @@ namespace goheja
 						ShowMessageBox(null, Constants.MSG_LOGIN_FAIL);
 					}
 				});
-
 			}
 		}
 

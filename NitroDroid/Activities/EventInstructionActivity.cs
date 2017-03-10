@@ -99,12 +99,12 @@ namespace goheja
 			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
 			{
 				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Gone;
-				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
+				//FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
 			}
 			else
 			{
 				FindViewById(Resource.Id.ActionAdjustTrainning).Visibility = ViewStates.Visible;
-				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
+				//FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
 			}
 		}
 
@@ -163,7 +163,13 @@ namespace goheja
 
 		void InitBindingEventTotal(EventTotal eventTotal)
 		{
-			if (eventTotal == null || eventTotal.totals == null) return;
+			if (eventTotal == null || eventTotal.totals == null)
+			{
+				FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Gone;
+				return;
+			}
+
+			FindViewById(Resource.Id.totalContent).Visibility = ViewStates.Visible;
 
 			FindViewById<TextView>(Resource.Id.lblAvgSpeed).Text = FormatNumber(eventTotal.totals[0].value);
 			FindViewById<TextView>(Resource.Id.lblTotalDistance).Text = FormatNumber(eventTotal.totals[1].value);
@@ -205,9 +211,6 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				//var activity = new Intent(this, typeof(EventCalendarActivity));
-				//StartActivity(activity);
-				//Finish();
 				var activity = new Intent();
 				SetResult(Result.Canceled, activity);
 				Finish();

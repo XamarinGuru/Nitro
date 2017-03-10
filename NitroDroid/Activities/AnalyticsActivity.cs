@@ -7,7 +7,6 @@ using Android.OS;
 using Android.Locations;
 using Android.Preferences;
 using Android.Content.PM;
-using goheja.Services;
 using System.Timers;
 using PortableLibrary;
 using Android;

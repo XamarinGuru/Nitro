@@ -296,7 +296,6 @@ namespace goheja
 			try
 			{
 				var strPerformance = mTrackSvc.getPerformanceFordate(userID, date, true, Constants.SPEC_GROUP_TYPE[0]);
-				//var strPerformance = "{{ \"TSB\" : \" - 03.5\", \"ATL\" : \"03.6\", \"CTL\" : \"00.7\", \"LOAD\" : \"00.0\" }}";
 				var performanceObject = JsonConvert.DeserializeObject<PerformanceDataForDate>(strPerformance.ToString());
 				return performanceObject;
 			}
@@ -833,10 +832,7 @@ namespace goheja
 		{
 			NitroEventAdapter listAdapter = listView.Adapter as NitroEventAdapter;
 			if (listAdapter == null)
-			{
-				// pre-condition
 				return;
-			}
 
 			int totalHeight = 0;
 			int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.AtMost);

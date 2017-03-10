@@ -40,7 +40,7 @@ namespace goheja
 
             SetContentView(Resource.Layout.SwipeTabActivity);
 
-			//LicenseManager.Key = License.Key;
+			LicenseManager.Key = License.Key;
 
             InitUISettings();
            
@@ -70,7 +70,7 @@ namespace goheja
             tabAnalytics = FindViewById<RelativeLayout>(Resource.Id.tabAnalytics);
             tabProfile = FindViewById<RelativeLayout>(Resource.Id.tabProfile);
 
-            GenericFragmentPagerAdaptor _adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager, this);
+            TabViewAdapter _adaptor = new TabViewAdapter(SupportFragmentManager, this);
 			_pager = FindViewById<NonSwipeableViewPager>(Resource.Id.pager);
 			_pager.SetPagingEnabled(false);
             _pager.Adapter = _adaptor;

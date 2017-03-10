@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Content;
-using MonoDroid.TimesSquare;
 using PortableLibrary;
 
 namespace goheja

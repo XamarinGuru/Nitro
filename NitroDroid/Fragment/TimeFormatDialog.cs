@@ -10,16 +10,12 @@ namespace goheja
 {
 	public class TimeFormatDialog : DialogFragment
 	{
-		private NumberPicker[] numPickers;
-
-		private int numDials;
-
-		private string type;
-		private string title;
-
-		private static string ARG_numDials = "numDials";
-
-		private EditText textView;
+		NumberPicker[] numPickers;
+		int numDials;
+		string type;
+		string title;
+		static string ARG_numDials = "numDials";
+		EditText textView;
 
 		public static TimeFormatDialog newInstance(EditText textView, int numDials, string type, string title)
 		{
@@ -235,8 +231,6 @@ namespace goheja
 		{
 			base.OnSaveInstanceState(outState);
 		}
-
-
 	}
 	#endregion
 }

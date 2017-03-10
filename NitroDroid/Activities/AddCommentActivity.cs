@@ -13,7 +13,7 @@ namespace goheja
 	[Activity(Label = "AddCommentActivity", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class AddCommentActivity : BaseActivity
 	{
-		private RootMemberModel MemberModel = new RootMemberModel();
+		RootMemberModel MemberModel = new RootMemberModel();
 
 		EditText txtComment;
 

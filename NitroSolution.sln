@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitro.iOS", "NitroiOS\Nitro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableLibrary", "PortableLibrary\PortableLibrary.csproj", "{E68B197F-245C-4D29-874D-7B9A6D6A58F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoDroid.TimesSquare", "MonoDroid.TimesSquare\MonoDroid.TimesSquare.csproj", "{984A2991-85C5-441C-ABA4-611AFF713CEB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,17 +53,5 @@ Global
 		{E68B197F-245C-4D29-874D-7B9A6D6A58F7}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{E68B197F-245C-4D29-874D-7B9A6D6A58F7}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{E68B197F-245C-4D29-874D-7B9A6D6A58F7}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|iPhone.Build.0 = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{984A2991-85C5-441C-ABA4-611AFF713CEB}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

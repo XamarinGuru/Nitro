@@ -4,7 +4,6 @@ using Android.App;
 using Android.Content;
 using Android.Provider;
 using Java.Util;
-using Newtonsoft.Json.Linq;
 using PortableLibrary;
 
 namespace goheja
@@ -14,12 +13,12 @@ namespace goheja
 	{
 		System.Threading.Timer _timer;
 
-		private long calendarID = -1;
+		long calendarID = -1;
 
 		public BaseActivity baseVC;
 
 		[Android.Runtime.Register("onStart", "(Landroid/content/Intent;I)V", "GetOnStart_Landroid_content_Intent_IHandler")]
-		[System.Obsolete("deprecated")]
+		[Obsolete("deprecated")]
 
 		public override void OnStart(Intent intent, int startId)
 		{

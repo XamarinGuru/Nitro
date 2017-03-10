@@ -3,11 +3,11 @@ using System;
 
 namespace goheja
 {
-    public class GenericFragmentPagerAdaptor : FragmentPagerAdapter
+    public class TabViewAdapter : FragmentPagerAdapter
     {
         public event EventHandler TabChanged;
 
-        public GenericFragmentPagerAdaptor(FragmentManager fm, FragmentActivity activity) : base(fm)
+        public TabViewAdapter(FragmentManager fm, FragmentActivity activity) : base(fm)
         {
         }
 

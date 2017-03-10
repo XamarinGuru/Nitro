@@ -139,7 +139,7 @@
     <Compile Include="Utility\util.cs" />
     <Compile Include="Services\BackgroundService.cs" />
     <Compile Include="Activities\CloseApplicationActivity.cs" />
-    <Compile Include="Adapter\GenericFragmentPagerAdaptor.cs" />
+    <Compile Include="Adapter\TabViewAdapter.cs" />
     <Compile Include="Utility\AppSettings.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -147,8 +147,6 @@
     <Compile Include="Activities\InitActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\EventCalendarActivity.cs" />
-    <Compile Include="Adapter\ItemViewPagerCalendarFragment.cs" />
-    <Compile Include="Adapter\CalendarAdapter.cs" />
     <Compile Include="Adapter\NitroEventAdapter.cs" />
     <Compile Include="Activities\EventInstructionActivity.cs" />
     <Compile Include="Activities\AddCommentActivity.cs" />
@@ -382,10 +380,6 @@
     <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
       <Project>{E68B197F-245C-4D29-874D-7B9A6D6A58F7}</Project>
       <Name>PortableLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoDroid.TimesSquare\MonoDroid.TimesSquare.csproj">
-      <Project>{984A2991-85C5-441C-ABA4-611AFF713CEB}</Project>
-      <Name>MonoDroid.TimesSquare</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

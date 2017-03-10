@@ -14,9 +14,7 @@ namespace goheja
 	public class ChangePasswordActivity : BaseActivity
 	{
 		EditText txtPassword, txtPwConfirm;
-
 		ImageView invalidPassword, invalidPwConfirm;
-
 		LinearLayout errorPassword, errorPwConfirm;
 
 		protected override void OnCreate(Bundle savedInstanceState)

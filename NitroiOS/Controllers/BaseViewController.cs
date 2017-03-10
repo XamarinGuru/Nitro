@@ -47,7 +47,6 @@ namespace location2
 			InvokeOnMainThread(() => { BTProgressHUD.Dismiss(); });
 		}
 
-
 		// Show the alert view
 		protected void ShowMessageBox(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
 		{

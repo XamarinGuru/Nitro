@@ -13,8 +13,8 @@ namespace location2
 		UIColor COLOR_PAST = new UIColor(229 / 255f, 161 / 255f, 9 / 255f, 1.0f);
 		UIColor COLOR_FUTURE = new UIColor(63 / 255f, 187 / 255f, 190 / 255f, 1.0f);
 
-		private Calendar _calendar;
-		private List<NitroEvent> _events;
+		Calendar _calendar;
+		List<NitroEvent> _events;
 
         public EventCalendarViewController (IntPtr handle) : base (handle)
         {
@@ -181,14 +181,23 @@ namespace location2
 
 				HideLoadingView();
 
-				if (performanceData == null) return;
 
 				InvokeOnMainThread(() =>
 				{
-					lblTSB.Text = performanceData.TSB == "NaN" ? "0" : performanceData.TSB;
-					lblCTL.Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
-					lblATL.Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
-					lblLoad.Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
+					if (performanceData == null)
+					{
+						lblTSB.Text = "-";
+						lblCTL.Text = "-";
+						lblATL.Text = "-";
+						lblLoad.Text = "-";
+					}
+					else
+					{
+						lblTSB.Text = performanceData.TSB == "NaN" ? "0" : performanceData.TSB;
+						lblCTL.Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
+						lblATL.Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
+						lblLoad.Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
+					}
 				});
 			});
 		}

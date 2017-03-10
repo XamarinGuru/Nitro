@@ -13,9 +13,7 @@ namespace goheja
 	public class RegisterActivity : BaseActivity
     {
 		EditText txtFirstname, txtLastname, txtUsername, txtEmail, txtPassword, txtAge;
-
 		ImageView invalidFirstname, invalidLastname, invalidUsername, invalidEmail, invalidPassword, invalidAge, invalidTerms;
-
 		LinearLayout errorFirstname, errorLastname, errorUsername, errorEmail, errorPassword;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -187,7 +185,7 @@ namespace goheja
             catch (Exception err)
             {
 				HideLoadingView();
-				ShowMessageBox(null, err.Message.ToString());
+				ShowMessageBox(null, err.Message);
 				return;
             }
         }

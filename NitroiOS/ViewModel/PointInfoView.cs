@@ -4,7 +4,6 @@ using UIKit;
 using ObjCRuntime;
 using CoreGraphics;
 using PortableLibrary;
-using MapKit;
 
 namespace location2
 {
@@ -15,7 +14,7 @@ namespace location2
 		public delegate void PopWillCloseHandler();
 		public event PopWillCloseHandler PopWillClose;
 
-		private UIVisualEffectView effectView = new UIVisualEffectView(UIBlurEffect.FromStyle(UIBlurEffectStyle.Dark));
+		UIVisualEffectView effectView = new UIVisualEffectView(UIBlurEffect.FromStyle(UIBlurEffectStyle.Dark));
 
 		CGSize size = new CGSize(300, 350);
 

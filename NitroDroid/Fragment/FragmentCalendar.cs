@@ -3,7 +3,6 @@ using Android.Animation;
 using Android.Content;
 using Android.OS;
 using Android.Views;
-using Android.Webkit;
 using Android.Widget;
 using Com.GrapeCity.Xuni.FlexChart;
 using Com.GrapeCity.Xuni.Core;
@@ -27,7 +26,6 @@ namespace goheja
 		RangeSliderControl zoomSlider;
 
 		FlexChart mPChart;
-
 		ChartRectangleAnnotation annoFocused = new ChartRectangleAnnotation();
 
 		TextView lblCycleDuration, lblRunDuration, lblSwimDuration, lblCycleDistance, lblRunDistance, lblSwimDistance, lblCycleStress, lblRunStress, lblSwimStress;
@@ -36,7 +34,7 @@ namespace goheja
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			LicenseManager.Key = License.Key;
+			//LicenseManager.Key = License.Key;
 
 			rootActivity = this.Activity as SwipeTabActivity;
 			return inflater.Inflate(Resource.Layout.fCalendar, container, false);
@@ -50,7 +48,6 @@ namespace goheja
 			SetUIVariablesAndActions();
 
 			if (!rootActivity.IsNetEnable()) return;
-
 		}
 
 		public override void OnResume()

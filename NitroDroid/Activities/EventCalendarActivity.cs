@@ -5,11 +5,9 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using Com.GrapeCity.Xuni.Calendar;
-using Com.GrapeCity.Xuni.Core;
 using PortableLibrary;
 
 namespace goheja
@@ -43,7 +41,7 @@ namespace goheja
 			calendar.TodayTextColor = System.Drawing.Color.Red.ToArgb();
 			calendar.SelectionBackgroundColor = System.Drawing.Color.Orange.ToArgb();
 
-			calendar.DaySlotLoading += Calendar_DaySlotLoading;
+			calendar.DaySlotLoading += CalendarDaySlotLoading;
 			calendar.SelectionChanged += CalendarSelectionChanged;
 			#endregion
 
@@ -96,9 +94,8 @@ namespace goheja
 			InitPerformanceData(filterDate);
 		}
 
-		private void Calendar_DaySlotLoading(object sender, CalendarDaySlotLoadingEventArgs e)
+		private void CalendarDaySlotLoading(object sender, CalendarDaySlotLoadingEventArgs e)
 		{
-			// get day
 			var currentDateTime = FromUnixTime(e.Date.Time);
 
 			Java.Util.Date date = e.Date;
@@ -141,7 +138,6 @@ namespace goheja
 			e.DaySlot = layout;
 		}
 
-
 		void ReloadEvents()
 		{
 			if (!IsNetEnable()) return;
@@ -180,8 +176,6 @@ namespace goheja
 			calendar.ChangeViewMode(CalendarViewMode.Month, new Java.Util.Date(DateTime.Now.ToString()));
 		}
 
-
-
 		void InitPerformanceData(DateTime date)
 		{
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
@@ -192,14 +186,22 @@ namespace goheja
 
 				HideLoadingView();
 
-				if (performanceData == null) return;
-
 				RunOnUiThread(() =>
 				{
-					FindViewById<TextView>(Resource.Id.lblTSB).Text = performanceData.TSB == "NaN" ? "0" : performanceData.TSB;
-					FindViewById<TextView>(Resource.Id.lblCTL).Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
-					FindViewById<TextView>(Resource.Id.lblATL).Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
-					FindViewById<TextView>(Resource.Id.lblLoad).Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
+					if (performanceData == null)
+					{
+						FindViewById<TextView>(Resource.Id.lblTSB).Text = "-";
+						FindViewById<TextView>(Resource.Id.lblCTL).Text = "-";
+						FindViewById<TextView>(Resource.Id.lblATL).Text = "-";
+						FindViewById<TextView>(Resource.Id.lblLoad).Text = "-";
+					}
+					else
+					{
+						FindViewById<TextView>(Resource.Id.lblTSB).Text = performanceData.TSB == "NaN" ? "0" : performanceData.TSB;
+						FindViewById<TextView>(Resource.Id.lblCTL).Text = performanceData.CTL == "NaN" ? "0" : performanceData.CTL;
+						FindViewById<TextView>(Resource.Id.lblATL).Text = performanceData.ATL == "NaN" ? "0" : performanceData.ATL;
+						FindViewById<TextView>(Resource.Id.lblLoad).Text = performanceData.LOAD == "NaN" ? "0" : performanceData.LOAD;
+					}
 				});
 			});
 		}

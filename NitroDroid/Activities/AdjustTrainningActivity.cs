@@ -14,7 +14,7 @@ namespace goheja
 	[Activity(Label = "ActionAdjustTrainning", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class AdjustTrainningActivity : BaseActivity
 	{
-		private RootMemberModel MemberModel = new RootMemberModel();
+		RootMemberModel MemberModel = new RootMemberModel();
 
 		TextView lblTime, lblDistance, lblTSS;
 		EditText txtComment;

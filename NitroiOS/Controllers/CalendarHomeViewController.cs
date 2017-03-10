@@ -4,6 +4,7 @@ using PortableLibrary;
 using Xuni.iOS.Core;
 using Xuni.iOS.ChartCore;
 using Xuni.iOS.FlexChart;
+using CoreGraphics;
 
 namespace location2
 {
@@ -13,6 +14,8 @@ namespace location2
 		nfloat ALPHA_AXIS = 0.3f;
 
 		ReportGraphData pData;
+
+		FlexChart mPChart;
 
         public CalendarHomeViewController (IntPtr handle) : base (handle)
         {
@@ -33,9 +36,9 @@ namespace location2
 			if (!IsNetEnable()) return;
 		}
 
-		public override void ViewWillAppear(bool animated)
+		public override void ViewDidAppear(bool animated)
 		{
-			base.ViewWillAppear(animated);
+			base.ViewDidAppear(animated);
 
 			InitPerformanceGraph();
 			InitGaugeData();
@@ -43,9 +46,18 @@ namespace location2
 
 		void InitPerformanceGraph()
 		{
+			foreach (var chart in chartContent.Subviews)
+				chart.RemoveFromSuperview();
+			chartContent.LayoutIfNeeded();
+
 			pData = GetPerformance();
 
 			if (pData == null) return;
+
+			mPChart = new FlexChart();
+
+			mPChart.Frame = new CGRect(0, 0, chartContent.Frame.Width, chartContent.Frame.Height);
+			chartContent.AddSubview(mPChart);
 
 			mPChart.Palette = XuniPalettes.Modern;
 			mPChart.BackgroundColor = UIColor.Clear;
@@ -56,6 +68,7 @@ namespace location2
 			mPChart.SymbolSize = 3;
 
 			mPChart.Legend.Position = Position.None;
+			mPChart.Tooltip.IsVisible = false;
 
 			mPChart.AxisX.LabelsVisible = false;
 			mPChart.AxisX.MajorTickWidth = 0;
@@ -158,8 +171,19 @@ namespace location2
 
 			mPChart.Annotations.Add(annoFocused);
 
-			#region custom tooltip
-			mPChart.Tooltip.Content = new MyTooltip(txtTSB, txtATL, txtCTL, txtDailyTSS, txtDailyIF, pData, annoFocused, mPChart);
+			#region custom line marker
+			MyMarkerView view = new MyMarkerView(mPChart.LineMarker);
+			view.MarkerRender = new MyMarkerRender(view, txtTSB, txtATL, txtCTL, txtDailyTSS, txtDailyIF);
+			mPChart.LineMarker.Content = view;
+			mPChart.LineMarker.IsVisible = true;
+			mPChart.LineMarker.Alignment = XuniChartMarkerAlignment.BottomRight;
+			mPChart.LineMarker.Lines = XuniChartMarkerLines.Vertical;
+			mPChart.LineMarker.Interaction = XuniChartMarkerInteraction.Move;
+			mPChart.LineMarker.DragContent = false;
+			mPChart.LineMarker.SeriesIndex = -1;
+			mPChart.LineMarker.VerticalLineColor = UIColor.White;
+			mPChart.LineMarker.VerticalPosition = 10;
+			mPChart.AddSubview(view);
 			#endregion
 
 			mPChart.ZoomMode = ZoomMode.Disabled;
@@ -243,59 +267,77 @@ namespace location2
 			mPChart.AxisX.ScrollTo(posX, XuniAxisScrollPosition.Max);
 		}
 		#endregion
+
+		class MyMarkerView : XuniChartMarkerBaseView
+		{
+			public XuniChartLineMarker Marker;
+			public UILabel lblToday;
+
+			public MyMarkerView(XuniChartLineMarker marker) : base(marker)
+			{
+				Marker = marker;
+
+				BackgroundColor = UIColor.Clear;
+				Frame = new CGRect(0, 0, 90, 30);
+
+				lblToday = new UILabel(new CGRect(5, 5, 80, 20));
+				lblToday.TextColor = UIColor.White;
+				lblToday.BackgroundColor = UIColor.Clear;
+				lblToday.Font = UIFont.SystemFontOfSize(10);
+
+				AddSubview(lblToday);
+			}
+		}
+
+		class MyMarkerRender : IXuniChartMarkerRender
+		{
+			XuniChartMarkerBaseView _view;
+
+			UILabel txtTSB, txtATL, txtCTL, txtDailyTSS, txtDailyIF;
+
+			public MyMarkerRender(XuniChartMarkerBaseView view, UILabel txtTSB, UILabel txtATL, UILabel txtCTL, UILabel txtDailyTSS, UILabel txtDailyIF)
+			{
+				_view = view;
+				this.txtTSB = txtTSB;
+				this.txtATL = txtATL;
+				this.txtCTL = txtCTL;
+				this.txtDailyTSS = txtDailyTSS;
+				this.txtDailyIF = txtDailyIF;
+			}
+
+			public override void RenderMarker()
+			{
+				if (_view == null) return;
+
+				MyMarkerView view = (MyMarkerView)_view;
+				var dataPoints = view.Marker.DataPoints;
+
+				if (dataPoints == null || dataPoints.Length == 0) return;
+
+				view.lblToday.Text = dataPoints[0].ValueX + " \n";
+
+				for (int i = 0; i < dataPoints.Length; i++)
+				{
+					switch (dataPoints[i].SeriesName)
+					{
+						case "TSB":
+							txtTSB.Text = String.Format("TSB: {0}", dataPoints[i].Value);
+							break;
+						case "ATL":
+							txtATL.Text = String.Format("ATL: {0}", dataPoints[i].Value);
+							break;
+						case "CTL":
+							txtCTL.Text = String.Format("CTL: {0}", dataPoints[i].Value);
+							break;
+						case "DAYLI LOAD":
+							txtDailyTSS.Text = String.Format("Daily Load: {0}", dataPoints[i].Value);
+							break;
+						case "DAYLI IF":
+							txtDailyIF.Text = String.Format("Daily IF: {0}", dataPoints[i].Value);
+							break;
+					}
+				}
+			}
+		}
     }
-
-	#region custom classes
-	public class MyTooltip : XuniBaseChartTooltipView
-	{
-		UILabel txtTSB, txtATL, txtCTL, txtDailyTSS, txtDailyIF;
-		XuniChartRectangleAnnotation mAnnoFocused;
-		ReportGraphData mData;
-		FlexChart mChart;
-
-
-		public MyTooltip(UILabel txtTSB, UILabel txtATL, UILabel txtCTL, UILabel txtDailyTSS, UILabel txtDailyIF, ReportGraphData data, XuniChartRectangleAnnotation annoFocused, FlexChart chart)
-		{
-			this.txtTSB = txtTSB;
-			this.txtATL = txtATL;
-			this.txtCTL = txtCTL;
-			this.txtDailyTSS = txtDailyTSS;
-			this.txtDailyIF = txtDailyIF;
-			mAnnoFocused = annoFocused;
-			mData = data;
-			mChart = chart;
-		}
-
-		public override XuniDataPoint ChartData
-		{
-			get
-			{
-				return base.ChartData;
-			}
-			set
-			{
-				base.ChartData = value;
-				XuniChartDataPoint point = (XuniChartDataPoint)value;
-
-				var start = new XuniPoint(point.PointIndex, mChart.AxisY.ActualDataMax);
-				var data = mData.dataProvider[point.PointIndex];
-
-				mAnnoFocused.Point = start;
-				mAnnoFocused.Text = data.date;
-				mAnnoFocused.Position = XuniChartAnnotationPosition.Bottom;
-	            mAnnoFocused.IsVisible = true;
-
-				txtTSB.Text = String.Format("TSB: {0}", data.tsb);
-				txtATL.Text = String.Format("ATL: {0}", data.atl);
-				txtCTL.Text = String.Format("CTL: {0}", data.ctl);
-				txtDailyTSS.Text = String.Format("Daily Load: {0}", data.dayliTss);
-				txtDailyIF.Text = String.Format("Daily IF: {0}", data.dayliIf);
-			}
-		}
-
-		public override void Render()
-		{
-		}
-	}
-	#endregion
 }

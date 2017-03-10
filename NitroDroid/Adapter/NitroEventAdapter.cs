@@ -85,14 +85,6 @@ namespace goheja
 				txtTime.PaintFlags = txtTime.PaintFlags | Android.Graphics.PaintFlags.StrikeThruText;
 				txtTime.SetTextColor(Android.Graphics.Color.Rgb(112, 112, 112));
 			}
-			//else
-			//{
-			//	txtTitle.PaintFlags = txtTitle.PaintFlags | Android.Graphics.PaintFlags.;
-			//	txtTitle.SetTextColor(Android.Graphics.Color.White);
-
-			//	txtTime.PaintFlags = txtTime.PaintFlags | Android.Graphics.PaintFlags.StrikeThruText;
-			//	txtTime.SetTextColor(Android.Graphics.Color..White);
-			//}
 
 			return convertView;
 		}
