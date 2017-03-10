@@ -17,6 +17,7 @@ namespace goheja
 {
 	public class RangeSliderControl : ImageView
 	{
+		public bool isFirst = false;
 		public static readonly Color DefaultActiveColor = Color.Argb(0xFF, 0x33, 0xB5, 0xE5);
 
 		/// <summary>
@@ -346,6 +347,8 @@ namespace goheja
 				_thumbShadowPath = new Path();
 				_thumbShadowPath.AddCircle(0, 0, _thumbHalfHeight, Path.Direction.Cw);
 			}
+
+			isFirst = true;
 		}
 
 		public void SetBarHeight(float barHeight)
@@ -684,6 +687,9 @@ namespace goheja
 		{
 			base.OnDraw(canvas);
 
+			if (!isFirst)
+				return;
+
 			_paint.TextSize = _textSize;
 			_paint.SetStyle(Paint.Style.Fill);
 			_paint.Color = DefaultColor;
@@ -703,7 +709,6 @@ namespace goheja
 			_padding = _internalPad + minMaxLabelSize + _thumbHalfWidth;
 
 			// draw seek bar background line
-			//await Task.Delay(500);
 			_rect.Left = _padding;
 			_rect.Right = Width - _padding;
 			canvas.DrawRect(_rect, _paint);
@@ -785,12 +790,6 @@ namespace goheja
 				_paint);
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			base.Dispose(disposing);
-			_rect.Dispose();
-			GC.Collect();
-		}
 		protected string ValueToString(float value, Thumb thumb)
 		{
 			var func = FormatLabel;
