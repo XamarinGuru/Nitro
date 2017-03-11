@@ -344,8 +344,8 @@ namespace goheja
 		{
 			if (pState == PRACTICE_STATE.ready)
 			{
-				var activity = new Intent(this, typeof(SwipeTabActivity));
-				StartActivity(activity);
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
 			}
 			else

@@ -17,7 +17,6 @@ namespace goheja
 {
 	public class RangeSliderControl : ImageView
 	{
-		public bool isFirst = false;
 		public static readonly Color DefaultActiveColor = Color.Argb(0xFF, 0x33, 0xB5, 0xE5);
 
 		/// <summary>
@@ -347,8 +346,6 @@ namespace goheja
 				_thumbShadowPath = new Path();
 				_thumbShadowPath.AddCircle(0, 0, _thumbHalfHeight, Path.Direction.Cw);
 			}
-
-			isFirst = true;
 		}
 
 		public void SetBarHeight(float barHeight)
@@ -687,11 +684,6 @@ namespace goheja
 		{
 			base.OnDraw(canvas);
 
-			if (!isFirst)
-			{
-				isFirst = false;
-				return;
-			}
 			_paint.TextSize = _textSize;
 			_paint.SetStyle(Paint.Style.Fill);
 			_paint.Color = DefaultColor;

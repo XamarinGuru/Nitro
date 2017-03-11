@@ -1751,6 +1751,9 @@ namespace goheja
 			// aapt resource value: 0x7f0a015b
 			public const int calendaritem = 2131362139;
 			
+			// aapt resource value: 0x7f0a011c
+			public const int chartContent = 2131362076;
+			
 			// aapt resource value: 0x7f0a0048
 			public const int checkAttended = 2131361864;
 			
@@ -2176,9 +2179,6 @@ namespace goheja
 			
 			// aapt resource value: 0x7f0a016d
 			public const int note = 2131362157;
-			
-			// aapt resource value: 0x7f0a011c
-			public const int pChart = 2131362076;
 			
 			// aapt resource value: 0x7f0a017e
 			public const int pager = 2131362174;

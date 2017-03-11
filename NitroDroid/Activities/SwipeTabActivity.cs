@@ -73,6 +73,7 @@ namespace goheja
             TabViewAdapter _adaptor = new TabViewAdapter(SupportFragmentManager, this);
 			_pager = FindViewById<NonSwipeableViewPager>(Resource.Id.pager);
 			_pager.SetPagingEnabled(false);
+			_pager.OffscreenPageLimit = 2;
             _pager.Adapter = _adaptor;
             _pager.PageSelected += PagerOnPageSelected;
 

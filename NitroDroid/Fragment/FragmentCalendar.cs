@@ -132,18 +132,14 @@ namespace goheja
 			mView.FindViewById<ScrollView>(Resource.Id.scrollView).ScrollTo(0, 0);
 			if (pData == null) return;
 
-			mPChart = mView.FindViewById<FlexChart>(Resource.Id.pChart);
+			var chartContent = mView.FindViewById<LinearLayout>(Resource.Id.chartContent);
+			chartContent.RemoveAllViews();
 
-			//var mainAxisX = mPChart.AxisX;
-			//var mainAxisY = mPChart.AxisY;
+			mPChart = new FlexChart(this.Activity);
+			LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+			mPChart.LayoutParameters = params1;
 
-			//mPChart.Axes.Clear();
-			//mPChart.Series.Clear();
-			//mPChart.Annotations.Clear();
-
-			//mPChart.AxisX = mainAxisX;
-			//mPChart.AxisY = mainAxisY;
-
+			chartContent.AddView(mPChart);
 
 			#region configure
 			mPChart.SetPalette(Palettes.Modern);

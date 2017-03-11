@@ -367,9 +367,12 @@ namespace goheja
 			alert.SetPositiveButton("OK", (senderAlert, args) =>
 			{
 				RunOnUiThread(() => { 
-					var activity = new Intent(this, typeof(SwipeTabActivity));
-					StartActivity(activity);
+					var activity = new Intent();
+					SetResult(Result.Canceled, activity);
 					Finish();
+					//var activity = new Intent(this, typeof(SwipeTabActivity));
+					//StartActivity(activity);
+					//Finish();
 				});
 			});
 			RunOnUiThread(() =>
@@ -642,9 +645,12 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(SwipeTabActivity));
-				StartActivity(activity);
+				var activity = new Intent();
+				SetResult(Result.Canceled, activity);
 				Finish();
+				//var activity = new Intent(this, typeof(SwipeTabActivity));
+				//StartActivity(activity);
+				//Finish();
 			}
 
 			return base.OnKeyDown(keyCode, e);

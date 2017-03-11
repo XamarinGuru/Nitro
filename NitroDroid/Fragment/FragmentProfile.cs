@@ -43,11 +43,11 @@ namespace goheja
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				rootActivity.ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
+				//rootActivity.ShowLoadingView(Constants.MSG_LOADING_USER_DATA);
 
 				MemberModel.rootMember = rootActivity.GetUserObject();
 
-				rootActivity.HideLoadingView();
+				//rootActivity.HideLoadingView();
 
 				rootActivity.RunOnUiThread(() =>
 				{
@@ -97,7 +97,7 @@ namespace goheja
 			if (!rootActivity.IsNetEnable()) return;
 
 			var intent = new Intent(Activity, typeof(EditProfileActivity));
-			StartActivity(intent);
+			StartActivityForResult(intent, 1);
         }
 
 		private void ActionSyncDevice(object sender, EventArgs e)

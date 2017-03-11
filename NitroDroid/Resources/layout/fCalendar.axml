@@ -103,8 +103,9 @@
                         app:stepValue="1"
                         app:alwaysActive="false"
                         app:defaultColor="#ffa4a4a4" />
-                    <com.grapecity.xuni.flexchart.FlexChart
-                        android:id="@+id/pChart"
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:id="@+id/chartContent"
                         android:layout_width="match_parent"
                         android:layout_height="200dp" />
                     <LinearLayout
