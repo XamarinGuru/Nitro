@@ -21,7 +21,7 @@ namespace goheja
 		XuniCalendar calendar;
 
 		ListView eventsList;
-		List<NitroEvent> _events = new List<NitroEvent>();
+		List<GoHejaEvent> _events = new List<GoHejaEvent>();
 		LinearLayout noEventsContent;
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -62,7 +62,7 @@ namespace goheja
 
 		void FilterEventsByDate(DateTime filterDate)
 		{
-			List<NitroEvent> filteredEvents = new List<NitroEvent>();
+			List<GoHejaEvent> filteredEvents = new List<GoHejaEvent>();
 
 			if (_events != null && _events.Count != 0)
 			{
@@ -142,7 +142,7 @@ namespace goheja
 		{
 			if (!IsNetEnable()) return;
 
-			_events = new List<NitroEvent>();
+			_events = new List<GoHejaEvent>();
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

@@ -66,7 +66,7 @@ namespace goheja
 			});
 		}
 
-		void InitUISettings(NitroEvent selectedEvent)
+		void InitUISettings(GoHejaEvent selectedEvent)
 		{
 			lblPDistance = FindViewById<TextView>(Resource.Id.lblPDistance);
 			lblPDuration = FindViewById<TextView>(Resource.Id.lblPDuration);
@@ -108,7 +108,7 @@ namespace goheja
 			}
 		}
 
-		void InitBindingEventData(NitroEvent selectedEvent)
+		void InitBindingEventData(GoHejaEvent selectedEvent)
 		{
 			var startDateFormats = String.Format("{0:f}", selectedEvent.StartDateTime());//selectedEvent.StartDateTime().GetDateTimeFormats();
 			FindViewById<TextView>(Resource.Id.lblTitle).Text = selectedEvent.title;

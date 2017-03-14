@@ -10,7 +10,7 @@ namespace location2
 		UIColor COLOR_ACTIVE = new UIColor(229 / 255f, 161 / 255f, 9 / 255f, alpha: 1.0f);
 		UIColor COLOR_DISABLE = new UIColor(67 / 255f, 67 / 255f, 67 / 255f, alpha: 1.0f);
 
-		public NitroEvent selectedEvent;
+		public GoHejaEvent selectedEvent;
 
         public SelectPTypeViewController() : base()
 		{

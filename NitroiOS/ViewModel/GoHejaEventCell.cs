@@ -5,22 +5,22 @@ using UIKit;
 
 namespace location2
 {
-	public partial class NitroEventCell : UITableViewCell
+	public partial class GoHejaEventCell : UITableViewCell
 	{
 		public static readonly NSString Key = new NSString("NitroEventCell");
 		public static readonly UINib Nib;
 
-		static NitroEventCell()
+		static GoHejaEventCell()
 		{
 			Nib = UINib.FromName("NitroEventCell", NSBundle.MainBundle);
 		}
 
-		protected NitroEventCell(IntPtr handle) : base(handle)
+		protected GoHejaEventCell(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
 		}
 
-		public void SetCell(NitroEvent nitroEvent)
+		public void SetCell(GoHejaEvent nitroEvent)
 		{
 			var strTitle = nitroEvent.title;
 			var strTime = String.Format("{0:t}", nitroEvent.StartDateTime());

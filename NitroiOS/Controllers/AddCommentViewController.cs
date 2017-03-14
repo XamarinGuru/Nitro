@@ -7,7 +7,7 @@ namespace location2
 {
     public partial class AddCommentViewController : BaseViewController
     {
-		public NitroEvent selectedEvent;
+		public GoHejaEvent selectedEvent;
 
         public AddCommentViewController() : base()
 		{

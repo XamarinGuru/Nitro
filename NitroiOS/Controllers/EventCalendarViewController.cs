@@ -14,11 +14,11 @@ namespace location2
 		UIColor COLOR_FUTURE = new UIColor(63 / 255f, 187 / 255f, 190 / 255f, 1.0f);
 
 		Calendar _calendar;
-		List<NitroEvent> _events;
+		List<GoHejaEvent> _events;
 
         public EventCalendarViewController (IntPtr handle) : base (handle)
         {
-			_events = new List<NitroEvent>();
+			_events = new List<GoHejaEvent>();
         }
 
 		public override void ViewDidLoad()
@@ -98,7 +98,7 @@ namespace location2
 		{
 			if (!IsNetEnable()) return;
 
-			_events = new List<NitroEvent>();
+			_events = new List<GoHejaEvent>();
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView(Constants.MSG_LOADING_EVENTS);
@@ -127,12 +127,12 @@ namespace location2
 			EventDetails[] eventDetails = new EventDetails[_events.Count];
 			for (var i = 0; i < _events.Count; i ++)
 			{
-				var nitroEvent = _events[i];
+				var goHejaEvent = _events[i];
 
-				var startDate = nitroEvent.StartDateTime();
-				var endDate = nitroEvent.EndDateTime();
+				var startDate = goHejaEvent.StartDateTime();
+				var endDate = goHejaEvent.EndDateTime();
 
-				var eventDetail = new EventDetails((NSDate)(ConvertUTCToLocalTimeZone(startDate)), (NSDate)(ConvertUTCToLocalTimeZone(endDate)), nitroEvent.title);
+				var eventDetail = new EventDetails((NSDate)(ConvertUTCToLocalTimeZone(startDate)), (NSDate)(ConvertUTCToLocalTimeZone(endDate)), goHejaEvent.title);
 				eventDetails[i] = eventDetail;
 			}
 
@@ -142,13 +142,13 @@ namespace location2
 
 		void FilterEventsByDate(DateTime filterDate)
 		{
-			var eventsByDate = new List<NitroEvent>();
-			foreach (var nitroEvent in _events)
+			var eventsByDate = new List<GoHejaEvent>();
+			foreach (var goHejaEvent in _events)
 			{
-				var eventDate = nitroEvent.StartDateTime();
+				var eventDate = goHejaEvent.StartDateTime();
 				if (filterDate.DayOfYear == eventDate.DayOfYear)
 				{
-					eventsByDate.Add(nitroEvent);
+					eventsByDate.Add(goHejaEvent);
 				}
 			}
 			if (DateTime.Compare(filterDate, DateTime.Now) > 0)
@@ -161,7 +161,7 @@ namespace location2
 			else
 				lblNoEvents.Hidden = true;
 			
-			var tblDataSource = new NitroEventTableViewSource(eventsByDate, this);
+			var tblDataSource = new GoHejaEventTableViewSource(eventsByDate, this);
 			this.InvokeOnMainThread(delegate
 			{
 				tableView.Source = tblDataSource;
@@ -226,26 +226,26 @@ namespace location2
 			Console.WriteLine("loaded next page");
 		}
 
-		#region NitroEventTableViewSource
+		#region GoHejaEventTableViewSource
 
-		class NitroEventTableViewSource : UITableViewSource
+		class GoHejaEventTableViewSource : UITableViewSource
 		{
-			List<NitroEvent> nitroEvents;
+			List<GoHejaEvent> goHejaEvents;
 			EventCalendarViewController eventCalendarVC;
 
-			public NitroEventTableViewSource(List<NitroEvent> events, EventCalendarViewController eventCalendarVC)
+			public GoHejaEventTableViewSource(List<GoHejaEvent> events, EventCalendarViewController eventCalendarVC)
 			{
-				this.nitroEvents = new List<NitroEvent>();
+				this.goHejaEvents = new List<GoHejaEvent>();
 
 				if (events == null) return;
 
-				this.nitroEvents = events;
+				this.goHejaEvents = events;
 				this.eventCalendarVC = eventCalendarVC;
 			}
 
 			public override nint RowsInSection(UITableView tableview, nint section)
 			{
-				return nitroEvents.Count;
+				return goHejaEvents.Count;
 			}
 
 			public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
@@ -254,8 +254,8 @@ namespace location2
 			}
 			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 			{
-				NitroEventCell cell = tableView.DequeueReusableCell("NitroEventCell") as NitroEventCell;
-				cell.SetCell(nitroEvents[indexPath.Row]);
+				GoHejaEventCell cell = tableView.DequeueReusableCell("NitroEventCell") as GoHejaEventCell;
+				cell.SetCell(goHejaEvents[indexPath.Row]);
 
 				return cell;
 			}
@@ -264,7 +264,7 @@ namespace location2
 			{
 				if (!eventCalendarVC.IsNetEnable()) return;
 
-				var selectedEvent = nitroEvents[indexPath.Row];
+				var selectedEvent = goHejaEvents[indexPath.Row];
 				UIStoryboard sb = UIStoryboard.FromName("Main", null);
 				EventInstructionController eventInstructionVC = sb.InstantiateViewController("EventInstructionController") as EventInstructionController;
 				eventInstructionVC.selectedEvent = selectedEvent;

@@ -32,12 +32,11 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Model\Gauge.cs" />
-    <Compile Include="Model\NitroEvent.cs" />
+    <Compile Include="Model\GoHejaEvent.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\EventTotal.cs" />
     <Compile Include="Model\EventPoints.cs" />
     <Compile Include="Model\EventTracks.cs" />
-    <Compile Include="IApiService.cs" />
     <Compile Include="XuniLicense.cs" />
     <Compile Include="Model\ReportGraphData.cs" />
     <Compile Include="Model\PerformanceDataForDate.cs" />

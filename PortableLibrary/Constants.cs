@@ -3,6 +3,10 @@ namespace PortableLibrary
 {
 	public static class Constants
 	{
+		//public const string SPEC_GROUP_TYPE = "innovi";
+		public const string SPEC_GROUP_TYPE = "nitro" ;
+
+
 		public const string GOHEJA_BASEPATH = "http://go-heja.com/Service1.svc?wsdl";
 
 		public const string FIREBASE_APPSECRET = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF";
@@ -11,7 +15,7 @@ namespace PortableLibrary
 		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
 		public const int MAP_ZOOM_LEVEL = 15;
 
-		public const string CALENDAR_TITLE = "Nitro Calendar";
+		public const string DEVICE_CALENDAR_TITLE = Constants.SPEC_GROUP_TYPE + " Calendar";
 
 		//URLs
 		public const string URL_TERMS = "http://go-heja.com/nitro/terms.php/";
@@ -23,15 +27,13 @@ namespace PortableLibrary
 
 		public const string URL_GOOGLE = "www.google.com";
 
-		//public static string[] SPEC_GROUP_TYPE = { "innovi" };
-		public static string[] SPEC_GROUP_TYPE = { "nitro" };
 
 		public static double[] LOCATION_ISURAEL = { 31.0461, 34.8516 };
 
 		public const string MSG_LOGIN = "Login...";
 		public const string MSG_LOGIN_FAIL = "Login failed.";
 		public const string MSG_SIGNUP = "Sign Up...";
-		public const string MSG_SIGNUP_FAIL = "You are not registered to Nitro services.";
+		public const string MSG_SIGNUP_FAIL = "You are not registered to " + Constants.SPEC_GROUP_TYPE + " services.";
 		public const string MSG_LOADING_DATA = "Loading data...";
 		public const string MSG_LOADING_USER_DATA = "Loading user data...";
 		public const string MSG_LOADING_EVENTS = "Loading events...";

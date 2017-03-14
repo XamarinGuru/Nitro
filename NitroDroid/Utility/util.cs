@@ -97,7 +97,7 @@ namespace goheja
 				}
 				   
 				try{
-					svc.updateMomgoData (theRecord.fullName, String.Format ("{0},{1}",theRecord.lati,theRecord.longti), theRecord.date, true,theRecord.deviceId, theRecord.speed, true,theRecord.athid, theRecord.country, theRecord.distance, true,theRecord.gainedAlt,true, theRecord.bearinng, true, theRecord.recordType, true,theRecord.sportType, Constants.SPEC_GROUP_TYPE[0]);
+					svc.updateMomgoData (theRecord.fullName, String.Format ("{0},{1}",theRecord.lati,theRecord.longti), theRecord.date, true,theRecord.deviceId, theRecord.speed, true,theRecord.athid, theRecord.country, theRecord.distance, true,theRecord.gainedAlt,true, theRecord.bearinng, true, theRecord.recordType, true,theRecord.sportType, Constants.SPEC_GROUP_TYPE);
 				}
 				catch
 				{
@@ -118,7 +118,7 @@ namespace goheja
 			{
 				try
 				{
-					svc.updateMomgoData(r.fullName, String.Format("{0},{1}", r.lati, r.longti), r.date, true, r.deviceId, r.speed, true, r.athid, r.country, r.distance, true, r.gainedAlt, true, r.bearinng, true, r.recordType, true, r.sportType, Constants.SPEC_GROUP_TYPE[0]);
+					svc.updateMomgoData(r.fullName, String.Format("{0},{1}", r.lati, r.longti), r.date, true, r.deviceId, r.speed, true, r.athid, r.country, r.distance, true, r.gainedAlt, true, r.bearinng, true, r.recordType, true, r.sportType, Constants.SPEC_GROUP_TYPE);
 				}
 				catch
 				{

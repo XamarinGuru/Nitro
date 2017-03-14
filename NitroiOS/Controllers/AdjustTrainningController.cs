@@ -8,7 +8,7 @@ namespace location2
 {
     public partial class AdjustTrainningController : BaseViewController
     {
-		public NitroEvent selectedEvent;
+		public GoHejaEvent selectedEvent;
 		public EventTotal eventTotal;
 
         public AdjustTrainningController() : base()

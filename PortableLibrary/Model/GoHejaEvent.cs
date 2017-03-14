@@ -2,7 +2,7 @@
 
 namespace PortableLibrary
 {
-	public class NitroEvent
+	public class GoHejaEvent
 	{
 		public string _id { get; set;}
 		public string title { get; set; }

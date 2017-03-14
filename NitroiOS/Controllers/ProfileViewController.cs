@@ -135,7 +135,7 @@ namespace location2
 			var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 			foreach (var calendar in calendars)
 			{
-				if (calendar.Title == Constants.CALENDAR_TITLE)
+				if (calendar.Title == Constants.DEVICE_CALENDAR_TITLE)
 				{
 					NSError pE;
 					App.Current.EventStore.RemoveCalendar(calendar, true, out pE);

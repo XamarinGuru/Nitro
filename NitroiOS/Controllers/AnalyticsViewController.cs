@@ -272,7 +272,7 @@ namespace location2
 
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+					meServ.updateMomgoData(name, loc, _dt, true, AppSettings.DeviceUDID, currspeed, true, AppSettings.UserID, country, currdistance, true, currAlt, true, course, true, 0, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE);
 					Console.Write("location update !!! " + name + "===" + loc + "===" + _dt.ToString() + "\n");
 				});
 
@@ -349,7 +349,7 @@ namespace location2
 
 					System.Threading.ThreadPool.QueueUserWorkItem(delegate
 					{
-						meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 1, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+						meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 1, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE);
 					});
 				}
 				catch
@@ -394,7 +394,7 @@ namespace location2
 
 				System.Threading.ThreadPool.QueueUserWorkItem(delegate
 				{
-					meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE[0]);
+					meServ.updateMomgoData(name, location, _dt, true, AppSettings.DeviceUDID, speed, true, AppSettings.UserID, MemberModel.country, currdistance, true, alt, true, bearing, true, 2, true, pType.ToString(), PortableLibrary.Constants.SPEC_GROUP_TYPE);
 				});
 			}
 			catch

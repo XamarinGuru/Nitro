@@ -12,7 +12,7 @@ using UIKit;
 namespace location2
 {
     [Register ("NitroEventCell")]
-    partial class NitroEventCell
+    partial class GoHejaEventCell
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

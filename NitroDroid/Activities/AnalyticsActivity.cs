@@ -293,7 +293,7 @@ namespace goheja
 					dist = contextPref.GetFloat("dist", 0f);
 					var country = MemberModel.country;
 
-					svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, AppSettings.UserID, country, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, pType.ToString(), Constants.SPEC_GROUP_TYPE[0]);
+					svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, AppSettings.UserID, country, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, pType.ToString(), Constants.SPEC_GROUP_TYPE);
 				}
 				catch
 				{
@@ -369,7 +369,7 @@ namespace goheja
 				dist = contextPref.GetFloat("dist", 0f);
 				var country = MemberModel.country;
 
-				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, AppSettings.UserID, country, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, pType.ToString(), Constants.SPEC_GROUP_TYPE[0]);
+				svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, AppSettings.UserID, country, dist, true, gainAlt, true, _currentLocation.Bearing, true, 2, true, pType.ToString(), Constants.SPEC_GROUP_TYPE);
 			}
 			catch (Exception err)
 			{

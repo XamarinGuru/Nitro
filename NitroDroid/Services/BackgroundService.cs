@@ -149,7 +149,7 @@ namespace goheja
 			}
 		}
 
-		private void AddEventsToNitroCalendar(List<NitroEvent> events)
+		private void AddEventsToNitroCalendar(List<GoHejaEvent> events)
 		{
 			if (calendarID == -1 || events == null || events.Count == 0) return;
 

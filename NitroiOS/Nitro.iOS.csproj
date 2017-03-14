@@ -161,7 +161,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="ViewModel\CommentView.xib" />
     <InterfaceDefinition Include="ViewModel\PointInfoView.xib" />
@@ -227,9 +226,9 @@
     <Compile Include="Controllers\EventCalendarViewController.designer.cs">
       <DependentUpon>EventCalendarViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\NitroEventCell.cs" />
-    <Compile Include="ViewModel\NitroEventCell.designer.cs">
-      <DependentUpon>NitroEventCell.cs</DependentUpon>
+    <Compile Include="ViewModel\GoHejaEventCell.cs" />
+    <Compile Include="ViewModel\GoHejaEventCell.designer.cs">
+      <DependentUpon>GoHejaEventCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\EventInstructionController.cs" />
     <Compile Include="Controllers\EventInstructionController.designer.cs">
@@ -304,7 +303,6 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\BG_new.png" />
     <BundleResource Include="Resources\edit_icon.png" />
-    <BundleResource Include="Resources\text_icon.png" />
     <BundleResource Include="Resources\button.png" />
     <BundleResource Include="Resources\cell_icon.png" />
     <BundleResource Include="Resources\email_icon.png" />
@@ -317,7 +315,6 @@
     <BundleResource Include="Resources\icon_pause.png" />
     <BundleResource Include="Resources\stop_active.png" />
     <BundleResource Include="Resources\icon_go.png" />
-    <BundleResource Include="Resources\timer_new.png" />
     <BundleResource Include="Resources\watt_new.png" />
     <BundleResource Include="Resources\speed_new.png" />
     <BundleResource Include="Resources\runRound_new.png" />
@@ -332,7 +329,6 @@
     <BundleResource Include="Resources\icon_bycle_disable.png" />
     <BundleResource Include="Resources\icon_calendar_act.png" />
     <BundleResource Include="Resources\icon_calendar_disable.png" />
-    <BundleResource Include="Resources\user_icon_act.png" />
     <BundleResource Include="Resources\icon_watch.png" />
     <BundleResource Include="Resources\icon_back.png" />
     <BundleResource Include="Resources\pop_up_bg.png" />

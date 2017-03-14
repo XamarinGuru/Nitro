@@ -19,7 +19,7 @@ namespace location2
 
 		public BaseViewController baseVC;
 
-		EKCalendar nitroCalendar = null;
+		EKCalendar goHejaCalendar = null;
 
 		public override UIWindow Window {
 			get;
@@ -71,22 +71,22 @@ namespace location2
 		}
 		private void UpdateCalendar(object state)
 		{
-			InvokeOnMainThread(() => { AddNitroCalendarToDevice(); });
+			InvokeOnMainThread(() => { AddGoHejaCalendarToDevice(); });
 		}
 
-		private void AddNitroCalendarToDevice()
+		private void AddGoHejaCalendarToDevice()
 		{
 			try
 			{
 				NSError error;
 
-				////remove existing descending events from now in "Nitro Events" calendar of device.
+				////remove existing descending events from now in "goHeja Events" calendar of device.
 				var calendars = App.Current.EventStore.GetCalendars(EKEntityType.Event);
 				foreach (var calendar in calendars)
 				{
-					if (calendar.Title == PortableLibrary.Constants.CALENDAR_TITLE)
+					if (calendar.Title == PortableLibrary.Constants.DEVICE_CALENDAR_TITLE)
 					{
-						nitroCalendar = calendar;
+						goHejaCalendar = calendar;
 
 						EKCalendar[] calendarArray = new EKCalendar[1];
 						calendarArray[0] = calendar;
@@ -106,39 +106,39 @@ namespace location2
 					}
 				}
 
-				if (nitroCalendar == null)
+				if (goHejaCalendar == null)
 				{
-					nitroCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
-					EKSource nitroSource = null;
+					goHejaCalendar = EKCalendar.Create(EKEntityType.Event, App.Current.EventStore);
+					EKSource goHejaSource = null;
 
 					foreach (EKSource source in App.Current.EventStore.Sources)
 					{
 						if (source.SourceType == EKSourceType.CalDav && source.Title == "iCloud")
 						{
-							nitroSource = source;
+							goHejaSource = source;
 							break;
 						}
 					}
-					if (nitroSource == null)
+					if (goHejaSource == null)
 					{
 						foreach (EKSource source in App.Current.EventStore.Sources)
 						{
 							if (source.SourceType == EKSourceType.Local)
 							{
-								nitroSource = source;
+								goHejaSource = source;
 								break;
 							}
 						}
 					}
-					if (nitroSource == null)
+					if (goHejaSource == null)
 					{
 						return;
 					}
-					nitroCalendar.Title = PortableLibrary.Constants.CALENDAR_TITLE;
-					nitroCalendar.Source = nitroSource;
+					goHejaCalendar.Title = PortableLibrary.Constants.DEVICE_CALENDAR_TITLE;
+					goHejaCalendar.Source = goHejaSource;
 				}
 
-				App.Current.EventStore.SaveCalendar(nitroCalendar, true, out error);
+				App.Current.EventStore.SaveCalendar(goHejaCalendar, true, out error);
 
 				if (error == null)
 					AddEvents();
@@ -155,22 +155,22 @@ namespace location2
 			var todayEvents = baseVC.GetTodayEvents();
 			var futureEvents = baseVC.GetFutureEvents();
 
-			AddEventsToNitroCalendar(pastEvents);
-			AddEventsToNitroCalendar(todayEvents);
-			AddEventsToNitroCalendar(futureEvents);
+			AddEventsToGoHejaCalendar(pastEvents);
+			AddEventsToGoHejaCalendar(todayEvents);
+			AddEventsToGoHejaCalendar(futureEvents);
 		}
 
-		private void AddEventsToNitroCalendar(List<NitroEvent> eventsData)
+		private void AddEventsToGoHejaCalendar(List<GoHejaEvent> eventsData)
 		{
-			if (nitroCalendar == null || eventsData == null)
+			if (goHejaCalendar == null || eventsData == null)
 				return;
 
-			foreach (var nitroEvent in eventsData)
+			foreach (var goHejaEvent in eventsData)
 			{
 				EKEvent newEvent = EKEvent.FromStore(App.Current.EventStore);
 
-				var startDate = nitroEvent.StartDateTime();
-				var endDate = nitroEvent.EndDateTime();
+				var startDate = goHejaEvent.StartDateTime();
+				var endDate = goHejaEvent.EndDateTime();
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -181,9 +181,9 @@ namespace location2
 
 				newEvent.StartDate = baseVC.ConvertDateTimeToNSDate(startDate);
 				newEvent.EndDate = baseVC.ConvertDateTimeToNSDate(endDate);
-				newEvent.Title = nitroEvent.title;
+				newEvent.Title = goHejaEvent.title;
 
-				string eventDescription = baseVC.FormatEventDescription(nitroEvent.eventData);
+				string eventDescription = baseVC.FormatEventDescription(goHejaEvent.eventData);
 
 				string[] arryEventDes = eventDescription.Split(new char[] { '~' });
 
@@ -192,26 +192,26 @@ namespace location2
 					newEvent.Notes += arryEventDes[i].ToString() + Environment.NewLine;
 				}
 
-				var strDistance = nitroEvent.distance;
+				var strDistance = goHejaEvent.distance;
 				var floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
 
-				var durMin = nitroEvent.durMin == "" ? 0 : int.Parse(nitroEvent.durMin);
-				var durHrs = nitroEvent.durHrs == "" ? 0 : int.Parse(nitroEvent.durHrs);
+				var durMin = goHejaEvent.durMin == "" ? 0 : int.Parse(goHejaEvent.durMin);
+				var durHrs = goHejaEvent.durHrs == "" ? 0 : int.Parse(goHejaEvent.durHrs);
 				var pHrs = durMin / 60;
 				durHrs = durHrs + pHrs;
 				durMin = durMin % 60;
 
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-				newEvent.Notes += Environment.NewLine + "Planned HB : " + nitroEvent.hb + Environment.NewLine +
-								"Planned TSS : " + nitroEvent.tss + Environment.NewLine +
+				newEvent.Notes += Environment.NewLine + "Planned HB : " + goHejaEvent.hb + Environment.NewLine +
+								"Planned TSS : " + goHejaEvent.tss + Environment.NewLine +
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				var encodedTitle = System.Web.HttpUtility.UrlEncode(nitroEvent.title);
+				var encodedTitle = System.Web.HttpUtility.UrlEncode(goHejaEvent.title);
 
 				var urlDate = newEvent.StartDate;
 				var strDate = String.Format("{0:dd-MM-yyyy hh:mm:ss}", startDate);
@@ -226,7 +226,7 @@ namespace location2
 				alarmsArray[1] = EKAlarm.FromDate(newEvent.StartDate.AddSeconds(-(60 * 60 * 12)));
 				newEvent.Alarms = alarmsArray;
 
-				newEvent.Calendar = nitroCalendar;
+				newEvent.Calendar = goHejaCalendar;
 
 				NSError e;
 				App.Current.EventStore.SaveEvent(newEvent, EKSpan.ThisEvent, out e);

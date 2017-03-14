@@ -12,7 +12,7 @@ using CoreGraphics;
 
 namespace location2
 {
-	public partial class BaseViewController : UIViewController, IApiService
+	public partial class BaseViewController : UIViewController
 	{
 		UIColor[] PATH_COLORS = { UIColor.Red, new UIColor(38/255f, 127/255f, 0, alpha: 1.0f), UIColor.Blue };
 		UIColor COLOR_ORANGE = new UIColor(red: 0.90f, green: 0.63f, blue: 0.04f, alpha: 1.0f);
@@ -107,7 +107,7 @@ namespace location2
 		{
 			try
 			{
-				var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified, Constants.SPEC_GROUP_TYPE[0]);
+				var result = mTrackSvc.insertNewDevice(fName, lName, deviceId, userName, psw, acceptedTerms, acceptedTermsSpecified, email, age, ageSpecified, Constants.SPEC_GROUP_TYPE);
 				return result;
 			}
 			catch (Exception ex)
@@ -119,7 +119,7 @@ namespace location2
 		{
 			try
 			{
-				var userID = mTrackSvc.getListedDeviceId(email, password, Constants.SPEC_GROUP_TYPE[0]);
+				var userID = mTrackSvc.getListedDeviceId(email, password, Constants.SPEC_GROUP_TYPE);
 
 				if (userID == "0")
 					return false;
@@ -146,7 +146,7 @@ namespace location2
 		{
 			try
 			{
-				var response = mTrackSvc.getCode(email, Constants.SPEC_GROUP_TYPE[0]);
+				var response = mTrackSvc.getCode(email, Constants.SPEC_GROUP_TYPE);
 
 				return response;
 			}
@@ -163,7 +163,7 @@ namespace location2
 			{
 				int result = 0;
 				bool resultSpecified = false;
-				mTrackSvc.restPasword(email, password, Constants.SPEC_GROUP_TYPE[0], out result, out resultSpecified);
+				mTrackSvc.restPasword(email, password, Constants.SPEC_GROUP_TYPE, out result, out resultSpecified);
 
 				return result;
 			}
@@ -186,7 +186,7 @@ namespace location2
 			
 			try
 			{
-				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password, Constants.SPEC_GROUP_TYPE[0]);
+				userID = mTrackSvc.getListedDeviceId(AppSettings.Email, AppSettings.Password, Constants.SPEC_GROUP_TYPE);
 
 				if (userID != "0")
 					AppSettings.UserID = userID;
@@ -206,7 +206,7 @@ namespace location2
 
 			try
 			{
-				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, Constants.SPEC_GROUP_TYPE[0], null, "5");
+				var strGauge = mTrackSvc.getGaugeMob(DateTime.Now, true, userID, null, Constants.SPEC_GROUP_TYPE, null, "5");
 				Gauge gaugeObject = JsonConvert.DeserializeObject<Gauge>(strGauge);
 				return gaugeObject;
 			}
@@ -224,7 +224,7 @@ namespace location2
 
 			try
 			{
-				var strPerformance = mTrackSvc.getUserPmc(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var strPerformance = mTrackSvc.getUserPmc(userID, Constants.SPEC_GROUP_TYPE);
 				var performanceObject = JsonConvert.DeserializeObject<ReportGraphData>(strPerformance.ToString());
 				return performanceObject;
 			}
@@ -242,7 +242,7 @@ namespace location2
 
 			try
 			{
-				var strPerformance = mTrackSvc.getPerformanceFordate(userID, date, true, Constants.SPEC_GROUP_TYPE[0]);
+				var strPerformance = mTrackSvc.getPerformanceFordate(userID, date, true, Constants.SPEC_GROUP_TYPE);
 				var performanceObject = JsonConvert.DeserializeObject<PerformanceDataForDate>(strPerformance.ToString());
 				return performanceObject;
 			}
@@ -260,7 +260,7 @@ namespace location2
 
 			try
 			{
-				var objUser = mTrackSvc.getUsrObject(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var objUser = mTrackSvc.getUsrObject(userID, Constants.SPEC_GROUP_TYPE);
 				var jsonUser = FormatJsonType(objUser.ToString());
 				RootMember rootMember = JsonConvert.DeserializeObject<RootMember>(jsonUser);
 				return rootMember;
@@ -279,17 +279,17 @@ namespace location2
 			var jsonUser = JsonConvert.SerializeObject(updatedUserObject);
 			Console.WriteLine(jsonUser);
 			updatedById = userID;
-			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, Constants.SPEC_GROUP_TYPE[0]);
+			var result = mTrackSvc.updateUserDataJson(userID, jsonUser, updatedById, Constants.SPEC_GROUP_TYPE);
 			return result;
 		}
 
-		public List<NitroEvent> GetPastEvents()
+		public List<GoHejaEvent> GetPastEvents()
 		{
 			try
 			{
-				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
+				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -298,13 +298,13 @@ namespace location2
 			}
 		}
 
-		public List<NitroEvent> GetTodayEvents()
+		public List<GoHejaEvent> GetTodayEvents()
 		{
 			try
 			{
-				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
+				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -313,13 +313,13 @@ namespace location2
 			}
 		}
 
-		public List<NitroEvent> GetFutureEvents()
+		public List<GoHejaEvent> GetFutureEvents()
 		{
 			try
 			{
-				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID, Constants.SPEC_GROUP_TYPE[0]);
+				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -328,13 +328,13 @@ namespace location2
 			}
 		}
 
-		public NitroEvent GetEventDetail(string eventID)
+		public GoHejaEvent GetEventDetail(string eventID)
 		{
 			try
 			{
-				var strEventDetail = mTrackSvc.getEventMob(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				var strEventDetail = mTrackSvc.getEventMob(eventID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strEventDetail.ToString()));
-				return CastNitroEvents(eventsData)[0];
+				return CastGoHejaEvents(eventsData)[0];
 			}
 			catch (Exception err)
 			{
@@ -343,17 +343,17 @@ namespace location2
 			}
 		}
 
-		public List<NitroEvent> CastNitroEvents(JArray events)
+		public List<GoHejaEvent> CastGoHejaEvents(JArray events)
 		{
 			
-			var returnEvents = new List<NitroEvent>();
+			var returnEvents = new List<GoHejaEvent>();
 
 			if (events == null) return returnEvents;
 
 			foreach (var eventJson in events)
 			{
-				NitroEvent nitroEvent = JsonConvert.DeserializeObject<NitroEvent>(eventJson.ToString());
-				returnEvents.Add(nitroEvent);
+				GoHejaEvent goHejaEvent = JsonConvert.DeserializeObject<GoHejaEvent>(eventJson.ToString());
+				returnEvents.Add(goHejaEvent);
 			}
 			return returnEvents;
 		}
@@ -363,7 +363,7 @@ namespace location2
 			var eventTotal = new EventTotal();
 			try
 			{
-				var totalObject = mTrackSvc.getEventTotalsMob(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				var totalObject = mTrackSvc.getEventTotalsMob(eventID, Constants.SPEC_GROUP_TYPE);
 				eventTotal = JsonConvert.DeserializeObject<EventTotal>(totalObject.ToString());
 			}
 			catch (Exception ex)
@@ -379,7 +379,7 @@ namespace location2
 			var eventMarkers = new EventPoints();
 			try
 			{
-				var markerObject = mTrackSvc.getAllMarkersByPractice(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				var markerObject = mTrackSvc.getAllMarkersByPractice(eventID, Constants.SPEC_GROUP_TYPE);
 				eventMarkers = JsonConvert.DeserializeObject<EventPoints>(markerObject.ToString());
 			}
 			catch (Exception ex)
@@ -395,7 +395,7 @@ namespace location2
 			var eventMarkers = new EventPoints();
 			try
 			{
-				var markerObject = mTrackSvc.getNearestEventMakers(userID, Constants.SPEC_GROUP_TYPE[0]);
+				var markerObject = mTrackSvc.getNearestEventMakers(userID, Constants.SPEC_GROUP_TYPE);
 				eventMarkers = JsonConvert.DeserializeObject<EventPoints>(markerObject.ToString());
 			}
 			catch (Exception ex)
@@ -411,7 +411,7 @@ namespace location2
 			List<List<TPoint>> returnTPoints = new List<List<TPoint>>();
 			try
 			{
-				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE[0]);
+				var pointsObject = mTrackSvc.getTrackPoints(eventID, Constants.SPEC_GROUP_TYPE);
 				var jsonPoints = FormatJsonType(pointsObject.ToString());
 				var trackPoints = JsonConvert.DeserializeObject<EventTracks>(jsonPoints);
 
@@ -467,7 +467,7 @@ namespace location2
 			var comment = new Comment();
 			try
 			{
-				var commentObject = mTrackSvc.getComments(eventID, "1", Constants.SPEC_GROUP_TYPE[0]);
+				var commentObject = mTrackSvc.getComments(eventID, "1", Constants.SPEC_GROUP_TYPE);
 				comment = JsonConvert.DeserializeObject<Comment>(commentObject.ToString());
 			}
 			catch (Exception ex)
@@ -482,7 +482,7 @@ namespace location2
 		{
 			try
 			{
-				var response = mTrackSvc.setComments(author, authorId, commentText, eventId, Constants.SPEC_GROUP_TYPE[0]);
+				var response = mTrackSvc.setComments(author, authorId, commentText, eventId, Constants.SPEC_GROUP_TYPE);
 				return response;
 			}
 			catch (Exception ex)
@@ -496,7 +496,7 @@ namespace location2
 		{
 			try
 			{
-				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type, Constants.SPEC_GROUP_TYPE[0]);
+				var response = mTrackSvc.updateMeberNotes(notes, userID, eventId, username, attended, duration, distance, trainScore, type, Constants.SPEC_GROUP_TYPE);
 				//return response;
 			}
 			catch (Exception ex)
@@ -633,7 +633,7 @@ namespace location2
 
 		public bool ValidateUserNickName(string nickName)
 		{
-			var validate = mTrackSvc.validateNickName(nickName, Constants.SPEC_GROUP_TYPE[0]);
+			var validate = mTrackSvc.validateNickName(nickName, Constants.SPEC_GROUP_TYPE);
 			if (validate != "1")
 				return true;
 			else
@@ -801,7 +801,7 @@ namespace location2
 				var fileBytes = new Byte[imgData.Length];
 				System.Runtime.InteropServices.Marshal.Copy(imgData.Bytes, fileBytes, 0, Convert.ToInt32(imgData.Length));
 
-				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes, Constants.SPEC_GROUP_TYPE[0]);
+				var response = mTrackSvc.saveUserImage(AppSettings.UserID, fileBytes, Constants.SPEC_GROUP_TYPE);
 			}
 			catch (Exception err)
 			{
@@ -1202,7 +1202,7 @@ namespace location2
 			}
 		}
 
-		public void SetTableViewHeightBasedOnChildren(UITableView tableView, List<NitroEvent> children, NSLayoutConstraint conHeight)
+		public void SetTableViewHeightBasedOnChildren(UITableView tableView, List<GoHejaEvent> children, NSLayoutConstraint conHeight)
 		{
 			nfloat height = children.Count * 60;
 

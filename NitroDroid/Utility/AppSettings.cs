@@ -12,10 +12,10 @@ namespace goheja
 
 		public static BaseActivity baseVC;
 
-		public static List<NitroEvent> currentEventsList;
+		public static List<GoHejaEvent> currentEventsList;
 		public static EventTotal currentEventTotal;
 
-		public static NitroEvent selectedEvent;
+		public static GoHejaEvent selectedEvent;
 
 		public static string currentEmail;
 

@@ -7,7 +7,7 @@ namespace location2
 {
     public partial class EventInstructionController : BaseViewController
     {
-		public NitroEvent selectedEvent;
+		public GoHejaEvent selectedEvent;
 		EventTotal eventTotal;
 		string eventID;
 

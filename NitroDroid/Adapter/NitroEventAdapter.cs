@@ -10,10 +10,10 @@ namespace goheja
 {
 	public class NitroEventAdapter : BaseAdapter
 	{
-		List<NitroEvent> _events;
+		List<GoHejaEvent> _events;
 		Activity mSuperActivity;
 
-		public NitroEventAdapter(List<NitroEvent> events, Activity superActivity)
+		public NitroEventAdapter(List<GoHejaEvent> events, Activity superActivity)
 		{
 			_events = events;
 			mSuperActivity = superActivity;
