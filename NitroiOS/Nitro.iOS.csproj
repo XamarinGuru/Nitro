@@ -93,9 +93,6 @@
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.20\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -132,14 +129,23 @@
     <Reference Include="GalaSoft.MvvmLight.Platform">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
-    </Reference>
     <Reference Include="Google.Maps">
       <HintPath>..\packages\Xamarin.Google.iOS.Maps.2.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
     <Reference Include="XCalendar">
       <HintPath>..\Components\XCalendar-1.1\lib\ios-unified\XCalendar.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.RangeSlider.Common">
+      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.RangeSlider.iOS">
+      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.iOS.Core">
       <HintPath>..\packages\Xuni.iOS.Core.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.Core.dll</HintPath>
@@ -152,12 +158,6 @@
     </Reference>
     <Reference Include="Xuni.iOS.FlexChart">
       <HintPath>..\packages\Xuni.iOS.FlexChart.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.FlexChart.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.RangeSlider.Common">
-      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.RangeSlider.iOS">
-      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -476,6 +476,6 @@
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\Xamarin.Google.iOS.Maps.2.1.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Maps.2.1.0\build\Xamarin.Google.iOS.Maps.targets')" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets')" />
 </Project>

@@ -616,7 +616,8 @@ namespace goheja
 															 	);
 
 				if (txtGoalDate.Text != "")
-					ddtime.DatePicker.DateTime = DateTime.Parse(txtGoalDate.Text);
+					ddtime.DatePicker.DateTime = DateTime.ParseExact(txtGoalDate.Text, "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+					//ddtime.DatePicker.DateTime = DateTime.Parse(txtGoalDate.Text);
 
 				var origin = new DateTime(1970, 1, 1);
 				ddtime.DatePicker.MinDate = (long)(DateTime.Now - origin).TotalMilliseconds;
