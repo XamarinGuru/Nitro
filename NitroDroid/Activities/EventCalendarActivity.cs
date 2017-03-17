@@ -86,7 +86,7 @@ namespace goheja
 				noEventsContent.Visibility = ViewStates.Gone;
 
 			eventsList = FindViewById(Resource.Id.eventsList) as ListView;
-			var adapter = new NitroEventAdapter(filteredEvents, this);
+			var adapter = new GoHejaEventAdapter(filteredEvents, this);
 			eventsList.Adapter = adapter;
 			adapter.NotifyDataSetChanged();
 			SetListViewHeightBasedOnChildren(eventsList);

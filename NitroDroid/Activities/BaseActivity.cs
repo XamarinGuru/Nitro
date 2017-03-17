@@ -315,7 +315,7 @@ namespace goheja
 			{
 				var strPastEvents = mTrackSvc.getUserCalendarPast(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strPastEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -330,7 +330,7 @@ namespace goheja
 			{
 				var strTodayEvents = mTrackSvc.getUserCalendarToday(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strTodayEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -345,7 +345,7 @@ namespace goheja
 			{
 				var strFutureEvents = mTrackSvc.getUserCalendarFuture(AppSettings.UserID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strFutureEvents));
-				return CastNitroEvents(eventsData);
+				return CastGoHejaEvents(eventsData);
 			}
 			catch (Exception err)
 			{
@@ -360,7 +360,7 @@ namespace goheja
 			{
 				var strEventDetail = mTrackSvc.getEventMob(eventID, Constants.SPEC_GROUP_TYPE);
 				var eventsData = JArray.Parse(FormatJsonType(strEventDetail.ToString()));
-				return CastNitroEvents(eventsData)[0];
+				return CastGoHejaEvents(eventsData)[0];
 			}
 			catch (Exception err)
 			{
@@ -369,7 +369,7 @@ namespace goheja
 			}
 		}
 
-		public List<GoHejaEvent> CastNitroEvents(JArray events)
+		public List<GoHejaEvent> CastGoHejaEvents(JArray events)
 		{
 
 			var returnEvents = new List<GoHejaEvent>();
@@ -378,8 +378,8 @@ namespace goheja
 
 			foreach (var eventJson in events)
 			{
-				GoHejaEvent nitroEvent = JsonConvert.DeserializeObject<GoHejaEvent>(eventJson.ToString());
-				returnEvents.Add(nitroEvent);
+				GoHejaEvent goHejaEvent = JsonConvert.DeserializeObject<GoHejaEvent>(eventJson.ToString());
+				returnEvents.Add(goHejaEvent);
 			}
 			return returnEvents;
 		}
@@ -830,7 +830,7 @@ namespace goheja
 
 		public void SetListViewHeightBasedOnChildren(ListView listView)
 		{
-			NitroEventAdapter listAdapter = listView.Adapter as NitroEventAdapter;
+			GoHejaEventAdapter listAdapter = listView.Adapter as GoHejaEventAdapter;
 			if (listAdapter == null)
 				return;
 

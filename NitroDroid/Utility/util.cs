@@ -29,7 +29,7 @@ namespace goheja
 		public static Android.Graphics.Bitmap getPersonalImage()
 		{
 			var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
-			var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
+			var filePath = System.IO.Path.Combine(sdCardPath, Constants.PATH_USER_IMAGE);
 			var s2 = new FileStream(filePath, FileMode.Open);
 
 			try

@@ -147,7 +147,6 @@
     <Compile Include="Activities\InitActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\EventCalendarActivity.cs" />
-    <Compile Include="Adapter\NitroEventAdapter.cs" />
     <Compile Include="Activities\EventInstructionActivity.cs" />
     <Compile Include="Activities\AddCommentActivity.cs" />
     <Compile Include="Activities\AdjustTrainningActivity.cs" />
@@ -162,6 +161,7 @@
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Adapter\GoHejaEventAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -170,25 +170,18 @@
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\drawable\active_tab.png" />
     <AndroidResource Include="Resources\drawable\arrow_icon.png" />
-    <AndroidResource Include="Resources\drawable\athletes_icon.png" />
     <AndroidResource Include="Resources\drawable\bikeRound_new.png" />
     <AndroidResource Include="Resources\drawable\border.png" />
     <AndroidResource Include="Resources\drawable\border_bottom.png" />
     <AndroidResource Include="Resources\drawable\border_vertical.png" />
     <AndroidResource Include="Resources\drawable\button.png" />
-    <AndroidResource Include="Resources\drawable\calender_icon.png" />
-    <AndroidResource Include="Resources\drawable\calender_icon_active_new.png" />
-    <AndroidResource Include="Resources\drawable\calender_icon_inactive_new.png" />
     <AndroidResource Include="Resources\drawable\cell_icon.png" />
     <AndroidResource Include="Resources\drawable\dist_new.png" />
     <AndroidResource Include="Resources\drawable\edit_icon.png" />
     <AndroidResource Include="Resources\drawable\email_icon.png" />
-    <AndroidResource Include="Resources\drawable\goheja_icon.png" />
     <AndroidResource Include="Resources\drawable\go_button.png" />
     <AndroidResource Include="Resources\drawable\header.png" />
-    <AndroidResource Include="Resources\drawable\header_bg.jpg" />
     <AndroidResource Include="Resources\drawable\heart_new.png" />
-    <AndroidResource Include="Resources\drawable\heja_icon.png" />
     <AndroidResource Include="Resources\drawable\home_icon.png" />
     <AndroidResource Include="Resources\drawable\horizontal_line.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -200,10 +193,7 @@
     <AndroidResource Include="Resources\drawable\icon_06.png" />
     <AndroidResource Include="Resources\drawable\icon_07.png" />
     <AndroidResource Include="Resources\drawable\img_bg.png" />
-    <AndroidResource Include="Resources\drawable\key_icon.png" />
     <AndroidResource Include="Resources\drawable\line_new.png" />
-    <AndroidResource Include="Resources\drawable\menu_icon.png" />
-    <AndroidResource Include="Resources\drawable\menu_icon_01.png" />
     <AndroidResource Include="Resources\drawable\mont_new.png" />
     <AndroidResource Include="Resources\drawable\ninja.png" />
     <AndroidResource Include="Resources\drawable\pop_up_bg.png" />
@@ -214,15 +204,7 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable\stop_active.png" />
     <AndroidResource Include="Resources\drawable\switch_off.png" />
-    <AndroidResource Include="Resources\drawable\text_icon.png" />
     <AndroidResource Include="Resources\drawable\timer_new.png" />
-    <AndroidResource Include="Resources\drawable\transparent.png" />
-    <AndroidResource Include="Resources\drawable\user_active_new.png" />
-    <AndroidResource Include="Resources\drawable\user_icon.png" />
-    <AndroidResource Include="Resources\drawable\user_inactive_new.png" />
-    <AndroidResource Include="Resources\drawable\watch_icon.png" />
-    <AndroidResource Include="Resources\drawable\watch_new.png" />
-    <AndroidResource Include="Resources\drawable\watch_new2.png" />
     <AndroidResource Include="Resources\drawable\watt_new.png" />
     <AndroidResource Include="Resources\layout\RegisterActivity.axml">
       <SubType>AndroidResource</SubType>

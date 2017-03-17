@@ -8,12 +8,12 @@ using PortableLibrary;
 
 namespace goheja
 {
-	public class NitroEventAdapter : BaseAdapter
+	public class GoHejaEventAdapter : BaseAdapter
 	{
 		List<GoHejaEvent> _events;
 		Activity mSuperActivity;
 
-		public NitroEventAdapter(List<GoHejaEvent> events, Activity superActivity)
+		public GoHejaEventAdapter(List<GoHejaEvent> events, Activity superActivity)
 		{
 			_events = events;
 			mSuperActivity = superActivity;

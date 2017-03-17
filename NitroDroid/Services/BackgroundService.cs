@@ -48,11 +48,11 @@ namespace goheja
 		{
 			_timer = new System.Threading.Timer((o) =>
 			{
-				AddNitroCalendarToDevice();
-			} , null, 0, 1000 * 60 * 30);
+				AddGoHejaCalendarToDevice();
+			}, null, 0, 1000 * 60 * 30);
 		}
 
-		private void AddNitroCalendarToDevice()
+		private void AddGoHejaCalendarToDevice()
 		{
 			var calendarsUri = CalendarContract.Calendars.ContentUri;
 
@@ -60,40 +60,40 @@ namespace goheja
 			   CalendarContract.Calendars.InterfaceConsts.Id,
 			   CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
 			   CalendarContract.Calendars.InterfaceConsts.AccountName
-			} ;
+			};
 
 			var cursor = ApplicationContext.ContentResolver.Query(calendarsUri, calendarsProjection, null, null, null);
 
-			#region remove existing Nitro calendar
+			#region remove existing GoHeja calendar
 			if (cursor.MoveToFirst())
 			{
 				do
 				{
 					long id = cursor.GetLong(0);
 					String displayName = cursor.GetString(1);
-					if (displayName == "Nitro Calendar")
+					if (displayName == Constants.DEVICE_CALENDAR_TITLE)
 						//RemoveCalendar(id);
 						calendarID = id;
-				}  while (cursor.MoveToNext());
+				} while (cursor.MoveToNext());
 			}
 			#endregion
 
-			#region create Nitro Calendar
+			#region create GoHeja Calendar
 			if (calendarID == -1)
 			{
 				var uri = CalendarContract.Calendars.ContentUri;
 				ContentValues val = new ContentValues();
-				val.Put(CalendarContract.Calendars.InterfaceConsts.AccountName, "Nitro Calendar");
+				val.Put(CalendarContract.Calendars.InterfaceConsts.AccountName, Constants.DEVICE_CALENDAR_TITLE);
 				val.Put(CalendarContract.Calendars.InterfaceConsts.AccountType, CalendarContract.AccountTypeLocal);
-				val.Put(CalendarContract.Calendars.Name, "Nitro Calendar");
-				val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, "Nitro Calendar");
-				val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarColor, Android.Graphics.Color.Black);
-				val.Put(CalendarContract.Calendars.InterfaceConsts.OwnerAccount, "Nitro Calendar");
+				val.Put(CalendarContract.Calendars.Name, Constants.DEVICE_CALENDAR_TITLE);
+				val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, Constants.DEVICE_CALENDAR_TITLE);
+				val.Put(CalendarContract.Calendars.InterfaceConsts.CalendarColor, Android.Graphics.Color.Yellow);
+				val.Put(CalendarContract.Calendars.InterfaceConsts.OwnerAccount, Constants.DEVICE_CALENDAR_TITLE);
 				val.Put(CalendarContract.Calendars.InterfaceConsts.Visible, true);
 				val.Put(CalendarContract.Calendars.InterfaceConsts.SyncEvents, true);
 				uri = uri.BuildUpon()
 					.AppendQueryParameter(CalendarContract.CallerIsSyncadapter, "true")
-					.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountName, "Nitro Calendar")
+					.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountName, Constants.DEVICE_CALENDAR_TITLE)
 					.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.AccountType, CalendarContract.AccountTypeLocal)
 					.Build();
 				var calresult = ContentResolver.Insert(uri, val);
@@ -101,23 +101,23 @@ namespace goheja
 			}
 
 			#endregion
-			RemoveNitroTodayAndFutureEvents();
+			RemoveGoHejaTodayAndFutureEvents();
 
-			UpdateNitroEvents();
+			UpdateGoHejaEvents();
 		}
 
-		public void UpdateNitroEvents()
+		public void UpdateGoHejaEvents()
 		{
 			var pastEvents = baseVC.GetPastEvents();
 			var todayEvents = baseVC.GetTodayEvents();
 			var futureEvents = baseVC.GetFutureEvents();
 
-			AddEventsToNitroCalendar(pastEvents);
-			AddEventsToNitroCalendar(todayEvents);
-			AddEventsToNitroCalendar(futureEvents);
+			AddEventsToGoHejaCalendar(pastEvents);
+			AddEventsToGoHejaCalendar(todayEvents);
+			AddEventsToGoHejaCalendar(futureEvents);
 		}
 
-		private void RemoveNitroTodayAndFutureEvents()
+		private void RemoveGoHejaTodayAndFutureEvents()
 		{
 			if (calendarID == -1) return;
 
@@ -125,10 +125,10 @@ namespace goheja
 
 			string[] eventsProjection = {
 				"_id",
-			    CalendarContract.Events.InterfaceConsts.Title
+				CalendarContract.Events.InterfaceConsts.Title
 			   , CalendarContract.Events.InterfaceConsts.Dtstart
 			   , CalendarContract.Events.InterfaceConsts.Dtend
-			} ;
+			};
 			DateTime now = DateTime.Now;
 			DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
 			var startString = GetDateTimeMS(startNow).ToString();
@@ -145,18 +145,18 @@ namespace goheja
 					String displayName = calCursor.GetString(1);
 					long eventId = calCursor.GetLong(calCursor.GetColumnIndex("_id"));
 					RemoveEvent(eventId);
-				}  while (calCursor.MoveToNext());
+				} while (calCursor.MoveToNext());
 			}
 		}
 
-		private void AddEventsToNitroCalendar(List<GoHejaEvent> events)
+		private void AddEventsToGoHejaCalendar(List<GoHejaEvent> events)
 		{
 			if (calendarID == -1 || events == null || events.Count == 0) return;
 
-			foreach (var nitroEvent in events)
+			foreach (var goHejaEvent in events)
 			{
-				var startDate = nitroEvent.StartDateTime();//Convert.ToDateTime(nitroEvent.start);
-				var endDate = nitroEvent.EndDateTime();//Convert.ToDateTime(nitroEvent.end);
+				var startDate = goHejaEvent.StartDateTime();//Convert.ToDateTime(goHejaEvent.start);
+				var endDate = goHejaEvent.EndDateTime();//Convert.ToDateTime(goHejaEvent.end);
 
 				DateTime now = DateTime.Now;
 				DateTime startNow = new DateTime(now.Year, now.Month, now.Day);
@@ -165,9 +165,9 @@ namespace goheja
 				if (deltaSec < 0)
 					continue;
 
-				var title = nitroEvent.title;
+				var title = goHejaEvent.title;
 
-				string eventDescription = nitroEvent.eventData;
+				string eventDescription = goHejaEvent.eventData;
 
 				var filteredDescription = baseVC.FormatEventDescription(eventDescription);
 
@@ -180,32 +180,32 @@ namespace goheja
 				}
 
 
-				var strDistance = nitroEvent.distance;
+				var strDistance = goHejaEvent.distance;
 				float floatDistance = strDistance == "" ? 0 : float.Parse(strDistance);
 				var b = Math.Truncate(floatDistance * 100);
 				var c = b / 100;
 				var formattedDistance = c.ToString("F2");
 
-				var durMin = nitroEvent.durMin == "" ? 0 : int.Parse(nitroEvent.durMin);
-				var durHrs = nitroEvent.durHrs == "" ? 0 : int.Parse(nitroEvent.durHrs);
+				var durMin = goHejaEvent.durMin == "" ? 0 : int.Parse(goHejaEvent.durMin);
+				var durHrs = goHejaEvent.durHrs == "" ? 0 : int.Parse(goHejaEvent.durHrs);
 				var pHrs = durMin / 60;
 				durHrs = durHrs + pHrs;
 				durMin = durMin % 60;
 
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
-				note += System.Environment.NewLine + "Planned HB : " + nitroEvent.hb + Environment.NewLine +
-				              "Planned TSS : " + nitroEvent.tss + Environment.NewLine +
+				note += System.Environment.NewLine + "Planned HB : " + goHejaEvent.hb + Environment.NewLine +
+							  "Planned TSS : " + goHejaEvent.tss + Environment.NewLine +
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
-				var encodedTitle = System.Web.HttpUtility.UrlEncode(nitroEvent.title);
+				//var encodedTitle = System.Web.HttpUtility.UrlEncode(goHejaEvent.title);
 
-				var strDate = startDate.ToString();//String.Format("{ 0:MM/dd/yyyy hh:mm:ss a}", startDate.ToString());
-				var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
-				var encodedEventURL = String.Format(Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
+				//var strDate = startDate.ToString();//String.Format("{ 0:MM/dd/yyyy hh:mm:ss a}", startDate.ToString());
+				//var encodedDate = System.Web.HttpUtility.UrlEncode(strDate);
+				//var encodedEventURL = String.Format(Constants.URL_EVENT_MAP, encodedTitle, encodedDate, AppSettings.Username);
 
-				note += Environment.NewLine + encodedEventURL;
+				//note += Environment.NewLine + encodedEventURL;
 
 				#region create event
 				ContentValues eventValues = new ContentValues();
@@ -248,9 +248,9 @@ namespace goheja
 		private void RemoveCalendar(long calID)
 		{
 			Android.Net.Uri.Builder builder1 = CalendarContract.Calendars.ContentUri.BuildUpon();
-			builder1.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, "Nitro Calendar");
+			builder1.AppendQueryParameter(CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName, Constants.DEVICE_CALENDAR_TITLE);
 
-			String[] selArgs = new String[] { "Nitro Calendar" };
+			String[] selArgs = new String[] { Constants.DEVICE_CALENDAR_TITLE };
 			int deleted = ContentResolver.Delete(CalendarContract.Calendars.ContentUri, CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName + " =? ", selArgs);
 		}
 		private void RemoveEvent(long eventID)

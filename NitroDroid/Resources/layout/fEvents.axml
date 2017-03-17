@@ -37,21 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <!--<LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_gravity="right">
-                    <ImageView
-                        android:id="@+id/drawerHandle"
-                        android:src="@drawable/menu_icon"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:padding="7dp"
-                        android:scaleType="fitCenter" />
-                </LinearLayout>-->
                 <TextView
                     android:text="WHAT'S IT GONNA BE?"
                     android:layout_width="match_parent"
@@ -148,60 +133,6 @@
                         android:tag="6" />
                 </LinearLayout>
             </LinearLayout>
-        <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="right"
-                android:id="@+id/drawerContent"
-                android:layout_marginTop="50dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="8dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/arrow_icon" />
-                <LinearLayout
-                    android:id="@+id/aaa"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="right"
-                    android:background="#6F6F6F"
-                    android:gravity="bottom">
-                    <ImageView
-                        android:id="@+id/hejaIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:src="@drawable/heja_icon"
-                        android:padding="15dp" />
-                    <ImageView
-                        android:src="@drawable/border"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:scaleType="fitEnd" />
-                    <ImageView
-                        android:id="@+id/watchIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:src="@drawable/watch_icon"
-                        android:padding="15dp" />
-                    <ImageView
-                        android:id="@+id/watchDevider"
-                        android:src="@drawable/border"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:scaleType="fitEnd" />
-                    <ImageView
-                        android:id="@+id/calenderIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:src="@drawable/calender_icon"
-                        android:padding="15dp"
-                        android:background="@drawable/active_tab" />
-                </LinearLayout>
-            </LinearLayout>-->
         </FrameLayout>
     </LinearLayout>
 </RelativeLayout>
