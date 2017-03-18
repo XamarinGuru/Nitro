@@ -95,7 +95,7 @@ namespace goheja
 					if (isSuccess)
 					{
 						var activity = new Intent(this, typeof(SwipeTabActivity));
-						StartActivity(activity);
+						StartActivityForResult(activity, 1);
 						Finish();
 					}
 					else
@@ -109,14 +109,12 @@ namespace goheja
 		void ActionForgotPassword(object sender, EventArgs e)
 		{
 			var activity = new Intent(this, typeof(ForgotPasswordActivity));
-			StartActivity(activity);
+			StartActivityForResult(activity, 1);
 		}
 
 		void ActionBack(object sender, EventArgs e)
 		{
-			var activity = new Intent(this, typeof(InitActivity));
-			StartActivity(activity);
-			Finish();
+			ActionBackCancel();
 		}
 	}
 }

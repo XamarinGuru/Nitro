@@ -75,11 +75,18 @@ namespace goheja
 		{
 			if (MemberModel.rootMember == null) return;
 
-			this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
+			try
+			{
+				this.SetBinding(() => MemberModel.username, () => lblUsername.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.TwoWay);
 
-			SetBitmapImg();
+				SetBitmapImg();
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(Activity, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		private void ActionChangePicture(object sender, EventArgs e)
@@ -107,7 +114,7 @@ namespace goheja
 			var userID = rootActivity.GetUserID();
 			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID, Constants.SPEC_GROUP_TYPE[0]));
 			var intent = new Intent(Intent.ActionView, uri);
-			StartActivity(intent);
+			StartActivityForResult(intent, 1);
 		}
 
 		private void ActionChangePassword(object sender, EventArgs e)
@@ -116,7 +123,7 @@ namespace goheja
 
 			var intent = new Intent(Activity, typeof(ChangePasswordActivity));
 			AppSettings.currentEmail = MemberModel.email;
-			StartActivity(intent);
+			StartActivityForResult(intent, 1);
 		}
 
 		private void ActionSignOut(object sender, EventArgs e)
@@ -224,22 +231,19 @@ namespace goheja
         }
         void SetBitmapImg()
         {
-            try
-            {
-                var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
-                var filePath = System.IO.Path.Combine(sdCardPath, Constants.PATH_USER_IMAGE);
-                var s2 = new FileStream(filePath, FileMode.Open);
-                Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
+			try
+			{
+				var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
+				var filePath = System.IO.Path.Combine(sdCardPath, Constants.PATH_USER_IMAGE);
+				var s2 = new FileStream(filePath, FileMode.Open);
+				Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
 				imgProfile.SetImageBitmap(bitmap2);
-                s2.Close();
-            }
-            catch
-            {
-            }
-            finally
-            {
-                GC.Collect();
-            }
+				s2.Close();
+			}
+			catch (Exception err)
+			{
+				//Toast.MakeText(Activity, err.ToString(), ToastLength.Long).Show();
+			}
         }
     }
 }

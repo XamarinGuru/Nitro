@@ -91,17 +91,7 @@ namespace goheja
 
 					if (isSuccess == 1)
 					{
-						AlertDialog.Builder alert = new AlertDialog.Builder(this);
-						alert.SetTitle("");
-						alert.SetMessage(Constants.MSG_CHANGE_PW_SUC);
-						alert.SetPositiveButton("OK", (senderAlert, args) =>
-						{
-							RunOnUiThread(() => { base.OnBackPressed(); });
-						});
-						RunOnUiThread(() =>
-						{
-							alert.Show();
-						});
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_SUC, "Cancel", new[] { "OK" }, () => base.OnBackPressed());
 					}
 					else if (isSuccess == 2)
 					{
@@ -117,18 +107,14 @@ namespace goheja
 
 		void ActionBack(object sender, EventArgs e)
 		{
-			var activity = new Intent(this, typeof(SwipeTabActivity));
-			StartActivity(activity);
-			Finish();
+			ActionBackCancel();
 		}
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(SwipeTabActivity));
-				StartActivity(activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

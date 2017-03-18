@@ -13,6 +13,7 @@ namespace goheja
 	public class RegisterActivity : BaseActivity
     {
 		EditText txtFirstname, txtLastname, txtUsername, txtEmail, txtPassword, txtAge;
+		TextView txtErrorUsername;
 		ImageView invalidFirstname, invalidLastname, invalidUsername, invalidEmail, invalidPassword, invalidAge, invalidTerms;
 		LinearLayout errorFirstname, errorLastname, errorUsername, errorEmail, errorPassword;
 
@@ -35,6 +36,7 @@ namespace goheja
 			txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
 			txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
 			txtAge = FindViewById<EditText>(Resource.Id.txtAge);
+			txtErrorUsername = FindViewById<TextView>(Resource.Id.txtErrorUsername);
 
 			invalidFirstname = FindViewById<ImageView>(Resource.Id.invalidFirstname);
 			invalidLastname = FindViewById<ImageView>(Resource.Id.invalidLastname);
@@ -107,8 +109,15 @@ namespace goheja
 				MarkAsInvalide(invalidLastname, errorLastname, false);
 			}
 
-			if (txtUsername.Text.Length <= 0 || txtUsername.Text.Length >= 8)
+			if (txtUsername.Text.Length <= 0)
 			{
+				txtErrorUsername.Text = "You must enter a valid user name.";
+				MarkAsInvalide(invalidUsername, errorUsername, true);
+				isValid = false;
+			}
+			else if (txtUsername.Text.Length >= 8)
+			{
+				txtErrorUsername.Text = "User name length should be shorter then 8 characters";
 				MarkAsInvalide(invalidUsername, errorUsername, true);
 				isValid = false;
 			}
@@ -215,8 +224,8 @@ namespace goheja
 			}
 			else//if the user already registered, go to main screen
 			{
-				var activity2 = new Intent(this, typeof(SwipeTabActivity));
-				StartActivity(activity2);
+				var activity = new Intent(this, typeof(SwipeTabActivity));
+				StartActivityForResult(activity, 1);
 				Finish();
 			}
 		}

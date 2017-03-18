@@ -62,18 +62,14 @@ namespace goheja
 		void ActionSelectedType(object sender, EventArgs e)
 		{
 			AppSettings.selectedEvent.type = (sender as RelativeLayout).Tag.ToString();
-			var activity = new Intent();
-			SetResult(Result.Canceled, activity);
-			Finish();
+			ActionBackCancel();
 		}
 
 		public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

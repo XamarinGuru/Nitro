@@ -96,7 +96,7 @@ namespace goheja
 
 		private void CalendarDaySlotLoading(object sender, CalendarDaySlotLoadingEventArgs e)
 		{
-			var currentDateTime = FromUnixTime(e.Date.Time);
+			var currentDateTime = FromUnixTime(e.Date.Time).ToLocalTime();
 
 			Java.Util.Date date = e.Date;
 			Java.Util.Calendar cal = Java.Util.Calendar.GetInstance(Java.Util.Locale.English);
@@ -220,9 +220,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent(this, typeof(SwipeTabActivity));
-				StartActivity(activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

@@ -114,6 +114,13 @@ namespace goheja
 			OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
 		}
 
+		protected void ActionBackCancel()
+		{
+			var activity = new Intent();
+			SetResult(Result.Canceled, activity);
+			Finish();
+		}
+
 		public bool IsNetEnable()
 		{
 			ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);

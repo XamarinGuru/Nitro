@@ -229,7 +229,7 @@
                         android:text="You must enter a valid user name."
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/textView1"
+                        android:id="@+id/txtErrorUsername"
                         android:textSize="10dp"
                         android:textColor="#ffff0000"
                         android:gravity="bottom" />

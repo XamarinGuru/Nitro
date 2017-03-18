@@ -24,13 +24,13 @@ namespace goheja
 		void ActionSignIn(object sender, EventArgs e)
 		{
 			var activity = new Intent(this, typeof(LoginActivity));
-			StartActivity(activity);
+			StartActivityForResult(activity, 1);
 		}
 
 		void ActionSignUp(object sender, EventArgs e)
 		{
 			var activity = new Intent(this, typeof(RegisterActivity));
-			StartActivity(activity);
+			StartActivityForResult(activity, 1);
 		}
 	}
 }

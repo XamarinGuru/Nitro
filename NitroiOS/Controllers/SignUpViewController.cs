@@ -83,8 +83,15 @@ namespace location2
 				MarkAsInvalide(btnValidLastname, viewErrorLastname, false);
 			}
 
-			if (txtNickName.Text.Length <= 0 || txtNickName.Text.Length >= 8)
+			if (txtNickName.Text.Length <= 0)
 			{
+				txtUsername.Text = "You must enter a valid user name.";
+				MarkAsInvalide(btnValidUsername, viewErrorUsername, true);
+				isValid = false;
+			}
+			else if (txtNickName.Text.Length >= 8)
+			{
+				txtUsername.Text = "User name length should be shorter then 8 characters";
 				MarkAsInvalide(btnValidUsername, viewErrorUsername, true);
 				isValid = false;
 			}

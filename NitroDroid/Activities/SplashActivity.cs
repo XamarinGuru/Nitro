@@ -47,10 +47,12 @@ namespace goheja
             {
 				var initAC = new Intent(this, typeof(InitActivity));
                 StartActivity(initAC);
+				Finish();
             }
             else//already registered
             {
                 StartActivity(new Intent(this, typeof(SwipeTabActivity)));
+				Finish();
             }
         }
 

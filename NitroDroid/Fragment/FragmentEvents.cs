@@ -31,9 +31,6 @@ namespace goheja
 			var practiceType = int.Parse((sender as ImageView).Tag.ToString());
 			var intent = new Intent(Activity, typeof(AnalyticsActivity));
 			intent.PutExtra("pType", practiceType);
-			//StartActivity(intent);
-
-			//var intent = new Intent(Activity, typeof(EventCalendarActivity));
 			StartActivityForResult(intent, 1);
 		}
     }

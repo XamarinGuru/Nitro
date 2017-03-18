@@ -176,8 +176,10 @@ namespace goheja
 		{
 			var currentLocation = GetGPSLocation();
 
-			MarkerOptions markerOpt = new MarkerOptions();
-			markerOpt.SetPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+			try
+			{
+				MarkerOptions markerOpt = new MarkerOptions();
+				markerOpt.SetPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
 			var metrics = Resources.DisplayMetrics;
 			var wScreen = metrics.WidthPixels;
@@ -193,7 +195,12 @@ namespace goheja
 
 			SetMapPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
-			SetNearestEventMarkers(currentLocation);
+				SetNearestEventMarkers(currentLocation);
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		void SetNearestEventMarkers(Location currentLocation)
@@ -209,7 +216,9 @@ namespace goheja
 
 				if (mEventMarker == null || mEventMarker.markers.Count == 0) return;
 
-				var mapBounds = new LatLngBounds.Builder();
+				try
+				{
+					var mapBounds = new LatLngBounds.Builder();
 
 				mapBounds.Include(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
@@ -226,15 +235,22 @@ namespace goheja
 						AddMapPin(pointLocation, point.type);
 					}
 
-					mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
-				});
+						mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+					});
+				}
+				catch (Exception err)
+				{
+					Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				}
 			});
 		}
 
 		void AddMapPin(LatLng position, string type)
 		{
-			MarkerOptions markerOpt = new MarkerOptions();
-			markerOpt.SetPosition(position);
+			try
+			{
+				MarkerOptions markerOpt = new MarkerOptions();
+				markerOpt.SetPosition(position);
 
 			var metrics = Resources.DisplayMetrics;
 			var wScreen = metrics.WidthPixels;
@@ -243,11 +259,16 @@ namespace goheja
 			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
 			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
-			RunOnUiThread(() =>
+				RunOnUiThread(() =>
+				{
+					var marker = mMapView.AddMarker(markerOpt);
+					pointIDs.Add(marker.Id);
+				});
+			}
+			catch (Exception err)
 			{
-				var marker = mMapView.AddMarker(markerOpt);
-				pointIDs.Add(marker.Id);
-			});
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		public bool OnMarkerClick(Marker marker)
@@ -281,7 +302,7 @@ namespace goheja
 		{
 			if (!_locationManager.IsProviderEnabled(LocationManager.GpsProvider))
 			{
-				ShowMessageBox(null, "You can't play Sport Comp wihtout GPS location service.");
+				ShowMessageBox(null, Constants.MSG_GPS_DISABLED);
 				return;
 			}
 
@@ -307,7 +328,7 @@ namespace goheja
 
 					svc.updateMomgoData(name, loc, dt, true, AppSettings.DeviceUDID, 0f, true, AppSettings.UserID, country, dist, true, gainAlt, true, _currentLocation.Bearing, true, 1, true, pType.ToString(), Constants.SPEC_GROUP_TYPE);
 				}
-				catch
+				catch (Exception err)
 				{
 				}
 			}
@@ -362,7 +383,7 @@ namespace goheja
 			}
 			else
 			{
-				ShowMessageBox(null, "You sure you want to stop practice?", "Cancel", new[] { "OK" }, StopPractice);
+				ShowMessageBox(null, Constants.MSG_COMFIRM_STOP_SPORT_COMP, "Cancel", new[] { "OK" }, StopPractice);
 			}
 		}
 		private void ActionStop(object sender, EventArgs e)
@@ -402,9 +423,7 @@ namespace goheja
 
 			_locationManager.RemoveUpdates(this);
 
-			var activity = new Intent(this, typeof(SwipeTabActivity));
-			StartActivity(activity);
-			Finish();
+			ActionBackCancel();
 		}
 
 
@@ -471,7 +490,29 @@ namespace goheja
 			vibrator.Vibrate(time);
 		}
 
-		public void OnProviderDisabled(string provider) { _title.Text = "GPS disabled"; }
+		public void OnProviderDisabled(string provider) { 
+			_title.Text = "GPS disabled"; 
+
+			using (var alert = new AlertDialog.Builder(this))
+			{
+				alert.SetTitle("Please enable GPS");
+				alert.SetMessage("Enable GPS in order to get your current location.");
+
+				alert.SetPositiveButton("Enable", (senderAlert, args) =>
+				{
+					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
+					StartActivity(intent);
+				});
+
+				alert.SetNegativeButton("Continue", (senderAlert, args) =>
+				{
+					alert.Dispose();
+				});
+
+				Dialog dialog = alert.Create();
+				dialog.Show();
+			}
+		}
 		public void OnProviderEnabled(string provider) { _title.Text = "GPS enabled"; }
 		public void OnStatusChanged(string provider, Availability status, Bundle extras) { _title.Text = "GPS low signal"; }
 

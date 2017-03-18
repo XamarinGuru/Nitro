@@ -70,13 +70,20 @@ namespace goheja
 			FindViewById(Resource.Id.ActionSwitchType).Click += delegate (object sender, EventArgs e)
 			{
 				var activity = new Intent(this, typeof(SelectPTypeActivity));
-				StartActivity(activity);
+				StartActivityForResult(activity, 1);
 			};
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
 
-			SetupAdjustPicker(lblTime, seekTime, 360);
-			SetupAdjustPicker(lblDistance, seekDistance, 250);
-			SetupAdjustPicker(lblTSS, seekTSS, 400);
+			try
+			{
+				SetupAdjustPicker(lblTime, seekTime, 360);
+				SetupAdjustPicker(lblDistance, seekDistance, 250);
+				SetupAdjustPicker(lblTSS, seekTSS, 400);
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 		void SetPType()
 		{
@@ -121,23 +128,30 @@ namespace goheja
 
 		void InitBindingEventTotal()
 		{
-			var eventTotal = AppSettings.currentEventTotal;
+			try
+			{
+				var eventTotal = AppSettings.currentEventTotal;
 
-			attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
+				attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
 
-			if (eventTotal == null || eventTotal.totals == null) return;
+				if (eventTotal == null || eventTotal.totals == null) return;
 
-			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
-			var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
-			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
+				var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
+				var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
+				var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
-			lblTime.Text = strEt.ToString();
-			lblDistance.Text = float.Parse(strTd).ToString("F0");
-			lblTSS.Text = float.Parse(strTss).ToString("F0");
+				lblTime.Text = strEt.ToString();
+				lblDistance.Text = float.Parse(strTd).ToString("F0");
+				lblTSS.Text = float.Parse(strTss).ToString("F0");
 
-			seekTime.Progress = strEt;
-			seekDistance.Progress = (int)float.Parse(strTd);
-			seekTSS.Progress = (int)float.Parse(strTss);
+				seekTime.Progress = strEt;
+				seekDistance.Progress = (int)float.Parse(strTd);
+				seekTSS.Progress = (int)float.Parse(strTss);
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		void ActionAdjustTrainning(object sender, EventArgs e)
@@ -152,9 +166,7 @@ namespace goheja
 
 				HideLoadingView();
 
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			});
 		}
 
@@ -162,9 +174,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

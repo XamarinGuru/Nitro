@@ -8,6 +8,8 @@ using Android.Gms.Maps.Model;
 using Android.Graphics;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
+using Java.Lang;
 using PortableLibrary;
 
 namespace goheja
@@ -65,85 +67,93 @@ namespace goheja
 
 				RunOnUiThread(() =>
 				{
-					if (mEventMarker != null && mEventMarker.markers.Count > 0)
+					try
 					{
-						for (int i = 0; i < mEventMarker.markers.Count; i++)
+						if (mEventMarker != null && mEventMarker.markers.Count > 0)
 						{
-							var point = mEventMarker.markers[i];
-							var pointLocation = new LatLng(point.lat, point.lng);
-							boundPoints.Add(pointLocation);
-
-							AddMapPin(pointLocation, point.type);
-						}
-					}
-
-					if (trackPoints != null && trackPoints.Count > 0)
-					{
-						if (trackPoints[0].Count > 0)
-						{
-							var startPoint = trackPoints[0][0];
-							var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
-							var startLocation = new LatLng(startPoint.Latitude, startPoint.Longitude);
-							var endLocation = new LatLng(endPoint.Latitude, endPoint.Longitude);
-							AddMapPin(startLocation, "pSTART");
-							AddMapPin(endLocation, "pFINISH");
-						}
-
-						for (int i = 0; i < trackPoints.Count; i ++)
-						{
-							var tPoints = trackPoints[i];
-							List<LatLng> paths = new List<LatLng>();
-							LatLng[] arrPath;
-							for (int j = 0; j < tPoints.Count; j ++)
+							for (int i = 0; i < mEventMarker.markers.Count; i++)
 							{
-								var tPoint = tPoints[j];
-								var tLocation = new LatLng(tPoint.Latitude, tPoint.Longitude);
+								var point = mEventMarker.markers[i];
+								var pointLocation = new LatLng(point.lat, point.lng);
+								boundPoints.Add(pointLocation);
 
+								AddMapPin(pointLocation, point.type);
+							}
+						}
 
-								if (j < tPoints.Count - 1)
-								{
-									var distance = DistanceAtoB(tPoint, tPoints[j + 1]);
-
-									if (PortableLibrary.Constants.AVAILABLE_DISTANCE_MAP > distance)
-									{
-										var nPoint = tPoints[j + 1];
-										paths.Add(tLocation);
-									}
-									else {
-
-										arrPath = new LatLng[paths.Count];
-										for (var k = 0; k < paths.Count; k++)
-											arrPath[k] = paths[k];
-										mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
-
-										paths = new List<LatLng>();
-									}
-								}
-
-								boundPoints.Add(tLocation);
+						if (trackPoints != null && trackPoints.Count > 0)
+						{
+							if (trackPoints[0].Count > 0)
+							{
+								var startPoint = trackPoints[0][0];
+								var endPoint = trackPoints[trackPoints.Count - 1][trackPoints[trackPoints.Count - 1].Count - 1];
+								var startLocation = new LatLng(startPoint.Latitude, startPoint.Longitude);
+								var endLocation = new LatLng(endPoint.Latitude, endPoint.Longitude);
+								AddMapPin(startLocation, "pSTART");
+								AddMapPin(endLocation, "pFINISH");
 							}
 
-							arrPath = new LatLng[paths.Count];
-							for (var k = 0; k < paths.Count; k++)
-								arrPath[k] = paths[k];
-							mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
+							for (int i = 0; i < trackPoints.Count; i++)
+							{
+								var tPoints = trackPoints[i];
+								List<LatLng> paths = new List<LatLng>();
+								LatLng[] arrPath;
+								for (int j = 0; j < tPoints.Count; j++)
+								{
+									var tPoint = tPoints[j];
+									var tLocation = new LatLng(tPoint.Latitude, tPoint.Longitude);
 
-							paths = new List<LatLng>();
+
+									if (j < tPoints.Count - 1)
+									{
+										var distance = DistanceAtoB(tPoint, tPoints[j + 1]);
+
+										if (PortableLibrary.Constants.AVAILABLE_DISTANCE_MAP > distance)
+										{
+											var nPoint = tPoints[j + 1];
+											paths.Add(tLocation);
+										}
+										else
+										{
+
+											arrPath = new LatLng[paths.Count];
+											for (var k = 0; k < paths.Count; k++)
+												arrPath[k] = paths[k];
+											mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
+
+											paths = new List<LatLng>();
+										}
+									}
+
+									boundPoints.Add(tLocation);
+								}
+
+								arrPath = new LatLng[paths.Count];
+								for (var k = 0; k < paths.Count; k++)
+									arrPath[k] = paths[k];
+								mMapView.AddPolyline(new PolylineOptions().Add(arrPath).InvokeColor(GetRandomColor(i)).InvokeWidth(5f));
+
+								paths = new List<LatLng>();
+							}
+						}
+
+						if (boundPoints.Count == 0)
+						{
+							var location = new LatLng(Constants.LOCATION_ISURAEL[0], Constants.LOCATION_ISURAEL[1]);
+							CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
+							mMapView.MoveCamera(cu_center);
+						}
+						else
+						{
+							var mapBounds = new LatLngBounds.Builder();
+							foreach (var bound in boundPoints)
+								mapBounds.Include(bound);
+							mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
 						}
 					}
-
-					if (boundPoints.Count == 0)
+					catch (Exception err)
 					{
-						var location = new LatLng(Constants.LOCATION_ISURAEL[0], Constants.LOCATION_ISURAEL[1]);
-						CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(location, Constants.MAP_ZOOM_LEVEL);
-						mMapView.MoveCamera(cu_center);
-					}
-					else 
-					{
-						var mapBounds = new LatLngBounds.Builder();
-						foreach (var bound in boundPoints)
-							mapBounds.Include(bound);
-						mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
+						Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
 					}
 				});
 			});
@@ -151,21 +161,28 @@ namespace goheja
 
 		void AddMapPin(LatLng position, string type)
 		{
-			MarkerOptions markerOpt = new MarkerOptions();
-			markerOpt.SetPosition(position);
-
-			var metrics = Resources.DisplayMetrics;
-			var wScreen = metrics.WidthPixels;
-
-			Bitmap bmp = GetPinIconByType(type);
-			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
-			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
-
-			RunOnUiThread(() =>
+			try
 			{
-				var marker = mMapView.AddMarker(markerOpt);
-				pointIDs.Add(marker.Id);
-			});
+				MarkerOptions markerOpt = new MarkerOptions();
+				markerOpt.SetPosition(position);
+
+				var metrics = Resources.DisplayMetrics;
+				var wScreen = metrics.WidthPixels;
+
+				Bitmap bmp = GetPinIconByType(type);
+				Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
+				markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+
+				RunOnUiThread(() =>
+				{
+					var marker = mMapView.AddMarker(markerOpt);
+					pointIDs.Add(marker.Id);
+				});
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		public bool OnMarkerClick(Marker marker)
@@ -195,9 +212,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

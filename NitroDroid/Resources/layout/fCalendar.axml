@@ -56,6 +56,28 @@
                     android:textSize="12dp"
                     android:layout_margin="20dp" />
             </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/linearLayout1"
+                android:gravity="center">
+                <TextView
+                    android:text="PERFORMANCE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView1"
+                    android:textStyle="bold"
+                    android:textColor="#ffffffff"
+                    android:textSize="13dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/chartContent"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
             <ScrollView
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -70,61 +92,22 @@
                     android:id="@+id/goals"
                     android:gravity="center">
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:id="@+id/linearLayout1"
-                        android:layout_weight="1"
-                        android:gravity="center">
-                        <TextView
-                            android:text="PERFORMANCE"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView1"
-                            android:textStyle="bold"
-                            android:textColor="#ffffffff"
-                            android:textSize="13dp" />
-                    </LinearLayout>
-                    <goheja.RangeSliderControl xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/zoomSlider"
-                        android:cropToPadding="true"
-                        android:adjustViewBounds="true"
-                        app:showRangeLabels="false"
-                        app:valuesAboveThumbs="false"
-                        app:barHeight="5dp"
-                        app:activeColor="#E6A00B"
-                        app:stepValue="1"
-                        app:alwaysActive="false"
-                        app:defaultColor="#ffa4a4a4" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:id="@+id/chartContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="70dp"
                         android:id="@+id/linearLayout22">
                         <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:id="@+id/linearLayout23"
                             android:layout_weight="1">
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:id="@+id/ActionToggleTSB"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -156,8 +139,8 @@
                             </LinearLayout>
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:id="@+id/ActionToggleATL"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -189,8 +172,8 @@
                             </LinearLayout>
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:id="@+id/ActionToggleCTL"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -222,17 +205,17 @@
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:id="@+id/linearLayout24"
                             android:layout_weight="1">
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:id="@+id/ActionToggleDailyLoad"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -264,8 +247,8 @@
                             </LinearLayout>
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:id="@+id/ActionToggleDailyIf"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -286,7 +269,7 @@
                                         android:layout_marginLeft="20dp" />
                                 </LinearLayout>
                                 <TextView
-                                    android:text="Daily IF: 0"
+                                    android:text="Day Intencity: 0"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:id="@+id/txtDailyIF"
@@ -297,10 +280,9 @@
                             </LinearLayout>
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:id="@+id/linearLayout25"
-                                android:layout_weight="1"
                                 android:gravity="center"
                                 android:minWidth="25px"
                                 android:minHeight="25px" />

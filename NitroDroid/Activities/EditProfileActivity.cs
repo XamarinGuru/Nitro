@@ -206,152 +206,166 @@ namespace goheja
 		}
 		private void SetInputValidation()
 		{
-			SetupPicker(txtSprint, Constants.PICKER_TIME);
-			SetupPicker(txtOlympic, Constants.PICKER_TIME);
-			SetupPicker(txtHDistance, Constants.PICKER_TIME);
-			SetupPicker(txtDistance, Constants.PICKER_TIME);
-			SetupPicker(txtMarathon, Constants.PICKER_TIME);
-			SetupPicker(txtHMarathon, Constants.PICKER_TIME);
-			SetupPicker(txt10KRun, Constants.PICKER_TIME);
+			try
+			{
+				SetupPicker(txtSprint, Constants.PICKER_TIME);
+				SetupPicker(txtOlympic, Constants.PICKER_TIME);
+				SetupPicker(txtHDistance, Constants.PICKER_TIME);
+				SetupPicker(txtDistance, Constants.PICKER_TIME);
+				SetupPicker(txtMarathon, Constants.PICKER_TIME);
+				SetupPicker(txtHMarathon, Constants.PICKER_TIME);
+				SetupPicker(txt10KRun, Constants.PICKER_TIME);
 
-			SetupPicker(txtRankSwim, Constants.PICKER_RANKING);
-			SetupPicker(txtRankRun, Constants.PICKER_RANKING);
-			SetupPicker(txtRankBike, Constants.PICKER_RANKING);
+				SetupPicker(txtRankSwim, Constants.PICKER_RANKING);
+				SetupPicker(txtRankRun, Constants.PICKER_RANKING);
+				SetupPicker(txtRankBike, Constants.PICKER_RANKING);
 
-			SetupPicker(txtSZone1HR, Constants.PICKER_HR);
-			SetupPicker(txtSZone2HR, Constants.PICKER_HR);
-			SetupPicker(txtSZone3HR, Constants.PICKER_HR);
-			SetupPicker(txtSZone4HR, Constants.PICKER_HR);
-			SetupPicker(txtSZone5HR, Constants.PICKER_HR);
+				SetupPicker(txtSZone1HR, Constants.PICKER_HR);
+				SetupPicker(txtSZone2HR, Constants.PICKER_HR);
+				SetupPicker(txtSZone3HR, Constants.PICKER_HR);
+				SetupPicker(txtSZone4HR, Constants.PICKER_HR);
+				SetupPicker(txtSZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtRZone1HR, Constants.PICKER_HR);
-			SetupPicker(txtRZone2HR, Constants.PICKER_HR);
-			SetupPicker(txtRZone3HR, Constants.PICKER_HR);
-			SetupPicker(txtRZone4HR, Constants.PICKER_HR);
-			SetupPicker(txtRZone5HR, Constants.PICKER_HR);
+				SetupPicker(txtRZone1HR, Constants.PICKER_HR);
+				SetupPicker(txtRZone2HR, Constants.PICKER_HR);
+				SetupPicker(txtRZone3HR, Constants.PICKER_HR);
+				SetupPicker(txtRZone4HR, Constants.PICKER_HR);
+				SetupPicker(txtRZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtBZone1HR, Constants.PICKER_HR);
-			SetupPicker(txtBZone2HR, Constants.PICKER_HR);
-			SetupPicker(txtBZone3HR, Constants.PICKER_HR);
-			SetupPicker(txtBZone4HR, Constants.PICKER_HR);
-			SetupPicker(txtBZone5HR, Constants.PICKER_HR);
+				SetupPicker(txtBZone1HR, Constants.PICKER_HR);
+				SetupPicker(txtBZone2HR, Constants.PICKER_HR);
+				SetupPicker(txtBZone3HR, Constants.PICKER_HR);
+				SetupPicker(txtBZone4HR, Constants.PICKER_HR);
+				SetupPicker(txtBZone5HR, Constants.PICKER_HR);
 
-			SetupPicker(txtSZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtSZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtSZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtSZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtSZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtSZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtSZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtSZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtSZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtSZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRZone1PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRZone2PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRZone3PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRZone4PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRZone5PACE, Constants.PICKER_PACE, Constants.UNIT_SWIM);
 
-			SetupPicker(txtSFTPace, Constants.PICKER_PACE, Constants.UNIT_SWIM);
-			SetupPicker(txtRFTPace, Constants.PICKER_PACE, Constants.UNIT_RUN);
+				SetupPicker(txtSFTPace, Constants.PICKER_PACE, Constants.UNIT_SWIM);
+				SetupPicker(txtRFTPace, Constants.PICKER_PACE, Constants.UNIT_RUN);
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		private void SetInputBinding()
 		{
-			#region physical
-			this.SetBinding(() => MemberModel.firstname, () => lblFirstname.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.lastname, () => lblLastname.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.country, () => lblCountry.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.address, () => lblAddress.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.bib, () => lblBib.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.age, () => lblAge.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.gender, () => lblGender.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.birth, () => lblBirth.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.OneWay);
-			this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.OneWay);
-			#endregion
+			try
+			{
+				#region physical
+				this.SetBinding(() => MemberModel.firstname, () => lblFirstname.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.lastname, () => lblLastname.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.country, () => lblCountry.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.address, () => lblAddress.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.bib, () => lblBib.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.age, () => lblAge.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.gender, () => lblGender.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.birth, () => lblBirth.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.email, () => lblEmail.Text, BindingMode.OneWay);
+				this.SetBinding(() => MemberModel.phone, () => lblPhone.Text, BindingMode.OneWay);
+				#endregion
 
-			#region physical
-			this.SetBinding(() => MemberModel.weight, () => txtWeight.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.height, () => txtHeight.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bmi, () => txtBMI.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.fper, () => txtFatPercentage.Text, BindingMode.TwoWay);
-			#endregion
+				#region physical
+				this.SetBinding(() => MemberModel.weight, () => txtWeight.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.height, () => txtHeight.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bmi, () => txtBMI.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.fper, () => txtFatPercentage.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region goals
-			this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
-			#endregion
+				#region goals
+				this.SetBinding(() => MemberModel.goalDate, () => txtGoalDate.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.goalName, () => txtGoalName.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.goalLoad, () => txtGoalLoad.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region best results
-			this.SetBinding(() => MemberModel.sprint, () => txtSprint.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.olympic, () => txtOlympic.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.hdistance, () => txtHDistance.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.fdistance, () => txtDistance.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.fmarathon, () => txtMarathon.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.hmarathon, () => txtHMarathon.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.krun, () => txt10KRun.Text, BindingMode.TwoWay);
-			#endregion
+				#region best results
+				this.SetBinding(() => MemberModel.sprint, () => txtSprint.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.olympic, () => txtOlympic.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.hdistance, () => txtHDistance.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.fdistance, () => txtDistance.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.fmarathon, () => txtMarathon.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.hmarathon, () => txtHMarathon.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.krun, () => txt10KRun.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region self ranking
-			this.SetBinding(() => MemberModel.srSwim, () => txtRankSwim.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.srRun, () => txtRankRun.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.srBike, () => txtRankBike.Text, BindingMode.TwoWay);
-			#endregion
+				#region self ranking
+				this.SetBinding(() => MemberModel.srSwim, () => txtRankSwim.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.srRun, () => txtRankRun.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.srBike, () => txtRankBike.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region swim experience
-			this.SetBinding(() => MemberModel.sZone1HR, () => txtSZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone2HR, () => txtSZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone3HR, () => txtSZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone4HR, () => txtSZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone5HR, () => txtSZone5HR.Text, BindingMode.TwoWay);
+				#region swim experience
+				this.SetBinding(() => MemberModel.sZone1HR, () => txtSZone1HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone2HR, () => txtSZone2HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone3HR, () => txtSZone3HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone4HR, () => txtSZone4HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone5HR, () => txtSZone5HR.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.sZone1PACE, () => txtSZone1PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone2PACE, () => txtSZone2PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone3PACE, () => txtSZone3PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone4PACE, () => txtSZone4PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sZone5PACE, () => txtSZone5PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone1PACE, () => txtSZone1PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone2PACE, () => txtSZone2PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone3PACE, () => txtSZone3PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone4PACE, () => txtSZone4PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sZone5PACE, () => txtSZone5PACE.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.sFTPHB, () => txtSFTPHB.Text, BindingMode.TwoWay);
-			#endregion
+				this.SetBinding(() => MemberModel.sFTPace, () => txtSFTPace.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.sFTPHB, () => txtSFTPHB.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region run experience
-			this.SetBinding(() => MemberModel.rZone1HR, () => txtRZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone2HR, () => txtRZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone3HR, () => txtRZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone5HR, () => txtRZone5HR.Text, BindingMode.TwoWay);
+				#region run experience
+				this.SetBinding(() => MemberModel.rZone1HR, () => txtRZone1HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone2HR, () => txtRZone2HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone3HR, () => txtRZone3HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone4HR, () => txtRZone4HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone5HR, () => txtRZone5HR.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.rZone1PACE, () => txtRZone1PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone2PACE, () => txtRZone2PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone3PACE, () => txtRZone3PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone4PACE, () => txtRZone4PACE.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone5PACE, () => txtRZone5PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone1PACE, () => txtRZone1PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone2PACE, () => txtRZone2PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone3PACE, () => txtRZone3PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone4PACE, () => txtRZone4PACE.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone5PACE, () => txtRZone5PACE.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.rZone1POWER, () => txtRZone1Power.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone2POWER, () => txtRZone2Power.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone3POWER, () => txtRZone3Power.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone4POWER, () => txtRZone4Power.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rZone5POWER, () => txtRZone5Power.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone1POWER, () => txtRZone1Power.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone2POWER, () => txtRZone2Power.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone3POWER, () => txtRZone3Power.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone4POWER, () => txtRZone4Power.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rZone5POWER, () => txtRZone5Power.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rFTPHB, () => txtRFTPHB.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.rFTPower, () => txtRFTPower.Text, BindingMode.TwoWay);
-			#endregion
+				this.SetBinding(() => MemberModel.rFTPace, () => txtRFTPace.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rFTPHB, () => txtRFTPHB.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.rFTPower, () => txtRFTPower.Text, BindingMode.TwoWay);
+				#endregion
 
-			#region bike experience
-			this.SetBinding(() => MemberModel.bZone1HR, () => txtBZone1HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone2HR, () => txtBZone2HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone3HR, () => txtBZone3HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone4HR, () => txtBZone4HR.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone5HR, () => txtBZone5HR.Text, BindingMode.TwoWay);
+				#region bike experience
+				this.SetBinding(() => MemberModel.bZone1HR, () => txtBZone1HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone2HR, () => txtBZone2HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone3HR, () => txtBZone3HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone4HR, () => txtBZone4HR.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone5HR, () => txtBZone5HR.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.bZone1POWER, () => txtBZone1POWER.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone2POWER, () => txtBZone2POWER.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone3POWER, () => txtBZone3POWER.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone4POWER, () => txtBZone4POWER.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bZone5POWER, () => txtBZone5POWER.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone1POWER, () => txtBZone1POWER.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone2POWER, () => txtBZone2POWER.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone3POWER, () => txtBZone3POWER.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone4POWER, () => txtBZone4POWER.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bZone5POWER, () => txtBZone5POWER.Text, BindingMode.TwoWay);
 
-			this.SetBinding(() => MemberModel.bFTPHB, () => txtBFTPHB.Text, BindingMode.TwoWay);
-			this.SetBinding(() => MemberModel.bFTPower, () => txtBFTPower.Text, BindingMode.TwoWay);
-			#endregion
+				this.SetBinding(() => MemberModel.bFTPHB, () => txtBFTPHB.Text, BindingMode.TwoWay);
+				this.SetBinding(() => MemberModel.bFTPower, () => txtBFTPower.Text, BindingMode.TwoWay);
+				#endregion
+			}
+			catch (Exception err)
+			{
+				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+			}
 		}
 
 		#region update actions
@@ -361,24 +375,7 @@ namespace goheja
 
 			var result = UpdateUserDataJson(MemberModel.rootMember);
 
-			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.SetTitle("");
-			alert.SetMessage(result);
-			alert.SetPositiveButton("OK", (senderAlert, args) =>
-			{
-				RunOnUiThread(() => { 
-					var activity = new Intent();
-					SetResult(Result.Canceled, activity);
-					Finish();
-					//var activity = new Intent(this, typeof(SwipeTabActivity));
-					//StartActivity(activity);
-					//Finish();
-				});
-			});
-			RunOnUiThread(() =>
-			{
-				alert.Show();
-			});
+			ShowMessageBox(null, result, "Cancel", new[] { "OK" }, ActionBackCancel);
 		}
 		#endregion
 
@@ -646,12 +643,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
-				//var activity = new Intent(this, typeof(SwipeTabActivity));
-				//StartActivity(activity);
-				//Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);

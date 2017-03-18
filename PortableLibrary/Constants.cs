@@ -49,6 +49,8 @@ namespace PortableLibrary
 		public const string MSG_FORGOT_PASSWORD = "Requesting forgot password...";
 		public const string MSG_FORGOT_PW_SUC = "A mail was sent to you with a temporary code.";
 		public const string MSG_FORGOT_PW_EMAIL_FAIL = "Email do not exists in the system , please try again or signup.";
+		public const string MSG_GPS_DISABLED = "GPS settings disabled.";
+		public const string MSG_COMFIRM_STOP_SPORT_COMP = "You sure you want to stop practice?";
 
 		//TYPES
 		public const string TOTALS_ES_TIME = "Elapsed time";

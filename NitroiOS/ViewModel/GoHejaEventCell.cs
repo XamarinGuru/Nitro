@@ -20,15 +20,15 @@ namespace location2
 			// Note: this .ctor should not contain any initialization logic.
 		}
 
-		public void SetCell(GoHejaEvent nitroEvent)
+		public void SetCell(GoHejaEvent goHejaEvent)
 		{
-			var strTitle = nitroEvent.title;
-			var strTime = String.Format("{0:t}", nitroEvent.StartDateTime());
+			var strTitle = goHejaEvent.title;
+			var strTime = String.Format("{0:t}", goHejaEvent.StartDateTime());
 
 			lblTitle.Text = strTitle;
 			lblEventTime.Text = strTime;
 
-			if (nitroEvent.attended == "0" && nitroEvent.StartDateTime().DayOfYear <= DateTime.Now.DayOfYear)
+			if (goHejaEvent.attended == "0" && goHejaEvent.StartDateTime().DayOfYear <= DateTime.Now.DayOfYear)
 			{
 				var attrTitle = new NSAttributedString(lblTitle.Text, strikethroughStyle: NSUnderlineStyle.Single);
 				var attrTime = new NSAttributedString(lblEventTime.Text, strikethroughStyle: NSUnderlineStyle.Single);
@@ -47,7 +47,7 @@ namespace location2
 				lblEventTime.TextColor = UIColor.White;
 			}
 
-			switch (nitroEvent.type)
+			switch (goHejaEvent.type)
 			{
 				case "0":
 					imgType.Image = UIImage.FromFile("icon_triathlon.png");

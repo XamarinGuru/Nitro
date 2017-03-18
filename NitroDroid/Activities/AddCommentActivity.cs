@@ -64,9 +64,7 @@ namespace goheja
 
 				HideLoadingView();
 
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			});
 		}
 
@@ -74,9 +72,7 @@ namespace goheja
 		{
 			if (keyCode == Keycode.Back)
 			{
-				var activity = new Intent();
-				SetResult(Result.Canceled, activity);
-				Finish();
+				ActionBackCancel();
 			}
 
 			return base.OnKeyDown(keyCode, e);
