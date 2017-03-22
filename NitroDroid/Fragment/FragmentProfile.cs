@@ -112,7 +112,7 @@ namespace goheja
 			if (!rootActivity.IsNetEnable()) return;
 
 			var userID = rootActivity.GetUserID();
-			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID, Constants.SPEC_GROUP_TYPE[0]));
+			var uri = Android.Net.Uri.Parse(string.Format(Constants.URL_WATCH, userID, Constants.SPEC_GROUP_TYPE));
 			var intent = new Intent(Intent.ActionView, uri);
 			StartActivityForResult(intent, 1);
 		}

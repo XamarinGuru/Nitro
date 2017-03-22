@@ -98,7 +98,7 @@ namespace location2
 			if (!IsNetEnable()) return;
 
 			var userID = GetUserID();
-			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.URL_WATCH, userID, Constants.SPEC_GROUP_TYPE[0])));
+			UIApplication.SharedApplication.OpenUrl(new NSUrl(string.Format(Constants.URL_WATCH, userID, Constants.SPEC_GROUP_TYPE)));
 		}
 
 		partial void ActionSignOut(UIButton sender)
