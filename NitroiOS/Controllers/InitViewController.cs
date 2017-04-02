@@ -15,6 +15,13 @@ namespace location2
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			InitUISettings();
+		}
+
+		void InitUISettings()
+		{
+			btnSignUp.BackgroundColor = GROUP_COLOR;
 		}
 
 		partial void ActionSignIn(UIButton sender)

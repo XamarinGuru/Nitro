@@ -43,6 +43,8 @@ namespace goheja
 			invalidPwConfirm.Visibility = ViewStates.Invisible;
 			errorPassword.Visibility = ViewStates.Invisible;
 			errorPwConfirm.Visibility = ViewStates.Invisible;
+
+			FindViewById<Button>(Resource.Id.ActionResetPassword).SetBackgroundColor(GROUP_COLOR);
 		}
 
 		private bool Validate()
@@ -91,7 +93,7 @@ namespace goheja
 
 					if (isSuccess == 1)
 					{
-						ShowMessageBox(null, Constants.MSG_CHANGE_PW_SUC, "Cancel", new[] { "OK" }, () => base.OnBackPressed());
+						ShowMessageBox(null, Constants.MSG_CHANGE_PW_SUC, "OK", "Cancel", () => base.OnBackPressed());
 					}
 					else if (isSuccess == 2)
 					{

@@ -9,6 +9,18 @@ namespace location2
         {
         }
 
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			InitUISettings();
+		}
+
+		void InitUISettings()
+		{
+
+		}
+
 		partial void ActionSelectedType(UIButton sender)
 		{
 			AnalyticsViewController aVC = Storyboard.InstantiateViewController("AnalyticsViewController") as AnalyticsViewController;

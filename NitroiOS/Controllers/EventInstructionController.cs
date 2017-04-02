@@ -35,10 +35,37 @@ namespace location2
 
 			eventID = selectedEvent._id;
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
 
-			InitUISettings();
 			InitBindingEventData();
+		}
+
+		void InitUISettings()
+		{
+			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
+				heightAdjust.Constant = 0;
+			else
+				heightAdjust.Constant = 100;
+
+			lblPDistance.TextColor = GROUP_COLOR;
+			lblPDuration.TextColor = GROUP_COLOR;
+			lblPLoad.TextColor = GROUP_COLOR;
+			lblPHB.TextColor = GROUP_COLOR;
+
+			lblTotalValue0.TextColor = GROUP_COLOR;
+			lblTotalValue1.TextColor = GROUP_COLOR;
+			lblTotalValue2.TextColor = GROUP_COLOR;
+			lblTotalValue3.TextColor = GROUP_COLOR;
+			lblTotalValue4.TextColor = GROUP_COLOR;
+			lblTotalValue5.TextColor = GROUP_COLOR;
+			lblTotalValue6.TextColor = GROUP_COLOR;
+			lblTotalValue7.TextColor = GROUP_COLOR;
+			lblTotalValue8.TextColor = GROUP_COLOR;
+
+			btnAdjust.BackgroundColor = GROUP_COLOR;
+			btnAddComment.BackgroundColor = GROUP_COLOR;
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -65,20 +92,6 @@ namespace location2
 
 				HideLoadingView();
 			});
-		}
-
-		void InitUISettings()
-		{
-			if (DateTime.Compare(selectedEvent.StartDateTime(), DateTime.Now) > 0)
-			{
-				//heightInstructions.Constant = 0;
-				heightAdjust.Constant = 0;
-			}
-			else
-			{
-				//heightInstructions.Constant = 320;
-				heightAdjust.Constant = 100;
-			}
 		}
 
 		void InitBindingEventData()

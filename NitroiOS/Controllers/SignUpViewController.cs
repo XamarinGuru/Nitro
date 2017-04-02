@@ -27,13 +27,13 @@ namespace location2
 
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
+
+			InitUISettings();
 		}
 
-		public override void ViewDidAppear(bool animated)
+		void InitUISettings()
 		{
-			base.ViewWillAppear(animated);
-
-
+			btnSignUP.BackgroundColor = GROUP_COLOR;
 		}
 
 		partial void ActionBack(UIButton sender)

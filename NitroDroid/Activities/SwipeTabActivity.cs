@@ -144,7 +144,7 @@ namespace goheja
 
 			if (ShouldShowRequestPermissionRationale(rdPermission) || ShouldShowRequestPermissionRationale(wrPermission))
 			{
-				ShowMessageBox(null, "Calendar access is required to show your events on your device calendar.", "Cancel", new[] { "OK" }, SendingPermissionRequest);
+				ShowMessageBox(null, "Calendar access is required to show your events on your device calendar.", "OK", "Cancel", SendingPermissionRequest);
 				return;
 			}
 

@@ -28,6 +28,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnViewCalendar { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView chartContent { get; set; }
 
         [Outlet]
@@ -44,7 +48,23 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgSymbolCycling { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgSymbolRunning { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgSymbolSwimming { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblCycleDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblCycleDistanceTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -52,7 +72,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblCycleDurationTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblCycleStress { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblCycleStressTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -60,7 +88,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblRunDistanceTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblRunDuration { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblRunDurationTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -68,7 +104,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblRunStressTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblSwimDistance { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblSwimDistanceTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -76,7 +120,15 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblSwimDurationTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblSwimStress { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblSwimStressTitle { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -159,6 +211,11 @@ namespace location2
                 btnSwimmingColleps = null;
             }
 
+            if (btnViewCalendar != null) {
+                btnViewCalendar.Dispose ();
+                btnViewCalendar = null;
+            }
+
             if (chartContent != null) {
                 chartContent.Dispose ();
                 chartContent = null;
@@ -179,9 +236,29 @@ namespace location2
                 heightSwimming = null;
             }
 
+            if (imgSymbolCycling != null) {
+                imgSymbolCycling.Dispose ();
+                imgSymbolCycling = null;
+            }
+
+            if (imgSymbolRunning != null) {
+                imgSymbolRunning.Dispose ();
+                imgSymbolRunning = null;
+            }
+
+            if (imgSymbolSwimming != null) {
+                imgSymbolSwimming.Dispose ();
+                imgSymbolSwimming = null;
+            }
+
             if (lblCycleDistance != null) {
                 lblCycleDistance.Dispose ();
                 lblCycleDistance = null;
+            }
+
+            if (lblCycleDistanceTitle != null) {
+                lblCycleDistanceTitle.Dispose ();
+                lblCycleDistanceTitle = null;
             }
 
             if (lblCycleDuration != null) {
@@ -189,9 +266,19 @@ namespace location2
                 lblCycleDuration = null;
             }
 
+            if (lblCycleDurationTitle != null) {
+                lblCycleDurationTitle.Dispose ();
+                lblCycleDurationTitle = null;
+            }
+
             if (lblCycleStress != null) {
                 lblCycleStress.Dispose ();
                 lblCycleStress = null;
+            }
+
+            if (lblCycleStressTitle != null) {
+                lblCycleStressTitle.Dispose ();
+                lblCycleStressTitle = null;
             }
 
             if (lblRunDistance != null) {
@@ -199,9 +286,19 @@ namespace location2
                 lblRunDistance = null;
             }
 
+            if (lblRunDistanceTitle != null) {
+                lblRunDistanceTitle.Dispose ();
+                lblRunDistanceTitle = null;
+            }
+
             if (lblRunDuration != null) {
                 lblRunDuration.Dispose ();
                 lblRunDuration = null;
+            }
+
+            if (lblRunDurationTitle != null) {
+                lblRunDurationTitle.Dispose ();
+                lblRunDurationTitle = null;
             }
 
             if (lblRunStress != null) {
@@ -209,9 +306,19 @@ namespace location2
                 lblRunStress = null;
             }
 
+            if (lblRunStressTitle != null) {
+                lblRunStressTitle.Dispose ();
+                lblRunStressTitle = null;
+            }
+
             if (lblSwimDistance != null) {
                 lblSwimDistance.Dispose ();
                 lblSwimDistance = null;
+            }
+
+            if (lblSwimDistanceTitle != null) {
+                lblSwimDistanceTitle.Dispose ();
+                lblSwimDistanceTitle = null;
             }
 
             if (lblSwimDuration != null) {
@@ -219,9 +326,19 @@ namespace location2
                 lblSwimDuration = null;
             }
 
+            if (lblSwimDurationTitle != null) {
+                lblSwimDurationTitle.Dispose ();
+                lblSwimDurationTitle = null;
+            }
+
             if (lblSwimStress != null) {
                 lblSwimStress.Dispose ();
                 lblSwimStress = null;
+            }
+
+            if (lblSwimStressTitle != null) {
+                lblSwimStressTitle.Dispose ();
+                lblSwimStressTitle = null;
             }
 
             if (symATL != null) {

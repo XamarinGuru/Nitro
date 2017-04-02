@@ -16,6 +16,10 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnChangePW { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnValidPassword { get; set; }
 
         [Outlet]
@@ -44,6 +48,11 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnChangePW != null) {
+                btnChangePW.Dispose ();
+                btnChangePW = null;
+            }
+
             if (btnValidPassword != null) {
                 btnValidPassword.Dispose ();
                 btnValidPassword = null;

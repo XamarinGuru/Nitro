@@ -150,11 +150,19 @@ namespace goheja.trackSvc {
         
         private System.Threading.SendOrPostCallback getStartMarkerPositionOperationCompleted;
         
+        private System.Threading.SendOrPostCallback sendAttendanceMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback specLogOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback IsAuthOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getEventDateNameIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback groupResultsMongoOperationCompleted;
         
         private System.Threading.SendOrPostCallback getPerformanceFordateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback sendNotificationExceedingOperationCompleted;
         
         private System.Threading.SendOrPostCallback getMyTrailForEventMongoOperationCompleted;
         
@@ -437,6 +445,15 @@ namespace goheja.trackSvc {
         public event getStartMarkerPositionCompletedEventHandler getStartMarkerPositionCompleted;
         
         /// CodeRemarks
+        public event sendAttendanceMailCompletedEventHandler sendAttendanceMailCompleted;
+        
+        /// CodeRemarks
+        public event specLogCompletedEventHandler specLogCompleted;
+        
+        /// CodeRemarks
+        public event IsAuthCompletedEventHandler IsAuthCompleted;
+        
+        /// CodeRemarks
         public event getEventDateNameIdCompletedEventHandler getEventDateNameIdCompleted;
         
         /// CodeRemarks
@@ -444,6 +461,9 @@ namespace goheja.trackSvc {
         
         /// CodeRemarks
         public event getPerformanceFordateCompletedEventHandler getPerformanceFordateCompleted;
+        
+        /// CodeRemarks
+        public event sendNotificationExceedingCompletedEventHandler sendNotificationExceedingCompleted;
         
         /// CodeRemarks
         public event getMyTrailForEventMongoCompletedEventHandler getMyTrailForEventMongoCompleted;
@@ -2950,6 +2970,94 @@ namespace goheja.trackSvc {
         }
         
         /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/sendAttendanceMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void sendAttendanceMail() {
+            this.Invoke("sendAttendanceMail", new object[0]);
+        }
+        
+        /// CodeRemarks
+        public void sendAttendanceMailAsync() {
+            this.sendAttendanceMailAsync(null);
+        }
+        
+        /// CodeRemarks
+        public void sendAttendanceMailAsync(object userState) {
+            if ((this.sendAttendanceMailOperationCompleted == null)) {
+                this.sendAttendanceMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsendAttendanceMailOperationCompleted);
+            }
+            this.InvokeAsync("sendAttendanceMail", new object[0], this.sendAttendanceMailOperationCompleted, userState);
+        }
+        
+        private void OnsendAttendanceMailOperationCompleted(object arg) {
+            if ((this.sendAttendanceMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.sendAttendanceMailCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/specLog", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void specLog([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string message) {
+            this.Invoke("specLog", new object[] {
+                        message});
+        }
+        
+        /// CodeRemarks
+        public void specLogAsync(string message) {
+            this.specLogAsync(message, null);
+        }
+        
+        /// CodeRemarks
+        public void specLogAsync(string message, object userState) {
+            if ((this.specLogOperationCompleted == null)) {
+                this.specLogOperationCompleted = new System.Threading.SendOrPostCallback(this.OnspecLogOperationCompleted);
+            }
+            this.InvokeAsync("specLog", new object[] {
+                        message}, this.specLogOperationCompleted, userState);
+        }
+        
+        private void OnspecLogOperationCompleted(object arg) {
+            if ((this.specLogCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.specLogCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/IsAuth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void IsAuth([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string psw, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup, out bool IsAuthResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool IsAuthResultSpecified) {
+            object[] results = this.Invoke("IsAuth", new object[] {
+                        email,
+                        psw,
+                        specGroup});
+            IsAuthResult = ((bool)(results[0]));
+            IsAuthResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// CodeRemarks
+        public void IsAuthAsync(string email, string psw, string specGroup) {
+            this.IsAuthAsync(email, psw, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void IsAuthAsync(string email, string psw, string specGroup, object userState) {
+            if ((this.IsAuthOperationCompleted == null)) {
+                this.IsAuthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIsAuthOperationCompleted);
+            }
+            this.InvokeAsync("IsAuth", new object[] {
+                        email,
+                        psw,
+                        specGroup}, this.IsAuthOperationCompleted, userState);
+        }
+        
+        private void OnIsAuthOperationCompleted(object arg) {
+            if ((this.IsAuthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IsAuthCompleted(this, new IsAuthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getEventDateNameId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string getEventDateNameId([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string eventId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
@@ -3050,6 +3158,36 @@ namespace goheja.trackSvc {
             if ((this.getPerformanceFordateCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getPerformanceFordateCompleted(this, new getPerformanceFordateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// CodeRemarks
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/sendNotificationExceeding", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void sendNotificationExceeding([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userId, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string specGroup) {
+            this.Invoke("sendNotificationExceeding", new object[] {
+                        userId,
+                        specGroup});
+        }
+        
+        /// CodeRemarks
+        public void sendNotificationExceedingAsync(string userId, string specGroup) {
+            this.sendNotificationExceedingAsync(userId, specGroup, null);
+        }
+        
+        /// CodeRemarks
+        public void sendNotificationExceedingAsync(string userId, string specGroup, object userState) {
+            if ((this.sendNotificationExceedingOperationCompleted == null)) {
+                this.sendNotificationExceedingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsendNotificationExceedingOperationCompleted);
+            }
+            this.InvokeAsync("sendNotificationExceeding", new object[] {
+                        userId,
+                        specGroup}, this.sendNotificationExceedingOperationCompleted, userState);
+        }
+        
+        private void OnsendNotificationExceedingOperationCompleted(object arg) {
+            if ((this.sendNotificationExceedingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.sendNotificationExceedingCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6225,6 +6363,48 @@ namespace goheja.trackSvc {
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void sendAttendanceMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void specLogCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void IsAuthCompletedEventHandler(object sender, IsAuthCompletedEventArgs e);
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IsAuthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IsAuthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// CodeRemarks
+        public bool IsAuthResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// CodeRemarks
+        public bool IsAuthResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
     public delegate void getEventDateNameIdCompletedEventHandler(object sender, getEventDateNameIdCompletedEventArgs e);
     
     /// CodeRemarks
@@ -6300,6 +6480,10 @@ namespace goheja.trackSvc {
             }
         }
     }
+    
+    /// CodeRemarks
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]
+    public delegate void sendNotificationExceedingCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// CodeRemarks
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XamarinStudio", "4.0.0.0")]

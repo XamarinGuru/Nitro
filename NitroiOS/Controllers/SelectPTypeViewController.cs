@@ -7,7 +7,6 @@ namespace location2
 {
     public partial class SelectPTypeViewController : BaseViewController
     {
-		UIColor COLOR_ACTIVE = new UIColor(229 / 255f, 161 / 255f, 9 / 255f, alpha: 1.0f);
 		UIColor COLOR_DISABLE = new UIColor(67 / 255f, 67 / 255f, 67 / 255f, alpha: 1.0f);
 
 		public GoHejaEvent selectedEvent;
@@ -49,19 +48,19 @@ namespace location2
 			switch (selectedEvent.type)
 			{
 				case "1":
-					stateCycling.BackgroundColor = COLOR_ACTIVE;
+					stateCycling.BackgroundColor = GROUP_COLOR;
 					break;
 				case "2":
-					stateRunning.BackgroundColor = COLOR_ACTIVE;
+					stateRunning.BackgroundColor = GROUP_COLOR;
 					break;
 				case "3":
-					stateSwimming.BackgroundColor = COLOR_ACTIVE;
+					stateSwimming.BackgroundColor = GROUP_COLOR;
 					break;
 				case "4":
-					stateTriathlon.BackgroundColor = COLOR_ACTIVE;
+					stateTriathlon.BackgroundColor = GROUP_COLOR;
 					break;
 				case "5":
-					stateOther.BackgroundColor = COLOR_ACTIVE;
+					stateOther.BackgroundColor = GROUP_COLOR;
 					break;
 			}
 		}

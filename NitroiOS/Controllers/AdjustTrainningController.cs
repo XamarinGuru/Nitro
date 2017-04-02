@@ -35,6 +35,8 @@ namespace location2
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
@@ -47,6 +49,20 @@ namespace location2
 			});
 
 			InitBindingEventTotal();
+		}
+
+		void InitUISettings()
+		{
+			viewType.BackgroundColor = GROUP_COLOR;
+			attended.OnTintColor = GROUP_COLOR;
+			attended.TintColor = GROUP_COLOR;
+			seekTime.ThumbTintColor = GROUP_COLOR;
+			seekTime.TintColor = GROUP_COLOR;
+			seekDistance.ThumbTintColor = GROUP_COLOR;
+			seekDistance.TintColor = GROUP_COLOR;
+			seekTSS.ThumbTintColor = GROUP_COLOR;
+			seekTSS.TintColor = GROUP_COLOR;
+			btnSaveAdjust.BackgroundColor = GROUP_COLOR;
 		}
 
 		public override void ViewWillAppear(bool animated)

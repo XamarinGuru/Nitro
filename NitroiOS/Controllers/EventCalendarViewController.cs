@@ -44,7 +44,18 @@ namespace location2
 
 			NavigationItem.RightBarButtonItems = rightButtons;
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
+		}
+
+		void InitUISettings()
+		{
+			lblTSB.TextColor = GROUP_COLOR;
+			lblCTL.TextColor = GROUP_COLOR;
+			lblATL.TextColor = GROUP_COLOR;
+			lblLoad.TextColor = GROUP_COLOR;
+			lblNoEvents.TextColor = GROUP_COLOR;
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -65,7 +76,7 @@ namespace location2
 
 			var appearance = _calendar.CalendarAppearance;
 			appearance.GetNSCalendar().FirstWeekDay = (nuint)2;
-			appearance.DayDotColor = appearance.DayCircleColorSelected = UIColor.FromRGB(229 / 225f, 161 / 225f, 9 / 225f);
+			appearance.DayDotColor = appearance.DayCircleColorSelected = GROUP_COLOR;
 			appearance.DayTextColorOtherMonth = appearance.DayDotColorOtherMonth = UIColor.Gray;
 			appearance.DayTextColor = appearance.MenuMonthTextColor = UIColor.White;
 			appearance.DayCircleColorToday = UIColor.Red;

@@ -26,6 +26,31 @@ namespace location2
 			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
+
+			InitUISettings();
+		}
+
+		void InitUISettings()
+		{
+			lblFirstname.TextColor = GROUP_COLOR;
+			lblLastname.TextColor = GROUP_COLOR;
+			lblCountry.TextColor = GROUP_COLOR;
+			lblAddress.TextColor = GROUP_COLOR;
+			lblBib.TextColor = GROUP_COLOR;
+			lblAge.TextColor = GROUP_COLOR;
+			lblGender.TextColor = GROUP_COLOR;
+			lblBirth.TextColor = GROUP_COLOR;
+			lblEmail.TextColor = GROUP_COLOR;
+			lblPhone.TextColor = GROUP_COLOR;
+
+			btnEditPhysical.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditGoals.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditBestResults.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditRanking.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditSwim.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditRun.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnEditBike.SetTitleColor(GROUP_COLOR, UIControlState.Normal);
+			btnUpdateProfile.BackgroundColor = GROUP_COLOR;
 		}
 
 		async public override void ViewWillAppear(bool animated)

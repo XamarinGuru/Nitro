@@ -14,6 +14,10 @@ namespace location2
     [Register ("InitViewController")]
     partial class InitViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSignUp { get; set; }
+
         [Action ("ActionSignIn:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionSignIn (UIKit.UIButton sender);
@@ -24,6 +28,10 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnSignUp != null) {
+                btnSignUp.Dispose ();
+                btnSignUp = null;
+            }
         }
     }
 }

@@ -110,7 +110,7 @@
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-W6-49U">
                                                                                 <rect key="frame" x="42" y="34" width="10" height="10"/>
-                                                                                <color key="backgroundColor" red="0.8980392157" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="10" id="Ai6-ie-Hms"/>
                                                                                     <constraint firstAttribute="height" constant="10" id="w0a-VE-Dj3"/>
@@ -118,7 +118,7 @@
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdg-Xa-gey">
                                                                                 <rect key="frame" x="42" y="74.5" width="10" height="10"/>
-                                                                                <color key="backgroundColor" red="0.8980392157" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="10" id="A7T-HS-ssZ"/>
                                                                                     <constraint firstAttribute="width" constant="10" id="jfX-ka-Ksd"/>
@@ -126,7 +126,7 @@
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbU-AR-aeh">
                                                                                 <rect key="frame" x="42" y="113" width="10" height="10"/>
-                                                                                <color key="backgroundColor" red="0.8980392157" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="10" id="QJ9-l7-mbB"/>
                                                                                     <constraint firstAttribute="width" constant="10" id="xLP-ye-kbQ"/>
@@ -172,7 +172,7 @@
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc8-yX-TJ6">
                                                                                 <rect key="frame" x="4.5" y="34" width="10" height="10"/>
-                                                                                <color key="backgroundColor" red="0.8980392157" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="10" id="dyU-Mu-gaN"/>
                                                                                     <constraint firstAttribute="width" constant="10" id="j8E-k6-q4x"/>
@@ -180,7 +180,7 @@
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiN-c4-gUM">
                                                                                 <rect key="frame" x="4.5" y="74.5" width="10" height="10"/>
-                                                                                <color key="backgroundColor" red="0.8980392157" green="0.63137254899999995" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="10" id="VGC-lK-t17"/>
                                                                                     <constraint firstAttribute="height" constant="10" id="bLV-gr-yUX"/>
@@ -255,7 +255,7 @@
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-fr-zZ1">
                                                                 <rect key="frame" x="20" y="19" width="37" height="37"/>
-                                                                <color key="backgroundColor" red="0.9009501338" green="0.63301759960000004" blue="0.036625314499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Jf2-fr-zZ1" secondAttribute="height" multiplier="1:1" id="ZOR-I9-aFa"/>
                                                                 </constraints>
@@ -371,7 +371,7 @@
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mV8-2W-LpD">
                                                                 <rect key="frame" x="20" y="19" width="37" height="37"/>
-                                                                <color key="backgroundColor" red="0.9009501338" green="0.63301759960000004" blue="0.036625314499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="mV8-2W-LpD" secondAttribute="height" multiplier="1:1" id="nnR-Rt-FTX"/>
                                                                 </constraints>
@@ -431,7 +431,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caq-pB-emZ">
                                                                 <rect key="frame" x="25" y="23" width="62" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                <color key="textColor" red="0.92276328802108765" green="0.68750303983688354" blue="0.0046360231935977936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.92156862745098034" green="0.68627450980392157" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBq-yF-1XR">
@@ -674,19 +674,32 @@
                         <outlet property="btnCycleColleps" destination="2vn-Fg-bqF" id="name-outlet-2vn-Fg-bqF"/>
                         <outlet property="btnRunningColleps" destination="oBw-K4-jQW" id="name-outlet-oBw-K4-jQW"/>
                         <outlet property="btnSwimmingColleps" destination="NLI-uy-4Id" id="name-outlet-NLI-uy-4Id"/>
+                        <outlet property="btnViewCalendar" destination="ELc-uF-9LV" id="name-outlet-ELc-uF-9LV"/>
                         <outlet property="chartContent" destination="qJN-o3-lg0" id="name-outlet-qJN-o3-lg0"/>
                         <outlet property="heightCycle" destination="bBH-wZ-hgS" id="name-outlet-bBH-wZ-hgS"/>
                         <outlet property="heightRunning" destination="oWQ-tQ-BXk" id="name-outlet-oWQ-tQ-BXk"/>
                         <outlet property="heightSwimming" destination="KOK-yL-Ff9" id="name-outlet-KOK-yL-Ff9"/>
+                        <outlet property="imgSymbolCycling" destination="Jf2-fr-zZ1" id="name-outlet-Jf2-fr-zZ1"/>
+                        <outlet property="imgSymbolRunning" destination="mV8-2W-LpD" id="name-outlet-mV8-2W-LpD"/>
+                        <outlet property="imgSymbolSwimming" destination="9EP-sU-hds" id="name-outlet-9EP-sU-hds"/>
                         <outlet property="lblCycleDistance" destination="dLL-3F-h8T" id="name-outlet-dLL-3F-h8T"/>
+                        <outlet property="lblCycleDistanceTitle" destination="FYa-sQ-my2" id="name-outlet-FYa-sQ-my2"/>
                         <outlet property="lblCycleDuration" destination="ALe-B0-en5" id="name-outlet-ALe-B0-en5"/>
+                        <outlet property="lblCycleDurationTitle" destination="wFA-te-cmQ" id="name-outlet-wFA-te-cmQ"/>
                         <outlet property="lblCycleStress" destination="8M6-OI-0zG" id="name-outlet-8M6-OI-0zG"/>
+                        <outlet property="lblCycleStressTitle" destination="Ktc-hK-JVg" id="name-outlet-Ktc-hK-JVg"/>
                         <outlet property="lblRunDistance" destination="SSp-JU-1WU" id="name-outlet-SSp-JU-1WU"/>
+                        <outlet property="lblRunDistanceTitle" destination="qBq-yF-1XR" id="name-outlet-qBq-yF-1XR"/>
                         <outlet property="lblRunDuration" destination="97M-2W-xYB" id="name-outlet-97M-2W-xYB"/>
+                        <outlet property="lblRunDurationTitle" destination="caq-pB-emZ" id="name-outlet-caq-pB-emZ"/>
                         <outlet property="lblRunStress" destination="g0p-P1-c7c" id="name-outlet-g0p-P1-c7c"/>
+                        <outlet property="lblRunStressTitle" destination="ddv-8t-r2T" id="name-outlet-ddv-8t-r2T"/>
                         <outlet property="lblSwimDistance" destination="tGv-rf-4a8" id="name-outlet-tGv-rf-4a8"/>
+                        <outlet property="lblSwimDistanceTitle" destination="Hi5-O6-Ema" id="name-outlet-Hi5-O6-Ema"/>
                         <outlet property="lblSwimDuration" destination="5Yd-Lm-th8" id="name-outlet-5Yd-Lm-th8"/>
+                        <outlet property="lblSwimDurationTitle" destination="jsW-HI-GJn" id="name-outlet-jsW-HI-GJn"/>
                         <outlet property="lblSwimStress" destination="SrL-dq-qo1" id="name-outlet-SrL-dq-qo1"/>
+                        <outlet property="lblSwimStressTitle" destination="O5K-4a-duO" id="name-outlet-O5K-4a-duO"/>
                         <outlet property="symATL" destination="Tdg-Xa-gey" id="name-outlet-Tdg-Xa-gey"/>
                         <outlet property="symCTL" destination="jbU-AR-aeh" id="name-outlet-jbU-AR-aeh"/>
                         <outlet property="symDailyIF" destination="OiN-c4-gUM" id="name-outlet-OiN-c4-gUM"/>
@@ -760,7 +773,7 @@
                                                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vbY-YL-6w9" id="om8-3D-sQe">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cycling Group1Cycling Group1Cycling Group1Cycling Group1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AO-BD-6aH">
@@ -1588,6 +1601,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
+                        <outlet property="bgBtnAdjustTraning" destination="gSQ-96-zik" id="name-outlet-gSQ-96-zik"/>
+                        <outlet property="btnAddComment" destination="oZh-n0-2Uj" id="name-outlet-oZh-n0-2Uj"/>
+                        <outlet property="btnAdjust" destination="bSF-LO-w2s" id="name-outlet-bSF-LO-w2s"/>
                         <outlet property="contentComment" destination="WWL-bp-kVN" id="name-outlet-WWL-bp-kVN"/>
                         <outlet property="heightAdjust" destination="Urx-jf-sYB" id="name-outlet-Urx-jf-sYB"/>
                         <outlet property="heightCommentContent" destination="yRo-pq-iAT" id="name-outlet-yRo-pq-iAT"/>
@@ -1645,7 +1661,7 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_bike.png" translatesAutoresizingMaskIntoConstraints="NO" id="yAI-Ug-4Wu">
                                                 <rect key="frame" x="3" y="3.5" width="26" height="26"/>
-                                                <color key="backgroundColor" red="0.9009501338" green="0.63301759960000004" blue="0.036625314499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="yAI-Ug-4Wu" secondAttribute="height" multiplier="1:1" id="PGc-nN-O1h"/>
                                                 </constraints>
@@ -1713,6 +1729,7 @@
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRq-9u-LsC">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <color key="tintColor" red="0.8666666666666667" green="0.56470588235294117" blue="0.047058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="onTintColor" red="0.8666666666666667" green="0.56470588235294117" blue="0.047058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1922,6 +1939,7 @@
                     </view>
                     <connections>
                         <outlet property="attended" destination="tRq-9u-LsC" id="name-outlet-tRq-9u-LsC"/>
+                        <outlet property="btnSaveAdjust" destination="wit-07-ii6" id="name-outlet-wit-07-ii6"/>
                         <outlet property="imgType" destination="yAI-Ug-4Wu" id="name-outlet-yAI-Ug-4Wu"/>
                         <outlet property="seekDistance" destination="99Z-Z3-rzW" id="name-outlet-99Z-Z3-rzW"/>
                         <outlet property="seekTSS" destination="398-78-Cf1" id="name-outlet-398-78-Cf1"/>
@@ -1931,6 +1949,7 @@
                         <outlet property="txtDistance" destination="cqy-x2-YlQ" id="name-outlet-cqy-x2-YlQ"/>
                         <outlet property="txtTime" destination="pgF-Fx-aZB" id="name-outlet-pgF-Fx-aZB"/>
                         <outlet property="txtTss" destination="x8l-88-dgb" id="name-outlet-x8l-88-dgb"/>
+                        <outlet property="viewType" destination="1W8-sa-cSX" id="name-outlet-1W8-sa-cSX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCz-gd-e5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2053,20 +2072,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="qER-zJ-GiD" firstAttribute="top" secondItem="kuM-zT-hpy" secondAttribute="bottom" id="ONb-A9-gf0"/>
-                            <constraint firstItem="kuM-zT-hpy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YEC-me-qqc"/>
-                            <constraint firstAttribute="trailing" secondItem="kuM-zT-hpy" secondAttribute="trailing" id="h0a-DA-mQK"/>
-                            <constraint firstItem="kuM-zT-hpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xNx-Ec-3BG"/>
+                            <constraint firstItem="kuM-zT-hpy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="85W-JA-p8D"/>
+                            <constraint firstItem="qER-zJ-GiD" firstAttribute="top" secondItem="kuM-zT-hpy" secondAttribute="bottom" id="Gke-XZ-ogT"/>
+                            <constraint firstItem="kuM-zT-hpy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d6p-Uh-idC"/>
+                            <constraint firstAttribute="trailing" secondItem="kuM-zT-hpy" secondAttribute="trailing" id="x6H-rb-q5C"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainframe" destination="8bC-Xf-vdC" id="name-outlet-8bC-Xf-vdC"/>
-                        <outlet property="viewSelectType" destination="kuM-zT-hpy" id="name-outlet-kuM-zT-hpy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14" y="-270"/>
+            <point key="canvasLocation" x="7" y="-137"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="hcN-3F-QgB">
@@ -2231,7 +2249,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-kg-ez2">
-                                                <rect key="frame" x="194.5" y="26.5" width="100" height="10"/>
+                                                <rect key="frame" x="231.5" y="26.5" width="100" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="HSa-Ns-5DB"/>
                                                 </constraints>
@@ -2243,7 +2261,7 @@
                                             <constraint firstItem="g9Z-4m-Zda" firstAttribute="leading" secondItem="WXK-dR-Cg9" secondAttribute="leading" id="8Fh-1m-teC"/>
                                             <constraint firstAttribute="width" secondItem="WXK-dR-Cg9" secondAttribute="height" multiplier="6:1" id="QWj-fw-8sK"/>
                                             <constraint firstItem="g9Z-4m-Zda" firstAttribute="top" secondItem="WXK-dR-Cg9" secondAttribute="top" id="Uet-Xh-7EA"/>
-                                            <constraint firstItem="aK2-kg-ez2" firstAttribute="centerX" secondItem="WXK-dR-Cg9" secondAttribute="centerX" multiplier="1.3" id="b0M-fO-ozX"/>
+                                            <constraint firstItem="aK2-kg-ez2" firstAttribute="centerX" secondItem="WXK-dR-Cg9" secondAttribute="centerX" multiplier="1.5" id="b0M-fO-ozX"/>
                                             <constraint firstItem="aK2-kg-ez2" firstAttribute="centerY" secondItem="WXK-dR-Cg9" secondAttribute="centerY" id="ix7-oT-9Mk"/>
                                             <constraint firstAttribute="bottom" secondItem="g9Z-4m-Zda" secondAttribute="bottom" id="jgs-lc-Pqb"/>
                                         </constraints>
@@ -2338,6 +2356,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnLogin" destination="g9Z-4m-Zda" id="name-outlet-g9Z-4m-Zda"/>
                         <outlet property="btnValidEmail" destination="I2i-iX-fNY" id="name-outlet-I2i-iX-fNY"/>
                         <outlet property="btnValidPassword" destination="HWq-uA-D1D" id="name-outlet-HWq-uA-D1D"/>
                         <outlet property="txtEmail" destination="ajz-sN-PMd" id="name-outlet-ajz-sN-PMd"/>
@@ -2765,7 +2784,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="69J-SN-Wcm">
-                                        <rect key="frame" x="194.5" y="26.5" width="100" height="10"/>
+                                        <rect key="frame" x="231.5" y="26.5" width="100" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="ogJ-c5-naD"/>
                                         </constraints>
@@ -2778,7 +2797,7 @@
                                     <constraint firstItem="3iz-z8-HRJ" firstAttribute="top" secondItem="sKh-ac-brI" secondAttribute="top" id="Fku-kX-kF2"/>
                                     <constraint firstAttribute="width" secondItem="sKh-ac-brI" secondAttribute="height" multiplier="6:1" id="OU3-ud-WiC"/>
                                     <constraint firstAttribute="trailing" secondItem="3iz-z8-HRJ" secondAttribute="trailing" id="dZ2-fh-Dwv"/>
-                                    <constraint firstItem="69J-SN-Wcm" firstAttribute="centerX" secondItem="sKh-ac-brI" secondAttribute="centerX" multiplier="1.3" id="fzO-pc-aeh"/>
+                                    <constraint firstItem="69J-SN-Wcm" firstAttribute="centerX" secondItem="sKh-ac-brI" secondAttribute="centerX" multiplier="1.5" id="fzO-pc-aeh"/>
                                     <constraint firstAttribute="bottom" secondItem="3iz-z8-HRJ" secondAttribute="bottom" id="y55-WU-p3S"/>
                                 </constraints>
                             </view>
@@ -2921,6 +2940,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="acceprtBtn" destination="286" id="name-outlet-286"/>
+                        <outlet property="btnSignUP" destination="3iz-z8-HRJ" id="name-outlet-3iz-z8-HRJ"/>
                         <outlet property="btnValidAge" destination="v1U-zG-kZ3" id="name-outlet-v1U-zG-kZ3"/>
                         <outlet property="btnValidEmail" destination="yoF-t7-lxg" id="name-outlet-yoF-t7-lxg"/>
                         <outlet property="btnValidFirstname" destination="kWd-4f-bAJ" id="name-outlet-kWd-4f-bAJ"/>
@@ -2935,6 +2955,7 @@
                         <outlet property="txtLastName" destination="227" id="name-outlet-227"/>
                         <outlet property="txtNickName" destination="228" id="name-outlet-228"/>
                         <outlet property="txtPassword" destination="535" id="name-outlet-535"/>
+                        <outlet property="txtUsername" destination="im2-jE-OZB" id="name-outlet-im2-jE-OZB"/>
                         <outlet property="viewErrorEmail" destination="ADA-zT-Qdx" id="name-outlet-ADA-zT-Qdx"/>
                         <outlet property="viewErrorFirstname" destination="5dW-Vm-PGM" id="name-outlet-5dW-Vm-PGM"/>
                         <outlet property="viewErrorLastname" destination="lJl-DZ-5IC" id="name-outlet-lJl-DZ-5IC"/>
@@ -3470,6 +3491,9 @@
                             <constraint firstItem="gJQ-bT-v8R" firstAttribute="width" secondItem="1860" secondAttribute="width" multiplier="0.5" id="wf9-o6-HB6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnSignUp" destination="yVk-S0-2jq" id="name-outlet-yVk-S0-2jq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1861" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5204,9 +5228,11 @@
                         <outlet property="btnEditBestResults" destination="E5o-mz-Y9t" id="name-outlet-E5o-mz-Y9t"/>
                         <outlet property="btnEditBike" destination="CQq-mK-icX" id="name-outlet-CQq-mK-icX"/>
                         <outlet property="btnEditGoals" destination="gmP-dV-5VG" id="name-outlet-gmP-dV-5VG"/>
-                        <outlet property="btnEditPhysical" destination="T8U-Wi-PPD" id="name-outlet-T8U-Wi-PPD"/>
+                        <outlet property="btnEditPhysical" destination="NmJ-le-u9t" id="name-outlet-NmJ-le-u9t"/>
                         <outlet property="btnEditRanking" destination="iVT-pi-axs" id="name-outlet-iVT-pi-axs"/>
                         <outlet property="btnEditRun" destination="8E4-ki-UV1" id="name-outlet-8E4-ki-UV1"/>
+                        <outlet property="btnEditSwim" destination="BE4-uj-ulJ" id="name-outlet-BE4-uj-ulJ"/>
+                        <outlet property="btnUpdateProfile" destination="T8U-Wi-PPD" id="name-outlet-T8U-Wi-PPD"/>
                         <outlet property="heightBestResults" destination="c0G-h8-vQN" id="name-outlet-c0G-h8-vQN"/>
                         <outlet property="heightGoals" destination="Yy7-e3-8Pj" id="name-outlet-Yy7-e3-8Pj"/>
                         <outlet property="heightPhysical" destination="rfq-JW-Csv" id="name-outlet-rfq-JW-Csv"/>
@@ -5345,6 +5371,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnAddComment" destination="Bav-o3-Nkq" id="name-outlet-Bav-o3-Nkq"/>
                         <outlet property="txtComment" destination="IrX-FI-Wq6" id="name-outlet-IrX-FI-Wq6"/>
                     </connections>
                 </viewController>
@@ -5518,6 +5545,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnForgotPW" destination="Rkj-Fp-k8c" id="name-outlet-Rkj-Fp-k8c"/>
                         <outlet property="btnValidEmail" destination="dYr-kf-xiD" id="name-outlet-dYr-kf-xiD"/>
                         <outlet property="txtEmail" destination="8n5-Vc-6qf" id="name-outlet-8n5-Vc-6qf"/>
                         <outlet property="viewErrorEmail" destination="hzg-cS-aph" id="Cyk-aW-IgJ"/>
@@ -5747,6 +5775,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnChangePW" destination="tYN-ZF-ES6" id="name-outlet-tYN-ZF-ES6"/>
                         <outlet property="btnValidPassword" destination="yfF-KH-Ph6" id="xAD-Rl-DBS"/>
                         <outlet property="btnValidPwConfirm" destination="ccr-Fl-dSl" id="0SF-16-Al6"/>
                         <outlet property="txtPassword" destination="OEU-s1-1pD" id="MuU-zb-u72"/>

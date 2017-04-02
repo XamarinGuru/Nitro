@@ -16,6 +16,10 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnLogin { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnValidEmail { get; set; }
 
         [Outlet]
@@ -52,6 +56,11 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnLogin != null) {
+                btnLogin.Dispose ();
+                btnLogin = null;
+            }
+
             if (btnValidEmail != null) {
                 btnValidEmail.Dispose ();
                 btnValidEmail = null;

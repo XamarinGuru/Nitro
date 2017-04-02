@@ -24,6 +24,13 @@ namespace location2
 
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
+
+			InitUISettings();
+		}
+
+		void InitUISettings()
+		{
+			btnLogin.BackgroundColor = GROUP_COLOR;
 		}
 
 		private bool Validate()

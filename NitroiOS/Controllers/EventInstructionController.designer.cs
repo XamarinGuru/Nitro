@@ -16,6 +16,18 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView bgBtnAdjustTraning { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnAddComment { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnAdjust { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView contentComment { get; set; }
 
         [Outlet]
@@ -152,6 +164,21 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (bgBtnAdjustTraning != null) {
+                bgBtnAdjustTraning.Dispose ();
+                bgBtnAdjustTraning = null;
+            }
+
+            if (btnAddComment != null) {
+                btnAddComment.Dispose ();
+                btnAddComment = null;
+            }
+
+            if (btnAdjust != null) {
+                btnAdjust.Dispose ();
+                btnAdjust = null;
+            }
+
             if (contentComment != null) {
                 contentComment.Dispose ();
                 contentComment = null;

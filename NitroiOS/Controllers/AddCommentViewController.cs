@@ -30,6 +30,8 @@ namespace location2
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
 			View.AddGestureRecognizer(g);
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
@@ -40,6 +42,11 @@ namespace location2
 
 				HideLoadingView();
 			});
+		}
+
+		void InitUISettings()
+		{
+			btnAddComment.BackgroundColor = GROUP_COLOR;
 		}
 
 		partial void ActionAddComment(UIButton sender)

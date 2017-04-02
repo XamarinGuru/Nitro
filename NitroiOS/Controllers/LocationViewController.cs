@@ -35,11 +35,18 @@ namespace location2
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
 
 			InitMapView();
 
 			GetMarkersAndPoints();
+		}
+
+		void InitUISettings()
+		{
+
 		}
 
 		public override void ViewWillLayoutSubviews()

@@ -79,6 +79,17 @@ namespace goheja
 			lblEmail = FindViewById<TextView>(Resource.Id.lblEmail);
 			lblPhone = FindViewById<TextView>(Resource.Id.lblPhone);
 
+			lblFirstname.SetTextColor(GROUP_COLOR);
+			lblLastname.SetTextColor(GROUP_COLOR);
+			lblCountry.SetTextColor(GROUP_COLOR);
+			lblAddress.SetTextColor(GROUP_COLOR);
+			lblBib.SetTextColor(GROUP_COLOR);
+			lblAge.SetTextColor(GROUP_COLOR);
+			lblGender.SetTextColor(GROUP_COLOR);
+			lblBirth.SetTextColor(GROUP_COLOR);
+			lblEmail.SetTextColor(GROUP_COLOR);
+			lblPhone.SetTextColor(GROUP_COLOR);
+
 			txtWeight = FindViewById<EditText>(Resource.Id.txtWeight);
 			txtHeight = FindViewById<EditText>(Resource.Id.txtHeight);
 			txtBMI = FindViewById<EditText>(Resource.Id.txtBMI);
@@ -171,7 +182,16 @@ namespace goheja
 			FindViewById<TextView>(Resource.Id.edtRun).Click += ActionEdit;
 			FindViewById<TextView>(Resource.Id.edtBike).Click += ActionEdit;
 
+			FindViewById<TextView>(Resource.Id.edtPhysical).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtGoals).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtBestResults).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtSeflRanking).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtSwim).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtRun).SetTextColor(GROUP_COLOR);
+			FindViewById<TextView>(Resource.Id.edtBike).SetTextColor(GROUP_COLOR);
+
 			FindViewById<Button>(Resource.Id.btnUpdate).Click += ActionUpdate;
+			FindViewById<Button>(Resource.Id.btnUpdate).SetBackgroundColor(GROUP_COLOR);
 			#endregion
 
 			var contentView = FindViewById<LinearLayout>(Resource.Id.contentView);
@@ -252,9 +272,9 @@ namespace goheja
 				SetupPicker(txtSFTPace, Constants.PICKER_PACE, Constants.UNIT_SWIM);
 				SetupPicker(txtRFTPace, Constants.PICKER_PACE, Constants.UNIT_RUN);
 			}
-			catch (Exception err)
+			catch (Exception ex)
 			{
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				ShowTrackMessageBox(ex.Message);
 			}
 		}
 
@@ -362,9 +382,9 @@ namespace goheja
 				this.SetBinding(() => MemberModel.bFTPower, () => txtBFTPower.Text, BindingMode.TwoWay);
 				#endregion
 			}
-			catch (Exception err)
+			catch (Exception ex)
 			{
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				ShowTrackMessageBox(ex.Message);
 			}
 		}
 
@@ -375,7 +395,7 @@ namespace goheja
 
 			var result = UpdateUserDataJson(MemberModel.rootMember);
 
-			ShowMessageBox(null, result, "Cancel", new[] { "OK" }, ActionBackCancel);
+			ShowMessageBox(null, result, "OK", "Cancel", ActionBackCancel);
 		}
 		#endregion
 

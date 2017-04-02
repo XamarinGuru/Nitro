@@ -181,25 +181,25 @@ namespace goheja
 				MarkerOptions markerOpt = new MarkerOptions();
 				markerOpt.SetPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
-			var metrics = Resources.DisplayMetrics;
-			var wScreen = metrics.WidthPixels;
+				var metrics = Resources.DisplayMetrics;
+				var wScreen = metrics.WidthPixels;
 
-			Bitmap bmp = BitmapFactory.DecodeResource(Resources, Resource.Drawable.pin_me);
-			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 10, true);
-			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+				Bitmap bmp = BitmapFactory.DecodeResource(Resources, Resource.Drawable.pin_me);
+				Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 10, true);
+				markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
-			RunOnUiThread(() =>
-			{
-				markerMyLocation = mMapView.AddMarker(markerOpt);
-			});
+				RunOnUiThread(() =>
+				{
+					markerMyLocation = mMapView.AddMarker(markerOpt);
+				});
 
-			SetMapPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+				SetMapPosition(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
 				SetNearestEventMarkers(currentLocation);
 			}
-			catch (Exception err)
+			catch (Exception ex)
 			{
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				ShowTrackMessageBox(ex.Message);
 			}
 		}
 
@@ -214,33 +214,33 @@ namespace goheja
 
 				HideLoadingView();
 
-				if (mEventMarker == null || mEventMarker.markers.Count == 0) return;
+				if (mEventMarker == null || mEventMarker.markers == null || mEventMarker.markers.Count == 0) return;
 
 				try
 				{
 					var mapBounds = new LatLngBounds.Builder();
 
-				mapBounds.Include(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
+					mapBounds.Include(new LatLng(currentLocation.Latitude, currentLocation.Longitude));
 
-				pointIDs = new List<string>();
+					pointIDs = new List<string>();
 
-				RunOnUiThread(() =>
-				{
-					for (int i = 0; i < mEventMarker.markers.Count; i++)
+					RunOnUiThread(() =>
 					{
-						var point = mEventMarker.markers[i];
-						var pointLocation = new LatLng(point.lat, point.lng);
-						mapBounds.Include(pointLocation);
+						for (int i = 0; i < mEventMarker.markers.Count; i++)
+						{
+							var point = mEventMarker.markers[i];
+							var pointLocation = new LatLng(point.lat, point.lng);
+							mapBounds.Include(pointLocation);
 
-						AddMapPin(pointLocation, point.type);
-					}
+							AddMapPin(pointLocation, point.type);
+						}
 
 						mMapView.MoveCamera(CameraUpdateFactory.NewLatLngBounds(mapBounds.Build(), 50));
 					});
 				}
-				catch (Exception err)
+				catch (Exception ex)
 				{
-					Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+					ShowTrackMessageBox(ex.Message);
 				}
 			});
 		}
@@ -252,12 +252,12 @@ namespace goheja
 				MarkerOptions markerOpt = new MarkerOptions();
 				markerOpt.SetPosition(position);
 
-			var metrics = Resources.DisplayMetrics;
-			var wScreen = metrics.WidthPixels;
+				var metrics = Resources.DisplayMetrics;
+				var wScreen = metrics.WidthPixels;
 
-			Bitmap bmp = GetPinIconByType(type);
-			Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
-			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+				Bitmap bmp = GetPinIconByType(type);
+				Bitmap newBitmap = ScaleDownImg(bmp, wScreen / 7, true);
+				markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
 				RunOnUiThread(() =>
 				{
@@ -265,9 +265,9 @@ namespace goheja
 					pointIDs.Add(marker.Id);
 				});
 			}
-			catch (Exception err)
+			catch (Exception ex)
 			{
-				Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
+				ShowTrackMessageBox(ex.Message);
 			}
 		}
 
@@ -286,9 +286,9 @@ namespace goheja
 				PointInfoDialog myDiag = PointInfoDialog.newInstance(selectedPoint);
 				myDiag.Show(FragmentManager, "Diag");
 			}
-			catch
+			catch(Exception ex)
 			{
-				return true;
+				ShowTrackMessageBox(ex.Message);
 			}
 
 			return true;
@@ -330,6 +330,7 @@ namespace goheja
 				}
 				catch (Exception err)
 				{
+					//Toast.MakeText(this, err.ToString(), ToastLength.Long).Show();
 				}
 			}
 			else if (pState == PRACTICE_STATE.playing)
@@ -383,7 +384,7 @@ namespace goheja
 			}
 			else
 			{
-				ShowMessageBox(null, Constants.MSG_COMFIRM_STOP_SPORT_COMP, "Cancel", new[] { "OK" }, StopPractice);
+				ShowMessageBox(null, Constants.MSG_COMFIRM_STOP_SPORT_COMP, "OK", "Cancel", StopPractice);
 			}
 		}
 		private void ActionStop(object sender, EventArgs e)
@@ -450,7 +451,7 @@ namespace goheja
 
 			if (ShouldShowRequestPermissionRationale(permission))
 			{
-				ShowMessageBox(null, "Location access is required to gaugo your sports.", "Cancel", new[] { "OK" }, SendingPermissionRequest);
+				ShowMessageBox(null, "Location access is required to gaugo your sports.", "OK", "Cancel", SendingPermissionRequest);
 				return;
 			}
 			SendingPermissionRequest();
@@ -519,15 +520,6 @@ namespace goheja
 		public void OnLocationChanged(Location location)
 		{
 			string status = "online";
-
-			//        if (!isStarted)
-			//        {
-			//            _title.Text = "Nitro ready...";
-			//            _speedText.Text = "0.0";
-			//            _altitudeText.Text = "0.0";
-			//            _distance.Text = "0.0";
-			//return;
-			//        }
 
 			_currentLocation = location;
 

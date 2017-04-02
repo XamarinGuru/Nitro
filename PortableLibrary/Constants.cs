@@ -3,18 +3,18 @@ namespace PortableLibrary
 {
 	public static class Constants
 	{
-		public const string SPEC_GROUP_TYPE = "nitro" ;
-		public const string DEVICE_CALENDAR_TITLE = "Nitro Calendar";
-		public const string PATH_USER_IMAGE = "data/goheja.nitro.com/files/me.png";
-
-		public const string GOHEJA_BASEPATH = "http://go-heja.com/Service1.svc?wsdl";
-
-		public const string FIREBASE_APPSECRET = "PtLxxW6zYGZSE3UXmmiFxVCqzNdZOLxLNHdHNixF";
-		public const string FIREBASE_BASEPATH = "https://nitro-8cbda.firebaseio.com/";
-
 		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
 		public const int MAP_ZOOM_LEVEL = 15;
 
+		#region specification for each group
+		public const string SPEC_GROUP_TYPE = "nitro" ;
+		public const string DEVICE_CALENDAR_TITLE = "Nitro Calendar";
+		public const string GROUP_COLOR = "EBAF01";
+		public const string PATH_USER_IMAGE = "data/goheja.nitro.com/files/me.png";
+		public const string MSG_SIGNUP_FAIL = "You are not registered to Ntaro services.";
+		#endregion
+
+		public const string GOHEJA_BASEPATH = "http://go-heja.com/Service1.svc?wsdl";
 
 		//URLs
 		public const string URL_TERMS = "http://go-heja.com/nitro/terms.php/";
@@ -29,10 +29,21 @@ namespace PortableLibrary
 
 		public static double[] LOCATION_ISURAEL = { 31.0461, 34.8516 };
 
+		public const string MSG_TRACK_ERROR = 
+			"MOB error reported\n " +
+			"Date time: {0}\n " +
+			"User id: {1}\n " +
+			"Device model: {2}\n " +
+			"Spec group: {3}\n " +
+			"Error: {4}";
+
+		public const string MSG_TRACK_ERROR_DETAIL = "{0} in {1} line {2} ({3}).";
+
+		public const string MSG_COMMON = "Oops, something went wrong.";
+
 		public const string MSG_LOGIN = "Login...";
 		public const string MSG_LOGIN_FAIL = "Login failed.";
 		public const string MSG_SIGNUP = "Sign Up...";
-		public const string MSG_SIGNUP_FAIL = "You are not registered to Nitro services.";
 		public const string MSG_LOADING_DATA = "Loading data...";
 		public const string MSG_LOADING_USER_DATA = "Loading user data...";
 		public const string MSG_LOADING_EVENTS = "Loading events...";
@@ -41,7 +52,7 @@ namespace PortableLibrary
 		public const string MSG_TYPE_COMMENT = "Type your comment...";
 		public const string MSG_SAVE_COMMENT = "Saving your comment...";
 		public const string MSG_ADJUST_TRAINING = "Adjusting Trainning...";
-		public const string MSG_NO_INTERNET = "No internet connection!";
+		public const string MSG_NO_INTERNET = "No internet connection, please  try again latter.";
 		public const string MSG_CHANGE_PASSWORD = "Requesting change password...";
 		public const string MSG_CHANGE_PW_SUC = "Password updated successfully";
 		public const string MSG_CHANGE_PW_FAIL = "Passwords don’t match";
@@ -51,6 +62,7 @@ namespace PortableLibrary
 		public const string MSG_FORGOT_PW_EMAIL_FAIL = "Email do not exists in the system , please try again or signup.";
 		public const string MSG_GPS_DISABLED = "GPS settings disabled.";
 		public const string MSG_COMFIRM_STOP_SPORT_COMP = "You sure you want to stop practice?";
+		public const string MSG_TRAKING_ERROR = "Tracking error into server...";
 
 		//TYPES
 		public const string TOTALS_ES_TIME = "Elapsed time";

@@ -48,11 +48,12 @@ namespace location2
 
 			NavigationItem.HidesBackButton = true;
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
 
 			//MemberModel.rootMember = GetUserObject();
 
-			InitUISettings();
 			InitMapView();
 		}
 

@@ -24,7 +24,7 @@ namespace location2
 		{
 			base.ViewDidLoad();
 
-			XuniLicenseManager.Key = License.Key;
+			XuniLicenseManager.Key = License.iOSKey;
 
 			viewCycle.Alpha = 0;
 			viewRunning.Alpha = 0;
@@ -33,7 +33,39 @@ namespace location2
 			heightRunning.Constant = 0;
 			heightSwimming.Constant = 0;
 
+			InitUISettings();
+
 			if (!IsNetEnable()) return;
+		}
+
+		void InitUISettings()
+		{
+			btnViewCalendar.BackgroundColor = GROUP_COLOR;
+			zoomSlider.TintColor = GROUP_COLOR;
+
+			imgSymbolCycling.BackgroundColor = GROUP_COLOR;
+			imgSymbolRunning.BackgroundColor = GROUP_COLOR;
+			imgSymbolSwimming.BackgroundColor = GROUP_COLOR;
+
+			lblCycleDuration.TextColor = GROUP_COLOR;
+			lblRunDuration.TextColor = GROUP_COLOR;
+			lblSwimDuration.TextColor = GROUP_COLOR;
+			lblCycleDistance.TextColor = GROUP_COLOR;
+			lblRunDistance.TextColor = GROUP_COLOR;
+			lblSwimDistance.TextColor = GROUP_COLOR;
+			lblCycleStress.TextColor = GROUP_COLOR;
+			lblRunStress.TextColor = GROUP_COLOR;
+			lblSwimStress.TextColor = GROUP_COLOR;
+
+			lblCycleDurationTitle.TextColor = GROUP_COLOR;
+			lblRunDurationTitle.TextColor = GROUP_COLOR;
+			lblSwimDurationTitle.TextColor = GROUP_COLOR;
+			lblCycleDistanceTitle.TextColor = GROUP_COLOR;
+			lblRunDistanceTitle.TextColor = GROUP_COLOR;
+			lblSwimDistanceTitle.TextColor = GROUP_COLOR;
+			lblCycleStressTitle.TextColor = GROUP_COLOR;
+			lblRunStressTitle.TextColor = GROUP_COLOR;
+			lblSwimStressTitle.TextColor = GROUP_COLOR;
 		}
 
 		public override void ViewDidAppear(bool animated)

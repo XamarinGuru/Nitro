@@ -20,6 +20,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSignUP { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnValidAge { get; set; }
 
         [Outlet]
@@ -76,6 +80,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtUsername { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewErrorEmail { get; set; }
 
         [Outlet]
@@ -115,6 +123,11 @@ namespace location2
             if (acceprtBtn != null) {
                 acceprtBtn.Dispose ();
                 acceprtBtn = null;
+            }
+
+            if (btnSignUP != null) {
+                btnSignUP.Dispose ();
+                btnSignUP = null;
             }
 
             if (btnValidAge != null) {
@@ -185,6 +198,11 @@ namespace location2
             if (txtPassword != null) {
                 txtPassword.Dispose ();
                 txtPassword = null;
+            }
+
+            if (txtUsername != null) {
+                txtUsername.Dispose ();
+                txtUsername = null;
             }
 
             if (viewErrorEmail != null) {

@@ -20,6 +20,10 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSaveAdjust { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgType { get; set; }
 
         [Outlet]
@@ -54,6 +58,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtTss { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewType { get; set; }
+
         [Action ("ActionAdjustTrainning:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionAdjustTrainning (UIKit.UIButton sender);
@@ -75,6 +83,11 @@ namespace location2
             if (attended != null) {
                 attended.Dispose ();
                 attended = null;
+            }
+
+            if (btnSaveAdjust != null) {
+                btnSaveAdjust.Dispose ();
+                btnSaveAdjust = null;
             }
 
             if (imgType != null) {
@@ -120,6 +133,11 @@ namespace location2
             if (txtTss != null) {
                 txtTss.Dispose ();
                 txtTss = null;
+            }
+
+            if (viewType != null) {
+                viewType.Dispose ();
+                viewType = null;
             }
         }
     }

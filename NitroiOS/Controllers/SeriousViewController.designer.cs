@@ -40,6 +40,14 @@ namespace location2
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEditSwim { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnUpdateProfile { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightBestResults { get; set; }
 
         [Outlet]
@@ -388,6 +396,16 @@ namespace location2
             if (btnEditRun != null) {
                 btnEditRun.Dispose ();
                 btnEditRun = null;
+            }
+
+            if (btnEditSwim != null) {
+                btnEditSwim.Dispose ();
+                btnEditSwim = null;
+            }
+
+            if (btnUpdateProfile != null) {
+                btnUpdateProfile.Dispose ();
+                btnUpdateProfile = null;
             }
 
             if (heightBestResults != null) {

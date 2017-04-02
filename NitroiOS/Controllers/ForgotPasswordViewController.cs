@@ -24,6 +24,13 @@ namespace location2
 
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
 			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
+
+			InitUISettings();
+		}
+
+		void InitUISettings()
+		{
+			btnForgotPW.BackgroundColor = GROUP_COLOR;
 		}
 
 

@@ -16,6 +16,10 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnAddComment { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextView txtComment { get; set; }
 
         [Action ("ActionAddComment:")]
@@ -24,6 +28,11 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnAddComment != null) {
+                btnAddComment.Dispose ();
+                btnAddComment = null;
+            }
+
             if (txtComment != null) {
                 txtComment.Dispose ();
                 txtComment = null;
