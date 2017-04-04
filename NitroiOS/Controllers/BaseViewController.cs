@@ -976,27 +976,7 @@ namespace location2
 			return result;
 		}
 
-		public NSDate ConvertDateTimeToNSDate(DateTime date)
-		{
-			DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
 
-			//return NSDate.FromTimeIntervalSinceReferenceDate(
-			//	(date - newDate).TotalSeconds + 3600);
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - newDate).TotalSeconds);
-		}
-
-		public static DateTime ConvertNSDateToDateTime(NSDate date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
-			reference = reference.AddSeconds(date.SecondsSinceReferenceDate);
-			if (reference.IsDaylightSavingTime())
-			{
-				reference = reference.AddHours(1);
-			}
-			return reference;
-		}
 
 
 
@@ -1082,58 +1062,6 @@ namespace location2
 			{
 				field.ResignFirstResponder();
 			}
-		}
-		protected static DateTime NSDateToDateTime(NSDate date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
-			reference = reference.AddSeconds(date.SecondsSinceReferenceDate);
-			if (reference.IsDaylightSavingTime())
-			{
-				reference = reference.AddHours(1);
-			}
-			return reference;
-		}
-
-
-		public DateTime ConvertUTCToLocalTimeZone(DateTime dateTimeUtc)
-		{
-			NSTimeZone sourceTimeZone = new NSTimeZone("UTC");
-			NSTimeZone destinationTimeZone = NSTimeZone.LocalTimeZone;
-			NSDate sourceDate = DateTimeToNativeDate(dateTimeUtc);
-
-			int sourceGMTOffset = (int)sourceTimeZone.SecondsFromGMT(sourceDate);
-			int destinationGMTOffset = (int)destinationTimeZone.SecondsFromGMT(sourceDate);
-			int interval = sourceGMTOffset - destinationGMTOffset;
-
-			var destinationDate = dateTimeUtc.AddSeconds(interval);
-			//var destinationDate = sourceDate.AddSeconds(interval);
-			//var dateTime = NativeDateToDateTime(destinationDate);
-			return destinationDate;
-		}
-
-		/// <summary>
-		/// Converts a System.DateTime to an NSDate
-		/// </summary>
-		/// <returns>The time to native date.</returns>
-		/// <param name="date">Date.</param>
-		public static NSDate DateTimeToNativeDate(DateTime date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - reference).TotalSeconds);
-		}
-
-		/// <summary>
-		/// Converts a NSDate to System.DateTime
-		/// </summary>
-		/// <returns>The date to date time.</returns>
-		/// <param name="date">Date.</param>
-		public static DateTime NativeDateToDateTime(NSDate date)
-		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
-			return reference.AddSeconds(date.SecondsSinceReferenceDate);
 		}
 
 		protected void SetupPicker(UITextField field, string type)
@@ -1423,6 +1351,58 @@ namespace location2
 			conHeight.Constant = children.Count == 0 ? 80 : height;
 
 			View.LayoutIfNeeded();
+		}
+		#endregion
+
+
+		#region NSDate vs DateTime
+		public DateTime ConvertUTCToLocalTimeZone(DateTime dateTimeUtc)
+		{
+			NSTimeZone sourceTimeZone = new NSTimeZone("UTC");
+			NSTimeZone destinationTimeZone = NSTimeZone.LocalTimeZone;
+			NSDate sourceDate = DateTimeToNativeDate(dateTimeUtc);
+
+			int sourceGMTOffset = (int)sourceTimeZone.SecondsFromGMT(sourceDate);
+			int destinationGMTOffset = (int)destinationTimeZone.SecondsFromGMT(sourceDate);
+			int interval = sourceGMTOffset - destinationGMTOffset;
+
+			var destinationDate = dateTimeUtc.AddSeconds(interval);
+			//var destinationDate = sourceDate.AddSeconds(interval);
+			//var dateTime = NativeDateToDateTime(destinationDate);
+			return destinationDate;
+		}
+
+		public static NSDate DateTimeToNativeDate(DateTime date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return NSDate.FromTimeIntervalSinceReferenceDate(
+				(date - reference).TotalSeconds);
+		}
+		public NSDate ConvertDateTimeToNSDate(DateTime date)
+		{
+			DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+
+			TimeZoneInfo localZone = TimeZoneInfo.Local;
+
+			bool isDayLight = TimeZoneInfo.Local.IsDaylightSavingTime(date);
+
+			if (isDayLight)
+				return NSDate.FromTimeIntervalSinceReferenceDate((date - newDate).TotalSeconds - 3600);
+			else
+				return NSDate.FromTimeIntervalSinceReferenceDate((date - newDate).TotalSeconds);
+		}
+
+		protected static DateTime NSDateToDateTime(NSDate date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+			reference = reference.AddSeconds(date.SecondsSinceReferenceDate);
+			if (reference.IsDaylightSavingTime())
+			{
+				reference = reference.AddHours(1);
+			}
+			return reference;
 		}
 		#endregion
 	}
