@@ -169,7 +169,9 @@ namespace goheja
 
 			ShowLoadingView(Constants.MSG_TRAKING_ERROR);
 
+			#region error track log
 			mTrackSvc.specLog(msg);
+			#endregion
 
 			HideLoadingView();
 
