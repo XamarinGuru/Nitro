@@ -208,7 +208,7 @@ namespace location2
 				var strDuration = durHrs.ToString() + ":" + durMin.ToString("D2");
 
 				newEvent.Notes += Environment.NewLine + "Planned HB : " + goHejaEvent.hb + Environment.NewLine +
-								"Planned TSS : " + goHejaEvent.tss + Environment.NewLine +
+								"Planned Load : " + goHejaEvent.tss + Environment.NewLine +
 								"Planned distance : " + formattedDistance + "KM" + Environment.NewLine +
 								"Duration : " + strDuration + Environment.NewLine;
 
