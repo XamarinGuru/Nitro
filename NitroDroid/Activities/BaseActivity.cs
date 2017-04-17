@@ -584,7 +584,8 @@ namespace goheja
 							if (lapNo == tPoint.lapNo && !Equals(tPoint.Latitude, 0d) && !Equals(tPoint.Longitude, 0d))
 								tPoints.Add(tPoint);
 						}
-						returnTPoints.Add(tPoints);
+						if (tPoints.Count != 0)
+							returnTPoints.Add(tPoints);
 					}
 				}
 
