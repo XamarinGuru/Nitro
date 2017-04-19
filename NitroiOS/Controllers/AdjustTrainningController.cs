@@ -109,8 +109,8 @@ namespace location2
 			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
 			txtTime.Text = strEt.ToString();
-			txtDistance.Text = float.Parse(strTd).ToString("F0");
-			txtTss.Text = float.Parse(strTss).ToString("F0");
+			txtDistance.Text = float.Parse(strTd).ToString("F1");
+			txtTss.Text = float.Parse(strTss).ToString("F1");
 
 			seekTime.Value = strEt;
 			seekDistance.Value = float.Parse(strTd);
@@ -167,10 +167,10 @@ namespace location2
 					txtTime.Text = ((int)sender.Value).ToString();
 					break;
 				case 1:
-					txtDistance.Text = ((int)sender.Value).ToString();
+					txtDistance.Text = sender.Value.ToString("F1");
 					break;
 				case 2:
-					txtTss.Text = ((int)sender.Value).ToString();
+					txtTss.Text = sender.Value.ToString("F1");
 					break;
 			}
 		}
