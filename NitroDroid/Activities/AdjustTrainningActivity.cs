@@ -70,9 +70,18 @@ namespace goheja
 			seekDistance.ProgressDrawable.SetColorFilter(GROUP_COLOR, Android.Graphics.PorterDuff.Mode.Multiply);
 			seekTSS.ProgressDrawable.SetColorFilter(GROUP_COLOR, Android.Graphics.PorterDuff.Mode.Multiply);
 
-			seekTime.ProgressChanged += (sender, e) => { lblTime.Text = ((SeekBar)sender).Progress.ToString(); };
-			seekDistance.ProgressChanged += (sender, e) => { lblDistance.Text = ((SeekBar)sender).Progress.ToString(); };
-			seekTSS.ProgressChanged += (sender, e) => { lblTSS.Text = ((SeekBar)sender).Progress.ToString(); };
+			seekTime.ProgressChanged += (sender, e) =>
+			{
+				lblTime.Text = ((SeekBar)sender).Progress.ToString();
+			};
+			seekDistance.ProgressChanged += (sender, e) =>
+			{
+				lblDistance.Text = (((SeekBar)sender).Progress / 10.0f).ToString();
+			};
+			seekTSS.ProgressChanged += (sender, e) =>
+			{
+				lblTSS.Text = (((SeekBar)sender).Progress / 10.0f).ToString();
+			};
 
 			FindViewById(Resource.Id.ActionSwitchType).Click += delegate (object sender, EventArgs e)
 			{
@@ -149,12 +158,12 @@ namespace goheja
 				var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
 				lblTime.Text = strEt.ToString();
-				lblDistance.Text = float.Parse(strTd).ToString("F0");
-				lblTSS.Text = float.Parse(strTss).ToString("F0");
+				lblDistance.Text = float.Parse(strTd).ToString("F1");
+				lblTSS.Text = float.Parse(strTss).ToString("F1");
 
 				seekTime.Progress = strEt;
-				seekDistance.Progress = (int)float.Parse(strTd);
-				seekTSS.Progress = (int)float.Parse(strTss);
+				seekDistance.Progress = (int)(float.Parse(strTd) * 10);
+				seekTSS.Progress = (int)(float.Parse(strTss) * 10);
 			}
 			catch (Exception ex)
 			{
