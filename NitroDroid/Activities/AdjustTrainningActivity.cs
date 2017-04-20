@@ -40,7 +40,7 @@ namespace goheja
 				HideLoadingView();
 			});
 
-			InitBindingEventTotal();
+			//InitBindingEventTotal();
 		}
 
 		protected override void OnResume()
@@ -51,7 +51,7 @@ namespace goheja
 
 		void InitUISettings()
 		{
-			SetPType();
+			//SetPType();
 
 			FindViewById<LinearLayout>(Resource.Id.bgType).SetBackgroundColor(GROUP_COLOR);
 
@@ -72,7 +72,7 @@ namespace goheja
 
 			seekTime.ProgressChanged += (sender, e) =>
 			{
-				lblTime.Text = ((SeekBar)sender).Progress.ToString();
+				lblTime.Text = (((SeekBar)sender).Progress / 10).ToString();
 			};
 			seekDistance.ProgressChanged += (sender, e) =>
 			{
@@ -91,16 +91,8 @@ namespace goheja
 			FindViewById(Resource.Id.ActionAdjustTrainning).Click += ActionAdjustTrainning;
 			FindViewById(Resource.Id.ActionAdjustTrainning).SetBackgroundColor(GROUP_COLOR);
 
-			try
-			{
-				SetupAdjustPicker(lblTime, seekTime, 360);
-				SetupAdjustPicker(lblDistance, seekDistance, 250);
-				SetupAdjustPicker(lblTSS, seekTSS, 400);
-			}
-			catch (Exception ex)
-			{
-				ShowTrackMessageBox(ex.Message);
-			}
+            SetupAdjustPicker(lblTime, seekTime, 360);
+            SetupAdjustPicker(lblTSS, seekTSS, 400);
 		}
 		void SetPType()
 		{
@@ -130,6 +122,8 @@ namespace goheja
 					imgType.SetImageResource(Resource.Drawable.icon_other);
 					break;
 			}
+
+			InitBindingEventTotal();
 		}
 		void SetupAdjustPicker(TextView textView, SeekBar seekBar, int maxValue)
 		{
@@ -143,13 +137,32 @@ namespace goheja
 			};
 		}
 
+		void SetupDistanceAdjustPicker(TextView textView, SeekBar seekBar, int maxValue)
+		{
+			textView.Touch -= SetDistanceAdjustDialog;
+			textView.Touch += SetDistanceAdjustDialog;
+		}
+
+		void SetDistanceAdjustDialog(object sender, View.TouchEventArgs e)
+		{
+			if (e.Event.Action == MotionEventActions.Down)
+			{
+				AdjustDialog myDiag = AdjustDialog.newInstance((TextView)sender, seekDistance, AppSettings.selectedEvent.type == "3" ? 10 : 250);
+				myDiag.Show(FragmentManager, "Diag");
+			}
+		}
+
 		void InitBindingEventTotal()
 		{
 			try
 			{
 				var eventTotal = AppSettings.currentEventTotal;
 
+				SetupDistanceAdjustPicker(lblDistance, seekDistance, AppSettings.selectedEvent.type == "3" ? 10 : 250);
+
 				attended.Checked = AppSettings.selectedEvent.attended == "1" ? true : false;
+
+				seekDistance.Max = AppSettings.selectedEvent.type == "3" ? 100 : 2500;
 
 				if (eventTotal == null || eventTotal.totals == null) return;
 
@@ -158,12 +171,34 @@ namespace goheja
 				var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
 
 				lblTime.Text = strEt.ToString();
-				lblDistance.Text = float.Parse(strTd).ToString("F1");
+				//lblDistance.Text = float.Parse(strTd).ToString("F1");
 				lblTSS.Text = float.Parse(strTss).ToString("F1");
 
-				seekTime.Progress = strEt;
-				seekDistance.Progress = (int)(float.Parse(strTd) * 10);
+				seekTime.Progress = strEt * 10;
+				//seekDistance.Progress = (int)(float.Parse(strTd) * 10);
 				seekTSS.Progress = (int)(float.Parse(strTss) * 10);
+
+				var valDistance = float.Parse(strTd);
+				if (AppSettings.selectedEvent.type == "3")
+				{
+					if (valDistance > 10)
+					{
+						lblDistance.Text = "10";
+						seekDistance.Progress = 100;
+					}
+					else
+					{
+						lblDistance.Text = valDistance.ToString("F1");
+						seekDistance.Progress = (int)valDistance * 10;
+					}
+				}
+				else
+				{
+					lblDistance.Text = valDistance.ToString("F1");
+					seekDistance.Progress = (int)valDistance * 10;
+				}
+
+
 			}
 			catch (Exception ex)
 			{

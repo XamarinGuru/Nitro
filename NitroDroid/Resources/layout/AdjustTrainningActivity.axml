@@ -160,7 +160,7 @@
                     android:layout_weight="5"
                     android:thumbTint="#EBAF01"
                     android:progress="0"
-                    android:max="360"
+                    android:max="3600"
                     android:progressTint="#ffe5a109"
                     android:progressBackgroundTint="#ff40403e" />
             </LinearLayout>
