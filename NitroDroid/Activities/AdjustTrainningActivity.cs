@@ -189,13 +189,13 @@ namespace goheja
 					else
 					{
 						lblDistance.Text = valDistance.ToString("F1");
-						seekDistance.Progress = (int)valDistance * 10;
+						seekDistance.Progress = int.Parse((valDistance * 10).ToString("F0"));
 					}
 				}
 				else
 				{
 					lblDistance.Text = valDistance.ToString("F1");
-					seekDistance.Progress = (int)valDistance * 10;
+					seekDistance.Progress = int.Parse((valDistance * 10).ToString("F0"));
 				}
 
 
