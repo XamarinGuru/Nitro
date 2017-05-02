@@ -10,8 +10,7 @@ namespace PortableLibrary
 		public const string SPEC_GROUP_TYPE = "nitro" ;
 		public const string DEVICE_CALENDAR_TITLE = "Nitro Calendar";
 		public const string GROUP_COLOR = "EBAF01";
-		public const string PATH_USER_IMAGE = "data/goheja.nitro.com/files/me.png";
-		public const string MSG_SIGNUP_FAIL = "You are not registered to Ntaro services.";
+		public const string MSG_SIGNUP_FAIL = "You are not registered to Nitro services.";
 		#endregion
 
 		public const string GOHEJA_BASEPATH = "http://go-heja.com/Service1.svc?wsdl";
@@ -23,9 +22,9 @@ namespace PortableLibrary
 		public const string URL_CALENDAR = "http://go-heja.com/nitro/mobda.php?userNickName={0}&userId={1}";
 		public const string URL_WATCH = "http://go-heja.com:8080/gh/mob/sync.php?userId={0}&mog={1}&url=uurrll";
 		public const string URL_GAUGE = "http://go-heja.com:8080/innovi/mobGraph/totalGauge.php?userId={0}";
-
 		public const string URL_GOOGLE = "www.google.com";
 
+		public const string PATH_USER_IMAGE = "data/{0}/files/me.png";
 
 		public static double[] LOCATION_ISURAEL = { 31.0461, 34.8516 };
 
@@ -45,6 +44,7 @@ namespace PortableLibrary
 		public const string MSG_LOGIN_FAIL = "Login failed.";
 		public const string MSG_SIGNUP = "Sign Up...";
 		public const string MSG_LOADING_DATA = "Loading data...";
+		public const string MSG_NO_ATHLETES = "No Athletes in this group";
 		public const string MSG_LOADING_USER_DATA = "Loading user data...";
 		public const string MSG_LOADING_EVENTS = "Loading events...";
 		public const string MSG_LOADING_EVENT_DETAIL = "Loading event details...";
@@ -120,6 +120,11 @@ namespace PortableLibrary
 		public const int TAG_EDIT_RUN = 1006;
 		public const int TAG_EDIT_BIKE = 1007;
 
+		public enum USER_TYPE
+		{
+			COACH,
+			ATHLETE
+		}
 
 		public enum PICKER_TYPE
 		{

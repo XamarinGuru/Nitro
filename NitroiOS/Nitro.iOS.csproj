@@ -285,6 +285,14 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Helper\DeviceHardware.cs" />
+    <Compile Include="Controllers\CoachHomeViewController.cs" />
+    <Compile Include="Controllers\CoachHomeViewController.designer.cs">
+      <DependentUpon>CoachHomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\UserCell.cs" />
+    <Compile Include="ViewModel\UserCell.designer.cs">
+      <DependentUpon>UserCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -424,6 +432,7 @@
     <BundleResource Include="Resources\icon_seek_thumb_dis.png" />
     <BundleResource Include="Resources\icon_home.png" />
     <BundleResource Include="Resources\timer_new.png" />
+    <BundleResource Include="Resources\icon_search.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />

@@ -5,6 +5,7 @@ using Android.Support.V4.App;
 using Android.Text;
 using System.Threading.Tasks;
 using Android.Content.PM;
+using PortableLibrary;
 
 namespace goheja
 {
@@ -41,19 +42,27 @@ namespace goheja
             NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
             notificationManager.Notify(1, CreateNotification());
 
-			string userID = GetUserID();
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			{
+				var currentUser = AppSettings.CurrentUser;
 
-            if (userID == "0")//not registered yet
-            {
-				var initAC = new Intent(this, typeof(InitActivity));
-                StartActivity(initAC);
+				Intent nextIntent = new Intent(this, typeof(InitActivity));
+				if (currentUser != null)
+				{
+					if (currentUser.userType == (int)Constants.USER_TYPE.ATHLETE)
+					{
+						nextIntent = new Intent(this, typeof(SwipeTabActivity));
+					}
+					else if (currentUser.userType == (int)Constants.USER_TYPE.COACH)
+					{
+						nextIntent = new Intent(this, typeof(CoachHomeActivity));
+					}
+				}
+
+				StartActivityForResult(nextIntent, 0);
 				Finish();
-            }
-            else//already registered
-            {
-                StartActivity(new Intent(this, typeof(SwipeTabActivity)));
-				Finish();
-            }
+			});
+
         }
 
         public Notification CreateNotification()

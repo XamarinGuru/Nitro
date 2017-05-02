@@ -15,7 +15,7 @@ using Com.GrapeCity.Xuni.Core;
 
 namespace goheja
 {
-	[Activity(Label = "Nitro", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
+	[Activity(Label = "Go-Heja", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, LaunchMode = LaunchMode.SingleInstance)]
 	public class SwipeTabActivity : BaseActivity
 	{
 		string[] PermissionsCalendar =
@@ -81,6 +81,8 @@ namespace goheja
 			FindViewById<RelativeLayout>(Resource.Id.tabCalendar).Click += (sender, args) => { SetPage(0); };
 			FindViewById<RelativeLayout>(Resource.Id.tabAnalytics).Click += (sender, args) => { SetPage(1); };
 			FindViewById<RelativeLayout>(Resource.Id.tabProfile).Click += (sender, args) => { SetPage(2); };
+
+			FindViewById<RelativeLayout>(Resource.Id.ActionBarMain).Visibility = AppSettings.isFakeUser ? ViewStates.Gone : ViewStates.Visible;
 		}
 
 		public void SetPage(int position)

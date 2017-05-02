@@ -41,6 +41,9 @@ Maintain for each Go-Heja Groups.
 	Path: PortableLibrary/XuniLicense.cs
 	(We will store all licenses in this file for all groups.)
 
+	app name
+	* android: Application name
+
 
 *****
 - Google map api key

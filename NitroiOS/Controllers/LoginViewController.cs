@@ -83,8 +83,16 @@ namespace location2
 
 						if (isSuccess)
 						{
-							MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-							this.PresentViewController(mainVC, true, null);
+							if (true)
+							{
+								MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+								this.PresentViewController(mainVC, true, null);
+							}
+							else
+							{
+								CoachHomeViewController coachVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
+								this.PresentViewController(coachVC, true, null);
+							}
 						}
 						else
 						{

@@ -23,8 +23,16 @@ namespace location2
 		{
 			if (AppSettings.UserID != "0" && AppSettings.UserID != null && AppSettings.UserID != "")
 			{
-				MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-				this.PresentViewController(mainVC, false, null);
+				if (true)
+				{
+					MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
+					this.PresentViewController(mainVC, true, null);
+				}
+				else
+				{
+					CoachHomeViewController coachVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
+					this.PresentViewController(coachVC, true, null);
+				}
 			}
 			else {
 				InitViewController mainVC = Storyboard.InstantiateViewController("InitViewController") as InitViewController;

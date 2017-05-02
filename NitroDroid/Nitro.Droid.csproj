@@ -139,6 +139,18 @@
     <Reference Include="Xamarin.GooglePlayServices.Maps">
       <HintPath>..\packages\Xamarin.GooglePlayServices.Maps.42.1001.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="RoundedImageView">
+      <HintPath>..\Components\RoundedImageView-2.2.1\lib\android\RoundedImageView.dll</HintPath>
+    </Reference>
+    <Reference Include="Square.OkIO">
+      <HintPath>..\packages\Square.OkIO.1.5.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+    </Reference>
+    <Reference Include="Square.OkHttp">
+      <HintPath>..\packages\Square.OkHttp.2.4.0.0\lib\MonoAndroid\Square.OkHttp.dll</HintPath>
+    </Reference>
+    <Reference Include="Square.Picasso">
+      <HintPath>..\packages\Square.Picasso.2.5.2.1\lib\MonoAndroid\Square.Picasso.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -177,9 +189,14 @@
     <Compile Include="Activities\AnalyticsActivity.cs" />
     <Compile Include="Activities\SelectPTypeActivity.cs" />
     <Compile Include="Adapter\GoHejaEventAdapter.cs" />
+    <Compile Include="Activities\CoachHomeActivity.cs" />
+    <Compile Include="Adapter\UsersAdapter.cs" />
+    <Compile Include="Activities\CoachGroupsActivity.cs" />
     <Compile Include="Web References\trackSvc\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Activities\CoachSubGroupsActivity.cs" />
+    <Compile Include="Activities\CoachAthletesBySubGroupActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\Helvetica Neue CE 35 Thin.ttf" />
@@ -319,16 +336,29 @@
     <AndroidResource Include="Resources\drawable\bg_performance.png" />
     <AndroidResource Include="Resources\values\attr.xml" />
     <AndroidResource Include="Resources\drawable\icon_home.png" />
+    <AndroidResource Include="Resources\layout\CoachHomeActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_search.png" />
+    <AndroidResource Include="Resources\layout\item_User.axml" />
+    <AndroidResource Include="Resources\layout\CoachGroupsActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_athlete.png" />
+    <AndroidResource Include="Resources\drawable\icon_circle_blue.png" />
+    <AndroidResource Include="Resources\drawable\icon_circle_green.png" />
+    <AndroidResource Include="Resources\drawable\icon_circle_red.png" />
     <None Include="Web References\trackSvc\Service1.xsd" />
     <None Include="Web References\trackSvc\Service10.xsd" />
     <None Include="Web References\trackSvc\Service11.xsd" />
     <None Include="Web References\trackSvc\Service12.xsd" />
     <None Include="Web References\trackSvc\Service13.xsd" />
+    <None Include="Web References\trackSvc\Service1.disco" />
     <None Include="Web References\trackSvc\Service1.wsdl" />
     <None Include="Web References\trackSvc\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <AndroidResource Include="Resources\drawable\icon_no_avatar.png" />
+    <AndroidResource Include="Resources\layout\CoachSubGroupsActivity.axml" />
+    <AndroidResource Include="Resources\layout\CoachAthletesBySubGroupActivity.axml" />
+    <AndroidResource Include="Resources\drawable\icon_circle_empty.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -370,6 +400,10 @@
       <Version>42.1001.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="RoundedImageView">
+      <Version>2.2.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortableLibrary\PortableLibrary.csproj">
@@ -381,10 +415,10 @@
     <WebReferences Include="Web References" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://go-heja.com/Service1.svc?wsdl">
+    <WebReferenceUrl Include="http://go-heja.com/Service1.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\trackSvc</RelPath>
-      <UpdateFromURL>http://go-heja.com/Service1.svc?wsdl</UpdateFromURL>
+      <UpdateFromURL>http://go-heja.com/Service1.svc</UpdateFromURL>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" />
