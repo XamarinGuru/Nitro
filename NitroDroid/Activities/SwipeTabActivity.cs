@@ -56,10 +56,13 @@ namespace goheja
 					SetPage(0);
 					return true;
 				}
-				else
+				else if(AppSettings.CurrentUser.userType == (int)Constants.USER_TYPE.COACH)
 				{
-					return false;
+					AppSettings.isFakeUser = false;
+					return base.OnKeyDown(keyCode, e);
 				}
+
+				return false;
 			}
 
 			return base.OnKeyDown(keyCode, e);
