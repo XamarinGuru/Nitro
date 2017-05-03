@@ -463,7 +463,7 @@ namespace goheja
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-			var userId = GetUserID();
+            var userId = AppSettings.CurrentUser.userId;
 
 			try
 			{
@@ -483,7 +483,7 @@ namespace goheja
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-			var userId = GetUserID();
+			var userId = AppSettings.CurrentUser.userId;
 
 			try
 			{
@@ -503,7 +503,7 @@ namespace goheja
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-			var userId = GetUserID();
+			var userId = AppSettings.CurrentUser.userId;
 
 			try
 			{
