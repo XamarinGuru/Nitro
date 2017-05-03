@@ -114,7 +114,11 @@ namespace goheja
 			CollepseAnimation(viewCycle);
 			CollepseAnimation(viewRun);
 			CollepseAnimation(viewSwim);
-			#endregion
+            #endregion
+
+            var txtFakeUserName = mView.FindViewById<TextView>(Resource.Id.txtFakeUserName);
+            txtFakeUserName.Visibility = AppSettings.isFakeUser ? ViewStates.Visible : ViewStates.Gone;
+            txtFakeUserName.Text = string.Format(Constants.MSG_FAKE_USER_VIEW, AppSettings.fakeUserName);
 
 			#region Actions
 			mView.FindViewById<RelativeLayout>(Resource.Id.collapsCycle).Click += ActionCollepse;

@@ -63,6 +63,7 @@ namespace PortableLibrary
 		public const string MSG_GPS_DISABLED = "GPS settings disabled.";
 		public const string MSG_COMFIRM_STOP_SPORT_COMP = "You sure you want to stop practice?";
 		public const string MSG_TRAKING_ERROR = "Tracking error into server...";
+        public const string MSG_FAKE_USER_VIEW = "Coach, you are viewing {0}";
 
 		//TYPES
 		public const string TOTALS_ES_TIME = "Elapsed time";

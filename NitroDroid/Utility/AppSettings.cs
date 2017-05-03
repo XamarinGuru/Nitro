@@ -19,6 +19,7 @@ namespace goheja
 		public static List<AthleteInSubGroup> selectedAthletesInSubGroup;
 
 		public static bool isFakeUser;
+        public static string fakeUserName;
 
 		private const string userKey = "userKey";
 		public static LoginUser CurrentUser

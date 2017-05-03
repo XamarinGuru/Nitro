@@ -82,13 +82,13 @@ namespace goheja
 						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_green);
 						break;
 					case 2:
-						convertView.FindViewById<ImageView>(Resource.Id.img2).SetImageResource(Resource.Drawable.icon_circle_blue);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_blue);
 						break;
 					case 3:
-						convertView.FindViewById<ImageView>(Resource.Id.img3).SetImageResource(Resource.Drawable.icon_circle_red);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_red);
 						break;
 					case 4:
-						convertView.FindViewById<ImageView>(Resource.Id.img3).SetImageResource(Resource.Drawable.icon_circle_empty);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_empty);
 						break;
 				}
 			}
@@ -116,11 +116,17 @@ namespace goheja
             {
                 currentUser.athleteId = null;
                 AppSettings.isFakeUser = false;
+                AppSettings.fakeUserName = string.Empty;
             }
             else
             {
                 currentUser.athleteId = (sender as LinearLayout).Tag.ToString();
                 AppSettings.isFakeUser = true;
+				foreach (var tmpUser in _searchAthletes)
+				{
+					if (tmpUser._id == fakeUserId)
+                        AppSettings.fakeUserName = tmpUser.name;
+				}
             }
 
 			AppSettings.CurrentUser = currentUser;
@@ -175,19 +181,42 @@ namespace goheja
 				ActionFakeUser.Click += ActionChangeFakeUser;
 				ActionFakeUser.Tag = athletes.athleteId;
 
+				var eventsDoneToday = athletes.eventsDoneToday.Split(new char[] { ',' });
+				for (int i = 0; i < eventsDoneToday.Length; i++)
+				{
+					switch (eventsDoneToday[i])
+					{
+						case "1":
+							convertView.FindViewById<ImageView>(Resource.Id.img1).SetImageResource(Resource.Drawable.icon_triathlon);
+							break;
+						case "2":
+							convertView.FindViewById<ImageView>(Resource.Id.img2).SetImageResource(Resource.Drawable.icon_run);
+							break;
+						case "3":
+							convertView.FindViewById<ImageView>(Resource.Id.img3).SetImageResource(Resource.Drawable.icon_swim);
+							break;
+						case "4":
+							convertView.FindViewById<ImageView>(Resource.Id.img4).SetImageResource(Resource.Drawable.icon_triathlon);
+							break;
+						case "5":
+							convertView.FindViewById<ImageView>(Resource.Id.img5).SetImageResource(Resource.Drawable.icon_other);
+							break;
+					}
+				}
+
 				switch (athletes.pmcStatus)
 				{
 					case 1:
 						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_green);
 						break;
 					case 2:
-						convertView.FindViewById<ImageView>(Resource.Id.img2).SetImageResource(Resource.Drawable.icon_circle_blue);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_blue);
 						break;
 					case 3:
-						convertView.FindViewById<ImageView>(Resource.Id.img3).SetImageResource(Resource.Drawable.icon_circle_red);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_red);
 						break;
 					case 4:
-						convertView.FindViewById<ImageView>(Resource.Id.img3).SetImageResource(Resource.Drawable.icon_circle_empty);
+						convertView.FindViewById<ImageView>(Resource.Id.imgStatus).SetImageResource(Resource.Drawable.icon_circle_empty);
 						break;
 				}
 			}
@@ -215,11 +244,17 @@ namespace goheja
 			{
 				currentUser.athleteId = null;
 				AppSettings.isFakeUser = false;
+                AppSettings.fakeUserName = string.Empty;
 			}
 			else
 			{
 				currentUser.athleteId = (sender as LinearLayout).Tag.ToString();
 				AppSettings.isFakeUser = true;
+				foreach (var tmpUser in _searchAthletes)
+				{
+                    if (tmpUser.athleteId == fakeUserId)
+                        AppSettings.fakeUserName = tmpUser.athleteName;
+				}
 			}
 
 			AppSettings.CurrentUser = currentUser;
