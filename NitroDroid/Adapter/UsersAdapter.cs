@@ -112,13 +112,18 @@ namespace goheja
 
 			var currentUser = AppSettings.CurrentUser;
 
-			if (currentUser.userId != fakeUserId)
-			{
-				currentUser.athleteId = (sender as LinearLayout).Tag.ToString();
-				AppSettings.isFakeUser = true;
+            if (currentUser.userId == fakeUserId)
+            {
+                currentUser.athleteId = null;
+                AppSettings.isFakeUser = false;
+            }
+            else
+            {
+                currentUser.athleteId = (sender as LinearLayout).Tag.ToString();
+                AppSettings.isFakeUser = true;
+            }
 
-				AppSettings.CurrentUser = currentUser;
-			}
+			AppSettings.CurrentUser = currentUser;
 
 			var nextIntent = new Intent(mSuperActivity, typeof(SwipeTabActivity));
 			mSuperActivity.StartActivityForResult(nextIntent, 0);
@@ -194,7 +199,6 @@ namespace goheja
 			return convertView;
 		}
 
-
 		public void PerformSearch(string strSearch)
 		{
 			strSearch = strSearch.ToLower();
@@ -207,13 +211,18 @@ namespace goheja
 
 			var currentUser = AppSettings.CurrentUser;
 
-			if (currentUser.userId != fakeUserId)
+			if (currentUser.userId == fakeUserId)
+			{
+				currentUser.athleteId = null;
+				AppSettings.isFakeUser = false;
+			}
+			else
 			{
 				currentUser.athleteId = (sender as LinearLayout).Tag.ToString();
 				AppSettings.isFakeUser = true;
-
-				AppSettings.CurrentUser = currentUser;
 			}
+
+			AppSettings.CurrentUser = currentUser;
 
 			var nextIntent = new Intent(mSuperActivity, typeof(SwipeTabActivity));
 			mSuperActivity.StartActivityForResult(nextIntent, 0);

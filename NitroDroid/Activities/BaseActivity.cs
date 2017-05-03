@@ -459,11 +459,11 @@ namespace goheja
 		#endregion
 
 		#region EVENT_MANAGEMENT
-		public List<GoHejaEvent> GetPastEvents()
+		public List<GoHejaEvent> GetPastEvents(bool isForDeviceCalendar = false)
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-            var userId = AppSettings.CurrentUser.userId;
+            var userId = isForDeviceCalendar ? AppSettings.CurrentUser.userId : GetUserID();
 
 			try
 			{
@@ -479,11 +479,11 @@ namespace goheja
 			return result;
 		}
 
-		public List<GoHejaEvent> GetTodayEvents()
+		public List<GoHejaEvent> GetTodayEvents(bool isForDeviceCalendar = false)
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-			var userId = AppSettings.CurrentUser.userId;
+			var userId = isForDeviceCalendar ? AppSettings.CurrentUser.userId : GetUserID();
 
 			try
 			{
@@ -499,11 +499,11 @@ namespace goheja
 			return result;
 		}
 
-		public List<GoHejaEvent> GetFutureEvents()
+		public List<GoHejaEvent> GetFutureEvents(bool isForDeviceCalendar = false)
 		{
 			List<GoHejaEvent> result = new List<GoHejaEvent>();
 
-			var userId = AppSettings.CurrentUser.userId;
+			var userId = isForDeviceCalendar ? AppSettings.CurrentUser.userId : GetUserID();
 
 			try
 			{

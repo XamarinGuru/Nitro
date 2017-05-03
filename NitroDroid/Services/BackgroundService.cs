@@ -115,9 +115,9 @@ namespace goheja
 
 		public void UpdateGoHejaEvents()
 		{
-			var pastEvents = baseVC.GetPastEvents();
-			var todayEvents = baseVC.GetTodayEvents();
-			var futureEvents = baseVC.GetFutureEvents();
+			var pastEvents = baseVC.GetPastEvents(true);
+			var todayEvents = baseVC.GetTodayEvents(true);
+			var futureEvents = baseVC.GetFutureEvents(true);
 
 			AddEventsToGoHejaCalendar(pastEvents);
 			AddEventsToGoHejaCalendar(todayEvents);
