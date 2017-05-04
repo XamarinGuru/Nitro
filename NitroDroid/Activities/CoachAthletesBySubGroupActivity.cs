@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Text;
 using Android.Widget;
 using PortableLibrary;
+using UniversalImageLoader.Core;
 
 namespace goheja
 {
@@ -20,6 +21,10 @@ namespace goheja
 			base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.CoachAthletesBySubGroupActivity);
+
+			var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
+			// Initialize ImageLoader with configuration.
+			ImageLoader.Instance.Init(config);
 
             InitUISettings();
 

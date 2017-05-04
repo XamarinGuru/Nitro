@@ -24,7 +24,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imgType"
+                android:id="@+id/imgProfile"
                 android:src="@drawable/icon_no_avatar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

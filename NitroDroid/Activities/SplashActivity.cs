@@ -6,6 +6,7 @@ using Android.Text;
 using System.Threading.Tasks;
 using Android.Content.PM;
 using PortableLibrary;
+using System.Collections.Generic;
 
 namespace goheja
 {
@@ -67,7 +68,8 @@ namespace goheja
 
         public Notification CreateNotification()
         {
-            var contentIntent = PendingIntent.GetActivity(this, 0, new Intent(this, typeof(SwipeTabActivity)), PendingIntentFlags.UpdateCurrent);
+			var contentIntent = PendingIntent.GetActivity(this, 0, new Intent(this, typeof(SplashActivity)), PendingIntentFlags.UpdateCurrent);
+			//var contentIntent = PendingIntent.GetActivity(this, 0, gPreviousIntent(new Intent(this, typeof(SwipeTabActivity))), PendingIntentFlags.UpdateCurrent);
             var builder = new NotificationCompat.Builder(this)
                	.SetContentTitle("Nitro on the go")
                	.SetSmallIcon(Resource.Drawable.icon_notification)
@@ -88,6 +90,36 @@ namespace goheja
             n.Flags |= NotificationFlags.NoClear;
             return n;
         }
+		//private Intent gPreviousIntent(Intent newIntent)
+		//{
+		//	ActivityManager am = (ActivityManager)GetSystemService(Context.ActivityService);
+		//	var recentTaskInfos = am.GetRecentTasks(1024, 0);
+		//	string pkgName = Application.Context.PackageName;
+		//	if (recentTaskInfos.Count != 0)
+		//	{
+		//		ActivityManager.RecentTaskInfo recentTaskInfo;
+		//		for (int i = 0; i < recentTaskInfos.Count; i++)
+		//		{
+		//			recentTaskInfo = recentTaskInfos[i];
+		//			if (recentTaskInfo.BaseIntent.Component.PackageName.Equals(pkgName))
+		//			{
+		//				newIntent = recentTaskInfo.BaseIntent;
+		//				newIntent.SetFlags(ActivityFlags.NewTask);
+		//			}
+		//		}
+		//	}
+		//	return newIntent;
+		//}
     }
+	//public class NotificationActivity : BaseActivity
+	//{
+	//	public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+	//	{
+	//		base.OnCreate(savedInstanceState, persistentState);
+
+	//		if(
+	//	}
+	//}
+
 }
 

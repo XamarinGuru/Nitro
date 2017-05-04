@@ -36,7 +36,7 @@ namespace PortableLibrary
 	{
 		public string athleteId { get; set; }
 		public string athleteName { get; set; }
-		public string userImageURI { get; set; }
+		public string userImagURI { get; set; }
 		public string eventsDoneToday { get; set; }
 		public int pmcStatus { get; set; }
 	}

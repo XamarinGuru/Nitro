@@ -157,6 +157,9 @@
     <Reference Include="Xuni.Android.FlexChart">
       <HintPath>..\packages\Xuni.Android.FlexChart.2.3.20171.185\lib\MonoAndroid10\Xuni.Android.FlexChart.dll</HintPath>
     </Reference>
+    <Reference Include="UniversalImageLoader">
+      <HintPath>..\Components\UniversalImageLoader-1.9.4.1\lib\android\UniversalImageLoader.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment\FragmentCalendar.cs" />
@@ -408,6 +411,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="RoundedImageView">
       <Version>2.2.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="UniversalImageLoader">
+      <Version>1.9.4.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

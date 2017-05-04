@@ -5,6 +5,7 @@ using Android.Content;
 using Android.Views;
 using Android.Widget;
 using PortableLibrary;
+using UniversalImageLoader.Core;
 
 namespace goheja
 {
@@ -48,6 +49,13 @@ namespace goheja
 				convertView = LayoutInflater.From(mSuperActivity).Inflate(Resource.Layout.item_User, null);
 
 				convertView.FindViewById<TextView>(Resource.Id.lblName).Text = athletes.name;
+
+				if (!string.IsNullOrEmpty(athletes.userImagURI))
+				{
+					var imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgProfile);
+					ImageLoader imageLoader = ImageLoader.Instance;
+					imageLoader.DisplayImage(athletes.userImagURI, imgIcon);
+				}
 
 				var ActionFakeUser = convertView.FindViewById<LinearLayout>(Resource.Id.ActionFakeUser);
 				ActionFakeUser.Click += ActionChangeFakeUser;
@@ -94,7 +102,7 @@ namespace goheja
 			}
 			catch (Exception ex)
 			{
-				mSuperActivity.ShowTrackMessageBox(ex.Message);
+				//mSuperActivity.ShowTrackMessageBox(ex.Message);
 			}
 
 			return convertView;
@@ -177,6 +185,13 @@ namespace goheja
 
 				convertView.FindViewById<TextView>(Resource.Id.lblName).Text = athletes.athleteName;
 
+				if (!string.IsNullOrEmpty(athletes.userImagURI))
+				{
+					var imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgProfile);
+					ImageLoader imageLoader = ImageLoader.Instance;
+					imageLoader.DisplayImage(athletes.userImagURI, imgIcon);
+				}
+
 				var ActionFakeUser = convertView.FindViewById<LinearLayout>(Resource.Id.ActionFakeUser);
 				ActionFakeUser.Click += ActionChangeFakeUser;
 				ActionFakeUser.Tag = athletes.athleteId;
@@ -222,7 +237,7 @@ namespace goheja
 			}
 			catch (Exception ex)
 			{
-				mSuperActivity.ShowTrackMessageBox(ex.Message);
+				//mSuperActivity.ShowTrackMessageBox(ex.Message);
 			}
 
 			return convertView;
