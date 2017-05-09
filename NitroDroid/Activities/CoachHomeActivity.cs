@@ -25,7 +25,6 @@ namespace goheja
 
             SetContentView(Resource.Layout.CoachHomeActivity);
 
-
 			var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
 			// Initialize ImageLoader with configuration.
 			ImageLoader.Instance.Init(config);

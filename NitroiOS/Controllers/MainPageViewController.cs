@@ -32,11 +32,14 @@ namespace location2
 			btnCalendar.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			btnHome.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			btnProfile.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+
+			constraintTabBarHeight.Constant = AppSettings.isFakeUser ? 0 : 45;
 		}
 
 		void AddSubController(string vcIdentifier)
 		{
 			var tabVC = (BaseViewController)this.Storyboard.InstantiateViewController(vcIdentifier);
+			tabVC.rootVC = this;
 			var tabNavVC = new UINavigationController(tabVC);
 
 			tabNavVC.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);

@@ -11,8 +11,8 @@ using UIKit;
 
 namespace location2
 {
-    [Register ("UserCell")]
-    partial class UserCell
+    [Register ("UserSubGroupCell")]
+    partial class UserSubGroupCell
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

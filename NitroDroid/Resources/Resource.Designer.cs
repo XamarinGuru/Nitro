@@ -26,61 +26,6 @@ namespace goheja
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.RangeSlider.Resource.Attribute.absoluteMaxValue = global::goheja.Resource.Attribute.absoluteMaxValue;
-			global::Xamarin.RangeSlider.Resource.Attribute.absoluteMinValue = global::goheja.Resource.Attribute.absoluteMinValue;
-			global::Xamarin.RangeSlider.Resource.Attribute.activateOnDefaultValues = global::goheja.Resource.Attribute.activateOnDefaultValues;
-			global::Xamarin.RangeSlider.Resource.Attribute.activeColor = global::goheja.Resource.Attribute.activeColor;
-			global::Xamarin.RangeSlider.Resource.Attribute.alwaysActive = global::goheja.Resource.Attribute.alwaysActive;
-			global::Xamarin.RangeSlider.Resource.Attribute.barHeight = global::goheja.Resource.Attribute.barHeight;
-			global::Xamarin.RangeSlider.Resource.Attribute.defaultColor = global::goheja.Resource.Attribute.defaultColor;
-			global::Xamarin.RangeSlider.Resource.Attribute.internalPadding = global::goheja.Resource.Attribute.internalPadding;
-			global::Xamarin.RangeSlider.Resource.Attribute.maxThumbHidden = global::goheja.Resource.Attribute.maxThumbHidden;
-			global::Xamarin.RangeSlider.Resource.Attribute.minThumbHidden = global::goheja.Resource.Attribute.minThumbHidden;
-			global::Xamarin.RangeSlider.Resource.Attribute.showRangeLabels = global::goheja.Resource.Attribute.showRangeLabels;
-			global::Xamarin.RangeSlider.Resource.Attribute.stepValue = global::goheja.Resource.Attribute.stepValue;
-			global::Xamarin.RangeSlider.Resource.Attribute.stepValueContinuously = global::goheja.Resource.Attribute.stepValueContinuously;
-			global::Xamarin.RangeSlider.Resource.Attribute.textAboveThumbsColor = global::goheja.Resource.Attribute.textAboveThumbsColor;
-			global::Xamarin.RangeSlider.Resource.Attribute.textSize = global::goheja.Resource.Attribute.textSize;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbDisabled = global::goheja.Resource.Attribute.thumbDisabled;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbNormal = global::goheja.Resource.Attribute.thumbNormal;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbPressed = global::goheja.Resource.Attribute.thumbPressed;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbShadow = global::goheja.Resource.Attribute.thumbShadow;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbShadowBlur = global::goheja.Resource.Attribute.thumbShadowBlur;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbShadowColor = global::goheja.Resource.Attribute.thumbShadowColor;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbShadowXOffset = global::goheja.Resource.Attribute.thumbShadowXOffset;
-			global::Xamarin.RangeSlider.Resource.Attribute.thumbShadowYOffset = global::goheja.Resource.Attribute.thumbShadowYOffset;
-			global::Xamarin.RangeSlider.Resource.Attribute.valuesAboveThumbs = global::goheja.Resource.Attribute.valuesAboveThumbs;
-			global::Xamarin.RangeSlider.Resource.Drawable.seek_thumb_disabled = global::goheja.Resource.Drawable.seek_thumb_disabled;
-			global::Xamarin.RangeSlider.Resource.Drawable.seek_thumb_normal = global::goheja.Resource.Drawable.seek_thumb_normal;
-			global::Xamarin.RangeSlider.Resource.Drawable.seek_thumb_pressed = global::goheja.Resource.Drawable.seek_thumb_pressed;
-			global::Xamarin.RangeSlider.Resource.String.app_name = global::goheja.Resource.String.app_name;
-			global::Xamarin.RangeSlider.Resource.String.demo_max_label = global::goheja.Resource.String.demo_max_label;
-			global::Xamarin.RangeSlider.Resource.String.demo_min_label = global::goheja.Resource.String.demo_min_label;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl = global::goheja.Resource.Styleable.RangeSliderControl;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_absoluteMaxValue = global::goheja.Resource.Styleable.RangeSliderControl_absoluteMaxValue;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_absoluteMinValue = global::goheja.Resource.Styleable.RangeSliderControl_absoluteMinValue;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_activateOnDefaultValues = global::goheja.Resource.Styleable.RangeSliderControl_activateOnDefaultValues;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_activeColor = global::goheja.Resource.Styleable.RangeSliderControl_activeColor;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_alwaysActive = global::goheja.Resource.Styleable.RangeSliderControl_alwaysActive;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_barHeight = global::goheja.Resource.Styleable.RangeSliderControl_barHeight;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_defaultColor = global::goheja.Resource.Styleable.RangeSliderControl_defaultColor;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_internalPadding = global::goheja.Resource.Styleable.RangeSliderControl_internalPadding;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_maxThumbHidden = global::goheja.Resource.Styleable.RangeSliderControl_maxThumbHidden;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_minThumbHidden = global::goheja.Resource.Styleable.RangeSliderControl_minThumbHidden;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_showRangeLabels = global::goheja.Resource.Styleable.RangeSliderControl_showRangeLabels;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_stepValue = global::goheja.Resource.Styleable.RangeSliderControl_stepValue;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_stepValueContinuously = global::goheja.Resource.Styleable.RangeSliderControl_stepValueContinuously;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_textAboveThumbsColor = global::goheja.Resource.Styleable.RangeSliderControl_textAboveThumbsColor;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_textSize = global::goheja.Resource.Styleable.RangeSliderControl_textSize;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbDisabled = global::goheja.Resource.Styleable.RangeSliderControl_thumbDisabled;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbNormal = global::goheja.Resource.Styleable.RangeSliderControl_thumbNormal;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbPressed = global::goheja.Resource.Styleable.RangeSliderControl_thumbPressed;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbShadow = global::goheja.Resource.Styleable.RangeSliderControl_thumbShadow;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbShadowBlur = global::goheja.Resource.Styleable.RangeSliderControl_thumbShadowBlur;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbShadowColor = global::goheja.Resource.Styleable.RangeSliderControl_thumbShadowColor;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbShadowXOffset = global::goheja.Resource.Styleable.RangeSliderControl_thumbShadowXOffset;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_thumbShadowYOffset = global::goheja.Resource.Styleable.RangeSliderControl_thumbShadowYOffset;
-			global::Xamarin.RangeSlider.Resource.Styleable.RangeSliderControl_valuesAboveThumbs = global::goheja.Resource.Styleable.RangeSliderControl_valuesAboveThumbs;
 			global::AndroidHUD.Resource.Attribute.ahBarColor = global::goheja.Resource.Attribute.ahBarColor;
 			global::AndroidHUD.Resource.Attribute.ahBarLength = global::goheja.Resource.Attribute.ahBarLength;
 			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::goheja.Resource.Attribute.ahBarWidth;
@@ -236,17 +181,17 @@ namespace goheja
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f0100b0
-			public const int absoluteMaxValue = 2130772144;
+			// aapt resource value: 0x7f0100b3
+			public const int absoluteMaxValue = 2130772147;
 			
-			// aapt resource value: 0x7f0100af
-			public const int absoluteMinValue = 2130772143;
+			// aapt resource value: 0x7f0100b2
+			public const int absoluteMinValue = 2130772146;
 			
-			// aapt resource value: 0x7f0100c3
-			public const int activateOnDefaultValues = 2130772163;
+			// aapt resource value: 0x7f0100c6
+			public const int activateOnDefaultValues = 2130772166;
 			
-			// aapt resource value: 0x7f0100b9
-			public const int activeColor = 2130772153;
+			// aapt resource value: 0x7f0100bc
+			public const int activeColor = 2130772156;
 			
 			// aapt resource value: 0x7f0100a6
 			public const int ahBarColor = 2130772134;
@@ -284,14 +229,14 @@ namespace goheja
 			// aapt resource value: 0x7f0100a5
 			public const int ahTextSize = 2130772133;
 			
-			// aapt resource value: 0x7f0100b4
-			public const int alwaysActive = 2130772148;
+			// aapt resource value: 0x7f0100b7
+			public const int alwaysActive = 2130772151;
 			
 			// aapt resource value: 0x7f010096
 			public const int ambientEnabled = 2130772118;
 			
-			// aapt resource value: 0x7f0100b7
-			public const int barHeight = 2130772151;
+			// aapt resource value: 0x7f0100ba
+			public const int barHeight = 2130772154;
 			
 			// aapt resource value: 0x7f0100a0
 			public const int buttonSize = 2130772128;
@@ -323,8 +268,8 @@ namespace goheja
 			// aapt resource value: 0x7f0100a1
 			public const int colorScheme = 2130772129;
 			
-			// aapt resource value: 0x7f0100b8
-			public const int defaultColor = 2130772152;
+			// aapt resource value: 0x7f0100bb
+			public const int defaultColor = 2130772155;
 			
 			// aapt resource value: 0x7f010018
 			public const int flexChartSeries_chartType = 2130771992;
@@ -698,8 +643,8 @@ namespace goheja
 			// aapt resource value: 0x7f01009d
 			public const int imageAspectRatioAdjust = 2130772125;
 			
-			// aapt resource value: 0x7f0100b6
-			public const int internalPadding = 2130772150;
+			// aapt resource value: 0x7f0100b9
+			public const int internalPadding = 2130772153;
 			
 			// aapt resource value: 0x7f01009b
 			public const int latLngBoundsNorthEastLatitude = 2130772123;
@@ -719,17 +664,17 @@ namespace goheja
 			// aapt resource value: 0x7f010086
 			public const int mapType = 2130772102;
 			
-			// aapt resource value: 0x7f0100b2
-			public const int maxThumbHidden = 2130772146;
+			// aapt resource value: 0x7f0100b5
+			public const int maxThumbHidden = 2130772149;
 			
-			// aapt resource value: 0x7f0100c7
-			public const int minTextSize = 2130772167;
+			// aapt resource value: 0x7f0100af
+			public const int minTextSize = 2130772143;
 			
-			// aapt resource value: 0x7f0100b1
-			public const int minThumbHidden = 2130772145;
+			// aapt resource value: 0x7f0100b4
+			public const int minThumbHidden = 2130772148;
 			
-			// aapt resource value: 0x7f0100c8
-			public const int precision = 2130772168;
+			// aapt resource value: 0x7f0100b0
+			public const int precision = 2130772144;
 			
 			// aapt resource value: 0x7f010080
 			public const int riv_border_color = 2130772096;
@@ -770,47 +715,47 @@ namespace goheja
 			// aapt resource value: 0x7f0100a2
 			public const int scopeUris = 2130772130;
 			
-			// aapt resource value: 0x7f0100b3
-			public const int showRangeLabels = 2130772147;
+			// aapt resource value: 0x7f0100b6
+			public const int showRangeLabels = 2130772150;
 			
-			// aapt resource value: 0x7f0100c9
-			public const int sizeToFit = 2130772169;
+			// aapt resource value: 0x7f0100b1
+			public const int sizeToFit = 2130772145;
 			
-			// aapt resource value: 0x7f0100c4
-			public const int stepValue = 2130772164;
+			// aapt resource value: 0x7f0100c7
+			public const int stepValue = 2130772167;
 			
-			// aapt resource value: 0x7f0100c5
-			public const int stepValueContinuously = 2130772165;
-			
-			// aapt resource value: 0x7f0100ba
-			public const int textAboveThumbsColor = 2130772154;
-			
-			// aapt resource value: 0x7f0100c6
-			public const int textSize = 2130772166;
+			// aapt resource value: 0x7f0100c8
+			public const int stepValueContinuously = 2130772168;
 			
 			// aapt resource value: 0x7f0100bd
-			public const int thumbDisabled = 2130772157;
+			public const int textAboveThumbsColor = 2130772157;
 			
-			// aapt resource value: 0x7f0100bb
-			public const int thumbNormal = 2130772155;
-			
-			// aapt resource value: 0x7f0100bc
-			public const int thumbPressed = 2130772156;
-			
-			// aapt resource value: 0x7f0100be
-			public const int thumbShadow = 2130772158;
-			
-			// aapt resource value: 0x7f0100c2
-			public const int thumbShadowBlur = 2130772162;
-			
-			// aapt resource value: 0x7f0100bf
-			public const int thumbShadowColor = 2130772159;
+			// aapt resource value: 0x7f0100c9
+			public const int textSize = 2130772169;
 			
 			// aapt resource value: 0x7f0100c0
-			public const int thumbShadowXOffset = 2130772160;
+			public const int thumbDisabled = 2130772160;
+			
+			// aapt resource value: 0x7f0100be
+			public const int thumbNormal = 2130772158;
+			
+			// aapt resource value: 0x7f0100bf
+			public const int thumbPressed = 2130772159;
 			
 			// aapt resource value: 0x7f0100c1
-			public const int thumbShadowYOffset = 2130772161;
+			public const int thumbShadow = 2130772161;
+			
+			// aapt resource value: 0x7f0100c5
+			public const int thumbShadowBlur = 2130772165;
+			
+			// aapt resource value: 0x7f0100c2
+			public const int thumbShadowColor = 2130772162;
+			
+			// aapt resource value: 0x7f0100c3
+			public const int thumbShadowXOffset = 2130772163;
+			
+			// aapt resource value: 0x7f0100c4
+			public const int thumbShadowYOffset = 2130772164;
 			
 			// aapt resource value: 0x7f01008d
 			public const int uiCompass = 2130772109;
@@ -836,8 +781,8 @@ namespace goheja
 			// aapt resource value: 0x7f010093
 			public const int useViewLifecycle = 2130772115;
 			
-			// aapt resource value: 0x7f0100b5
-			public const int valuesAboveThumbs = 2130772149;
+			// aapt resource value: 0x7f0100b8
+			public const int valuesAboveThumbs = 2130772152;
 			
 			// aapt resource value: 0x7f010094
 			public const int zOrderOnTop = 2130772116;
@@ -1277,43 +1222,34 @@ namespace goheja
 			public const int runRound_new = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int seek_thumb_disabled = 2130837630;
+			public const int speed_new = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int seek_thumb_normal = 2130837631;
+			public const int splash = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int seek_thumb_pressed = 2130837632;
+			public const int splash_new = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int speed_new = 2130837633;
+			public const int stop_active = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int splash = 2130837634;
+			public const int switch_off = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int splash_new = 2130837635;
+			public const int timer_new = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int stop_active = 2130837636;
+			public const int up_black = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int switch_off = 2130837637;
+			public const int up_gray = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int timer_new = 2130837638;
+			public const int up_white = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int up_black = 2130837639;
-			
-			// aapt resource value: 0x7f020088
-			public const int up_gray = 2130837640;
-			
-			// aapt resource value: 0x7f020089
-			public const int up_white = 2130837641;
-			
-			// aapt resource value: 0x7f02008a
-			public const int watt_new = 2130837642;
+			public const int watt_new = 2130837639;
 			
 			static Drawable()
 			{
@@ -2777,14 +2713,14 @@ namespace goheja
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070020
-			public const int ApplicationName = 2131165216;
-			
-			// aapt resource value: 0x7f07001f
-			public const int Hello = 2131165215;
+			// aapt resource value: 0x7f07001d
+			public const int ApplicationName = 2131165213;
 			
 			// aapt resource value: 0x7f07001c
-			public const int app_name = 2131165212;
+			public const int Hello = 2131165212;
+			
+			// aapt resource value: 0x7f07001e
+			public const int app_name = 2131165214;
 			
 			// aapt resource value: 0x7f07000a
 			public const int common_google_play_services_enable_button = 2131165194;
@@ -2840,11 +2776,11 @@ namespace goheja
 			// aapt resource value: 0x7f070000
 			public const int define_roundedimageview = 2131165184;
 			
-			// aapt resource value: 0x7f07001e
-			public const int demo_max_label = 2131165214;
+			// aapt resource value: 0x7f070020
+			public const int demo_max_label = 2131165216;
 			
-			// aapt resource value: 0x7f07001d
-			public const int demo_min_label = 2131165213;
+			// aapt resource value: 0x7f07001f
+			public const int demo_min_label = 2131165215;
 			
 			// aapt resource value: 0x7f07001b
 			public const int library_name = 2131165211;
@@ -2922,9 +2858,9 @@ namespace goheja
 			
 			public static int[] AutofitTextView = new int[]
 			{
-					2130772167,
-					2130772168,
-					2130772169};
+					2130772143,
+					2130772144,
+					2130772145};
 			
 			// aapt resource value: 0
 			public const int AutofitTextView_minTextSize = 0;
@@ -3581,9 +3517,6 @@ namespace goheja
 			
 			public static int[] RangeSliderControl = new int[]
 			{
-					2130772143,
-					2130772144,
-					2130772145,
 					2130772146,
 					2130772147,
 					2130772148,
@@ -3604,7 +3537,10 @@ namespace goheja
 					2130772163,
 					2130772164,
 					2130772165,
-					2130772166};
+					2130772166,
+					2130772167,
+					2130772168,
+					2130772169};
 			
 			// aapt resource value: 1
 			public const int RangeSliderControl_absoluteMaxValue = 1;

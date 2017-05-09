@@ -60,7 +60,7 @@ namespace location2
 			if (!IsNetEnable()) return;
 
 			var author = MemberModel.firstname + " " + MemberModel.lastname;
-			var authorID = AppSettings.UserID;
+			var authorID = AppSettings.isFakeUser ? AppSettings.CurrentUser.userId : AppSettings.CurrentUser.athleteId;
 
 			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{

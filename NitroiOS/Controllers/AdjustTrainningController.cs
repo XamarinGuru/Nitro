@@ -208,7 +208,9 @@ namespace location2
 
 				InvokeOnMainThread(() =>
 				{
-					UpdateMemberNotes(txtComment.Text, AppSettings.UserID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, selectedEvent.type);
+					var authorID = AppSettings.isFakeUser ? AppSettings.CurrentUser.userId : AppSettings.CurrentUser.athleteId;
+
+					UpdateMemberNotes(txtComment.Text, authorID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, selectedEvent.type);
 
 					HideLoadingView();
 					NavigationController.PopViewController(true);

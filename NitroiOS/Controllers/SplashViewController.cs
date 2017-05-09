@@ -1,6 +1,7 @@
 using System;
 using UIKit;
 using System.Threading.Tasks;
+using PortableLibrary;
 
 namespace location2
 {
@@ -21,23 +22,24 @@ namespace location2
 
 		private void GotoMainIfAlreadyLoggedin()
 		{
-			if (AppSettings.UserID != "0" && AppSettings.UserID != null && AppSettings.UserID != "")
+			var nextVC = Storyboard.InstantiateViewController("InitViewController");
+
+			var currentUser = AppSettings.CurrentUser;
+			if (currentUser != null)
 			{
-				if (true)
+				if (currentUser.userType == (int)Constants.USER_TYPE.ATHLETE)
 				{
-					MainPageViewController mainVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
-					this.PresentViewController(mainVC, true, null);
+					nextVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
 				}
-				else
+				else if (currentUser.userType == (int)Constants.USER_TYPE.COACH)
 				{
-					CoachHomeViewController coachVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
-					this.PresentViewController(coachVC, true, null);
+					var tabVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
+					nextVC = new UINavigationController(tabVC);
+					//nextVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
 				}
 			}
-			else {
-				InitViewController mainVC = Storyboard.InstantiateViewController("InitViewController") as InitViewController;
-				this.PresentViewController(mainVC, false, null);
-			}
+
+			this.PresentViewController(nextVC, false, null);
 		}
     }
 }

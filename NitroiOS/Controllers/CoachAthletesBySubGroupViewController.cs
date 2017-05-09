@@ -1,17 +1,18 @@
 using Foundation;
 using System;
 using UIKit;
-using System.Collections.Generic;
 using PortableLibrary;
+using System.Collections.Generic;
 using System.Linq;
+using CoreGraphics;
 
 namespace location2
 {
-	public partial class CoachHomeViewController : BaseViewController
+	public partial class CoachAthletesBySubGroupViewController : BaseViewController
 	{
-		List<Athlete> _users = new List<Athlete>();
+		public List<AthleteInSubGroup> _users = new List<AthleteInSubGroup>();
 
-		public CoachHomeViewController(IntPtr handle) : base(handle)
+		public CoachAthletesBySubGroupViewController(IntPtr handle) : base(handle)
 		{
 		}
 
@@ -23,38 +24,32 @@ namespace location2
 
 			if (!IsNetEnable()) return;
 
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
-			{
-				ShowLoadingView(Constants.MSG_LOADING_DATA);
-
-				_users = GetAllUsers();
-
-				var tblDataSource = new UsersTableViewSource(_users, this);
-
-				InvokeOnMainThread(() =>
-				{
-					tableView.Source = tblDataSource;
-					tableView.ReloadData();
-					HideLoadingView();
-				});
-			});
-		}
-
-		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewWillAppear(animated);
-			NavigationController.NavigationBar.Hidden = true;
+			tableView.Source = new UsersSubGroupTableViewSource(_users, this);
+			tableView.ReloadData();
 		}
 
 		void InitUISettings()
 		{
 			txtSearch.EditingChanged += ActionSearch;
+
+			NavigationController.NavigationBar.Hidden = false;
+
+			NavigationController.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+			NavigationController.NavigationBar.BackgroundColor = UIColor.Clear;
+			NavigationController.NavigationBar.ShadowImage = new UIImage();
+
+			NavigationItem.HidesBackButton = true;
+
+			var leftButton = new UIButton(new CGRect(0, 0, 20, 20));
+			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
+			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
+			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 		}
 
 		void ActionSearch(object sender, EventArgs e)
 		{
-			(tableView.Source as UsersTableViewSource).PerformSearch((sender as UITextField).Text);
-			tableView.ReloadData();  
+			(tableView.Source as UsersSubGroupTableViewSource).PerformSearch((sender as UITextField).Text);
+			tableView.ReloadData();
 		}
 
 		partial void ActionGoToGroup(UIButton sender)
@@ -65,15 +60,15 @@ namespace location2
 		}
 
 		#region UserTableViewSource
-		class UsersTableViewSource : UITableViewSource
+		class UsersSubGroupTableViewSource : UITableViewSource
 		{
-			List<Athlete> _athletes;
-			List<Athlete> _searchAthletes;
+			List<AthleteInSubGroup> _athletes;
+			List<AthleteInSubGroup> _searchAthletes;
 			BaseViewController mSuperVC;
 
-			public UsersTableViewSource(List<Athlete> users, BaseViewController superVC)
+			public UsersSubGroupTableViewSource(List<AthleteInSubGroup> users, BaseViewController superVC)
 			{
-				_athletes = new List<Athlete>();
+				_athletes = new List<AthleteInSubGroup>();
 
 				if (users == null) return;
 
@@ -92,7 +87,7 @@ namespace location2
 			}
 			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 			{
-				UserCell cell = tableView.DequeueReusableCell("UserCell") as UserCell;
+				UserSubGroupCell cell = tableView.DequeueReusableCell("UserSubGroupCell") as UserSubGroupCell;
 				cell.SetCell(_searchAthletes[indexPath.Row]);
 
 				return cell;
@@ -103,7 +98,7 @@ namespace location2
 				if (!mSuperVC.IsNetEnable()) return;
 
 				var selectedAthlete = _searchAthletes[indexPath.Row];
-				var fakeUserId = selectedAthlete._id;
+				var fakeUserId = selectedAthlete.athleteId;
 				var currentUser = AppSettings.CurrentUser;
 
 				if (currentUser.userId == fakeUserId)
@@ -118,15 +113,13 @@ namespace location2
 					AppSettings.isFakeUser = true;
 					foreach (var tmpUser in _searchAthletes)
 					{
-						if (tmpUser._id == fakeUserId)
-							AppSettings.fakeUserName = tmpUser.name;
+						if (tmpUser.athleteId == fakeUserId)
+							AppSettings.fakeUserName = tmpUser.athleteName;
 					}
 				}
 
 				AppSettings.CurrentUser = currentUser;
 
-				//var nextIntent = new Intent(mSuperActivity, typeof(SwipeTabActivity));
-				//mSuperActivity.StartActivityForResult(nextIntent, 0);
 				var sb = UIStoryboard.FromName("Main", null);
 				MainPageViewController nextVC = sb.InstantiateViewController("MainPageViewController") as MainPageViewController;
 				mSuperVC.NavigationController.PushViewController(nextVC, true);
@@ -135,7 +128,7 @@ namespace location2
 			public void PerformSearch(string strSearch)
 			{
 				strSearch = strSearch.ToLower();
-				_searchAthletes = _athletes.Where(x => x.name.ToLower().Contains(strSearch)).ToList();
+				_searchAthletes = _athletes.Where(x => x.athleteName.ToLower().Contains(strSearch)).ToList();
 			}
 		}
 		#endregion

@@ -16,6 +16,10 @@ namespace location2
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnBack { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnCycleColleps { get; set; }
 
         [Outlet]
@@ -81,6 +85,10 @@ namespace location2
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblCycleStressTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblFakeUserName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -186,6 +194,10 @@ namespace location2
         [GeneratedCode ("iOS Designer", "1.0")]
         location2.RangeSliderControl zoomSlider { get; set; }
 
+        [Action ("ActionBack:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionBack (UIKit.UIButton sender);
+
         [Action ("ActionCollect:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionCollect (UIKit.UIButton sender);
@@ -196,6 +208,11 @@ namespace location2
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnBack != null) {
+                btnBack.Dispose ();
+                btnBack = null;
+            }
+
             if (btnCycleColleps != null) {
                 btnCycleColleps.Dispose ();
                 btnCycleColleps = null;
@@ -279,6 +296,11 @@ namespace location2
             if (lblCycleStressTitle != null) {
                 lblCycleStressTitle.Dispose ();
                 lblCycleStressTitle = null;
+            }
+
+            if (lblFakeUserName != null) {
+                lblFakeUserName.Dispose ();
+                lblFakeUserName = null;
             }
 
             if (lblRunDistance != null) {

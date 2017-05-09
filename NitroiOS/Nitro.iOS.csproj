@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.props')" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.4\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.4\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -20,13 +20,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386</MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
     <AssemblyName>location2</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchFastDev>false</MtouchFastDev>
+    <MtouchFastDev>true</MtouchFastDev>
     <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -50,7 +50,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchArch>i386</MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
@@ -93,15 +93,6 @@
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.20\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Messaging.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.2.1\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Messaging">
-      <HintPath>..\packages\Xam.Plugins.Messaging.3.2.1\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
@@ -129,35 +120,47 @@
     <Reference Include="GalaSoft.MvvmLight.Platform">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.6.4.1\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Messaging.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0\lib\Xamarin.iOS10\Plugin.Messaging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Messaging">
+      <HintPath>..\packages\Xam.Plugins.Messaging.4.0.0\lib\Xamarin.iOS10\Plugin.Messaging.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Maps">
-      <HintPath>..\packages\Xamarin.Google.iOS.Maps.2.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Google.iOS.Maps.2.1.0.1\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.RangeSlider.Common">
-      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.Common.dll</HintPath>
+      <HintPath>..\packages\Xamarin.RangeSlider.0.6.17\lib\Xamarin.iOS10\Xamarin.RangeSlider.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.RangeSlider.iOS">
-      <HintPath>..\packages\Xamarin.RangeSlider.0.6.14\lib\Xamarin.iOS10\Xamarin.RangeSlider.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+      <HintPath>..\packages\Xamarin.RangeSlider.0.6.17\lib\Xamarin.iOS10\Xamarin.RangeSlider.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.iOS.Core">
-      <HintPath>..\packages\Xuni.iOS.Core.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.Core.dll</HintPath>
+      <HintPath>..\packages\Xuni.iOS.Core.2.3.20171.189\lib\Xamarin.iOS10\Xuni.iOS.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.iOS.Calendar">
-      <HintPath>..\packages\Xuni.iOS.Calendar.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.Calendar.dll</HintPath>
+      <HintPath>..\packages\Xuni.iOS.Calendar.2.3.20171.189\lib\Xamarin.iOS10\Xuni.iOS.Calendar.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.iOS.ChartCore">
-      <HintPath>..\packages\Xuni.iOS.ChartCore.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.ChartCore.dll</HintPath>
+      <HintPath>..\packages\Xuni.iOS.ChartCore.2.3.20171.189\lib\Xamarin.iOS10\Xuni.iOS.ChartCore.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.iOS.FlexChart">
-      <HintPath>..\packages\Xuni.iOS.FlexChart.2.3.20163.178\lib\Xamarin.iOS10\Xuni.iOS.FlexChart.dll</HintPath>
+      <HintPath>..\packages\Xuni.iOS.FlexChart.2.3.20171.189\lib\Xamarin.iOS10\Xuni.iOS.FlexChart.dll</HintPath>
     </Reference>
-    <Reference Include="XCalendar">
-      <HintPath>..\Components\XCalendar-1.1\lib\ios-unified\XCalendar.dll</HintPath>
+    <Reference Include="SDWebImage">
+      <HintPath>..\packages\Xamarin.SDWebImage.3.7.5\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -281,9 +284,6 @@
       <DependentUpon>CalendarHomeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\RangeSlider.cs" />
-    <Compile Include="Web References\trackSvc\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Helper\DeviceHardware.cs" />
     <Compile Include="Controllers\CoachHomeViewController.cs" />
     <Compile Include="Controllers\CoachHomeViewController.designer.cs">
@@ -292,6 +292,25 @@
     <Compile Include="ViewModel\UserCell.cs" />
     <Compile Include="ViewModel\UserCell.designer.cs">
       <DependentUpon>UserCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\trackSvc\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CoachGroupsViewController.cs" />
+    <Compile Include="Controllers\CoachGroupsViewController.designer.cs">
+      <DependentUpon>CoachGroupsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CoachSubGroupViewController.cs" />
+    <Compile Include="Controllers\CoachSubGroupViewController.designer.cs">
+      <DependentUpon>CoachSubGroupViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CoachAthletesBySubGroupViewController.cs" />
+    <Compile Include="Controllers\CoachAthletesBySubGroupViewController.designer.cs">
+      <DependentUpon>CoachAthletesBySubGroupViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\UserSubGroupCell.cs" />
+    <Compile Include="ViewModel\UserSubGroupCell.designer.cs">
+      <DependentUpon>UserSubGroupCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -407,24 +426,10 @@
     <BundleResource Include="Resources\pin_pfinish.png" />
     <BundleResource Include="Resources\pin_pstart.png" />
     <BundleResource Include="Resources\pin_me.png" />
-    <BundleResource Include="Resources\slider-default_trackBackground%402x.png" />
-    <BundleResource Include="Resources\slider-default7-trackCrossedOver%402x.png" />
-    <BundleResource Include="Resources\slider-default7-trackCrossedOver.png" />
-    <BundleResource Include="Resources\slider-default7-trackBackground%402x.png" />
-    <BundleResource Include="Resources\slider-default7-trackBackground.png" />
-    <BundleResource Include="Resources\slider-default7-track%402x.png" />
-    <BundleResource Include="Resources\slider-default7-track.png" />
     <BundleResource Include="Resources\slider-default7-handle%402x.png" />
     <BundleResource Include="Resources\slider-default7-handle.png" />
     <BundleResource Include="Resources\slider-default7-handle-disabled%402x.png" />
     <BundleResource Include="Resources\slider-default7-handle-disabled.png" />
-    <BundleResource Include="Resources\slider-default-trackCrossedOver%402x.png" />
-    <BundleResource Include="Resources\slider-default-trackCrossedOver.png" />
-    <BundleResource Include="Resources\slider-default-trackBackground.png" />
-    <BundleResource Include="Resources\slider-default-track%402x.png" />
-    <BundleResource Include="Resources\slider-default-track.png" />
-    <BundleResource Include="Resources\slider-default-handle-highlighted%402x.png" />
-    <BundleResource Include="Resources\slider-default-handle-highlighted.png" />
     <BundleResource Include="Resources\slider-default-handle-disabled%402x.png" />
     <BundleResource Include="Resources\slider-default-handle-disabled.png" />
     <BundleResource Include="Resources\bg_performance.png" />
@@ -433,6 +438,27 @@
     <BundleResource Include="Resources\icon_home.png" />
     <BundleResource Include="Resources\timer_new.png" />
     <BundleResource Include="Resources\icon_search.png" />
+    <BundleResource Include="Resources\slider-default_trackBackground%402x.png" />
+    <BundleResource Include="Resources\slider-default7-trackCrossedOver%402x.png" />
+    <BundleResource Include="Resources\slider-default7-trackCrossedOver.png" />
+    <BundleResource Include="Resources\slider-default7-trackBackground%402x.png" />
+    <BundleResource Include="Resources\slider-default7-trackBackground.png" />
+    <BundleResource Include="Resources\slider-default7-track%402x.png" />
+    <BundleResource Include="Resources\slider-default7-track.png" />
+    <BundleResource Include="Resources\slider-default-trackCrossedOver%402x.png" />
+    <BundleResource Include="Resources\slider-default-trackCrossedOver.png" />
+    <BundleResource Include="Resources\slider-default-trackBackground.png" />
+    <BundleResource Include="Resources\slider-default-track%402x.png" />
+    <BundleResource Include="Resources\slider-default-track.png" />
+    <BundleResource Include="Resources\slider-default-handle%402x.png" />
+    <BundleResource Include="Resources\slider-default-handle.png" />
+    <BundleResource Include="Resources\slider-default-handle-highlighted%402x.png" />
+    <BundleResource Include="Resources\slider-default-handle-highlighted.png" />
+    <BundleResource Include="Resources\icon_no_avatar.png" />
+    <BundleResource Include="Resources\icon_circle_blue.png" />
+    <BundleResource Include="Resources\icon_circle_empty.png" />
+    <BundleResource Include="Resources\icon_circle_green.png" />
+    <BundleResource Include="Resources\icon_circle_red.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
@@ -453,12 +479,12 @@
       <Version>1.20</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="XCalendar">
-      <Version>1.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="googleiosmaps">
       <Version>2.1.0.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="sdwebimage">
+      <Version>3.7.5</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -484,6 +510,6 @@
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Xamarin.Google.iOS.Maps.2.1.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Maps.2.1.0\build\Xamarin.Google.iOS.Maps.targets')" />
-  <Import Project="..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.2\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.4\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.4\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\packages\Xamarin.Google.iOS.Maps.2.1.0.1\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Maps.2.1.0.1\build\Xamarin.Google.iOS.Maps.targets')" />
 </Project>

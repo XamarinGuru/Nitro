@@ -6,22 +6,22 @@ using SDWebImage;
 
 namespace location2
 {
-    public partial class UserCell : UITableViewCell
-    {
-		public static readonly NSString Key = new NSString("UserCell");
+	public partial class UserSubGroupCell : UITableViewCell
+	{
+		public static readonly NSString Key = new NSString("UserSubGroupCell");
 		public static readonly UINib Nib;
 
-		static UserCell()
+		static UserSubGroupCell()
 		{
-			Nib = UINib.FromName("UserCell", NSBundle.MainBundle);
+			Nib = UINib.FromName("UserSubGroupCell", NSBundle.MainBundle);
 		}
 
-		protected UserCell(IntPtr handle) : base(handle)
+		protected UserSubGroupCell(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
 		}
 
-		public void SetCell(Athlete user)
+		public void SetCell(AthleteInSubGroup user)
 		{
 			img1.Image = new UIImage();
 			img2.Image = new UIImage();
@@ -33,7 +33,7 @@ namespace location2
 
 			try
 			{
-				lblName.Text = user.name;
+				lblName.Text = user.athleteName;
 				if (!string.IsNullOrEmpty(user.userImagURI))
 				{
 					imgPhoto.SetImage(url: new NSUrl(user.userImagURI));
@@ -64,6 +64,7 @@ namespace location2
 						img5.Image = UIImage.FromFile("icon_other.png");
 						break;
 				}
+
 			}
 			switch (user.pmcStatus)
 			{
@@ -92,5 +93,5 @@ namespace location2
 			imgPhoto.Layer.BorderWidth = 1;
 			imgPhoto.Layer.BorderColor = UIColor.Gray.CGColor;
 		}
-    }
+	}
 }
