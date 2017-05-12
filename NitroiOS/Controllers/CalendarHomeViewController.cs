@@ -69,7 +69,7 @@ namespace location2
 
 			lblFakeUserName.Hidden = !AppSettings.isFakeUser;
 			lblFakeUserName.Text = string.Format(Constants.MSG_FAKE_USER_VIEW, AppSettings.fakeUserName);
-			btnBack.Hidden = AppSettings.CurrentUser.userType == (int)Constants.USER_TYPE.COACH ? false : true;
+			//btnBack.Hidden = AppSettings.CurrentUser.userType == (int)Constants.USER_TYPE.COACH ? false : true;
 		}
 
 		public override void ViewDidAppear(bool animated)

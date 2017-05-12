@@ -49,6 +49,13 @@ namespace location2
 			GROUP_COLOR = UIColor.FromRGB(red, green, blue);
 		}
 
+        protected UIButton NavLeftButton()
+        {
+			var leftButton = new UIButton(new CGRect(0, 0, 30, 30));
+			leftButton.SetImage(UIImage.FromFile("icon_left.png"), UIControlState.Normal);
+            return leftButton;
+        }
+
 		protected void ShowLoadingView(string title)
 		{
 			InvokeOnMainThread(() => { BTProgressHUD.Show(title, -1, ProgressHUD.MaskType.Black); });
