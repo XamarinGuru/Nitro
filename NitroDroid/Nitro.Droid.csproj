@@ -368,7 +368,6 @@
     <AndroidResource Include="Resources\layout\CoachSubGroupsActivity.axml" />
     <AndroidResource Include="Resources\layout\CoachAthletesBySubGroupActivity.axml" />
     <AndroidResource Include="Resources\drawable\icon_circle_empty.png" />
-    <AndroidResource Include="Resources\layout\aLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
