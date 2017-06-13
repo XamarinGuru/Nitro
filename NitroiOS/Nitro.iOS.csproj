@@ -22,12 +22,12 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>location2</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
-    <CodesignProvision>498b95a7-75d4-4c2e-988f-99a41d8321ca</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
