@@ -5,8 +5,8 @@ using PortableLibrary;
 using Google.Maps;
 using System.Drawing;
 using CoreLocation;
-using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace location2
 {
@@ -67,7 +67,7 @@ namespace location2
 
 		void GetMarkersAndPoints()
 		{
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView(PortableLibrary.Constants.MSG_LOADING_ALL_MARKERS);
 

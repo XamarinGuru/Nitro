@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>481416894162-hknu7v8ns4u4ith1g0s83jvcvitnp4mk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.481416894162-hknu7v8ns4u4ith1g0s83jvcvitnp4mk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAgfLmhvGwlTKSTZYkclpo9uwAyavJypWg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>481416894162</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.go-heja.nitro</string>
+	<key>PROJECT_ID</key>
+	<string>nitro-8de72</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nitro-8de72.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:481416894162:ios:0db318400731ba01</string>
+	<key>DATABASE_URL</key>
+	<string>https://nitro-8de72.firebaseio.com</string>
+</dict>
+</plist>

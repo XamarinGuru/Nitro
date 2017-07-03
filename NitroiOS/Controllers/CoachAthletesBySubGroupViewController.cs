@@ -4,7 +4,6 @@ using UIKit;
 using PortableLibrary;
 using System.Collections.Generic;
 using System.Linq;
-using CoreGraphics;
 
 namespace location2
 {
@@ -87,7 +86,7 @@ namespace location2
 			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 			{
 				UserSubGroupCell cell = tableView.DequeueReusableCell("UserSubGroupCell") as UserSubGroupCell;
-				cell.SetCell(_searchAthletes[indexPath.Row]);
+				cell.SetCell(_searchAthletes[indexPath.Row], mSuperVC);
 
 				return cell;
 			}

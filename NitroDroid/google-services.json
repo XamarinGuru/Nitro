@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "481416894162",
+    "firebase_url": "https://nitro-8de72.firebaseio.com",
+    "project_id": "nitro-8de72",
+    "storage_bucket": "nitro-8de72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481416894162:android:9398d04600c54e39",
+        "android_client_info": {
+          "package_name": "goheja.nitro.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481416894162-g8anrojjcgrmklevthcntpes4tlrbi6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoIBe8JAOLv2sdg6p1Dv-21L6qG_Lz5rA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

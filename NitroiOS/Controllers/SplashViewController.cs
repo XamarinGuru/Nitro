@@ -20,14 +20,14 @@ namespace location2
 			GotoMainIfAlreadyLoggedin();
 		}
 
-		private void GotoMainIfAlreadyLoggedin()
+		void GotoMainIfAlreadyLoggedin()
 		{
 			var nextVC = Storyboard.InstantiateViewController("InitViewController");
 
 			var currentUser = AppSettings.CurrentUser;
 			if (currentUser != null)
 			{
-				if (currentUser.userType == (int)Constants.USER_TYPE.ATHLETE)
+				if (currentUser.userType == Constants.USER_TYPE.ATHLETE)
 				{
 					nextVC = Storyboard.InstantiateViewController("MainPageViewController") as MainPageViewController;
 				}
@@ -35,11 +35,13 @@ namespace location2
 				{
 					var tabVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
 					nextVC = new UINavigationController(tabVC);
-					//nextVC = Storyboard.InstantiateViewController("CoachHomeViewController") as CoachHomeViewController;
+
+					AppDelegate myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+					myDelegate.navVC = nextVC as UINavigationController;
 				}
 			}
 
-			this.PresentViewController(nextVC, false, null);
+			PresentViewController(nextVC, false, null);
 		}
     }
 }
